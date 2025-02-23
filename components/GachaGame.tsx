@@ -253,7 +253,7 @@ export default function GachaGame() {
 
       {/* 🎯 중앙: 뽑기 UI */}
       <main className="w-3/5 flex flex-col items-center bg-white p-6 rounded-lg shadow-lg min-h-[700px] h-full flex-grow">
-        <h1 className="text-3xl font-bold mb-4">Reverse:1999 가챠 시뮬레이션</h1>
+        <h1 className="text-3xl font-bold mb-4">Reverse:1999 가챠 시뮬레이터</h1>
 
         {/* 🎯 뽑기 버튼 (크기 키우기) */}
         <div className="flex gap-6 mb-5">
@@ -306,7 +306,7 @@ export default function GachaGame() {
                   alt={entry.char.name}
                   className="w-14 h-14 object-cover"
                 />
-                <p className="text-lg font-semibold">
+                <p className="text-base font-semibold">
                   {entry.char.name} (#{entry.pullNumber}) ({suffix})
                 </p>
               </div>
