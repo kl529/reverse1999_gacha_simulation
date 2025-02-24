@@ -1,12 +1,16 @@
 import "@/app/globals.css";
 import { version } from "@/data/version";
 import CustomCursor from "@/components/CustomCursor";
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from "@vercel/analytics/react"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
       <body>
         <CustomCursor />
+        <SpeedInsights />
+        <Analytics />
         {children}
       </body>
     </html>
