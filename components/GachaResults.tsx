@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Character } from "../data/characters";
+import Image from "next/image";
 
 interface Props {
   results: Character[];
@@ -39,9 +40,12 @@ export default function GachaResults({ results }: Props) {
           {/* (1) 캐릭터 메인 이미지 (카드 전체 채우기) */}
           {char && (
             <div className="w-full h-full relative z-0">
-              <img
+              <Image
                 src={`/characters/${char.rarity}stars/${char.engName}.png`}
                 alt={char.name}
+                width={100}
+                height={100}
+                layout="intrinsic"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -50,9 +54,12 @@ export default function GachaResults({ results }: Props) {
           {/* (2) 왼쪽 상단 영감 아이콘 */}
           {char?.inspiration && (
             <div className="absolute left-2 z-10">
-              <img
+              <Image
                 src={`/infos/inspiration/${char.inspiration}.png`}
                 alt={char.inspiration}
+                width={100}
+                height={100}
+                layout="intrinsic"
                 className="w-5 h-auto"
               />
             </div>
@@ -60,11 +67,13 @@ export default function GachaResults({ results }: Props) {
 
           {/* (3) 카드 하단 성급(별) 효과 (가로 폭 카드와 동일) */}
           {char && (
-            <div className="absolute inset-0 w-full h-full z-10">
-              <img
+            <div className="absolute bottom-0 left-0 w-full z-10">
+              <Image
                 src={`/infos/effects/${char.rarity}stars.png`}
                 alt={`성급 효과 ${char.rarity}`}
-                className="w-full h-full"
+                width={100}
+                height={100}
+                layout="responsive"
               />
             </div>
           )}

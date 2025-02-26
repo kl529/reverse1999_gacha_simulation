@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://reverse1999-simulator.com
+
+# Sitemaps
+Sitemap: https://reverse1999-simulator.com/sitemap.xml

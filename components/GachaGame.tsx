@@ -57,7 +57,7 @@ export default function GachaGame() {
   ): [Character, number, boolean] => {
 
     // 70뽑 초과 -> 즉시 6성 + 픽업 50%
-    if (localPity >= 70) {
+    if (localPity + 1 >= 70) {
       let forcedSix: Character;
       if (localPickup) {
         forcedSix = selectedBanner.pickup6;
@@ -209,9 +209,12 @@ export default function GachaGame() {
             배너 선택 🎴
           </label>
 
-          <img
+          <Image
             src={`/infos/banner_img/${selectedBanner.id}.png`}
             alt="배너 이미지"
+            width={400} // 원하는 크기 설정
+            height={200} // 원하는 크기 설정
+            layout="intrinsic" // (선택) 자동 크기 조정
             className="w-full h-auto object-contain pb-3"
           />
           <select
@@ -301,9 +304,12 @@ export default function GachaGame() {
             const suffix = count === 1 ? '명함' : `${Math.min(count - 1, 5)}형`;
             return (
               <div key={idx} className="flex items-center gap-2 p-2 border rounded">
-                <img
+                <Image
                   src={`/characters/6stars_small/${entry.char.engName}.png`}
                   alt={entry.char.name}
+                  width={56} // 원하는 크기 설정
+                  height={56} // 원하는 크기 설정
+                  layout="intrinsic" // (선택) 자동 크기 조정
                   className="w-14 h-14 object-cover"
                 />
                 <p className="text-base font-semibold">
@@ -318,4 +324,66 @@ export default function GachaGame() {
       <UpdatePopup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)} />
     </div>
   );
+}
+
+export function doSinglePull(
+  pullIndex: number,
+  localPity: number,
+  localPickup: boolean,
+  selectedBanner: Banner
+): [Character, number, boolean] {
+  if (localPity >= 70) {
+    let forcedSix: Character;
+    if (localPickup) {
+      forcedSix = selectedBanner.pickup6;
+      localPickup = false;
+    } else {
+      const isPickup = Math.random() < 0.5;
+      forcedSix = isPickup ? selectedBanner.pickup6 : getRandomFrom(charactersByRarity[6]);
+      localPickup = !isPickup;
+    }
+    return [forcedSix, 0, localPickup];
+  }
+
+  const sixStarRate = getSixStarRate(localPity);
+  const rand = Math.random() * 100;
+  let cumulative = 0;
+
+  for (const rarity of [6, 5, 4, 3, 2]) {
+    const prob = { 6: sixStarRate, 5: 8.5, 4: 40, 3: 45, 2: 5 }[rarity];
+    cumulative += prob ?? 0;
+    if (rand < cumulative) {
+      if (rarity === 6) {
+        const picked = localPickup ? selectedBanner.pickup6 : getRandomFrom(charactersByRarity[6]);
+        localPickup = !localPickup;
+        return [picked, 0, localPickup];
+      }
+      return [getRandomFrom(charactersByRarity[rarity]), localPity + 1, localPickup];
+    }
+  }
+  return [charactersByRarity[2][0], localPity + 1, localPickup];
+}
+
+export function handleGacha(times: number, selectedBanner: Banner) { 
+  let localPity = 0;  // ✅ 상태(state) 사용 금지! (독립적인 테스트 가능하도록)
+  let localPickup = false;
+  const newResults: Character[] = [];
+
+  for (let i = 0; i < times; i++) {
+    const [char, newPity, newPickup] = doSinglePull(i, localPity, localPickup, selectedBanner);
+    newResults.push(char);
+    localPity = newPity;
+    localPickup = newPickup;
+  }
+
+  return newResults;
+}
+
+function getRandomFrom<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// ✅ 6성 확률 계산 함수도 밖으로 이동
+function getSixStarRate(localPity: number) {
+  return localPity < 60 ? 1.5 : Math.min(4 + (localPity - 60) * 2.5, 100);
 }
