@@ -50,6 +50,20 @@ export default function GachaResults({ results }: Props) {
             />
           )}
 
+          {/* (2) 왼쪽 상단 영감 아이콘 */}
+          {char?.inspiration && (
+            <div className="absolute left-2 z-10">
+              <Image
+                src={`/infos/inspiration/${char.inspiration}.png`}
+                alt={char.inspiration}
+                width={100}
+                height={100}
+                layout="intrinsic"
+                className="w-5 h-auto"
+              />
+            </div>
+          )}
+
           {/* (2) 별 효과 */}
           {char && (
             <Image

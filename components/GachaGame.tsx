@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import UpdatePopup from "@/components/UpdatePopup";
 import { charactersByRarity, Character } from "@/data/characters";
 import { banners, Banner } from "@/data/banners";
 import GachaResults from "@/components/GachaResults";
+import { motion } from "framer-motion";
 
 interface SixStarHistoryEntry {
   char: Character;
@@ -27,6 +28,34 @@ export default function GachaGame() {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [leftOpen, setLeftOpen] = useState(false);
   const [rightOpen, setRightOpen] = useState(false);
+
+  useEffect(() => {
+    // 한 번만 화면폭 체크
+    if (typeof window !== "undefined") {
+      const w = window.innerWidth;
+      // 기준: 768px(= md). 필요하면 원하는 px로 수정
+      if (w >= 1024) {
+        setLeftOpen(true);
+        setRightOpen(true);
+      } else {
+        setLeftOpen(false);
+        setRightOpen(false);
+      }
+    }
+  }, []);
+
+  const leftAsideVariants = {
+    hidden: { x: "-100%", opacity: 0 },
+    visible: { x: "0%", opacity: 1, transition: { duration: 0.3, ease: "easeOut" } },
+    exit: { x: "-100%", opacity: 0, transition: { duration: 0.3, ease: "easeIn" } },
+  };
+  
+  const rightAsideVariants = {
+    hidden: { x: "100%", opacity: 0 },
+    visible: { x: "0%", opacity: 1, transition: { duration: 0.3, ease: "easeOut" } },
+    exit: { x: "100%", opacity: 0, transition: { duration: 0.3, ease: "easeIn" } },
+  };
+  
 
   // 2) 6성 확률 계산
   const getSixStarRate = (localPity: number) => {
@@ -234,19 +263,26 @@ export default function GachaGame() {
       {/* ===================================== */}
       {/* 왼쪽 패널: 통계 + 배너 선택 + 닉네임 */}
       {/* ===================================== */}
-      <aside 
+      <motion.aside 
+        variants={leftAsideVariants}
+        initial="hidden"
+        animate={leftOpen ? "visible" : "hidden"}
+        exit="exit"
         className={`
           bg-white shadow rounded-lg p-4 border
-          md:w-1/5
-          md:block
+          md:w-1/5 md:block
+          variants={leftAsideVariants}
+          initial="hidden"
+          animate={leftOpen ? "visible" : "hidden"}
+          exit="exit"
           ${leftOpen ? "block" : "hidden"}
-          md:static 
-          absolute top-12 left-0
-          w-[80%] h-[calc(100%-3rem)]
-          z-20
-          overflow-y-auto  // 🎯 세로 스크롤 추가
-          max-h-screen  // 🎯 화면 높이 넘지 않도록 제한
-      `}>
+          md:static
+          fixed md:static 
+          top-0 left-0 w-[80%] md:w-1/5 h-full z-40 
+          overflow-y-auto max-h-screen
+          absolute top-12 right-0
+        `}
+      >
         {/* (1) 뽑기 확률 통계 박스 */}
         <div className="p-4 bg-white shadow rounded-lg border border-green-300 outline outline-2 outline-green-400">
           <h2 className="text-xl font-semibold mb-2 text-black">뽑기 확률 통계</h2>
@@ -318,7 +354,7 @@ export default function GachaGame() {
             />
           </button>
         </div>
-      </aside>
+      </motion.aside>
 
       {/* ===================================== */}
       {/* 중앙: 뽑기 UI + 뽑기 결과 */}
@@ -376,19 +412,23 @@ export default function GachaGame() {
       {/* ===================================== */}
       {/* 오른쪽: 6성 이력 */}
       {/* ===================================== */}
-      <aside 
-      // className="w-full md:w-1/5 p-4 bg-white shadow rounded-lg border-red-300 outline outline-2 outline-red-400 flex flex-col max-h-[500px] md:max-h-none h-auto md:h-full overflow-hidden">
+      <motion.aside 
+        variants={rightAsideVariants}
+        initial="hidden"
+        animate={rightOpen ? "visible" : "hidden"}
         className={`
           bg-white shadow rounded-lg p-4 border
-          md:w-1/5
-          md:block
+          md:w-1/5 md:block
+          variants={rightAsideVariants}
+          initial="hidden"
+          animate={rightOpen ? "visible" : "hidden"}
+          exit="exit"
           ${rightOpen ? "block" : "hidden"}
           md:static
+          fixed md:static 
+          top-0 right-0 w-[80%] md:w-1/5 h-full z-40 
+          overflow-y-auto max-h-screen
           absolute top-12 right-0
-          w-[80%] h-[calc(100%-3rem)]
-          z-20
-          overflow-y-auto  // 🎯 세로 스크롤 추가
-          max-h-screen  // 🎯 화면 높이 넘지 않도록 제한
         `}
       >
         <h2 className="text-lg md:text-xl font-semibold mb-2 sticky top-0 bg-white z-10 p-2 border-b text-black">
@@ -420,14 +460,14 @@ export default function GachaGame() {
                   layout="intrinsic"
                   className="w-14 h-14 object-cover"
                 />
-                <p className="text-xs md:text-base font-semibold whitespace-nowrap">
+                <p className="text-xs md:text-base font-semibold whitespace-nowrap text-black">
                   {entry.char.name} (#{entry.pullNumber})
                 </p>
               </div>
             );
           })}
         </div>
-      </aside>
+      </motion.aside>
 
       {/* 업데이트 팝업 */}
       <UpdatePopup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)} />
