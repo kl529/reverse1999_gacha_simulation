@@ -17,68 +17,52 @@ export default function GachaResults({ results }: Props) {
         grid
         w-full
         h-full
-        min-h-[600px]      /* 최소 높이 유지 */
-        gap-x-4 gap-y-6    /* 가로, 세로 간격을 균형 있게 조정 */
+        min-h-[600px]
+        gap-4
         grid-cols-2
         sm:grid-cols-3
         md:grid-cols-4
         lg:grid-cols-5
-        place-items-center
+        auto-rows-fr   /* 각 행(row)의 높이를 균등 분배 */
+        items-stretch  /* 그리드 아이템(카드)을 세로로 늘려줌 */
       "
     >
       {displayResults.map((char, index) => (
         <motion.div
           key={index}
           initial={{ opacity: 0 }}
-          animate={{ opacity: char ? 1 : 0 }}  // 빈 슬롯일 경우 투명
+          animate={{ opacity: char ? 1 : 0 }}
           className={`
-            relative w-full h-full rounded overflow-hidden shadow-lg
-            flex flex-col justify-between
-            ${char ? "" : "opacity-0"}  // 빈 슬롯이면 투명도 적용
+            relative w-[160px] h-full
+            rounded overflow-hidden shadow-lg 
+            ${char ? "" : "opacity-0"}
           `}
         >
-          {/* (1) 캐릭터 메인 이미지 (카드 전체 채우기) */}
+          {/* (1) 메인 이미지 */}
           {char && (
-            <div className="w-full h-full relative z-0">
+            <div className="absolute inset-0">
               <Image
                 src={`/characters/${char.rarity}stars/${char.engName}.png`}
                 alt={char.name}
-                width={100}
-                height={100}
-                layout="intrinsic"
-                className="w-full h-full object-cover"
+                layout="fill"
+                objectFit="cover"
               />
             </div>
           )}
 
-          {/* (2) 왼쪽 상단 영감 아이콘 */}
-          {char?.inspiration && (
-            <div className="absolute left-2 z-10">
-              <Image
-                src={`/infos/inspiration/${char.inspiration}.png`}
-                alt={char.inspiration}
-                width={100}
-                height={100}
-                layout="intrinsic"
-                className="w-5 h-auto"
-              />
-            </div>
-          )}
-
-          {/* (3) 카드 하단 성급(별) 효과 (가로 폭 카드와 동일) */}
+          {/* (2) 별 효과 */}
           {char && (
-            <div className="absolute bottom-0 left-0 w-full z-10">
+            <div className="absolute inset-0 z-10 pointer-events-none">
               <Image
                 src={`/infos/effects/${char.rarity}stars.png`}
                 alt={`성급 효과 ${char.rarity}`}
-                width={100}
-                height={100}
-                layout="responsive"
+                layout="fill"
+                objectFit="cover"
               />
             </div>
           )}
 
-          {/* (4) 캐릭터 이름 (카드 하단 중앙) */}
+          {/* (3) 이름 */}
           {char && (
             <p
               className="absolute bottom-2 w-full text-center text-white font-semibold z-30"

@@ -6,6 +6,7 @@ import UpdatePopup from "@/components/UpdatePopup";
 import { charactersByRarity, Character } from "@/data/characters";
 import { banners, Banner } from "@/data/banners";
 import GachaResults from "@/components/GachaResults";
+import { useMemo } from "react";
 
 interface SixStarHistoryEntry {
   char: Character;
@@ -179,6 +180,21 @@ export default function GachaGame() {
     setSelectedBanner(newBanner ?? banners[0]);
   };
 
+  const { pickupCount, nonPickupCount } = useMemo(() => {
+    let pickupCount = 0;
+    let nonPickupCount = 0;
+  
+    sixStarHistory.forEach((entry) => {
+      if (entry.char.engName === selectedBanner.pickup6.engName) {
+        pickupCount++;
+      } else {
+        nonPickupCount++;
+      }
+    });
+  
+    return { pickupCount, nonPickupCount };
+  }, [sixStarHistory, selectedBanner]); // ✅ sixStarHistory나 배너가 변경될 때 다시 계산
+
   // -------------------------
   // UI
   // -------------------------
@@ -189,7 +205,7 @@ export default function GachaGame() {
       <aside className="w-1/5 flex flex-col gap-6 mr-6">
         {/* 🎯 (1) 뽑기 확률 통계 박스 */}
         <div className="p-4 bg-white shadow rounded-lg border border-green-300 outline outline-2 outline-green-400">
-          <h2 className="text-xl font-semibold mb-2">뽑기 확률 통계</h2>
+          <h2 className="text-xl font-semibold mb-2 text-black">뽑기 확률 통계</h2>
           <ul className="list-disc ml-4 mt-2">
             {Object.entries(rarityStats).map(([rarity, count]) => (
               <li key={rarity} className="text-gray-800">{rarity}성: {count}회</li>
@@ -223,7 +239,7 @@ export default function GachaGame() {
             className="w-full h-12 text-lg border border-gray-400 rounded-lg p-2 shadow-md cursor-pointer transition-transform hover:scale-105"
           >
             {banners.map((banner) => (
-              <option key={banner.id} value={banner.id}>
+              <option key={banner.id} value={banner.id} className="text-black">
                 {banner.name}
               </option>
             ))}
@@ -256,7 +272,7 @@ export default function GachaGame() {
 
       {/* 🎯 중앙: 뽑기 UI */}
       <main className="w-3/5 flex flex-col items-center bg-white p-6 rounded-lg shadow-lg min-h-[700px] h-full flex-grow">
-        <h1 className="text-3xl font-bold mb-4">Reverse:1999 가챠 시뮬레이터</h1>
+        <h1 className="text-3xl font-bold mb-4 text-black">Reverse:1999 가챠 시뮬레이터</h1>
 
         {/* 🎯 뽑기 버튼 (크기 키우기) */}
         <div className="flex gap-6 mb-5">
@@ -292,9 +308,15 @@ export default function GachaGame() {
 
       {/* 🎯 오른쪽: 6성 이력 (스크롤 가능) */}
       <aside className="w-1/5 p-4 bg-white shadow ml-6 max-h-[500px] h-full flex flex-col rounded-lg border-red-300 outline outline-2 outline-red-400">
-        <h2 className="text-xl font-semibold mb-2 sticky top-0 bg-white z-10 p-2 border-b">
+        <h2 className="text-xl font-semibold mb-2 sticky top-0 bg-white z-10 p-2 border-b text-black">
           획득한 6성
         </h2>
+
+        <div className="flex justify-between text-sm font-semibold text-gray-700 bg-gray-100 p-2 rounded-lg mb-2">
+          <p className="text-green-600">픽업 횟수: {pickupCount}회</p>
+          <p className="text-red-500">픽뚫 횟수: {nonPickupCount}회</p>
+        </div>
+
         <div className="flex flex-col-reverse gap-2 overflow-y-auto">
           {sixStarHistory.reduce((acc: { [key: string]: number }, entry) => {
             acc[entry.char.name] = (acc[entry.char.name] || 0) + 1;
@@ -302,8 +324,15 @@ export default function GachaGame() {
           }, {} as { [key: string]: number }) && sixStarHistory.map((entry, idx) => {
             const count = sixStarHistory.filter(e => e.char.name === entry.char.name).length;
             const suffix = count === 1 ? '명함' : `${Math.min(count - 1, 5)}형`;
+            const isPickup = entry.char.name === selectedBanner.pickup6.name;
+            const borderColor = isPickup ? "border-green-500" : "border-red-500";
+            const labelText = isPickup ? "픽업!" : "픽뚫";
+
             return (
-              <div key={idx} className="flex items-center gap-2 p-2 border rounded">
+              <div key={idx} className={`relative flex items-center gap-2 p-2 border-2 rounded ${borderColor}`}>
+                <span className="absolute bottom-[0px] left-1/2 transform -translate-x-1/2 bg-white text-xs font-bold px-2 py-0.5 rounded shadow">
+                  {labelText} ({suffix})
+                </span>
                 <Image
                   src={`/characters/6stars_small/${entry.char.engName}.png`}
                   alt={entry.char.name}
@@ -312,8 +341,8 @@ export default function GachaGame() {
                   layout="intrinsic" // (선택) 자동 크기 조정
                   className="w-14 h-14 object-cover"
                 />
-                <p className="text-base font-semibold">
-                  {entry.char.name} (#{entry.pullNumber}) ({suffix})
+                <p className="text-base font-semibold whitespace-nowrap">
+                  {entry.char.name} (#{entry.pullNumber})
                 </p>
               </div>
             );
