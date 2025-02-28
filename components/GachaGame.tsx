@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import UpdatePopup from "@/components/UpdatePopup";
 import { charactersByRarity, Character } from "@/data/characters";
 import { banners, Banner } from "@/data/banners";
 import GachaResults from "@/components/GachaResults";
-import { useMemo } from "react";
 
 interface SixStarHistoryEntry {
   char: Character;
@@ -26,6 +25,8 @@ export default function GachaGame() {
   const nickname = "Lyva (#706668372)";
   // 🎯 팝업 상태
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [leftOpen, setLeftOpen] = useState(false);
+  const [rightOpen, setRightOpen] = useState(false);
 
   // 2) 6성 확률 계산
   const getSixStarRate = (localPity: number) => {
@@ -180,63 +181,109 @@ export default function GachaGame() {
     setSelectedBanner(newBanner ?? banners[0]);
   };
 
+  // 🔸 픽업 vs 일반 6성 횟수 계산
   const { pickupCount, nonPickupCount } = useMemo(() => {
-    let pickupCount = 0;
-    let nonPickupCount = 0;
+    let pickup = 0;
+    let nonPickup = 0;
   
     sixStarHistory.forEach((entry) => {
       if (entry.char.engName === selectedBanner.pickup6.engName) {
-        pickupCount++;
+        pickup++;
       } else {
-        nonPickupCount++;
+        nonPickup++;
       }
     });
   
-    return { pickupCount, nonPickupCount };
-  }, [sixStarHistory, selectedBanner]); // ✅ sixStarHistory나 배너가 변경될 때 다시 계산
+    return { pickupCount: pickup, nonPickupCount: nonPickup };
+  }, [sixStarHistory, selectedBanner]);
 
   // -------------------------
-  // UI
+  // UI (모바일 최적화)
   // -------------------------
   return (
-    <div className="w-full max-w-screen-2xl mx-auto flex flex-row items-start p-6 bg-gray-100 h-screen overflow-hidden">
-      
-      {/* 🎯 왼쪽 패널: 통계 + 배너 선택 */}
-      <aside className="w-1/5 flex flex-col gap-6 mr-6">
-        {/* 🎯 (1) 뽑기 확률 통계 박스 */}
+    <div
+      className={`
+        w-full 
+        max-w-screen-2xl 
+        mx-auto 
+        h-screen 
+        bg-gray-100 
+        p-2 md:p-6 
+        flex 
+        flex-col md:flex-row 
+        items-start 
+        gap-2 md:gap-4 
+        relative
+      `}
+    >
+      <div className="md:hidden flex justify-between w-full mb-2">
+        <button
+          onClick={() => setLeftOpen(prev => !prev)}
+          className="bg-green-500 text-white px-3 py-2 rounded"
+        >
+          {leftOpen ? "통계 접기" : "통계 펼치기"}
+        </button>
+        <button
+          onClick={() => setRightOpen(prev => !prev)}
+          className="bg-red-500 text-white px-3 py-2 rounded"
+        >
+          {rightOpen ? "6성목록 접기" : "6성목록 펼치기"}
+        </button>
+      </div>
+
+      {/* ===================================== */}
+      {/* 왼쪽 패널: 통계 + 배너 선택 + 닉네임 */}
+      {/* ===================================== */}
+      <aside 
+        className={`
+          bg-white shadow rounded-lg p-4 border
+          md:w-1/5
+          md:block
+          ${leftOpen ? "block" : "hidden"}
+          md:static 
+          absolute top-12 left-0
+          w-[80%] h-[calc(100%-3rem)]
+          z-20
+          overflow-y-auto  // 🎯 세로 스크롤 추가
+          max-h-screen  // 🎯 화면 높이 넘지 않도록 제한
+      `}>
+        {/* (1) 뽑기 확률 통계 박스 */}
         <div className="p-4 bg-white shadow rounded-lg border border-green-300 outline outline-2 outline-green-400">
           <h2 className="text-xl font-semibold mb-2 text-black">뽑기 확률 통계</h2>
-          <ul className="list-disc ml-4 mt-2">
+          <ul className="list-disc ml-4 mt-2 text-sm md:text-base">
             {Object.entries(rarityStats).map(([rarity, count]) => (
-              <li key={rarity} className="text-gray-800">{rarity}성: {count}회</li>
+              <li key={rarity} className="text-gray-800">
+                {rarity}성: {count}회
+              </li>
             ))}
           </ul>
-          <p className="text-lg text-gray-600 mt-4">총 뽑기 횟수: <span className="font-bold text-blue-600">{totalPulls}회</span></p>
-          <p className="mt-4 text-red-500">현재 천장 카운트: {pityCount}회</p>
+          <p className="mt-3 text-gray-700">
+            총 뽑기 횟수: <span className="font-bold text-blue-600">{totalPulls}회</span>
+          </p>
+          <p className="mt-1 text-red-500">현재 천장 카운트: {pityCount}회</p>
           <p className="text-blue-600">6성 확률: {getSixStarRate(pityCount).toFixed(2)}%</p>
-          <p className={`text-lg font-bold mt-2 ${pickupGuarantee ? "text-green-500" : "text-gray-500"}`}>
+          <p className={`text-sm md:text-lg font-bold mt-2 ${pickupGuarantee ? "text-green-500" : "text-gray-500"}`}>
             {pickupGuarantee ? "다음 6성은 픽업 확정!" : "픽업 보장 없음"}
           </p>
         </div>
 
-        {/* 🎯 (2) 배너 선택 박스 */}
+        {/* (2) 배너 선택 박스 */}
         <div className="p-4 bg-gray-50 shadow rounded-lg border border-blue-400 outline outline-2 outline-blue-600">
-          <label className="block text-lg font-semibold text-gray-700 mb-2">
+          <label className="block text-base md:text-lg font-semibold text-gray-700 mb-2">
             배너 선택 🎴
           </label>
-
           <Image
             src={`/infos/banner_img/${selectedBanner.id}.png`}
             alt="배너 이미지"
-            width={400} // 원하는 크기 설정
-            height={200} // 원하는 크기 설정
-            layout="intrinsic" // (선택) 자동 크기 조정
+            width={400}
+            height={200}
+            layout="intrinsic"
             className="w-full h-auto object-contain pb-3"
           />
           <select
             value={selectedBanner.id}
             onChange={(e) => handleBannerChange(e.target.value)}
-            className="w-full h-12 text-lg border border-gray-400 rounded-lg p-2 shadow-md cursor-pointer transition-transform hover:scale-105"
+            className="w-full h-10 md:h-12 text-sm md:text-lg border border-gray-400 rounded-lg p-2 shadow-md cursor-pointer transition-transform hover:scale-105"
           >
             {banners.map((banner) => (
               <option key={banner.id} value={banner.id} className="text-black">
@@ -246,102 +293,134 @@ export default function GachaGame() {
           </select>
         </div>
 
-        {/* 🎯 (3) 닉네임 표시 */}
-        <div className="p-4 bg-white shadow rounded-lg border border-gray-300 text-center flex-row outline outline-2 outline-gray-600">
-          <div className="flex items-center pb-2">
-            <h3 className="text-lg font-semibold text-gray-700">개발자 : </h3>
-            <p className="text-xl font-bold text-blue-600 pl-1"> {nickname}</p>
+        {/* (3) 닉네임 + 업데이트 내역 */}
+        <div className="p-4 bg-white shadow rounded-lg border border-gray-300 text-center outline outline-2 outline-gray-600">
+          <div className="flex flex-col items-center pb-2">
+            <h3 className="text-base md:text-lg font-semibold text-gray-700">개발자 :</h3>
+            <p className="text-sm md:text-xl font-bold text-blue-600">{nickname}</p>
           </div>
           <button
             onClick={() => setPopupOpen(true)}
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition text-sm md:text-base"
           >
             업데이트 내역 보기
           </button>
-          <button onClick={() => window.open("https://github.com/kl529/reverse1999_gacha_simulation", "_blank")} className="pt-2">
+          <button
+            onClick={() => window.open("https://github.com/kl529/reverse1999_gacha_simulation", "_blank")}
+            className="pt-2"
+          >
             <Image
-              src="/infos/button/github.png" 
+              src="/infos/button/github.png"
               alt="github"
-              width={30} 
-              height={10} 
-              className="cursor-pointer transition-transform hover:scale-105 active:scale-95" 
+              width={30}
+              height={10}
+              className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
             />
           </button>
         </div>
       </aside>
 
-      {/* 🎯 중앙: 뽑기 UI */}
-      <main className="w-3/5 flex flex-col items-center bg-white p-6 rounded-lg shadow-lg min-h-[700px] h-full flex-grow">
-        <h1 className="text-3xl font-bold mb-4 text-black">Reverse:1999 가챠 시뮬레이터</h1>
+      {/* ===================================== */}
+      {/* 중앙: 뽑기 UI + 뽑기 결과 */}
+      {/* ===================================== */}
+      <main 
+        className={`
+          bg-white p-4 rounded-lg shadow flex-grow
+          w-full md:w-3/5 relative
+          flex flex-col h-full
+          overflow-hidden // 전체 스크롤 방지
+        `}
+      >
+        {/* 🎯 헤더 (항상 고정) */}
+        <h1 className="text-2xl md:text-3xl font-bold mb-4 text-black text-center sticky top-0 bg-white z-20 p-3 shadow-md">
+          Reverse:1999 가챠 시뮬레이터
+        </h1>
 
-        {/* 🎯 뽑기 버튼 (크기 키우기) */}
-        <div className="flex gap-6 mb-5">
-          <button onClick={() => handleGacha(1)} className="relative w-[180px] h-[60px]">
-            <Image
-              src="/infos/button/single_pull.png" 
-              alt="1회 뽑기"
-              width={180} 
-              height={60} 
-              className="cursor-pointer transition-transform hover:scale-105 active:scale-95" 
-            />
-          </button>
-          <button onClick={() => handleGacha(10)} className="relative w-[180px] h-[60px]">
-            <Image
-              src="/infos/button/ten_pull.png" 
-              alt="10회 뽑기"
-              width={180} 
-              height={60} 
-              className="cursor-pointer transition-transform hover:scale-105 active:scale-95" 
-            />
-          </button>
-          <button
-            className="bg-red-500 text-white px-6 py-3 rounded-lg transition-transform hover:scale-105 active:scale-95 text-m"
-            onClick={resetAll}
-          >
-            초기화 🌧️
-          </button>
+        {/* 🎯 뽑기 버튼 & 결과 (스크롤 가능 영역) */}
+        <div className="flex flex-col items-center gap-5 overflow-y-auto flex-grow">
+          {/* 뽑기 버튼 */}
+          <div className="flex gap-4 md:gap-6">
+            <button onClick={() => handleGacha(1)} className="relative w-[140px] md:w-[180px] h-[50px] md:h-[60px]">
+              <Image
+                src="/infos/button/single_pull.png"
+                alt="1회 뽑기"
+                width={180}
+                height={60}
+                className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
+              />
+            </button>
+            <button onClick={() => handleGacha(10)} className="relative w-[140px] md:w-[180px] h-[50px] md:h-[60px]">
+              <Image
+                src="/infos/button/ten_pull.png"
+                alt="10회 뽑기"
+                width={180}
+                height={60}
+                className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
+              />
+            </button>
+            <button
+              className="bg-red-500 text-white px-3 md:px-6 py-2 md:py-3 rounded-lg transition-transform hover:scale-105 active:scale-95 text-sm md:text-base"
+              onClick={resetAll}
+            >
+              초기화 🌧️
+            </button>
+          </div>
+
+          {/* 뽑기 결과 (스크롤 가능) */}
+          <div className="overflow-y-auto flex-grow w-full">
+            <GachaResults results={results} />
+          </div>
         </div>
-
-        {/* 뽑기 결과 */}
-        <GachaResults results={results} />
       </main>
 
-      {/* 🎯 오른쪽: 6성 이력 (스크롤 가능) */}
-      <aside className="w-1/5 p-4 bg-white shadow ml-6 max-h-[500px] h-full flex flex-col rounded-lg border-red-300 outline outline-2 outline-red-400">
-        <h2 className="text-xl font-semibold mb-2 sticky top-0 bg-white z-10 p-2 border-b text-black">
+      {/* ===================================== */}
+      {/* 오른쪽: 6성 이력 */}
+      {/* ===================================== */}
+      <aside 
+      // className="w-full md:w-1/5 p-4 bg-white shadow rounded-lg border-red-300 outline outline-2 outline-red-400 flex flex-col max-h-[500px] md:max-h-none h-auto md:h-full overflow-hidden">
+        className={`
+          bg-white shadow rounded-lg p-4 border
+          md:w-1/5
+          md:block
+          ${rightOpen ? "block" : "hidden"}
+          md:static
+          absolute top-12 right-0
+          w-[80%] h-[calc(100%-3rem)]
+          z-20
+          overflow-y-auto  // 🎯 세로 스크롤 추가
+          max-h-screen  // 🎯 화면 높이 넘지 않도록 제한
+        `}
+      >
+        <h2 className="text-lg md:text-xl font-semibold mb-2 sticky top-0 bg-white z-10 p-2 border-b text-black">
           획득한 6성
         </h2>
 
-        <div className="flex justify-between text-sm font-semibold text-gray-700 bg-gray-100 p-2 rounded-lg mb-2">
-          <p className="text-green-600">픽업 횟수: {pickupCount}회</p>
-          <p className="text-red-500">픽뚫 횟수: {nonPickupCount}회</p>
+        {/* 픽업 vs 일반 6성 횟수 */}
+        <div className="flex justify-between text-xs md:text-sm font-semibold text-gray-700 bg-gray-100 p-2 rounded-lg mb-2">
+          <p className="text-green-600">픽업: {pickupCount}회</p>
+          <p className="text-red-500">픽뚫: {nonPickupCount}회</p>
         </div>
 
         <div className="flex flex-col-reverse gap-2 overflow-y-auto">
-          {sixStarHistory.reduce((acc: { [key: string]: number }, entry) => {
-            acc[entry.char.name] = (acc[entry.char.name] || 0) + 1;
-            return acc;
-          }, {} as { [key: string]: number }) && sixStarHistory.map((entry, idx) => {
-            const count = sixStarHistory.filter(e => e.char.name === entry.char.name).length;
-            const suffix = count === 1 ? '명함' : `${Math.min(count - 1, 5)}형`;
+          {sixStarHistory.map((entry, idx) => {
             const isPickup = entry.char.name === selectedBanner.pickup6.name;
             const borderColor = isPickup ? "border-green-500" : "border-red-500";
             const labelText = isPickup ? "픽업!" : "픽뚫";
 
             return (
               <div key={idx} className={`relative flex items-center gap-2 p-2 border-2 rounded ${borderColor}`}>
-                <span className="absolute bottom-[0px] left-1/2 transform -translate-x-1/2 bg-white text-xs font-bold px-2 py-0.5 rounded shadow">
-                  {labelText} ({suffix})
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-white text-[10px] md:text-xs font-bold px-2 py-0.5 rounded shadow">
+                  {labelText}
                 </span>
                 <Image
                   src={`/characters/6stars_small/${entry.char.engName}.png`}
                   alt={entry.char.name}
-                  width={56} // 원하는 크기 설정
-                  height={56} // 원하는 크기 설정
-                  layout="intrinsic" // (선택) 자동 크기 조정
+                  width={56}
+                  height={56}
+                  layout="intrinsic"
                   className="w-14 h-14 object-cover"
                 />
-                <p className="text-base font-semibold whitespace-nowrap">
+                <p className="text-xs md:text-base font-semibold whitespace-nowrap">
                   {entry.char.name} (#{entry.pullNumber})
                 </p>
               </div>
@@ -350,69 +429,8 @@ export default function GachaGame() {
         </div>
       </aside>
 
+      {/* 업데이트 팝업 */}
       <UpdatePopup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)} />
     </div>
   );
-}
-
-export function doSinglePull(
-  pullIndex: number,
-  localPity: number,
-  localPickup: boolean,
-  selectedBanner: Banner
-): [Character, number, boolean] {
-  if (localPity >= 70) {
-    let forcedSix: Character;
-    if (localPickup) {
-      forcedSix = selectedBanner.pickup6;
-      localPickup = false;
-    } else {
-      const isPickup = Math.random() < 0.5;
-      forcedSix = isPickup ? selectedBanner.pickup6 : getRandomFrom(charactersByRarity[6]);
-      localPickup = !isPickup;
-    }
-    return [forcedSix, 0, localPickup];
-  }
-
-  const sixStarRate = getSixStarRate(localPity);
-  const rand = Math.random() * 100;
-  let cumulative = 0;
-
-  for (const rarity of [6, 5, 4, 3, 2]) {
-    const prob = { 6: sixStarRate, 5: 8.5, 4: 40, 3: 45, 2: 5 }[rarity];
-    cumulative += prob ?? 0;
-    if (rand < cumulative) {
-      if (rarity === 6) {
-        const picked = localPickup ? selectedBanner.pickup6 : getRandomFrom(charactersByRarity[6]);
-        localPickup = !localPickup;
-        return [picked, 0, localPickup];
-      }
-      return [getRandomFrom(charactersByRarity[rarity]), localPity + 1, localPickup];
-    }
-  }
-  return [charactersByRarity[2][0], localPity + 1, localPickup];
-}
-
-export function handleGacha(times: number, selectedBanner: Banner) { 
-  let localPity = 0;  // ✅ 상태(state) 사용 금지! (독립적인 테스트 가능하도록)
-  let localPickup = false;
-  const newResults: Character[] = [];
-
-  for (let i = 0; i < times; i++) {
-    const [char, newPity, newPickup] = doSinglePull(i, localPity, localPickup, selectedBanner);
-    newResults.push(char);
-    localPity = newPity;
-    localPickup = newPickup;
-  }
-
-  return newResults;
-}
-
-function getRandomFrom<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
-// ✅ 6성 확률 계산 함수도 밖으로 이동
-function getSixStarRate(localPity: number) {
-  return localPity < 60 ? 1.5 : Math.min(4 + (localPity - 60) * 2.5, 100);
 }
