@@ -306,7 +306,7 @@ export default function GachaGame() {
         {/* (1) 뽑기 확률 통계 박스 */}
         <div className="p-4 bg-white shadow rounded-lg border border-green-300 outline outline-2 outline-green-400 mb-5">
           <h2 className="text-xl font-semibold mb-2 text-black-700">
-            🔍 뽑기 확률 통계
+            🔍 뽑기 통계
           </h2>
           <ul className="list-disc ml-4 mt-2 text-sm md:text-base">
             {Object.entries(rarityStats).map(([rarity, count]) => (

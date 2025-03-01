@@ -22,20 +22,20 @@ export default function GachaResults({ results }: Props) {
         sm:grid-cols-3
         md:grid-cols-4
         lg:grid-cols-5
-        auto-rows-fr  /* 각 행(row)의 높이를 균등 분배 */
-        items-stretch /* 카드가 늘어나도록 설정 */
-        justify-items-center /* 🔹 각 항목을 x축 중앙 정렬 */
+        auto-rows-fr  
+        items-stretch 
+        justify-items-center 
       "
     >
       {displayResults.map((char, index) => (
         <motion.div
           key={index}
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0 }}  
           animate={{ opacity: char ? 1 : 0 }}
           className={`
-            relative w-full aspect-[3/4] /* 세로 4 : 가로 3 비율 유지 */
+            relative w-full aspect-[3/4] 
             rounded overflow-hidden shadow-none
-            min-h-[160px] md:min-h-[200px] /* 작은 화면에서도 적절한 높이 유지 */
+            min-h-[160px] md:min-h-[200px] 
             flex flex-col items-center justify-center
             ${char ? "" : "opacity-0"}
           `}
@@ -66,7 +66,7 @@ export default function GachaResults({ results }: Props) {
             </div>
           )}
 
-          {/* (2) 별 효과 */}
+          {/* (3) 별 효과 */}
           {char && (
             <Image
               src={`/infos/effects/${char.rarity}stars.png`}
