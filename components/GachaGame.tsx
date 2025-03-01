@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import Image from "next/image";
 import UpdatePopup from "@/components/UpdatePopup";
+import { BannerSixStarModal } from "@/components/BannerSixStarModal";
 import { charactersByRarity, Character } from "@/data/characters";
 import { banners, Banner } from "@/data/banners";
 import GachaResults from "@/components/GachaResults";
@@ -29,6 +30,7 @@ export default function GachaGame() {
   const [leftOpen, setLeftOpen] = useState(false);
   const [rightOpen, setRightOpen] = useState(false);
   const [isFirstPull, setIsFirstPull] = useState(true); // 첫 뽑기인지 확인하는 상태
+  const [is6StarListOpen, set6StarListOpen] = useState(false); // 6성 목록 팝업 상태
   const historyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -347,6 +349,14 @@ export default function GachaGame() {
               </option>
             ))}
           </select>
+
+          {/* 획득 가능 6성 목록 버튼 추가 */}
+          <button
+            onClick={() => set6StarListOpen(true)}
+            className="mt-3 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-transform transform hover:scale-105 active:scale-95 text-sm md:text-base"
+          >
+            획득 가능 6성 목록
+          </button>
         </div>
 
         {/* (3) 닉네임 + 업데이트 내역 */}
@@ -497,6 +507,13 @@ export default function GachaGame() {
 
       {/* 업데이트 팝업 */}
       <UpdatePopup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)} />
+      {is6StarListOpen && (
+        <BannerSixStarModal
+          isOpen={is6StarListOpen}
+          onClose={() => set6StarListOpen(false)}
+          banner={selectedBanner}
+        />
+      )}
     </div>
   );
 }
