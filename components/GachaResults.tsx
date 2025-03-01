@@ -16,7 +16,6 @@ export default function GachaResults({ results }: Props) {
       className="
         grid
         w-full
-        h-full
         min-h-[600px] 
         gap-4
         grid-cols-2
@@ -25,6 +24,7 @@ export default function GachaResults({ results }: Props) {
         lg:grid-cols-5
         auto-rows-fr  /* 각 행(row)의 높이를 균등 분배 */
         items-stretch /* 카드가 늘어나도록 설정 */
+        justify-items-center /* 🔹 각 항목을 x축 중앙 정렬 */
       "
     >
       {displayResults.map((char, index) => (
@@ -34,8 +34,9 @@ export default function GachaResults({ results }: Props) {
           animate={{ opacity: char ? 1 : 0 }}
           className={`
             relative w-full aspect-[3/4] /* 세로 4 : 가로 3 비율 유지 */
-            rounded overflow-hidden shadow-lg
+            rounded overflow-hidden shadow-none
             min-h-[160px] md:min-h-[200px] /* 작은 화면에서도 적절한 높이 유지 */
+            flex flex-col items-center justify-center
             ${char ? "" : "opacity-0"}
           `}
         >
@@ -47,13 +48,13 @@ export default function GachaResults({ results }: Props) {
               width={200}  // 고정 크기 사용
               height={266} // 3:4 비율 유지
               objectFit="contain" // 📌 이미지가 비율 유지하면서 다 보이게 함
-              className="absolute inset-0"
+              className="absolute inset-0 mx-auto"
             />
           )}
 
           {/* (2) 왼쪽 상단 영감 아이콘 */}
           {char?.inspiration && (
-            <div className="absolute left-2 z-10">
+            <div className="absolute left-4 top-0 z-10">
               <Image
                 src={`/infos/inspiration/${char.inspiration}.png`}
                 alt={char.inspiration}
@@ -73,7 +74,7 @@ export default function GachaResults({ results }: Props) {
               width={200}
               height={266}
               objectFit="contain"
-              className="absolute inset-0 z-10 pointer-events-none w-full h-full"
+              className="absolute inset-0 z-10 pointer-events-none h-full mx-auto"
             />
           )}
 

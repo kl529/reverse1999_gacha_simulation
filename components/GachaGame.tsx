@@ -38,7 +38,7 @@ export default function GachaGame() {
     if (typeof window !== "undefined") {
       const w = window.innerWidth;
       // 기준: 768px(= md). 필요하면 원하는 px로 수정
-      if (w >= 1024) {
+      if (w > 768) {
         setLeftOpen(true);
         setRightOpen(true);
       } else {
@@ -426,10 +426,10 @@ export default function GachaGame() {
               />
             </button>
             <button
-              className="bg-red-500 text-white px-3 md:px-6 h-[30px] md:h-[40px] rounded-lg transition-transform hover:scale-105 active:scale-95 text-sm md:text-base"
+              className="bg-red-500 text-white px-3 md:px-6 h-[30px] md:h-[40px] rounded-lg transition-transform hover:scale-105 active:scale-95 text-sm md:text-md"
               onClick={resetAll}
             >
-              초기화 🌧️
+              초기화
             </button>
           </div>
 
@@ -480,11 +480,17 @@ export default function GachaGame() {
             const isPickup = entry.char.name === selectedBanner.pickup6.name;
             const borderColor = isPickup ? "border-green-500" : "border-red-500";
             const labelText = isPickup ? "픽업!" : "픽뚫";
-            const count = sixStarHistory.filter(e => e.char.name === entry.char.name).length;
-            const suffix = count === 1 ? '명함' : `${Math.min(count - 1, 5)}형`;
+
+            // 현재까지 등장한 같은 캐릭터 개수 확인
+            const sameCharCount = sixStarHistory
+              .slice(idx + 1) // 현재 entry 이후의 요소들만 확인
+              .filter(e => e.char.name === entry.char.name).length;
+
+            // 등장 순서에 따라 suffix 부여 (처음 나온 캐릭터는 "명함", 이후 "1형", "2형" ...)
+            const suffix = sameCharCount === 0 ? '명함' : `${Math.min(sameCharCount, 5)}형`;
 
             return (
-              <div key={idx} className={`relative flex items-center gap-2 p-2 border-2 rounded ${borderColor}`}>
+              <div key={`${entry.char.engName}-${entry.pullNumber}`} className={`relative flex items-center gap-2 p-2 border-2 rounded ${borderColor}`}>
                 <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-white text-[10px] md:text-xs font-bold px-2 py-0.5 rounded shadow text-black">
                   {labelText} ({suffix})
                 </span>
