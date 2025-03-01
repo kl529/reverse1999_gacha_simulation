@@ -16,6 +16,7 @@ export default function GachaResults({ results }: Props) {
       className="
         grid
         w-full
+        h-full
         min-h-[600px] 
         gap-4
         grid-cols-2
