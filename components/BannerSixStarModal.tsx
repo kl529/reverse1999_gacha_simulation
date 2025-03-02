@@ -11,16 +11,17 @@ interface ModalProps {
 export function BannerSixStarModal({ isOpen, onClose, banner }: ModalProps) {
   if (!isOpen) return null; // 모달이 닫혀있으면 렌더링 X
 
-  // 모든 기본 6성 캐릭터
+  // 모든 기본 6성 캐릭터 목록
   const allSixStars: Character[] = charactersByRarity[6];
 
   // 현재 배너의 픽업 6성
   const pickupSixStar = banner.pickup6;
 
-  // 만약 기본 6성 목록에 픽업 캐릭터가 없으면 추가
-  const updatedSixStars = allSixStars.some(char => char.engName === pickupSixStar.engName)
-    ? allSixStars
-    : [pickupSixStar, ...allSixStars];
+  // 픽업 6성을 목록 맨 위로 정렬
+  const updatedSixStars = [
+    pickupSixStar, // 🚀 픽업 6성을 제일 먼저 추가
+    ...allSixStars.filter(char => char.engName !== pickupSixStar.engName), // 기존 목록에서 중복 제거
+  ];
 
   return (
     <div className="fixed top-0 left-0 w-full h-full z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -54,7 +55,7 @@ export function BannerSixStarModal({ isOpen, onClose, banner }: ModalProps) {
                   className="object-cover"
                 />
                 <p className={`text-sm font-semibold ${isPickup ? "text-green-500" : "text-gray-800"}`}>
-                {char.name}{isPickup && " (픽업!)"}
+                  {char.name}{isPickup && " (픽업!)"}
                 </p>
               </div>
             );

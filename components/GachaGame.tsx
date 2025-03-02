@@ -151,10 +151,16 @@ export default function GachaGame() {
 
         // 5성
         if (rarity === 5) {
-          const isPickup = Math.random() < 0.5;
-          const c = isPickup
-            ? getRandomFrom(selectedBanner.pickup5)
-            : getRandomFrom(charactersByRarity[5]);
+          let c;
+          if (selectedBanner.pickup5.length > 0) {
+            const isPickup = Math.random() < 0.5;
+            c = isPickup
+              ? getRandomFrom(selectedBanner.pickup5)
+              : getRandomFrom(charactersByRarity[5]);
+          } else {
+            // 픽업 5성이 없으면 일반 5성에서만 가져옴
+            c = getRandomFrom(charactersByRarity[5]);
+          }
           return [c, localPity + 1, localPickup];
         }
 
@@ -181,14 +187,13 @@ export default function GachaGame() {
     let newStats = { ...rarityStats };
 
     for (let i = 0; i < times; i++) {
-      let char: Character;
-      
+      let char: Character | null = null;
+  
       if (isFirstPull && i === 0) {
-        // 첫 번째 뽑기라면 5성 캐릭터 확정
-        char = getRandomFrom(charactersByRarity[5]);
-        setIsFirstPull(false); // 이후 뽑기에서는 적용되지 않도록 설정
+        char = getRandomFrom([...selectedBanner.pickup5, ...charactersByRarity[5]]);
+  
+        setIsFirstPull(false);
       } else {
-        // 기존의 확률 로직 사용
         const [pulledChar, newPity, newPickup] = doSinglePull(i, localPity, localPickup);
         char = pulledChar;
         localPity = newPity;
@@ -199,7 +204,6 @@ export default function GachaGame() {
       newStats[char.rarity] += 1;
     }
 
-    // 반복이 모두 끝난 후, React 상태로 세팅
     setResults(newResults);
     setTotalPulls(prev => prev + times);
     setRarityStats(newStats);

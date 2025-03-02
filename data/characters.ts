@@ -37,10 +37,10 @@ export type Character = {
       { name: "윈드송", rarity: 6, inspiration: "star", engName: "windsong" },
       { name: "카카니아", rarity: 6, inspiration: "plant", engName: "kakania" },
       { name: "머큐리아", rarity: 6, inspiration: "spirit", engName: "mercuria" },
-      { name: "조", rarity: 6, inspiration: "beast", engName: "joe" },
+      { name: "J", rarity: 6, inspiration: "beast", engName: "joe" },
     ],
     5: [
-      { name: "X", rarity: 5, inspiration: "plant", engName: "x" },
+      { name: "X", rarity: 5, inspiration: "intellect", engName: "x" },
       { name: "마릴린", rarity: 5, inspiration: "beast", engName: "sweetheart" },
       { name: "베이비 블루", rarity: 5, inspiration: "star", engName: "baby-blue" },
       { name: "찰리", rarity: 5, inspiration: "star", engName: "charlie" },
