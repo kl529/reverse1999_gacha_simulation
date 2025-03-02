@@ -183,8 +183,8 @@ export default function GachaGame() {
     let localPity = pityCount;
     let localPickup = pickupGuarantee;
 
-    let newResults: Character[] = [];
-    let newStats = { ...rarityStats };
+    const newResults: Character[] = [];
+    const newStats = { ...rarityStats };
 
     for (let i = 0; i < times; i++) {
       let char: Character | null = null;
