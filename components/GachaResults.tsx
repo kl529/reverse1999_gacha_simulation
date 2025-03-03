@@ -24,7 +24,8 @@ export default function GachaResults({ results }: Props) {
         lg:grid-cols-5
         auto-rows-fr  
         items-stretch 
-        justify-items-center 
+        justify-items-center
+        dark:bg-gray-900
       "
     >
       {displayResults.map((char, index) => (

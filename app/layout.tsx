@@ -4,6 +4,7 @@ import CustomCursor from "@/components/CustomCursor";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from "@vercel/analytics/react"
 import SecurityWrapper from "@/components/SecurityWrapper";
+import DarkModeProvider from "@/components/DarkModeProvider";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -13,7 +14,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <CustomCursor />
           <SpeedInsights />
           <Analytics />
-          {children}
+          <DarkModeProvider>
+            {children}
+          </DarkModeProvider>
         </SecurityWrapper>
       </body>
     </html>

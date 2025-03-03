@@ -31,6 +31,7 @@ export default function GachaGame() {
   const [rightOpen, setRightOpen] = useState(false);
   const [isFirstPull, setIsFirstPull] = useState(true); // 첫 뽑기인지 확인하는 상태
   const [is6StarListOpen, set6StarListOpen] = useState(false); // 6성 목록 팝업 상태
+  const [darkMode, setDarkMode] = useState(false);
   const historyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -267,6 +268,8 @@ export default function GachaGame() {
         items-start 
         gap-2 md:gap-4 
         relative
+        bg-gray-100 text-black
+        dark:bg-gray-900 dark:text-gray-100 /* 다크 모드 시 배경/글자색 */
       `}
     >
       <div className="md:hidden flex justify-between w-full mb-2">
@@ -293,7 +296,7 @@ export default function GachaGame() {
         animate={leftOpen ? "visible" : "hidden"}
         exit="exit"
         className={`
-          bg-white shadow rounded-lg p-4 border
+          bg-white dark:bg-gray-800 shadow rounded-lg p-4 border dark:border-gray-700
           md:w-1/5 md:block
           variants={leftAsideVariants}
           initial="hidden"
@@ -308,18 +311,18 @@ export default function GachaGame() {
         `}
       >
         {/* (1) 뽑기 확률 통계 박스 */}
-        <div className="p-4 bg-white shadow rounded-lg border border-green-300 outline outline-2 outline-green-400 mb-5">
+        <div className="p-4 bg-white dark:bg-gray-700 shadow rounded-lg border border-green-300 dark:border-green-700 outline outline-2 outline-green-400 mb-5">
           <h2 className="text-xl font-semibold mb-2 text-black-700">
             🔍 뽑기 통계
           </h2>
           <ul className="list-disc ml-4 mt-2 text-sm md:text-base">
             {Object.entries(rarityStats).map(([rarity, count]) => (
-              <li key={rarity} className="text-gray-800">
+              <li key={rarity} className="text-gray-800 dark:text-gray-200">
                 {rarity}성: {count}회
               </li>
             ))}
           </ul>
-          <p className="mt-3 text-gray-700">
+          <p className="mt-3 text-gray-700 dark:text-gray-300">
             총 뽑기 횟수: <span className="font-bold text-blue-600">{totalPulls}회</span>
           </p>
           <p className="mt-1 text-red-500">현재 천장 카운트: {pityCount}회</p>
@@ -330,7 +333,7 @@ export default function GachaGame() {
         </div>
 
         {/* (2) 배너 선택 박스 */}
-        <div className="p-4 bg-gray-50 shadow rounded-lg border border-blue-400 outline outline-2 outline-blue-600 mb-5">
+        <div className="p-4 bg-gray-50 dark:bg-gray-600 shadow rounded-lg border border-blue-400 dark:border-blue-600 outline outline-2 outline-blue-600 mb-5">
           <h2 className="block text-base text-xl font-semibold text-black-700 mb-2">
             🌪️ 배너 선택
           </h2>
@@ -348,7 +351,7 @@ export default function GachaGame() {
             className="w-full h-10 md:h-12 text-sm md:text-lg border border-gray-400 rounded-lg p-2 shadow-md cursor-pointer transition-transform hover:scale-105"
           >
             {banners.map((banner) => (
-              <option key={banner.id} value={banner.id} className="text-black">
+              <option key={banner.id} value={banner.id} className="text-black dark:text-black">
                 {banner.name}
               </option>
             ))}
@@ -364,9 +367,9 @@ export default function GachaGame() {
         </div>
 
         {/* (3) 닉네임 + 업데이트 내역 */}
-        <div className="p-4 bg-white shadow rounded-lg border border-gray-300 text-center outline outline-2 outline-gray-600">
+        <div className="p-4 bg-white dark:bg-gray-700 shadow rounded-lg border border-gray-300 dark:border-gray-600 text-center outline outline-2 outline-gray-600">
           <div className="flex flex-col items-center pb-2">
-            <h2 className="text-base md:text-l font-semibold text-gray-700">
+            <h2 className="text-base md:text-l font-semibold text-gray-700 dark:text-gray-300">
               🖥️ 개발자 : <span className="text-blue-500 font-bold">{nickname}</span>
             </h2>
           </div>
@@ -400,10 +403,12 @@ export default function GachaGame() {
           w-full md:w-3/5 relative
           flex flex-col h-full
           overflow-hidden // 전체 스크롤 방지
+          dark:bg-gray-900
+          border dark:border-gray-700
         `}
       >
         {/* 🎯 헤더 (항상 고정) */}
-        <h1 className="text-2xl md:text-3xl font-bold mb-4 text-black text-center sticky top-0 bg-white z-20 p-3 shadow-md">
+        <h1 className="text-2xl md:text-3xl font-bold mb-4 text-black text-center sticky top-0 bg-white z-20 p-3 shadow-md dark:text-gray-100 dark:bg-gray-800">
           Reverse:1999 가챠 시뮬레이터
         </h1>
 
@@ -452,7 +457,7 @@ export default function GachaGame() {
         initial="hidden"
         animate={rightOpen ? "visible" : "hidden"}
         className={`
-          bg-white shadow rounded-lg p-4 border
+          bg-white dark:bg-gray-800 shadow rounded-lg p-4 border dark:border-gray-700
           md:w-1/5 md:block
           variants={rightAsideVariants}
           initial="hidden"
@@ -466,14 +471,14 @@ export default function GachaGame() {
           absolute top-12 right-0
         `}
       >
-        <h2 className="text-lg md:text-xl font-semibold mb-2 sticky top-0 bg-white z-10 p-2 border-b text-black">
+        <h2 className="text-lg md:text-xl font-semibold mb-2 sticky top-0 bg-white z-10 p-2 border-b text-black dark:text-gray-100 dark:bg-gray-800">
           💡 획득한 6성
         </h2>
 
         {/* 픽업 vs 일반 6성 횟수 */}
-        <div className="sticky top-[48px] bg-gray-100 z-10 p-2 border-b text-gray-700 flex justify-between text-xs md:text-sm font-semibold rounded-lg mb-2">
-          <p className="text-green-600">픽업: {pickupCount}회</p>
-          <p className="text-red-500">픽뚫: {nonPickupCount}회</p>
+        <div className="sticky top-[48px] bg-gray-100 z-10 p-2 border-b text-gray-700 dark:text-gray-300 dark:bg-gray-800 flex justify-between text-xs md:text-sm font-semibold rounded-lg mb-2 dark:border dark:border-gray-700">
+          <p className="text-green-600 dark:text-green-400">픽업: {pickupCount}회</p>
+          <p className="text-red-500 dark:text-red-400">픽뚫: {nonPickupCount}회</p>
         </div>
 
         <div 
@@ -495,7 +500,7 @@ export default function GachaGame() {
 
             return (
               <div key={`${entry.char.engName}-${entry.pullNumber}`} className={`relative flex items-center gap-2 p-2 border-2 rounded ${borderColor}`}>
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-white text-[10px] md:text-xs font-bold px-2 py-0.5 rounded shadow text-black">
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-white text-[10px] md:text-xs font-bold px-2 py-0.5 rounded shadow text-black dark:text-gray-100 dark:bg-gray-800  border dark:border-gray-700">
                   {labelText} ({suffix})
                 </span>
                 <Image
@@ -506,7 +511,7 @@ export default function GachaGame() {
                   layout="intrinsic"
                   className="w-14 h-14 object-cover"
                 />
-                <p className="text-xs md:text-base font-semibold whitespace-nowrap text-black">
+                <p className="text-xs md:text-base font-semibold whitespace-nowrap text-black dark:text-gray-100">
                   {entry.char.name} (#{entry.pullNumber})
                 </p>
               </div>
