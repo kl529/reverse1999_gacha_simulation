@@ -345,7 +345,7 @@ export default function GachaGame() {
         4: 40,
         3: 45,
         2: 5,
-      }[rarity];
+      }[rarity] ?? 0;
   
       cumulative += prob;
       if (rand < cumulative) {

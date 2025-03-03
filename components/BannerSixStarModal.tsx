@@ -24,6 +24,8 @@ export function BannerSixStarModal({ isOpen, onClose, banner }: ModalProps) {
     ...allSixStars, // 기존 6성 목록 추가
   ];
 
+  const filteredSixStars = updatedSixStars.filter((char): char is Character => char !== undefined);
+
   return (
     <div className="fixed top-0 left-0 w-full h-full z-50 flex items-center justify-center bg-black bg-opacity-50">
       {/* 모달 컨테이너 */}
@@ -41,8 +43,8 @@ export function BannerSixStarModal({ isOpen, onClose, banner }: ModalProps) {
         </h3>
 
         <div className="flex flex-col gap-3 max-h-[400px] overflow-y-auto">
-          {updatedSixStars.map((char) => {
-            const isPickup = pickupSixStars?.some(pickup => pickup && pickup.engName === char.engName);
+          {filteredSixStars.map((char) => {
+            const isPickup = pickupSixStars?.some(pickup => pickup?.engName === char?.engName);
 
             return (
               <div
