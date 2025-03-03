@@ -11,40 +11,44 @@ interface ModalProps {
 export function BannerSixStarModal({ isOpen, onClose, banner }: ModalProps) {
   if (!isOpen) return null; // 모달이 닫혀있으면 렌더링 X
 
-  // 모든 기본 6성 캐릭터 목록
+  // ✅ 모든 기본 6성 캐릭터
   const allSixStars: Character[] = charactersByRarity[6];
 
-  // 현재 배너의 픽업 6성
-  const pickupSixStar = banner.pickup6;
+  // ✅ 배너 타입에 따라 픽업 6성을 가져오기
+  const pickupSixStars = banner.bannerType === "doublePick" ? banner.twoPickup6 : [banner.pickup6];
 
-  // 픽업 6성을 목록 맨 위로 정렬
+  // ✅ 기존 목록에서 중복되지 않게 정리하고 픽업 6성을 우선 배치
+  const uniqueSixStars = new Set(allSixStars.map(char => char.engName));
   const updatedSixStars = [
-    pickupSixStar, // 🚀 픽업 6성을 제일 먼저 추가
-    ...allSixStars.filter(char => char.engName !== pickupSixStar.engName), // 기존 목록에서 중복 제거
+    ...pickupSixStars?.filter(char => char && !uniqueSixStars.has(char.engName)) || [], // 픽업 6성 중 기존 목록에 없는 것 추가
+    ...allSixStars, // 기존 6성 목록 추가
   ];
 
   return (
     <div className="fixed top-0 left-0 w-full h-full z-50 flex items-center justify-center bg-black bg-opacity-50">
       {/* 모달 컨테이너 */}
-      <div className="bg-white p-4 w-[300px] sm:w-[400px] shadow-lg rounded relative">
+      <div className="bg-white dark:bg-gray-800 p-4 w-[300px] sm:w-[400px] shadow-lg rounded relative">
         {/* 닫기 버튼 */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-xl font-bold text-gray-600 hover:text-black"
+          className="absolute top-2 right-2 text-xl font-bold text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"
         >
           ✕
         </button>
 
-        <h3 className="text-lg font-bold mb-4 text-center">획득 가능 6성 목록</h3>
+        <h3 className="text-lg font-bold mb-4 text-center text-gray-900 dark:text-gray-100">
+          획득 가능 6성 목록
+        </h3>
 
         <div className="flex flex-col gap-3 max-h-[400px] overflow-y-auto">
           {updatedSixStars.map((char) => {
-            const isPickup = (banner.pickup6.engName === char.engName);
+            const isPickup = pickupSixStars?.some(pickup => pickup && pickup.engName === char.engName);
+
             return (
               <div
                 key={char.engName}
                 className={`flex items-center gap-2 p-2 border rounded ${
-                  isPickup ? "border-green-500 bg-green-50" : "border-gray-300"
+                  isPickup ? "border-green-500 bg-green-50 dark:bg-green-900" : "border-gray-300 dark:border-gray-700"
                 }`}
               >
                 <Image
@@ -54,8 +58,8 @@ export function BannerSixStarModal({ isOpen, onClose, banner }: ModalProps) {
                   height={40}
                   className="object-cover"
                 />
-                <p className={`text-sm font-semibold ${isPickup ? "text-green-500" : "text-gray-800"}`}>
-                  {char.name}{isPickup && " (픽업!)"}
+                <p className={`text-sm font-semibold ${isPickup ? "text-green-500 dark:text-green-400" : "text-gray-800 dark:text-gray-300"}`}>
+                  {char.name} {isPickup && " (픽업!)"}
                 </p>
               </div>
             );

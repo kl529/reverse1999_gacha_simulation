@@ -6,4 +6,5 @@ export const updateLogs = [
     { date: "2025-02-27", content: "모바일 최적화" },
     { date: "2025-02-28", content: "UI 개선 & 버그 수정" },
     { date: "2025-03-01", content: "첫 뽑기 확정 5성 추가" },
+    { date: "2025-03-02", content: "2중 픽업 배너 추가" },
   ];

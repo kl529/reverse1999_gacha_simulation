@@ -3,12 +3,23 @@ import { Character } from "./characters";
 export type Banner = {
   id: string;
   name: string;
-  pickup6: Character; // 6성 픽업 캐릭터 1명
-  pickup5: Character[]; // 5성 픽업 캐릭터 2명
+  bannerType?: "normal" | "doublePick";
+  pickup6?: Character; // 일반 배너용 6성
+  pickup5?: Character[]; // 일반 배너용 5성
+  twoPickup6?: Character[]; // 2중 픽업 배너에서만 사용
 };
 
 // 예제 배너 데이터 (추가 가능)
 export const banners: Banner[] = [
+  {
+    id: "doublepick_mercuria_kakania",
+    name: "머큐리아 & 카카니아",
+    bannerType: "doublePick",
+    twoPickup6: [
+      { name: "머큐리아", rarity: 6, inspiration: "spirit", engName: "mercuria" },
+      { name: "카카니아", rarity: 6, inspiration: "plant", engName: "kakania" },
+    ],
+  },
   {
     id: "flutter_page_pick_up",
     name: "[2.3] 플러터 페이지 픽업",
