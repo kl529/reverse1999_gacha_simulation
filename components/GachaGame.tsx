@@ -348,10 +348,14 @@ export default function GachaGame() {
           <select
             value={selectedBanner.id}
             onChange={(e) => handleBannerChange(e.target.value)}
-            className="w-full h-10 md:h-12 text-sm md:text-lg border border-gray-400 rounded-lg p-2 shadow-md cursor-pointer transition-transform hover:scale-105"
+            className="w-full h-10 md:h-12 text-sm md:text-lg border border-gray-400 rounded-lg p-2 shadow-md cursor-pointer transition-transform hover:scale-105 bg-white dark:bg-gray-700 dark:text-white"
           >
             {banners.map((banner) => (
-              <option key={banner.id} value={banner.id} className="text-black dark:text-black">
+              <option
+                key={banner.id}
+                value={banner.id}
+                className="bg-white dark:bg-gray-600 text-black dark:text-white"
+              >
                 {banner.name}
               </option>
             ))}
