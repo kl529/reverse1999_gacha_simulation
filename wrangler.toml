@@ -1,0 +1,10 @@
+name = "reverse1999-gacha-simulation"
+type = "javascript"
+
+account_id = "218c1db1c753090bab0c43caf9bf1a7d"  # Cloudflare 대시보드에서 확인
+workers_dev = true  # workers.dev 서브도메인에서 실행할지 여부
+compatibility_date = "2025-03-12"  # 최신 날짜로 설정
+
+[build]
+command = "npm run build"  # Next.js 빌드 실행
+upload.format = "modules"  # Cloudflare Workers의 모듈 형식 사용
