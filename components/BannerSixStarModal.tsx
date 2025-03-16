@@ -20,16 +20,23 @@ export function BannerSixStarModal({ isOpen, onClose, banner }: ModalProps) {
   // ✅ 기존 목록에서 중복되지 않게 정리하고 픽업 6성을 우선 배치
   const uniqueSixStars = new Set(allSixStars.map(char => char.engName));
   const updatedSixStars = [
-    ...pickupSixStars?.filter(char => char && !uniqueSixStars.has(char.engName)) || [], // 픽업 6성 중 기존 목록에 없는 것 추가
-    ...allSixStars, // 기존 6성 목록 추가
+    ...pickupSixStars?.filter(char => char && !uniqueSixStars.has(char.engName)) || [], 
+    ...allSixStars,
   ];
 
   const filteredSixStars = updatedSixStars.filter((char): char is Character => char !== undefined);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full z-50 flex items-center justify-center bg-black bg-opacity-50">
-      {/* 모달 컨테이너 */}
-      <div className="bg-white dark:bg-gray-800 p-4 w-[300px] sm:w-[400px] shadow-lg rounded relative">
+    // 모달 배경에 onClick => 바깥 부분 클릭시 닫힘
+    <div 
+      className="fixed top-0 left-0 w-full h-full z-50 flex items-center justify-center bg-black bg-opacity-50"
+      onClick={onClose}
+    >
+      {/* 모달 컨테이너 내부 클릭 시 e.stopPropagation()으로 배경 클릭 이벤트 막기 */}
+      <div 
+        className="bg-white dark:bg-gray-800 p-4 w-[300px] sm:w-[400px] shadow-lg rounded relative"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* 닫기 버튼 */}
         <button
           onClick={onClose}

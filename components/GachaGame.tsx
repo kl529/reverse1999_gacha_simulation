@@ -8,6 +8,7 @@ import { charactersByRarity, Character } from "@/data/characters";
 import { banners, Banner } from "@/data/banners";
 import GachaResults from "@/components/GachaResults";
 import { motion } from "framer-motion";
+import { PercentRankTable } from "@/data/PercentRankTable";
 
 interface SixStarHistoryEntry {
   char: Character;
@@ -23,7 +24,7 @@ export default function GachaGame() {
   const [pickupGuarantee, setPickupGuarantee] = useState<boolean>(false);
   const [sixStarHistory, setSixStarHistory] = useState<SixStarHistoryEntry[]>([]);
   // 🎯 닉네임
-  const nickname = "Lyva (#706668372)";
+  const nickname = "Lyva";
   // 🎯 팝업 상태
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [leftOpen, setLeftOpen] = useState(false);
@@ -31,7 +32,15 @@ export default function GachaGame() {
   const [isFirstPull, setIsFirstPull] = useState(true); // 첫 뽑기인지 확인하는 상태
   const [is6StarListOpen, set6StarListOpen] = useState(false); // 6성 목록 팝업 상태
   const [showDoublePick, setShowDoublePick] = useState(false);
+  const [isProbabilityOpen, setProbabilityOpen] = useState(false);
+
+  const [pickupShape, setPickupShape] = useState<string | null>(null); // 이번에 뽑은 픽업캐릭 형상
+  const [pickupRank, setPickupRank] = useState<number | null>(null); // 픽업 상위 몇 %인지
   const historyRef = useRef<HTMLDivElement>(null);
+
+  const [selectedBanner, setSelectedBanner] = useState<Banner>(
+    banners.find((b) => b.bannerType !== "doublePick") || banners[0]
+  );
 
   useEffect(() => {
     // 한 번만 화면폭 체크
@@ -49,6 +58,41 @@ export default function GachaGame() {
   }, []);
 
   useEffect(() => {
+    if (totalPulls < 10 || totalPulls % 10 !== 0) return; // 10단위 뽑기만 체크
+    if (results.length < 1) return;
+
+    // 🔹 가장 최근에 뽑힌 6성을 찾음 (배열을 역순으로 탐색)
+    const lastSixStar = [...results].reverse().find(c => c.rarity === 6);
+    if (!lastSixStar) return; // 6성이 없으면 종료
+
+    // 🔹 이번 6성이 '픽업'인지 확인
+    let isPickup = false;
+    if (selectedBanner.bannerType === "doublePick" && selectedBanner.twoPickup6) {
+      isPickup = selectedBanner.twoPickup6.some(pc => pc.engName === lastSixStar.engName);
+    } else {
+      isPickup = selectedBanner.pickup6?.engName === lastSixStar.engName;
+    }
+
+    if (!isPickup) {
+      // 픽뚫이면 표시 X
+      // setPickupShape(null);
+      setPickupRank(null);
+      return;
+    }
+
+    // 🔹 형상 계산 => sixStarHistory 중 해당 engName 몇번 나왔는지
+    const sameCount = sixStarHistory.filter(h => h.char.engName === lastSixStar.engName).length;
+    const shapeStr = getShapeString(sameCount - 1);
+
+    // 🔹 상위 % 계산
+    const rp = getShapeRankPercent(totalPulls, shapeStr);
+    
+    // 🔹 상태 업데이트 (즉시 UI 반영)
+    setPickupShape(shapeStr);
+    setPickupRank(rp ?? null);
+  }, [results, sixStarHistory, totalPulls, selectedBanner]);
+
+  useEffect(() => {
     historyRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [sixStarHistory]);
 
@@ -57,10 +101,6 @@ export default function GachaGame() {
     visible: { x: "0%", opacity: 1, transition: { duration: 0.3, ease: "easeOut" } },
     exit: { x: "-100%", opacity: 0, transition: { duration: 0.3, ease: "easeIn" } },
   };
-
-  const [selectedBanner, setSelectedBanner] = useState<Banner>(
-    banners.find((b) => b.bannerType !== "doublePick") || banners[0]
-  );
 
   const rightAsideVariants = {
     hidden: { x: "100%", opacity: 0 },
@@ -265,6 +305,8 @@ export default function GachaGame() {
     setPickupGuarantee(false);
     setSixStarHistory([]);
     setIsFirstPull(true); // 초기화 후 첫 뽑기에서도 5성 확정
+    setPickupShape(null);
+    setPickupRank(null);
   };
 
   /**
@@ -403,7 +445,6 @@ export default function GachaGame() {
   
     // localPickup=false => 70% 확률로 (pickupA or pickupB), 30%로 other
     const chance = Math.random() * 100; // 0~100
-    console.log(chance);
     if (chance < 70) {
       // 2픽업 중 균등
       const pickUp = getRandomFrom([pickupA, pickupB]);
@@ -450,6 +491,18 @@ export default function GachaGame() {
       return newShowDoublePick;
     });
   };
+
+  function getShapeString(duplicateCount: number) {
+    if (duplicateCount === 0) return "명함";
+    return `${Math.min(duplicateCount, 5)}형`; // 중복=1 -> "1형", 중복=5이상 -> "5형"
+  }
+
+  function getShapeRankPercent(N: number, shape: string): number | null {
+    const nearestN = Math.floor(N / 10) * 10;
+    if (!PercentRankTable[nearestN]) return null;
+    if (PercentRankTable[nearestN][shape] == null) return null;
+    return PercentRankTable[nearestN][shape];
+  }
 
   // -------------------------
   // UI (모바일 최적화)
@@ -523,9 +576,20 @@ export default function GachaGame() {
             ))}
           </ul>
           <p className="mt-3 text-gray-700 dark:text-gray-300">
-            총 뽑기 횟수: <span className="font-bold text-blue-600">{totalPulls}회</span>
+            총 뽑기 횟수: 
+            <span className="font-bold text-blue-600">
+              {totalPulls}회
+              {selectedBanner.bannerType !== "doublePick" && (
+                <> ({pickupShape})</>
+              )}
+            </span>
           </p>
-          <p className="mt-1 text-red-500">현재 천장 카운트: {pityCount}회</p>
+          {selectedBanner.bannerType !== "doublePick" && (
+            <p>
+              🍀 운 상위 <span className="font-bold text-orange-500"> {pickupRank} </span> %
+            </p>
+          )}
+          <p className="mt-1 text-red-500">천장 카운트: {pityCount}회</p>
           <p className="text-blue-600">6성 확률: {getSixStarRate(pityCount).toFixed(2)}%</p>
           <p className={`text-sm md:text-lg font-bold mt-2 ${pickupGuarantee ? "text-green-500" : "text-gray-500"}`}>
             {pickupGuarantee ? "다음 6성은 픽업 확정!" : "픽업 보장 없음"}
@@ -596,20 +660,29 @@ export default function GachaGame() {
             onClick={() => setPopupOpen(true)}
             className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition text-sm md:text-base"
           >
-            업데이트 내역 보기
+            업데이트 내역
           </button>
-          <button
-            onClick={() => window.open("https://github.com/kl529/reverse1999_gacha_simulation", "_blank")}
-            className="pt-2"
-          >
-            <Image
-              src="/infos/button/github.png"
-              alt="github"
-              width={30}
-              height={10}
-              className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
-            />
-          </button>
+          <div className="flex justify-center items-center gap-3 mt-2">
+            <button
+              onClick={() => window.open("https://github.com/kl529/reverse1999_gacha_simulation", "_blank")}
+              className="bg-gray-200 dark:bg-gray-600 p-2 rounded-lg transition-transform hover:scale-105 active:scale-95"
+            >
+              <Image
+                src="/infos/button/github.png"
+                alt="github"
+                width={30}
+                height={10}
+                className="cursor-pointer"
+              />
+            </button>
+
+            <button
+              onClick={() => setProbabilityOpen(true)} 
+              className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 transition-transform hover:scale-105 active:scale-95 text-sm md:text-base"
+            >
+              확률표
+            </button>
+          </div>
         </div>
       </motion.aside>
 
@@ -748,6 +821,35 @@ export default function GachaGame() {
           onClose={() => set6StarListOpen(false)}
           banner={selectedBanner}
         />
+      )}
+
+      {/* 4) 확률표 모달 */}
+      {isProbabilityOpen && (
+        <div
+          className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 bg-black bg-opacity-50"
+          onClick={() => setProbabilityOpen(false)} // 바깥 영역 클릭 시 닫힘
+        >
+          <div
+            onClick={(e) => e.stopPropagation()} // 모달 내부 클릭 시 닫힘 방지
+            className="relative bg-white dark:bg-gray-800 p-4 rounded shadow-lg max-w-sm"
+          >
+            <button
+              onClick={() => setProbabilityOpen(false)}
+              className="absolute top-2 right-2 text-2xl font-bold text-gray-700 dark:text-gray-200"
+            >
+              ✕
+            </button>
+            <div className="flex flex-col items-center">
+              <Image
+                src="/infos/etc/prob_table.png"
+                alt="확률표"
+                width={300}
+                height={300}
+                className="object-contain"
+              />
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

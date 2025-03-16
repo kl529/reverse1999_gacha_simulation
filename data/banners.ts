@@ -12,6 +12,15 @@ export type Banner = {
 // 예제 배너 데이터 (추가 가능)
 export const banners: Banner[] = [
   {
+    id: "doublepick_j_tuesday",
+    name: "J & 튜즈데이",
+    bannerType: "doublePick",
+    twoPickup6: [
+      { name: "J", rarity: 6, inspiration: "beast", engName: "joe" },
+      { name: "튜즈데이", rarity: 6, inspiration: "spirit", engName: "tuesday" },
+    ],
+  },
+  {
     id: "doublepick_mercuria_kakania",
     name: "머큐리아 & 카카니아",
     bannerType: "doublePick",
