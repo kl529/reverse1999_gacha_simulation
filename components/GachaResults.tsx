@@ -20,7 +20,7 @@ export default function GachaResults({ results }: Props) {
         gap-4
         grid-cols-2
         sm:grid-cols-3
-        md:grid-cols-4
+        lg:grid-cols-4
         lg:grid-cols-5
         auto-rows-fr  
         items-stretch 
@@ -36,7 +36,7 @@ export default function GachaResults({ results }: Props) {
           className={`
             relative w-full aspect-[3/4] 
             rounded overflow-hidden shadow-none
-            min-h-[160px] md:min-h-[200px] 
+            min-h-[160px] lg:min-h-[200px] 
             flex flex-col items-center justify-center
             ${char ? "" : "opacity-0"}
           `}

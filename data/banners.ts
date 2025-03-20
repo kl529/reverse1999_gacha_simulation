@@ -9,7 +9,6 @@ export type Banner = {
   twoPickup6?: Character[]; // 2중 픽업 배너에서만 사용
 };
 
-// 예제 배너 데이터 (추가 가능)
 export const banners: Banner[] = [
   {
     id: "doublepick_j_tuesday",

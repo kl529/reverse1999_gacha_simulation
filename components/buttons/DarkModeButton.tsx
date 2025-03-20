@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+// 다크모드 버튼 세팅
 export default function DarkModeProvider({
   children,
 }: {
@@ -13,7 +14,12 @@ export default function DarkModeProvider({
     <div className={darkMode ? "dark" : ""}>
       <button
         onClick={() => setDarkMode(!darkMode)}
-        className="fixed bottom-4 right-4 bg-gray-200 dark:bg-gray-700 text-sm px-3 py-2 rounded shadow hover:scale-105 transition-transform z-50"
+        className="
+          fixed top-4 right-4  /* 모바일: 우측 상단 */
+          lg:bottom-4 lg:top-auto  /* 데스크탑: 우측 하단 */
+          bg-gray-200 dark:bg-gray-700 text-sm px-3 py-2 rounded shadow
+          hover:scale-105 transition-transform z-50
+        "
       >
         {darkMode ? "☀️" : "🌙"}
       </button>

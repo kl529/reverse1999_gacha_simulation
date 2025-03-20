@@ -1,10 +1,10 @@
 import "@/app/globals.css";
 import { version } from "@/data/version";
-import CustomCursor from "@/components/CustomCursor";
+import CustomCursor from "@/components/etc/CustomCursor";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from "@vercel/analytics/react"
-import SecurityWrapper from "@/components/SecurityWrapper";
-import DarkModeProvider from "@/components/DarkModeProvider";
+import SecurityWrapper from "@/components/etc/SecurityWrapper";
+import DarkModeProvider from "@/components/buttons/DarkModeButton";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

@@ -8,7 +8,7 @@ interface ModalProps {
   banner: Banner;
 }
 
-export function BannerSixStarModal({ isOpen, onClose, banner }: ModalProps) {
+export function BannerSixStarListModal({ isOpen, onClose, banner }: ModalProps) {
   if (!isOpen) return null; // 모달이 닫혀있으면 렌더링 X
 
   // ✅ 모든 기본 6성 캐릭터

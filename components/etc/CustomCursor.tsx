@@ -1,6 +1,8 @@
 "use client";
+
 import { useEffect, useState } from "react";
 
+// 커스텀 커서 세팅
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 

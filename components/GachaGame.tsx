@@ -2,13 +2,15 @@
 
 import { useState, useMemo, useEffect, useRef } from "react";
 import Image from "next/image";
-import UpdatePopup from "@/components/UpdatePopup";
-import { BannerSixStarModal } from "@/components/BannerSixStarModal";
-import { charactersByRarity, Character } from "@/data/characters";
-import { banners, Banner } from "@/data/banners";
-import GachaResults from "@/components/GachaResults";
-import { motion } from "framer-motion";
-import { PercentRankTable } from "@/data/PercentRankTable";
+import UpdateModal from "@/components/modals/UpdateModal"; // 업데이트 모달
+import { BannerSixStarListModal } from "@/components/modals/BannerSixStarListModal"; // 6성 목록 모달
+import { charactersByRarity, Character } from "@/data/characters"; // 캐릭터 목록
+import { banners, Banner } from "@/data/banners"; // 배너 목록
+import GachaResults from "@/components/GachaResults"; // 뽑기 결과 패널
+import { PercentRankTable } from "@/data/PercentRankTable"; // 상위 확률표
+import { OffCanvas } from "@/components/OffCanvas"; // 모바일 사이드바
+import MainGachaStats from "@/components/MainGachaStats"; // 통계 패널
+import MainSixStarHistory from "@/components/MainSixStarHistory"; // 6성 히스토리 패널
 
 interface SixStarHistoryEntry {
   char: Character;
@@ -27,8 +29,8 @@ export default function GachaGame() {
   const nickname = "Lyva";
   // 🎯 팝업 상태
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const [leftOpen, setLeftOpen] = useState(false);
-  const [rightOpen, setRightOpen] = useState(false);
+  const [isLeftOpen, setIsLeftOpen] = useState(false); // 모바일에서 왼쪽 사이드바 펼침 여부
+  const [isRightOpen, setIsRightOpen] = useState(false); // 모바일에서 오른쪽 사이드바 펼침 여부
   const [isFirstPull, setIsFirstPull] = useState(true); // 첫 뽑기인지 확인하는 상태
   const [is6StarListOpen, set6StarListOpen] = useState(false); // 6성 목록 팝업 상태
   const [showDoublePick, setShowDoublePick] = useState(false);
@@ -41,21 +43,6 @@ export default function GachaGame() {
   const [selectedBanner, setSelectedBanner] = useState<Banner>(
     banners.find((b) => b.bannerType !== "doublePick") || banners[0]
   );
-
-  useEffect(() => {
-    // 한 번만 화면폭 체크
-    if (typeof window !== "undefined") {
-      const w = window.innerWidth;
-      // 기준: 768px(= md). 필요하면 원하는 px로 수정
-      if (w > 768) {
-        setLeftOpen(true);
-        setRightOpen(true);
-      } else {
-        setLeftOpen(false);
-        setRightOpen(false);
-      }
-    }
-  }, []);
 
   useEffect(() => {
     if (totalPulls < 10 || totalPulls % 10 !== 0) return; // 10단위 뽑기만 체크
@@ -75,7 +62,6 @@ export default function GachaGame() {
 
     if (!isPickup) {
       // 픽뚫이면 표시 X
-      // setPickupShape(null);
       setPickupRank(null);
       return;
     }
@@ -515,176 +501,71 @@ export default function GachaGame() {
         mx-auto 
         h-screen 
         bg-gray-100 
-        p-2 md:p-6 
+        p-2 lg:p-6 
         flex 
-        flex-col md:flex-row 
+        flex-col lg:flex-row 
         items-start 
-        gap-2 md:gap-4 
+        gap-2 lg:gap-4 
         relative
         bg-gray-100 text-black
         dark:bg-gray-900 dark:text-gray-100 /* 다크 모드 시 배경/글자색 */
       `}
     >
-      <div className="md:hidden flex justify-between w-full mb-2">
-        <button
-          onClick={() => setLeftOpen(prev => !prev)}
-          className="bg-green-500 text-white px-3 py-2 rounded"
-        >
-          {leftOpen ? "통계 접기" : "통계 펼치기"}
-        </button>
-        <button
-          onClick={() => setRightOpen(prev => !prev)}
-          className="bg-red-500 text-white px-3 py-2 rounded"
-        >
-          {rightOpen ? "6성목록 접기" : "6성목록 펼치기"}
-        </button>
-      </div>
+      {/* 🌟 왼쪽 패널 (통계) */}
+      <OffCanvas isOpen={isLeftOpen} onClose={() => setIsLeftOpen(false)} position="left">
+        <MainGachaStats
+          rarityStats={rarityStats}
+          totalPulls={totalPulls}
+          pickupShape={pickupShape}
+          pickupRank={pickupRank}
+          pityCount={pityCount}
+          pickupGuarantee={pickupGuarantee}
+          getSixStarRate={getSixStarRate}
+          selectedBanner={selectedBanner}
+          showDoublePick={showDoublePick}
+          toggleDoublePick={toggleDoublePick}
+          displayedBanners={displayedBanners}
+          handleBannerChange={handleBannerChange}
+          nickname={nickname}
+          setPopupOpen={setPopupOpen}
+          set6StarListOpen={set6StarListOpen}
+        />
+      </OffCanvas>
+
+      {/* 🌟 오른쪽 패널 (6성 히스토리) */}
+      <OffCanvas isOpen={isRightOpen} onClose={() => setIsRightOpen(false)} position="right">
+        <MainSixStarHistory
+          sixStarHistory={sixStarHistory}
+          selectedBanner={selectedBanner}
+          pickupCount={pickupCount}
+          nonPickupCount={nonPickupCount}
+          historyRef={historyRef}
+        />
+      </OffCanvas>
 
       {/* ===================================== */}
       {/* 왼쪽 패널: 통계 + 배너 선택 + 닉네임 */}
       {/* ===================================== */}
-      <motion.aside 
-        variants={leftAsideVariants}
-        initial="hidden"
-        animate={leftOpen ? "visible" : "hidden"}
-        exit="exit"
-        className={`
-          bg-white dark:bg-gray-800 shadow rounded-lg p-4 border dark:border-gray-700
-          md:w-1/5 md:block
-          variants={leftAsideVariants}
-          initial="hidden"
-          animate={leftOpen ? "visible" : "hidden"}
-          exit="exit"
-          ${leftOpen ? "block" : "hidden"}
-          md:static
-          fixed md:static 
-          top-0 left-0 w-[80%] md:w-1/5 h-full z-40 
-          overflow-y-auto max-h-screen
-          absolute top-12 right-0
-        `}
-      >
-        {/* (1) 뽑기 확률 통계 박스 */}
-        <div className="p-4 bg-white dark:bg-gray-700 shadow rounded-lg border border-green-300 dark:border-green-700 outline outline-2 outline-green-400 mb-5">
-          <h2 className="text-xl font-semibold mb-2 text-black-700">
-            🔍 뽑기 통계
-          </h2>
-          <ul className="list-disc ml-4 mt-2 text-sm md:text-base">
-            {Object.entries(rarityStats).map(([rarity, count]) => (
-              <li key={rarity} className="text-gray-800 dark:text-gray-200">
-                {rarity}성: {count}회
-              </li>
-            ))}
-          </ul>
-          <p className="mt-3 text-gray-700 dark:text-gray-300">
-            총 뽑기 횟수: 
-            <span className="font-bold text-blue-600">
-              {totalPulls}회
-              {selectedBanner.bannerType !== "doublePick" && (
-                <> ({pickupShape})</>
-              )}
-            </span>
-          </p>
-          {selectedBanner.bannerType !== "doublePick" && (
-            <p>
-              🍀 운 상위 <span className="font-bold text-orange-500"> {pickupRank} </span> %
-            </p>
-          )}
-          <p className="mt-1 text-red-500">천장 카운트: {pityCount}회</p>
-          <p className="text-blue-600">6성 확률: {getSixStarRate(pityCount).toFixed(2)}%</p>
-          <p className={`text-sm md:text-lg font-bold mt-2 ${pickupGuarantee ? "text-green-500" : "text-gray-500"}`}>
-            {pickupGuarantee ? "다음 6성은 픽업 확정!" : "픽업 보장 없음"}
-          </p>
-        </div>
-
-        {/* (2) 배너 선택 박스 */}
-        <div className="p-4 bg-gray-50 dark:bg-gray-600 shadow rounded-lg border border-blue-400 dark:border-blue-600 outline outline-2 outline-blue-600 mb-5">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-              🌪️ 배너 선택
-            </h2>
-
-            {/* ✅ 2중 픽업 토글 */}
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={showDoublePick}
-                onChange={toggleDoublePick}
-                className="sr-only"
-              />
-              <div className={`relative w-12 h-6 transition duration-200 ease-in-out rounded-full ${showDoublePick ? "bg-blue-500" : "bg-gray-400"}`}>
-                <div className={`absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition transform ${showDoublePick ? "translate-x-6" : ""}`} />
-              </div>
-              <span className="ml-2 text-sm text-gray-800 dark:text-gray-200">
-                {showDoublePick ? "2중 픽업" : "일반 픽업"}
-              </span>
-            </label>
-          </div>
-          <Image
-            key={selectedBanner.id}
-            src={`/infos/banner_img/${selectedBanner.id}.png`}
-            alt="배너 이미지"
-            width={400}
-            height={200}
-            layout="intrinsic"
-            className="w-full h-auto object-contain pb-3 transition-opacity duration-300"
+      <aside className="hidden lg:flex lg:w-[22%] lg:max-w-xs flex-shrink-0 h-full overflow-y-auto">
+          <MainGachaStats
+            rarityStats={rarityStats}
+            totalPulls={totalPulls}
+            pickupShape={pickupShape}
+            pickupRank={pickupRank}
+            pityCount={pityCount}
+            pickupGuarantee={pickupGuarantee}
+            getSixStarRate={getSixStarRate}
+            selectedBanner={selectedBanner}
+            showDoublePick={showDoublePick}
+            toggleDoublePick={toggleDoublePick}
+            displayedBanners={displayedBanners}
+            handleBannerChange={handleBannerChange}
+            nickname={nickname}
+            setPopupOpen={setPopupOpen}
+            set6StarListOpen={set6StarListOpen}
           />
-          <select
-            value={selectedBanner.id}
-            onChange={(e) => handleBannerChange(e.target.value)}
-            className="w-full h-10 md:h-12 text-sm md:text-lg border border-gray-400 rounded-lg p-2 shadow-md cursor-pointer transition-transform hover:scale-105 bg-white dark:bg-gray-700 dark:text-white"
-          >
-            {displayedBanners.map((banner) => (
-              <option key={banner.id} value={banner.id} className="bg-white dark:bg-gray-600 text-black dark:text-white">
-                {banner.name}
-              </option>
-            ))}
-          </select>
+      </aside>
 
-          {/* 획득 가능 6성 목록 버튼 추가 */}
-          <button
-            onClick={() => set6StarListOpen(true)}
-            className="mt-3 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-transform transform hover:scale-105 active:scale-95 text-sm md:text-base"
-          >
-            획득 가능 6성 목록
-          </button>
-        </div>
-
-        {/* (3) 닉네임 + 업데이트 내역 */}
-        <div className="p-4 bg-white dark:bg-gray-700 shadow rounded-lg border border-gray-300 dark:border-gray-600 text-center outline outline-2 outline-gray-600">
-          <div className="flex flex-col items-center pb-2">
-            <h2 className="text-base md:text-l font-semibold text-gray-700 dark:text-gray-300">
-              🖥️ 개발자 : <span className="text-blue-500 font-bold">{nickname}</span>
-            </h2>
-          </div>
-          <button
-            onClick={() => setPopupOpen(true)}
-            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition text-sm md:text-base"
-          >
-            업데이트 내역
-          </button>
-          <div className="flex justify-center items-center gap-3 mt-2">
-            <button
-              onClick={() => window.open("https://github.com/kl529/reverse1999_gacha_simulation", "_blank")}
-              className="bg-gray-200 dark:bg-gray-600 p-2 rounded-lg transition-transform hover:scale-105 active:scale-95"
-            >
-              <Image
-                src="/infos/button/github.png"
-                alt="github"
-                width={30}
-                height={10}
-                className="cursor-pointer"
-              />
-            </button>
-
-            <button
-              onClick={() => setProbabilityOpen(true)} 
-              className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 transition-transform hover:scale-105 active:scale-95 text-sm md:text-base"
-            >
-              확률표
-            </button>
-          </div>
-        </div>
-      </motion.aside>
 
       {/* ===================================== */}
       {/* 중앙: 뽑기 UI + 뽑기 결과 */}
@@ -692,7 +573,7 @@ export default function GachaGame() {
       <main 
         className={`
           bg-white p-4 rounded-lg shadow flex-grow
-          w-full md:w-3/5 relative
+          w-full lg:w-3/5 relative
           flex flex-col h-full
           overflow-hidden // 전체 스크롤 방지
           dark:bg-gray-900
@@ -700,15 +581,15 @@ export default function GachaGame() {
         `}
       >
         {/* 🎯 헤더 (항상 고정) */}
-        <h1 className="text-2xl md:text-3xl font-bold mb-4 text-black text-center sticky top-0 bg-white z-20 p-3 shadow-md dark:text-gray-100 dark:bg-gray-800">
+        <h1 className="text-2xl lg:text-3xl font-bold mb-4 text-black text-center sticky top-0 bg-white z-20 p-3 shadow-md dark:text-gray-100 dark:bg-gray-800">
           Reverse:1999 가챠 시뮬레이터
         </h1>
 
         {/* 🎯 뽑기 버튼 & 결과 (스크롤 가능 영역) */}
         <div className="flex flex-col items-center gap-5 overflow-y-auto flex-grow">
           {/* 뽑기 버튼 */}
-          <div className="flex gap-4 md:gap-6 items-center">
-            <button onClick={() => handleGacha(1)} className="relative w-[140px] md:w-[180px] h-[50px] md:h-[60px]">
+          <div className="flex gap-4 lg:gap-6 items-center">
+            <button onClick={() => handleGacha(1)} className="relative w-[140px] lg:w-[180px] h-[50px] lg:h-[60px]">
               <Image
                 src="/infos/button/single_pull.png"
                 alt="1회 뽑기"
@@ -717,7 +598,7 @@ export default function GachaGame() {
                 className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
               />
             </button>
-            <button onClick={() => handleGacha(10)} className="relative w-[140px] md:w-[180px] h-[50px] md:h-[60px]">
+            <button onClick={() => handleGacha(10)} className="relative w-[140px] lg:w-[180px] h-[50px] lg:h-[60px]">
               <Image
                 src="/infos/button/ten_pull.png"
                 alt="10회 뽑기"
@@ -727,7 +608,7 @@ export default function GachaGame() {
               />
             </button>
             <button
-              className="bg-red-500 text-white px-3 md:px-6 h-[30px] md:h-[40px] rounded-lg transition-transform hover:scale-105 active:scale-95 text-sm md:text-md"
+              className="bg-red-500 text-white px-3 lg:px-6 h-[30px] lg:h-[40px] rounded-lg transition-transform hover:scale-105 active:scale-95 text-sm lg:text-md"
               onClick={resetAll}
             >
               초기화
@@ -744,79 +625,35 @@ export default function GachaGame() {
       {/* ===================================== */}
       {/* 오른쪽: 6성 이력 */}
       {/* ===================================== */}
-      <motion.aside 
-        variants={rightAsideVariants}
-        initial="hidden"
-        animate={rightOpen ? "visible" : "hidden"}
-        className={`
-          bg-white dark:bg-gray-800 shadow rounded-lg p-4 border dark:border-gray-700
-          md:w-1/5 md:block
-          variants={rightAsideVariants}
-          initial="hidden"
-          animate={rightOpen ? "visible" : "hidden"}
-          exit="exit"
-          ${rightOpen ? "block" : "hidden"}
-          md:static
-          fixed md:static 
-          top-0 right-0 w-[80%] md:w-1/5 h-full z-40 
-          overflow-y-auto max-h-screen
-          absolute top-12 right-0
-        `}
+      <aside className="hidden lg:flex lg:w-[22%] lg:max-w-xs flex-shrink-0 h-full overflow-y-auto">
+        <MainSixStarHistory
+          sixStarHistory={sixStarHistory}
+          selectedBanner={selectedBanner}
+          pickupCount={pickupCount}
+          nonPickupCount={nonPickupCount}
+          historyRef={historyRef}
+        />
+      </aside>
+
+      {/* 🟢 모바일 전용 Floating 버튼 (사이드바 열기) */}
+      <button
+        onClick={() => setIsLeftOpen(prev => !prev)}
+        className="lg:hidden fixed left-4 bottom-4 w-12 h-12 bg-green-500 text-white text-xl font-bold rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition z-[9999]"
       >
-        <h2 className="text-lg md:text-xl font-semibold mb-2 sticky top-0 bg-white z-10 p-2 border-b text-black dark:text-gray-100 dark:bg-gray-800">
-          💡 획득한 6성
-        </h2>
+        📊
+      </button>
 
-        {/* 픽업 vs 일반 6성 횟수 */}
-        <div className="sticky top-[48px] bg-gray-100 z-10 p-2 border-b text-gray-700 dark:text-gray-300 dark:bg-gray-800 flex justify-between text-xs md:text-sm font-semibold rounded-lg mb-2 dark:border dark:border-gray-700">
-          <p className="text-green-600 dark:text-green-400">픽업: {pickupCount}회</p>
-          <p className="text-red-500 dark:text-red-400">픽뚫: {nonPickupCount}회</p>
-        </div>
-
-        <div 
-          ref={historyRef} 
-          className="flex flex-col-reverse gap-2 overflow-y-auto flex-grow"
-        >
-          {sixStarHistory.map((entry, idx) => {
-            const isPickup = selectedBanner.bannerType === "doublePick" && selectedBanner.twoPickup6 && selectedBanner.twoPickup6.some(c => c.engName === entry.char.engName) ||
-              selectedBanner.bannerType !== "doublePick" && selectedBanner.pickup6 && entry.char.name === selectedBanner.pickup6.name;
-            const borderColor = isPickup ? "border-green-500" : "border-red-500";
-            const labelText = isPickup ? "픽업!" : "픽뚫";
-
-            // 현재까지 등장한 같은 캐릭터 개수 확인
-            const sameCharCount = sixStarHistory
-              .slice(idx + 1) // 현재 entry 이후의 요소들만 확인
-              .filter(e => e.char.name === entry.char.name).length;
-
-            // 등장 순서에 따라 suffix 부여 (처음 나온 캐릭터는 "명함", 이후 "1형", "2형" ...)
-            const suffix = sameCharCount === 0 ? '명함' : `${Math.min(sameCharCount, 5)}형`;
-
-            return (
-              <div key={`${entry.char.engName}-${entry.pullNumber}`} className={`relative flex items-center gap-2 p-2 border-2 rounded ${borderColor}`}>
-                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-white text-[10px] md:text-xs font-bold px-2 py-0.5 rounded shadow text-black dark:text-gray-100 dark:bg-gray-800  border dark:border-gray-700">
-                  {labelText} ({suffix})
-                </span>
-                <Image
-                  src={`/characters/6stars_small/${entry.char.engName}.png`}
-                  alt={entry.char.name}
-                  width={56}
-                  height={56}
-                  layout="intrinsic"
-                  className="w-14 h-14 object-cover"
-                />
-                <p className="text-xs md:text-base font-semibold whitespace-nowrap text-black dark:text-gray-100">
-                  {entry.char.name} (#{entry.pullNumber})
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </motion.aside>
+      <button
+        onClick={() => setIsRightOpen(prev => !prev)}
+        className="lg:hidden fixed right-4 bottom-4 w-12 h-12 bg-red-500 text-white text-xl font-bold rounded-full shadow-lg flex items-center justify-center hover:bg-red-600 transition z-[9999]"
+      >
+        📒
+      </button>
 
       {/* 업데이트 팝업 */}
-      <UpdatePopup isOpen={isPopupOpen} onClose={() => setPopupOpen(false)} />
+      <UpdateModal isOpen={isPopupOpen} onClose={() => setPopupOpen(false)} />
       {is6StarListOpen && (
-        <BannerSixStarModal
+        <BannerSixStarListModal
           isOpen={is6StarListOpen}
           onClose={() => set6StarListOpen(false)}
           banner={selectedBanner}
