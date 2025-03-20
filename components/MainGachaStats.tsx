@@ -1,5 +1,8 @@
 import Image from "next/image";
 import { Banner } from "@/data/banners";
+import { useState } from "react";
+import CalculatorModal from "@/components/modals/CalculatorModal";
+
 interface GachaStatsProps {
   rarityStats: { [key: number]: number };
   totalPulls: number;
@@ -35,6 +38,9 @@ export default function MainGachaStats({
   setPopupOpen,
   set6StarListOpen,
 }: GachaStatsProps) {
+
+  const [isCalcOpen, setCalcOpen] = useState(false);
+
   return (
     <div
       className="
@@ -65,7 +71,7 @@ export default function MainGachaStats({
         <p className="font-bold">☂️ 천장 카운트: <span className="font-bold text-red-500">{pityCount}회</span></p>
         <p className="font-bold">🧲 6성 확률: <span className="font-bold text-purple-500">{getSixStarRate(pityCount).toFixed(2)}%</span></p>
         <p className="font-bold">
-          🏅 픽업 여부: <span className={`${pickupGuarantee ? "text-green-500" : "text-red-500"}`}>{pickupGuarantee ? "다음 6성 픽업 확정 ⭕️" : "픽업 확정 ❌"}</span>
+          🏅 픽업 여부: <span className={`${pickupGuarantee ? "text-green-500" : "text-red-500"}`}>{pickupGuarantee ? "픽업 확정 ⭕️" : "픽업 확정 ❌"}</span>
         </p>
       </div>
 
@@ -104,6 +110,42 @@ export default function MainGachaStats({
         <button onClick={() => setPopupOpen(true)} className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
           업데이트 내역
         </button>
+          {/* 버튼 3개 추가 */}
+        <div className="mt-3 flex justify-center gap-3">
+          {/* (1) GitHub 이동 버튼 */}
+          <a 
+            href="https://github.com/kl529/reverse1999_gacha_simulation" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="w-8 h-8 flex items-center justify-center transition-transform transform hover:scale-110"
+          >
+            <Image
+              src="/infos/button/github.png"
+              alt="GitHub"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+          </a>
+
+          {/* (2) 계산기 버튼 */}
+
+          <button
+            onClick={() => setCalcOpen(true)}
+            className="bg-yellow-500 text-white px-4 text-sm rounded-lg flex items-center justify-center hover:bg-yellow-600 transition"
+          >
+            형상 계산기
+          </button>
+          <CalculatorModal isOpen={isCalcOpen} onClose={() => setCalcOpen(false)} />
+
+          {/* (3) 이메일 문의 버튼 */}
+          <a 
+            href="mailto:kl529@naver.com" 
+            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition text-sm"
+          >
+            문의
+          </a>
+        </div>
       </div>
     </div>
   );

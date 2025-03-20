@@ -7,7 +7,7 @@ import { BannerSixStarListModal } from "@/components/modals/BannerSixStarListMod
 import { charactersByRarity, Character } from "@/data/characters"; // 캐릭터 목록
 import { banners, Banner } from "@/data/banners"; // 배너 목록
 import GachaResults from "@/components/GachaResults"; // 뽑기 결과 패널
-import { PercentRankTable } from "@/data/PercentRankTable"; // 상위 확률표
+import { percentRankTable } from "@/data/PercentRankTable"; // 상위 확률표
 import { OffCanvas } from "@/components/OffCanvas"; // 모바일 사이드바
 import MainGachaStats from "@/components/MainGachaStats"; // 통계 패널
 import MainSixStarHistory from "@/components/MainSixStarHistory"; // 6성 히스토리 패널
@@ -41,12 +41,24 @@ export default function GachaGame() {
   );
 
   useEffect(() => {
-    if (totalPulls < 10 || totalPulls % 10 !== 0) return; // 10단위 뽑기만 체크
     if (results.length < 1) return;
 
     // 🔹 가장 최근에 뽑힌 6성을 찾음 (배열을 역순으로 탐색)
     const lastSixStar = [...results].reverse().find(c => c.rarity === 6);
-    if (!lastSixStar) return; // 6성이 없으면 종료
+    if (!lastSixStar) {
+      if (!pickupShape) {
+        // 아직 픽업 6성을 한 번도 못 뽑았음 => 항상 100% 표시
+        setPickupRank(100);
+      } 
+      // pickupShape가 이미 있으면 => 이전 픽업 유지
+      // (ex. 일전에 픽업 뽑았는데 지금은 6성 없는 상태)
+      else {
+        // totalPulls가 늘었을 경우, rank 재계산
+        const rp = getShapeRankPercent(totalPulls, pickupShape);
+        setPickupRank(rp ?? 100);
+      }
+      return;
+    }
 
     // 🔹 이번 6성이 '픽업'인지 확인
     let isPickup = false;
@@ -57,7 +69,14 @@ export default function GachaGame() {
     }
 
     if (!isPickup) {
-      setPickupRank(null);
+      // 6성 있는데 픽뚫 => 이전 pickupShape가 있으면 rank만 재계산
+      if (pickupShape) {
+        const rp = getShapeRankPercent(totalPulls, pickupShape);
+        setPickupRank(rp ?? 100);
+      } else {
+        // 여전히 한 번도 픽업 6성 못 뽑은 상태 => 상위 100%
+        setPickupRank(100);
+      }
       return;
     }
 
@@ -463,10 +482,9 @@ export default function GachaGame() {
   }
 
   function getShapeRankPercent(N: number, shape: string): number | null {
-    const nearestN = Math.floor(N / 10) * 10;
-    if (!PercentRankTable[nearestN]) return null;
-    if (PercentRankTable[nearestN][shape] == null) return null;
-    return PercentRankTable[nearestN][shape];
+    if (!percentRankTable[N]) return null;
+    if (percentRankTable[N][shape] == null) return null;
+    return percentRankTable[N][shape];
   }
 
   // -------------------------
