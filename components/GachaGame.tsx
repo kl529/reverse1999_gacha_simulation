@@ -25,9 +25,7 @@ export default function GachaGame() {
   const [pityCount, setPityCount] = useState<number>(0);
   const [pickupGuarantee, setPickupGuarantee] = useState<boolean>(false);
   const [sixStarHistory, setSixStarHistory] = useState<SixStarHistoryEntry[]>([]);
-  // 🎯 닉네임
   const nickname = "Lyva";
-  // 🎯 팝업 상태
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isLeftOpen, setIsLeftOpen] = useState(false); // 모바일에서 왼쪽 사이드바 펼침 여부
   const [isRightOpen, setIsRightOpen] = useState(false); // 모바일에서 오른쪽 사이드바 펼침 여부
@@ -35,11 +33,9 @@ export default function GachaGame() {
   const [is6StarListOpen, set6StarListOpen] = useState(false); // 6성 목록 팝업 상태
   const [showDoublePick, setShowDoublePick] = useState(false);
   const [isProbabilityOpen, setProbabilityOpen] = useState(false);
-
   const [pickupShape, setPickupShape] = useState<string | null>(null); // 이번에 뽑은 픽업캐릭 형상
   const [pickupRank, setPickupRank] = useState<number | null>(null); // 픽업 상위 몇 %인지
   const historyRef = useRef<HTMLDivElement>(null);
-
   const [selectedBanner, setSelectedBanner] = useState<Banner>(
     banners.find((b) => b.bannerType !== "doublePick") || banners[0]
   );
@@ -61,7 +57,6 @@ export default function GachaGame() {
     }
 
     if (!isPickup) {
-      // 픽뚫이면 표시 X
       setPickupRank(null);
       return;
     }
@@ -82,21 +77,35 @@ export default function GachaGame() {
     historyRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [sixStarHistory]);
 
-  const leftAsideVariants = {
-    hidden: { x: "-100%", opacity: 0 },
-    visible: { x: "0%", opacity: 1, transition: { duration: 0.3, ease: "easeOut" } },
-    exit: { x: "-100%", opacity: 0, transition: { duration: 0.3, ease: "easeIn" } },
-  };
-
-  const rightAsideVariants = {
-    hidden: { x: "100%", opacity: 0 },
-    visible: { x: "0%", opacity: 1, transition: { duration: 0.3, ease: "easeOut" } },
-    exit: { x: "100%", opacity: 0, transition: { duration: 0.3, ease: "easeIn" } },
-  };
-  
   const displayedBanners = useMemo(() => {
     return banners.filter(b => showDoublePick ? b.bannerType === "doublePick" : b.bannerType !== "doublePick");
   }, [showDoublePick]);
+
+  // 🔸 픽업 vs 일반 6성 횟수 계산
+  const { pickupCount, nonPickupCount } = useMemo(() => {
+    let pickup = 0;
+    let nonPickup = 0;
+  
+    sixStarHistory.forEach((entry) => {
+      if (selectedBanner.bannerType === "doublePick" && selectedBanner.twoPickup6) {
+        if (selectedBanner.twoPickup6.some(c => c.engName === entry.char.engName)) {
+          pickup++;
+        } else {
+          nonPickup++;
+        }
+      }
+      else {
+        if (selectedBanner.pickup6 && entry.char.engName === selectedBanner.pickup6.engName) {
+          pickup++;
+        } 
+        else {
+          nonPickup++;
+        }
+      }
+    });
+  
+    return { pickupCount: pickup, nonPickupCount: nonPickup };
+  }, [sixStarHistory, selectedBanner]);
 
   // 2) 6성 확률 계산
   const getSixStarRate = (localPity: number) => {
@@ -311,33 +320,6 @@ export default function GachaGame() {
     });
   };
 
-
-  // 🔸 픽업 vs 일반 6성 횟수 계산
-  const { pickupCount, nonPickupCount } = useMemo(() => {
-    let pickup = 0;
-    let nonPickup = 0;
-  
-    sixStarHistory.forEach((entry) => {
-      if (selectedBanner.bannerType === "doublePick" && selectedBanner.twoPickup6) {
-        if (selectedBanner.twoPickup6.some(c => c.engName === entry.char.engName)) {
-          pickup++;
-        } else {
-          nonPickup++;
-        }
-      }
-      else {
-        if (selectedBanner.pickup6 && entry.char.engName === selectedBanner.pickup6.engName) {
-          pickup++;
-        } 
-        else {
-          nonPickup++;
-        }
-      }
-    });
-  
-    return { pickupCount: pickup, nonPickupCount: nonPickup };
-  }, [sixStarHistory, selectedBanner]);
-
   function doSinglePullDoublePick(
     pullIndex: number,
     localPity: number,
@@ -347,10 +329,7 @@ export default function GachaGame() {
     // 1) 70회 초과 → 확정 6성
     if (localPity + 1 >= 70) {
       const pick = getDoublePickSix(localPickup, pullIndex);
-      // 만약 pick이 비픽업이면 => localPickup=true
-      // => 여기서 pick이 비픽업인지 판별해야
-      // => isInTwoPickup(pick)
-      if (!isInTwoPickup(pick)) {
+      if (!isInDoublePickup(pick)) {
         return [pick, 0, true];
       } else {
         return [pick, 0, false];
@@ -380,7 +359,7 @@ export default function GachaGame() {
         // 6성
         if (rarity === 6) {
           const pick = getDoublePickSix(localPickup, pullIndex);
-          if (!isInTwoPickup(pick)) {
+          if (!isInDoublePickup(pick)) {
             // 비픽업
             return [pick, 0, true];
           } else {
@@ -447,7 +426,7 @@ export default function GachaGame() {
     }
   }
 
-  function isInTwoPickup(char: Character): boolean {
+  function isInDoublePickup(char: Character): boolean {
     if (!selectedBanner.twoPickup6) return false;
     return selectedBanner.twoPickup6.some(p => p.engName === char.engName);
   }
@@ -611,7 +590,7 @@ export default function GachaGame() {
               className="bg-red-500 text-white px-3 lg:px-6 h-[30px] lg:h-[40px] rounded-lg transition-transform hover:scale-105 active:scale-95 text-sm lg:text-md"
               onClick={resetAll}
             >
-              초기화
+              리셋
             </button>
           </div>
 

@@ -1,42 +1,50 @@
 import { motion } from "framer-motion";
-import { Character } from "../data/characters";
 import Image from "next/image";
+import { Character } from "../data/characters";
 
 interface Props {
   results: Character[];
 }
 
 export default function GachaResults({ results }: Props) {
-  const displayResults = results.length === 1 
-    ? Array(10).fill(null).map((_, index) => index === 0 ? results[0] : null)
-    : results.slice(0, 10);
+  // 단일 뽑기 시 첫 칸만 캐릭터, 나머지는 빈칸
+  const displayResults =
+    results.length === 1
+      ? Array(10)
+          .fill(null)
+          .map((_, index) => (index === 0 ? results[0] : null))
+      : results.slice(0, 10);
 
   return (
     <div
       className="
         grid
         w-full
-        min-h-[600px] 
         gap-4
         grid-cols-2
-        sm:grid-cols-3
-        lg:grid-cols-4
+        sm:grid-cols-5
+        md:grid-cols-5
         lg:grid-cols-5
-        auto-rows-fr  
-        items-stretch 
+        items-start
         justify-items-center
         dark:bg-gray-900
+        /* 필요하다면 여기서 max-w-[] 또는 overflow-x-auto 등 추가 가능 */
       "
     >
       {displayResults.map((char, index) => (
         <motion.div
           key={index}
-          initial={{ opacity: 0 }}  
+          initial={{ opacity: 0 }}
           animate={{ opacity: char ? 1 : 0 }}
           className={`
-            relative w-full aspect-[3/4] 
-            rounded overflow-hidden shadow-none
-            min-h-[160px] lg:min-h-[200px] 
+            relative
+            overflow-hidden
+            rounded
+            shadow-none
+            /* ❗ 카드 크기 제한: 최대 200x303 고정 */
+            max-w-[200px]
+            max-h-[303px]
+            w-full
             flex flex-col items-center justify-center
             ${char ? "" : "opacity-0"}
           `}
@@ -46,43 +54,44 @@ export default function GachaResults({ results }: Props) {
             <Image
               src={`/characters/${char.rarity}stars/${char.engName}.png`}
               alt={char.name}
-              width={200}  // 고정 크기 사용
-              height={266} // 3:4 비율 유지
-              objectFit="contain" // 📌 이미지가 비율 유지하면서 다 보이게 함
-              className="absolute inset-0 mx-auto"
+              width={200}     // 최대 폭 200
+              height={303}    // 최대 높이 303
+              objectFit="contain" /* 폭이 줄어들어도 비율 유지 */
             />
           )}
 
           {/* (2) 왼쪽 상단 영감 아이콘 */}
           {char?.inspiration && (
-            <div className="absolute left-4 top-0 z-10">
+            <div className="absolute left-3 top-0 z-10">
               <Image
                 src={`/infos/inspiration/${char.inspiration}.png`}
                 alt={char.inspiration}
-                width={100}
-                height={100}
+                width={80}
+                height={80}
                 layout="intrinsic"
                 className="w-5 h-auto"
               />
             </div>
           )}
 
-          {/* (3) 별 효과 */}
+          {/* (3) 별 효과 (캐릭터 이미지 아래에 깔기) */}
           {char && (
             <Image
               src={`/infos/effects/${char.rarity}stars.png`}
               alt={`성급 효과 ${char.rarity}`}
               width={200}
-              height={266}
+              height={303}
               objectFit="contain"
-              className="absolute inset-0 z-10 pointer-events-none h-full mx-auto"
+              className="absolute inset-0 z-10 pointer-events-none mx-auto h-full"
             />
           )}
 
-          {/* (3) 이름 */}
+          {/* (4) 이름 (별 효과와 이미지 위에) */}
           {char && (
-            <p className="absolute bottom-2 w-full text-center text-white font-semibold z-30"
-              style={{ textShadow: '0 0 4px rgba(0,0,0,0.8)' }}>
+            <p
+              className="absolute bottom-2 w-full text-center text-white font-semibold z-40"
+              style={{ textShadow: "0 0 4px rgba(0,0,0,0.8)" }}
+            >
               {char.name}
             </p>
           )}
