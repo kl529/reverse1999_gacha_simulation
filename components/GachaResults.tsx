@@ -41,9 +41,8 @@ export default function GachaResults({ results }: Props) {
             overflow-hidden
             rounded
             shadow-none
-            /* ❗ 카드 크기 제한: 최대 200x303 고정 */
-            max-w-[200px]
-            max-h-[303px]
+            max-w-[300px]
+            max-h-[600px]
             w-full
             flex flex-col items-center justify-center
             ${char ? "" : "opacity-0"}

@@ -635,14 +635,14 @@ export default function GachaGame() {
       {/* 🟢 모바일 전용 Floating 버튼 (사이드바 열기) */}
       <button
         onClick={() => setIsLeftOpen(prev => !prev)}
-        className="lg:hidden fixed left-4 bottom-4 w-12 h-12 bg-green-500 text-white text-xl font-bold rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition z-[9999]"
+        className="lg:hidden fixed left-4 bottom-4 w-28 h-28 bg-green-500 text-white text-4xl font-bold rounded-full shadow-xl flex items-center justify-center hover:bg-green-600 transition z-[9999]"
       >
         📊
       </button>
 
       <button
         onClick={() => setIsRightOpen(prev => !prev)}
-        className="lg:hidden fixed right-4 bottom-4 w-12 h-12 bg-red-500 text-white text-xl font-bold rounded-full shadow-lg flex items-center justify-center hover:bg-red-600 transition z-[9999]"
+        className="lg:hidden fixed right-4 bottom-4 w-28 h-28 bg-red-500 text-white text-4xl font-bold rounded-full shadow-xl flex items-center justify-center hover:bg-red-600 transition z-[9999]"
       >
         📒
       </button>
