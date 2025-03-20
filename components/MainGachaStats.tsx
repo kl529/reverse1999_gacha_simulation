@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import { Banner } from "@/data/banners";
 interface GachaStatsProps {
   rarityStats: { [key: number]: number };
   totalPulls: number;
@@ -8,10 +8,10 @@ interface GachaStatsProps {
   pityCount: number;
   pickupGuarantee: boolean;
   getSixStarRate: (pity: number) => number;
-  selectedBanner: any;
+  selectedBanner: Banner;
   showDoublePick: boolean;
   toggleDoublePick: () => void;
-  displayedBanners: any[];
+  displayedBanners: Banner[];
   handleBannerChange: (bannerId: string) => void;
   nickname: string;
   setPopupOpen: (open: boolean) => void;

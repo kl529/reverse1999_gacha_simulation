@@ -8,5 +8,5 @@ export const updateLogs = [
     { date: "2025-03-01", content: "첫 뽑기 확정 5성 추가" },
     { date: "2025-03-02", content: "2중 픽업 배너 추가" },
     { date: "2025-03-16", content: "확률표 추가 & 운빨 랭킹 추가 & J-튜즈 2중픽업 추가" },
-    { date: "2025-03-17", content: "확률 세분화 설정" },
+    { date: "2025-03-17", content: "UI 최적화" },
   ];

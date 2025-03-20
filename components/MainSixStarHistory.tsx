@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Character } from "@/data/characters";
+import { Banner } from "@/data/banners";
 import Image from "next/image";
 
 interface SixStarHistoryProps {
@@ -9,7 +9,7 @@ interface SixStarHistoryProps {
     char: Character;
     pullNumber: number;
   }[];
-  selectedBanner: any;
+  selectedBanner: Banner;
   pickupCount: number;
   nonPickupCount: number;
   historyRef: React.RefObject<HTMLDivElement | null>;

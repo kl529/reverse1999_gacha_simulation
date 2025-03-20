@@ -1,0 +1,16 @@
+{
+    "name": "Reverse1999 가챠 시뮬레이터",
+    "short_name": "리버스 가챠시뮬",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "description": "Reverse1999 가챠 시뮬레이터를 앱으로 즐겨보세요.",
+    "icons": [
+      {
+        "src": "/pwa_icon.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  }

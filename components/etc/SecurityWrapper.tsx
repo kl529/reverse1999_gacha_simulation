@@ -26,7 +26,7 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
         alert("개발자 도구 사용이 금지되었습니다.");
       }
     };
-    // document.addEventListener("keydown", blockDevTools);
+    document.addEventListener("keydown", blockDevTools);
 
     // 3️⃣ 루트 주소("/") 이외 접근 제한
     if (typeof window !== "undefined" && pathname !== "/") {
@@ -45,7 +45,7 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
     // ✅ 이벤트 정리 (언마운트 시)
     return () => {
       document.removeEventListener("contextmenu", disableRightClick);
-      // document.removeEventListener("keydown", blockDevTools);
+      document.removeEventListener("keydown", blockDevTools);
       clearInterval(checkJS);
     };
   }, [pathname, router]);
