@@ -42,7 +42,7 @@ export default function GachaResults({ results }: Props) {
             rounded
             shadow-none
             max-w-[300px]
-            max-h-[600px]
+            max-h-[320px]
             w-full
             flex flex-col items-center justify-center
             ${char ? "" : "opacity-0"}
