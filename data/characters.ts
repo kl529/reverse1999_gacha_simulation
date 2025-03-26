@@ -38,6 +38,8 @@ export type Character = {
       { name: "카카니아", rarity: 6, inspiration: "plant", engName: "kakania" },
       { name: "머큐리아", rarity: 6, inspiration: "spirit", engName: "mercuria" },
       { name: "J", rarity: 6, inspiration: "beast", engName: "joe" },
+      { name: "튜즈데이", rarity: 6, inspiration: "spirit", engName: "tuesday" },
+      { name: "아르고스", rarity: 6, inspiration: "plant", engName: "argus" }
     ],
     5: [
       { name: "X", rarity: 5, inspiration: "intellect", engName: "x" },

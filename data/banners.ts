@@ -11,6 +11,15 @@ export type Banner = {
 
 export const banners: Banner[] = [
   {
+    id: "barcarola_pick_up",
+    name: "[2.4] 바르카롤라 픽업",
+    pickup6: { name: "바르카롤라", rarity: 6, inspiration: "star", engName: "barcarola" },
+    pickup5: [
+      { name: "네크롤로지스트", rarity: 5, inspiration: "mineral", engName: "necrologist" },
+      { name: "베이비 블루", rarity: 5, inspiration: "star", engName: "baby-blue" }
+    ],
+  },
+  {
     id: "doublepick_j_tuesday",
     name: "J & 튜즈데이",
     bannerType: "doublePick",
