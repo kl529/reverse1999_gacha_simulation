@@ -427,9 +427,9 @@ export default function QuizPage() {
         >
           ✕
         </button>
-        <h2 className="text-lg font-semibold mb-4">초기화</h2>
-        <p>정말로 초기화하시겠습니까?</p>
-        <p>초기화 시 모든 캐릭터가 닫히고, 현재 퀴즈 기록은 사라집니다.</p>
+        <h2 className="text-lg font-semibold mb-4 text-black">초기화</h2>
+        <p className="text-black">정말로 초기화하시겠습니까?</p>
+        <p className="text-black">초기화 시 모든 캐릭터가 닫히고, 현재 퀴즈 기록은 사라집니다.</p>
         <div className="flex gap-4 mt-4 justify-end">
           <button
             onClick={closeAllModals}
@@ -454,24 +454,24 @@ export default function QuizPage() {
         >
           ✕
         </button>
-        <h2 className="text-lg font-semibold mb-4">플레이 가이드</h2>
-				<p className="font-bold">기본 규칙</p>
-        <p>- 현재 리버스 1999에 있는 캐릭터들의 이름을 아무 정보 없이 맞추는 퀴즈입니다.</p>
-        <p>- 2.4버젼 기준 2성부터 6성까지 모두 존재합니다. </p>
-				<p>- 이름은 모두 인게임 닉네임 기준이고, 띄워쓰기는 신경 안쓰셔도 됩니다. </p>
-        <p>- 최대한 빠른 시간내에, 모든 캐릭터들의 이름을 맞춰보세요.</p>
-				<p>- 캐릭터 이름을 입력해서 맞춘다면, 맞춘 캐릭터가 열립니다.</p>
-				<p>- 캐릭터 이름을 입력해서 틀리다면, 일도 일어나지 않습니다..</p>
-        <p>- 첫번째 정답부터, 마지막 정답을 입력할때까지 시간이 기록됩니다.</p>
-				<p className="font-bold mt-3">버튼 설명</p>
-				<p>- 셔플 버튼을 누르면 캐릭터들의 순서가 랜덤으로 섞입니다.</p>
-				<p>- 포기 버튼을 누르면 소요시간과 결과가 공개됩니다.</p>
-				<p>- 초기화 버튼을 누르면 모든 캐릭터가 닫히고, 현재 퀴즈 기록은 사라집니다.</p>
-				<p className="font-bold mt-3">추신</p>
-				<p className="font-bold">- 리버스 고수라면, 셔플을 하고 하는 것을 추천드립니다. </p>
-				<p>- 모바일 유저라면, 데스크탑 모드로 해주세요!! + 주로 데스크탑에서 해주세요</p>
-				<p>- 아직 베타 테스트 중이기에, 버그가 있을 수 있습니다. 발견시 알려주세요!!</p>
-				<p>- 앞으로도 추가가 많이 될 예정입니다. 조금만 기다려주세요.</p>
+        <h2 className="text-lg font-semibold mb-4 text-black">플레이 가이드</h2>
+				<p className="font-bold text-black">기본 규칙</p>
+        <p className="text-black">- 현재 리버스 1999에 있는 캐릭터들의 이름을 아무 정보 없이 맞추는 퀴즈입니다.</p>
+        <p className="text-black">- 2.4버젼 기준 2성부터 6성까지 모두 존재합니다. </p>
+				<p className="text-black">- 이름은 모두 인게임 닉네임 기준이고, 띄워쓰기는 신경 안쓰셔도 됩니다. </p>
+        <p className="text-black">- 최대한 빠른 시간내에, 모든 캐릭터들의 이름을 맞춰보세요.</p>
+				<p className="text-black">- 캐릭터 이름을 입력해서 맞춘다면, 맞춘 캐릭터가 열립니다.</p>
+				<p className="text-black">- 캐릭터 이름을 입력해서 틀리다면, 일도 일어나지 않습니다..</p>
+        <p className="text-black">- 첫번째 정답부터, 마지막 정답을 입력할때까지 시간이 기록됩니다.</p>
+				<p className="font-bold mt-3 text-black">버튼 설명</p>
+				<p className="text-black">- 셔플 버튼을 누르면 캐릭터들의 순서가 랜덤으로 섞입니다.</p>
+				<p className="text-black">- 포기 버튼을 누르면 소요시간과 결과가 공개됩니다.</p>
+				<p className="text-black">- 초기화 버튼을 누르면 모든 캐릭터가 닫히고, 현재 퀴즈 기록은 사라집니다.</p>
+				<p className="font-bold mt-3 text-black">추신</p>
+				<p className="font-bold text-black">- 리버스 고수라면, 셔플을 하고 하는 것을 추천드립니다. </p>
+				<p className="text-black">- 모바일 유저라면, 데스크탑 모드로 해주세요!! + 주로 데스크탑에서 해주세요</p>
+				<p className="text-black">- 아직 베타 테스트 중이기에, 버그가 있을 수 있습니다. 발견시 알려주세요!!</p>
+				<p className="text-black">- 앞으로도 추가가 많이 될 예정입니다. 조금만 기다려주세요.</p>
       </ConfirmModal>
 
       {/* (3) 최종 결과 모달 */}
@@ -483,16 +483,16 @@ export default function QuizPage() {
           ✕
         </button>
         {isGiveUp ? (
-          <h2 className="text-lg font-semibold mb-4">포기하셨습니다</h2>
+          <h2 className="text-lg font-semibold mb-4 text-black">포기하셨습니다</h2>
         ) : (
-          <h2 className="text-lg font-semibold mb-4">축하합니다!</h2>
+          <h2 className="text-lg font-semibold mb-4 text-black">축하합니다!</h2>
         )}
-        <p className="font-bold">점수판: {giveUpMatched} / {totalCount}</p>
-        <p className="font-bold">못맞춘 캐릭터: {totalCount - giveUpMatched} 명</p>
+        <p className="font-bold text-black">점수판: {giveUpMatched} / {totalCount}</p>
+        <p className="font-bold text-black">못맞춘 캐릭터: {totalCount - giveUpMatched} 명</p>
         {finalTimeSec != null ? (
-          <p className="font-bold">걸린 시간: {timerString}초</p>
+          <p className="font-bold text-black">걸린 시간: {timerString}초</p>
         ) : (
-          <p className="font-bold">시간 측정 없음</p>
+          <p className="font-bold text-black">시간 측정 없음</p>
         )}
         <div className="mt-4 text-center">
           <button
