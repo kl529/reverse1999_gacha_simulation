@@ -205,6 +205,7 @@ export default function QuizPage() {
       }
       // 포기 상태가 아닐 때 -> 축하 모달
       if (!isGiveUp) {
+				setGiveUpMatched(openedSet.size);
         setShowFinalModal(true);
       }
     }
@@ -456,6 +457,7 @@ export default function QuizPage() {
         <h2 className="text-lg font-semibold mb-4">플레이 가이드</h2>
 				<p className="font-bold">기본 규칙</p>
         <p>- 현재 리버스 1999에 있는 캐릭터들의 이름을 아무 정보 없이 맞추는 퀴즈입니다.</p>
+        <p>- 2.4버젼 기준 2성부터 6성까지 모두 존재합니다. </p>
         <p>- 최대한 빠른 시간내에, 모든 캐릭터들의 이름을 맞춰보세요.</p>
 				<p>- 캐릭터 이름을 입력해서 맞춘다면, 맞춘 캐릭터가 열립니다.</p>
 				<p>- 캐릭터 이름을 입력해서 틀리다면, 일도 일어나지 않습니다..</p>
