@@ -12,4 +12,5 @@ export const updateLogs = [
     { date: "2025-03-20", content: "형상 계산기 추가 & 운빨랭킹 업데이트" },
     { date: "2025-03-27", content: "바르카롤라 픽업 배너 추가" },
     { date: "2025-04-04", content: "파투투 픽업 배너 추가" },
+    { date: "2025-04-05", content: "퀴즈 페이지 추가" },
   ];

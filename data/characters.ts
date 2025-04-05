@@ -62,6 +62,7 @@ export type Character = {
       { name: "예니세이", rarity: 5, inspiration: "star", engName: "yenisei" },
       { name: "아브구스트", rarity: 5, inspiration: "plant", engName: "avgust" },
       { name: "던컨", rarity: 5, inspiration: "beast", engName: "mr-duncan" },
+      { name: "바바라", rarity: 5, inspiration: "spirit", engName: "barbara" },
       // { name: "소네트", rarity: 5, inspiration: "mineral", engName: "sonetto" },
       // { name: "마틸다", rarity: 5, inspiration: "star", engName: "matilda" },
     ],
