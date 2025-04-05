@@ -90,13 +90,13 @@ export default function QuizPage() {
     if (!trimmed) return;
 
     // 공백 제거 정규식
-    const inputNoSpace = trimmed.replace(/\s+/g, "");
+    const inputNoSpaceLower = trimmed.replace(/\s+/g, "").toLowerCase();
 
     // 아직 오픈되지 않은 캐릭터 중에서 찾기
     const unopenedList = characters.filter((ch) => !openedSet.has(ch.id));
     const found = unopenedList.find((ch) => {
-      const charNameNoSpace = ch.name.replace(/\s+/g, "");
-      return charNameNoSpace === inputNoSpace;
+      const charNameNoSpaceLower = ch.name.replace(/\s+/g, "").toLowerCase();
+      return charNameNoSpaceLower === inputNoSpaceLower;
     });
 		
     if (found) {
@@ -458,6 +458,7 @@ export default function QuizPage() {
 				<p className="font-bold">기본 규칙</p>
         <p>- 현재 리버스 1999에 있는 캐릭터들의 이름을 아무 정보 없이 맞추는 퀴즈입니다.</p>
         <p>- 2.4버젼 기준 2성부터 6성까지 모두 존재합니다. </p>
+				<p>- 이름은 모두 인게임 닉네임 기준이고, 띄워쓰기는 신경 안쓰셔도 됩니다. </p>
         <p>- 최대한 빠른 시간내에, 모든 캐릭터들의 이름을 맞춰보세요.</p>
 				<p>- 캐릭터 이름을 입력해서 맞춘다면, 맞춘 캐릭터가 열립니다.</p>
 				<p>- 캐릭터 이름을 입력해서 틀리다면, 일도 일어나지 않습니다..</p>
