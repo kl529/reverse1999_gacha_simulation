@@ -294,7 +294,7 @@ export default function QuizPage() {
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           placeholder="캐릭터 이름 입력"
-          className="border border-gray-300 px-2 py-1 rounded"
+          className="border border-gray-300 px-2 py-1 rounded text-black"
         />
         <button
           onClick={handleCheck}
@@ -422,7 +422,7 @@ export default function QuizPage() {
       {/* (1) 초기화 확인 모달 */}
 			<ConfirmModal isOpen={showResetModal} onClose={closeAllModals}>
         <button
-          className="absolute top-2 right-4 text-xl"
+          className="absolute top-2 right-4 text-xl text-black"
           onClick={closeAllModals}
         >
           ✕
@@ -449,7 +449,7 @@ export default function QuizPage() {
       {/* (2) 도움말 모달 */}
       <ConfirmModal isOpen={showHelpModal} onClose={closeAllModals} modalClassName="max-w-3xl w-full min-h-[500px] min-w-[600px]">
         <button
-          className="absolute top-2 right-4 text-xl"
+          className="absolute top-2 right-4 text-xl text-black"
           onClick={closeAllModals}
         >
           ✕
@@ -477,7 +477,7 @@ export default function QuizPage() {
       {/* (3) 최종 결과 모달 */}
       <ConfirmModal isOpen={showFinalModal} onClose={closeAllModals}>
         <button
-          className="absolute top-2 right-4 text-xl"
+          className="absolute top-2 right-4 text-xl text-black"
           onClick={closeAllModals}
         >
           ✕
