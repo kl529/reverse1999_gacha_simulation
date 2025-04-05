@@ -10,4 +10,6 @@ export const updateLogs = [
     { date: "2025-03-16", content: "확률표 추가 & 운빨 랭킹 추가 & J-튜즈 2중픽업 추가" },
     { date: "2025-03-17", content: "UI 최적화" },
     { date: "2025-03-20", content: "형상 계산기 추가 & 운빨랭킹 업데이트" },
+    { date: "2025-03-27", content: "바르카롤라 픽업 배너 추가" },
+    { date: "2025-04-04", content: "파투투 픽업 배너 추가" },
   ];
