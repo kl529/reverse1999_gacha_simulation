@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { QUIZ_CHARACTERS, QuizCharacter } from "@/data/quiz_character";
 import ConfirmModal from "@/components/modals/ConfirmModal";
 import { toast, Toaster } from "react-hot-toast";
+import { useDarkMode } from "@/components/etc/DarkModeContext";
 
 // rarity, inspiration, version 상수
 const RARITY = ["ALL", "6성", "5성", "4성", "3성", "2성"];
@@ -39,6 +40,8 @@ export default function QuizPage() {
   const [showFinalModal, setShowFinalModal] = useState(false); // 마지막 결과 모달
 
 	const [giveUpMatched, setGiveUpMatched] = useState<number>(0);
+  const [showFilters, setShowFilters] = useState(false);
+  const [showHint, setShowHint] = useState(false);
 
 	// 버튼 상태: "normal" | "wrong" | "correct"
 	const [btnState, setBtnState] = useState<"normal"|"wrong"|"correct">("normal");
@@ -59,6 +62,7 @@ export default function QuizPage() {
   };
 
 	const [elapsedTime, setElapsedTime] = useState<number>(0);
+  const { darkMode } = useDarkMode();
 
   useEffect(() => {
     let timerId: NodeJS.Timeout | null = null;
@@ -92,14 +96,22 @@ export default function QuizPage() {
     // 공백 제거 정규식
     const inputNoSpaceLower = trimmed.replace(/\s+/g, "").toLowerCase();
 
+    if (inputNoSpaceLower === "내아내") {
+      toast(`제 아내는 멜라니아입니다.`, { icon: "❤️" });
+      setInputValue("");
+      return;
+    }
+
     // 아직 오픈되지 않은 캐릭터 중에서 찾기
-    const unopenedList = characters.filter((ch) => !openedSet.has(ch.id));
-    const found = unopenedList.find((ch) => {
-      const charNameNoSpaceLower = ch.name.replace(/\s+/g, "").toLowerCase();
-      return charNameNoSpaceLower === inputNoSpaceLower;
-    });
+    const found = characters.find((ch) =>
+      ch.name.replace(/\s+/g, "").toLowerCase() === inputNoSpaceLower
+    );
 		
-    if (found) {
+    if (found && openedSet.has(found.id)) {
+      toast(`"${inputValue}" 이미 맞춘 캐릭터입니다!`, { icon: "⚠️" });
+      setBtnState("wrong");
+      setTimeout(() => setBtnState("normal"), 500);
+    } else if (found) {
 			const newSet = new Set(openedSet);
       newSet.add(found.id);
       setOpenedSet(newSet);
@@ -113,10 +125,9 @@ export default function QuizPage() {
       setBtnState("correct");
       setTimeout(() => setBtnState("normal"), 500);
 
-      // "OOO 맞췄습니다!" 메시지
       toast.success(`${found.name} 정답!`);
-    } else {
-      toast.error(`틀렸습니다!`);
+    }else {
+      toast.error(`"${inputValue}" 틀렸습니다!`);
 			setBtnState("wrong");
       setTimeout(() => setBtnState("normal"), 500);
     }
@@ -162,7 +173,8 @@ export default function QuizPage() {
     setRarityFilter("ALL");
     setInspirationFilter("ALL");
     setVersionFilter("ALL");
-
+    setShowHint(false);
+    setShowFilters(false);
     // 만약 포기 상태였으면 해제
     setIsGiveUp(false);
     setShowFinalModal(false);
@@ -271,16 +283,16 @@ export default function QuizPage() {
   }
 
   return (
-    <div className="p-4 flex flex-col items-center justify-center">
+    <div className="min-h-screen w-full bg-white dark:bg-gray-900 dark:text-gray-200 p-4 flex flex-col items-center">
       {/* ========== 제목 ========== */}
-      <h1 className="text-2xl font-bold mb-2 text-center">
-        리버스:1999 캐릭터 퀴즈 (Beta)
+      <h1 className="text-2xl font-bold mb-2 text-center dark:text-white">
+        Reverse:1999 캐릭터 퀴즈
       </h1>
 
       {/* ========== 현황판 ========== */}
       <div className="mb-4 text-center flex flex-row items-center justify-center gap-4">
         <p className="text-lg mb-1 font-bold text-green-500">
-          정답 현황 : {openedCount} / {totalCount} ( {remainCount} left )
+          점수 : {openedCount} / {totalCount} ( {remainCount} left )
         </p>
 				<span className="text-blue-500 font-bold text-lg">
             타이머 : {timerString}s
@@ -288,20 +300,22 @@ export default function QuizPage() {
       </div>
 
       {/* ========== 입력창 & 버튼들 ========== */}
-      <div className="flex gap-2 mb-4 items-center">
-        <input
-          value={inputValue}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-          placeholder="캐릭터 이름 입력"
-          className="border border-gray-300 px-2 py-1 rounded text-black"
-        />
-        <button
-          onClick={handleCheck}
-          className={checkBtnClass}
-        >
-          확인
-        </button>
+      <div className="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-900 border-t border-gray-300 dark:border-gray-700 z-30 py-2 px-4 flex justify-center">
+        <div className="w-full lg:w-1/2 flex gap-2">
+          <input
+            value={inputValue}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            placeholder="캐릭터 이름 입력"
+            className="flex-1 border border-gray-300 px-3 py-2 rounded text-black dark:text-white dark:bg-gray-800"
+          />
+          <button
+            onClick={handleCheck}
+            className={checkBtnClass}
+          >
+            확인
+          </button>
+        </div>  
       </div>
 
       <div className="flex gap-2 mb-4 items-center">
@@ -324,6 +338,13 @@ export default function QuizPage() {
           초기화
         </button>
 
+        <button
+          onClick={() => setShowFilters(prev => !prev)}
+          className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1 rounded"
+        >
+          필터
+        </button>
+
         {/* 도움말 버튼 */}
         <button
           onClick={() => setShowHelpModal(true)}
@@ -334,59 +355,68 @@ export default function QuizPage() {
       </div>
 
       {/* ========== 필터 섹션 ========== */}
-      <div className="flex flex-row items-center gap-2 mb-6">
-        <div className="flex items-center gap-3 pr-2">
-          <span className="font-semibold">희귀도:</span>
-          <select
-            value={rarityFilter}
-            onChange={handleRarityFilter}
-            className="border border-gray-300 rounded px-2 py-1"
-          >
-            {RARITY.map((rar) => (
-              <option key={rar} value={rar}>
-                {rar}
-              </option>
-            ))}
-          </select>
-        </div>
+      {showFilters && (
+        <div className="flex flex-wrap items-center gap-2 mb-6 transition-all duration-300">
+          <div className="flex items-center gap-3 pr-2">
+            <span className="font-semibold">희귀도:</span>
+            <select
+              value={rarityFilter}
+              onChange={handleRarityFilter}
+              className="border border-gray-300 rounded px-2 py-1"
+            >
+              {RARITY.map((rar) => (
+                <option key={rar} value={rar}>
+                  {rar}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="flex items-center gap-3 pr-2">
-          <span className="font-semibold">영감:</span>
-          <select
-            value={transformInspiration(inspirationFilter)}
-            onChange={handleInspirationFilter}
-            className="border border-gray-300 rounded px-2 py-1"
-          >
-            {INSPIRATIONS.map((insp) => (
-              <option key={insp} value={insp}>
-                {transformInspiration(insp)}
-              </option>
-            ))}
-          </select>
-        </div>
+          <div className="flex items-center gap-3 pr-2">
+            <span className="font-semibold">영감:</span>
+            <select
+              value={transformInspiration(inspirationFilter)}
+              onChange={handleInspirationFilter}
+              className="border border-gray-300 rounded px-2 py-1"
+            >
+              {INSPIRATIONS.map((insp) => (
+                <option key={insp} value={insp}>
+                  {transformInspiration(insp)}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="flex items-center gap-3 pr-2">
-          <span className="font-semibold">버전:</span>
-          <select
-            value={versionFilter}
-            onChange={handleVersionFilter}
-            className="border border-gray-300 rounded px-2 py-1"
-          >
-            {VERSIONS.map((ver) => (
-              <option key={ver} value={ver}>
-                {ver}
-              </option>
-            ))}
-          </select>
-        </div>
+          <div className="flex items-center gap-3 pr-2">
+            <span className="font-semibold">버전:</span>
+            <select
+              value={versionFilter}
+              onChange={handleVersionFilter}
+              className="border border-gray-300 rounded px-2 py-1"
+            >
+              {VERSIONS.map((ver) => (
+                <option key={ver} value={ver}>
+                  {ver}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <button
-          onClick={handleFilterReset}
-          className="bg-gray-300 hover:bg-gray-400 transition px-3 py-1 rounded"
-        >
-          필터 초기화
-        </button>
-      </div>
+          <button
+            onClick={handleFilterReset}
+            className="bg-gray-300 hover:bg-gray-400 transition px-3 py-1 rounded"
+          >
+            필터 리셋
+          </button>
+
+          <button
+            onClick={() => setShowHint(true)}
+            className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-1 rounded"
+          >
+            힌트
+          </button>
+        </div>
+      )}
 
       {/* ========== 캐릭터 목록 ========== */}
       <div className="grid grid-cols-12 gap-2 max-w-5xl mx-auto">
@@ -395,25 +425,37 @@ export default function QuizPage() {
           return (
             <div
               key={ch.id}
-              className="border border-gray-400 rounded p-1 flex flex-col items-center"
+              className="border border-gray-400 rounded p-1 flex flex-col items-center relative"
             >
+              {showHint && (
+                <img
+                  src={`/infos/inspiration/${ch.inspiration}.png`}
+                  alt={ch.inspiration}
+                  className="absolute top-1 left-1 w-2 h-4 opacity-90 z-20"
+                />
+              )}
               {isOpened ? (
                 <img
                   src={`/characters/${ch.rarity}stars/${ch.engName}.png`}
                   alt={ch.name}
-                  className="w-20 h-20 object-contain"
+                  className="w-10 h-20 object-contain"
                 />
               ) : (
                 <img
-                  src="/quiz/character/question_img.png"
+                  src={
+                    darkMode
+                      ? "/quiz/character/question_img_dark.png"
+                      : "/quiz/character/question_img.png"
+                  }
                   alt="?"
-                  className="w-20 h-20 object-contain"
+                  className="w-10 h-20 object-contain"
                 />
               )}
             </div>
           );
         })}
       </div>
+      <div className="h-20" />
 
 			<Toaster position="bottom-center" />
 
@@ -429,7 +471,7 @@ export default function QuizPage() {
         </button>
         <h2 className="text-lg font-semibold mb-4 text-black">초기화</h2>
         <p className="text-black">정말로 초기화하시겠습니까?</p>
-        <p className="text-black">초기화 시 모든 캐릭터가 닫히고, 현재 퀴즈 기록은 사라집니다.</p>
+        <p className="text-black">초기화 시 모든 정답과, 현재 퀴즈 기록은 사라집니다.</p>
         <div className="flex gap-4 mt-4 justify-end">
           <button
             onClick={closeAllModals}
@@ -457,21 +499,20 @@ export default function QuizPage() {
         <h2 className="text-lg font-semibold mb-4 text-black">플레이 가이드</h2>
 				<p className="font-bold text-black">기본 규칙</p>
         <p className="text-black">- 현재 리버스 1999에 있는 캐릭터들의 이름을 아무 정보 없이 맞추는 퀴즈입니다.</p>
-        <p className="text-black">- 2.4버젼 기준 2성부터 6성까지 모두 존재합니다. </p>
+        <p className="text-black">- 2.4버젼 기준 2성부터 6성까지 모두 존재합니다. 총 94명 </p>
 				<p className="text-black">- 이름은 모두 인게임 닉네임 기준이고, 띄워쓰기는 신경 안쓰셔도 됩니다. </p>
         <p className="text-black">- 최대한 빠른 시간내에, 모든 캐릭터들의 이름을 맞춰보세요.</p>
 				<p className="text-black">- 캐릭터 이름을 입력해서 맞춘다면, 맞춘 캐릭터가 열립니다.</p>
-				<p className="text-black">- 캐릭터 이름을 입력해서 틀리다면, 일도 일어나지 않습니다..</p>
+				<p className="text-black">- 캐릭터 이름을 입력해서 틀리다면, 아무 일도 일어나지 않습니다.</p>
         <p className="text-black">- 첫번째 정답부터, 마지막 정답을 입력할때까지 시간이 기록됩니다.</p>
 				<p className="font-bold mt-3 text-black">버튼 설명</p>
 				<p className="text-black">- 셔플 버튼을 누르면 캐릭터들의 순서가 랜덤으로 섞입니다.</p>
-				<p className="text-black">- 포기 버튼을 누르면 소요시간과 결과가 공개됩니다.</p>
+				<p className="text-black">- 포기 버튼을 누르면 즉시 포기되며, 소요시간과 결과가 공개됩니다.</p>
 				<p className="text-black">- 초기화 버튼을 누르면 모든 캐릭터가 닫히고, 현재 퀴즈 기록은 사라집니다.</p>
 				<p className="font-bold mt-3 text-black">추신</p>
-				<p className="font-bold text-black">- 리버스 고수라면, 셔플을 하고 하는 것을 추천드립니다. </p>
+				<p className="font-bold text-black">- 리버스 고수라면, HELL 모드 추천드립니다. </p>
 				<p className="text-black">- 모바일 유저라면, 데스크탑 모드로 해주세요!! + 주로 데스크탑에서 해주세요</p>
-				<p className="text-black">- 아직 베타 테스트 중이기에, 버그가 있을 수 있습니다. 발견시 알려주세요!!</p>
-				<p className="text-black">- 앞으로도 추가가 많이 될 예정입니다. 조금만 기다려주세요.</p>
+				<p className="text-black">- 앞으로도 다양한 컨텐츠 추가가 많이 될 예정입니다. 아이디어는 언제나 환영입니다.</p>
       </ConfirmModal>
 
       {/* (3) 최종 결과 모달 */}

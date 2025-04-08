@@ -4,7 +4,7 @@ import CustomCursor from "@/components/etc/CustomCursor";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import SecurityWrapper from "@/components/etc/SecurityWrapper";
-import DarkModeProvider from "@/components/buttons/DarkModeButton";
+import { DarkModeProvider } from "@/components/etc/DarkModeContext";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
