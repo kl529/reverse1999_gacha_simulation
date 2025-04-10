@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Character } from "../data/characters";
+import { Character } from "@/data/characters";
 
 interface Props {
   results: Character[];

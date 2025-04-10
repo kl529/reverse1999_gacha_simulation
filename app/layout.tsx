@@ -32,13 +32,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 
 export const metadata = {
+  metadataBase: new URL("https://www.reverse1999-simulator.com"),
   title: "Reverse:1999 가챠 시뮬레이터",
   description: "Reverse:1999 가챠를 무제한으로 뽑아보세요.",
   icons: {
     icon: "/pwa_icon.png", // PWA 아이콘
   },
   manifest: "/manifest.json", // PWA manifest 파일
-  themeColor: "#ffffff", // PWA 테마 색상
   openGraph: {
     title: "Reverse:1999 가챠 시뮬레이터",
     description: "Reverse:1999 가챠를 무제한으로 뽑아보세요!!",

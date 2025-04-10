@@ -90,7 +90,7 @@ export default function GachaGame() {
     // 🔹 상태 업데이트 (즉시 UI 반영)
     setPickupShape(shapeStr);
     setPickupRank(rp ?? null);
-  }, [results, sixStarHistory, totalPulls, selectedBanner]);
+  }, [results, sixStarHistory, totalPulls, selectedBanner, pickupShape]);
 
   useEffect(() => {
     historyRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });

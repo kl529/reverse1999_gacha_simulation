@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { percentRankTable } from "@/data/PercentRankTable"; // 상위 확률표 사용
+import { percentRankTable } from "@/data/percentRankTable"; // 상위 확률표 사용
 
 interface CalculatorModalProps {
   isOpen: boolean;

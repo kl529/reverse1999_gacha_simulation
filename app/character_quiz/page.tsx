@@ -6,6 +6,7 @@ import ConfirmModal from "@/components/modals/ConfirmModal";
 import { toast, Toaster } from "react-hot-toast";
 import { useDarkMode } from "@/components/etc/DarkModeContext";
 import "animate.css";
+import Image from "next/image";
 
 // rarity, inspiration, version 상수
 const RARITY = ["ALL", "6성", "5성", "4성", "3성", "2성"];
@@ -305,7 +306,7 @@ export default function QuizPage() {
   return (
     <div className="min-h-screen w-full bg-white dark:bg-gray-900 dark:text-gray-200 p-4 flex flex-col items-center">
       {/* ========== 제목 ========== */}
-      <h1 className="text-2xl font-bold mb-2 text-center dark:text-white">
+      <h1 className="text-2xl lg:text-3xl font-bold mb-4 text-black text-center sticky top-0 bg-white z-20 p-3 dark:text-gray-100 dark:bg-gray-800">
         Reverse:1999 캐릭터 퀴즈
       </h1>
 
@@ -405,7 +406,7 @@ export default function QuizPage() {
           <div className="flex items-center gap-3 pr-2">
             <span className="font-semibold">영감:</span>
             <select
-              value={transformInspiration(inspirationFilter)}
+              value={inspirationFilter}
               onChange={handleInspirationFilter}
               className="border border-gray-300 rounded px-2 py-1"
             >
@@ -458,26 +459,32 @@ export default function QuizPage() {
               className="border border-gray-400 rounded p-1 flex flex-col items-center relative"
             >
               {showHint && (
-                <img
+                <Image
                   src={`/infos/inspiration/${ch.inspiration}.png`}
                   alt={ch.inspiration}
+                  width={8}
+                  height={16}
                   className="absolute top-1 left-1 w-2 h-4 opacity-90 z-20"
                 />
               )}
               {isOpened ? (
-                <img
+                <Image
                   src={`/characters/${ch.rarity}stars/${ch.engName}.png`}
                   alt={ch.name}
+                  width={40}
+                  height={80}
                   className="w-10 h-20 object-contain"
                 />
               ) : (
-                <img
+                <Image
                   src={
                     darkMode
                       ? "/quiz/characters/question_img_dark.png"
                       : "/quiz/characters/question_img.png"
                   }
                   alt="?"
+                  width={40}
+                  height={80}
                   className="w-10 h-20 object-contain"
                 />
               )}
@@ -564,14 +571,14 @@ export default function QuizPage() {
 
         {isGiveUp ? (
           <>
-            <img src="/quiz/results/fail.png" alt="fail" className="w-16 h-16 mx-auto mb-2" />
+            <Image src="/quiz/results/fail.png" alt="fail" width={80} height={80} className="w-20 h-20 mx-auto mb-2" />
             <h2 className="text-2xl font-bold text-red-600 mb-2">포기하셨습니다</h2>
             <p className="text-gray-700 font-semibold">그래도 잘 하셨어요!</p>
             <p className="text-gray-700 font-semibold">조금만 더 노력하면 훌륭한 타임키퍼가 될거에요</p>
           </>
         ) : (
           <>
-            <img src="/quiz/results/success.png" alt="success" className="w-20 h-20 mx-auto mb-2" />
+            <Image src="/quiz/results/success.png" alt="success" width={80} height={80} className="w-20 h-20 mx-auto mb-2" />
             <h2 className="text-2xl font-bold text-green-600 mb-2">🎉 축하합니다!</h2>
             <p className="text-gray-700 font-semibold">모든 캐릭터를 맞추셨습니다!</p>
             <p className="text-gray-700 font-semibold">당신은 훌륭한 타임키퍼군요</p>
@@ -625,7 +632,7 @@ export default function QuizPage() {
               }}
               className="bg-red-600 text-white px-4 py-1 rounded"
             >
-              Let's Go!
+              게임 시작
             </button>
           </div>
         </ConfirmModal>
