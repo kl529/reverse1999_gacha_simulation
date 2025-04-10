@@ -5,6 +5,7 @@ import { QUIZ_CHARACTERS, QuizCharacter } from "@/data/quiz_character";
 import ConfirmModal from "@/components/modals/ConfirmModal";
 import { toast, Toaster } from "react-hot-toast";
 import { useDarkMode } from "@/components/etc/DarkModeContext";
+import "animate.css";
 
 // rarity, inspiration, version 상수
 const RARITY = ["ALL", "6성", "5성", "4성", "3성", "2성"];
@@ -36,7 +37,7 @@ export default function QuizPage() {
 
   // (F) 모달 상태
   const [showResetModal, setShowResetModal] = useState(false); // 초기화 확인 모달
-  const [showHelpModal, setShowHelpModal] = useState(true);   // 도움말 모달
+  const [showHelpModal, setShowHelpModal] = useState(false);   // 도움말 모달
   const [showFinalModal, setShowFinalModal] = useState(false); // 마지막 결과 모달
 
 	const [giveUpMatched, setGiveUpMatched] = useState<number>(0);
@@ -48,6 +49,16 @@ export default function QuizPage() {
 
   // (G) 최종 결과(포기 or 전부 맞춤) 여부
   const [isGiveUp, setIsGiveUp] = useState(false);
+  const [isHardMode, setIsHardMode] = useState(false);
+  const [showHardModeModal, setShowHardModeModal] = useState(false);
+
+  useEffect(() => {
+    const hasVisited = localStorage.getItem("hasSeenHelpModal");
+    if (!hasVisited) {
+      setShowHelpModal(true);
+      localStorage.setItem("hasSeenHelpModal", "true");
+    }
+  }, []);
 
   // 입력 onChange
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -93,19 +104,22 @@ export default function QuizPage() {
     const trimmed = inputValue.trim();
     if (!trimmed) return;
 
-    // 공백 제거 정규식
-    const inputNoSpaceLower = trimmed.replace(/\s+/g, "").toLowerCase();
+    const inputNoSpaceLower = isHardMode
+      ? trimmed
+      : trimmed.replace(/\s+/g, "").toLowerCase();
+
+    const found = characters.find((ch) => {
+      const charNameNormalized = isHardMode
+        ? ch.name // 하드모드 → 그대로 비교
+        : ch.name.replace(/\s+/g, "").toLowerCase();
+      return charNameNormalized === inputNoSpaceLower;
+    });
 
     if (inputNoSpaceLower === "내아내") {
       toast(`제 아내는 멜라니아입니다.`, { icon: "❤️" });
       setInputValue("");
       return;
     }
-
-    // 아직 오픈되지 않은 캐릭터 중에서 찾기
-    const found = characters.find((ch) =>
-      ch.name.replace(/\s+/g, "").toLowerCase() === inputNoSpaceLower
-    );
 		
     if (found && openedSet.has(found.id)) {
       toast(`"${inputValue}" 이미 맞춘 캐릭터입니다!`, { icon: "⚠️" });
@@ -147,6 +161,11 @@ export default function QuizPage() {
 
   // **(3) 포기 버튼** -> 모든 정답 열기
   const handleGiveUp = () => {
+    if (isGiveUp) {
+      toast.error("힘들어도 두번 포기 하진 마세요.");
+      confirmResetAll()
+      return;
+    }
     setGiveUpMatched(openedSet.size);
 
     // 남은 UI는 전체 열림
@@ -178,6 +197,7 @@ export default function QuizPage() {
     // 만약 포기 상태였으면 해제
     setIsGiveUp(false);
     setShowFinalModal(false);
+    setIsHardMode(false);
   };
 
   // 필터만 초기화
@@ -321,12 +341,14 @@ export default function QuizPage() {
       <div className="flex gap-2 mb-4 items-center">
         <button
           onClick={handleShuffle}
+          disabled={isHardMode}
           className="bg-purple-500 text-white px-4 py-1 rounded hover:bg-purple-600 transition"
         >
           셔플
         </button>
         <button
           onClick={handleGiveUp}
+          disabled={isHardMode}
           className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition"
         >
           포기
@@ -339,8 +361,9 @@ export default function QuizPage() {
         </button>
 
         <button
+          disabled={isHardMode}
+          className={"px-3 py-1 rounded bg-yellow-500 hover:bg-yellow-600 text-white"}
           onClick={() => setShowFilters(prev => !prev)}
-          className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1 rounded"
         >
           필터
         </button>
@@ -351,6 +374,13 @@ export default function QuizPage() {
           className="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600 transition"
         >
           도움말
+        </button>
+        <button
+          onClick={() => setShowHardModeModal(true)}
+          disabled={isHardMode}
+          className={`px-3 py-1 rounded ${isHardMode ? "bg-red-600 text-white" : "bg-blue-500 text-white"}`}
+        >
+          {isHardMode ? "하드모드 🔥" : "하드모드"}
         </button>
       </div>
 
@@ -419,7 +449,7 @@ export default function QuizPage() {
       )}
 
       {/* ========== 캐릭터 목록 ========== */}
-      <div className="grid grid-cols-12 gap-2 max-w-5xl mx-auto">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(48px,1fr))] gap-2 w-full px-4">
         {displayedChars.map((ch) => {
           const isOpened = openedSet.has(ch.id);
           return (
@@ -444,8 +474,8 @@ export default function QuizPage() {
                 <img
                   src={
                     darkMode
-                      ? "/quiz/character/question_img_dark.png"
-                      : "/quiz/character/question_img.png"
+                      ? "/quiz/characters/question_img_dark.png"
+                      : "/quiz/characters/question_img.png"
                   }
                   alt="?"
                   className="w-10 h-20 object-contain"
@@ -489,7 +519,7 @@ export default function QuizPage() {
       </ConfirmModal>
 
       {/* (2) 도움말 모달 */}
-      <ConfirmModal isOpen={showHelpModal} onClose={closeAllModals} modalClassName="max-w-3xl w-full min-h-[500px] min-w-[600px]">
+      <ConfirmModal isOpen={showHelpModal} onClose={closeAllModals} modalClassName="w-full sm:max-w-3xl sm:min-w-[600px] min-h-[500px] px-4">
         <button
           className="absolute top-2 right-4 text-xl text-black"
           onClick={closeAllModals}
@@ -509,42 +539,97 @@ export default function QuizPage() {
 				<p className="text-black">- 셔플 버튼을 누르면 캐릭터들의 순서가 랜덤으로 섞입니다.</p>
 				<p className="text-black">- 포기 버튼을 누르면 즉시 포기되며, 소요시간과 결과가 공개됩니다.</p>
 				<p className="text-black">- 초기화 버튼을 누르면 모든 캐릭터가 닫히고, 현재 퀴즈 기록은 사라집니다.</p>
+				<p className="text-black">- 필터 버튼을 누르면, 문제 풀이에 유용한 힌트를 얻을 수 있습니다.</p>
+				<p className="text-black">- 하드모드 버튼을 누르면 하드모드로 전환됩니다.</p>
 				<p className="font-bold mt-3 text-black">추신</p>
-				<p className="font-bold text-black">- 리버스 고수라면, HELL 모드 추천드립니다. </p>
+				<p className="font-bold text-black">- 리버스 고수라면, 하드 모드 추천드립니다. </p>
 				<p className="text-black">- 모바일 유저라면, 데스크탑 모드로 해주세요!! + 주로 데스크탑에서 해주세요</p>
 				<p className="text-black">- 앞으로도 다양한 컨텐츠 추가가 많이 될 예정입니다. 아이디어는 언제나 환영입니다.</p>
       </ConfirmModal>
 
       {/* (3) 최종 결과 모달 */}
-      <ConfirmModal isOpen={showFinalModal} onClose={closeAllModals}>
+      <ConfirmModal 
+        isOpen={showFinalModal} 
+        onClose={closeAllModals}
+        modalClassName={`animate__animated ${
+          isGiveUp ? "animate__shakeX bg-red-100" : "animate__bounceIn bg-green-100"
+        } rounded-lg shadow-lg px-6 py-4 max-w-md w-full text-center`}
+      >
         <button
-          className="absolute top-2 right-4 text-xl text-black"
+          className="absolute top-2 right-4 text-xl text-gray-700 hover:text-black"
           onClick={closeAllModals}
         >
           ✕
         </button>
+
         {isGiveUp ? (
-          <h2 className="text-lg font-semibold mb-4 text-black">포기하셨습니다</h2>
+          <>
+            <img src="/quiz/results/fail.png" alt="fail" className="w-16 h-16 mx-auto mb-2" />
+            <h2 className="text-2xl font-bold text-red-600 mb-2">포기하셨습니다</h2>
+            <p className="text-gray-700 font-semibold">그래도 잘 하셨어요!</p>
+            <p className="text-gray-700 font-semibold">조금만 더 노력하면 훌륭한 타임키퍼가 될거에요</p>
+          </>
         ) : (
-          <h2 className="text-lg font-semibold mb-4 text-black">축하합니다!</h2>
+          <>
+            <img src="/quiz/results/success.png" alt="success" className="w-20 h-20 mx-auto mb-2" />
+            <h2 className="text-2xl font-bold text-green-600 mb-2">🎉 축하합니다!</h2>
+            <p className="text-gray-700 font-semibold">모든 캐릭터를 맞추셨습니다!</p>
+            <p className="text-gray-700 font-semibold">당신은 훌륭한 타임키퍼군요</p>
+          </>
         )}
-        <p className="font-bold text-black">점수판: {giveUpMatched} / {totalCount}</p>
-        <p className="font-bold text-black">못맞춘 캐릭터: {totalCount - giveUpMatched} 명</p>
-        {finalTimeSec != null ? (
-          <p className="font-bold text-black">걸린 시간: {timerString}초</p>
-        ) : (
-          <p className="font-bold text-black">시간 측정 없음</p>
-        )}
-        <div className="mt-4 text-center">
-          <button
-            onClick={closeAllModals}
-            className="px-4 py-1 bg-blue-500 text-white rounded"
-          >
-            닫기
-          </button>
+
+        <div className="mt-4 text-black">
+          <p className="font-bold">점수 : {giveUpMatched} / {totalCount}</p>
+          {(totalCount - giveUpMatched) !== 0 && (
+            <p className="font-bold">못맞춘 캐릭터 : {totalCount - giveUpMatched} 명</p>
+          )}
+          {finalTimeSec != null ? (
+            <p className="font-bold">걸린 시간: {timerString}초</p>
+          ) : (
+            <p className="font-bold">시간 측정 없음</p>
+          )}
         </div>
       </ConfirmModal>
 			
+
+      {showHardModeModal && (
+        <ConfirmModal isOpen={showHardModeModal} onClose={() => setShowHardModeModal(false)} modalClassName="w-full min-h-[200px] min-w-[500px]">
+          <h2 className="text-xl font-bold text-red-600 mb-2">🔥 하드 모드 설명 🔥</h2>
+          <p className="mb-2 text-black dark:text-white">
+            - 띄어쓰기와 영어 대소문자를 정확히 입력해야 정답으로 인정됩니다.
+          </p>
+          <p className="mb-2 text-black dark:text-white">
+            - 하드모드를 활성화하면, 새로 게임을 시작합니다.
+          </p>
+          <p className="mb-2 text-black dark:text-white">
+            - 셔플이 자동으로 적용되며, 필터와 포기 기능은 사용할 수 없습니다.
+          </p>
+          <p className="text-black dark:text-white">
+            - 초기화나 새로고침하기 전에 하드모드는 종료가 불가능합니다.
+          </p>
+          <div className="flex justify-end gap-3 mt-4">
+            <button
+              onClick={() => setShowHardModeModal(false)}
+              className="bg-gray-300 px-4 py-1 rounded"
+            >
+              취소
+            </button>
+            <button
+              onClick={() => {
+                setShowHardModeModal(false);
+                setIsHardMode(true);
+                handleShuffle();
+                handleFilterReset();
+                setShowFilters(false);
+                setShowHint(false);
+              }}
+              className="bg-red-600 text-white px-4 py-1 rounded"
+            >
+              Let's Go!
+            </button>
+          </div>
+        </ConfirmModal>
+      )}
     </div>
   );
 }

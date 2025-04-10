@@ -29,7 +29,10 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
     // document.addEventListener("keydown", blockDevTools);
 
     // 3️⃣ 루트 주소("/") 이외 접근 제한
-    if (typeof window !== "undefined" && pathname !== "/" && pathname !== "/character_quiz") {
+    if (typeof window !== "undefined" 
+        && pathname !== "/" 
+        && pathname !== "/character_quiz"
+        && pathname !== "/gacha_simulator") {
       alert("잘못된 접근입니다. 홈으로 이동합니다.");
       router.push("/");
     }

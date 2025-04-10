@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import SecurityWrapper from "@/components/etc/SecurityWrapper";
 import { DarkModeProvider } from "@/components/etc/DarkModeContext";
+import HamburgerMenu from "@/components/buttons/HamburgerMenu";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,12 +17,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" href="/pwa_icon.png" />
       </head>
       <body>
-        <SecurityWrapper>
-          <CustomCursor />
-          <SpeedInsights />
-          <Analytics />
-          <DarkModeProvider>{children}</DarkModeProvider>
-        </SecurityWrapper>
+        <DarkModeProvider>
+          <SecurityWrapper>
+            <HamburgerMenu />
+            <CustomCursor />
+            <SpeedInsights />
+            <Analytics />
+            {children}
+          </SecurityWrapper>
+        </DarkModeProvider>
       </body>
     </html>
   );

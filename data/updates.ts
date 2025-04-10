@@ -14,4 +14,5 @@ export const updateLogs = [
     { date: "2025-04-04", content: "파투투 픽업 배너 추가" },
     { date: "2025-04-05", content: "캐릭터 퀴즈 페이지 베타시작" },
     { date: "2025-04-07", content: "캐릭터 퀴즈 페이지 1차 수정" },
+    { date: "2025-04-08", content: "캐릭터 퀴즈 페이지 오픈" },
   ];

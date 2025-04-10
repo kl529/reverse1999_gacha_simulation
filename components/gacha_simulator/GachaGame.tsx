@@ -6,11 +6,11 @@ import UpdateModal from "@/components/modals/UpdateModal"; // 업데이트 모�
 import { BannerSixStarListModal } from "@/components/modals/BannerSixStarListModal"; // 6성 목록 모달
 import { charactersByRarity, Character } from "@/data/characters"; // 캐릭터 목록
 import { banners, Banner } from "@/data/banners"; // 배너 목록
-import GachaResults from "@/components/GachaResults"; // 뽑기 결과 패널
-import { percentRankTable } from "@/data/PercentRankTable"; // 상위 확률표
-import { OffCanvas } from "@/components/OffCanvas"; // 모바일 사이드바
-import MainGachaStats from "@/components/MainGachaStats"; // 통계 패널
-import MainSixStarHistory from "@/components/MainSixStarHistory"; // 6성 히스토리 패널
+import { percentRankTable } from "@/data/percentRankTable"; // 상위 확률표
+import GachaResults from "@/components/gacha_simulator/GachaResults"; // 뽑기 결과 패널
+import { OffCanvas } from "@/components/gacha_simulator/OffCanvas"; // 모바일 사이드바
+import MainGachaStats from "@/components/gacha_simulator/MainGachaStats"; // 통계 패널
+import MainSixStarHistory from "@/components/gacha_simulator/MainSixStarHistory"; // 6성 히스토리 패널
 
 interface SixStarHistoryEntry {
   char: Character;
@@ -635,14 +635,14 @@ export default function GachaGame() {
       {/* 🟢 모바일 전용 Floating 버튼 (사이드바 열기) */}
       <button
         onClick={() => setIsLeftOpen(prev => !prev)}
-        className="lg:hidden fixed left-4 bottom-4 w-20 h-20 bg-green-500 text-white text-4xl font-bold rounded-full shadow-xl flex items-center justify-center hover:bg-green-600 transition z-[9999]"
+        className="lg:hidden fixed left-4 bottom-4 w-16 h-16 bg-green-500 text-white text-4xl font-bold rounded-full shadow-xl flex items-center justify-center hover:bg-green-600 transition z-[9999]"
       >
         📊
       </button>
 
       <button
         onClick={() => setIsRightOpen(prev => !prev)}
-        className="lg:hidden fixed right-4 bottom-4 w-20 h-20 bg-red-500 text-white text-4xl font-bold rounded-full shadow-xl flex items-center justify-center hover:bg-red-600 transition z-[9999]"
+        className="lg:hidden fixed right-4 bottom-4 w-16 h-16 bg-red-500 text-white text-4xl font-bold rounded-full shadow-xl flex items-center justify-center hover:bg-red-600 transition z-[9999]"
       >
         📒
       </button>

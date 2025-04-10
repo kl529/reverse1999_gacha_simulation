@@ -1,4 +1,4 @@
-import { handleGacha } from "@/components/GachaGame"; // 실제 함수 경로로 변경
+import { handleGacha } from "@/components/gacha_simulator/GachaGame"; // 실제 함수 경로로 변경
 import { Character } from "@/data/characters";
 import { Banner } from "@/data/banners";
 describe("Gacha Logic Tests", () => {
