@@ -1,4 +1,4 @@
-export const percentRankTable: {
+export const PercentRankTable: {
     [pullCount: number]: {
       [shapeKey: string]: number; // 상위 % 표시
     };
