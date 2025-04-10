@@ -6,7 +6,7 @@ import UpdateModal from "@/components/modals/UpdateModal"; // 업데이트 모�
 import { BannerSixStarListModal } from "@/components/modals/BannerSixStarListModal"; // 6성 목록 모달
 import { charactersByRarity, Character } from "@/data/characters"; // 캐릭터 목록
 import { banners, Banner } from "@/data/banners"; // 배너 목록
-import { percentRankTable } from "@/data/PercentRankTable"; // 상위 확률표
+import { PercentRankTable } from "@/data/PercentRankTable"; // 상위 확률표
 import GachaResults from "@/components/gacha_simulator/GachaResults"; // 뽑기 결과 패널
 import { OffCanvas } from "@/components/gacha_simulator/OffCanvas"; // 모바일 사이드바
 import MainGachaStats from "@/components/gacha_simulator/MainGachaStats"; // 통계 패널
@@ -482,9 +482,9 @@ export default function GachaGame() {
   }
 
   function getShapeRankPercent(N: number, shape: string): number | null {
-    if (!percentRankTable[N]) return null;
-    if (percentRankTable[N][shape] == null) return null;
-    return percentRankTable[N][shape];
+    if (!PercentRankTable[N]) return null;
+    if (PercentRankTable[N][shape] == null) return null;
+    return PercentRankTable[N][shape];
   }
 
   // -------------------------
