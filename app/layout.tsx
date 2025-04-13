@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import SecurityWrapper from "@/components/etc/SecurityWrapper";
 import { DarkModeProvider } from "@/components/etc/DarkModeContext";
 import HamburgerMenu from "@/components/buttons/HamburgerMenu";
+import Script from "next/script";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -14,6 +15,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="apple-touch-icon" href="/pwa_icon.png" />
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-Z474CQX2JT"></Script>
+        <Script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-Z474CQX2JT');
+        </Script>
       </head>
       <body>
         <DarkModeProvider>

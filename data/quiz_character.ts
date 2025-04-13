@@ -7,7 +7,6 @@ export interface QuizCharacter {
     version: string;
   }
   
-  // 93개 캐릭터 – 간단히 3개만 예시
   export const QUIZ_CHARACTERS: QuizCharacter[] = [
       { id: 1, name: "드루비스", rarity: 6, inspiration: "plant", engName: "druvis-iii", version: "1.0"},
       { id: 2, name: "릴리아", rarity: 6, inspiration: "star", engName: "lilya", version: "1.0" },
