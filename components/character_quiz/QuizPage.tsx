@@ -517,71 +517,90 @@ export default function QuizPage() {
       {/* ========== 모달들 ========== */}
 
       {/* (1) 초기화 확인 모달 */}
-			<ConfirmModal isOpen={showResetModal} onClose={closeAllModals}>
+      <ConfirmModal 
+        isOpen={showResetModal} 
+        onClose={closeAllModals}
+        modalClassName="
+          bg-white dark:bg-gray-800
+          text-black dark:text-white
+          w-full max-w-md p-4
+          rounded-lg shadow-lg
+        "
+      >
         <button
-          className="absolute top-2 right-4 text-xl text-black"
+          className="absolute top-2 right-4 text-xl text-black dark:text-gray-200"
           onClick={closeAllModals}
         >
           ✕
         </button>
-        <h2 className="text-lg font-semibold mb-4 text-black">초기화</h2>
-        <p className="text-black">정말로 초기화하시겠습니까?</p>
-        <p className="text-black">초기화 시 모든 정답과, 현재 퀴즈 기록은 사라집니다.</p>
+        <h2 className="text-lg font-semibold mb-4">초기화</h2>
+        <p>정말로 초기화하시겠습니까?</p>
+        <p>초기화 시 모든 정답과, 현재 퀴즈 기록은 사라집니다.</p>
         <div className="flex gap-4 mt-4 justify-end">
-          <button
-            onClick={closeAllModals}
-            className="px-4 py-1 bg-gray-300 rounded"
-          >
+          <button onClick={closeAllModals} className="px-4 py-1 bg-gray-300 dark:bg-gray-600 rounded">
             취소
           </button>
-          <button
-            onClick={confirmResetAll}
-            className="px-4 py-1 bg-red-500 text-white rounded"
-          >
+          <button onClick={confirmResetAll} className="px-4 py-1 bg-red-500 text-white rounded">
             확인
           </button>
         </div>
       </ConfirmModal>
 
       {/* (2) 도움말 모달 */}
-      <ConfirmModal isOpen={showHelpModal} onClose={closeAllModals} modalClassName="w-full sm:max-w-3xl sm:min-w-[600px] min-h-[500px] px-4">
+      <ConfirmModal
+        isOpen={showHelpModal}
+        onClose={closeAllModals}
+        modalClassName="
+          w-full sm:max-w-3xl sm:min-w-[600px] min-h-[500px] px-4
+          bg-white dark:bg-gray-800
+          text-black dark:text-white
+          rounded-lg shadow-lg
+        "
+      >
         <button
-          className="absolute top-2 right-4 text-xl text-black"
+          className="absolute top-2 right-4 text-xl text-black dark:text-gray-200"
           onClick={closeAllModals}
         >
           ✕
         </button>
-        <h2 className="text-lg font-semibold mb-4 text-black">플레이 가이드</h2>
-				<p className="font-bold text-black">기본 규칙</p>
-        <p className="text-black">- 현재 리버스 1999에 있는 캐릭터들의 이름을 아무 정보 없이 맞추는 퀴즈입니다.</p>
-        <p className="text-black">- 2.4버젼 기준 2성부터 6성까지 모두 존재합니다. 총 94명 </p>
-				<p className="text-black">- 이름은 모두 인게임 닉네임 기준이고, 띄워쓰기는 신경 안쓰셔도 됩니다. </p>
-        <p className="text-black">- 최대한 빠른 시간내에, 모든 캐릭터들의 이름을 맞춰보세요.</p>
-				<p className="text-black">- 캐릭터 이름을 입력해서 맞춘다면, 맞춘 캐릭터가 열립니다.</p>
-				<p className="text-black">- 캐릭터 이름을 입력해서 틀리다면, 아무 일도 일어나지 않습니다.</p>
-        <p className="text-black">- 첫번째 정답부터, 마지막 정답을 입력할때까지 시간이 기록됩니다.</p>
-				<p className="font-bold mt-3 text-black">버튼 설명</p>
-				<p className="text-black">- 셔플 버튼을 누르면 캐릭터들의 순서가 랜덤으로 섞입니다.</p>
-				<p className="text-black">- 포기 버튼을 누르면 즉시 포기되며, 소요시간과 결과가 공개됩니다.</p>
-				<p className="text-black">- 초기화 버튼을 누르면 모든 캐릭터가 닫히고, 현재 퀴즈 기록은 사라집니다.</p>
-				<p className="text-black">- 필터 버튼을 누르면, 문제 풀이에 유용한 힌트를 얻을 수 있습니다.</p>
-				<p className="text-black">- 하드모드 버튼을 누르면 하드모드로 전환됩니다.</p>
-				<p className="font-bold mt-3 text-black">추신</p>
-				<p className="font-bold text-black">- 리버스 고수라면, 하드 모드 추천드립니다. </p>
-				<p className="text-black">- 모바일 유저라면, 데스크탑 모드로 해주세요!! + 주로 데스크탑에서 해주세요</p>
-				<p className="text-black">- 앞으로도 다양한 컨텐츠 추가가 많이 될 예정입니다. 아이디어는 언제나 환영입니다.</p>
+        <h2 className="text-lg font-semibold mb-4">플레이 가이드</h2>
+				<p className="font-bold">기본 규칙</p>
+        <p>- 현재 리버스 1999에 있는 캐릭터들의 이름을 아무 정보 없이 맞추는 퀴즈입니다.</p>
+        <p>- 2.4버젼 기준 2성부터 6성까지 모두 존재합니다. 총 94명 </p>
+				<p>- 이름은 모두 인게임 닉네임 기준이고, 띄워쓰기는 신경 안쓰셔도 됩니다. </p>
+        <p>- 최대한 빠른 시간내에, 모든 캐릭터들의 이름을 맞춰보세요.</p>
+				<p>- 캐릭터 이름을 입력해서 맞춘다면, 맞춘 캐릭터가 열립니다.</p>
+				<p>- 캐릭터 이름을 입력해서 틀리다면, 아무 일도 일어나지 않습니다.</p>
+        <p>- 첫번째 정답부터, 마지막 정답을 입력할때까지 시간이 기록됩니다.</p>
+				<p className="font-bold mt-3">버튼 설명</p>
+				<p>- 셔플 버튼을 누르면 캐릭터들의 순서가 랜덤으로 섞입니다.</p>
+				<p>- 포기 버튼을 누르면 즉시 포기되며, 소요시간과 결과가 공개됩니다.</p>
+				<p>- 초기화 버튼을 누르면 모든 캐릭터가 닫히고, 현재 퀴즈 기록은 사라집니다.</p>
+				<p>- 필터 버튼을 누르면, 문제 풀이에 유용한 힌트를 얻을 수 있습니다.</p>
+				<p>- 하드모드 버튼을 누르면 하드모드로 전환됩니다.</p>
+				<p className="font-bold mt-3">추신</p>
+				<p className="font-bold">- 리버스 고수라면, 하드 모드 추천드립니다. </p>
+				<p>- 모바일 유저라면, 데스크탑 모드로 해주세요!! + 주로 데스크탑에서 해주세요</p>
+				<p>- 앞으로도 다양한 컨텐츠 추가가 많이 될 예정입니다. 아이디어는 언제나 환영입니다.</p>
       </ConfirmModal>
 
       {/* (3) 최종 결과 모달 */}
       <ConfirmModal 
         isOpen={showFinalModal} 
         onClose={closeAllModals}
-        modalClassName={`animate__animated ${
-          isGiveUp ? "animate__shakeX bg-red-100" : "animate__bounceIn bg-green-100"
-        } rounded-lg shadow-lg px-6 py-4 max-w-md w-full text-center`}
+        modalClassName={`
+          animate__animated
+          rounded-lg shadow-lg px-6 py-4 max-w-md w-full text-center
+          text-black dark:text-white
+          ${
+            isGiveUp
+              ? "animate__shakeX bg-red-100 dark:bg-gray-900"
+              : "animate__bounceIn bg-green-100 dark:bg-gray-900"
+          }
+        `}
       >
         <button
-          className="absolute top-2 right-4 text-xl text-gray-700 hover:text-black"
+          className="absolute top-2 right-4 text-xl text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white"
           onClick={closeAllModals}
         >
           ✕
@@ -589,23 +608,35 @@ export default function QuizPage() {
 
         {isGiveUp ? (
           <>
-            <Image src="/quiz/results/fail.png" alt="fail" width={80} height={80} className="w-20 h-20 mx-auto mb-2" />
-            <h2 className="text-2xl font-bold text-red-600 mb-2">포기하셨습니다</h2>
-            <p className="text-gray-700 font-semibold">그래도 잘 하셨어요!</p>
-            <p className="text-gray-700 font-semibold">조금만 더 노력하면 훌륭한 타임키퍼가 될거에요</p>
+            <Image
+              src="/quiz/results/fail.png"
+              alt="fail"
+              width={80}
+              height={80}
+              className="w-20 h-20 mx-auto mb-2"
+            />
+            <h2 className="text-2xl font-bold text-red-600 dark:text-red-300 mb-2">포기하셨습니다</h2>
+            <p className="font-semibold">그래도 잘 하셨어요!</p>
+            <p className="font-semibold">조금만 더 노력하면 훌륭한 타임키퍼가 될거에요</p>
           </>
         ) : (
           <>
-            <Image src="/quiz/results/success.png" alt="success" width={80} height={80} className="w-20 h-20 mx-auto mb-2" />
-            <h2 className="text-2xl font-bold text-green-600 mb-2">🎉 축하합니다!</h2>
-            <p className="text-gray-700 font-semibold">모든 캐릭터를 맞추셨습니다!</p>
-            <p className="text-gray-700 font-semibold">당신은 훌륭한 타임키퍼군요</p>
+            <Image
+              src="/quiz/results/success.png"
+              alt="success"
+              width={80}
+              height={80}
+              className="w-20 h-20 mx-auto mb-2"
+            />
+            <h2 className="text-2xl font-bold text-green-600 dark:text-green-300 mb-2">🎉 축하합니다!</h2>
+            <p className="font-semibold">모든 캐릭터를 맞추셨습니다!</p>
+            <p className="font-semibold">당신은 훌륭한 타임키퍼군요</p>
           </>
         )}
 
-        <div className="mt-4 text-black space-y-2">
+        <div className="mt-4 space-y-2">
 
-          <p className="text-black font-bold">🗓 {formattedDate}</p>
+          <p className="font-bold">🗓 {formattedDate}</p>
           <div className="flex items-center gap-2 justify-center">
             <p className="font-bold">점수 : {giveUpMatched} / {totalCount}</p>
             <div className={`inline-block px-3 py-1 rounded-full font-semibold text-sm ${difficultyStyle}`}>
@@ -625,45 +656,43 @@ export default function QuizPage() {
 			
 
       {showHardModeModal && (
-        <ConfirmModal isOpen={showHardModeModal} 
-          onClose={() => setShowHardModeModal(false)} 
-          modalClassName="w-full max-w-lg sm:min-w-[500px] min-w-[90vw] sm:min-h-[200px] p-4"
+        <ConfirmModal
+        isOpen={showHardModeModal}
+        onClose={() => setShowHardModeModal(false)}
+        modalClassName="
+          w-full max-w-lg sm:min-w-[500px] min-w-[90vw] sm:min-h-[200px] p-4
+          bg-white dark:bg-gray-800
+          text-black dark:text-white
+          rounded-lg shadow-lg
+        "
+      >
+        <h2 className="text-xl font-bold text-red-600 mb-2">🔥 하드 모드 설명 🔥</h2>
+        <p className="mb-2">- 띄어쓰기와 영어 대소문자를 정확히 입력해야 정답으로 인정됩니다.</p>
+        <p className="mb-2">- 하드모드를 활성화하면, 새로 게임을 시작합니다.</p>
+        <p className="mb-2">- 셔플이 자동으로 적용되며, 필터와 포기 기능은 사용할 수 없습니다.</p>
+        <p>- 초기화나 새로고침하기 전에 하드모드는 종료가 불가능합니다.</p>
+        <div className="flex justify-end gap-3 mt-4">
+          <button
+            onClick={() => setShowHardModeModal(false)}
+            className="bg-gray-300 dark:bg-gray-600 px-4 py-1 rounded"
         >
-          <h2 className="text-xl font-bold text-red-600 mb-2">🔥 하드 모드 설명 🔥</h2>
-          <p className="mb-2 text-black dark:text-white">
-            - 띄어쓰기와 영어 대소문자를 정확히 입력해야 정답으로 인정됩니다.
-          </p>
-          <p className="mb-2 text-black dark:text-white">
-            - 하드모드를 활성화하면, 새로 게임을 시작합니다.
-          </p>
-          <p className="mb-2 text-black dark:text-white">
-            - 셔플이 자동으로 적용되며, 필터와 포기 기능은 사용할 수 없습니다.
-          </p>
-          <p className="text-black dark:text-white">
-            - 초기화나 새로고침하기 전에 하드모드는 종료가 불가능합니다.
-          </p>
-          <div className="flex justify-end gap-3 mt-4">
-            <button
-              onClick={() => setShowHardModeModal(false)}
-              className="bg-gray-300 px-4 py-1 rounded"
-            >
-              취소
-            </button>
-            <button
-              onClick={() => {
-                setShowHardModeModal(false);
-                setIsHardMode(true);
-                handleShuffle();
-                handleFilterReset();
-                setShowFilters(false);
-                setShowHint(false);
-              }}
-              className="bg-red-600 text-white px-4 py-1 rounded"
-            >
-              게임 시작
-            </button>
-          </div>
-        </ConfirmModal>
+            취소
+          </button>
+          <button
+            onClick={() => {
+              setShowHardModeModal(false);
+              setIsHardMode(true);
+              handleShuffle();
+              handleFilterReset();
+              setShowFilters(false);
+              setShowHint(false);
+            }}
+            className="bg-red-600 text-white px-4 py-1 rounded"
+          >
+            게임 시작
+          </button>
+        </div>
+      </ConfirmModal>
       )}
     </div>
   );

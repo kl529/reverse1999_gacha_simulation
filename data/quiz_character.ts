@@ -88,7 +88,7 @@ export interface QuizCharacter {
       { id: 77, name: "메스머 주니어", rarity: 4, inspiration: "intellect", engName: "mesmer-jr" , version: "1.0" },
       { id: 78, name: "에릭", rarity: 4, inspiration: "star", engName: "erick" , version: "1.0" },
       { id: 79, name: "폴터가이스트", rarity: 4, inspiration: "spirit", engName: "poltergeist" , version: "2.0" },
-      { id: 80, name: "화이트 럼", rarity: 4, inspiration: "star", engName: "white-rum" , version: "2.2" },
+      { id: 80, name: "화이트 럼", rarity: 4, inspiration: "intellect", engName: "white-rum" , version: "2.2" },
       { id: 81, name: "TTT", rarity: 4, inspiration: "star", engName: "ttt" , version: "1.0" },
       { id: 82, name: "광대", rarity: 3, inspiration: "star", engName: "the-fool" , version: "1.0" },
       { id: 83, name: "라 수르스", rarity: 3, inspiration: "plant", engName: "la-source" , version: "1.0" },
