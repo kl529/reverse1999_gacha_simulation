@@ -101,6 +101,6 @@ export interface QuizCharacter {
       { id: 90, name: "어니언", rarity: 3, inspiration: "mineral", engName: "onion" , version: "1.0" },
       { id: 91, name: "스푸트니크", rarity: 3, inspiration: "star", engName: "sputnik" , version: "1.0" },
       { id: 92, name: "파이오니어", rarity: 3, inspiration: "spirit", engName: "pioneer" , version: "1.0" },
-      { id: 93, name: "미스 라디오", rarity: 2, inspiration: "intellect", engName: "ms-radio" , version: "1.0" },
-      { id: 94, name: "문", rarity: 2, inspiration: "spirit", engName: "door" , version: "1.0" }
+      { id: 93, name: "미스 라디오", rarity: 2, inspiration: "spirit", engName: "ms-radio" , version: "1.0" },
+      { id: 94, name: "문", rarity: 2, inspiration: "intellect", engName: "door" , version: "1.0" }
   ];
