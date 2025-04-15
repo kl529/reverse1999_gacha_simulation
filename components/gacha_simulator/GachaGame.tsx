@@ -2,7 +2,6 @@
 
 import { useState, useMemo, useEffect, useRef } from "react";
 import Image from "next/image";
-import UpdateModal from "@/components/modals/UpdateModal"; // 업데이트 모달
 import { BannerSixStarListModal } from "@/components/modals/BannerSixStarListModal"; // 6성 목록 모달
 import { charactersByRarity, Character } from "@/data/characters"; // 캐릭터 목록
 import { banners, Banner } from "@/data/banners"; // 배너 목록
@@ -26,7 +25,6 @@ export default function GachaGame() {
   const [pickupGuarantee, setPickupGuarantee] = useState<boolean>(false);
   const [sixStarHistory, setSixStarHistory] = useState<SixStarHistoryEntry[]>([]);
   const nickname = "Lyva";
-  const [isPopupOpen, setPopupOpen] = useState(false);
   const [isLeftOpen, setIsLeftOpen] = useState(false); // 모바일에서 왼쪽 사이드바 펼침 여부
   const [isRightOpen, setIsRightOpen] = useState(false); // 모바일에서 오른쪽 사이드바 펼침 여부
   const [isFirstPull, setIsFirstPull] = useState(true); // 첫 뽑기인지 확인하는 상태
@@ -524,7 +522,6 @@ export default function GachaGame() {
           displayedBanners={displayedBanners}
           handleBannerChange={handleBannerChange}
           nickname={nickname}
-          setPopupOpen={setPopupOpen}
           set6StarListOpen={set6StarListOpen}
         />
       </OffCanvas>
@@ -558,7 +555,6 @@ export default function GachaGame() {
             displayedBanners={displayedBanners}
             handleBannerChange={handleBannerChange}
             nickname={nickname}
-            setPopupOpen={setPopupOpen}
             set6StarListOpen={set6StarListOpen}
           />
       </aside>
@@ -647,43 +643,12 @@ export default function GachaGame() {
         📒
       </button>
 
-      {/* 업데이트 팝업 */}
-      <UpdateModal isOpen={isPopupOpen} onClose={() => setPopupOpen(false)} />
       {is6StarListOpen && (
         <BannerSixStarListModal
           isOpen={is6StarListOpen}
           onClose={() => set6StarListOpen(false)}
           banner={selectedBanner}
         />
-      )}
-
-      {/* 4) 확률표 모달 */}
-      {isProbabilityOpen && (
-        <div
-          className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 bg-black bg-opacity-50"
-          onClick={() => setProbabilityOpen(false)} // 바깥 영역 클릭 시 닫힘
-        >
-          <div
-            onClick={(e) => e.stopPropagation()} // 모달 내부 클릭 시 닫힘 방지
-            className="relative bg-white dark:bg-gray-800 p-4 rounded shadow-lg max-w-sm"
-          >
-            <button
-              onClick={() => setProbabilityOpen(false)}
-              className="absolute top-2 right-2 text-2xl font-bold text-gray-700 dark:text-gray-200"
-            >
-              ✕
-            </button>
-            <div className="flex flex-col items-center">
-              <Image
-                src="/infos/etc/prob_table.png"
-                alt="확률표"
-                width={300}
-                height={300}
-                className="object-contain"
-              />
-            </div>
-          </div>
-        </div>
       )}
     </div>
   );

@@ -17,7 +17,6 @@ interface GachaStatsProps {
   displayedBanners: Banner[];
   handleBannerChange: (bannerId: string) => void;
   nickname: string;
-  setPopupOpen: (open: boolean) => void;
   set6StarListOpen: (open: boolean) => void;
 }
 
@@ -35,7 +34,6 @@ export default function MainGachaStats({
   displayedBanners,
   handleBannerChange,
   nickname,
-  setPopupOpen,
   set6StarListOpen,
 }: GachaStatsProps) {
 
@@ -102,34 +100,12 @@ export default function MainGachaStats({
         </button>
       </div>
 
-      {/* (3) 닉네임 + 업데이트 내역 */}
+      {/*
       <div className="p-4 bg-white dark:bg-gray-700 shadow rounded-lg border border-gray-500 dark:border-gray-500 text-center">
         <h2 className="text-base font-semibold text-gray-700 dark:text-gray-300 pb-2">
           🖥️ 개발자 : <span className="text-blue-500 font-bold">{nickname}</span>
         </h2>
-        <button onClick={() => setPopupOpen(true)} className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition">
-          업데이트 내역
-        </button>
-          {/* 버튼 3개 추가 */}
         <div className="mt-3 flex justify-center gap-3">
-          {/* (1) GitHub 이동 버튼 */}
-          <a 
-            href="https://github.com/kl529/reverse1999_gacha_simulation" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="w-8 h-8 flex items-center justify-center transition-transform transform hover:scale-110"
-          >
-            <Image
-              src="/infos/button/github.png"
-              alt="GitHub"
-              width={40}
-              height={40}
-              className="rounded-full"
-            />
-          </a>
-
-          {/* (2) 계산기 버튼 */}
-
           <button
             onClick={() => setCalcOpen(true)}
             className="bg-yellow-500 text-white px-4 text-sm rounded-lg flex items-center justify-center hover:bg-yellow-600 transition"
@@ -137,16 +113,9 @@ export default function MainGachaStats({
             형상 계산기
           </button>
           <CalculatorModal isOpen={isCalcOpen} onClose={() => setCalcOpen(false)} />
-
-          {/* (3) 이메일 문의 버튼 */}
-          <a 
-            href="mailto:kl529@naver.com" 
-            className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition text-sm"
-          >
-            문의
-          </a>
         </div>
       </div>
+       */}
     </div>
   );
 }
