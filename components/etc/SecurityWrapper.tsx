@@ -32,7 +32,8 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
     if (typeof window !== "undefined" 
         && pathname !== "/" 
         && pathname !== "/character_quiz"
-        && pathname !== "/gacha_simulator") {
+        && pathname !== "/gacha_simulator"
+        && pathname !== "/test") {
       alert("잘못된 접근입니다. 홈으로 이동합니다.");
       router.push("/");
     }

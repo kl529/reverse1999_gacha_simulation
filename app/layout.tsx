@@ -10,6 +10,7 @@ import HamburgerConditional from "@/components/etc/HamburgerConditional";
 import Script from "next/script";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import CardInfoModal from "@/components/modals/CardInfoModal";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   // const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +22,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   //   return () => clearTimeout(timeout);
   // }, [pathname]);
 
-  const [hasMounted, setHasMounted] = useState(false); // ✅ 중요
+  const [hasMounted, setHasMounted] = useState(false);
+  const [activeModal, setActiveModal] = useState<"material" | "psychube" | null>(null);
+  const closeModal = () => setActiveModal(null);
 
   useEffect(() => {
     setHasMounted(true);
@@ -52,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <DarkModeProvider>
           <SecurityWrapper>
-            <HamburgerConditional />
+          <HamburgerConditional onModalOpen={(type) => setActiveModal(type as any)} />
             <CustomCursor />
             <SpeedInsights />
             <Analytics />
@@ -60,6 +63,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {/* {isLoading ? <Loading /> : children} */}
             {children}
           </SecurityWrapper>
+
+          {/* 모달 렌더링 예시 */}
+          {activeModal === "material" && (
+            <CardInfoModal
+              isOpen={true}
+              onClose={closeModal}
+              title="재료 파밍표"
+              image="/infos/modal_img/material_sheet.png"
+              source="https://bbs.nga.cn/read.php?tid=41840172&rand=968"
+            />
+          )}
+
+          {activeModal === "psychube" && (
+            <CardInfoModal
+              isOpen={true}
+              onClose={closeModal}
+              title="의지 추천"
+              image="/infos/modal_img/psychube_sheet.webp"
+              description="화질이 구려서 죄송합니다. 추후 바로 검색가능 하도록 사이트 개발중입니다."
+              source="https://arca.live/b/arcalivebreverse/130426173"
+            />
+          )}
         </DarkModeProvider>
       </body>
     </html>
