@@ -357,47 +357,44 @@ export default function QuizPage() {
         </div>  
       </div>
 
-      <div className="flex gap-2 mb-4 items-center">
+      <div className="flex gap-2 mb-4 items-center flex-wrap sm:flex-nowrap">
         <button
           onClick={handleShuffle}
           disabled={isHardMode}
-          className="bg-purple-500 text-white px-4 py-1 rounded hover:bg-purple-600 transition"
+          className="min-w-[64px] whitespace-nowrap bg-purple-500 text-white px-4 py-1 rounded hover:bg-purple-600 transition"
         >
           셔플
         </button>
         <button
           onClick={handleGiveUp}
           disabled={isHardMode}
-          className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition"
+          className="min-w-[64px] whitespace-nowrap bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition"
         >
           포기
         </button>
         <button
           onClick={handleResetAllModal}
-          className="bg-gray-400 text-white px-4 py-1 rounded hover:bg-gray-500 transition"
+          className="min-w-[64px] whitespace-nowrap bg-gray-400 text-white px-4 py-1 rounded hover:bg-gray-500 transition"
         >
-          초기화
+          리셋
         </button>
-
         <button
           disabled={isHardMode}
-          className={"px-3 py-1 rounded bg-yellow-500 hover:bg-yellow-600 text-white"}
           onClick={() => setShowFilters(prev => !prev)}
+          className="min-w-[64px] whitespace-nowrap px-3 py-1 rounded bg-yellow-500 hover:bg-yellow-600 text-white"
         >
           필터
         </button>
-
-        {/* 도움말 버튼 */}
         <button
           onClick={() => setShowHelpModal(true)}
-          className="bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600 transition"
+          className="min-w-[64px] whitespace-nowrap bg-green-500 text-white px-4 py-1 rounded hover:bg-green-600 transition"
         >
           도움말
         </button>
         <button
           onClick={() => setShowHardModeModal(true)}
           disabled={isHardMode}
-          className={`px-3 py-1 rounded ${isHardMode ? "bg-red-600 text-white" : "bg-blue-500 text-white"}`}
+          className={`min-w-[80px] whitespace-nowrap px-3 py-1 rounded ${isHardMode ? "bg-red-600 text-white" : "bg-blue-500 text-white"}`}
         >
           {isHardMode ? "하드모드 🔥" : "하드모드"}
         </button>
