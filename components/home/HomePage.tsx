@@ -130,7 +130,7 @@ export default function HomePage() {
                 //   label: "파티 조합\n가이드",
                 //   href: "",
                 // },
-                { icon: "/infos/menu/psychube_calculator_menu.png", 
+                { icon: "/infos/menu/psycube_menu.png", 
                   label: "의지 추천", 
                   href: "#",
                   image: "/infos/modal_img/psychube_sheet.webp",
