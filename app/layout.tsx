@@ -9,21 +9,13 @@ import { DarkModeProvider } from "@/components/etc/DarkModeContext";
 import HamburgerConditional from "@/components/etc/HamburgerConditional";
 import Script from "next/script";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 import CardInfoModal from "@/components/modals/CardInfoModal";
 
+type ModalType = "material" | "psychube" | null;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // const [isLoading, setIsLoading] = useState(true);
-  // const pathname = usePathname();
-
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   const timeout = setTimeout(() => setIsLoading(false), 400); // 최소 로딩 시간
-  //   return () => clearTimeout(timeout);
-  // }, [pathname]);
-
   const [hasMounted, setHasMounted] = useState(false);
-  const [activeModal, setActiveModal] = useState<"material" | "psychube" | null>(null);
+  const [activeModal, setActiveModal] = useState<ModalType>(null);
   const closeModal = () => setActiveModal(null);
 
   useEffect(() => {
@@ -55,12 +47,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <DarkModeProvider>
           <SecurityWrapper>
-          <HamburgerConditional onModalOpen={(type) => setActiveModal(type as any)} />
+          <HamburgerConditional onModalOpen={(type) => setActiveModal(type as ModalType)} />
             <CustomCursor />
             <SpeedInsights />
             <Analytics />
-            {/* 로딩화면 나중에 괜찮은거 나오면 적용 */}
-            {/* {isLoading ? <Loading /> : children} */}
             {children}
           </SecurityWrapper>
 

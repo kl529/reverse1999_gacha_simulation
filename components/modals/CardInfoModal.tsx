@@ -63,7 +63,7 @@ export default function CardInfoModal({
 
         {/* 이미지 */}
         <div className="w-full overflow-auto mb-6 flex justify-center">
-          <img
+          <Image
             ref={imgRef}
             src={image}
             alt={title}
@@ -73,6 +73,8 @@ export default function CardInfoModal({
               maxWidth: "100%",         // 부모에 꽉
               maxHeight: "none"         // 세로 제한 제거
             }}
+            width={400}
+            height={500}
           />
         </div>
 

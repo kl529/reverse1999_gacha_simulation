@@ -30,7 +30,6 @@ export default function GachaGame() {
   const [isFirstPull, setIsFirstPull] = useState(true); // 첫 뽑기인지 확인하는 상태
   const [is6StarListOpen, set6StarListOpen] = useState(false); // 6성 목록 팝업 상태
   const [showDoublePick, setShowDoublePick] = useState(false);
-  const [isProbabilityOpen, setProbabilityOpen] = useState(false);
   const [pickupShape, setPickupShape] = useState<string | null>(null); // 이번에 뽑은 픽업캐릭 형상
   const [pickupRank, setPickupRank] = useState<number | null>(null); // 픽업 상위 몇 %인지
   const historyRef = useRef<HTMLDivElement>(null);

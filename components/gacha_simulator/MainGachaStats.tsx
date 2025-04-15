@@ -1,7 +1,5 @@
 import Image from "next/image";
 import { Banner } from "@/data/banners";
-import { useState } from "react";
-import CalculatorModal from "@/components/modals/CalculatorModal";
 
 interface GachaStatsProps {
   rarityStats: { [key: number]: number };
@@ -36,8 +34,6 @@ export default function MainGachaStats({
   nickname,
   set6StarListOpen,
 }: GachaStatsProps) {
-
-  const [isCalcOpen, setCalcOpen] = useState(false);
 
   return (
     <div
@@ -100,22 +96,12 @@ export default function MainGachaStats({
         </button>
       </div>
 
-      {/*
+      
       <div className="p-4 bg-white dark:bg-gray-700 shadow rounded-lg border border-gray-500 dark:border-gray-500 text-center">
         <h2 className="text-base font-semibold text-gray-700 dark:text-gray-300 pb-2">
           🖥️ 개발자 : <span className="text-blue-500 font-bold">{nickname}</span>
         </h2>
-        <div className="mt-3 flex justify-center gap-3">
-          <button
-            onClick={() => setCalcOpen(true)}
-            className="bg-yellow-500 text-white px-4 text-sm rounded-lg flex items-center justify-center hover:bg-yellow-600 transition"
-          >
-            형상 계산기
-          </button>
-          <CalculatorModal isOpen={isCalcOpen} onClose={() => setCalcOpen(false)} />
-        </div>
       </div>
-       */}
     </div>
   );
 }
