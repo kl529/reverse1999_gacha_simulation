@@ -79,7 +79,7 @@ export default function HomePage() {
       {/* 실제 콘텐츠 */}
       <div className="relative z-20 flex flex-col min-h-screen">
         <main className="flex-grow flex flex-col items-center justify-center">
-          <h2 className="text-4xl font-bold mb-4 dark:text-white text-black">버틴의 여행가방 🧳</h2>
+          <h2 className="text-4xl font-bold mb-4 dark:text-white text-black mt-20 lg:mt-0">버틴의 여행가방 🧳</h2>
           <p className="mb-8 dark:text-white text-black">당신이 폭풍우를 이겨낼 수 있도록..</p>
 
           {/* 카드 컨테이너 */}
@@ -91,7 +91,7 @@ export default function HomePage() {
               gap-10
               max-w-7xl
               w-full
-              px-20 lg:px-6 // 여긴 전체 컨테이너 padding
+              px-10 md:px-20 lg:px-6 // 여긴 전체 컨테이너 padding
             "
           >
             <CardBox
@@ -156,19 +156,18 @@ export default function HomePage() {
 
         {/* 하단 푸터 */}
         <footer className="bg-black/30 p-2 text-sm flex flex-col items-center mt-5 gap-2">
-          {/* 1. 이메일 & 개인정보처리방침 - 가로 정렬 */}
           <div className="flex gap-4 text-gray-200 items-center min-h-[2rem]">
             <a
               href="mailto:jiwon803@gmail.com"
               className="inline-flex items-center hover:underline hover:text-blue-400"
             >
-              문의하기
+              문의
             </a>
             <button
               onClick={() => setShowPolicy(true)}
               className="inline-flex items-center hover:underline hover:text-blue-400"
             >
-              개인정보 처리방침
+              Policy
             </button>
             <Link
               href="https://buymeacoffee.com/vertin_suitcase"
@@ -176,10 +175,10 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center hover:underline hover:text-blue-400"
             >
-              개발자에게 커피 사주기 ☕️
+              커피 사주기 ☕️
             </Link>
             <button onClick={() => setUpdateModalOpen(true)} className="inline-flex items-center hover:underline hover:text-blue-400">
-              업데이트 내역
+              업데이트
             </button>
             <a
               href="https://github.com/kl529/reverse1999_gacha_simulation"

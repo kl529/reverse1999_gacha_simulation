@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
-export default {
+const config: Config = {
   darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -25,5 +26,35 @@ export default {
       },
     },
   },
-  plugins: [],
-} satisfies Config;
+  plugins: [
+    plugin(function ({ addVariant, theme }) {
+      const screens = theme("screens") as Record<string, string>;
+
+      // sm-only: 640px ~ 767px
+      addVariant(
+        "sm-only",
+        `@media (min-width: ${screens.sm}) and (max-width: ${
+          parseInt(screens.md.replace("px", "")) - 1
+        }px)`
+      );
+
+      // md-only: 768px ~ 1023px
+      addVariant(
+        "md-only",
+        `@media (min-width: ${screens.md}) and (max-width: ${
+          parseInt(screens.lg.replace("px", "")) - 1
+        }px)`
+      );
+
+      // lg-only: 1024px ~ 1279px
+      addVariant(
+        "lg-only",
+        `@media (min-width: ${screens.lg}) and (max-width: ${
+          parseInt(screens.xl.replace("px", "")) - 1
+        }px)`
+      );
+    }),
+  ],
+};
+
+export default config;
