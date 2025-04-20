@@ -79,7 +79,7 @@ export default function HomePage() {
       {/* 실제 콘텐츠 */}
       <div className="relative z-20 flex flex-col min-h-screen">
         <main className="flex-grow flex flex-col items-center justify-center">
-          <h2 className="text-4xl font-bold mb-4 dark:text-white text-black mt-20 lg:mt-0">버틴의 여행가방 🧳</h2>
+          <h2 className="text-4xl font-bold mb-4 dark:text-white text-black mt-20 lg:mt-0">버틴의 여행가방 🧳 (Beta)</h2>
           <p className="mb-8 dark:text-white text-black">당신이 폭풍우를 이겨낼 수 있도록..</p>
 
           {/* 카드 컨테이너 */}
@@ -117,26 +117,19 @@ export default function HomePage() {
                 },
                 {
                   icon: "/infos/menu/resonance_menu.png",
-                  label: "공명 정리",
-                  href: "https://sites.google.com/view/reverse1999resonance/%ED%99%88",
+                  label: "의지 & 공명",
+                  href: "/character_setting"
                 },
                 {
-                  icon: "/infos/menu/goal_menu.png",
-                  label: "육성 재화",
-                  href: "https://windbow27.github.io/kornblume/planner",
+                  icon: "/infos/menu/future_insight.png",
+                  label: "(준비중)", // 미래시
+                  href: "#",
                 },
                 // {
                 //   icon: "/infos/menu/goal_menu.png",
                 //   label: "파티 조합\n가이드",
                 //   href: "",
                 // },
-                { icon: "/infos/menu/psycube_menu.png", 
-                  label: "의지 추천", 
-                  href: "#",
-                  image: "/infos/modal_img/psychube_sheet.webp",
-                  description: "화질이 구려서 죄송합니다. 추후 바로 검색가능 하도록 사이트 개발중입니다.",
-                  source: "https://arca.live/b/arcalivebreverse/130426173"
-                }
               ]}
               onItemClick={handleItemClick}
             />
@@ -334,7 +327,6 @@ function LinkBox({
 }) {
   const isExternal = href.startsWith("http");
 
-  // ✅ 외부 링크가 있으면 우선 Link 사용
   if (isExternal) {
     return (
       <Link
@@ -355,7 +347,6 @@ function LinkBox({
     );
   }
 
-  // ✅ 내부 링크라면 Link
   if (!isExternal && href !== "#") {
     return (
       <Link

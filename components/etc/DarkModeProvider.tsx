@@ -7,28 +7,27 @@ export default function DarkModeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean | null>(null); // 초기 상태는 null
 
-  // 브라우저 설정 or localStorage에서 초기값 결정
+  // 1) 첫 로딩 시 localStorage 또는 시스템 설정에서 초기값 결정
   useEffect(() => {
     const saved = localStorage.getItem("darkMode");
     if (saved !== null) {
-      const isDark = saved === "true";
-      setDarkMode(isDark);
-      document.documentElement.classList.toggle("dark", isDark);
+      setDarkMode(saved === "true");
     } else {
-      // 시스템 설정 따르기
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       setDarkMode(prefersDark);
-      document.documentElement.classList.toggle("dark", prefersDark);
     }
   }, []);
 
-  // 변경 시 localStorage 저장 + class 적용
+  // 2) darkMode가 변경될 때만 class 및 localStorage 갱신
   useEffect(() => {
+    if (darkMode === null) return; // 초기 상태일 땐 무시
     localStorage.setItem("darkMode", darkMode.toString());
     document.documentElement.classList.toggle("dark", darkMode);
   }, [darkMode]);
+
+  if (darkMode === null) return null; // 초기 로딩 중에는 렌더링 지연
 
   return (
     <>

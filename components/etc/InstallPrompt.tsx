@@ -1,4 +1,3 @@
-// ✅ components/InstallPrompt.tsx
 import { useEffect, useState } from "react";
 
 interface BeforeInstallPromptEvent extends Event {

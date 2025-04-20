@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { QUIZ_CHARACTERS, QuizCharacter } from "@/data/quiz_character";
+import { QUIZ_CHARACTERS } from "@/data/quiz_character";
+import { Character } from "@/data/characters";
 import ConfirmModal from "@/components/modals/ConfirmModal";
 import { toast, Toaster } from "react-hot-toast";
 import { useDarkMode } from "@/components/etc/DarkModeContext";
@@ -19,7 +20,7 @@ const VERSIONS = [
 
 export default function QuizPage() {
   // (A) 캐릭터 목록 (셔플 가능)
-  const [characters, setCharacters] = useState<QuizCharacter[]>(QUIZ_CHARACTERS);
+  const [characters, setCharacters] = useState<Character[]>(QUIZ_CHARACTERS.filter((ch) => ch.is_future !== true));
 
   // (B) 열림 상태 (Set)
   const [openedSet, setOpenedSet] = useState<Set<number>>(new Set());
@@ -494,8 +495,8 @@ export default function QuizPage() {
                 <Image
                   src={
                     darkMode
-                      ? "/quiz/characters/question_img_dark.png"
-                      : "/quiz/characters/question_img.png"
+                      ? "/quiz/question/question_img_dark.png"
+                      : "/quiz/question/question_img.png"
                   }
                   alt="?"
                   width={40}

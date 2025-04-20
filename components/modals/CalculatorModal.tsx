@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PercentRankTable } from "@/data/PercentRankTable"; // 상위 확률표 사용
+import { percentRankTable } from "@/data/percent_rank_table"; // 상위 확률표 사용
 
 interface CalculatorModalProps {
   isOpen: boolean;
@@ -11,9 +11,9 @@ interface CalculatorModalProps {
 const shapes = ["명함", "1형", "2형", "3형", "4형", "5형"];
 
 function getShapeRankPercent(N: number, shape: string): number | null {
-  if (!PercentRankTable[N]) return null;
-  if (PercentRankTable[N][shape] == null) return null;
-  return PercentRankTable[N][shape];
+  if (!percentRankTable[N]) return null;
+  if (percentRankTable[N][shape] == null) return null;
+  return percentRankTable[N][shape];
 }
 
 export default function CalculatorModal({ isOpen, onClose }: CalculatorModalProps) {

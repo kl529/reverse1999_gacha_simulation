@@ -11,18 +11,20 @@ import Script from "next/script";
 import { useState, useEffect } from "react";
 import CardInfoModal from "@/components/modals/CardInfoModal";
 
-type ModalType = "material" | "psychube" | null;
+type ModalType = "material" | null;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [hasMounted, setHasMounted] = useState(false);
   const [activeModal, setActiveModal] = useState<ModalType>(null);
   const closeModal = () => setActiveModal(null);
 
+  const isProd = process.env.NODE_ENV === "production";
+
   useEffect(() => {
     setHasMounted(true);
   }, []);
 
-  if (!hasMounted) return null; // 🚫 hydration 전엔 아무것도 렌더링하지 않음
+  if (!hasMounted) return null;
 
   return (
     <html lang="ko">
@@ -30,31 +32,35 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="apple-touch-icon" href="/pwa_icon.png" />
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-Z474CQX2JT"
-          strategy="afterInteractive"
-        />
-        <Script id="ga-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-Z474CQX2JT');
-          `}
-        </Script>
+
+        {isProd && (
+          <>
+            <Script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-Z474CQX2JT"
+              strategy="afterInteractive"
+            />
+            <Script id="ga-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-Z474CQX2JT');
+              `}
+            </Script>
+          </>
+        )}
       </head>
       <body>
         <DarkModeProvider>
           <SecurityWrapper>
-          <HamburgerConditional onModalOpen={(type) => setActiveModal(type as ModalType)} />
+            <HamburgerConditional onModalOpen={(type) => setActiveModal(type as ModalType)} />
             <CustomCursor />
             <SpeedInsights />
             <Analytics />
             {children}
           </SecurityWrapper>
 
-          {/* 모달 렌더링 예시 */}
           {activeModal === "material" && (
             <CardInfoModal
               isOpen={true}
@@ -62,17 +68,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               title="재료 파밍표"
               image="/infos/modal_img/material_sheet.png"
               source="https://bbs.nga.cn/read.php?tid=41840172&rand=968"
-            />
-          )}
-
-          {activeModal === "psychube" && (
-            <CardInfoModal
-              isOpen={true}
-              onClose={closeModal}
-              title="의지 추천"
-              image="/infos/modal_img/psychube_sheet.webp"
-              description="화질이 구려서 죄송합니다. 추후 바로 검색가능 하도록 사이트 개발중입니다."
-              source="https://arca.live/b/arcalivebreverse/130426173"
             />
           )}
         </DarkModeProvider>

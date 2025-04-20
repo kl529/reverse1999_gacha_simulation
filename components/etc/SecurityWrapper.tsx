@@ -33,7 +33,7 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
         && pathname !== "/" 
         && pathname !== "/character_quiz"
         && pathname !== "/gacha_simulator"
-        && pathname !== "/test") {
+        && pathname !== "/character_setting") {
       alert("잘못된 접근입니다. 홈으로 이동합니다.");
       router.push("/");
     }

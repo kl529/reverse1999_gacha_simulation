@@ -24,10 +24,8 @@ export default function HamburgerMenu({
     { iconImg: "/infos/menu/gacha_simulator_menu.png", label: "가챠 시뮬레이터", href: "/gacha_simulator" },
     { iconImg: "/infos/menu/character_quiz_menu.png", label: "캐릭터 퀴즈", href: "/character_quiz" },
     { divider: true },
-    { iconImg: "/infos/menu/material_menu.png", label: "재료 파밍표", modalType: "material" },
-    { iconImg: "/infos/menu/resonance_menu.png", label: "공명 정리", href: "https://sites.google.com/view/reverse1999resonance/%ED%99%88" },
-    { iconImg: "/infos/menu/goal_menu.png", label: "육성 재화", href: "https://windbow27.github.io/kornblume/planner" },
-    { iconImg: "/infos/menu/psycube_menu.png", label: "의지 추천", modalType: "psychube" },
+    { iconImg: "/infos/menu/material_menu.png", label: "재료 파밍", modalType: "material" },
+    { iconImg: "/infos/menu/resonance_menu.png", label: "공명 & 의지", href: "/character_setting" },
   ];
 
   useEffect(() => {

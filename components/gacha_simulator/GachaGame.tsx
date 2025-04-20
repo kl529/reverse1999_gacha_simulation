@@ -5,7 +5,7 @@ import Image from "next/image";
 import { BannerSixStarListModal } from "@/components/modals/BannerSixStarListModal"; // 6성 목록 모달
 import { charactersByRarity, Character } from "@/data/characters"; // 캐릭터 목록
 import { banners, Banner } from "@/data/banners"; // 배너 목록
-import { PercentRankTable } from "@/data/PercentRankTable"; // 상위 확률표
+import { percentRankTable } from "@/data/percent_rank_table"; // 상위 확률표
 import GachaResults from "@/components/gacha_simulator/GachaResults"; // 뽑기 결과 패널
 import { OffCanvas } from "@/components/gacha_simulator/OffCanvas"; // 모바일 사이드바
 import MainGachaStats from "@/components/gacha_simulator/MainGachaStats"; // 통계 패널
@@ -16,7 +16,34 @@ interface SixStarHistoryEntry {
   pullNumber: number;
 }
 
+export interface EnrichedBanner extends Banner {
+  pickup6?: Character;
+  pickup5?: Character[];
+  twoPickup6?: Character[];
+}
+
+const findCharacterById = (id: number): Character => {
+  for (const rarity in charactersByRarity) {
+    const match = charactersByRarity[Number(rarity)].find((c) => c.id === id);
+    if (match) return match;
+  }
+  throw new Error(`캐릭터 ID ${id}를 찾을 수 없습니다.`);
+};
+
+const enrichBanner = (banner: Banner): EnrichedBanner => {
+  return {
+    ...banner,
+    pickup6: typeof banner.pickup6 === "number" ? findCharacterById(banner.pickup6) : banner.pickup6,
+    pickup5: banner.pickup5?.map((c) => (typeof c === "number" ? findCharacterById(c) : c)),
+    twoPickup6: banner.twoPickup6?.map((c) => (typeof c === "number" ? findCharacterById(c) : c)),
+  };
+};
+
 export default function GachaGame() {
+  const [selectedBanner, setSelectedBanner] = useState<EnrichedBanner>(
+    enrichBanner(banners.find((b) => b.bannerType !== "doublePick") || banners[0])
+  );
+
   // 1) React 상태
   const [results, setResults] = useState<Character[]>([]);
   const [totalPulls, setTotalPulls] = useState<number>(0);
@@ -33,9 +60,6 @@ export default function GachaGame() {
   const [pickupShape, setPickupShape] = useState<string | null>(null); // 이번에 뽑은 픽업캐릭 형상
   const [pickupRank, setPickupRank] = useState<number | null>(null); // 픽업 상위 몇 %인지
   const historyRef = useRef<HTMLDivElement>(null);
-  const [selectedBanner, setSelectedBanner] = useState<Banner>(
-    banners.find((b) => b.bannerType !== "doublePick") || banners[0]
-  );
 
   useEffect(() => {
     if (results.length < 1) return;
@@ -169,7 +193,7 @@ export default function GachaGame() {
         if (isPickup) {
           forcedSix = selectedBanner.pickup6!;
         } else {
-          forcedSix = getRandomFrom(charactersByRarity[6]);
+          forcedSix = getRandomFrom(charactersByRarity[6].filter(c => !c.exclude_gacha));
           localPickup = true;
         }
       }
@@ -204,7 +228,7 @@ export default function GachaGame() {
             if (isPickup) {
               picked = selectedBanner.pickup6!;
             } else {
-              picked = getRandomFrom(charactersByRarity[6]);
+              picked = getRandomFrom(charactersByRarity[6].filter(c => !c.exclude_gacha));
               localPickup = true;
             }
           }
@@ -219,16 +243,16 @@ export default function GachaGame() {
             const isPickup = Math.random() < 0.5;
             c = isPickup
               ? getRandomFrom(selectedBanner.pickup5)
-              : getRandomFrom(charactersByRarity[5]);
+              : getRandomFrom(charactersByRarity[5].filter(c => !c.exclude_gacha));
           } else {
             // 픽업 5성이 없으면 일반 5성에서만 가져옴
-            c = getRandomFrom(charactersByRarity[5]);
+            c = getRandomFrom(charactersByRarity[5].filter(c => !c.exclude_gacha));
           }
           return [c, localPity + 1, localPickup];
         }
 
         // 4성 이하
-        const c = getRandomFrom(charactersByRarity[rarity]);
+        const c = getRandomFrom(charactersByRarity[rarity].filter(c => !c.exclude_gacha));
         return [c, localPity + 1, localPickup];
       }
     }
@@ -258,7 +282,7 @@ export default function GachaGame() {
         // 예: 첫 뽑기는 5성 확정 (픽업 5성 or 일반 5성)
         char = getRandomFrom([
           ...(selectedBanner.pickup5 ?? []),
-          ...charactersByRarity[5],
+          ...charactersByRarity[5].filter(c => !c.exclude_gacha),
         ]);
         // 6성 아니므로 pity 1 증가
         localPity += 1;
@@ -329,11 +353,10 @@ export default function GachaGame() {
   
     const newBanner = banners.find((b) => b.id === bannerId) || banners[0];
   
-    // ✅ pickup5가 없으면 빈 배열로 기본값 설정
-    setSelectedBanner({
+    setSelectedBanner(enrichBanner({
       ...newBanner,
       pickup5: newBanner.pickup5 ?? [],
-    });
+    }));
   };
 
   function doSinglePullDoublePick(
@@ -387,12 +410,12 @@ export default function GachaGame() {
         // 5성 (균등 분배)
         if (rarity === 5) {
           // 원하는 5성 로직 (여기선 모든 5성 균등)
-          const c = getRandomFrom(charactersByRarity[5]);
+          const c = getRandomFrom(charactersByRarity[5].filter(c => !c.exclude_gacha));
           return [c, localPity + 1, localPickup];
         }
   
         // 4성 이하
-        const c = getRandomFrom(charactersByRarity[rarity]);
+        const c = getRandomFrom(charactersByRarity[rarity].filter(c => !c.exclude_gacha));
         return [c, localPity + 1, localPickup];
       }
     }
@@ -404,7 +427,7 @@ export default function GachaGame() {
   function getDoublePickSix(localPickup: boolean, pullIndex: number): Character {
     if (!selectedBanner.twoPickup6) {
       // fallback (데이터 없으면 그냥 전체 6성 중 랜덤)
-      const fallback = getRandomFrom(charactersByRarity[6]);
+      const fallback = getRandomFrom(charactersByRarity[6].filter(c => !c.exclude_gacha));
       recordSixStar(fallback, pullIndex);
       return fallback;
     }
@@ -412,7 +435,7 @@ export default function GachaGame() {
     const [pickupA, pickupB] = selectedBanner.twoPickup6;
     // 나머지 6성
     const other6stars = charactersByRarity[6].filter(
-      (c) => c.engName !== pickupA.engName && c.engName !== pickupB.engName
+      (c) => c.engName !== pickupA.engName && c.engName !== pickupB.engName && !c.exclude_gacha
     );
   
     // localPickup=true => 무조건 2명 중 1명
@@ -466,7 +489,7 @@ export default function GachaGame() {
         : banners.filter((b) => b.bannerType !== "doublePick");
   
       // ✅ 선택된 배너 변경
-      setSelectedBanner(newBanners.length > 0 ? newBanners[0] : banners[0]);
+      setSelectedBanner(enrichBanner(newBanners.length > 0 ? newBanners[0] : banners[0]));
   
       resetAll(); // ✅ 상태 리셋
       return newShowDoublePick;
@@ -479,9 +502,9 @@ export default function GachaGame() {
   }
 
   function getShapeRankPercent(N: number, shape: string): number | null {
-    if (!PercentRankTable[N]) return null;
-    if (PercentRankTable[N][shape] == null) return null;
-    return PercentRankTable[N][shape];
+    if (!percentRankTable[N]) return null;
+    if (percentRankTable[N][shape] == null) return null;
+    return percentRankTable[N][shape];
   }
 
   // -------------------------

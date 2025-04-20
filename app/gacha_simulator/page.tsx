@@ -21,8 +21,8 @@ export const metadata = {
   openGraph: {
     title: "Reverse:1999 가챠 시뮬레이터",
     description: "Reverse:1999 가챠를 무제한으로 뽑아보세요!!",
-    url: "https://reverse1999-gacha-simulation.vercel.app/",
-    siteName: "Reverse:1999 놀이터",
+    url: "https://www.reverse1999-simulator.com/gacha_simulator",
+    siteName: "버틴의 여행가방",
     images: [
       {
         url: `/infos/link_img/${version}_img.png`,

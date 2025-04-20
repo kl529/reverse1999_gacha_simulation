@@ -46,12 +46,18 @@ export default function MainSixStarHistory({
       <div ref={historyRef} className="flex flex-col-reverse gap-2 overflow-y-auto flex-grow">
         {sixStarHistory.map((entry, idx) => {
           const isPickup =
-            (selectedBanner.bannerType === "doublePick" &&
-              selectedBanner.twoPickup6 &&
-              selectedBanner.twoPickup6.some((c: Character) => c.engName === entry.char.engName)) ||
-            (selectedBanner.bannerType !== "doublePick" &&
+            (
+              selectedBanner.bannerType === "doublePick" &&
+              selectedBanner.twoPickup6?.some(
+                (c) => typeof c !== "number" && c.engName === entry.char.engName
+              )
+            ) ||
+            (
+              selectedBanner.bannerType !== "doublePick" &&
+              typeof selectedBanner.pickup6 !== "number" &&
               selectedBanner.pickup6 &&
-              entry.char.name === selectedBanner.pickup6.name);
+              entry.char.engName === selectedBanner.pickup6.engName
+            );
           const borderColor = isPickup ? "border-green-500" : "border-red-500";
           const labelText = isPickup ? "픽업!" : "픽뚫";
 
