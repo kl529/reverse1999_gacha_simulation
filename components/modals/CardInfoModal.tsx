@@ -62,19 +62,19 @@ export default function CardInfoModal({
         <h2 className="text-2xl font-bold mb-6 text-center">{title}</h2>
 
         {/* 이미지 */}
-        <div className="w-full overflow-auto mb-6 flex justify-center">
+        <div className="w-full mb-6 flex justify-center">
           <Image
             ref={imgRef}
             src={image}
             alt={title}
-            className={`rounded-lg ${shouldExpand ? "w-full" : "w-auto"}`}
+            unoptimized
+            className={`${shouldExpand ? "w-full" : "max-w-[80%]"}`}
             style={{
-              height: "auto",           // 자동 세로
-              maxWidth: "100%",         // 부모에 꽉
-              maxHeight: "none"         // 세로 제한 제거
+              height: "auto",
             }}
-            width={400}
-            height={500}
+            width={0}
+            height={0}
+            sizes="100vw"
           />
         </div>
 

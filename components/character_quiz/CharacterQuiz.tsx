@@ -18,7 +18,7 @@ const VERSIONS = [
   "2.3", "2.4",
 ];
 
-export default function QuizPage() {
+export default function CharacterQuiz() {
   // (A) 캐릭터 목록 (셔플 가능)
   const [characters, setCharacters] = useState<Character[]>(QUIZ_CHARACTERS.filter((ch) => ch.is_future !== true));
 

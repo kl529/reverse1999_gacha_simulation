@@ -11,6 +11,13 @@ export type Banner = {
 
 export const banners: Banner[] = [
   {
+    id: "liang_pick_up",
+    name: "[2.5] 양월 픽업",
+    pickup6: 41,
+    pickup5: [
+    ],
+  },
+  {
     id: "fatutu_pick_up",
     name: "[2.4] 파투투 픽업",
     pickup6: 40,

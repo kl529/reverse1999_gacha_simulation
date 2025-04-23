@@ -52,7 +52,7 @@ export type Character = {
       { id: 38, name: "플러터 페이지", rarity: 6, inspiration: "star", engName: "flutter-page", version: "2.3", exclude_gacha: true, resonanceType: "damage" },
       { id: 39, name: "바르카롤라", rarity: 6, inspiration: "star", engName: "barcarola", version: "2.4", exclude_gacha: true, resonanceType: "support" },
       { id: 40, name: "파투투", rarity: 6, inspiration: "mineral", engName: "fatutu", version: "2.4", exclude_gacha: true, resonanceType: "damage" },
-      { id: 41, name: "양월", rarity: 6, inspiration: "star", engName: "liang", version: "2.5", exclude_gacha: true, resonanceType: "damage", is_future: true },
+      { id: 41, name: "양월", rarity: 6, inspiration: "star", engName: "liang", version: "2.5", exclude_gacha: true, resonanceType: "damage" },
       { id: 42, name: "누아르", rarity: 6, inspiration: "plant", engName: "noire", version: "2.5", exclude_gacha: true, resonanceType: "support", is_future: true },
       { id: 43, name: "레콜레타", rarity: 6, inspiration: "mineral", engName: "recoleta", version: "2.6", exclude_gacha: true, resonanceType: "damage", is_future: true },
       { id: 44, name: "알레프", rarity: 6, inspiration: "intellect", engName: "aleph", version: "2.6", exclude_gacha: true, resonanceType: "support", is_future: true },
@@ -102,7 +102,7 @@ export type Character = {
       { id: 212, name: "메스머 주니어", rarity: 4, inspiration: "intellect", engName: "mesmer-jr" , version: "1.0", resonanceType: "balance" },
       { id: 213, name: "에릭", rarity: 4, inspiration: "star", engName: "erick" , version: "1.0", resonanceType: "balance" },
       { id: 214, name: "폴터가이스트", rarity: 4, inspiration: "spirit", engName: "poltergeist" , version: "2.0", resonanceType: "defense" },
-      { id: 215, name: "화이트 럼", rarity: 4, inspiration: "intellect", engName: "white-rum" , version: "2.2", resonanceType: "support" },
+      { id: 215, name: "화이트 럼", rarity: 4, inspiration: "intellect", engName: "white-rum" , version: "2.2", resonanceType: "support", exclude_gacha: true },
       { id: 216, name: "TTT", rarity: 4, inspiration: "star", engName: "ttt" , version: "1.0", resonanceType: "balance" },
     ],
     3: [
