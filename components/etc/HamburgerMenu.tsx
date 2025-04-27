@@ -14,7 +14,11 @@ type MenuItem = {
   modalType?: "material"; // 🔥 타입 명확하게 지정
 };
 
-export default function HamburgerMenu() {
+type HamburgerMenuProps = {
+  onModalOpen?: (type: string) => void;
+};
+
+export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const { openModal } = useModal(); // 🔥 모달 열기 함수 가져옴
@@ -79,6 +83,9 @@ export default function HamburgerMenu() {
                 setIsOpen(false);
                 if (item.modalType) {
                   openModal(item.modalType); // 🔥 모달 열기
+                  if (item.modalType && onModalOpen) {
+                    onModalOpen(item.modalType); // 🔥 여기!
+                  }
                 }
               };
 
