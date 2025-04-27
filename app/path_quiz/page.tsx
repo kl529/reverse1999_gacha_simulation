@@ -1,6 +1,4 @@
 import PathQuiz from "@/components/path_quiz/PathQuiz";
-import { version } from "@/data/version";
-
 
 export default function PathQuizPage() {
   return (
