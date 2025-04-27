@@ -26,6 +26,7 @@ export default function HamburgerMenu({
     { divider: true },
     { iconImg: "/infos/menu/material_menu.png", label: "재료 파밍", modalType: "material" },
     { iconImg: "/infos/menu/resonance_menu.png", label: "공명 & 의지", href: "/character_setting" },
+    { iconImg: "/infos/menu/skin_menu.png", label: "스킨 갤러리", href: "/skin" },
   ];
 
   useEffect(() => {

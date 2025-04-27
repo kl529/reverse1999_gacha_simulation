@@ -18,4 +18,5 @@ export const updateLogs = [
     { date: "2025-04-12", content: "캐릭터 퀴즈 페이지 2차 수정" },
     { date: "2025-04-13", content: "캐릭터 퀴즈 페이지 버그 수정" },
     { date: "2025-04-20", content: "홈페이지 & 의지 & 공명 사이트 오픈" },
+    { date: "2025-04-27", content: "스킨 갤러리 오픈" },
   ];

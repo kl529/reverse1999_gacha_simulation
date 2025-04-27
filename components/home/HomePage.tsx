@@ -121,10 +121,20 @@ export default function HomePage() {
                   href: "/character_setting"
                 },
                 {
-                  icon: "/infos/menu/future_insight.png",
-                  label: "(준비중)", // 미래시
-                  href: "#",
+                  icon: "/infos/menu/skin_menu.png",
+                  label: "스킨 갤러리",
+                  href: "/skin",
                 },
+                // {
+                //   icon: "/infos/menu/path_quiz_menu.png",
+                //   label: "오솔길 정답",
+                //   href: "/path_quiz",
+                // },
+                // {
+                //   icon: "/infos/menu/future_insight.png",
+                //   label: "(준비중)", // 미래시
+                //   href: "#",
+                // },
                 // {
                 //   icon: "/infos/menu/goal_menu.png",
                 //   label: "파티 조합\n가이드",

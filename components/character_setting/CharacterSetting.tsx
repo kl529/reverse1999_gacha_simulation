@@ -127,7 +127,7 @@ export default function CharacterSetting() {
 
   return (
     <div className="min-h-screen w-full bg-white dark:bg-gray-900 dark:text-gray-200 p-4 flex flex-col items-center">
-      <h1 className="text-2xl lg:text-3xl font-bold mb-4 text-black text-center sticky top-0 z-20 p-3 dark:text-gray-100">
+      <h1 className="text-2xl lg:text-3xl font-bold mt-8 mb-4 text-black text-center sticky top-0 z-20 p-3 dark:text-gray-100">
         공명 & 의지 찾기
       </h1>
 

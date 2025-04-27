@@ -597,7 +597,7 @@ export default function GachaGame() {
       >
         {/* 🎯 헤더 (항상 고정) */}
         <h1 className="text-2xl lg:text-3xl font-bold mb-4 text-black text-center sticky top-0 bg-white z-20 p-3 shadow-md dark:text-gray-100 dark:bg-gray-800">
-          Reverse:1999 가챠 시뮬레이터
+          가챠 시뮬레이터
         </h1>
 
         {/* 🎯 뽑기 버튼 & 결과 (스크롤 가능 영역) */}

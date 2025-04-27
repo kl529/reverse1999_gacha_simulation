@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://reverse1999-simulator.com</loc><lastmod>2025-04-20T06:02:35.988Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
-<url><loc>https://reverse1999-simulator.com/character_setting</loc><lastmod>2025-04-20T06:02:35.988Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
-<url><loc>https://reverse1999-simulator.com/gacha_simulator</loc><lastmod>2025-04-20T06:02:35.988Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
-<url><loc>https://reverse1999-simulator.com/character_quiz</loc><lastmod>2025-04-20T06:02:35.988Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
+<url><loc>https://reverse1999-simulator.com/character_quiz</loc><lastmod>2025-04-27T04:50:19.465Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
+<url><loc>https://reverse1999-simulator.com</loc><lastmod>2025-04-27T04:50:19.466Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
+<url><loc>https://reverse1999-simulator.com/gacha_simulator</loc><lastmod>2025-04-27T04:50:19.466Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
+<url><loc>https://reverse1999-simulator.com/skin</loc><lastmod>2025-04-27T04:50:19.466Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
+<url><loc>https://reverse1999-simulator.com/character_setting</loc><lastmod>2025-04-27T04:50:19.466Z</lastmod><changefreq>daily</changefreq><priority>1</priority></url>
 </urlset>
