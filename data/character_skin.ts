@@ -134,7 +134,7 @@ export const characterSkin: CharacterSkin[] = [
   },
   {
     id: 13,
-    character_id: 5,
+    character_id: 304,
     name: "산에서의 모험",
     engName: "the_adventure_on_the_mountains",
     rarity: "Garment",
@@ -306,7 +306,7 @@ export const characterSkin: CharacterSkin[] = [
   },
   {
     id: 30,
-    character_id: 302,
+    character_id: 211,
     name: "예배당 밖에서",
     engName: "outside_the_church",
     rarity: "Garment",
@@ -437,7 +437,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 43,
     character_id: 202,
-    name: "주말 외출",
+    name: "주말 외출 (중섭)",
     engName: "weekend_excursion",
     rarity: "Garment",
     source: "콜라보 판매",

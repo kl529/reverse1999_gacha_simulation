@@ -37,13 +37,13 @@ export default function SkinGalleryPage() {
   return (
     <div className="p-4 w-full h-full flex flex-col overflow-hidden">
       <div className="flex-none">
-        <h1 className="text-3xl font-bold mb-6 text-center dark:text-white mt-8">스킨 갤러리</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center dark:text-white mt-8 text-black">스킨 갤러리</h1>
 
         {/* 🔥 필터 박스 */}
         <div className="flex flex-wrap justify-center gap-4 mb-6">
           {/* 희귀도 필터 */}
           <select
-            className="p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+            className="p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white text-black border-black"
             value={rarityFilter}
             onChange={(e) => setRarityFilter(e.target.value)}
           >
@@ -57,7 +57,7 @@ export default function SkinGalleryPage() {
 
           {/* 버전 필터 */}
           <select
-            className="p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+            className="p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white text-black border-black"
             value={versionFilter}
             onChange={(e) => setVersionFilter(e.target.value)}
           >
@@ -69,9 +69,8 @@ export default function SkinGalleryPage() {
             ))}
           </select>
 
-          {/* 획득처 필터 */}
           <select
-            className="p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+            className="p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white text-black border-black"
             value={sourceFilter}
             onChange={(e) => setSourceFilter(e.target.value)}
           >
@@ -107,7 +106,7 @@ export default function SkinGalleryPage() {
                     {skin.version}
                   </span>
                 </div>
-                <div className="p-2 text-center font-medium text-sm truncate bg-white dark:bg-gray-900 dark:text-white">
+                <div className="p-2 text-center font-medium text-sm truncate bg-white dark:bg-gray-900 dark:text-white text-black">
                   {skin.name}
                 </div>
               </div>
