@@ -47,6 +47,7 @@ export default function HomePage() {
   
   const [bgImage, setBgImage] = useState<string | null>(null);
   const [showPolicy, setShowPolicy] = useState(false);
+  const [showSource, setShowSource] = useState(false);
   const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
   const [selectedInfo, setSelectedInfo] = useState<{ title: string; description?: string; image: string; source?: string } | null>(null);
@@ -125,11 +126,11 @@ export default function HomePage() {
                   label: "스킨 갤러리",
                   href: "/skin",
                 },
-                // {
-                //   icon: "/infos/menu/path_quiz_menu.png",
-                //   label: "오솔길 정답",
-                //   href: "/path_quiz",
-                // },
+                {
+                  icon: "/infos/menu/path_quiz_menu.png",
+                  label: "오솔길 정답",
+                  href: "/path_quiz",
+                },
                 // {
                 //   icon: "/infos/menu/future_insight.png",
                 //   label: "(준비중)", // 미래시
@@ -171,6 +172,12 @@ export default function HomePage() {
               className="inline-flex items-center hover:underline hover:text-blue-400"
             >
               Policy
+            </button>
+            <button
+              onClick={() => setShowSource(true)}
+              className="inline-flex items-center hover:underline hover:text-blue-400"
+            >
+              출처
             </button>
             <Link
               href="https://buymeacoffee.com/vertin_suitcase"
@@ -232,6 +239,30 @@ export default function HomePage() {
               <p className="text-sm whitespace-pre-line leading-relaxed">
 
                 기타 문의 사항은 jiwon803@gmail.com 으로 연락해 주세요.
+              </p>
+          </ConfirmModal>
+        )}
+
+        {showSource && (
+          <ConfirmModal
+            isOpen={showSource}
+            onClose={() => setShowSource(false)}
+            modalClassName="bg-white dark:bg-gray-800 text-black dark:text-white p-6 rounded-lg max-w-xl w-full relative"
+          >
+            <button
+                onClick={() => setShowSource(false)}
+                className="absolute top-2 right-4 text-2xl text-gray-500 hover:text-gray-800"
+              >
+                ✕
+              </button>
+
+              <h2 className="text-lg font-bold mb-4">출처</h2>
+              <p className="text-sm whitespace-pre-line leading-relaxed">
+                - 다양한 데이터 출처 : <Link href="https://res1999.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5" target="_blank" rel="noopener noreferrer">https://res1999.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5</Link>
+                <br />
+                - 다른 상세 정보 : <Link href="https://www.kdocs.cn/l/cd5MWeCl5bKw" target="_blank" rel="noopener noreferrer">https://www.kdocs.cn/l/cd5MWeCl5bKw</Link>
+                <br />
+                - 한국 정보 정리 : <Link href="https://docs.google.com/spreadsheets/d/1f40thIQMIDUJZj9-HZDVlbr0aZ9GMXvwOirMzhqwLNU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">https://docs.google.com/spreadsheets/d/1f40thIQMIDUJZj9-HZDVlbr0aZ9GMXvwOirMzhqwLNU/edit?usp=sharing</Link>
               </p>
           </ConfirmModal>
         )}
@@ -375,7 +406,6 @@ function LinkBox({
     );
   }
 
-  // ✅ href === "#"이거나 아무 이동 없는 경우: 설명 모달
   return (
     <button
       onClick={onClick}
