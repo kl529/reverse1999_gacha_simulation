@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 
 export default function CardInfoModal({
@@ -17,7 +19,6 @@ export default function CardInfoModal({
   description?: string;
 }) {
   const modalRef = useRef<HTMLDivElement>(null);
-  const [shouldExpand, setShouldExpand] = useState(false);
 
   // 외부 클릭 시 닫기
   useEffect(() => {
@@ -60,13 +61,6 @@ export default function CardInfoModal({
             width={600}
             height={600}
             className="rounded-lg object-contain"
-            onLoadingComplete={(img) => {
-              if (img.naturalWidth < 500) {
-                setShouldExpand(true);
-              } else {
-                setShouldExpand(false);
-              }
-            }}
             style={{
               width: "100%",
               height: "auto",
