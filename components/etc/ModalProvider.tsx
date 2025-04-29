@@ -23,7 +23,6 @@ export function ModalProvider({ children }: { children: ReactNode }) {
     <ModalContext.Provider value={{ activeModal, openModal, closeModal }}>
       {children}
 
-      {/* ✅ 모달을 여기서 관리 */}
       {activeModal === "material" && (
         <CardInfoModal
           isOpen={true}

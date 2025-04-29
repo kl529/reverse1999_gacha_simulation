@@ -17,18 +17,7 @@ export default function CardInfoModal({
   description?: string;
 }) {
   const modalRef = useRef<HTMLDivElement>(null);
-  const imgRef = useRef<HTMLImageElement>(null);
   const [shouldExpand, setShouldExpand] = useState(false);
-
-  // 이미지 너비 확인
-  useEffect(() => {
-    if (imgRef.current) {
-      const imgWidth = imgRef.current.naturalWidth;
-      if (imgWidth < 500) {
-        setShouldExpand(true);
-      }
-    }
-  }, [image]);
 
   // 외부 클릭 시 닫기
   useEffect(() => {
@@ -64,17 +53,24 @@ export default function CardInfoModal({
         {/* 이미지 */}
         <div className="w-full mb-6 flex justify-center">
           <Image
-            ref={imgRef}
+            key={image}
             src={image}
             alt={title}
             unoptimized
-            className={`${shouldExpand ? "w-full" : "max-w-[80%]"}`}
+            width={600}
+            height={600}
+            className="rounded-lg object-contain"
+            onLoadingComplete={(img) => {
+              if (img.naturalWidth < 500) {
+                setShouldExpand(true);
+              } else {
+                setShouldExpand(false);
+              }
+            }}
             style={{
+              width: "100%",
               height: "auto",
             }}
-            width={0}
-            height={0}
-            sizes="100vw"
           />
         </div>
 

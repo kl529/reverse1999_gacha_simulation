@@ -5,7 +5,8 @@ import { Analytics } from "@vercel/analytics/react";
 import SecurityWrapper from "@/components/etc/SecurityWrapper";
 import { DarkModeProvider } from "@/components/etc/DarkModeContext";
 import HamburgerConditional from "@/components/etc/HamburgerConditional";
-import { ModalProvider } from "@/components/etc/ModalProvider"; // ✅ 추가
+import { ModalProvider } from "@/components/etc/ModalProvider";
+import GlobalLoadingManager from "@/components/etc/GlobalLoadingManager";
 import Script from "next/script";
 import { ReactNode } from "react";
 
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <DarkModeProvider>
           <ModalProvider> {/* ✅ 모달 상태를 관리 */}
             <SecurityWrapper>
+              <GlobalLoadingManager />
               <HamburgerConditional />
               <CustomCursor />
               <SpeedInsights />

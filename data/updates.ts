@@ -20,4 +20,5 @@ export const updateLogs = [
     { date: "2025-04-20", content: "홈페이지 & 의지 & 공명 사이트 오픈" },
     { date: "2025-04-27", content: "스킨 갤러리 오픈" },
     { date: "2025-04-28", content: "오솔길 정답 모음 오픈" },
+    { date: "2025-04-29", content: "모달 버그 수정 & 로딩 이미지 추가" },
   ];
