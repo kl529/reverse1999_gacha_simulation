@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { characterSkin, CharacterSkin } from "@/data/character_skin";
+import { charactersByRarity } from "@/data/characters";
 import SkinInfoModal from "@/components/modals/SkinInfoModal";
 
 export default function SkinGalleryPage() {
@@ -12,6 +13,15 @@ export default function SkinGalleryPage() {
   const [rarityFilter, setRarityFilter] = useState<string>("전체");
   const [versionFilter, setVersionFilter] = useState<string>("전체");
   const [sourceFilter, setSourceFilter] = useState<string>("전체");
+  const [selectedCharacters, setSelectedCharacters] = useState<string[]>([]);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const allCharacters = Object.values(charactersByRarity).flat();
+  const characterNameMap = Object.fromEntries(allCharacters.map((c) => [c.id, c.name]));
+  const characterNameList = Array.from(
+    new Set(characterSkin.map((s) => characterNameMap[s.character_id] || "알 수 없음"))
+  ).sort((a, b) => a.localeCompare(b, "ko"));
 
   const handleOpenModal = (skin: CharacterSkin) => {
     setSelectedSkin(skin);
@@ -23,11 +33,29 @@ export default function SkinGalleryPage() {
     setSelectedSkin(null);
   };
 
+  const toggleCharacter = (name: string) => {
+    setSelectedCharacters((prev) =>
+      prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name]
+    );
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const filteredSkins = characterSkin.filter((skin) => {
     const matchRarity = rarityFilter === "전체" || skin.rarity === rarityFilter;
     const matchVersion = versionFilter === "전체" || skin.version === versionFilter;
     const matchSource = sourceFilter === "전체" || skin.source === sourceFilter;
-    return matchRarity && matchVersion && matchSource;
+    const matchCharacter =
+      selectedCharacters.length === 0 || selectedCharacters.includes(characterNameMap[skin.character_id]);
+    return matchRarity && matchVersion && matchSource && matchCharacter;
   });
 
   const rarityList = Array.from(new Set(characterSkin.map((s) => s.rarity)));
@@ -37,11 +65,11 @@ export default function SkinGalleryPage() {
   return (
     <div className="p-4 w-full h-full flex flex-col overflow-hidden">
       <div className="flex-none">
-        <h1 className="text-3xl font-bold mb-6 text-center dark:text-white mt-8 text-black">스킨 갤러리</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center dark:text-white mt-8 text-black">
+          스킨 갤러리
+        </h1>
 
-        {/* 🔥 필터 박스 */}
         <div className="flex flex-wrap justify-center gap-4 mb-6">
-          {/* 희귀도 필터 */}
           <select
             className="p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white text-black border-black"
             value={rarityFilter}
@@ -55,7 +83,6 @@ export default function SkinGalleryPage() {
             ))}
           </select>
 
-          {/* 버전 필터 */}
           <select
             className="p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white text-black border-black"
             value={versionFilter}
@@ -81,6 +108,36 @@ export default function SkinGalleryPage() {
               </option>
             ))}
           </select>
+
+          {/* 🔍 캐릭터 필터 */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="p-2 border rounded w-40 text-left dark:bg-gray-800 dark:border-gray-700 dark:text-white text-black border-black"
+            >
+              {selectedCharacters.length > 0
+                ? selectedCharacters.join(", ")
+                : "캐릭터 필터"}
+            </button>
+            {dropdownOpen && (
+              <div className="absolute z-10 mt-1 max-h-60 overflow-y-auto bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded w-40 shadow-lg">
+                {characterNameList.map((name) => (
+                  <label
+                    key={name}
+                    className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      className="mr-2"
+                      checked={selectedCharacters.includes(name)}
+                      onChange={() => toggleCharacter(name)}
+                    />
+                    {name}
+                  </label>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 

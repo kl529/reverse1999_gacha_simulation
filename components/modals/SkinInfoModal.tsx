@@ -72,6 +72,11 @@ export default function SkinInfoModal({
             <span className="bg-green-200 dark:bg-green-700 text-sm px-3 py-1 rounded-full">
               획득처: {characterSkin.source}
             </span>
+            {characterSkin.price && (
+              <span className="bg-purple-200 dark:bg-purple-700 text-sm px-3 py-1 rounded-full">
+                가격: {characterSkin.price}
+              </span>
+            )}
           </div>
 
           {/* ✨ 일러스트 단독 */}

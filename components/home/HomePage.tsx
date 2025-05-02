@@ -80,7 +80,7 @@ export default function HomePage() {
       {/* 실제 콘텐츠 */}
       <div className="relative z-20 flex flex-col min-h-screen">
         <main className="flex-grow flex flex-col items-center justify-center">
-          <h2 className="text-4xl font-bold mb-4 dark:text-white text-black mt-20 lg:mt-0">버틴의 여행가방 🧳 (Beta)</h2>
+          <h2 className="text-4xl font-bold mb-4 dark:text-white text-black mt-20 lg:mt-0">버틴의 여행가방 🧳</h2>
           <p className="mb-8 dark:text-white text-black">당신이 폭풍우를 이겨낼 수 있도록..</p>
 
           {/* 카드 컨테이너 */}

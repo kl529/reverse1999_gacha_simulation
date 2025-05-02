@@ -325,7 +325,7 @@ export default function CharacterQuiz() {
   return (
     <div className="min-h-screen w-full bg-white dark:bg-gray-900 dark:text-gray-200 p-4 flex flex-col items-center">
       {/* ========== 제목 ========== */}
-      <h1 className="text-2xl lg:text-3xl font-bold mb-4 text-black text-center sticky top-0 bg-white z-20 p-3 dark:text-gray-100 dark:bg-gray-800 mt-8">
+      <h1 className="text-2xl lg:text-3xl font-bold mb-4 text-black text-center sticky top-0 z-20 p-3 dark:text-gray-100 mt-8">
         Reverse:1999 캐릭터 퀴즈
       </h1>
 
