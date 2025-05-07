@@ -53,7 +53,7 @@ export type Character = {
       { id: 39, name: "바르카롤라", rarity: 6, inspiration: "star", engName: "barcarola", version: "2.4", exclude_gacha: true, resonanceType: "support" },
       { id: 40, name: "파투투", rarity: 6, inspiration: "mineral", engName: "fatutu", version: "2.4", exclude_gacha: true, resonanceType: "damage" },
       { id: 41, name: "양월", rarity: 6, inspiration: "star", engName: "liang", version: "2.5", exclude_gacha: true, resonanceType: "damage" },
-      { id: 42, name: "누아르", rarity: 6, inspiration: "plant", engName: "noire", version: "2.5", exclude_gacha: true, resonanceType: "support", is_future: true },
+      { id: 42, name: "누아르", rarity: 6, inspiration: "plant", engName: "noire", version: "2.5", exclude_gacha: true, resonanceType: "support"},
       { id: 43, name: "레콜레타", rarity: 6, inspiration: "mineral", engName: "recoleta", version: "2.6", exclude_gacha: true, resonanceType: "damage", is_future: true },
       { id: 44, name: "알레프", rarity: 6, inspiration: "intellect", engName: "aleph", version: "2.6", exclude_gacha: true, resonanceType: "support", is_future: true },
       { id: 45, name: "하사베스", rarity: 6, inspiration: "plant", engName: "hissabeth", version: "2.7", exclude_gacha: true, resonanceType: "damage", is_future: true },
