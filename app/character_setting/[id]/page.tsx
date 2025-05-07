@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   if (!character) return {};
 
   const baseUrl = "https://www.reverse1999-simulator.com";
-  const title = `Reverse: 1999 ${character.name} 공명 & 의지 세팅`;
+  const title = `리버스 1999 ${character.name} 공명 & 의지 세팅`;
   const description = `${character.name}의 공명과 의지 추천 세팅을 확인해보세요.`;
   const imageUrl = `${baseUrl}/characters/${character.rarity}stars_small/${character.engName}.png`;
 
