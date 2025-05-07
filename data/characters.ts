@@ -57,6 +57,7 @@ export type Character = {
       { id: 43, name: "레콜레타", rarity: 6, inspiration: "mineral", engName: "recoleta", version: "2.6", exclude_gacha: true, resonanceType: "damage", is_future: true },
       { id: 44, name: "알레프", rarity: 6, inspiration: "intellect", engName: "aleph", version: "2.6", exclude_gacha: true, resonanceType: "support", is_future: true },
       { id: 45, name: "하사베스", rarity: 6, inspiration: "plant", engName: "hissabeth", version: "2.7", exclude_gacha: true, resonanceType: "damage", is_future: true },
+      { id: 46, name: "키페리나", rarity: 6, inspiration: "star", engName: "kiperina", version: "2.7", exclude_gacha: true, resonanceType: "defense", is_future: true },
     ],
     5: [
       { id: 101, name: "소네트", rarity: 5, inspiration: "mineral", engName: "sonetto", version: "1.0", exclude_gacha: true, resonanceType: "defense" },

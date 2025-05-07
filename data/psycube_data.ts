@@ -354,7 +354,7 @@ export const PSYCUBE_DATA: Psycube[] = [
   },
   {
     id: 44,
-    name: "꿈 속 리허설",
+    name: "꿈의 리허설",
     engName: "rehearsal_of_dreams",
     rarity: 6,
     version: "2.5",
@@ -567,5 +567,13 @@ export const PSYCUBE_DATA: Psycube[] = [
     rarity: 5,
     version: "2.5",
     type: "일화",
+  },
+  {
+    id: 71,
+    name: "겨울 후의 오로라",
+    engName: "aurora_after_winter",
+    rarity: 6,
+    version: "2.7",
+    type: "상점"
   },
 ];

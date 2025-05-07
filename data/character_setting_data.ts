@@ -955,6 +955,15 @@ export const CHARACTER_SETTING_DATA: CharacterSettingData[] = [
     ]
   },
   {
+    "character_id": 46, // "키페리나"
+    "psycubes": [
+      {
+        "psycube_id": 71,
+        "description": ""
+      }
+    ]
+  },
+  {
     "character_id": 101, // "소네트"
     "psycubes": [
       {
