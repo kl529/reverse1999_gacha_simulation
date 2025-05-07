@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
+import { characterSkin } from "@/data/character_skin";
 
 export async function GET() {
   const baseUrl = "https://www.reverse1999-simulator.com";
@@ -12,11 +13,15 @@ export async function GET() {
     "/path_quiz",
   ].map((path) => `${baseUrl}${path}`);
 
-  const characterUrls = SETTING_CHARACTERS.map(
+  const characterSettingUrls = SETTING_CHARACTERS.map(
     (c) => `${baseUrl}/character_setting/${c.id}`
   );
 
-  const urls = [...staticUrls, ...characterUrls];
+  const characterSkinUrls = characterSkin.map(
+    (c) => `${baseUrl}/skin/${c.id}`
+  );
+
+  const urls = [...staticUrls, ...characterSettingUrls, ...characterSkinUrls];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

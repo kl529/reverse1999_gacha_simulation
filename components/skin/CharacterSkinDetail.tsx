@@ -14,7 +14,7 @@ export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
       <div className="max-w-4xl mx-auto flex flex-col gap-8">
 
         {/* 제목 */}
-        <h1 className="text-2xl sm:text-3xl font-bold text-center">
+        <h1 className="text-2xl sm:text-3xl font-bold text-center mt-8">
           {skin.name} - {character?.name || "알 수 없음"}
         </h1>
 

@@ -1,8 +1,9 @@
+// deprecated
 "use client";
 
 import Image from "next/image";
 import { Character } from "@/data/characters";
-import { CHARACTER_SETTING_DATA } from "@/data/character_setting_data";
+import { character_setting_data } from "@/data/character_setting_data";
 import { PSYCUBE_DATA } from "@/data/psycube_data";
 
 interface CharacterSettingModalProps {
@@ -18,7 +19,7 @@ export function CharacterSettingModal({
 }: CharacterSettingModalProps) {
   if (!isOpen) return null;
 
-  const setting = CHARACTER_SETTING_DATA.find((c) => c.character_id === character.id);
+  const setting = character_setting_data.find((c) => c.character_id === character.id);
 
   const psycube_list = (setting?.psycubes || []).map((p) => {
     const psycube = PSYCUBE_DATA.find((d) => d.id === p.psycube_id);

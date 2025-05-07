@@ -2,14 +2,11 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { characterSkin, CharacterSkin } from "@/data/character_skin";
+import { characterSkin } from "@/data/character_skin";
 import { charactersByRarity } from "@/data/characters";
-import SkinInfoModal from "@/components/modals/SkinInfoModal";
+import Link from "next/link";
 
 export default function SkinGalleryPage() {
-  const [selectedSkin, setSelectedSkin] = useState<CharacterSkin | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const [rarityFilter, setRarityFilter] = useState<string>("전체");
   const [versionFilter, setVersionFilter] = useState<string>("전체");
   const [sourceFilter, setSourceFilter] = useState<string>("전체");
@@ -30,16 +27,6 @@ export default function SkinGalleryPage() {
     const name = characterNameMap[skin.character_id] || "알 수 없음";
     skinCountByCharacter[name] = (skinCountByCharacter[name] || 0) + 1;
   });
-
-  const handleOpenModal = (skin: CharacterSkin) => {
-    setSelectedSkin(skin);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedSkin(null);
-  };
 
   const toggleCharacter = (name: string) => {
     setSelectedCharacters((prev) =>
@@ -180,39 +167,29 @@ export default function SkinGalleryPage() {
             {filteredSkins
               .sort((a, b) => b.id - a.id)
               .map((skin) => (
-                <div
-                  key={skin.id}
-                  className="cursor-pointer rounded transition border border-gray-200 dark:border-gray-700 overflow-hidden"
-                  onClick={() => handleOpenModal(skin)}
-                >
-                  <div className="relative">
-                    <Image
-                      src={`/infos/character_skin/list/${skin.engName}.webp`}
-                      alt={skin.name}
-                      width={300}
-                      height={400}
-                      className="w-full h-auto object-cover"
-                    />
-                    <span className="absolute bottom-2 right-2 bg-orange-300 dark:bg-orange-700 text-xs text-white px-2 py-0.5 rounded">
-                      {skin.version}
-                    </span>
+                <Link href={`/skin/${skin.id}`} key={skin.id}>
+                  <div className="cursor-pointer rounded transition border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <div className="relative">
+                      <Image
+                        src={`/infos/character_skin/list/${skin.engName}.webp`}
+                        alt={skin.name}
+                        width={300}
+                        height={400}
+                        className="w-full h-auto object-cover"
+                      />
+                      <span className="absolute bottom-2 right-2 bg-orange-300 dark:bg-orange-700 text-xs text-white px-2 py-0.5 rounded">
+                        {skin.version}
+                      </span>
+                    </div>
+                    <div className="p-2 text-center font-medium text-sm truncate bg-white dark:bg-gray-900 dark:text-white text-black">
+                      {skin.name}
+                    </div>
                   </div>
-                  <div className="p-2 text-center font-medium text-sm truncate bg-white dark:bg-gray-900 dark:text-white text-black">
-                    {skin.name}
-                  </div>
-                </div>
+                </Link>
               ))}
           </div>
         )}
       </div>
-
-      {selectedSkin && (
-        <SkinInfoModal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          characterSkin={selectedSkin}
-        />
-      )}
     </div>
   );
 }

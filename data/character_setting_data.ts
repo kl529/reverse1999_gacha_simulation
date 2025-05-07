@@ -8,7 +8,7 @@ export interface CharacterSettingData {
   psycubes: PsycubeInfo[];
 }
 
-export const CHARACTER_SETTING_DATA: CharacterSettingData[] = [
+export const character_setting_data: CharacterSettingData[] = [
   {
     "character_id": 1, // "드루비스"
     "psycubes": [

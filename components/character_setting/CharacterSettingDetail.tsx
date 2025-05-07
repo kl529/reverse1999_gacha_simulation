@@ -3,12 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Character } from "@/data/characters";
-import { CHARACTER_SETTING_DATA } from "@/data/character_setting_data";
+import { character_setting_data } from "@/data/character_setting_data";
 import { PSYCUBE_DATA } from "@/data/psycube_data";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
 
 export default function CharacterSettingDetail({ character }: { character: Character }) {
-  const setting = CHARACTER_SETTING_DATA.find((c) => c.character_id === character.id);
+  const setting = character_setting_data.find((c) => c.character_id === character.id);
 
   const psycube_list = (setting?.psycubes || []).map((p) => {
     const psycube = PSYCUBE_DATA.find((d) => d.id === p.psycube_id);

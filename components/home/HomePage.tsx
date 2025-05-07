@@ -127,15 +127,10 @@ export default function HomePage() {
                   href: "/skin",
                 },
                 {
-                  icon: "/infos/menu/path_quiz_menu.png",
-                  label: "오솔길 정답",
-                  href: "/path_quiz",
+                  icon: "/infos/menu/future_insight.png",
+                  label: "미래시\n(준비중)", // 미래시
+                  href: "#",
                 },
-                // {
-                //   icon: "/infos/menu/future_insight.png",
-                //   label: "(준비중)", // 미래시
-                //   href: "#",
-                // },
                 // {
                 //   icon: "/infos/menu/goal_menu.png",
                 //   label: "파티 조합\n가이드",
@@ -146,6 +141,22 @@ export default function HomePage() {
             />
 
             <CardBox
+              title="가이드"
+              subTitle="당신을 위한 친절한 가이드"
+              items={[
+                {
+                  icon: "/infos/menu/path_quiz_menu.png",
+                  label: "오솔길 정답",
+                  href: "/path_quiz",
+                },
+                { icon: "/infos/menu/rain_blueprint_menu.png", label: "청사진 모음\n(준비중)", href: "#" },
+                // { icon: "/infos/menu/gacha_planner_menu.png", label: "가챠\n계획 계산기\n(준비중)", href: "#" },
+                { icon: "/infos/menu/cash_in_guide_menu.png", label: "현질 가이드\n(준비중)", href: "#" },
+                // { icon: "/infos/menu/psychube_calculator_menu.png", label: "의지\n육성 계산기\n(준비중)", href: "#" },
+              ]}
+            />
+
+            {/* <CardBox
               title="기록 & 계산"
               subTitle="손쉽게 기록하고 계산해보세요"
               items={[
@@ -154,7 +165,7 @@ export default function HomePage() {
                 { icon: "/infos/menu/my_character_menu.png", label: "내 마도학자\n모아보기\n(준비중)", href: "#" },
                 // { icon: "/infos/menu/psychube_calculator_menu.png", label: "의지\n육성 계산기\n(준비중)", href: "#" },
               ]}
-            />
+            /> */}
           </div>
         </main>
 
