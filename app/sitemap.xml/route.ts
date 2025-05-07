@@ -3,7 +3,14 @@ import { SETTING_CHARACTERS } from "@/data/setting_character";
 
 export async function GET() {
   const baseUrl = "https://www.reverse1999-simulator.com";
-  const staticUrls = ["/", "/gacha_simulator", "/character_quiz", "/character_setting", "/skin", "/path_quiz"];
+  const staticUrls = [
+    "/",
+    "/gacha_simulator",
+    "/character_quiz",
+    "/character_setting",
+    "/skin",
+    "/path_quiz",
+  ].map((path) => `${baseUrl}${path}`);
 
   const characterUrls = SETTING_CHARACTERS.map(
     (c) => `${baseUrl}/character_setting/${c.id}`
