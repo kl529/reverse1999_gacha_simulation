@@ -29,7 +29,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Reverse:1999 공명 & 의지 세팅",
+    title: "버틴의 여행가방",
     description: "리버스 1999의 모든 정보를 한눈에 찾아보세요.",
     images: [`/infos/link_img/home_img.png`],
   },

@@ -7,9 +7,49 @@ export type Banner = {
   pickup6?: number | Character; // 일반 배너용 6성
   pickup5?: (number | Character)[]; // 일반 배너용 5성
   twoPickup6?: (number | Character)[]; // 2중 픽업 배너에서만 사용
+  version?: string;
 };
 
 export const banners: Banner[] = [
+  {
+    id: "kiperina_pick_up",
+    name: "[2.7] 키페리나 픽업",
+    pickup6: 46,
+    pickup5: [
+      106,
+      116
+    ],
+    version: "2.7",
+  },
+  {
+    id: "hissabeth_pick_up",
+    name: "[2.7] 히사베스 픽업",
+    pickup6: 45,
+    pickup5: [
+      127
+    ],
+    version: "2.7",
+  },
+  {
+    id: "aleph_pick_up",
+    name: "[2.6] 알레프 픽업",
+    pickup6: 44,
+    pickup5: [
+      104,
+      106
+    ],
+    version: "2.6",
+  },
+  {
+    id: "recoleta_pick_up",
+    name: "[2.6] 레콜레타 픽업",
+    pickup6: 43,
+    pickup5: [
+      103,
+      114
+    ],
+    version: "2.6",
+  },
   {
     id: "noire_pick_up",
     name: "[2.5] 누아르 픽업",
@@ -18,6 +58,7 @@ export const banners: Banner[] = [
       104,
       106
     ],
+    version: "2.5",
   },
   {
     id: "liang_pick_up",
@@ -25,6 +66,7 @@ export const banners: Banner[] = [
     pickup6: 41,
     pickup5: [
     ],
+    version: "2.5",
   },
   {
     id: "fatutu_pick_up",
@@ -34,6 +76,7 @@ export const banners: Banner[] = [
       111,
       112,
     ],
+    version: "2.4",
   },
   {
     id: "barcarola_pick_up",
@@ -43,6 +86,7 @@ export const banners: Banner[] = [
       110,
       105,
     ],
+    version: "2.4",
   },
   {
     id: "doublepick_j_tuesday",
@@ -69,6 +113,7 @@ export const banners: Banner[] = [
     pickup5: [
       125,
     ],
+    version: "2.3",
   },
   {
     id: "willow_pick_up",
@@ -78,6 +123,7 @@ export const banners: Banner[] = [
       103,
       104,
     ],
+    version: "2.3",
   },
   {
     id: "lopera_pick_up",
@@ -87,6 +133,7 @@ export const banners: Banner[] = [
       113,
       119,
     ],
+    version: "2.2",
   },
   {
     id: "anjo_nala_pick_up",
@@ -94,6 +141,7 @@ export const banners: Banner[] = [
     pickup6: 35,
     pickup5: [
     ],
+    version: "2.2",
   },
   {
     id: "argus_pick_up",
@@ -103,6 +151,7 @@ export const banners: Banner[] = [
       111,
       112,
     ],
+    version: "2.1",
   },
   {
     id: "tuesday_pick_up",
@@ -111,6 +160,7 @@ export const banners: Banner[] = [
     pickup5: [
       123,
     ],
+    version: "2.1",
   },
   {
     id: "joe_pick_up",
@@ -120,6 +170,7 @@ export const banners: Banner[] = [
       118,
       112,
     ],
+    version: "2.0",
   },
   {
     id: "mercuria_pick_up",
@@ -129,6 +180,7 @@ export const banners: Banner[] = [
       106,
       113,
     ],
+    version: "2.0",
   },
   {
     id: "kakania_pick_up",
@@ -138,6 +190,7 @@ export const banners: Banner[] = [
       111,
       114,
     ],
+    version: "1.9",
   },
   {
     id: "lucy_pick_up",
@@ -145,6 +198,7 @@ export const banners: Banner[] = [
     pickup6: 29,
     pickup5: [
     ],
+    version: "1.9",
   },
   {
     id: "windsong_pick_up",
@@ -154,6 +208,7 @@ export const banners: Banner[] = [
       115,
       104,
     ],
+    version: "1.8",
   },
   {
     id: "vila_pick_up",
@@ -162,6 +217,7 @@ export const banners: Banner[] = [
     pickup5: [
       121,
     ],
+    version: "1.8",
   },
   {
     id: "marcus_pick_up",
@@ -171,6 +227,7 @@ export const banners: Banner[] = [
       106,
       108,
     ],
+    version: "1.7",
   },
   {
     id: "isolde_pick_up",
@@ -180,6 +237,7 @@ export const banners: Banner[] = [
       112,
       110,
     ],
+    version: "1.7",
   },
   {
     id: "getian_pick_up",
@@ -189,6 +247,7 @@ export const banners: Banner[] = [
       103,
       107,
     ],
+    version: "1.6",
   },
   {
     id: "jiu_niangzi_pick_up",
@@ -196,6 +255,7 @@ export const banners: Banner[] = [
     pickup6: 22,
     pickup5: [
     ],
+    version: "1.6",
   },
   {
     id: "ezra_theodore_pick_up",
@@ -205,6 +265,7 @@ export const banners: Banner[] = [
       118,
       111,
     ],
+    version: "1.5",
   },
   {
     id: "spathodea_pick_up",
@@ -214,6 +275,7 @@ export const banners: Banner[] = [
       119,
       108,
     ],
+    version: "1.5",
   },
   {
     id: "6_pick_up",
@@ -223,6 +285,7 @@ export const banners: Banner[] = [
       105,
       113,
     ],
+    version: "1.4",
   },
   {
     id: "37_pick_up",
@@ -232,6 +295,7 @@ export const banners: Banner[] = [
       112,
       104,
     ],
+    version: "1.4",
   },
   {
     id: "shamane_pick_up",
@@ -241,6 +305,7 @@ export const banners: Banner[] = [
       111,
       109,
     ],
+    version: "1.3",
   },
   {
     id: "black_dwarf_pick_up",
@@ -250,6 +315,7 @@ export const banners: Banner[] = [
       117,
       112,
     ],
+    version: "1.3",
   },
   {
     id: "changeling_pick_up",
@@ -259,6 +325,7 @@ export const banners: Banner[] = [
       116,
       110,
     ],
+    version: "1.2",
   },
   {
     id: "tooth_fairy_pick_up",
@@ -268,6 +335,7 @@ export const banners: Banner[] = [
       107,
       115,
     ],
+    version: "1.2",
   },
   {
     id: "pickles_pick_up",
@@ -277,6 +345,7 @@ export const banners: Banner[] = [
       105,
       114,
     ],
+    version: "1.1",
   },
   {
     id: "melania_pick_up",
@@ -286,6 +355,7 @@ export const banners: Banner[] = [
       104,
       109,
     ],
+    version: "1.1",
   },
   {
     id: "lilya_pick_up",
@@ -295,6 +365,7 @@ export const banners: Banner[] = [
       103,
       108,
     ],
+    version: "1.0",
   },
   {
     id: "ms_newbabel_pick_up",
@@ -304,6 +375,7 @@ export const banners: Banner[] = [
       106,
       113,
     ],
+    version: "1.0",
   },
   {
     id: "medicine_pocket_pick_up",
@@ -313,6 +385,7 @@ export const banners: Banner[] = [
       105,
       107,
     ],
+    version: "1.0",
   },
   {
     id: "centurion_pick_up",
@@ -322,6 +395,7 @@ export const banners: Banner[] = [
       103,
       108,
     ],
+    version: "1.0",
   },
   {
     id: "an_an_lee_pick_up",
@@ -331,6 +405,7 @@ export const banners: Banner[] = [
       105,
       104,
     ],
+    version: "1.0",
   },
   {
     id: "eternity_pick_up",
@@ -340,6 +415,7 @@ export const banners: Banner[] = [
       106,
       113,
     ],
+    version: "1.0",
   },
   {
     id: "voyager_pick_up",
@@ -349,6 +425,7 @@ export const banners: Banner[] = [
       103,
       109,
     ],
+    version: "1.0",
   },
   {
     id: "regulus_pick_up",
@@ -358,6 +435,7 @@ export const banners: Banner[] = [
       108,
       111,
     ],
+    version: "1.0",
   },
   {
     id: "druvis_iii_pick_up",
@@ -385,5 +463,6 @@ export const banners: Banner[] = [
       112,
       107,
     ],
+    version: "1.0",
   },
 ];

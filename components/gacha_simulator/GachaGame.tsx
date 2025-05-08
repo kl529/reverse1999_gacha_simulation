@@ -2,14 +2,22 @@
 
 import { useState, useMemo, useEffect, useRef } from "react";
 import Image from "next/image";
-import { BannerSixStarListModal } from "@/components/modals/BannerSixStarListModal"; // 6성 목록 모달
-import { charactersByRarity, Character } from "@/data/characters"; // 캐릭터 목록
-import { banners, Banner } from "@/data/banners"; // 배너 목록
-import { percentRankTable } from "@/data/percent_rank_table"; // 상위 확률표
-import GachaResults from "@/components/gacha_simulator/GachaResults"; // 뽑기 결과 패널
-import { OffCanvas } from "@/components/gacha_simulator/OffCanvas"; // 모바일 사이드바
-import MainGachaStats from "@/components/gacha_simulator/MainGachaStats"; // 통계 패널
-import MainSixStarHistory from "@/components/gacha_simulator/MainSixStarHistory"; // 6성 히스토리 패널
+import { BannerSixStarListModal } from "@/components/modals/BannerSixStarListModal";
+import { charactersByRarity, Character } from "@/data/characters";
+import { banners, Banner } from "@/data/banners";
+import { percentRankTable } from "@/data/percent_rank_table";
+import GachaResults from "@/components/gacha_simulator/GachaResults";
+import { OffCanvas } from "@/components/gacha_simulator/OffCanvas";
+import MainGachaStats from "@/components/gacha_simulator/MainGachaStats";
+import MainSixStarHistory from "@/components/gacha_simulator/MainSixStarHistory";
+import { version } from "@/data/version";
+
+export const isValidGachaCharacter = (char: Character): boolean => {
+  if (char.exclude_gacha) return false;
+  const charVersion = parseFloat(char.version);
+  const maxAllowed = parseFloat(version) - 0.3;
+  return charVersion <= maxAllowed;
+};
 
 interface SixStarHistoryEntry {
   char: Character;
@@ -38,10 +46,14 @@ const enrichBanner = (banner: Banner): EnrichedBanner => {
     twoPickup6: banner.twoPickup6?.map((c) => (typeof c === "number" ? findCharacterById(c) : c)),
   };
 };
-
 export default function GachaGame() {
   const [selectedBanner, setSelectedBanner] = useState<EnrichedBanner>(
-    enrichBanner(banners.find((b) => b.bannerType !== "doublePick") || banners[0])
+    enrichBanner(
+      banners.find((b) => 
+        b.bannerType !== "doublePick" && 
+        (!b.version || parseFloat(b.version) <= parseFloat(version))
+      ) || banners[0]
+    )
   );
 
   // 1) React 상태
@@ -118,7 +130,10 @@ export default function GachaGame() {
   }, [sixStarHistory]);
 
   const displayedBanners = useMemo(() => {
-    return banners.filter(b => showDoublePick ? b.bannerType === "doublePick" : b.bannerType !== "doublePick");
+    return banners.filter(b => 
+      (showDoublePick ? b.bannerType === "doublePick" : b.bannerType !== "doublePick") &&
+      (!b.version || parseFloat(b.version) <= parseFloat(version))
+    );
   }, [showDoublePick]);
 
   // 🔸 픽업 vs 일반 6성 횟수 계산
@@ -193,7 +208,7 @@ export default function GachaGame() {
         if (isPickup) {
           forcedSix = selectedBanner.pickup6!;
         } else {
-          forcedSix = getRandomFrom(charactersByRarity[6].filter(c => !c.exclude_gacha));
+          forcedSix = getRandomFrom(charactersByRarity[6].filter(isValidGachaCharacter));
           localPickup = true;
         }
       }
@@ -228,7 +243,7 @@ export default function GachaGame() {
             if (isPickup) {
               picked = selectedBanner.pickup6!;
             } else {
-              picked = getRandomFrom(charactersByRarity[6].filter(c => !c.exclude_gacha));
+              picked = getRandomFrom(charactersByRarity[6].filter(isValidGachaCharacter));
               localPickup = true;
             }
           }
@@ -243,16 +258,16 @@ export default function GachaGame() {
             const isPickup = Math.random() < 0.5;
             c = isPickup
               ? getRandomFrom(selectedBanner.pickup5)
-              : getRandomFrom(charactersByRarity[5].filter(c => !c.exclude_gacha));
+              : getRandomFrom(charactersByRarity[5].filter(isValidGachaCharacter));
           } else {
             // 픽업 5성이 없으면 일반 5성에서만 가져옴
-            c = getRandomFrom(charactersByRarity[5].filter(c => !c.exclude_gacha));
+            c = getRandomFrom(charactersByRarity[5].filter(isValidGachaCharacter));
           }
           return [c, localPity + 1, localPickup];
         }
 
         // 4성 이하
-        const c = getRandomFrom(charactersByRarity[rarity].filter(c => !c.exclude_gacha));
+        const c = getRandomFrom(charactersByRarity[rarity].filter(isValidGachaCharacter));
         return [c, localPity + 1, localPickup];
       }
     }
@@ -282,7 +297,7 @@ export default function GachaGame() {
         // 예: 첫 뽑기는 5성 확정 (픽업 5성 or 일반 5성)
         char = getRandomFrom([
           ...(selectedBanner.pickup5 ?? []),
-          ...charactersByRarity[5].filter(c => !c.exclude_gacha),
+          ...charactersByRarity[5].filter(isValidGachaCharacter),
         ]);
         // 6성 아니므로 pity 1 증가
         localPity += 1;
@@ -410,12 +425,12 @@ export default function GachaGame() {
         // 5성 (균등 분배)
         if (rarity === 5) {
           // 원하는 5성 로직 (여기선 모든 5성 균등)
-          const c = getRandomFrom(charactersByRarity[5].filter(c => !c.exclude_gacha));
+          const c = getRandomFrom(charactersByRarity[5].filter(isValidGachaCharacter));
           return [c, localPity + 1, localPickup];
         }
   
         // 4성 이하
-        const c = getRandomFrom(charactersByRarity[rarity].filter(c => !c.exclude_gacha));
+        const c = getRandomFrom(charactersByRarity[rarity].filter(isValidGachaCharacter));
         return [c, localPity + 1, localPickup];
       }
     }
@@ -427,7 +442,7 @@ export default function GachaGame() {
   function getDoublePickSix(localPickup: boolean, pullIndex: number): Character {
     if (!selectedBanner.twoPickup6) {
       // fallback (데이터 없으면 그냥 전체 6성 중 랜덤)
-      const fallback = getRandomFrom(charactersByRarity[6].filter(c => !c.exclude_gacha));
+      const fallback = getRandomFrom(charactersByRarity[6].filter(isValidGachaCharacter));
       recordSixStar(fallback, pullIndex);
       return fallback;
     }
@@ -435,7 +450,7 @@ export default function GachaGame() {
     const [pickupA, pickupB] = selectedBanner.twoPickup6;
     // 나머지 6성
     const other6stars = charactersByRarity[6].filter(
-      (c) => c.engName !== pickupA.engName && c.engName !== pickupB.engName && !c.exclude_gacha
+      (c) => c.engName !== pickupA.engName && c.engName !== pickupB.engName && !c.exclude_gacha && isValidGachaCharacter(c)
     );
   
     // localPickup=true => 무조건 2명 중 1명

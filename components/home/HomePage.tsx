@@ -118,7 +118,7 @@ export default function HomePage() {
                 },
                 {
                   icon: "/infos/menu/resonance_menu.png",
-                  label: "의지 & 공명",
+                  label: "공명 & 의지",
                   href: "/character_setting"
                 },
                 {
@@ -127,9 +127,9 @@ export default function HomePage() {
                   href: "/skin",
                 },
                 {
-                  icon: "/infos/menu/future_insight.png",
-                  label: "미래시\n(준비중)", // 미래시
-                  href: "#",
+                  icon: "/infos/menu/future_insight_menu.png",
+                  label: "미래시 정리",
+                  href: "/future_insight",
                 },
                 // {
                 //   icon: "/infos/menu/goal_menu.png",

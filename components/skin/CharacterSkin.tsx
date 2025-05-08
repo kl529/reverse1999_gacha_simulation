@@ -5,15 +5,29 @@ import Image from "next/image";
 import { characterSkin } from "@/data/character_skin";
 import { charactersByRarity } from "@/data/characters";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 export default function SkinGalleryPage() {
   const [rarityFilter, setRarityFilter] = useState<string>("전체");
-  const [versionFilter, setVersionFilter] = useState<string>("전체");
   const [sourceFilter, setSourceFilter] = useState<string>("전체");
   const [selectedCharacters, setSelectedCharacters] = useState<string[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const rarityList = Array.from(new Set(characterSkin.map((s) => s.rarity)));
+  const versionList = Array.from(new Set(characterSkin.map((s) => s.version)));
+  const sourceList = Array.from(new Set(characterSkin.map((s) => s.source)));
+
+  const searchParams = useSearchParams();
+  const defaultVersion = searchParams.get("version");
+  const [versionFilter, setVersionFilter] = useState<string>(defaultVersion || "전체");
+
+  useEffect(() => {
+    if (defaultVersion && versionList.includes(defaultVersion)) {
+      setVersionFilter(defaultVersion);
+    }
+  }, [defaultVersion, versionList]);
 
   const allCharacters = Object.values(charactersByRarity).flat();
   const characterNameMap = Object.fromEntries(allCharacters.map((c) => [c.id, c.name]));
@@ -61,10 +75,6 @@ export default function SkinGalleryPage() {
       selectedCharacters.includes(characterNameMap[skin.character_id]);
     return matchRarity && matchVersion && matchSource && matchCharacter;
   });
-
-  const rarityList = Array.from(new Set(characterSkin.map((s) => s.rarity)));
-  const versionList = Array.from(new Set(characterSkin.map((s) => s.version)));
-  const sourceList = Array.from(new Set(characterSkin.map((s) => s.source)));
 
   return (
     <div className="p-4 w-full h-full flex flex-col overflow-hidden">
