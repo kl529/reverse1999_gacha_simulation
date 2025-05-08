@@ -65,6 +65,7 @@ export const banners: Banner[] = [
     name: "[2.5] 양월 픽업",
     pickup6: 41,
     pickup5: [
+      126
     ],
     version: "2.5",
   },
