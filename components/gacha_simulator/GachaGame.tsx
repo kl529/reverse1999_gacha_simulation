@@ -39,13 +39,41 @@ const findCharacterById = (id: number): Character => {
 };
 
 const enrichBanner = (banner: Banner): EnrichedBanner => {
+  const currentVer = parseFloat(version);
+
+  const resolveChar = (c: number | Character): Character =>
+    typeof c === "number" ? findCharacterById(c) : c;
+
+  const allPickup6 = banner.bannerType === "doublePick"
+    ? (banner.twoPickup6 ?? []).map(resolveChar).filter(
+        (c) => !c.exclude_gacha && parseFloat(c.version) <= currentVer
+      )
+    : banner.pickup6
+    ? [resolveChar(banner.pickup6)].filter(
+        (c) => !c.exclude_gacha && parseFloat(c.version) <= currentVer
+      )
+    : [];
+
+  const latestPickup6 = allPickup6.sort(
+    (a, b) => parseFloat(b.version) - parseFloat(a.version)
+  )[0];
+
+  const resolvedPickup5 = (banner.pickup5 ?? [])
+    .map(resolveChar)
+    .filter((c) => !c.exclude_gacha && parseFloat(c.version) <= currentVer);
+
+  const resolvedTwoPickup6 = (banner.twoPickup6 ?? [])
+    .map(resolveChar)
+    .filter((c) => !c.exclude_gacha && parseFloat(c.version) <= currentVer);
+
   return {
     ...banner,
-    pickup6: typeof banner.pickup6 === "number" ? findCharacterById(banner.pickup6) : banner.pickup6,
-    pickup5: banner.pickup5?.map((c) => (typeof c === "number" ? findCharacterById(c) : c)),
-    twoPickup6: banner.twoPickup6?.map((c) => (typeof c === "number" ? findCharacterById(c) : c)),
+    pickup6: latestPickup6,
+    pickup5: resolvedPickup5,
+    twoPickup6: resolvedTwoPickup6,
   };
 };
+
 export default function GachaGame() {
   const [selectedBanner, setSelectedBanner] = useState<EnrichedBanner>(
     enrichBanner(
@@ -498,15 +526,19 @@ export default function GachaGame() {
     setShowDoublePick((prev) => {
       const newShowDoublePick = !prev;
   
-      // ✅ 배너 목록 필터링
-      const newBanners = newShowDoublePick
-        ? banners.filter((b) => b.bannerType === "doublePick")
-        : banners.filter((b) => b.bannerType !== "doublePick");
+      const validBanners = banners
+        .filter((b) =>
+          newShowDoublePick ? b.bannerType === "doublePick" : b.bannerType !== "doublePick"
+        )
+        .map(enrichBanner)
+        .filter((b) =>
+          b.pickup6 || (b.twoPickup6 && b.twoPickup6.length > 0)
+        );
   
-      // ✅ 선택된 배너 변경
-      setSelectedBanner(enrichBanner(newBanners.length > 0 ? newBanners[0] : banners[0]));
+      const nextBanner = validBanners[0] || enrichBanner(banners[0]);
   
-      resetAll(); // ✅ 상태 리셋
+      setSelectedBanner(nextBanner);
+      resetAll();
       return newShowDoublePick;
     });
   };
