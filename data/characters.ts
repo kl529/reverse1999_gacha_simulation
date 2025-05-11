@@ -85,7 +85,7 @@ export type Character = {
       { id: 123, name: "바바라", rarity: 5, inspiration: "spirit", engName: "barbara", version: "2.1", resonanceType: "defense" },
       { id: 124, name: "던컨", rarity: 5, inspiration: "beast", engName: "mr-duncan", version: "2.2", resonanceType: "damage" },
       { id: 125, name: "슬라우치 햇", rarity: 5, inspiration: "mineral", engName: "brimley", version: "2.3", resonanceType: "defense" },
-      { id: 126, name: "로거헤드", rarity: 5, inspiration: "plant", engName: "loggerhead", version: "2.5", resonanceType: "support", is_future: true},
+      { id: 126, name: "로거헤드", rarity: 5, inspiration: "plant", engName: "loggerhead", version: "2.5", resonanceType: "support"},
       { id: 127, name: "네임데이", rarity: 5, inspiration: "mineral", engName: "name-day", version: "2.7", resonanceType: "defense", is_future: true },
     ],
     4: [

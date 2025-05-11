@@ -678,12 +678,11 @@ export default function CharacterQuiz() {
           </button>
           <button
             onClick={() => {
-              setShowHardModeModal(false);
+              confirmResetAll(); // 진행상황 초기화
               setIsHardMode(true);
-              handleShuffle();
-              handleFilterReset();
-              setShowFilters(false);
-              setShowHint(false);
+              handleShuffle();   // 자동 셔플
+              toast.success("하드 모드 시작!");
+              setShowHardModeModal(false);
             }}
             className="bg-red-600 text-white px-4 py-1 rounded"
           >
