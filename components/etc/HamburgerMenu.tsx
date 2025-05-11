@@ -33,6 +33,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
     { iconImg: "/infos/menu/future_insight_menu.png", label: "미래시 정리", href: "/future_insight" },
     { divider: true },
     { iconImg: "/infos/menu/path_quiz_menu.png", label: "오솔길 정답", href: "/path_quiz" },
+    { iconImg: "/infos/menu/blueprint_menu.png", label: "청사진 모음", href: "/blueprint_setting" },
   ];
 
   useEffect(() => {

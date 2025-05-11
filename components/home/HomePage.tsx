@@ -150,7 +150,11 @@ export default function HomePage() {
                   label: "오솔길 정답",
                   href: "/path_quiz",
                 },
-                { icon: "/infos/menu/rain_blueprint_menu.png", label: "청사진 모음\n(준비중)", href: "#" },
+                { 
+                  icon: "/infos/menu/blueprint_menu.png", 
+                  label: "청사진 모음", 
+                  href: "/blueprint_setting" 
+                },
                 // { icon: "/infos/menu/gacha_planner_menu.png", label: "가챠\n계획 계산기\n(준비중)", href: "#" },
                 { icon: "/infos/menu/cash_in_guide_menu.png", label: "현질 가이드\n(준비중)", href: "#" },
                 // { icon: "/infos/menu/psychube_calculator_menu.png", label: "의지\n육성 계산기\n(준비중)", href: "#" },

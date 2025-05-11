@@ -25,5 +25,12 @@ export interface CarouselItem {
       link: "/future_insight",
       type: "event"
     },
+    {
+      id: 3,
+      title: "청사진 모음",
+      image: "/infos/carousel_img/blueprint_setting.webp",
+      link: "/blueprint_setting",
+      type: "event"
+    }
   ];
   
