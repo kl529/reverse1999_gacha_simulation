@@ -112,13 +112,13 @@ export default function Carousel() {
       {/* 좌우 버튼 */}
       <button
         onClick={handlePrev}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-white rounded-full p-2 z-10"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-white rounded-full p-1 sm:p-2 text-sm sm:text-base z-10"
       >
         ◀
       </button>
       <button
         onClick={handleNext}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-white rounded-full p-2 z-10"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-white rounded-full p-1 sm:p-2 text-sm sm:text-base z-10"
       >
         ▶
       </button>
@@ -128,9 +128,9 @@ export default function Carousel() {
         {carouselItems.map((_, index) => (
           <div
             key={index}
-            className={`w-3 h-3 rounded-full ${
+            className={`rounded-full ${
               index === currentIndex ? "bg-white" : "bg-gray-400"
-            }`}
+            } w-2 h-2 sm:w-3 sm:h-3`}
           />
         ))}
       </div>
