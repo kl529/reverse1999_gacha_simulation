@@ -7,6 +7,7 @@ import ConfirmModal from "@/components/modals/ConfirmModal";
 import { useDarkMode } from "@/components/etc/DarkModeContext";
 import UpdateModal from "@/components/modals/UpdateModal"; // 업데이트 모달
 import CardInfoModal from "@/components/modals/CardInfoModal";
+import Carousel from "@/components/etc/Carousel";
 
 const bgImages = [
   "/infos/home/poster1.png",
@@ -166,6 +167,10 @@ export default function HomePage() {
                 // { icon: "/infos/menu/psychube_calculator_menu.png", label: "의지\n육성 계산기\n(준비중)", href: "#" },
               ]}
             /> */}
+          </div>
+
+          <div className="w-full max-w-7xl px-10 md:px-20 lg:px-6 mt-6">
+            <Carousel />
           </div>
         </main>
 
