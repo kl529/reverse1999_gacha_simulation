@@ -16,7 +16,7 @@ export default function BlueprintSetting() {
 
   return (
     <div className="max-w-5xl mx-auto p-4 dark:bg-gray-900 dark:text-white min-h-screen">
-      <h1 className="text-2xl font-bold text-center mb-6 mt-8">청사진 모음</h1>
+      <h1 className="text-2xl font-bold text-center mb-6 mt-8 text-black dark:text-white">청사진 모음</h1>
 
       {/* 보스 선택 */}
       <div className="flex justify-center gap-4 mb-4 flex-wrap">
@@ -43,7 +43,7 @@ export default function BlueprintSetting() {
                 />
               </div>
             </div>
-            <p className="text-center text-sm mt-1">{boss.name}</p>
+            <p className="text-center text-sm mt-1 text-black dark:text-white">{boss.name}</p>
           </button>
         ))}
       </div>
@@ -57,8 +57,8 @@ export default function BlueprintSetting() {
               onClick={() => setSelectedFilter(f)}
               className={`px-3 py-1 rounded-full border whitespace-nowrap ${
                 selectedFilter === f
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200 dark:bg-gray-700"
+                  ? "bg-blue-500 text-black dark:text-white"
+                  : "bg-gray-200 text-black dark:bg-gray-700"
               }`}
             >
               {f}

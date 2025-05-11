@@ -95,12 +95,12 @@ export default function Carousel() {
                 />
               )}
               {item.type === "pick_up" && item.title && (
-                <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 bg-black/70 text-white p-1 pb-0 rounded max-w-[90%] whitespace-pre-line text-sm sm:text-lg lg:text-2xl text-center">
+                <div className="absolute bottom-7 sm:bottom-12 left-1/2 transform -translate-x-1/2 bg-black/70 text-white p-1 pb-0 rounded max-w-[90%] whitespace-pre-line text-sm sm:text-lg lg:text-2xl text-center">
                   {item.title}
                 </div>
               )}
               {item.type === "pick_up" && item.description && (
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white p-1 pt-0 rounded max-w-[90%] whitespace-pre-line text-sm sm:text-lg lg:text-2xl text-center">
+                <div className="hidden sm:block absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white p-1 pt-0 rounded max-w-[90%] whitespace-pre-line text-sm sm:text-lg lg:text-2xl text-center">
                   {item.description}
                 </div>
               )}
