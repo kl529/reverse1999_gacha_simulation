@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { charactersByRarity, Character } from "@/data/characters";
 import { EnrichedBanner } from "@/components/gacha_simulator/GachaGame";
-import { isValidGachaCharacter } from "@/components/gacha_simulator/GachaGame";
+import { isValidGachaCharacterForPool } from "@/components/gacha_simulator/GachaGame";
 
 interface ModalProps {
   isOpen: boolean;
@@ -12,7 +12,7 @@ interface ModalProps {
 export function BannerSixStarListModal({ isOpen, onClose, banner }: ModalProps) {
   if (!isOpen) return null; // 모달이 닫혀있으면 렌더링 X
 
-  const allSixStars: Character[] = charactersByRarity[6].filter(isValidGachaCharacter);
+  const allSixStars: Character[] = charactersByRarity[6].filter(isValidGachaCharacterForPool);
   const pickupSixStars = banner.bannerType === "doublePick" ? banner.twoPickup6 : [banner.pickup6];
   const uniqueSixStars = new Set(allSixStars.map(char => char.engName));
   const updatedSixStars = [
