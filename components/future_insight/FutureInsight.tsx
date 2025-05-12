@@ -18,7 +18,7 @@ function getCharNameById(id: number | Character | undefined): string {
     }
     return `ID ${id}`;
   }
-  return "X";
+  return "-";
 }
 
 function getVersionStatus(startDateStr: string, endDateStr: string): { label: string; days: number } {
@@ -122,8 +122,8 @@ export default function FutureInsightPage() {
                         <span className="bg-black/60 text-white text-xs px-2 py-0.5 rounded">{halfLabel}</span>
                         <p className="font-semibold text-zinc-800 dark:text-zinc-100">{banner.name}</p>
                       </div>
-                      <p><strong>6성:</strong> {pickup6 || "X"}</p>
-                      <p><strong>5성:</strong> {pickup5 || "X"}</p>
+                      <p><strong>6성:</strong> {pickup6 || "-"}</p>
+                      <p><strong>5성:</strong> {pickup5 || "-"}</p>
                     </div>
                   );
                 })}
@@ -132,8 +132,8 @@ export default function FutureInsightPage() {
 
             <div className="border-t border-zinc-200 dark:border-zinc-700 pt-3">
               <h2 className="font-bold mb-1 text-zinc-800 dark:text-zinc-100">🌀 광상 목록</h2>
-              <p><strong>6성:</strong> {item.euphoria.star6.map(getCharNameById).join(", ") || "X"}</p>
-              <p><strong>5성:</strong> {item.euphoria.star5.map(getCharNameById).join(", ") || "X"}</p>
+              <p><strong>6성:</strong> {item.euphoria.star6.map(getCharNameById).join(", ") || "-"}</p>
+              <p><strong>5성:</strong> {item.euphoria.star5.map(getCharNameById).join(", ") || "-"}</p>
             </div>
 
             <div className="border-t border-zinc-200 dark:border-zinc-700 pt-3">
