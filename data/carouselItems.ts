@@ -31,6 +31,13 @@ export interface CarouselItem {
       image: "/infos/carousel_img/blueprint_setting.webp",
       link: "/blueprint_setting",
       type: "event"
+    },
+    {
+      id: 4,
+      title: "광상 가이드",
+      image: "/infos/carousel_img/euphoria_guide.webp",
+      link: "/euphoria_guide",
+      type: "event"
     }
   ];
   

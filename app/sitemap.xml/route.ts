@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
 import { characterSkin } from "@/data/character_skin";
-
+import { euphoriaList } from "@/data/euphoria";
 export async function GET() {
   const baseUrl = "https://www.reverse1999-simulator.com";
   const staticUrls = [
@@ -12,7 +12,7 @@ export async function GET() {
     "/skin",
     "/path_quiz",
     "/future_insight",
-    // "/euphoria_guide",
+    "/euphoria_guide",
     "/blueprint_setting"
   ].map((path) => `${baseUrl}${path}`);
 
@@ -24,7 +24,11 @@ export async function GET() {
     (c) => `${baseUrl}/skin/${c.id}`
   );
 
-  const urls = [...staticUrls, ...characterSettingUrls, ...characterSkinUrls];
+  const euphoriaGuideUrls = euphoriaList.map(
+    (e) => `${baseUrl}/euphoria_guide/${e.id}`
+  );
+
+  const urls = [...staticUrls, ...characterSettingUrls, ...characterSkinUrls, ...euphoriaGuideUrls];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       images: [
         {
           url: imageUrl,
-          width: 512,
-          height: 512,
+          width: 1200,
+          height: 630,
           alt: `${character.name} 아이콘`,
         },
       ],

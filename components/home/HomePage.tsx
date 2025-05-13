@@ -150,6 +150,11 @@ export default function HomePage() {
                   label: "오솔길 정답",
                   href: "/path_quiz",
                 },
+                {
+                  icon: "/infos/menu/euphoria_guide_menu.png",
+                  label: "광상 가이드",
+                  href: "/euphoria_guide",
+                },
                 { 
                   icon: "/infos/menu/blueprint_menu.png", 
                   label: "청사진 모음", 
@@ -283,6 +288,8 @@ export default function HomePage() {
                 - 다른 상세 정보 : <Link href="https://www.kdocs.cn/l/cd5MWeCl5bKw" target="_blank" rel="noopener noreferrer">https://www.kdocs.cn/l/cd5MWeCl5bKw</Link>
                 <br />
                 - 한국 정보 정리 : <Link href="https://docs.google.com/spreadsheets/d/1f40thIQMIDUJZj9-HZDVlbr0aZ9GMXvwOirMzhqwLNU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">https://docs.google.com/spreadsheets/d/1f40thIQMIDUJZj9-HZDVlbr0aZ9GMXvwOirMzhqwLNU/edit?usp=sharing</Link>
+                <br />
+                - 광상 정보 : <Link href="https://sites.google.com/view/apeironcave/home" target="_blank" rel="noopener noreferrer">https://sites.google.com/view/apeironcave/home</Link>
               </p>
           </ConfirmModal>
         )}
