@@ -693,14 +693,6 @@ export default function GachaGame() {
       >
         📒
       </button>
-
-      {is6StarListOpen && (
-        <BannerSixStarListModal
-          isOpen={is6StarListOpen}
-          onClose={() => set6StarListOpen(false)}
-          banner={selectedBanner}
-        />
-      )}
     </div>
   );
 }
