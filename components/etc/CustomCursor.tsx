@@ -17,7 +17,7 @@ export default function CustomCursor() {
 
   return (
     <div
-      className="fixed w-8 h-8 pointer-events-none z-50"
+      className="pointer-events-none fixed z-50 h-8 w-8"
       style={{
         top: position.y - 16,
         left: position.x - 16,

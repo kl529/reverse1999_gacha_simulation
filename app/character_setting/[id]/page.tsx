@@ -7,7 +7,11 @@ export async function generateStaticParams() {
   return SETTING_CHARACTERS.map((ch) => ({ id: ch.id.toString() }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
   const { id } = await params;
   const charId = Number(id);
   const character = SETTING_CHARACTERS.find((ch) => ch.id === charId);
@@ -47,7 +51,11 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   };
 }
 
-export default async function CharacterSettingPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function CharacterSettingPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   const charId = Number(id);
   const character = SETTING_CHARACTERS.find((ch) => ch.id === charId);

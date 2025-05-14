@@ -1,0 +1,12 @@
+# 빌드 디렉토리
+.next/
+dist/
+build/
+
+# node 모듈
+node_modules/
+
+# 환경파일, 설정파일
+*.lock
+*.config.js
+*.config.cjs

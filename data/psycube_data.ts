@@ -1,12 +1,12 @@
 export interface Psycube {
-    id: number;
-    name: string;
-    engName: string;
-    rarity: number;
-    version: string;
-    type: "상점" | "일화" | "록라"
-  }
-  
+  id: number;
+  name: string;
+  engName: string;
+  rarity: number;
+  version: string;
+  type: "상점" | "일화" | "록라";
+}
+
 export const PSYCUBE_DATA: Psycube[] = [
   {
     id: 1,
@@ -574,6 +574,6 @@ export const PSYCUBE_DATA: Psycube[] = [
     engName: "aurora_after_winter",
     rarity: 6,
     version: "2.7",
-    type: "상점"
+    type: "상점",
   },
 ];

@@ -3,8 +3,8 @@ export interface FutureInsightItem {
   title: string;
   period: {
     start: string; // 예: '2025-04-24'
-    end: string;   // 예: '2025-05-29'
-    week: number;  // 예: 5
+    end: string; // 예: '2025-05-29'
+    week: number; // 예: 5
   };
   album_shop: {
     rare6: number; // 6성 캐릭터 id
@@ -30,10 +30,7 @@ export const futureInsightData: FutureInsightItem[] = [
       rare6: 15,
       rare5: 117,
     },
-    banners: [
-      "barcarola_pick_up",
-      "fatutu_pick_up"
-    ],
+    banners: ["barcarola_pick_up", "fatutu_pick_up"],
     euphoria: {
       star6: [11, 15],
       star5: [102, 112],
@@ -51,10 +48,7 @@ export const futureInsightData: FutureInsightItem[] = [
       rare6: 17,
       rare5: 106,
     },
-    banners: [
-      "liang_pick_up",
-      "noire_pick_up"
-    ],
+    banners: ["liang_pick_up", "noire_pick_up"],
     euphoria: {
       star6: [7, 13],
       star5: [],
@@ -72,10 +66,7 @@ export const futureInsightData: FutureInsightItem[] = [
       rare6: 16,
       rare5: 103,
     },
-    banners: [
-      "recoleta_pick_up",
-      "aleph_pick_up"
-    ],
+    banners: ["recoleta_pick_up", "aleph_pick_up"],
     euphoria: {
       star6: [8, 12],
       star5: [],
@@ -93,13 +84,10 @@ export const futureInsightData: FutureInsightItem[] = [
       rare6: 19,
       rare5: 104,
     },
-    banners: [
-      "hissabeth_pick_up",
-      "kiperina_pick_up"
-    ],
+    banners: ["hissabeth_pick_up", "kiperina_pick_up"],
     euphoria: {
       star6: [21, 22],
       star5: [],
     },
-  }
+  },
 ];

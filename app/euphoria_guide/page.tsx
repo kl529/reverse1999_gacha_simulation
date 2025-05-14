@@ -2,7 +2,7 @@ import EuphoriaGuide from "@/components/euphoria_guide/EuphoriaGuide";
 
 export default function EuphoriaGuidePage() {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
       <EuphoriaGuide />
     </div>
   );

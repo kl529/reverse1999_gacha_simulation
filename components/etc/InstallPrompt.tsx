@@ -6,7 +6,8 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 export function InstallPrompt() {
-  const [promptEvent, setPromptEvent] = useState<BeforeInstallPromptEvent | null>(null);
+  const [promptEvent, setPromptEvent] =
+    useState<BeforeInstallPromptEvent | null>(null);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
@@ -15,7 +16,11 @@ export function InstallPrompt() {
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-    return () => window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    return () =>
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt,
+      );
   }, []);
 
   const handleInstallClick = async () => {
@@ -28,9 +33,12 @@ export function InstallPrompt() {
   if (!promptEvent) return null; // ✅ prompt가 없으면 UI 숨김
 
   return (
-    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white p-4 rounded shadow-lg flex items-center space-x-3">
+    <div className="fixed bottom-4 left-1/2 flex -translate-x-1/2 transform items-center space-x-3 rounded bg-gray-800 p-4 text-white shadow-lg">
       <p className="text-sm">앱을 설치하시겠습니까?</p>
-      <button onClick={handleInstallClick} className="bg-green-500 px-3 py-1 rounded text-sm hover:bg-green-600">
+      <button
+        onClick={handleInstallClick}
+        className="rounded bg-green-500 px-3 py-1 text-sm hover:bg-green-600"
+      >
         설치하기
       </button>
     </div>

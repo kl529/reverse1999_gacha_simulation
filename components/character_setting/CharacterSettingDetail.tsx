@@ -7,8 +7,14 @@ import { character_setting_data } from "@/data/character_setting_data";
 import { PSYCUBE_DATA } from "@/data/psycube_data";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
 
-export default function CharacterSettingDetail({ character }: { character: Character }) {
-  const setting = character_setting_data.find((c) => c.character_id === character.id);
+export default function CharacterSettingDetail({
+  character,
+}: {
+  character: Character;
+}) {
+  const setting = character_setting_data.find(
+    (c) => c.character_id === character.id,
+  );
 
   const psycube_list = (setting?.psycubes || []).map((p) => {
     const psycube = PSYCUBE_DATA.find((d) => d.id === p.psycube_id);
@@ -22,36 +28,36 @@ export default function CharacterSettingDetail({ character }: { character: Chara
   });
 
   const getSortedCharList = (rarity: number) =>
-    SETTING_CHARACTERS
-      .filter((c) => c.rarity === rarity)
-      .sort((a, b) => b.id - a.id); // ID 내림차순
+    SETTING_CHARACTERS.filter((c) => c.rarity === rarity).sort(
+      (a, b) => b.id - a.id,
+    ); // ID 내림차순
 
   return (
-    <div className="min-h-screen w-full bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">
-      <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="min-h-screen w-full bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+      <div className="mx-auto max-w-4xl px-4 py-8">
         {/* 제목 + 목록버튼 */}
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-xl sm:text-2xl font-bold text-center flex-1">
+        <div className="mb-6 flex items-center justify-between">
+          <h1 className="flex-1 text-center text-xl font-bold sm:text-2xl">
             {character.name}
           </h1>
         </div>
 
         {/* 캐릭터 이미지 + 공명 정보 */}
-        <div className="flex flex-row sm:flex-row justify-center items-center gap-8 mb-8">
-          <div className="w-[150px] h-[150px] rounded overflow-hidden border dark:border-gray-700">
+        <div className="mb-8 flex flex-row items-center justify-center gap-8 sm:flex-row">
+          <div className="h-[150px] w-[150px] overflow-hidden rounded border dark:border-gray-700">
             <Image
               src={`/characters/${character.rarity}stars/${character.engName}.png`}
               alt={character.name}
               width={150}
               height={300}
-              className="object-cover object-top w-full h-auto"
+              className="h-auto w-full object-cover object-top"
             />
           </div>
 
-          <div className="flex flex-col items-center bg-gray-500 dark:bg-gray-800 p-3 rounded">
+          <div className="flex flex-col items-center rounded bg-gray-500 p-3 dark:bg-gray-800">
             <a
               href={`https://sites.google.com/view/reverse1999resonance/%EC%BA%90%EB%A6%AD%ED%84%B0-%EA%B3%B5%EB%AA%85/${character.rarity}성/${encodeURIComponent(
-                character.name.toLowerCase().replace(/ /g, "-")
+                character.name.toLowerCase().replace(/ /g, "-"),
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -61,40 +67,44 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                 alt="공명 정보"
                 width={100}
                 height={100}
-                className="rounded border hover:opacity-90 transition"
+                className="rounded border transition hover:opacity-90"
               />
-              <span className="mt-2 block text-sm font-medium text-white text-center">공명정보</span>
+              <span className="mt-2 block text-center text-sm font-medium text-white">
+                공명정보
+              </span>
             </a>
           </div>
         </div>
 
         <div className="mb-12">
-          <h2 className="text-xl font-bold mb-2 text-center">의지 추천</h2>
-          <p className="text-center text-xs text-gray-500 dark:text-gray-400 mb-4">
+          <h2 className="mb-2 text-center text-xl font-bold">의지 추천</h2>
+          <p className="mb-4 text-center text-xs text-gray-500 dark:text-gray-400">
             의지는 추천순이며, 순위도 100% 정답이 아닐 수도 있습니다.
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {psycube_list.map((item, idx) => (
-              <div key={idx} className="text-center space-y-2">
-                <div className="relative w-[100px] h-[100px] mx-auto">
+              <div key={idx} className="space-y-2 text-center">
+                <div className="relative mx-auto h-[100px] w-[100px]">
                   <Image
                     src={item.src}
                     alt={item.label}
                     fill
-                    className="object-cover rounded border dark:border-gray-700"
+                    className="rounded border object-cover dark:border-gray-700"
                   />
-                  <div className="absolute top-1 left-1 bg-red-600 text-white text-[10px] px-1 rounded-sm">
+                  <div className="absolute left-1 top-1 rounded-sm bg-red-600 px-1 text-[10px] text-white">
                     {idx} 순위
                   </div>
-                  <div className="absolute bottom-1 left-1 bg-purple-600 text-white text-[10px] px-1 rounded-sm">
+                  <div className="absolute bottom-1 left-1 rounded-sm bg-purple-600 px-1 text-[10px] text-white">
                     {item.type}
                   </div>
-                  <div className="absolute bottom-1 right-1 bg-blue-600 text-white text-[10px] px-1 rounded-sm">
+                  <div className="absolute bottom-1 right-1 rounded-sm bg-blue-600 px-1 text-[10px] text-white">
                     v{item.version}
                   </div>
                 </div>
-                <div className="font-semibold text-sm">{item.label}</div>
-                <p className="text-xs text-gray-600 dark:text-gray-300 px-1">{item.description}</p>
+                <div className="text-sm font-semibold">{item.label}</div>
+                <p className="px-1 text-xs text-gray-600 dark:text-gray-300">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
@@ -104,27 +114,27 @@ export default function CharacterSettingDetail({ character }: { character: Chara
         <div className="mb-16">
           {[6, 5].map((rarity) => (
             <div key={rarity} className="mb-6">
-              <h3 className="font-semibold mb-2 text-[15px] text-center">
+              <h3 className="mb-2 text-center text-[15px] font-semibold">
                 {rarity === 6 ? "🌟 6성" : "⭐ 5성"}
               </h3>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(64px,1fr))] gap-2">
                 {getSortedCharList(rarity).map((ch) => (
                   <Link key={ch.id} href={`/character_setting/${ch.id}`}>
-                    <div className="flex flex-col items-center p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                      <div className="relative w-10 h-10">
+                    <div className="flex flex-col items-center rounded p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800">
+                      <div className="relative h-10 w-10">
                         <Image
                           src={`/characters/${ch.rarity}stars_small/${ch.engName}.png`}
                           alt={ch.name}
                           fill
-                          className="object-contain rounded"
+                          className="rounded object-contain"
                         />
                         {ch.version && (
-                          <div className="absolute bottom-0 right-0 bg-blue-600 text-white text-[8px] px-1 py-[1px] rounded-sm shadow">
+                          <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[8px] text-white shadow">
                             {ch.version}
                           </div>
                         )}
                       </div>
-                      <div className="text-[11px] text-center text-gray-600 dark:text-gray-200 truncate w-full font-semibold">
+                      <div className="w-full truncate text-center text-[11px] font-semibold text-gray-600 dark:text-gray-200">
                         {ch.name}
                       </div>
                     </div>

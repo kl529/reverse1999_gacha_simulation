@@ -13,14 +13,14 @@ export interface CharacterSkin {
 
 export const characterSkin: CharacterSkin[] = [
   {
-      id: 1,
-      character_id: 101,
-      name: "순례의 노래",
-      engName: "parade_anthem",
-      rarity: "Garment",
-      source: "무료",
-      resell: "X",
-      version: "1.0"
+    id: 1,
+    character_id: 101,
+    name: "순례의 노래",
+    engName: "parade_anthem",
+    rarity: "Garment",
+    source: "무료",
+    resell: "X",
+    version: "1.0",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "1.1"
+    version: "1.1",
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.1",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.1",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 5,
@@ -62,7 +62,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "1.1"
+    version: "1.1",
   },
   {
     id: 6,
@@ -73,7 +73,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.2",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 7,
@@ -83,7 +83,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "1.2"
+    version: "1.2",
   },
   {
     id: 8,
@@ -94,7 +94,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.2",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 9,
@@ -104,7 +104,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "1.2"
+    version: "1.2",
   },
   {
     id: 10,
@@ -115,7 +115,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.3",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 11,
@@ -126,7 +126,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.3",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 12,
@@ -136,7 +136,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "1.3"
+    version: "1.3",
   },
   {
     id: 13,
@@ -146,7 +146,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "1.3"
+    version: "1.3",
   },
   {
     id: 14,
@@ -157,7 +157,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.4",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 15,
@@ -168,7 +168,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.4",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 16,
@@ -178,7 +178,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "1.4"
+    version: "1.4",
   },
   {
     id: 17,
@@ -188,7 +188,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "1.4"
+    version: "1.4",
   },
   {
     id: 18,
@@ -199,7 +199,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.5",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 19,
@@ -209,7 +209,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "1.5"
+    version: "1.5",
   },
   {
     id: 20,
@@ -220,7 +220,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.5",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 21,
@@ -230,7 +230,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "1.5"
+    version: "1.5",
   },
   {
     id: 22,
@@ -240,7 +240,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "무료",
     resell: "X",
-    version: "1.6"
+    version: "1.6",
   },
   {
     id: 23,
@@ -251,7 +251,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.6",
-    price: "14,000₩ / 1080빗방울"
+    price: "14,000₩ / 1080빗방울",
   },
   {
     id: 24,
@@ -262,7 +262,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.6",
-    price: "14,000₩ / 1080빗방울"
+    price: "14,000₩ / 1080빗방울",
   },
   {
     id: 25,
@@ -272,7 +272,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "1.6"
+    version: "1.6",
   },
   {
     id: 26,
@@ -282,7 +282,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "1.6"
+    version: "1.6",
   },
   {
     id: 27,
@@ -293,7 +293,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.7",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 28,
@@ -304,7 +304,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.7",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 29,
@@ -314,7 +314,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "1.7"
+    version: "1.7",
   },
   {
     id: 30,
@@ -324,7 +324,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "1.7"
+    version: "1.7",
   },
   {
     id: 31,
@@ -335,7 +335,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.7",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 32,
@@ -346,7 +346,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.8",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 33,
@@ -357,7 +357,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.8",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 34,
@@ -367,7 +367,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "콜라보 판매",
     resell: "X",
-    version: "1.8"
+    version: "1.8",
   },
   {
     id: 35,
@@ -377,7 +377,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "1.8"
+    version: "1.8",
   },
   {
     id: 36,
@@ -387,9 +387,9 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "1.8"
+    version: "1.8",
   },
-  { 
+  {
     id: 37,
     character_id: 15,
     name: "오후의 예항",
@@ -398,7 +398,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.9",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 38,
@@ -409,7 +409,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.9",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 39,
@@ -420,7 +420,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "1.9",
-    price: "19,000₩ / 1,680빗방울"
+    price: "19,000₩ / 1,680빗방울",
   },
   {
     id: 40,
@@ -430,7 +430,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "1.9"
+    version: "1.9",
   },
   {
     id: 41,
@@ -440,7 +440,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "1.9"
+    version: "1.9",
   },
   {
     id: 42,
@@ -450,7 +450,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "1.9"
+    version: "1.9",
   },
   {
     id: 43,
@@ -460,7 +460,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "콜라보 판매",
     resell: "X",
-    version: "1.9"
+    version: "1.9",
   },
   {
     id: 44,
@@ -471,7 +471,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.0",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 45,
@@ -482,7 +482,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.0",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 46,
@@ -492,7 +492,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "2.0"
+    version: "2.0",
   },
   {
     id: 47,
@@ -502,7 +502,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "2.0"
+    version: "2.0",
   },
   {
     id: 48,
@@ -513,7 +513,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "콜라보 판매",
     resell: "X",
     version: "2.0",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 49,
@@ -524,7 +524,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "콜라보 판매",
     resell: "X",
     version: "2.0",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 50,
@@ -535,7 +535,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.1",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 51,
@@ -546,7 +546,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.1",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 52,
@@ -556,7 +556,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "2.1"
+    version: "2.1",
   },
   {
     id: 53,
@@ -566,7 +566,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "2.1"
+    version: "2.1",
   },
   {
     id: 54,
@@ -577,7 +577,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.2",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 55,
@@ -588,7 +588,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.2",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 56,
@@ -599,7 +599,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.2",
-    price: "19,000₩ / 1,680빗방울"
+    price: "19,000₩ / 1,680빗방울",
   },
   {
     id: 57,
@@ -610,7 +610,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.2",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 58,
@@ -620,7 +620,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "2.2"
+    version: "2.2",
   },
   {
     id: 59,
@@ -630,7 +630,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "2.2"
+    version: "2.2",
   },
   {
     id: 60,
@@ -641,7 +641,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.3",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 61,
@@ -652,7 +652,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.3",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 62,
@@ -662,7 +662,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "2.3"
+    version: "2.3",
   },
   {
     id: 63,
@@ -672,7 +672,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "2.3"
+    version: "2.3",
   },
   {
     id: 64,
@@ -682,7 +682,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "2.4"
+    version: "2.4",
   },
   {
     id: 65,
@@ -693,7 +693,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.4",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 66,
@@ -703,7 +703,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "2.4"
+    version: "2.4",
   },
   {
     id: 67,
@@ -714,7 +714,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.4",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 68,
@@ -724,7 +724,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "2.4"
+    version: "2.4",
   },
   {
     id: 69,
@@ -735,7 +735,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "콜라보 판매",
     resell: "X",
     version: "2.4",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 70,
@@ -746,7 +746,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "콜라보 판매",
     resell: "X",
     version: "2.4",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 71,
@@ -757,7 +757,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.5",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 72,
@@ -768,7 +768,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.5",
-    price: "19,000₩ / 1,680빗방울"
+    price: "19,000₩ / 1,680빗방울",
   },
   {
     id: 73,
@@ -778,7 +778,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "무료",
     resell: "X",
-    version: "2.5"
+    version: "2.5",
   },
   {
     id: 74,
@@ -789,7 +789,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.5",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 75,
@@ -799,7 +799,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "2.5"
+    version: "2.5",
   },
   {
     id: 76,
@@ -809,7 +809,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "2.5"
+    version: "2.5",
   },
   {
     id: 77,
@@ -820,7 +820,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.6",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 78,
@@ -831,7 +831,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.6",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 79,
@@ -841,7 +841,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "2.6"
+    version: "2.6",
   },
   {
     id: 80,
@@ -851,7 +851,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "2.6"
+    version: "2.6",
   },
   {
     id: 81,
@@ -862,7 +862,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.7",
-    price: "14,000₩ / 1,080빗방울"
+    price: "14,000₩ / 1,080빗방울",
   },
   {
     id: 82,
@@ -873,7 +873,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "판매",
     resell: "X",
     version: "2.7",
-    price: "8,800₩ / 880빗방울"
+    price: "8,800₩ / 880빗방울",
   },
   {
     id: 83,
@@ -883,7 +883,7 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
-    version: "2.7"
+    version: "2.7",
   },
   {
     id: 84,
@@ -893,6 +893,6 @@ export const characterSkin: CharacterSkin[] = [
     rarity: "Garment",
     source: "컨텐츠",
     resell: "X",
-    version: "2.7"
+    version: "2.7",
   },
 ];

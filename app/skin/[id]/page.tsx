@@ -61,6 +61,6 @@ export default async function SkinDetailPage({
   const skin = characterSkin.find((s) => s.id === skinId);
 
   if (!skin) notFound();
-  
+
   return <SkinDetail skin={skin} />;
 }

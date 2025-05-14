@@ -1,10 +1,35 @@
 // /data/blueprint.ts
 export const BOSSES = [
-  { id: "mountain_ghost", name: "산귀", image: "/infos/blueprint/boss/mountain_ghost.png", inspiration: "plant" },
-  { id: "star_of_misfortune", name: "천체의 흉조", image: "/infos/blueprint/boss/star_of_misfortune.png", inspiration: "star" },
-  { id: "operatic_reflection", name: "연극의 굴절", image: "/infos/blueprint/boss/operatic_reflection.png", inspiration: "beast" },
-  { id: "ashen_beast", name: "뼈의 늑대", image: "/infos/blueprint/boss/ashen_beast.png", inspiration: "mineral" },
-  { id: "primitive_urge", name: "원시적 충동", image: "/infos/blueprint/boss/primitive_urge.png", inspiration: "spirit" },
+  {
+    id: "mountain_ghost",
+    name: "산귀",
+    image: "/infos/blueprint/boss/mountain_ghost.png",
+    inspiration: "plant",
+  },
+  {
+    id: "star_of_misfortune",
+    name: "천체의 흉조",
+    image: "/infos/blueprint/boss/star_of_misfortune.png",
+    inspiration: "star",
+  },
+  {
+    id: "operatic_reflection",
+    name: "연극의 굴절",
+    image: "/infos/blueprint/boss/operatic_reflection.png",
+    inspiration: "beast",
+  },
+  {
+    id: "ashen_beast",
+    name: "뼈의 늑대",
+    image: "/infos/blueprint/boss/ashen_beast.png",
+    inspiration: "mineral",
+  },
+  {
+    id: "primitive_urge",
+    name: "원시적 충동",
+    image: "/infos/blueprint/boss/primitive_urge.png",
+    inspiration: "spirit",
+  },
 ] as const;
 
 export type BossId = (typeof BOSSES)[number]["id"];
@@ -37,6 +62,5 @@ export const BLUEPRINTS: Record<BossId, Record<string, string[]>> = {
     제멜덱: ["/infos/blueprint/ashen_beast/semmelweis.webp"],
     곡랑피클즈덱: ["/infos/blueprint/ashen_beast/jiu_niangzi.webp"],
   },
-  primitive_urge: {
-  },
+  primitive_urge: {},
 };

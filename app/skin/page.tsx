@@ -3,7 +3,7 @@ import { Suspense } from "react";
 
 export default function CharacterSkinPage() {
   return (
-    <div className="h-screen flex flex-col bg-gray-100 dark:bg-gray-900">
+    <div className="flex h-screen flex-col bg-gray-100 dark:bg-gray-900">
       <Suspense fallback={<div>로딩 중...</div>}>
         <CharacterSkin />
       </Suspense>

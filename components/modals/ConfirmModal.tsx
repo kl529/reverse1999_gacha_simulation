@@ -10,12 +10,17 @@ interface ModalProps {
   modalClassName?: string;
 }
 
-export default function ConfirmModal({ isOpen, onClose, children, modalClassName }: ModalProps) {
+export default function ConfirmModal({
+  isOpen,
+  onClose,
+  children,
+  modalClassName,
+}: ModalProps) {
   if (!isOpen) return null; // 표시 안함
 
   const overlayStyle =
     "fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50";
-    const modalStyle = `
+  const modalStyle = `
     relative bg-white p-4 rounded max-w-md w-full
     ${modalClassName}
   `;

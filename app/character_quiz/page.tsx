@@ -2,7 +2,7 @@ import CharacterQuiz from "@/components/character_quiz/CharacterQuiz";
 
 export default function CharacterQuizPage() {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
       <CharacterQuiz />
     </div>
   );

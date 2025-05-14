@@ -21,7 +21,9 @@ export default function SkinGalleryPage() {
 
   const searchParams = useSearchParams();
   const defaultVersion = searchParams.get("version");
-  const [versionFilter, setVersionFilter] = useState<string>(defaultVersion || "전체");
+  const [versionFilter, setVersionFilter] = useState<string>(
+    defaultVersion || "전체",
+  );
 
   useEffect(() => {
     if (defaultVersion && versionList.includes(defaultVersion)) {
@@ -30,7 +32,9 @@ export default function SkinGalleryPage() {
   }, [defaultVersion, versionList]);
 
   const allCharacters = Object.values(charactersByRarity).flat();
-  const characterNameMap = Object.fromEntries(allCharacters.map((c) => [c.id, c.name]));
+  const characterNameMap = Object.fromEntries(
+    allCharacters.map((c) => [c.id, c.name]),
+  );
 
   const allCharacterNames = allCharacters
     .map((c) => c.name)
@@ -44,7 +48,7 @@ export default function SkinGalleryPage() {
 
   const toggleCharacter = (name: string) => {
     setSelectedCharacters((prev) =>
-      prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name]
+      prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name],
     );
   };
 
@@ -58,7 +62,10 @@ export default function SkinGalleryPage() {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
         setDropdownOpen(false);
       }
     };
@@ -68,7 +75,8 @@ export default function SkinGalleryPage() {
 
   const filteredSkins = characterSkin.filter((skin) => {
     const matchRarity = rarityFilter === "전체" || skin.rarity === rarityFilter;
-    const matchVersion = versionFilter === "전체" || skin.version === versionFilter;
+    const matchVersion =
+      versionFilter === "전체" || skin.version === versionFilter;
     const matchSource = sourceFilter === "전체" || skin.source === sourceFilter;
     const matchCharacter =
       selectedCharacters.length === 0 ||
@@ -77,70 +85,76 @@ export default function SkinGalleryPage() {
   });
 
   return (
-    <div className="p-4 w-full h-full flex flex-col overflow-hidden">
+    <div className="flex h-full w-full flex-col overflow-hidden p-4">
       <div className="flex-none">
-        <h1 className="text-3xl font-bold mb-6 text-center dark:text-white mt-8 text-black">
+        <h1 className="mb-6 mt-8 text-center text-3xl font-bold text-black dark:text-white">
           스킨 갤러리
         </h1>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-6">
+        <div className="mb-6 flex flex-wrap justify-center gap-4">
           <select
-            className="p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white text-black border-black"
+            className="rounded border border-black p-2 text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             value={rarityFilter}
             onChange={(e) => setRarityFilter(e.target.value)}
           >
             <option value="전체">희귀도</option>
             {rarityList.map((rarity) => (
-              <option key={rarity} value={rarity}>{rarity}</option>
+              <option key={rarity} value={rarity}>
+                {rarity}
+              </option>
             ))}
           </select>
 
           <select
-            className="p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white text-black border-black"
+            className="rounded border border-black p-2 text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             value={versionFilter}
             onChange={(e) => setVersionFilter(e.target.value)}
           >
             <option value="전체">버전</option>
             {versionList.map((version) => (
-              <option key={version} value={version}>{version}</option>
+              <option key={version} value={version}>
+                {version}
+              </option>
             ))}
           </select>
 
           <select
-            className="p-2 border rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white text-black border-black"
+            className="rounded border border-black p-2 text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             value={sourceFilter}
             onChange={(e) => setSourceFilter(e.target.value)}
           >
             <option value="전체">획득처</option>
             {sourceList.map((source) => (
-              <option key={source} value={source}>{source}</option>
+              <option key={source} value={source}>
+                {source}
+              </option>
             ))}
           </select>
 
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="p-2 border rounded w-52 text-left dark:bg-gray-800 dark:border-gray-700 dark:text-white text-black border-black"
+              className="w-52 rounded border border-black p-2 text-left text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             >
               {selectedCharacters.length > 0
                 ? selectedCharacters.join(", ")
                 : "캐릭터 필터"}
             </button>
             {dropdownOpen && (
-              <div className="absolute z-10 mt-1 max-h-60 overflow-y-auto bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded w-52 shadow-lg">
+              <div className="absolute z-10 mt-1 max-h-60 w-52 overflow-y-auto rounded border border-gray-300 bg-white shadow-lg dark:border-gray-600 dark:bg-gray-800">
                 <input
                   type="text"
                   placeholder="검색..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-3 py-2 text-sm border-b border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-black dark:text-white"
+                  className="w-full border-b border-gray-300 bg-white px-3 py-2 text-sm text-black dark:border-gray-600 dark:bg-gray-800 dark:text-white"
                 />
                 {allCharacterNames
                   .filter((name) => name.includes(searchTerm))
                   .map((name) => (
                     <label
                       key={name}
-                      className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer flex justify-between text-black"
+                      className="block flex cursor-pointer justify-between px-4 py-2 text-sm text-black hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
                       <div>
                         <input
@@ -151,7 +165,9 @@ export default function SkinGalleryPage() {
                         />
                         {name}
                       </div>
-                      <span className="text-xs text-gray-500">{skinCountByCharacter[name] || 0}개</span>
+                      <span className="text-xs text-gray-500">
+                        {skinCountByCharacter[name] || 0}개
+                      </span>
                     </label>
                   ))}
               </div>
@@ -160,7 +176,7 @@ export default function SkinGalleryPage() {
 
           <button
             onClick={resetFilters}
-            className="px-3 py-2 bg-red-500 text-white rounded hover:bg-red-600 text-sm"
+            className="rounded bg-red-500 px-3 py-2 text-sm text-white hover:bg-red-600"
           >
             초기화
           </button>
@@ -169,29 +185,29 @@ export default function SkinGalleryPage() {
 
       <div className="flex-1 overflow-y-auto">
         {filteredSkins.length === 0 ? (
-          <div className="text-center text-gray-500 dark:text-gray-400 text-sm py-10">
+          <div className="py-10 text-center text-sm text-gray-500 dark:text-gray-400">
             해당 조건에 맞는 스킨이 없습니다.
           </div>
         ) : (
-          <div className="grid gap-2 sm:gap-4 grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12">
+          <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12">
             {filteredSkins
               .sort((a, b) => b.id - a.id)
               .map((skin) => (
                 <Link href={`/skin/${skin.id}`} key={skin.id}>
-                  <div className="cursor-pointer rounded transition border border-gray-200 dark:border-gray-700 overflow-hidden">
+                  <div className="cursor-pointer overflow-hidden rounded border border-gray-200 transition dark:border-gray-700">
                     <div className="relative">
                       <Image
                         src={`/infos/character_skin/list/${skin.engName}.webp`}
                         alt={skin.name}
                         width={300}
                         height={400}
-                        className="w-full h-auto object-cover"
+                        className="h-auto w-full object-cover"
                       />
-                      <span className="absolute bottom-2 right-2 bg-orange-300 dark:bg-orange-700 text-xs text-white px-2 py-0.5 rounded">
+                      <span className="absolute bottom-2 right-2 rounded bg-orange-300 px-2 py-0.5 text-xs text-white dark:bg-orange-700">
                         {skin.version}
                       </span>
                     </div>
-                    <div className="p-2 text-center font-medium text-sm truncate bg-white dark:bg-gray-900 dark:text-white text-black">
+                    <div className="truncate bg-white p-2 text-center text-sm font-medium text-black dark:bg-gray-900 dark:text-white">
                       {skin.name}
                     </div>
                   </div>

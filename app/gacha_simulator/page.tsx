@@ -1,10 +1,9 @@
 import GachaGame from "@/components/gacha_simulator/GachaGame";
 import { version } from "@/data/version";
 
-
 export default function GachaSimulatorPage() {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
       <GachaGame />
     </div>
   );

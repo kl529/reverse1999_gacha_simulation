@@ -19,7 +19,9 @@ export function CharacterSettingModal({
 }: CharacterSettingModalProps) {
   if (!isOpen) return null;
 
-  const setting = character_setting_data.find((c) => c.character_id === character.id);
+  const setting = character_setting_data.find(
+    (c) => c.character_id === character.id,
+  );
 
   const psycube_list = (setting?.psycubes || []).map((p) => {
     const psycube = PSYCUBE_DATA.find((d) => d.id === p.psycube_id);
@@ -39,36 +41,36 @@ export function CharacterSettingModal({
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-white dark:bg-gray-900 rounded-lg w-full max-w-2xl sm:max-w-sm lg:max-w-2xl p-4 sm:p-6 shadow-xl relative max-h-[90vh] overflow-y-auto">
+      <div className="relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white p-4 shadow-xl dark:bg-gray-900 sm:max-w-sm sm:p-6 lg:max-w-2xl">
         {/* 닫기 버튼 */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-5 text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white text-2xl font-bold"
+          className="absolute right-5 top-3 text-2xl font-bold text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
         >
           ×
         </button>
 
         {/* 제목 */}
-        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center text-gray-800 dark:text-white">
+        <h2 className="mb-4 text-center text-xl font-bold text-gray-800 dark:text-white sm:mb-6 sm:text-2xl">
           {character.name}
         </h2>
 
         {/* 상단 이미지 + 공명 정보 */}
-        <div className="flex flex-row sm:flex-row justify-center items-center gap-4 mb-6">
-          <div className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] overflow-hidden rounded border dark:border-gray-700">
+        <div className="mb-6 flex flex-row items-center justify-center gap-4 sm:flex-row">
+          <div className="h-[120px] w-[120px] overflow-hidden rounded border dark:border-gray-700 sm:h-[150px] sm:w-[150px]">
             <Image
               src={`/characters/${character.rarity}stars/${character.engName}.png`}
               alt={character.name}
               width={150}
               height={300}
-              className="object-cover object-top w-full h-auto"
+              className="h-auto w-full object-cover object-top"
             />
           </div>
 
-          <div className="flex flex-col items-center text-center bg-gray-500 dark:bg-gray-800 p-2 rounded">
+          <div className="flex flex-col items-center rounded bg-gray-500 p-2 text-center dark:bg-gray-800">
             <a
               href={`https://sites.google.com/view/reverse1999resonance/%EC%BA%90%EB%A6%AD%ED%84%B0-%EA%B3%B5%EB%AA%85/${character.rarity}성/${encodeURIComponent(
-                character.name.toLowerCase().replace(/ /g, "-")
+                character.name.toLowerCase().replace(/ /g, "-"),
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -78,7 +80,7 @@ export function CharacterSettingModal({
                 alt="공명 정보"
                 width={100}
                 height={100}
-                className="rounded border hover:opacity-90 transition"
+                className="rounded border transition hover:opacity-90"
               />
               <span className="mt-2 text-sm font-medium text-gray-700 dark:text-gray-200">
                 공명정보
@@ -90,23 +92,27 @@ export function CharacterSettingModal({
         {/* 사이큐브 목록 */}
         <div className="grid grid-cols-4 gap-3">
           {psycube_list.map((item, idx) => (
-            <div key={idx} className="text-center space-y-1 sm:space-y-2">
-              <div className="relative w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] mx-auto">
+            <div key={idx} className="space-y-1 text-center sm:space-y-2">
+              <div className="relative mx-auto h-[80px] w-[80px] sm:h-[100px] sm:w-[100px]">
                 <Image
                   src={item.src}
                   alt={item.label}
                   fill
-                  className="object-cover rounded border dark:border-gray-700"
+                  className="rounded border object-cover dark:border-gray-700"
                 />
-                <div className="absolute bottom-1 left-1 bg-purple-600 text-white text-[9px] px-1 py-[1px] rounded-sm shadow">
+                <div className="absolute bottom-1 left-1 rounded-sm bg-purple-600 px-1 py-[1px] text-[9px] text-white shadow">
                   {item.type}
                 </div>
-                <div className="absolute bottom-1 right-1 bg-blue-600 text-white text-[9px] px-1 py-[1px] rounded-sm shadow">
+                <div className="absolute bottom-1 right-1 rounded-sm bg-blue-600 px-1 py-[1px] text-[9px] text-white shadow">
                   v{item.version}
                 </div>
               </div>
-              <div className="font-semibold text-xs sm:text-sm text-gray-800 dark:text-white">{item.label}</div>
-              <p className="text-[11px] sm:text-sm text-gray-600 dark:text-gray-300 px-1">{item.description}</p>
+              <div className="text-xs font-semibold text-gray-800 dark:text-white sm:text-sm">
+                {item.label}
+              </div>
+              <p className="px-1 text-[11px] text-gray-600 dark:text-gray-300 sm:text-sm">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>

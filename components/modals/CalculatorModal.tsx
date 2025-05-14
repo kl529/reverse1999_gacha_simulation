@@ -16,7 +16,10 @@ function getShapeRankPercent(N: number, shape: string): number | null {
   return percentRankTable[N][shape];
 }
 
-export default function CalculatorModal({ isOpen, onClose }: CalculatorModalProps) {
+export default function CalculatorModal({
+  isOpen,
+  onClose,
+}: CalculatorModalProps) {
   const [pullsInput, setPullsInput] = useState<number>(0); // 몇 뽑 했는지
   const [selectedShape, setSelectedShape] = useState<string>("명함"); // 형상 드롭다운
   const [calcResult, setCalcResult] = useState<number | null>(null); // 계산 결과(상위 %)
@@ -64,43 +67,43 @@ export default function CalculatorModal({ isOpen, onClose }: CalculatorModalProp
     >
       <div
         onClick={(e) => e.stopPropagation()} // 모달 내부 클릭 시 닫힘 막기
-        className="relative bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg max-w-sm w-full"
+        className="relative w-full max-w-sm rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800"
       >
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-2xl font-bold text-gray-700 dark:text-gray-200"
+          className="absolute right-2 top-2 text-2xl font-bold text-gray-700 dark:text-gray-200"
         >
           ✕
         </button>
 
-        <h2 className="text-xl font-semibold mb-4 text-center dark:text-gray-100">
+        <h2 className="mb-4 text-center text-xl font-semibold dark:text-gray-100">
           나는 상위 몇 %일까?
         </h2>
 
         {/* (1) 뽑기 횟수 입력 */}
-        <label className="block mb-2 text-sm dark:text-gray-200">
+        <label className="mb-2 block text-sm dark:text-gray-200">
           몇 뽑 하셨나요? (최대 840뽑)
         </label>
         <input
           type="number"
           value={pullsInput}
           onChange={handlePullsChange}
-          className="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2 mb-1 dark:bg-gray-700 dark:text-white"
+          className="mb-1 w-full rounded-md border border-gray-300 p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
           placeholder="예) 100"
         />
         {/* 에러 메시지 표시 */}
         {errorMessage && (
-          <p className="text-red-500 text-sm mb-4">{errorMessage}</p>
+          <p className="mb-4 text-sm text-red-500">{errorMessage}</p>
         )}
 
         {/* (2) 형상 드롭다운 */}
-        <label className="block mb-2 text-sm dark:text-gray-200">
+        <label className="mb-2 block text-sm dark:text-gray-200">
           픽업 캐릭터 형상을 선택하세요
         </label>
         <select
           value={selectedShape}
           onChange={(e) => setSelectedShape(e.target.value)}
-          className="w-full border border-gray-300 dark:border-gray-600 rounded-md p-2 mb-4 dark:bg-gray-700 dark:text-white"
+          className="mb-4 w-full rounded-md border border-gray-300 p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
         >
           {shapes.map((shape) => (
             <option key={shape} value={shape}>
@@ -112,7 +115,7 @@ export default function CalculatorModal({ isOpen, onClose }: CalculatorModalProp
         {/* 계산 버튼 */}
         <button
           onClick={handleCalculate}
-          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded w-full"
+          className="w-full rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
         >
           계산
         </button>

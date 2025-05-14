@@ -15,455 +15,325 @@ export const banners: Banner[] = [
     id: "kiperina_pick_up",
     name: "[2.7] 키페리나 픽업",
     pickup6: 46,
-    pickup5: [
-      106,
-      116
-    ],
+    pickup5: [106, 116],
     version: "2.7",
   },
   {
     id: "hissabeth_pick_up",
     name: "[2.7] 히사베스 픽업",
     pickup6: 45,
-    pickup5: [
-      127
-    ],
+    pickup5: [127],
     version: "2.7",
   },
   {
     id: "aleph_pick_up",
     name: "[2.6] 알레프 픽업",
     pickup6: 44,
-    pickup5: [
-      104,
-      106
-    ],
+    pickup5: [104, 106],
     version: "2.6",
   },
   {
     id: "recoleta_pick_up",
     name: "[2.6] 레콜레타 픽업",
     pickup6: 43,
-    pickup5: [
-      103,
-      114
-    ],
+    pickup5: [103, 114],
     version: "2.6",
   },
   {
     id: "noire_pick_up",
     name: "[2.5] 누아르 픽업",
     pickup6: 42,
-    pickup5: [
-      104,
-      106
-    ],
+    pickup5: [104, 106],
     version: "2.5",
   },
   {
     id: "liang_pick_up",
     name: "[2.5] 양월 픽업",
     pickup6: 41,
-    pickup5: [
-      126
-    ],
+    pickup5: [126],
     version: "2.5",
   },
   {
     id: "fatutu_pick_up",
     name: "[2.4] 파투투 픽업",
     pickup6: 40,
-    pickup5: [
-      111,
-      112,
-    ],
+    pickup5: [111, 112],
     version: "2.4",
   },
   {
     id: "barcarola_pick_up",
     name: "[2.4] 바르카롤라 픽업",
     pickup6: 39,
-    pickup5: [
-      110,
-      105,
-    ],
+    pickup5: [110, 105],
     version: "2.4",
   },
   {
     id: "doublepick_j_tuesday",
     name: "J & 튜즈데이",
     bannerType: "doublePick",
-    twoPickup6: [
-      32,
-      33,
-    ],
+    twoPickup6: [32, 33],
   },
   {
     id: "doublepick_mercuria_kakania",
     name: "머큐리아 & 카카니아",
     bannerType: "doublePick",
-    twoPickup6: [
-      31,
-      30,
-    ],
+    twoPickup6: [31, 30],
   },
   {
     id: "flutter_page_pick_up",
     name: "[2.3] 플러터 페이지 픽업",
     pickup6: 38,
-    pickup5: [
-      125,
-    ],
+    pickup5: [125],
     version: "2.3",
   },
   {
     id: "willow_pick_up",
     name: "[2.3] 윌로우 픽업",
     pickup6: 37,
-    pickup5: [
-      103,
-      104,
-    ],
+    pickup5: [103, 104],
     version: "2.3",
   },
   {
     id: "lopera_pick_up",
     name: "[2.2] 로페라 픽업",
     pickup6: 36,
-    pickup5: [
-      113,
-      119,
-    ],
+    pickup5: [113, 119],
     version: "2.2",
   },
   {
     id: "anjo_nala_pick_up",
     name: "[2.2] 안조 날라 픽업",
     pickup6: 35,
-    pickup5: [
-    ],
+    pickup5: [],
     version: "2.2",
   },
   {
     id: "argus_pick_up",
     name: "[2.1] 아르고스 픽업",
     pickup6: 34,
-    pickup5: [
-      111,
-      112,
-    ],
+    pickup5: [111, 112],
     version: "2.1",
   },
   {
     id: "tuesday_pick_up",
     name: "[2.1] 튜즈데이 픽업",
     pickup6: 33,
-    pickup5: [
-      123,
-    ],
+    pickup5: [123],
     version: "2.1",
   },
   {
     id: "joe_pick_up",
     name: "[2.0] J 픽업",
     pickup6: 32,
-    pickup5: [
-      118,
-      112,
-    ],
+    pickup5: [118, 112],
     version: "2.0",
   },
   {
     id: "mercuria_pick_up",
     name: "[2.0] 머큐리아 픽업",
     pickup6: 31,
-    pickup5: [
-      106,
-      113,
-    ],
+    pickup5: [106, 113],
     version: "2.0",
   },
   {
     id: "kakania_pick_up",
     name: "[1.9] 카카니아 픽업",
     pickup6: 30,
-    pickup5: [
-      111,
-      114,
-    ],
+    pickup5: [111, 114],
     version: "1.9",
   },
   {
     id: "lucy_pick_up",
     name: "[1.9] 루시 픽업",
     pickup6: 29,
-    pickup5: [
-    ],
+    pickup5: [],
     version: "1.9",
   },
   {
     id: "windsong_pick_up",
     name: "[1.8] 윈드송 픽업",
     pickup6: 27,
-    pickup5: [
-      115,
-      104,
-    ],
+    pickup5: [115, 104],
     version: "1.8",
   },
   {
     id: "vila_pick_up",
     name: "[1.8] 빌라 픽업",
     pickup6: 26,
-    pickup5: [
-      121,
-    ],
+    pickup5: [121],
     version: "1.8",
   },
   {
     id: "marcus_pick_up",
     name: "[1.7] 마커스 픽업",
     pickup6: 25,
-    pickup5: [
-      106,
-      108,
-    ],
+    pickup5: [106, 108],
     version: "1.7",
   },
   {
     id: "isolde_pick_up",
     name: "[1.7] 이졸데 픽업",
     pickup6: 24,
-    pickup5: [
-      112,
-      110,
-    ],
+    pickup5: [112, 110],
     version: "1.7",
   },
   {
     id: "getian_pick_up",
     name: "[1.6] 갈천 픽업",
     pickup6: 23,
-    pickup5: [
-      103,
-      107,
-    ],
+    pickup5: [103, 107],
     version: "1.6",
   },
   {
     id: "jiu_niangzi_pick_up",
     name: "[1.6] 곡랑 픽업",
     pickup6: 22,
-    pickup5: [
-    ],
+    pickup5: [],
     version: "1.6",
   },
   {
     id: "ezra_theodore_pick_up",
     name: "[1.5] 에즈라 픽업",
     pickup6: 21,
-    pickup5: [
-      118,
-      111,
-    ],
+    pickup5: [118, 111],
     version: "1.5",
   },
   {
     id: "spathodea_pick_up",
     name: "[1.5] 스파토데아 픽업",
     pickup6: 20,
-    pickup5: [
-      119,
-      108,
-    ],
+    pickup5: [119, 108],
     version: "1.5",
   },
   {
     id: "6_pick_up",
     name: "[1.4] 6 픽업",
     pickup6: 19,
-    pickup5: [
-      105,
-      113,
-    ],
+    pickup5: [105, 113],
     version: "1.4",
   },
   {
     id: "37_pick_up",
     name: "[1.4] 37 픽업",
     pickup6: 18,
-    pickup5: [
-      112,
-      104,
-    ],
+    pickup5: [112, 104],
     version: "1.4",
   },
   {
     id: "shamane_pick_up",
     name: "[1.3] 갈기 모래 픽업",
     pickup6: 17,
-    pickup5: [
-      111,
-      109,
-    ],
+    pickup5: [111, 109],
     version: "1.3",
   },
   {
     id: "black_dwarf_pick_up",
     name: "[1.3] 갈라보나 픽업",
     pickup6: 16,
-    pickup5: [
-      117,
-      112,
-    ],
+    pickup5: [117, 112],
     version: "1.3",
   },
   {
     id: "changeling_pick_up",
     name: "[1.2] 제시카 픽업",
     pickup6: 15,
-    pickup5: [
-      116,
-      110,
-    ],
+    pickup5: [116, 110],
     version: "1.2",
   },
   {
     id: "tooth_fairy_pick_up",
     name: "[1.2] 투스 페어리 픽업",
     pickup6: 14,
-    pickup5: [
-      107,
-      115,
-    ],
+    pickup5: [107, 115],
     version: "1.2",
   },
   {
     id: "pickles_pick_up",
     name: "[1.1] 피클즈 픽업",
     pickup6: 13,
-    pickup5: [
-      105,
-      114,
-    ],
+    pickup5: [105, 114],
     version: "1.1",
   },
   {
     id: "melania_pick_up",
     name: "[1.1] 멜라니아 픽업",
     pickup6: 12,
-    pickup5: [
-      104,
-      109,
-    ],
+    pickup5: [104, 109],
     version: "1.1",
   },
   {
     id: "lilya_pick_up",
     name: "[상시] 릴리아 픽업",
     pickup6: 2,
-    pickup5: [
-      103,
-      108,
-    ],
+    pickup5: [103, 108],
     version: "1.0",
   },
   {
     id: "ms_newbabel_pick_up",
     name: "[상시] 뉴바벨 픽업",
     pickup6: 10,
-    pickup5: [
-      106,
-      113,
-    ],
+    pickup5: [106, 113],
     version: "1.0",
   },
   {
     id: "medicine_pocket_pick_up",
     name: "[상시] 메디슨 포켓 픽업",
     pickup6: 8,
-    pickup5: [
-      105,
-      107,
-    ],
+    pickup5: [105, 107],
     version: "1.0",
   },
   {
     id: "centurion_pick_up",
     name: "[상시] 센츄리온 픽업",
     pickup6: 6,
-    pickup5: [
-      103,
-      108,
-    ],
+    pickup5: [103, 108],
     version: "1.0",
   },
   {
     id: "an_an_lee_pick_up",
     name: "[상시] 안안 리 픽업",
     pickup6: 7,
-    pickup5: [
-      105,
-      104,
-    ],
+    pickup5: [105, 104],
     version: "1.0",
   },
   {
     id: "eternity_pick_up",
     name: "[상시] 이터니티 픽업",
     pickup6: 9,
-    pickup5: [
-      106,
-      113,
-    ],
+    pickup5: [106, 113],
     version: "1.0",
   },
   {
     id: "voyager_pick_up",
     name: "[상시] 보이저 픽업",
     pickup6: 11,
-    pickup5: [
-      103,
-      109,
-    ],
+    pickup5: [103, 109],
     version: "1.0",
   },
   {
     id: "regulus_pick_up",
     name: "[상시] 레굴루스 픽업",
     pickup6: 5,
-    pickup5: [
-      108,
-      111,
-    ],
+    pickup5: [108, 111],
     version: "1.0",
   },
   {
     id: "druvis_iii_pick_up",
     name: "[상시] 드루비스 픽업",
     pickup6: 1,
-    pickup5: [
-      110,
-      113,
-    ],
+    pickup5: [110, 113],
   },
   {
     id: "sotheby_pick_up",
     name: "[상시] 소더비 픽업",
     pickup6: 4,
-    pickup5: [
-      106,
-      103,
-    ],
+    pickup5: [106, 103],
   },
   {
     id: "a_knight_pick_up",
     name: "[상시] A 나이트 픽업",
     pickup6: 3,
-    pickup5: [
-      112,
-      107,
-    ],
+    pickup5: [112, 107],
     version: "1.0",
   },
 ];

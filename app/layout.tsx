@@ -21,7 +21,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="apple-touch-icon" href="/pwa_icon.png" />
         {isProd && (
           <>
-            <Script async src="https://www.googletagmanager.com/gtag/js?id=G-Z474CQX2JT" strategy="afterInteractive" />
+            <Script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-Z474CQX2JT"
+              strategy="afterInteractive"
+            />
             <Script id="ga-init" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
@@ -35,7 +39,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <DarkModeProvider>
-          <ModalProvider> {/* ✅ 모달 상태를 관리 */}
+          <ModalProvider>
+            {" "}
+            {/* ✅ 모달 상태를 관리 */}
             <SecurityWrapper>
               <GlobalLoadingManager />
               <HamburgerConditional />

@@ -12,13 +12,13 @@ export default function Carousel() {
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1
+      prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? carouselItems.length - 1 : prevIndex - 1
+      prevIndex === 0 ? carouselItems.length - 1 : prevIndex - 1,
     );
   };
 
@@ -54,9 +54,9 @@ export default function Carousel() {
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-lg aspect-[4/1] max-w-7xl mx-auto">
+    <div className="relative mx-auto aspect-[4/1] w-full max-w-7xl overflow-hidden rounded-lg">
       <div
-        className="overflow-hidden relative"
+        className="relative overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -71,7 +71,7 @@ export default function Carousel() {
           {carouselItems.map((item) => (
             <div
               key={item.id}
-              className="relative w-full aspect-[4/1] flex-shrink-0"
+              className="relative aspect-[4/1] w-full flex-shrink-0"
             >
               {item.link ? (
                 <Link href={item.link}>
@@ -95,12 +95,12 @@ export default function Carousel() {
                 />
               )}
               {item.type === "pick_up" && item.title && (
-                <div className="absolute bottom-7 sm:bottom-12 left-1/2 transform -translate-x-1/2 bg-black/70 text-white p-1 pb-0 rounded max-w-[90%] whitespace-pre-line text-sm sm:text-lg lg:text-2xl text-center">
+                <div className="absolute bottom-7 left-1/2 max-w-[90%] -translate-x-1/2 transform whitespace-pre-line rounded bg-black/70 p-1 pb-0 text-center text-sm text-white sm:bottom-12 sm:text-lg lg:text-2xl">
                   {item.title}
                 </div>
               )}
               {item.type === "pick_up" && item.description && (
-                <div className="hidden sm:block absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white p-1 pt-0 rounded max-w-[90%] whitespace-pre-line text-sm sm:text-lg lg:text-2xl text-center">
+                <div className="absolute bottom-4 left-1/2 hidden max-w-[90%] -translate-x-1/2 transform whitespace-pre-line rounded bg-black/70 p-1 pt-0 text-center text-sm text-white sm:block sm:text-lg lg:text-2xl">
                   {item.description}
                 </div>
               )}
@@ -112,25 +112,25 @@ export default function Carousel() {
       {/* 좌우 버튼 */}
       <button
         onClick={handlePrev}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-white rounded-full p-1 sm:p-2 text-sm sm:text-base z-10"
+        className="absolute left-4 top-1/2 z-10 -translate-y-1/2 transform rounded-full bg-black/50 p-1 text-sm text-white sm:p-2 sm:text-base"
       >
         ◀
       </button>
       <button
         onClick={handleNext}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-white rounded-full p-1 sm:p-2 text-sm sm:text-base z-10"
+        className="absolute right-4 top-1/2 z-10 -translate-y-1/2 transform rounded-full bg-black/50 p-1 text-sm text-white sm:p-2 sm:text-base"
       >
         ▶
       </button>
 
       {/* 인디케이터 */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+      <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 transform space-x-2">
         {carouselItems.map((_, index) => (
           <div
             key={index}
             className={`rounded-full ${
               index === currentIndex ? "bg-white" : "bg-gray-400"
-            } w-2 h-2 sm:w-3 sm:h-3`}
+            } h-2 w-2 sm:h-3 sm:w-3`}
           />
         ))}
       </div>

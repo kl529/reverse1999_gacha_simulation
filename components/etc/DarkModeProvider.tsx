@@ -15,7 +15,9 @@ export default function DarkModeProvider({
     if (saved !== null) {
       setDarkMode(saved === "true");
     } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
       setDarkMode(prefersDark);
     }
   }, []);
@@ -33,7 +35,7 @@ export default function DarkModeProvider({
     <>
       <button
         onClick={() => setDarkMode((prev) => !prev)}
-        className="fixed top-4 right-4 lg:bottom-4 lg:top-auto bg-gray-200 dark:bg-gray-700 text-sm px-3 py-2 rounded shadow hover:scale-105 transition-transform z-50"
+        className="fixed right-4 top-4 z-50 rounded bg-gray-200 px-3 py-2 text-sm shadow transition-transform hover:scale-105 dark:bg-gray-700 lg:bottom-4 lg:top-auto"
       >
         {darkMode ? "☀️" : "🌙"}
       </button>
