@@ -77,8 +77,8 @@ export default function SkinGalleryPage() {
   });
 
   return (
-    <div className="p-4 w-full h-full flex flex-col overflow-hidden">
-      <div className="flex-none">
+    <div className="p-4 w-full flex flex-col">
+      <div className="sticky top-0 bg-gray-100">
         <h1 className="text-3xl font-bold mb-6 text-center dark:text-white mt-8 text-black">
           스킨 갤러리
         </h1>
@@ -167,7 +167,7 @@ export default function SkinGalleryPage() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto">
+      <div>
         {filteredSkins.length === 0 ? (
           <div className="text-center text-gray-500 dark:text-gray-400 text-sm py-10">
             해당 조건에 맞는 스킨이 없습니다.
@@ -178,8 +178,8 @@ export default function SkinGalleryPage() {
               .sort((a, b) => b.id - a.id)
               .map((skin) => (
                 <Link href={`/skin/${skin.id}`} key={skin.id}>
-                  <div className="cursor-pointer rounded transition border border-gray-200 dark:border-gray-700 overflow-hidden">
-                    <div className="relative">
+                  <div className="cursor-pointer rounded transition border border-gray-200 dark:border-gray-700">
+                    <div>
                       <Image
                         src={`/infos/character_skin/list/${skin.engName}.webp`}
                         alt={skin.name}
