@@ -37,7 +37,7 @@ export default function EuphoriaGuide() {
       </h1>
       <p className="text-sm text-center text-gray-500 mb-6 dark:text-gray-400">
         광상 추천도는 무조건적인 정답이 아니며, 출시 상황이나 패치에 따라 변동될 수 있습니다. <br />
-        v{version} 이후의 정보는 모두 번역본이며, 오역이 있을 수 있습니다.
+        v{version} 이후의 정보는 모두 번역본이며, 오역이 있을 수 있습니다. <br />
         순위내의, 캐릭터 순서는 추천도 순이 아니라 임의로 지정한 것입니다. 추천도와 전혀 관련 없습니다.
       </p>
 
