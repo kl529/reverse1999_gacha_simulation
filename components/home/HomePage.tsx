@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ConfirmModal from "@/components/modals/ConfirmModal";
-import { useDarkMode } from "@/components/etc/DarkModeContext";
+import { useTheme } from "next-themes";
 import UpdateModal from "@/components/modals/UpdateModal"; // 업데이트 모달
 import CardInfoModal from "@/components/modals/CardInfoModal";
 import Carousel from "@/components/etc/Carousel";
@@ -67,7 +67,7 @@ export default function HomePage() {
     setInfoModalOpen(true);
   };
 
-  const { darkMode } = useDarkMode();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const random = Math.floor(Math.random() * bgImages.length);
@@ -242,7 +242,11 @@ export default function HomePage() {
               className="inline-flex h-8 w-8 transform items-center justify-center transition-transform hover:scale-110"
             >
               <Image
-                src={darkMode ? "/infos/button/github_light.png" : "/infos/button/github_dark.png"}
+                src={
+                  theme === "dark"
+                    ? "/infos/button/github_light.png"
+                    : "/infos/button/github_dark.png"
+                }
                 alt="GitHub"
                 width={20}
                 height={20}

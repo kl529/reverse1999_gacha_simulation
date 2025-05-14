@@ -5,7 +5,7 @@ import { QUIZ_CHARACTERS } from "@/data/quiz_character";
 import { Character } from "@/data/characters";
 import ConfirmModal from "@/components/modals/ConfirmModal";
 import { toast, Toaster } from "react-hot-toast";
-import { useDarkMode } from "@/components/etc/DarkModeContext";
+import { useTheme } from "next-themes";
 import "animate.css";
 import Image from "next/image";
 
@@ -90,7 +90,6 @@ export default function CharacterQuiz() {
   };
 
   const [elapsedTime, setElapsedTime] = useState<number>(0);
-  const { darkMode } = useDarkMode();
 
   const today = new Date();
   const formattedDate = today.toLocaleDateString("ko-KR", {
@@ -98,6 +97,8 @@ export default function CharacterQuiz() {
     month: "2-digit",
     day: "2-digit",
   });
+
+  const { theme } = useTheme();
 
   let difficulty = "Normal";
   let difficultyStyle = "bg-blue-100 text-blue-800";
@@ -502,7 +503,7 @@ export default function CharacterQuiz() {
               ) : (
                 <Image
                   src={
-                    darkMode
+                    theme === "dark"
                       ? "/quiz/question/question_img_dark.png"
                       : "/quiz/question/question_img.png"
                   }
