@@ -16,7 +16,7 @@ export default function BlueprintSetting() {
 
   return (
     <div className="mx-auto min-h-screen max-w-5xl p-4 dark:bg-gray-900 dark:text-white">
-      <h1 className="mb-6 mt-8 text-center text-2xl font-bold text-black dark:text-white">
+      <h1 className="mb-6 mt-8 text-center text-2xl font-bold text-black dark:text-white lg:text-3xl">
         청사진 모음
       </h1>
 
@@ -31,9 +31,7 @@ export default function BlueprintSetting() {
               setSelectedFilter(firstFilter);
             }}
             className={`rounded border-2 p-1 transition hover:scale-105 ${
-              selectedBoss === boss.id
-                ? "border-blue-500"
-                : "border-transparent"
+              selectedBoss === boss.id ? "border-blue-500" : "border-transparent"
             }`}
           >
             <div className="relative">
@@ -47,9 +45,7 @@ export default function BlueprintSetting() {
                 />
               </div>
             </div>
-            <p className="mt-1 text-center text-sm text-black dark:text-white">
-              {boss.name}
-            </p>
+            <p className="mt-1 text-center text-sm text-black dark:text-white">{boss.name}</p>
           </button>
         ))}
       </div>
@@ -63,8 +59,8 @@ export default function BlueprintSetting() {
               onClick={() => setSelectedFilter(f)}
               className={`whitespace-nowrap rounded-full border px-3 py-1 ${
                 selectedFilter === f
-                  ? "bg-blue-500 text-black dark:text-white"
-                  : "bg-gray-200 text-black dark:bg-gray-700"
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200 text-black dark:bg-gray-700 dark:text-white"
               }`}
             >
               {f}

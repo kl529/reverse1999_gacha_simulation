@@ -9,12 +9,7 @@ interface OffCanvasProps {
   children: React.ReactNode;
 }
 
-export function OffCanvas({
-  isOpen,
-  onClose,
-  position = "left",
-  children,
-}: OffCanvasProps) {
+export function OffCanvas({ isOpen, onClose, position = "left", children }: OffCanvasProps) {
   const isLeft = position === "left";
 
   const variants = {

@@ -117,10 +117,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
             {menuItems.map((item, index) => {
               if (item.divider) {
                 return (
-                  <hr
-                    key={index}
-                    className="mx-3 my-2 h-px border-0 bg-black dark:bg-gray-500"
-                  />
+                  <hr key={index} className="mx-3 my-2 h-px border-0 bg-black dark:bg-gray-500" />
                 );
               }
 
@@ -146,12 +143,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                       onClick={() => setIsOpen(false)}
                     >
                       {item.iconImg ? (
-                        <Image
-                          src={item.iconImg}
-                          alt=""
-                          width={30}
-                          height={30}
-                        />
+                        <Image src={item.iconImg} alt="" width={30} height={30} />
                       ) : (
                         <span className="text-lg">{item.icon}</span>
                       )}

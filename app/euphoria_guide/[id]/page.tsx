@@ -63,11 +63,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function EuphoriaPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function EuphoriaPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const itemId = Number(id);
   const item = euphoriaList.find((e) => e.id === itemId);

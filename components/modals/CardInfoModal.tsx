@@ -23,10 +23,7 @@ export default function CardInfoModal({
   // 외부 클릭 시 닫기
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
-      ) {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
         onClose();
       }
     };
@@ -73,21 +70,14 @@ export default function CardInfoModal({
 
         {/* 설명 */}
         {description && (
-          <p className="mb-6 whitespace-pre-wrap px-1 text-sm leading-relaxed">
-            {description}
-          </p>
+          <p className="mb-6 whitespace-pre-wrap px-1 text-sm leading-relaxed">{description}</p>
         )}
 
         {/* 출처 */}
         {source && (
           <p className="text-right text-xs text-gray-400 dark:text-gray-300">
             출처:{" "}
-            <a
-              href={source}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
+            <a href={source} target="_blank" rel="noopener noreferrer" className="underline">
               {source}
             </a>
           </p>

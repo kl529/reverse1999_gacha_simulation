@@ -1,11 +1,11 @@
 {
-  "name": "Reverse1999 가챠 시뮬레이터",
-  "short_name": "리버스 가챠시뮬",
+  "name": "버틴의 여행가방",
+  "short_name": "버틴의 여행가방",
   "start_url": "/",
   "display": "standalone",
   "background_color": "transparent",
   "theme_color": "transparent",
-  "description": "Reverse1999 가챠 시뮬레이터를 앱으로 즐겨보세요.",
+  "description": "버틴의 여행가방을 앱으로 즐겨보세요.",
   "icons": [
     {
       "src": "/pwa_icon.png",

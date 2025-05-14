@@ -21,9 +21,7 @@ export default function SkinGalleryPage() {
 
   const searchParams = useSearchParams();
   const defaultVersion = searchParams.get("version");
-  const [versionFilter, setVersionFilter] = useState<string>(
-    defaultVersion || "전체",
-  );
+  const [versionFilter, setVersionFilter] = useState<string>(defaultVersion || "전체");
 
   useEffect(() => {
     if (defaultVersion && versionList.includes(defaultVersion)) {
@@ -32,9 +30,7 @@ export default function SkinGalleryPage() {
   }, [defaultVersion, versionList]);
 
   const allCharacters = Object.values(charactersByRarity).flat();
-  const characterNameMap = Object.fromEntries(
-    allCharacters.map((c) => [c.id, c.name]),
-  );
+  const characterNameMap = Object.fromEntries(allCharacters.map((c) => [c.id, c.name]));
 
   const allCharacterNames = allCharacters
     .map((c) => c.name)
@@ -48,7 +44,7 @@ export default function SkinGalleryPage() {
 
   const toggleCharacter = (name: string) => {
     setSelectedCharacters((prev) =>
-      prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name],
+      prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name]
     );
   };
 
@@ -62,10 +58,7 @@ export default function SkinGalleryPage() {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setDropdownOpen(false);
       }
     };
@@ -75,8 +68,7 @@ export default function SkinGalleryPage() {
 
   const filteredSkins = characterSkin.filter((skin) => {
     const matchRarity = rarityFilter === "전체" || skin.rarity === rarityFilter;
-    const matchVersion =
-      versionFilter === "전체" || skin.version === versionFilter;
+    const matchVersion = versionFilter === "전체" || skin.version === versionFilter;
     const matchSource = sourceFilter === "전체" || skin.source === sourceFilter;
     const matchCharacter =
       selectedCharacters.length === 0 ||
@@ -87,7 +79,7 @@ export default function SkinGalleryPage() {
   return (
     <div className="flex h-full w-full flex-col overflow-hidden p-4">
       <div className="flex-none">
-        <h1 className="mb-6 mt-8 text-center text-3xl font-bold text-black dark:text-white">
+        <h1 className="mb-6 mt-8 text-center text-2xl font-bold text-black dark:text-white lg:text-3xl">
           스킨 갤러리
         </h1>
 
@@ -136,9 +128,7 @@ export default function SkinGalleryPage() {
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className="w-52 rounded border border-black p-2 text-left text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white"
             >
-              {selectedCharacters.length > 0
-                ? selectedCharacters.join(", ")
-                : "캐릭터 필터"}
+              {selectedCharacters.length > 0 ? selectedCharacters.join(", ") : "캐릭터 필터"}
             </button>
             {dropdownOpen && (
               <div className="absolute z-10 mt-1 max-h-60 w-52 overflow-y-auto rounded border border-gray-300 bg-white shadow-lg dark:border-gray-600 dark:bg-gray-800">

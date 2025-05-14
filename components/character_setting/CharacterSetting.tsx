@@ -50,11 +50,7 @@ export default function CharacterSetting() {
     return matchesType && matchesSearch;
   });
 
-  const renderCharGroup = (
-    rarity: number,
-    label: string,
-    colorClass: string,
-  ) => {
+  const renderCharGroup = (rarity: number, label: string, colorClass: string) => {
     const group = filteredChars.filter((ch) => ch.rarity === rarity);
     if (group.length === 0) return null;
 
@@ -111,9 +107,7 @@ export default function CharacterSetting() {
         {TYPES.map((type) => (
           <button
             key={type.type}
-            onClick={() =>
-              setSelectedType((prev) => (prev === type.type ? null : type.type))
-            }
+            onClick={() => setSelectedType((prev) => (prev === type.type ? null : type.type))}
             className={`flex items-center gap-2 rounded border px-4 py-2 text-sm font-semibold ${
               selectedType === type.type
                 ? "bg-blue-600 text-white"

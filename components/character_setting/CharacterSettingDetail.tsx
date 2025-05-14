@@ -7,14 +7,8 @@ import { character_setting_data } from "@/data/character_setting_data";
 import { PSYCUBE_DATA } from "@/data/psycube_data";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
 
-export default function CharacterSettingDetail({
-  character,
-}: {
-  character: Character;
-}) {
-  const setting = character_setting_data.find(
-    (c) => c.character_id === character.id,
-  );
+export default function CharacterSettingDetail({ character }: { character: Character }) {
+  const setting = character_setting_data.find((c) => c.character_id === character.id);
 
   const psycube_list = (setting?.psycubes || []).map((p) => {
     const psycube = PSYCUBE_DATA.find((d) => d.id === p.psycube_id);
@@ -28,18 +22,14 @@ export default function CharacterSettingDetail({
   });
 
   const getSortedCharList = (rarity: number) =>
-    SETTING_CHARACTERS.filter((c) => c.rarity === rarity).sort(
-      (a, b) => b.id - a.id,
-    ); // ID 내림차순
+    SETTING_CHARACTERS.filter((c) => c.rarity === rarity).sort((a, b) => b.id - a.id); // ID 내림차순
 
   return (
     <div className="min-h-screen w-full bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100">
       <div className="mx-auto max-w-4xl px-4 py-8">
         {/* 제목 + 목록버튼 */}
         <div className="mb-6 flex items-center justify-between">
-          <h1 className="flex-1 text-center text-xl font-bold sm:text-2xl">
-            {character.name}
-          </h1>
+          <h1 className="flex-1 text-center text-xl font-bold sm:text-2xl">{character.name}</h1>
         </div>
 
         {/* 캐릭터 이미지 + 공명 정보 */}
@@ -57,7 +47,7 @@ export default function CharacterSettingDetail({
           <div className="flex flex-col items-center rounded bg-gray-500 p-3 dark:bg-gray-800">
             <a
               href={`https://sites.google.com/view/reverse1999resonance/%EC%BA%90%EB%A6%AD%ED%84%B0-%EA%B3%B5%EB%AA%85/${character.rarity}성/${encodeURIComponent(
-                character.name.toLowerCase().replace(/ /g, "-"),
+                character.name.toLowerCase().replace(/ /g, "-")
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -102,9 +92,7 @@ export default function CharacterSettingDetail({
                   </div>
                 </div>
                 <div className="text-sm font-semibold">{item.label}</div>
-                <p className="px-1 text-xs text-gray-600 dark:text-gray-300">
-                  {item.description}
-                </p>
+                <p className="px-1 text-xs text-gray-600 dark:text-gray-300">{item.description}</p>
               </div>
             ))}
           </div>

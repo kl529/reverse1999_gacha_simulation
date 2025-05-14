@@ -2,11 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function DarkModeProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DarkModeProvider({ children }: { children: React.ReactNode }) {
   const [darkMode, setDarkMode] = useState<boolean | null>(null); // 초기 상태는 null
 
   // 1) 첫 로딩 시 localStorage 또는 시스템 설정에서 초기값 결정
@@ -15,9 +11,7 @@ export default function DarkModeProvider({
     if (saved !== null) {
       setDarkMode(saved === "true");
     } else {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       setDarkMode(prefersDark);
     }
   }, []);

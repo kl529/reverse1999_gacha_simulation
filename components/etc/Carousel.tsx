@@ -11,15 +11,11 @@ export default function Carousel() {
   const touchEndX = useRef<number | null>(null);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1,
-    );
+    setCurrentIndex((prevIndex) => (prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1));
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? carouselItems.length - 1 : prevIndex - 1,
-    );
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? carouselItems.length - 1 : prevIndex - 1));
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -69,10 +65,7 @@ export default function Carousel() {
           }}
         >
           {carouselItems.map((item) => (
-            <div
-              key={item.id}
-              className="relative aspect-[4/1] w-full flex-shrink-0"
-            >
+            <div key={item.id} className="relative aspect-[4/1] w-full flex-shrink-0">
               {item.link ? (
                 <Link href={item.link}>
                   <Image

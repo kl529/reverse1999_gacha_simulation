@@ -35,7 +35,7 @@ const config: Config = {
         "sm-only",
         `@media (min-width: ${screens.sm}) and (max-width: ${
           parseInt(screens.md.replace("px", "")) - 1
-        }px)`,
+        }px)`
       );
 
       // md-only: 768px ~ 1023px
@@ -43,7 +43,7 @@ const config: Config = {
         "md-only",
         `@media (min-width: ${screens.md}) and (max-width: ${
           parseInt(screens.lg.replace("px", "")) - 1
-        }px)`,
+        }px)`
       );
 
       // lg-only: 1024px ~ 1279px
@@ -51,7 +51,7 @@ const config: Config = {
         "lg-only",
         `@media (min-width: ${screens.lg}) and (max-width: ${
           parseInt(screens.xl.replace("px", "")) - 1
-        }px)`,
+        }px)`
       );
     }),
   ],

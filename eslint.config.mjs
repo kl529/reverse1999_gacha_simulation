@@ -10,6 +10,20 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  {
+    ignores: [
+      "node_modules",
+      ".next",
+      "dist",
+      "out",
+      "coverage",
+      "public",
+      "jest.config.js",
+      "next.config.ts",
+      "public/sw.js",
+      ".vercel",
+    ], // 추가된 ignore 설정
+  },
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 

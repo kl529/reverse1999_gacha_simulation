@@ -16,10 +16,7 @@ function getShapeRankPercent(N: number, shape: string): number | null {
   return percentRankTable[N][shape];
 }
 
-export default function CalculatorModal({
-  isOpen,
-  onClose,
-}: CalculatorModalProps) {
+export default function CalculatorModal({ isOpen, onClose }: CalculatorModalProps) {
   const [pullsInput, setPullsInput] = useState<number>(0); // 몇 뽑 했는지
   const [selectedShape, setSelectedShape] = useState<string>("명함"); // 형상 드롭다운
   const [calcResult, setCalcResult] = useState<number | null>(null); // 계산 결과(상위 %)
@@ -92,9 +89,7 @@ export default function CalculatorModal({
           placeholder="예) 100"
         />
         {/* 에러 메시지 표시 */}
-        {errorMessage && (
-          <p className="mb-4 text-sm text-red-500">{errorMessage}</p>
-        )}
+        {errorMessage && <p className="mb-4 text-sm text-red-500">{errorMessage}</p>}
 
         {/* (2) 형상 드롭다운 */}
         <label className="mb-2 block text-sm dark:text-gray-200">

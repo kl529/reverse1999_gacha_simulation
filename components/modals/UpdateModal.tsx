@@ -20,9 +20,7 @@ export default function UpdateModal({ isOpen, onClose }: UpdateModalProps) {
       >
         {/* 제목 & 닫기 버튼 영역 */}
         <div className="sticky top-0 z-50 flex items-center justify-between border-b bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-            업데이트 내역
-          </h2>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">업데이트 내역</h2>
           {/* 닫기 버튼 (항상 보이도록 처리) */}
           <button
             onClick={onClose}

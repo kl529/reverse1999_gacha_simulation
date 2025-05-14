@@ -1,6 +1,5 @@
 import { handleGacha } from "@/components/gacha_simulator/GachaGame"; // 실제 함수 경로로 변경
 import { Character } from "@/data/characters";
-import { Banner } from "@/data/banners";
 describe("Gacha Logic Tests", () => {
   it("70연차 내에 최소 1번은 6성 캐릭터가 나와야 한다", () => {
     const banners = [

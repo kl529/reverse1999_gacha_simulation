@@ -9,32 +9,21 @@ interface ModalProps {
   banner: EnrichedBanner;
 }
 
-export function BannerSixStarListModal({
-  isOpen,
-  onClose,
-  banner,
-}: ModalProps) {
+export function BannerSixStarListModal({ isOpen, onClose, banner }: ModalProps) {
   if (!isOpen) return null; // 모달이 닫혀있으면 렌더링 X
 
-  const allSixStars: Character[] = charactersByRarity[6].filter(
-    isValidGachaCharacterForPool,
-  );
-  const pickupSixStars =
-    banner.bannerType === "doublePick" ? banner.twoPickup6 : [banner.pickup6];
+  const allSixStars: Character[] = charactersByRarity[6].filter(isValidGachaCharacterForPool);
+  const pickupSixStars = banner.bannerType === "doublePick" ? banner.twoPickup6 : [banner.pickup6];
   const uniqueSixStars = new Set(allSixStars.map((char) => char.engName));
   const updatedSixStars = [
     ...(pickupSixStars?.filter(
       (char): char is Character =>
-        char !== undefined &&
-        typeof char !== "number" &&
-        !uniqueSixStars.has(char.engName),
+        char !== undefined && typeof char !== "number" && !uniqueSixStars.has(char.engName)
     ) || []),
     ...allSixStars,
   ];
 
-  const filteredSixStars = updatedSixStars.filter(
-    (char): char is Character => char !== undefined,
-  );
+  const filteredSixStars = updatedSixStars.filter((char): char is Character => char !== undefined);
 
   return (
     // 모달 배경에 onClick => 바깥 부분 클릭시 닫힘
@@ -59,9 +48,7 @@ export function BannerSixStarListModal({
 
         <div className="flex max-h-[400px] flex-col gap-3 overflow-y-auto">
           {filteredSixStars.map((char) => {
-            const isPickup = pickupSixStars?.some(
-              (pickup) => pickup?.engName === char?.engName,
-            );
+            const isPickup = pickupSixStars?.some((pickup) => pickup?.engName === char?.engName);
 
             return (
               <div

@@ -38,9 +38,7 @@ export default function MainGachaStats({
     <div className="h-full w-full overflow-y-auto rounded-lg border bg-white p-4 shadow dark:border-gray-700 dark:bg-gray-800">
       {/* (1) 뽑기 확률 통계 박스 */}
       <div className="mb-4 rounded-lg border border-green-300 bg-white p-4 shadow dark:border-green-700 dark:bg-gray-700">
-        <h2 className="mb-2 text-xl font-semibold text-black dark:text-gray-100">
-          🔍 뽑기 통계
-        </h2>
+        <h2 className="mb-2 text-xl font-semibold text-black dark:text-gray-100">🔍 뽑기 통계</h2>
         <ul className="ml-4 mt-2 list-disc text-sm lg:text-base">
           {Object.entries(rarityStats).map(([rarity, count]) => (
             <li key={rarity} className="text-gray-800 dark:text-gray-200">
@@ -52,34 +50,24 @@ export default function MainGachaStats({
           🗂️ 총 뽑기 횟수:{" "}
           <span className="font-bold text-blue-600">
             {totalPulls}회{" "}
-            {selectedBanner.bannerType !== "doublePick" && (
-              <> ({pickupShape || "없음"})</>
-            )}
+            {selectedBanner.bannerType !== "doublePick" && <> ({pickupShape || "없음"})</>}
           </span>
         </p>
         {selectedBanner.bannerType !== "doublePick" && (
           <p className="font-bold">
-            🍀 백분위:{" "}
-            <span className="font-bold text-orange-500">
-              상위 {pickupRank}%
-            </span>{" "}
+            🍀 백분위: <span className="font-bold text-orange-500">상위 {pickupRank}%</span>{" "}
           </p>
         )}
         <p className="font-bold">
-          ☂️ 천장 카운트:{" "}
-          <span className="font-bold text-red-500">{pityCount}회</span>
+          ☂️ 천장 카운트: <span className="font-bold text-red-500">{pityCount}회</span>
         </p>
         <p className="font-bold">
           🧲 6성 확률:{" "}
-          <span className="font-bold text-purple-500">
-            {getSixStarRate(pityCount).toFixed(2)}%
-          </span>
+          <span className="font-bold text-purple-500">{getSixStarRate(pityCount).toFixed(2)}%</span>
         </p>
         <p className="font-bold">
           🏅 픽업 여부:{" "}
-          <span
-            className={`${pickupGuarantee ? "text-green-500" : "text-red-500"}`}
-          >
+          <span className={`${pickupGuarantee ? "text-green-500" : "text-red-500"}`}>
             {pickupGuarantee ? "픽업 확정 ⭕️" : "픽업 확정 ❌"}
           </span>
         </p>
@@ -88,9 +76,7 @@ export default function MainGachaStats({
       {/* (2) 배너 선택 박스 */}
       <div className="mb-5 rounded-lg border border-blue-400 bg-gray-50 p-4 shadow dark:border-blue-600 dark:bg-gray-600">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-            🌪️ 배너
-          </h2>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">🌪️ 배너</h2>
           <label className="flex cursor-pointer items-center">
             <input
               type="checkbox"
@@ -146,8 +132,7 @@ export default function MainGachaStats({
 
       <div className="rounded-lg border border-gray-500 bg-white p-4 text-center shadow dark:border-gray-500 dark:bg-gray-700">
         <h2 className="pb-2 text-base font-semibold text-gray-700 dark:text-gray-300">
-          🖥️ 개발자 :{" "}
-          <span className="font-bold text-blue-500">{nickname}</span>
+          🖥️ 개발자 : <span className="font-bold text-blue-500">{nickname}</span>
         </h2>
       </div>
     </div>

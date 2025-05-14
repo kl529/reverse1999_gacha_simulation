@@ -41,7 +41,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <DarkModeProvider>
           <ModalProvider>
             {" "}
-            {/* ✅ 모달 상태를 관리 */}
             <SecurityWrapper>
               <GlobalLoadingManager />
               <HamburgerConditional />

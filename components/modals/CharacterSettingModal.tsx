@@ -12,16 +12,10 @@ interface CharacterSettingModalProps {
   character: Character;
 }
 
-export function CharacterSettingModal({
-  isOpen,
-  onClose,
-  character,
-}: CharacterSettingModalProps) {
+export function CharacterSettingModal({ isOpen, onClose, character }: CharacterSettingModalProps) {
   if (!isOpen) return null;
 
-  const setting = character_setting_data.find(
-    (c) => c.character_id === character.id,
-  );
+  const setting = character_setting_data.find((c) => c.character_id === character.id);
 
   const psycube_list = (setting?.psycubes || []).map((p) => {
     const psycube = PSYCUBE_DATA.find((d) => d.id === p.psycube_id);
@@ -70,7 +64,7 @@ export function CharacterSettingModal({
           <div className="flex flex-col items-center rounded bg-gray-500 p-2 text-center dark:bg-gray-800">
             <a
               href={`https://sites.google.com/view/reverse1999resonance/%EC%BA%90%EB%A6%AD%ED%84%B0-%EA%B3%B5%EB%AA%85/${character.rarity}성/${encodeURIComponent(
-                character.name.toLowerCase().replace(/ /g, "-"),
+                character.name.toLowerCase().replace(/ /g, "-")
               )}`}
               target="_blank"
               rel="noopener noreferrer"

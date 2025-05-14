@@ -51,11 +51,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function SkinDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function SkinDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const skinId = Number(id);
   const skin = characterSkin.find((s) => s.id === skinId);

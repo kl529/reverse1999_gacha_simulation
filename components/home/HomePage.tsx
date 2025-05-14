@@ -93,9 +93,7 @@ export default function HomePage() {
           <h2 className="mb-4 mt-20 text-4xl font-bold text-black dark:text-white lg:mt-0">
             버틴의 여행가방 🧳
           </h2>
-          <p className="mb-8 text-black dark:text-white">
-            당신이 폭풍우를 이겨낼 수 있도록..
-          </p>
+          <p className="mb-8 text-black dark:text-white">당신이 폭풍우를 이겨낼 수 있도록..</p>
 
           {/* 카드 컨테이너 */}
           <div className="// 여긴 전체 컨테이너 padding grid w-full max-w-7xl grid-cols-1 gap-10 px-10 md:px-20 lg:grid-cols-3 lg:px-6">
@@ -244,11 +242,7 @@ export default function HomePage() {
               className="inline-flex h-8 w-8 transform items-center justify-center transition-transform hover:scale-110"
             >
               <Image
-                src={
-                  darkMode
-                    ? "/infos/button/github_light.png"
-                    : "/infos/button/github_dark.png"
-                }
+                src={darkMode ? "/infos/button/github_light.png" : "/infos/button/github_dark.png"}
                 alt="GitHub"
                 width={20}
                 height={20}
@@ -273,19 +267,16 @@ export default function HomePage() {
 
             <h2 className="mb-4 text-lg font-bold">개인정보 처리방침</h2>
             <p className="whitespace-pre-line text-sm leading-relaxed">
-              본 사이트는 사용자의 개인정보를 수집하지 않습니다. 이름, 이메일,
-              연락처 등 어떠한 개인정보도 저장하지 않으며, 로그인 없이 자유롭게
-              이용 가능합니다.
+              본 사이트는 사용자의 개인정보를 수집하지 않습니다. 이름, 이메일, 연락처 등 어떠한
+              개인정보도 저장하지 않으며, 로그인 없이 자유롭게 이용 가능합니다.
             </p>
             <br />
             <p className="whitespace-pre-line text-sm leading-relaxed">
-              일부 설정 정보(예: 퀴즈 진행 현황)는 사용자의 브라우저 로컬
-              스토리지(Local Storage)에 저장됩니다. 이 사이트는 Google
-              Analytics를 사용하여 방문자 트래픽을 익명으로 수집하고 있으며,
-              광고 ID 등 개인을 식별할 수 있는 정보는 수집되지 않습니다. 외부
-              링크(예: Google Sites, Github Pages)는 각각의 개인정보 처리방침을
-              따릅니다. 본 사이트는 외부 사이트의 데이터 수집에 대해 책임지지
-              않습니다.
+              일부 설정 정보(예: 퀴즈 진행 현황)는 사용자의 브라우저 로컬 스토리지(Local Storage)에
+              저장됩니다. 이 사이트는 Google Analytics를 사용하여 방문자 트래픽을 익명으로 수집하고
+              있으며, 광고 ID 등 개인을 식별할 수 있는 정보는 수집되지 않습니다. 외부 링크(예:
+              Google Sites, Github Pages)는 각각의 개인정보 처리방침을 따릅니다. 본 사이트는 외부
+              사이트의 데이터 수집에 대해 책임지지 않습니다.
             </p>
             <br />
             <p className="whitespace-pre-line text-sm leading-relaxed">
@@ -356,10 +347,7 @@ export default function HomePage() {
           />
         )}
 
-        <UpdateModal
-          isOpen={isUpdateModalOpen}
-          onClose={() => setUpdateModalOpen(false)}
-        />
+        <UpdateModal isOpen={isUpdateModalOpen} onClose={() => setUpdateModalOpen(false)} />
       </div>
     </div>
   );
@@ -404,9 +392,7 @@ function CardBox({
       <h3 className="mb-1 text-center text-xl font-bold">{title}</h3>
       <p className="mb-4 text-center text-sm">{subTitle}</p>
 
-      <div
-        className={`grid ${gridColsClass} h-full w-full items-center justify-center gap-3`}
-      >
+      <div className={`grid ${gridColsClass} h-full w-full items-center justify-center gap-3`}>
         {items.map((item, idx) => (
           <LinkBox
             key={idx}
@@ -456,9 +442,7 @@ function LinkBox({
         className="flex min-w-[80px] flex-col items-center gap-2 text-center transition-transform hover:scale-105"
       >
         <Image src={icon} alt={label} width={48} height={48} />
-        <span className="whitespace-pre-wrap break-words pt-1 text-sm">
-          {label}
-        </span>
+        <span className="whitespace-pre-wrap break-words pt-1 text-sm">{label}</span>
       </Link>
     );
   }
@@ -471,9 +455,7 @@ function LinkBox({
         className="flex min-w-[80px] flex-col items-center gap-2 text-center transition-transform hover:scale-105"
       >
         <Image src={icon} alt={label} width={48} height={48} />
-        <span className="whitespace-pre-wrap break-words pt-1 text-sm">
-          {label}
-        </span>
+        <span className="whitespace-pre-wrap break-words pt-1 text-sm">{label}</span>
       </Link>
     );
   }
@@ -484,9 +466,7 @@ function LinkBox({
       className="flex min-w-[80px] flex-col items-center gap-2 text-center transition-transform hover:scale-105"
     >
       <Image src={icon} alt={label} width={48} height={48} />
-      <span className="whitespace-pre-wrap break-words pt-1 text-sm">
-        {label}
-      </span>
+      <span className="whitespace-pre-wrap break-words pt-1 text-sm">{label}</span>
     </button>
   );
 }

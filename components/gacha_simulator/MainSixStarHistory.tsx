@@ -30,24 +30,16 @@ export default function MainSixStarHistory({
 
       {/* 픽업 vs 일반 6성 횟수 */}
       <div className="sticky top-[48px] z-10 mb-2 flex justify-between rounded-lg border-b bg-gray-100 p-2 text-xs font-semibold text-gray-700 dark:border dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 lg:text-sm">
-        <p className="text-green-600 dark:text-green-400">
-          픽업: {pickupCount}회
-        </p>
-        <p className="text-red-500 dark:text-red-400">
-          픽뚫: {nonPickupCount}회
-        </p>
+        <p className="text-green-600 dark:text-green-400">픽업: {pickupCount}회</p>
+        <p className="text-red-500 dark:text-red-400">픽뚫: {nonPickupCount}회</p>
       </div>
 
-      <div
-        ref={historyRef}
-        className="flex flex-grow flex-col-reverse gap-2 overflow-y-auto"
-      >
+      <div ref={historyRef} className="flex flex-grow flex-col-reverse gap-2 overflow-y-auto">
         {sixStarHistory.map((entry, idx) => {
           const isPickup =
             (selectedBanner.bannerType === "doublePick" &&
               selectedBanner.twoPickup6?.some(
-                (c) =>
-                  typeof c !== "number" && c.engName === entry.char.engName,
+                (c) => typeof c !== "number" && c.engName === entry.char.engName
               )) ||
             (selectedBanner.bannerType !== "doublePick" &&
               typeof selectedBanner.pickup6 !== "number" &&
@@ -62,8 +54,7 @@ export default function MainSixStarHistory({
             .filter((e) => e.char.name === entry.char.name).length;
 
           // 등장 순서에 따라 suffix 부여 (처음 나온 캐릭터는 "명함", 이후 "1형", "2형" ...)
-          const suffix =
-            sameCharCount === 0 ? "명함" : `${Math.min(sameCharCount, 5)}형`;
+          const suffix = sameCharCount === 0 ? "명함" : `${Math.min(sameCharCount, 5)}형`;
 
           return (
             <div

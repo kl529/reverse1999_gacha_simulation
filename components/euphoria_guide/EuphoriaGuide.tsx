@@ -32,15 +32,14 @@ const groupedByPriority = euphoriaList
 export default function EuphoriaGuide() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <h1 className="mb-2 mt-8 text-center text-3xl font-bold text-black dark:text-white">
+      <h1 className="mb-2 mt-8 text-center text-2xl font-bold text-black dark:text-white lg:text-3xl">
         광상 가이드
       </h1>
       <p className="mb-6 text-center text-sm text-gray-500 dark:text-gray-400">
-        광상 추천도는 무조건적인 정답이 아니며, 출시 상황이나 패치에 따라 변동될
-        수 있습니다. <br />v{version} 이후의 정보는 모두 번역본이며, 오역이 있을
-        수 있습니다. <br />
-        순위내의, 캐릭터 순서는 추천도 순이 아니라 임의로 지정한 것입니다.
-        추천도와 전혀 관련 없습니다.
+        광상 추천도는 무조건적인 정답이 아니며, 출시 상황이나 패치에 따라 변동될 수 있습니다. <br />
+        v{version} 이후의 정보는 모두 번역본이며, 오역이 있을 수 있습니다. <br />
+        순위내의, 캐릭터 순서는 추천도 순이 아니라 임의로 지정한 것입니다. 추천도와 전혀 관련
+        없습니다.
       </p>
 
       {Object.entries(groupedByPriority).map(([priority, list]) => (
@@ -95,9 +94,7 @@ export default function EuphoriaGuide() {
                     <h3 className="mb-1 text-xl font-semibold text-black dark:text-white">
                       {char.name}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">
-                      특징: {item.note}
-                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300">특징: {item.note}</p>
                   </div>
                 </Link>
               );
