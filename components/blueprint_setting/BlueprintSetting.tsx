@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { BOSSES, BossId, FILTERS, BLUEPRINTS } from "@/data/blueprint";
 import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 
 export default function BlueprintSetting() {

@@ -2,7 +2,6 @@
 
 import { useState, useMemo, useEffect, useRef } from "react";
 import Image from "next/image";
-import { BannerSixStarListModal } from "@/components/modals/BannerSixStarListModal";
 import { charactersByRarity, Character } from "@/data/characters";
 import { banners, Banner } from "@/data/banners";
 import { percentRankTable } from "@/data/percent_rank_table";
@@ -99,7 +98,6 @@ export default function GachaGame() {
   const [isLeftOpen, setIsLeftOpen] = useState(false); // 모바일에서 왼쪽 사이드바 펼침 여부
   const [isRightOpen, setIsRightOpen] = useState(false); // 모바일에서 오른쪽 사이드바 펼침 여부
   const [isFirstPull, setIsFirstPull] = useState(true); // 첫 뽑기인지 확인하는 상태
-  const [is6StarListOpen, set6StarListOpen] = useState(false); // 6성 목록 팝업 상태
   const [showDoublePick, setShowDoublePick] = useState(false);
   const [pickupShape, setPickupShape] = useState<string | null>(null); // 이번에 뽑은 픽업캐릭 형상
   const [pickupRank, setPickupRank] = useState<number | null>(null); // 픽업 상위 몇 %인지
@@ -575,7 +573,6 @@ export default function GachaGame() {
           displayedBanners={displayedBanners}
           handleBannerChange={handleBannerChange}
           nickname={nickname}
-          set6StarListOpen={set6StarListOpen}
         />
       </OffCanvas>
 
@@ -608,7 +605,6 @@ export default function GachaGame() {
           displayedBanners={displayedBanners}
           handleBannerChange={handleBannerChange}
           nickname={nickname}
-          set6StarListOpen={set6StarListOpen}
         />
       </aside>
 

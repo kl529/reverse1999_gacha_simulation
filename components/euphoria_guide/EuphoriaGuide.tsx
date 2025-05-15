@@ -7,7 +7,7 @@ import Link from "next/link";
 import { version } from "@/data/version";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-
+import { Character } from "@/data/characters";
 const priorityDescriptions: { [key: number]: string } = {
   1: "대부분 상황에서 좋은 모습을 보이며, 매우 추천됨",
   2: "특정 덱에서 주로 사용되고, 해두면 잘쓰임",
@@ -17,7 +17,7 @@ const priorityDescriptions: { [key: number]: string } = {
 
 function getCharacterById(id: number) {
   for (const rarity in charactersByRarity) {
-    const found = charactersByRarity[Number(rarity)].find((c: any) => c.id === id);
+    const found = charactersByRarity[Number(rarity)].find((c: Character) => c.id === id);
     if (found) return found;
   }
   return null;

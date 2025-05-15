@@ -19,14 +19,9 @@ export default function HomePage() {
   const [showSource, setShowSource] = useState(false);
   const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
-  const [selectedInfo, setSelectedInfo] = useState<{
-    title: string;
-    description?: string;
-    image: string;
-    source?: string;
-  } | null>(null);
+  const [selectedInfo, setSelectedInfo] = useState<CardItem | null>(null);
 
-  const handleItemClick = (item: any) => {
+  const handleItemClick = (item: CardItem) => {
     setSelectedInfo(item);
     setInfoModalOpen(true);
   };
@@ -251,8 +246,8 @@ export default function HomePage() {
           <CardInfoModal
             isOpen={infoModalOpen}
             onClose={() => setInfoModalOpen(false)}
-            title={selectedInfo.title}
-            image={selectedInfo.image}
+            title={selectedInfo.title || ""}
+            image={selectedInfo.image || ""}
             description={selectedInfo.description || ""}
             source={selectedInfo.source || ""}
           />
@@ -263,7 +258,31 @@ export default function HomePage() {
   );
 }
 
-function CardBox({ title, subTitle, items, onItemClick }: any) {
+interface CardItem {
+  icon: string;
+  label: string;
+  href: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  source?: string;
+}
+
+interface CardBoxProps {
+  title: string;
+  subTitle: string;
+  items: CardItem[];
+  onItemClick?: (item: CardItem) => void;
+}
+
+interface LinkBoxProps {
+  icon: string;
+  label: string;
+  href: string;
+  onClick?: () => void;
+}
+
+function CardBox({ title, subTitle, items, onItemClick }: CardBoxProps) {
   const gridColsClass =
     items.length === 2
       ? "grid-cols-2"
@@ -276,7 +295,7 @@ function CardBox({ title, subTitle, items, onItemClick }: any) {
       <h3 className="mb-1 text-center text-xl font-bold">{title}</h3>
       <p className="mb-4 text-center text-sm">{subTitle}</p>
       <div className={`grid ${gridColsClass} h-full w-full items-center justify-center gap-3`}>
-        {items.map((item: any, idx: number) => (
+        {items.map((item: CardItem, idx: number) => (
           <LinkBox
             key={idx}
             icon={item.icon}
@@ -290,7 +309,7 @@ function CardBox({ title, subTitle, items, onItemClick }: any) {
   );
 }
 
-function LinkBox({ icon, label, href, onClick }: any) {
+function LinkBox({ icon, label, href, onClick }: LinkBoxProps) {
   const isExternal = href.startsWith("http");
   const content = (
     <div className="flex flex-col items-center p-2 transition-transform hover:scale-105">

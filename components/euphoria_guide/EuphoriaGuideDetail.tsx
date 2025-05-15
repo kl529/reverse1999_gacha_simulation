@@ -5,7 +5,6 @@ import { Euphoria } from "@/data/euphoria";
 import Image from "next/image";
 import { charactersByRarity } from "@/data/characters";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface Props {

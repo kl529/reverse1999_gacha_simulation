@@ -379,7 +379,7 @@ export default function CharacterQuiz() {
         </Button>
       </div>
     ),
-    [rarityFilter, inspirationFilter, versionFilter]
+    [rarityFilter, inspirationFilter, versionFilter, FilterSelect, INSPIRATIONS, RARITY, VERSIONS]
   );
 
   return (

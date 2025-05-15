@@ -26,7 +26,6 @@ interface GachaStatsProps {
   displayedBanners: Banner[];
   handleBannerChange: (bannerId: string) => void;
   nickname: string;
-  set6StarListOpen: (open: boolean) => void;
 }
 
 export default function MainGachaStats({
@@ -43,7 +42,6 @@ export default function MainGachaStats({
   displayedBanners,
   handleBannerChange,
   nickname,
-  set6StarListOpen,
 }: GachaStatsProps) {
   return (
     <div className="h-full w-full overflow-y-auto rounded-lg border bg-white p-4 shadow dark:border-gray-700 dark:bg-gray-800">
