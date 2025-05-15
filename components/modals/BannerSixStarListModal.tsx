@@ -1,15 +1,21 @@
 import Image from "next/image";
-import { DialogContent } from "@/components/ui/dialog";
 import { charactersByRarity, Character } from "@/data/characters";
 import { EnrichedBanner } from "@/components/gacha_simulator/GachaGame";
-import { isValidGachaCharacterForPool } from "@/components/gacha_simulator/GachaGame";
-
-interface BannerSixStarListModalProps {
+import {
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { version } from "@/data/version";
+interface ModalProps {
   banner: EnrichedBanner;
 }
 
-export function BannerSixStarListModal({ banner }: BannerSixStarListModalProps) {
-  const allSixStars: Character[] = charactersByRarity[6].filter(isValidGachaCharacterForPool);
+export function BannerSixStarListModal({ banner }: ModalProps) {
+  const allSixStars: Character[] = charactersByRarity[6].filter(
+    (char) => !char.exclude_gacha && parseFloat(char.version) <= parseFloat(version) - 0.3
+  );
   const pickupSixStars = banner.bannerType === "doublePick" ? banner.twoPickup6 : [banner.pickup6];
   const uniqueSixStars = new Set(allSixStars.map((char) => char.engName));
   const updatedSixStars = [
@@ -23,12 +29,12 @@ export function BannerSixStarListModal({ banner }: BannerSixStarListModalProps) 
   const filteredSixStars = updatedSixStars.filter((char): char is Character => char !== undefined);
 
   return (
-    <DialogContent className="max-w-[400px] sm:max-w-[500px]">
-      <h3 className="mb-4 text-center text-lg font-bold text-gray-900 dark:text-gray-100">
-        획득 가능 6성 목록
-      </h3>
-
-      <div className="flex max-h-[400px] flex-col gap-3 overflow-y-auto">
+    <DialogContent className="max-w-[90vw] sm:max-w-md">
+      <DialogHeader>
+        <DialogTitle>획득 가능 6성 목록</DialogTitle>
+        <DialogDescription>현재 배너에서 등장 가능한 6성 캐릭터 목록입니다.</DialogDescription>
+      </DialogHeader>
+      <div className="flex max-h-[400px] flex-col gap-3 overflow-y-auto pt-2">
         {filteredSixStars.map((char) => {
           const isPickup = pickupSixStars?.some((pickup) => pickup?.engName === char?.engName);
 
@@ -56,10 +62,10 @@ export function BannerSixStarListModal({ banner }: BannerSixStarListModalProps) 
                       : "text-gray-800 dark:text-gray-300"
                   }`}
                 >
-                  {char.name} {isPickup && " (픽업!)"}
+                  {char.name} {isPickup && "(픽업!)"}
                 </p>
               </div>
-              <span className="pr-2 text-xs text-gray-500 dark:text-gray-400">v{char.version}</span>
+              <span className="text-xs text-gray-600 dark:text-gray-400">v{char.version}</span>
             </div>
           );
         })}

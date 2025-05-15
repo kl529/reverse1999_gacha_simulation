@@ -31,7 +31,6 @@ export default function GachaResults({ results }: Props) {
               alt={char.name}
               width={200} // 최대 폭 200
               height={303} // 최대 높이 303
-              objectFit="contain" /* 폭이 줄어들어도 비율 유지 */
             />
           )}
 
@@ -43,7 +42,6 @@ export default function GachaResults({ results }: Props) {
                 alt={char.inspiration}
                 width={80}
                 height={80}
-                layout="intrinsic"
                 className="h-auto w-5"
               />
             </div>
@@ -56,7 +54,6 @@ export default function GachaResults({ results }: Props) {
               alt={`성급 효과 ${char.rarity}`}
               width={200}
               height={303}
-              objectFit="contain"
               className="pointer-events-none absolute inset-0 z-10 mx-auto h-full"
             />
           )}

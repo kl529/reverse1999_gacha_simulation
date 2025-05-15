@@ -109,8 +109,8 @@ export default function MainGachaStats({
           alt="배너 이미지"
           width={400}
           height={200}
-          layout="intrinsic"
           className="h-auto w-full pb-3 pt-1 transition-opacity"
+          priority
         />
         <Select value={selectedBanner.id} onValueChange={(value) => handleBannerChange(value)}>
           <SelectTrigger className="w-full">

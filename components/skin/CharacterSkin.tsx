@@ -6,6 +6,17 @@ import { characterSkin } from "@/data/character_skin";
 import { charactersByRarity } from "@/data/characters";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import { Command, CommandInput, CommandList, CommandItem } from "@/components/ui/command";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function SkinGalleryPage() {
   const [rarityFilter, setRarityFilter] = useState<string>("전체");
@@ -53,7 +64,7 @@ export default function SkinGalleryPage() {
     setVersionFilter("전체");
     setSourceFilter("전체");
     setSelectedCharacters([]);
-    setSearchTerm(""); // ⬅️ 검색어 초기화
+    setSearchTerm("");
   };
 
   useEffect(() => {
@@ -84,92 +95,85 @@ export default function SkinGalleryPage() {
         </h1>
 
         <div className="mb-6 flex flex-wrap justify-center gap-4">
-          <select
-            className="rounded border border-black p-2 text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-            value={rarityFilter}
-            onChange={(e) => setRarityFilter(e.target.value)}
-          >
-            <option value="전체">희귀도</option>
-            {rarityList.map((rarity) => (
-              <option key={rarity} value={rarity}>
-                {rarity}
-              </option>
-            ))}
-          </select>
+          <Select value={rarityFilter} onValueChange={setRarityFilter}>
+            <SelectTrigger className="w-32">
+              <SelectValue placeholder="희귀도" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="전체">전체</SelectItem>
+              {rarityList.map((r) => (
+                <SelectItem key={r} value={r}>
+                  {r}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
 
-          <select
-            className="rounded border border-black p-2 text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-            value={versionFilter}
-            onChange={(e) => setVersionFilter(e.target.value)}
-          >
-            <option value="전체">버전</option>
-            {versionList.map((version) => (
-              <option key={version} value={version}>
-                {version}
-              </option>
-            ))}
-          </select>
+          <Select value={versionFilter} onValueChange={setVersionFilter}>
+            <SelectTrigger className="w-32">
+              <SelectValue placeholder="버전" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="전체">전체</SelectItem>
+              {versionList.map((v) => (
+                <SelectItem key={v} value={v}>
+                  {v}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
 
-          <select
-            className="rounded border border-black p-2 text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-            value={sourceFilter}
-            onChange={(e) => setSourceFilter(e.target.value)}
-          >
-            <option value="전체">획득처</option>
-            {sourceList.map((source) => (
-              <option key={source} value={source}>
-                {source}
-              </option>
-            ))}
-          </select>
-
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="w-52 rounded border border-black p-2 text-left text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-            >
-              {selectedCharacters.length > 0 ? selectedCharacters.join(", ") : "캐릭터 필터"}
-            </button>
-            {dropdownOpen && (
-              <div className="absolute z-10 mt-1 max-h-60 w-52 overflow-y-auto rounded border border-gray-300 bg-white shadow-lg dark:border-gray-600 dark:bg-gray-800">
-                <input
-                  type="text"
-                  placeholder="검색..."
+          <Select value={sourceFilter} onValueChange={setSourceFilter}>
+            <SelectTrigger className="w-32">
+              <SelectValue placeholder="획득처" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="전체">전체</SelectItem>
+              {sourceList.map((s) => (
+                <SelectItem key={s} value={s}>
+                  {s}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Popover open={dropdownOpen} onOpenChange={setDropdownOpen}>
+            <PopoverTrigger asChild>
+              <button className="h-9 w-52 rounded border border-black px-3 py-2 text-left text-sm text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white">
+                {selectedCharacters.length > 0 ? selectedCharacters.join(", ") : "캐릭터 필터"}
+              </button>
+            </PopoverTrigger>
+            <PopoverContent className="w-52 p-0" ref={dropdownRef}>
+              <Command>
+                <CommandInput
+                  placeholder="캐릭터 검색..."
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full border-b border-gray-300 bg-white px-3 py-2 text-sm text-black dark:border-gray-600 dark:bg-gray-800 dark:text-white"
+                  onValueChange={setSearchTerm}
                 />
-                {allCharacterNames
-                  .filter((name) => name.includes(searchTerm))
-                  .map((name) => (
-                    <label
-                      key={name}
-                      className="block flex cursor-pointer justify-between px-4 py-2 text-sm text-black hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      <div>
-                        <input
-                          type="checkbox"
-                          className="mr-2"
-                          checked={selectedCharacters.includes(name)}
-                          onChange={() => toggleCharacter(name)}
-                        />
-                        {name}
-                      </div>
-                      <span className="text-xs text-gray-500">
-                        {skinCountByCharacter[name] || 0}개
-                      </span>
-                    </label>
-                  ))}
-              </div>
-            )}
-          </div>
-
-          <button
-            onClick={resetFilters}
-            className="rounded bg-red-500 px-3 py-2 text-sm text-white hover:bg-red-600"
-          >
+                <CommandList className="max-h-60 overflow-y-auto">
+                  {allCharacterNames
+                    .filter((name) => name.includes(searchTerm))
+                    .map((name) => (
+                      <CommandItem
+                        key={name}
+                        onSelect={() => toggleCharacter(name)}
+                        className="flex items-center justify-between"
+                      >
+                        <div className="flex items-center space-x-2">
+                          <Checkbox checked={selectedCharacters.includes(name)} />
+                          <span>{name}</span>
+                        </div>
+                        <span className="text-xs text-gray-500">
+                          {skinCountByCharacter[name] || 0}개
+                        </span>
+                      </CommandItem>
+                    ))}
+                </CommandList>
+              </Command>
+            </PopoverContent>
+          </Popover>
+          <Button variant="destructive" onClick={resetFilters}>
             초기화
-          </button>
+          </Button>
         </div>
       </div>
 

@@ -5,6 +5,8 @@ import { charactersByRarity } from "@/data/characters";
 import Image from "next/image";
 import Link from "next/link";
 import { version } from "@/data/version";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 const priorityDescriptions: { [key: number]: string } = {
   1: "대부분 상황에서 좋은 모습을 보이며, 매우 추천됨",
@@ -15,7 +17,7 @@ const priorityDescriptions: { [key: number]: string } = {
 
 function getCharacterById(id: number) {
   for (const rarity in charactersByRarity) {
-    const found = charactersByRarity[Number(rarity)].find((c) => c.id === id);
+    const found = charactersByRarity[Number(rarity)].find((c: any) => c.id === id);
     if (found) return found;
   }
   return null;
@@ -48,10 +50,11 @@ export default function EuphoriaGuide() {
             ⭐ {priority}순위
           </h2>
           {priorityDescriptions[Number(priority)] && (
-            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+            <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
               {priorityDescriptions[Number(priority)]}
             </p>
           )}
+          <Separator className="mb-4" />
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {list.map((item) => {
               const char = getCharacterById(item.character_id);
@@ -61,41 +64,45 @@ export default function EuphoriaGuide() {
                 <Link
                   href={`/euphoria_guide/${item.id}`}
                   key={item.id}
-                  className="relative flex flex-col items-center gap-1 rounded-lg border bg-white p-4 transition hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
+                  className="transition hover:shadow-lg"
                 >
-                  <div className="flex w-full flex-col items-center gap-1 sm:flex-row">
-                    <div className="flex h-[120px] w-full items-stretch gap-1 overflow-hidden sm:h-[140px]">
-                      {/* 캐릭터 이미지 (너비 고정) */}
-                      <div className="relative aspect-[2/3] h-full w-[30%] overflow-hidden rounded-lg">
-                        <Image
-                          src={`/characters/${char.rarity}stars/${char.engName}.png`}
-                          alt={char.name}
-                          fill
-                          className="object-contain object-left"
-                        />
-                      </div>
-
-                      {/* 광상 이미지 (남은 공간 차지) */}
-                      <div className="relative aspect-square h-full flex-1 overflow-hidden rounded-lg">
-                        <Image
-                          src={`/infos/euphoria/${char.engName.replace(/-/g, "_")}_${item.number}.png`}
-                          alt={`${char.name} 광상`}
-                          fill
-                          className="object-contain object-right"
-                        />
-                        <div className="absolute bottom-1 right-1 z-10 rounded bg-gray-200 px-1 py-0.5 text-[10px] text-gray-800 shadow dark:bg-gray-700 dark:text-gray-100">
-                          v{item.version}
+                  <Card className="flex flex-col items-center gap-1 p-4">
+                    <CardContent className="w-full p-0">
+                      <div className="flex w-full flex-col items-center gap-1 sm:flex-row">
+                        <div className="flex h-[120px] w-full items-stretch gap-1 overflow-hidden sm:h-[140px]">
+                          <div className="relative aspect-[2/3] h-full w-[30%] overflow-hidden rounded-lg">
+                            <Image
+                              src={`/characters/${char.rarity}stars/${char.engName}.png`}
+                              alt={char.name}
+                              width={100}
+                              height={100}
+                              className="object-contain object-left"
+                            />
+                          </div>
+                          <div className="relative aspect-square h-full flex-1 overflow-hidden rounded-lg">
+                            <Image
+                              src={`/infos/euphoria/${char.engName.replace(/-/g, "_")}_${item.number}.png`}
+                              alt={`${char.name} 광상`}
+                              width={100}
+                              height={100}
+                              className="h-full w-full object-contain object-right"
+                            />
+                            <div className="absolute bottom-1 right-1 z-10 rounded bg-gray-200 px-1 py-0.5 text-[10px] text-gray-800 shadow dark:bg-gray-700 dark:text-gray-100">
+                              v{item.version}
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-
-                  <div className="w-full text-center">
-                    <h3 className="mb-1 text-xl font-semibold text-black dark:text-white">
-                      {char.name}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300">특징: {item.note}</p>
-                  </div>
+                      <div className="mt-3 w-full text-center">
+                        <h3 className="mb-1 text-xl font-semibold text-black dark:text-white">
+                          {char.name}
+                        </h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                          특징: {item.note}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </Link>
               );
             })}

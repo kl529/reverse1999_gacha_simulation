@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
 import Image from "next/image";
 import Link from "next/link";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 type RoleType = "damage" | "support" | "balance" | "defense";
 
@@ -56,17 +58,18 @@ export default function CharacterSetting() {
 
     return (
       <div className="space-y-2">
-        <h2 className={`text-xl font-bold ${colorClass}`}>{label}</h2>
+        <h2 className={`text-xl font-bold ${colorClass} pb-2`}>{label}</h2>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(76px,1fr))] gap-2">
           {group.map((ch) => (
-            <Link key={ch.id} href={`/character_setting/${ch.id}`}>
+            <Link key={`${ch.id}-${ch.version}`} href={`/character_setting/${ch.id}`}>
               <div className="flex cursor-pointer flex-col items-center rounded border border-gray-400 p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800">
                 <div className="relative h-10 w-10">
                   <Image
                     src={`/characters/${ch.rarity}stars_small/${ch.engName}.png`}
                     alt={ch.name}
-                    fill
-                    className="rounded object-contain"
+                    width={40}
+                    height={40}
+                    className="h-full w-full rounded object-contain"
                   />
                   {ch.version && (
                     <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[8px] text-white shadow">
@@ -74,7 +77,7 @@ export default function CharacterSetting() {
                     </div>
                   )}
                 </div>
-                <div className="w-full truncate text-center text-xs font-bold text-gray-500 dark:text-gray-100">
+                <div className="w-full truncate text-center text-xs font-bold text-black dark:text-gray-100">
                   {ch.name}
                 </div>
               </div>
@@ -91,36 +94,35 @@ export default function CharacterSetting() {
         공명 & 의지 찾기
       </h1>
 
-      {/* 검색창 */}
       <div className="mb-4 flex w-full max-w-md justify-center">
-        <input
+        <Input
           type="text"
           placeholder="캐릭터 이름 검색"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full rounded border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
         />
       </div>
 
-      {/* 공명 역할 필터 */}
       <div className="mb-4 flex flex-wrap justify-center gap-2">
         {TYPES.map((type) => (
-          <button
+          <Button
             key={type.type}
+            variant={selectedType === type.type ? "default" : "outline"}
             onClick={() => setSelectedType((prev) => (prev === type.type ? null : type.type))}
-            className={`flex items-center gap-2 rounded border px-4 py-2 text-sm font-semibold ${
-              selectedType === type.type
-                ? "bg-blue-600 text-white"
-                : "bg-gray-400 text-gray-800 dark:bg-gray-700 dark:text-white"
-            }`}
+            className="flex items-center gap-2"
           >
-            <Image src={type.iconImg} alt={type.label} width={20} height={20} />
+            <Image
+              src={type.iconImg}
+              alt={type.label}
+              width={20}
+              height={20}
+              style={{ height: "auto", width: "auto" }}
+            />
             {type.label}
-          </button>
+          </Button>
         ))}
       </div>
 
-      {/* 캐릭터 그룹 */}
       <div className="w-full space-y-6 px-4">
         {renderCharGroup(6, "🌟 6성", "text-purple-600 dark:text-purple-400")}
         {renderCharGroup(5, "⭐ 5성", "text-yellow-600 dark:text-yellow-300")}

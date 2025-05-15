@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { CharacterSkin } from "@/data/character_skin";
 import { charactersByRarity } from "@/data/characters";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Badge } from "@/components/ui/badge";
 
 export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
   const character = Object.values(charactersByRarity)
@@ -19,25 +21,25 @@ export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
 
         {/* 태그들 */}
         <div className="flex flex-wrap justify-center gap-2">
-          <span className="rounded-full bg-orange-200 px-3 py-1 text-sm dark:bg-orange-700">
+          <Badge variant="secondary" className="bg-orange-200 dark:bg-orange-700">
             버전: {skin.version}
-          </span>
-          <span className="rounded-full bg-sky-200 px-3 py-1 text-sm dark:bg-sky-700">
+          </Badge>
+          <Badge variant="secondary" className="bg-sky-200 dark:bg-sky-700">
             희귀도: {skin.rarity}
-          </span>
-          <span className="rounded-full bg-green-200 px-3 py-1 text-sm dark:bg-green-700">
+          </Badge>
+          <Badge variant="secondary" className="bg-green-200 dark:bg-green-700">
             획득처: {skin.source}
-          </span>
+          </Badge>
           {skin.price && (
-            <span className="rounded-full bg-purple-200 px-3 py-1 text-sm dark:bg-purple-700">
+            <Badge variant="secondary" className="bg-purple-200 dark:bg-purple-700">
               가격: {skin.price}
-            </span>
+            </Badge>
           )}
         </div>
 
         {/* 일러스트 */}
-        <div className="flex justify-center">
-          <div className="relative aspect-[9/7] w-full max-w-3xl">
+        <div className="mx-auto w-full max-w-3xl">
+          <AspectRatio ratio={9 / 7}>
             <Image
               src={`/infos/character_skin/illust/${skin.engName}.webp`}
               alt={`${skin.name} 일러스트`}
@@ -45,20 +47,22 @@ export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
               className="rounded-lg object-contain"
               unoptimized
             />
-          </div>
+          </AspectRatio>
         </div>
 
         {/* standing + mini */}
         <div className="flex flex-wrap justify-center gap-6">
           {["standing", "mini"].map((type) => (
-            <div key={type} className="relative aspect-[3/5] w-[300px]">
-              <Image
-                src={`/infos/character_skin/${type}/${skin.engName}.webp`}
-                alt={`${skin.name} ${type}`}
-                fill
-                className="rounded-lg object-contain"
-                unoptimized
-              />
+            <div key={type} className="w-[300px]">
+              <AspectRatio ratio={3 / 5}>
+                <Image
+                  src={`/infos/character_skin/${type}/${skin.engName}.webp`}
+                  alt={`${skin.name} ${type}`}
+                  fill
+                  className="rounded-lg object-contain"
+                  unoptimized
+                />
+              </AspectRatio>
             </div>
           ))}
         </div>

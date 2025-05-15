@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { carouselItems } from "@/data/carouselItems";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 export default function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -50,29 +52,26 @@ export default function Carousel() {
   }, []);
 
   return (
-    <div className="relative mx-auto aspect-[4/1] w-full max-w-7xl overflow-hidden rounded-lg">
+    <Card className="relative mx-auto aspect-[4/1] w-full max-w-7xl overflow-hidden rounded-lg">
       <div
-        className="relative overflow-hidden"
+        className="relative h-full w-full overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
         <div
-          className="flex transition-transform duration-500"
-          style={{
-            transform: `translateX(-${currentIndex * 100}%)`,
-            width: "100%",
-          }}
+          className="flex h-full transition-transform duration-500"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {carouselItems.map((item) => (
             <div key={item.id} className="relative aspect-[4/1] w-full flex-shrink-0">
               {item.link ? (
-                <Link href={item.link}>
+                <Link href={item.link} className="relative block h-full w-full">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-contain"
+                    className="object-cover"
                     unoptimized
                     priority
                   />
@@ -82,7 +81,7 @@ export default function Carousel() {
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-contain"
+                  className="object-cover"
                   unoptimized
                   priority
                 />
@@ -100,33 +99,37 @@ export default function Carousel() {
             </div>
           ))}
         </div>
-      </div>
 
-      {/* 좌우 버튼 */}
-      <button
-        onClick={handlePrev}
-        className="absolute left-4 top-1/2 z-10 -translate-y-1/2 transform rounded-full bg-black/50 p-1 text-sm text-white sm:p-2 sm:text-base"
-      >
-        ◀
-      </button>
-      <button
-        onClick={handleNext}
-        className="absolute right-4 top-1/2 z-10 -translate-y-1/2 transform rounded-full bg-black/50 p-1 text-sm text-white sm:p-2 sm:text-base"
-      >
-        ▶
-      </button>
+        {/* 좌우 버튼 */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={handlePrev}
+          className="absolute left-4 top-1/2 z-10 -translate-y-1/2 transform bg-black/50 text-white"
+        >
+          ◀
+        </Button>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={handleNext}
+          className="absolute right-4 top-1/2 z-10 -translate-y-1/2 transform bg-black/50 text-white"
+        >
+          ▶
+        </Button>
 
-      {/* 인디케이터 */}
-      <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 transform space-x-2">
-        {carouselItems.map((_, index) => (
-          <div
-            key={index}
-            className={`rounded-full ${
-              index === currentIndex ? "bg-white" : "bg-gray-400"
-            } h-2 w-2 sm:h-3 sm:w-3`}
-          />
-        ))}
+        {/* 인디케이터 */}
+        <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 transform space-x-2">
+          {carouselItems.map((_, index) => (
+            <div
+              key={index}
+              className={`rounded-full ${
+                index === currentIndex ? "bg-white" : "bg-gray-400"
+              } h-2 w-2 sm:h-3 sm:w-3`}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </Card>
   );
 }

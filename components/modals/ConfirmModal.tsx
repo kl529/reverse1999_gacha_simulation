@@ -1,7 +1,7 @@
-// components/Modal.tsx
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 interface ModalProps {
   isOpen: boolean;
@@ -11,30 +11,30 @@ interface ModalProps {
 }
 
 export default function ConfirmModal({ isOpen, onClose, children, modalClassName }: ModalProps) {
-  if (!isOpen) return null; // 표시 안함
+  const [ignoreEnter, setIgnoreEnter] = useState(false);
 
-  const overlayStyle = "fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50";
-  const modalStyle = `
-    relative bg-white p-4 rounded max-w-md w-full
-    ${modalClassName}
-  `;
+  useEffect(() => {
+    if (!isOpen) {
+      setIgnoreEnter(true);
+      const timer = setTimeout(() => setIgnoreEnter(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
 
-  // 오버레이 클릭 -> 모달 닫기
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-    onClose();
-  };
-
-  // 모달 내부 클릭 -> 닫힘 방지
-  const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (ignoreEnter && e.key === "Enter") {
+      e.preventDefault();
+    }
   };
 
   return (
-    <div className={overlayStyle} onClick={handleOverlayClick}>
-      <div className={modalStyle} onClick={handleModalClick}>
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent onKeyDown={handleKeyDown} className={modalClassName}>
+        <DialogHeader>
+          <DialogTitle className="sr-only">확인 모달</DialogTitle>
+        </DialogHeader>
         {children}
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }
