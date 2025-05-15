@@ -6,6 +6,8 @@ import { charactersByRarity, Character } from "@/data/characters";
 import { banners } from "@/data/banners";
 import { version } from "@/data/version";
 import Image from "next/image";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 function getCharNameById(id: number | Character | undefined): string {
   if (typeof id === "object" && id !== null && "name" in id) {
@@ -48,17 +50,14 @@ function getUpcomingStandardPoolChars(versionStr: string): Character[] {
 
 export default function FutureInsightPage() {
   const [showOldVersions, setShowOldVersions] = useState(false);
-
   const current = parseFloat(version);
   const currentAndFuture = futureInsightData.filter((item) => parseFloat(item.version) >= current);
   const pastVersions = futureInsightData.filter((item) => parseFloat(item.version) < current);
 
   return (
     <div className="mx-auto max-w-5xl space-y-4 p-4 text-zinc-900 dark:text-zinc-100">
-      <h1 className="mt-8 text-center text-2xl font-bold text-zinc-800 dark:text-zinc-100 lg:text-3xl">
-        미래시 정리
-      </h1>
-      <p className="mb-1 mt-0 text-center text-sm text-gray-500 dark:text-gray-400">
+      <h1 className="mt-8 text-center text-2xl font-bold lg:text-3xl">미래시 정리</h1>
+      <p className="mb-1 text-center text-sm text-gray-500 dark:text-gray-400">
         향후 버전의 캐릭터 이름을 포함한 모든 번역은 의역입니다. 실제 정발 명칭과 다를 수 있습니다.
       </p>
 
@@ -67,12 +66,9 @@ export default function FutureInsightPage() {
         const upcomingStandardChars = getUpcomingStandardPoolChars(item.version);
 
         return (
-          <div
-            key={item.version}
-            className="space-y-4 rounded-2xl bg-white p-4 shadow dark:bg-zinc-800"
-          >
-            <div className="flex items-center justify-between">
-              <div className="text-xl font-semibold text-zinc-800 dark:text-zinc-100">
+          <Card key={item.version} className="space-y-1">
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <div className="text-2xl font-semibold">
                 {item.title} (v{item.version})
               </div>
               <span
@@ -88,101 +84,132 @@ export default function FutureInsightPage() {
                 {status.label !== "종료" &&
                   ` (${status.days}일 ${status.label === "예정" ? "후" : "남음"})`}
               </span>
-            </div>
-            <div className="text-sm text-zinc-500 dark:text-zinc-400">
-              {item.period.start} ~ {item.period.end}
-            </div>
+            </CardHeader>
 
-            <div className="border-t border-zinc-200 pt-3 dark:border-zinc-700">
-              <h2 className="mb-1 font-bold text-zinc-800 dark:text-zinc-100">🎯 고음 카운터</h2>
-              <p>6성: {getCharNameById(item.album_shop.rare6)}</p>
-              <p>5성: {getCharNameById(item.album_shop.rare5)}</p>
-            </div>
+            <CardContent className="space-y-4">
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                {item.period.start} ~ {item.period.end}
+              </p>
 
-            <div className="border-t border-zinc-200 pt-3 dark:border-zinc-700">
-              <h2 className="mb-2 font-bold text-zinc-800 dark:text-zinc-100">📌 픽업 배너</h2>
-              <div className="grid gap-4 md:grid-cols-2">
-                {item.banners.map((bannerId, idx) => {
-                  const banner = banners.find((b) => b.id === bannerId);
-                  if (!banner) return null;
+              <Separator />
+              <div>
+                <h2 className="mb-1 font-bold">🎯 고음 카운터</h2>
+                <p>6성: {getCharNameById(item.album_shop.rare6)}</p>
+                <p>5성: {getCharNameById(item.album_shop.rare5)}</p>
+              </div>
 
-                  const pickup6 =
-                    banner.bannerType === "doublePick"
-                      ? (banner.twoPickup6 ?? []).map(getCharNameById).join(" / ")
-                      : getCharNameById(banner.pickup6 as number);
+              <Separator />
+              <div>
+                <h2 className="mb-2 font-bold">📌 픽업 배너</h2>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {item.banners.map((bannerId, idx) => {
+                    const banner = banners.find((b) => b.id === bannerId);
+                    if (!banner) return null;
+                    const pickup6 =
+                      banner.bannerType === "doublePick"
+                        ? (banner.twoPickup6 ?? []).map(getCharNameById).join(" / ")
+                        : getCharNameById(banner.pickup6 as number);
+                    const pickup5 = (banner.pickup5 ?? [])
+                      .map((id) => getCharNameById(id as number))
+                      .join(", ");
+                    const halfLabel = idx === 0 ? "전반기" : "후반기";
 
-                  const pickup5 = (banner.pickup5 ?? [])
-                    .map((id) => getCharNameById(id as number))
-                    .join(", ");
-
-                  const halfLabel = idx === 0 ? "전반기" : "후반기";
-
-                  return (
-                    <div
-                      key={banner.id}
-                      className="relative rounded-xl border border-zinc-300 bg-zinc-100 p-3 dark:border-zinc-600 dark:bg-zinc-700"
-                    >
-                      <Image
-                        src={`/infos/banner_img/${banner.id}.png`}
-                        alt={banner.name}
-                        className="mb-2 w-full rounded-md border border-zinc-300 dark:border-zinc-600"
-                        width={1200}
-                        height={600}
-                      />
-                      <div className="flex items-center gap-2">
-                        <span className="rounded bg-black/60 px-2 py-0.5 text-xs text-white">
-                          {halfLabel}
-                        </span>
-                        <p className="font-semibold text-zinc-800 dark:text-zinc-100">
-                          {banner.name}
+                    return (
+                      <div
+                        key={banner.id}
+                        className="rounded-xl border border-zinc-300 bg-zinc-100 p-3 dark:border-zinc-600 dark:bg-zinc-700"
+                      >
+                        <Image
+                          src={`/infos/banner_img/${banner.id}.png`}
+                          alt={banner.name}
+                          className="mb-2 w-full rounded-md border border-zinc-300 dark:border-zinc-600"
+                          width={1200}
+                          height={600}
+                        />
+                        <div className="flex items-center gap-2">
+                          <span className="rounded bg-black/60 px-2 py-0.5 text-xs text-white">
+                            {halfLabel}
+                          </span>
+                          <p className="font-semibold">{banner.name}</p>
+                        </div>
+                        <p>
+                          <strong>6성:</strong> {pickup6 || "-"}
+                        </p>
+                        <p>
+                          <strong>5성:</strong> {pickup5 || "-"}
                         </p>
                       </div>
-                      <p>
-                        <strong>6성:</strong> {pickup6 || "-"}
-                      </p>
-                      <p>
-                        <strong>5성:</strong> {pickup5 || "-"}
-                      </p>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
 
-            <div className="border-t border-zinc-200 pt-3 dark:border-zinc-700">
-              <h2 className="mb-1 font-bold text-zinc-800 dark:text-zinc-100">🌀 광상 목록</h2>
-              <p>
-                <strong>6성:</strong> {item.euphoria.star6.map(getCharNameById).join(", ") || "-"}
-              </p>
-              <p>
-                <strong>5성:</strong> {item.euphoria.star5.map(getCharNameById).join(", ") || "-"}
-              </p>
-            </div>
+              <Separator />
+              <div>
+                <h2 className="mb-1 font-bold">🌀 광상 목록</h2>
+                <p>
+                  <strong>6성:</strong>{" "}
+                  {item.euphoria.star6
+                    .map(({ characterId, euphoriaId }) => (
+                      <a
+                        key={euphoriaId}
+                        href={`/euphoria_guide/${euphoriaId}`}
+                        className="text-blue-600 hover:underline dark:text-blue-400"
+                      >
+                        {getCharNameById(characterId)}
+                      </a>
+                    ))
+                    .reduce<React.ReactNode[]>((acc, curr, idx) => {
+                      if (idx === 0) return [curr];
+                      return [...acc, <span key={`comma6-${idx}`}>, </span>, curr];
+                    }, [])}
+                </p>
+                <p>
+                  <strong>5성:</strong>{" "}
+                  {item.euphoria.star5
+                    .map(({ characterId, euphoriaId }) => (
+                      <a
+                        key={euphoriaId}
+                        href={`/euphoria_guide/${euphoriaId}`}
+                        className="text-blue-600 hover:underline dark:text-blue-400"
+                      >
+                        {getCharNameById(characterId)}
+                      </a>
+                    ))
+                    .reduce<React.ReactNode[]>((acc, curr, idx) => {
+                      if (idx === 0) return [curr];
+                      return [...acc, <span key={`comma5-${idx}`}>, </span>, curr];
+                    }, [])}
+                </p>
+              </div>
 
-            <div className="border-t border-zinc-200 pt-3 dark:border-zinc-700">
-              <h2 className="mb-1 font-bold text-zinc-800 dark:text-zinc-100">📒 상시 편입 추가</h2>
-              {upcomingStandardChars.length === 0 ? (
-                <p className="text-sm text-gray-400">예정된 상시 캐릭터 없음</p>
-              ) : (
-                <ul className="list-disc pl-5">
-                  {upcomingStandardChars.map((char) => (
-                    <li key={char.id}>
-                      {char.rarity}성 - {char.name}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
+              <Separator />
+              <div>
+                <h2 className="mb-1 font-bold">📒 상시 편입 추가</h2>
+                {upcomingStandardChars.length === 0 ? (
+                  <p className="text-sm text-gray-400">예정된 상시 캐릭터 없음</p>
+                ) : (
+                  <ul className="list-disc pl-5">
+                    {upcomingStandardChars.map((char) => (
+                      <li key={char.id}>
+                        {char.rarity}성 - {char.name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
 
-            <div className="border-t border-zinc-200 pt-3 dark:border-zinc-700">
-              <a
-                href={`/skin?version=${item.version}`}
-                className="text-sm text-blue-600 hover:underline dark:text-blue-400"
-              >
-                👕 {item.version} 버전 스킨 보기 →
-              </a>
-            </div>
-          </div>
+              <Separator />
+              <div>
+                <a
+                  href={`/skin?version=${item.version}`}
+                  className="text-sm text-blue-600 hover:underline dark:text-blue-400"
+                >
+                  👕 {item.version} 버전 스킨 보기 →
+                </a>
+              </div>
+            </CardContent>
+          </Card>
         );
       })}
 

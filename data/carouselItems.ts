@@ -11,7 +11,7 @@ export interface CarouselItem {
 export const carouselItems: CarouselItem[] = [
   {
     id: 1,
-    title: "2.5 버전, 누아르 픽업",
+    title: "2.5v, 누아르 픽업",
     image: "/infos/carousel_img/noire_pick_up.webp",
     description: "지금 가챠 시뮬레이터에서 만나보세요.",
     link: "/gacha_simulator",

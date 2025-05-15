@@ -29,7 +29,7 @@ export default function MainSixStarHistory({
       </h2>
 
       {/* 픽업 vs 일반 6성 횟수 */}
-      <div className="sticky top-[48px] z-10 mb-2 flex justify-between rounded-lg border-b bg-gray-100 p-2 text-xs font-semibold text-gray-700 dark:border dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 lg:text-sm">
+      <div className="sticky top-[48px] z-10 mb-2 flex justify-between rounded-lg bg-gray-100 p-2 text-xs font-semibold text-gray-700 dark:border dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 lg:text-sm">
         <p className="text-green-600 dark:text-green-400">픽업: {pickupCount}회</p>
         <p className="text-red-500 dark:text-red-400">픽뚫: {nonPickupCount}회</p>
       </div>
@@ -69,7 +69,6 @@ export default function MainSixStarHistory({
                 alt={entry.char.name}
                 width={56}
                 height={56}
-                layout="intrinsic"
                 className="h-14 w-14 object-cover"
               />
               <p className="whitespace-nowrap text-xs font-semibold text-black dark:text-gray-100 lg:text-base">

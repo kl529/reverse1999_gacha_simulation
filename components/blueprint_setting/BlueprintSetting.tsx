@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { BOSSES, BossId, FILTERS, BLUEPRINTS } from "@/data/blueprint";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function BlueprintSetting() {
   const [selectedBoss, setSelectedBoss] = useState<BossId | null>(null);
@@ -21,21 +23,28 @@ export default function BlueprintSetting() {
       </h1>
 
       {/* 보스 선택 */}
-      <div className="mb-4 flex flex-wrap justify-center gap-4">
+      <div className="mb-4 flex flex-wrap justify-center gap-2">
         {BOSSES.map((boss) => (
-          <button
+          <Button
             key={boss.id}
+            variant="outline"
             onClick={() => {
               setSelectedBoss(boss.id);
               const firstFilter = FILTERS[boss.id]?.[0];
               setSelectedFilter(firstFilter);
             }}
-            className={`rounded border-2 p-1 transition hover:scale-105 ${
+            className={`flex h-auto w-fit flex-col items-center p-2 transition hover:scale-105 ${
               selectedBoss === boss.id ? "border-blue-500" : "border-transparent"
             }`}
           >
-            <div className="relative">
-              <Image src={boss.image} alt={boss.name} width={80} height={80} />
+            <div className="relative h-[80px] w-[80px]">
+              <Image
+                src={boss.image}
+                alt={boss.name}
+                width={80}
+                height={80}
+                className="h-full w-full object-contain"
+              />
               <div className="absolute right-0 top-0 h-4 w-4">
                 <Image
                   src={`/infos/inspiration/${boss.inspiration}.png`}
@@ -46,7 +55,7 @@ export default function BlueprintSetting() {
               </div>
             </div>
             <p className="mt-1 text-center text-sm text-black dark:text-white">{boss.name}</p>
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -54,17 +63,14 @@ export default function BlueprintSetting() {
       {selectedBoss && (
         <div className="mb-6 flex gap-2 overflow-x-auto">
           {filters.map((f) => (
-            <button
+            <Button
               key={f}
+              variant={selectedFilter === f ? "default" : "outline"}
               onClick={() => setSelectedFilter(f)}
-              className={`whitespace-nowrap rounded-full border px-3 py-1 ${
-                selectedFilter === f
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200 text-black dark:bg-gray-700 dark:text-white"
-              }`}
+              className="whitespace-nowrap"
             >
               {f}
-            </button>
+            </Button>
           ))}
         </div>
       )}
@@ -73,14 +79,20 @@ export default function BlueprintSetting() {
       <div className="flex flex-col items-center gap-6">
         {images.length > 0
           ? images.map((img, i) => (
-              <Image
+              <Card
                 key={img + i}
-                src={img}
-                alt={`청사진 ${i + 1}`}
-                width={700}
-                height={350}
-                className="w-full max-w-[95vw] rounded-lg border border-gray-300 shadow dark:border-gray-600 sm:max-w-[600px] lg:max-w-[1080px]"
-              />
+                className="w-full max-w-[95vw] sm:max-w-[600px] lg:max-w-[1080px]"
+              >
+                <CardContent className="w-full p-0">
+                  <Image
+                    src={img}
+                    alt={`청사진 ${i + 1}`}
+                    width={700}
+                    height={350}
+                    className="w-full rounded-lg border border-gray-300 dark:border-gray-600"
+                  />
+                </CardContent>
+              </Card>
             ))
           : selectedBoss && (
               <p className="mt-8 text-gray-500 dark:text-gray-400">

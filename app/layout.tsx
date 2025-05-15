@@ -3,18 +3,19 @@ import CustomCursor from "@/components/etc/CustomCursor";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import SecurityWrapper from "@/components/etc/SecurityWrapper";
-import { DarkModeProvider } from "@/components/etc/DarkModeContext";
-import HamburgerConditional from "@/components/etc/HamburgerConditional";
 import { ModalProvider } from "@/components/etc/ModalProvider";
 import GlobalLoadingManager from "@/components/etc/GlobalLoadingManager";
 import Script from "next/script";
 import { ReactNode } from "react";
+import ThemeProvider from "@/components/etc/ThemeProvider";
+import HamburgerConditional from "@/components/etc/HamburgerConditional";
+import ThemeToggle from "@/components/etc/ThemeToggle";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const isProd = process.env.NODE_ENV === "production";
 
   return (
-    <html lang="ko">
+    <html lang="ko" suppressHydrationWarning>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
@@ -38,9 +39,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         )}
       </head>
       <body>
-        <DarkModeProvider>
+        <ThemeProvider>
+          <ThemeToggle />
           <ModalProvider>
-            {" "}
             <SecurityWrapper>
               <GlobalLoadingManager />
               <HamburgerConditional />
@@ -50,7 +51,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               {children}
             </SecurityWrapper>
           </ModalProvider>
-        </DarkModeProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

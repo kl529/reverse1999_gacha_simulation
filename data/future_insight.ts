@@ -12,8 +12,8 @@ export interface FutureInsightItem {
   };
   banners: string[];
   euphoria: {
-    star6: number[]; // 광상 캐릭터 id 목록 (복수 선택)
-    star5: number[]; // 광상 캐릭터 id 목록 (복수 선택)
+    star6: { characterId: number; euphoriaId?: number }[];
+    star5: { characterId: number; euphoriaId?: number }[];
   };
 }
 
@@ -32,8 +32,14 @@ export const futureInsightData: FutureInsightItem[] = [
     },
     banners: ["barcarola_pick_up", "fatutu_pick_up"],
     euphoria: {
-      star6: [11, 15],
-      star5: [102, 112],
+      star6: [
+        { characterId: 11, euphoriaId: 10 },
+        { characterId: 15, euphoriaId: 9 },
+      ],
+      star5: [
+        { characterId: 102, euphoriaId: 11 },
+        { characterId: 112, euphoriaId: 12 },
+      ],
     },
   },
   {
@@ -50,7 +56,10 @@ export const futureInsightData: FutureInsightItem[] = [
     },
     banners: ["liang_pick_up", "noire_pick_up"],
     euphoria: {
-      star6: [7, 13],
+      star6: [
+        { characterId: 7, euphoriaId: 13 },
+        { characterId: 13, euphoriaId: 14 },
+      ],
       star5: [],
     },
   },
@@ -68,7 +77,10 @@ export const futureInsightData: FutureInsightItem[] = [
     },
     banners: ["recoleta_pick_up", "aleph_pick_up"],
     euphoria: {
-      star6: [8, 12],
+      star6: [
+        { characterId: 8, euphoriaId: 15 },
+        { characterId: 12, euphoriaId: 16 },
+      ],
       star5: [],
     },
   },
@@ -86,7 +98,11 @@ export const futureInsightData: FutureInsightItem[] = [
     },
     banners: ["hissabeth_pick_up", "kiperina_pick_up"],
     euphoria: {
-      star6: [21, 22],
+      star6: [
+        { characterId: 22, euphoriaId: 17 },
+        { characterId: 21, euphoriaId: 18 },
+        { characterId: 21, euphoriaId: 19 },
+      ],
       star5: [],
     },
   },
