@@ -49,4 +49,5 @@ export const updateLogs = [
   { date: "2025-05-11", content: "메인메뉴 배너 오픈" },
   { date: "2025-05-11", content: "청사진 모음 오픈" },
   { date: "2025-05-13", content: "광상 가이드 페이지 오픈" },
+  { date: "2025-05-18", content: "2.8 버젼 & 2.6버젼 데이터 업데이트" },
 ];

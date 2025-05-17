@@ -71,7 +71,7 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
           <CardContent>
             <ul className="list-none space-y-3 text-black dark:text-gray-300">
               {[item.desc1, item.desc2, item.desc3, item.desc4].filter(Boolean).map((desc, idx) => (
-                <li key={idx}>
+                <li key={idx} className="whitespace-pre-line">
                   <span className="mr-2 font-bold">{romanNumerals[idx]}.</span>
                   {desc}
                 </li>

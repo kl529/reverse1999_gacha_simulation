@@ -106,4 +106,26 @@ export const futureInsightData: FutureInsightItem[] = [
       star5: [],
     },
   },
+  // {
+  //   version: "2.8",
+  //   title: "복낙원",
+  //   period: {
+  //     start: "2025-08-07",
+  //     end: "2025-09-11",
+  //     week: 5,
+  //   },
+  //   album_shop: {
+  //     rare6: 18,
+  //     rare5: 105,
+  //   },
+  //   banners: ["nautika_pick_up"],
+  //   euphoria: {
+  //     star6: [
+  //       { characterId: 22, euphoriaId: 17 },
+  //       { characterId: 21, euphoriaId: 18 },
+  //       { characterId: 21, euphoriaId: 19 },
+  //     ],
+  //     star5: [],
+  //   },
+  // },
 ];

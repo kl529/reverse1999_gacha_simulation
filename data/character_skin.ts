@@ -5,7 +5,6 @@ export interface CharacterSkin {
   engName: string;
   rarity: "Unique" | "Advanced" | "Garment";
   source: "판매" | "주크박스" | "컨텐츠" | "무료" | "콜라보 판매";
-  is_future?: boolean;
   price?: string;
   resell: string;
   version: string;
@@ -814,7 +813,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 77,
     character_id: 37,
-    name: "마지막 전조 (미래시)",
+    name: "두번째 징조",
     engName: "the_last_portent",
     rarity: "Advanced",
     source: "판매",
@@ -825,7 +824,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 78,
     character_id: 36,
-    name: "친구의 스필린터캣 (미래시)",
+    name: "허리케인 캣의 친구",
     engName: "friend_of_the_splintercat",
     rarity: "Garment",
     source: "판매",
@@ -836,7 +835,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 79,
     character_id: 12,
-    name: "적과 백 (미래시)",
+    name: "레드&화이트",
     engName: "red_and_white",
     rarity: "Garment",
     source: "주크박스",
@@ -845,8 +844,8 @@ export const characterSkin: CharacterSkin[] = [
   },
   {
     id: 80,
-    character_id: 213,
-    name: "맹세와 보너스 (미래시)",
+    character_id: 213, // 에릭
+    name: "맹세와 가치",
     engName: "oaths_and_bonuses",
     rarity: "Garment",
     source: "컨텐츠",
@@ -894,5 +893,69 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "2.7",
+  },
+  {
+    id: 85,
+    character_id: 29, //루시
+    name: "퀸즈 게임 (미래시)",
+    engName: "the_queen's_game",
+    rarity: "Unique",
+    source: "판매",
+    resell: "X",
+    version: "2.8",
+    price: "19,000₩ / 1,680빗방울",
+  },
+  {
+    id: 86,
+    character_id: 48, // 울리히
+    name: "우주의 일단면 (미래시)",
+    engName: "a_glimpse_of_the_cosmos",
+    rarity: "Advanced",
+    source: "판매", //
+    resell: "X",
+    version: "2.8",
+    price: "14,000₩ / 1,080빗방울",
+  },
+  {
+    id: 87,
+    character_id: 43, // 레콜레타
+    name: "라 만차의 기사 (미래시)",
+    engName: "the_knight_of_la_mancha",
+    rarity: "Advanced",
+    source: "판매",
+    resell: "X",
+    version: "2.8",
+    price: "14,000₩ / 1,080빗방울",
+  },
+  {
+    id: 88,
+    character_id: 46, // 키페리나
+    name: "껍질 속의 우주 (미래시)",
+    engName: "the_universe_in_the_rook's_shell",
+    rarity: "Garment",
+    source: "판매",
+    resell: "X",
+    version: "2.8",
+    price: "8,800₩ / 880빗방울",
+  },
+  {
+    id: 89,
+    character_id: 15, // 제시카
+    name: "천국의 소리 (미래시)",
+    engName: "the_sound_of_paradise",
+    rarity: "Garment",
+    source: "주크박스",
+    resell: "X",
+    version: "2.8",
+  },
+  {
+    id: 90,
+    character_id: 306, // 리사&루이스
+    name: "승변의 왈츠 (미래시)",
+    engName: "the_pawn's_promotional_waltz",
+    rarity: "Garment",
+    source: "컨텐츠",
+    resell: "X",
+    version: "2.8",
   },
 ];

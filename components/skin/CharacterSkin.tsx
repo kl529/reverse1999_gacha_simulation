@@ -96,7 +96,7 @@ export default function SkinGalleryPage() {
 
         <div className="mb-6 flex flex-wrap justify-center gap-4">
           <Select value={rarityFilter} onValueChange={setRarityFilter}>
-            <SelectTrigger className="w-32">
+            <SelectTrigger className="w-24">
               <SelectValue placeholder="희귀도" />
             </SelectTrigger>
             <SelectContent>
@@ -110,7 +110,7 @@ export default function SkinGalleryPage() {
           </Select>
 
           <Select value={versionFilter} onValueChange={setVersionFilter}>
-            <SelectTrigger className="w-32">
+            <SelectTrigger className="w-24">
               <SelectValue placeholder="버전" />
             </SelectTrigger>
             <SelectContent>
@@ -124,7 +124,7 @@ export default function SkinGalleryPage() {
           </Select>
 
           <Select value={sourceFilter} onValueChange={setSourceFilter}>
-            <SelectTrigger className="w-32">
+            <SelectTrigger className="w-24">
               <SelectValue placeholder="획득처" />
             </SelectTrigger>
             <SelectContent>
@@ -138,11 +138,11 @@ export default function SkinGalleryPage() {
           </Select>
           <Popover open={dropdownOpen} onOpenChange={setDropdownOpen}>
             <PopoverTrigger asChild>
-              <button className="h-9 w-52 rounded border border-black px-3 py-2 text-left text-sm text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white">
+              <button className="h-9 w-40 rounded border border-black px-3 py-2 text-left text-sm text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white">
                 {selectedCharacters.length > 0 ? selectedCharacters.join(", ") : "캐릭터 필터"}
               </button>
             </PopoverTrigger>
-            <PopoverContent className="w-52 p-0" ref={dropdownRef}>
+            <PopoverContent className="w-46 p-0" ref={dropdownRef}>
               <Command>
                 <CommandInput
                   placeholder="캐릭터 검색..."

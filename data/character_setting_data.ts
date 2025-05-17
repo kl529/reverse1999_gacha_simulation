@@ -964,6 +964,24 @@ export const character_setting_data: CharacterSettingData[] = [
     ],
   },
   {
+    character_id: 47, // "노티카"
+    psycubes: [
+      {
+        psycube_id: 72,
+        description: "",
+      },
+    ],
+  },
+  {
+    character_id: 48, // "울리히"
+    psycubes: [
+      {
+        psycube_id: 74,
+        description: "",
+      },
+    ],
+  },
+  {
     character_id: 101, // "소네트"
     psycubes: [
       {
@@ -1529,5 +1547,9 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A- (딜 보조)",
       },
     ],
+  },
+  {
+    character_id: 128, // "버디 페어차일드"
+    psycubes: [],
   },
 ];

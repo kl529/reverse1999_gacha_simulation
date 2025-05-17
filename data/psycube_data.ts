@@ -4,7 +4,7 @@ export interface Psycube {
   engName: string;
   rarity: number;
   version: string;
-  type: "상점" | "일화" | "록라";
+  type: "상점" | "일화" | "록라" | "컨텐츠";
 }
 
 export const PSYCUBE_DATA: Psycube[] = [
@@ -466,7 +466,7 @@ export const PSYCUBE_DATA: Psycube[] = [
   },
   {
     id: 58,
-    name: "마지막 투척",
+    name: "마지막 던지기",
     engName: "the_final_roll",
     rarity: 6,
     version: "2.6",
@@ -575,5 +575,37 @@ export const PSYCUBE_DATA: Psycube[] = [
     rarity: 6,
     version: "2.7",
     type: "상점",
+  },
+  {
+    id: 72,
+    name: "과거의 포용",
+    engName: "embrace_the_past",
+    rarity: 6,
+    version: "2.8",
+    type: "상점",
+  },
+  {
+    id: 73,
+    name: "가족 멘토",
+    engName: "family_mentor",
+    rarity: 6,
+    version: "2.8",
+    type: "상점",
+  },
+  {
+    id: 74,
+    name: "생각의 따끔거림",
+    engName: "a_tingle_of_a_thought",
+    rarity: 6,
+    version: "2.8",
+    type: "컨텐츠",
+  },
+  {
+    id: 75,
+    name: "길가의 먼지",
+    engName: "dust_on_the_roadside",
+    rarity: 5,
+    version: "2.8",
+    type: "일화",
   },
 ];
