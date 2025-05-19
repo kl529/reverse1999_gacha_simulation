@@ -26,7 +26,7 @@ export const BOSSES = [
   },
   {
     id: "primitive_urge",
-    name: "원시적 충동",
+    name: "원시적 기쁨",
     image: "/infos/blueprint/boss/primitive_urge.png",
     inspiration: "spirit",
   },
@@ -39,7 +39,7 @@ export const FILTERS: Record<BossId, string[]> = {
   star_of_misfortune: ["릴리아덱", "윈드송덱", "계시덱", "양월덱"],
   operatic_reflection: ["안조덱", "연소추공덱", "연소덱"],
   ashen_beast: ["제멜덱", "곡랑피클즈덱"],
-  primitive_urge: [],
+  primitive_urge: ["술식덱"],
 };
 
 export const BLUEPRINTS: Record<BossId, Record<string, string[]>> = {
@@ -62,5 +62,7 @@ export const BLUEPRINTS: Record<BossId, Record<string, string[]>> = {
     제멜덱: ["/infos/blueprint/ashen_beast/semmelweis.webp"],
     곡랑피클즈덱: ["/infos/blueprint/ashen_beast/jiu_niangzi.webp"],
   },
-  primitive_urge: {},
+  primitive_urge: {
+    술식덱: ["/infos/blueprint/primitive_urge/ulti.webp"],
+  },
 };
