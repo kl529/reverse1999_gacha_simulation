@@ -257,13 +257,13 @@ export default function RecommendTeamPage() {
       </div>
 
       <Dialog open={showIntroDialog} onOpenChange={setShowIntroDialog}>
-        <DialogContent className="w-[90vw] max-w-xl sm:max-w-2xl lg:max-w-4xl">
+        <DialogContent className="max-h-[90vh] w-[90vw] max-w-xl overflow-y-auto sm:max-w-2xl lg:max-w-4xl">
           <DialogHeader>
             <DialogTitle className="text-center font-bold">추천 조합 사용법</DialogTitle>
-            <DialogDescription asChild>
+            <DialogDescription asChild className="text-left">
               <div className="text-sm text-muted-foreground">
                 <p className="text-sm">리버스에 존재하는 추천 조합 정보를 보여주는 페이지입니다.</p>
-                <p className="mb-3 text-sm">아래 설명을 읽고 즐거운 리버스 생활되시길 바랍니다.</p>
+                <p className="mb-3 text-sm">설명을 읽고 즐거운 리버스 생활되시길 바랍니다.</p>
                 <Image
                   src="/infos/modal_img/recommend_team_guide.png"
                   alt="추천 조합"
