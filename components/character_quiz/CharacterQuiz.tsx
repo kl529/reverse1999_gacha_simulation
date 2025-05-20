@@ -17,17 +17,10 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import { useMemo } from "react";
+import { useMemo, useCallback } from "react";
 import { version } from "@/data/version";
 
 export default function CharacterQuiz() {
-  const [characters, setCharacters] = useState<Character[]>(
-    QUIZ_CHARACTERS.filter((ch) => {
-      const c_version = parseFloat(ch.version || "0");
-      return c_version <= parseFloat(version);
-    })
-  );
-
   // (B) 열림 상태 (Set)
   const [openedSet, setOpenedSet] = useState<Set<number>>(new Set());
 
@@ -62,28 +55,36 @@ export default function CharacterQuiz() {
   const [mounted, setMounted] = useState(false);
 
   // rarity, inspiration, version 상수
-  const raritySet = new Set(QUIZ_CHARACTERS.map((ch) => ch.rarity));
-  const rarityList = Array.from(raritySet).sort((a, b) => b - a); // 내림차순 정렬
-  const RARITY = ["ALL", ...rarityList.map((r) => `${r}성`)];
-
-  const inspirationSet = new Set(QUIZ_CHARACTERS.map((ch) => ch.inspiration));
-  const inspirationList = Array.from(inspirationSet).sort();
-  const INSPIRATIONS = ["ALL", ...inspirationList];
-
-  // 유니크한 버전 목록 생성
-  const versionSet = new Set(QUIZ_CHARACTERS.map((ch) => ch.version));
-  const versionList = Array.from(versionSet)
-    .filter((v) => {
-      const [major, minor] = v.split(".").map(Number);
-      const [currentMajor, currentMinor] = version.split(".").map(Number);
-      return major < currentMajor || (major === currentMajor && minor <= currentMinor);
+  const [characters, setCharacters] = useState<Character[]>(
+    QUIZ_CHARACTERS.filter((ch) => {
+      const c_version = parseFloat(ch.version || "0");
+      return c_version <= parseFloat(version);
     })
-    .sort((a, b) => {
-      const [aMajor, aMinor] = a.split(".").map(Number);
-      const [bMajor, bMinor] = b.split(".").map(Number);
-      return aMajor !== bMajor ? aMajor - bMajor : aMinor - bMinor;
-    });
-  const VERSIONS = ["ALL", ...versionList];
+  );
+
+  const raritySet = useMemo(() => new Set(QUIZ_CHARACTERS.map((ch) => ch.rarity)), []);
+  const rarityList = useMemo(() => Array.from(raritySet).sort((a, b) => b - a), [raritySet]);
+  const RARITY = useMemo(() => ["ALL", ...rarityList.map((r) => `${r}성`)], [rarityList]);
+
+  const inspirationSet = useMemo(() => new Set(QUIZ_CHARACTERS.map((ch) => ch.inspiration)), []);
+  const inspirationList = useMemo(() => Array.from(inspirationSet).sort(), [inspirationSet]);
+  const INSPIRATIONS = useMemo(() => ["ALL", ...inspirationList], [inspirationList]);
+
+  const versionList = useMemo(() => {
+    const versionSet = new Set(QUIZ_CHARACTERS.map((ch) => ch.version));
+    return Array.from(versionSet)
+      .filter((v) => {
+        const [major, minor] = v.split(".").map(Number);
+        const [currentMajor, currentMinor] = version.split(".").map(Number);
+        return major < currentMajor || (major === currentMajor && minor <= currentMinor);
+      })
+      .sort((a, b) => {
+        const [aMajor, aMinor] = a.split(".").map(Number);
+        const [bMajor, bMinor] = b.split(".").map(Number);
+        return aMajor !== bMajor ? aMajor - bMajor : aMinor - bMinor;
+      });
+  }, []);
+  const VERSIONS = useMemo(() => ["ALL", ...versionList], [versionList]);
 
   useEffect(() => {
     setMounted(true);
@@ -340,27 +341,30 @@ export default function CharacterQuiz() {
     checkBtnClass += " bg-green-500"; // 초록 (shake X)
   }
 
-  const FilterSelect = ({
-    value,
-    onChange,
-    items,
-  }: {
-    value: string;
-    onChange: (v: string) => void;
-    items: string[];
-  }) => (
-    <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="w-[120px]">
-        <SelectValue placeholder="필터">{transformInspiration(value)}</SelectValue>
-      </SelectTrigger>
-      <SelectContent>
-        {items.map((item) => (
-          <SelectItem key={item} value={item}>
-            {transformInspiration(item)}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+  const FilterSelect = useCallback(
+    ({
+      value,
+      onChange,
+      items,
+    }: {
+      value: string;
+      onChange: (v: string) => void;
+      items: string[];
+    }) => (
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger className="w-[120px]">
+          <SelectValue placeholder="필터">{transformInspiration(value)}</SelectValue>
+        </SelectTrigger>
+        <SelectContent>
+          {items.map((item) => (
+            <SelectItem key={item} value={item}>
+              {transformInspiration(item)}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    ),
+    [] // 빈 배열로 한 번만 생성됨
   );
 
   const filterUI = useMemo(

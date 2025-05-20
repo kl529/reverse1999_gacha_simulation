@@ -6,6 +6,7 @@ export interface CarouselItem {
   description?: string;
   link?: string;
   type?: "event" | "update" | "pick_up"; // event : 이벤트, update : 내 사이트 업데이트, pick_up : 픽업
+  open?: boolean;
 }
 
 export const carouselItems: CarouselItem[] = [
@@ -38,5 +39,14 @@ export const carouselItems: CarouselItem[] = [
     image: "/infos/carousel_img/euphoria_guide.webp",
     link: "/euphoria_guide",
     type: "event",
+    open: false, // 로직 수정 필요
   },
+  // {
+  //   id: 5,
+  //   title: "추천조합의 모든 것  ",
+  //   image: "/infos/carousel_img/blueprint_setting.webp",
+  //   link: "/blueprint_setting",
+  //   type: "event",
+  //   open: false,
+  // },
 ];

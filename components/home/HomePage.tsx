@@ -93,6 +93,11 @@ export default function HomePage() {
                   label: "미래시 정리",
                   href: "/future_insight",
                 },
+                {
+                  icon: "/infos/menu/recommend_team_menu.png",
+                  label: "추천 조합",
+                  href: "/recommend_team",
+                },
               ]}
             />
 
