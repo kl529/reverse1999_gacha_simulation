@@ -21,9 +21,11 @@ import { useMemo } from "react";
 import { version } from "@/data/version";
 
 export default function CharacterQuiz() {
-  // (A) 캐릭터 목록 (셔플 가능)
   const [characters, setCharacters] = useState<Character[]>(
-    QUIZ_CHARACTERS.filter((ch) => ch.is_future !== true)
+    QUIZ_CHARACTERS.filter((ch) => {
+      const c_version = parseFloat(ch.version || "0");
+      return c_version <= parseFloat(version);
+    })
   );
 
   // (B) 열림 상태 (Set)

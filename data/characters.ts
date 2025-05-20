@@ -7,7 +7,6 @@ export type Character = {
   version: string; // 버전
   exclude_gacha?: boolean; // 차트 제외 여부
   resonanceType: string; // 공명 & 의지 타입
-  is_future?: boolean; // 미래 캐릭터 여부
 };
 
 export const charactersByRarity: Record<number, Character[]> = {
@@ -402,7 +401,6 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "recoleta",
       version: "2.6",
       resonanceType: "damage",
-      is_future: true,
     },
     {
       id: 44,
@@ -412,7 +410,6 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "aleph",
       version: "2.6",
       resonanceType: "support",
-      is_future: true,
     },
     {
       id: 45,
@@ -422,7 +419,6 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "hissabeth",
       version: "2.7",
       resonanceType: "damage",
-      is_future: true,
     },
     {
       id: 46,
@@ -432,7 +428,6 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "kiperina",
       version: "2.7",
       resonanceType: "defense",
-      is_future: true,
     },
     {
       id: 47,
@@ -442,7 +437,6 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "nautika",
       version: "2.8",
       resonanceType: "damage",
-      is_future: true,
       exclude_gacha: true,
     },
     {
@@ -453,7 +447,6 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "ulrich",
       version: "2.8",
       resonanceType: "damage",
-      is_future: true,
     },
   ],
   5: [
@@ -702,7 +695,6 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "name-day",
       version: "2.7",
       resonanceType: "defense",
-      is_future: true,
     },
     {
       id: 128,
@@ -712,7 +704,6 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "buddy-fairchild",
       version: "2.8",
       resonanceType: "balance",
-      is_future: true,
     },
   ],
   4: [

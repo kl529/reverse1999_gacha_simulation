@@ -51,7 +51,7 @@ export const banners: Banner[] = [
     name: "[상시] 제멜바이스 픽업",
     pickup6: 28,
     pickup5: [115, 116],
-    version: "2.6",
+    version: "2.5",
   },
   {
     id: "doublepick_lopera_willow",

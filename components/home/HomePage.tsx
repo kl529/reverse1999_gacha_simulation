@@ -203,41 +203,86 @@ export default function HomePage() {
           <ConfirmModal isOpen={showSource} onClose={() => setShowSource(false)}>
             <h2 className="text-lg font-bold">출처</h2>
             <p className="whitespace-pre-line text-sm leading-relaxed">
-              - 다양한 데이터 출처:{" "}
+              -{" "}
               <Link
                 href="https://res1999.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                https://res1999.huijiwiki.com/wiki/首页
+                다양한 데이터 출처
               </Link>
-              <br />- 다른 상세 정보:{" "}
+              <br />-{" "}
               <Link
                 href="https://www.kdocs.cn/l/cd5MWeCl5bKw"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                https://www.kdocs.cn/l/cd5MWeCl5bKw
+                다른 상세 정보
               </Link>
-              <br />- 한국 정보 정리:{" "}
+              <br />-{" "}
               <Link
                 href="https://docs.google.com/spreadsheets/d/1f40thIQMIDUJZj9-HZDVlbr0aZ9GMXvwOirMzhqwLNU/edit?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                https://docs.google.com/spreadsheets/...
+                한국 정보 정리
               </Link>
-              <br />- 광상 정보:{" "}
+              <br />-{" "}
               <Link
                 href="https://sites.google.com/view/apeironcave/home"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                https://sites.google.com/view/apeironcave/home
+                광상 정보
+              </Link>
+              <br />-{" "}
+              <Link
+                href="https://www.taptap.cn/user/8268254"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                taptap 분석글(小丸犊几)
+              </Link>
+              <br />-{" "}
+              <Link
+                href="https://www.biligame.com/detail/?id=107530&sourceFrom=2000280011"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                동영상 정보(bilibili)
+              </Link>
+              <br />-{" "}
+              <Link
+                href="https://wiki.biligame.com/reverse1999/%E9%A6%96%E9%A1%B5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                캐릭터 정보 및 여러 정보 (bilibili wiki)
+              </Link>
+              <br />-{" "}
+              <Link
+                href="https://docs.google.com/spreadsheets/d/1e46cecjsIb1LO3Ybb6urlVUZKUk8R7yrgG9yXZS8-Ho/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                티어리스트 및 추천 조합 등 여러 정보 (Reverse: 1999 Tier List)
+              </Link>
+              <br />-{" "}
+              <Link
+                href="https://nga.178.com/thread.php?fid=510389"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                중섭정보 (nga)
               </Link>
             </p>
           </ConfirmModal>
