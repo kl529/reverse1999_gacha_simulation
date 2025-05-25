@@ -23,6 +23,65 @@ export type RecommendTeam = {
 // 나중에 몰디르 추가하기
 export const recommendTeams: RecommendTeam[] = [
   {
+    id: 0,
+    name: "모든 덱의 기초",
+    description: [
+      "조합의 기본 : 딜러 1~2명 + 서폿 1~2명 + 힐러/탱커 1명",
+      "특정 컨텐츠를 제외하면, 아래의 컨셉덱이 필수는 아님.",
+      "초반에는 1딜+1서폿+1힐로도 충분히 스토리 및 컨텐츠를 즐길 수 있음.",
+      "자신만의 덱으로 리버스를 즐겨보기 위한 덱",
+      "대체 캐릭터들은 해당 역할에서 범용적으로 쓰이는 캐릭터들임",
+      "해당 역할의 캐릭터 아무나 대체 가능",
+    ],
+    concepts: ["스토리", "커스텀 가능", "뉴비전용"],
+    characters: [
+      {
+        id: 22,
+        role: "딜러",
+        alternatives: [
+          { id: 27, role: "딜러" },
+          { id: 29, role: "딜러" },
+          { id: 35, role: "딜러" },
+          { id: 42, role: "딜러" },
+          { id: 43, role: "딜러" },
+          { id: 45, role: "딜러" },
+          { id: 47, role: "딜러" },
+        ],
+      },
+      {
+        id: 31,
+        role: "서폿",
+        alternatives: [
+          { id: 13, euphoria: true, role: "서폿" },
+          { id: 18, role: "서폿" },
+          { id: 19, role: "서폿" },
+          { id: 24, role: "서폿" },
+          { id: 34, role: "서폿" },
+          { id: 38, role: "서폿" },
+        ],
+      },
+      {
+        id: 30,
+        alternatives: [
+          { id: 46, role: "탱커" },
+          { id: 10, role: "탱커", euphoria: true },
+        ],
+        role: "탱커",
+      },
+      {
+        id: 26,
+        alternatives: [
+          { id: 4, euphoria: true, role: "힐러" },
+          { id: 8, euphoria: true, role: "힐러" },
+          { id: 14, role: "힐러" },
+          { id: 36, role: "힐러" },
+          { id: 40, role: "힐러" },
+        ],
+        role: "힐러",
+      },
+    ],
+  },
+  {
     id: 1,
     name: "계시덱",
     description: [
@@ -109,9 +168,9 @@ export const recommendTeams: RecommendTeam[] = [
     ],
     concepts: ["전력", "술진"],
     characters: [
+      { id: 21, euphoria: true, role: "서폿" },
       { id: 29, isMain: true, euphoria: true, role: "딜러" },
       { id: 48, isMain: true, role: "서폿" },
-      { id: 21, euphoria: true, role: "서폿" },
       {
         id: 31,
         role: "서폿",

@@ -365,7 +365,7 @@ export const euphoriaList: Euphoria[] = [
   {
     id: 19,
     character_id: 21, // 에즈라
-    priority: 4,
+    priority: 3,
     name: "불꽃과 불식의 종",
     note: "자해 서폿",
     number: 2,

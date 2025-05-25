@@ -50,6 +50,10 @@ export default function HomePage() {
           </h2>
           <p className="mb-8 text-black dark:text-white">당신이 폭풍우를 이겨낼 수 있도록..</p>
 
+          <div className="mb-6 block w-full px-10 md:hidden">
+            <Carousel />
+          </div>
+
           <div className="grid w-full max-w-7xl grid-cols-1 gap-10 px-10 md:px-20 lg:grid-cols-3 lg:px-6">
             <CardBox
               title="놀이터"
@@ -129,7 +133,7 @@ export default function HomePage() {
             />
           </div>
 
-          <div className="mt-6 w-full max-w-7xl px-10 md:px-20 lg:px-6">
+          <div className="mt-6 hidden w-full max-w-7xl px-10 md:block md:px-20 lg:px-6">
             <Carousel />
           </div>
         </main>

@@ -97,8 +97,12 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 5, // "레굴루스"
     psycubes: [
       {
-        psycube_id: 31,
-        description: "S (디버퍼 필요) (풀) ",
+        psycube_id: 71,
+        description: "S (계시 4인팟) ",
+      },
+      {
+        psycube_id: 10,
+        description: "S- (계시덱)",
       },
       {
         psycube_id: 49,
@@ -107,10 +111,6 @@ export const character_setting_data: CharacterSettingData[] = [
       {
         psycube_id: 36,
         description: "S-",
-      },
-      {
-        psycube_id: 14,
-        description: "A",
       },
     ],
   },
@@ -223,20 +223,20 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 11, // "보이저"
     psycubes: [
       {
-        psycube_id: 4,
-        description: "S",
+        psycube_id: 71,
+        description: "S (계시 4인팟) ",
       },
       {
-        psycube_id: 32,
+        psycube_id: 10,
+        description: "S- (계시덱)",
+      },
+      {
+        psycube_id: 7,
         description: "A",
       },
       {
         psycube_id: 33,
-        description: "A",
-      },
-      {
-        psycube_id: 10,
-        description: "A (천체팟)",
+        description: "A ",
       },
     ],
   },
@@ -307,20 +307,20 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 15, // "제시카"
     psycubes: [
       {
-        psycube_id: 13,
-        description: "S",
+        psycube_id: 18,
+        description: "S (중독 광상) ",
       },
       {
-        psycube_id: 27,
-        description: "A (2스택 이상) (풀)",
+        psycube_id: 42,
+        description: "S (중독 광상) ",
+      },
+      {
+        psycube_id: 13,
+        description: "S (석화 광상)",
       },
       {
         psycube_id: 68,
-        description: "A (풀)",
-      },
-      {
-        psycube_id: 27,
-        description: "B",
+        description: "A (노 광상)",
       },
     ],
   },
@@ -370,6 +370,10 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 18, // "37"
     psycubes: [
       {
+        psycube_id: 40,
+        description: "S (플페와 함께)",
+      },
+      {
         psycube_id: 18,
         description: "S (풀)",
       },
@@ -380,10 +384,6 @@ export const character_setting_data: CharacterSettingData[] = [
       {
         psycube_id: 29,
         description: "A (명함, 추가행동) (풀)",
-      },
-      {
-        psycube_id: 32,
-        description: "A (솔로) (풀)",
       },
     ],
   },
@@ -434,19 +434,19 @@ export const character_setting_data: CharacterSettingData[] = [
     psycubes: [
       {
         psycube_id: 57,
-        description: "S",
+        description: "S (탱킹)",
       },
       {
-        psycube_id: 65,
-        description: "S (보호막 위주)",
+        psycube_id: 72,
+        description: "S (보호막)",
       },
       {
         psycube_id: 61,
         description: "S (전력 광상)",
       },
       {
-        psycube_id: 12,
-        description: "S (힐 광상)",
+        psycube_id: 71,
+        description: "S (신혈 광상)",
       },
     ],
   },
@@ -580,20 +580,20 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 28, // "제멜바이스"
     psycubes: [
       {
+        psycube_id: 61,
+        description: "S (광상, 보조)",
+      },
+      {
         psycube_id: 43,
-        description: "S (풀)",
+        description: "S",
       },
       {
-        psycube_id: 20,
-        description: "S (생존 증가) (풀)",
+        psycube_id: 72,
+        description: "S (광상, 데미지)",
       },
       {
-        psycube_id: 32,
-        description: "S (풀)",
-      },
-      {
-        psycube_id: 28,
-        description: "A+ (풀)",
+        psycube_id: 38,
+        description: "S (광상, 보조)",
       },
     ],
   },
@@ -601,20 +601,20 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 29, // "루시"
     psycubes: [
       {
+        psycube_id: 40,
+        description: "S (플페와 함께)",
+      },
+      {
+        psycube_id: 74,
+        description: "S (광상)",
+      },
+      {
+        psycube_id: 27,
+        description: "S (광상)",
+      },
+      {
         psycube_id: 51,
         description: "S (풀)",
-      },
-      {
-        psycube_id: 32,
-        description: "A+ (풀)",
-      },
-      {
-        psycube_id: 68,
-        description: "A (디버퍼 필요) (풀)",
-      },
-      {
-        psycube_id: 25,
-        description: "A",
       },
     ],
   },
@@ -626,7 +626,7 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (탱킹)",
       },
       {
-        psycube_id: 65,
+        psycube_id: 72,
         description: "S (공감 중심)",
       },
       {
@@ -634,8 +634,8 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
       {
-        psycube_id: 12,
-        description: "A-",
+        psycube_id: 71,
+        description: "A",
       },
     ],
   },
@@ -798,12 +798,12 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (계시 추가)",
       },
       {
-        psycube_id: 41,
-        description: "S (딜보조)",
+        psycube_id: 71,
+        description: "S (딜 보조)",
       },
       {
-        psycube_id: 34,
-        description: "S (딜 보조)",
+        psycube_id: 41,
+        description: "S (딜보조)",
       },
     ],
   },
@@ -959,7 +959,19 @@ export const character_setting_data: CharacterSettingData[] = [
     psycubes: [
       {
         psycube_id: 71,
-        description: "",
+        description: "S",
+      },
+      {
+        psycube_id: 32,
+        description: "S (계시 4인팟)",
+      },
+      {
+        psycube_id: 4,
+        description: "A",
+      },
+      {
+        psycube_id: 28,
+        description: "A",
       },
     ],
   },
@@ -968,7 +980,19 @@ export const character_setting_data: CharacterSettingData[] = [
     psycubes: [
       {
         psycube_id: 72,
-        description: "",
+        description: "S",
+      },
+      {
+        psycube_id: 40,
+        description: "S",
+      },
+      {
+        psycube_id: 29,
+        description: "A-",
+      },
+      {
+        psycube_id: 46,
+        description: "A-",
       },
     ],
   },
@@ -976,8 +1000,20 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 48, // "울리히"
     psycubes: [
       {
+        psycube_id: 40,
+        description: "S",
+      },
+      {
         psycube_id: 74,
-        description: "",
+        description: "S",
+      },
+      {
+        psycube_id: 67,
+        description: "A",
+      },
+      {
+        psycube_id: 46,
+        description: "A-",
       },
     ],
   },
@@ -1262,7 +1298,7 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (술식 위주) (풀)",
       },
       {
-        psycube_id: 53,
+        psycube_id: 72,
         description: "S (보호막)",
       },
       {
@@ -1550,6 +1586,23 @@ export const character_setting_data: CharacterSettingData[] = [
   },
   {
     character_id: 128, // "버디 페어차일드"
-    psycubes: [],
+    psycubes: [
+      {
+        psycube_id: 36,
+        description: "S",
+      },
+      {
+        psycube_id: 49,
+        description: "A+",
+      },
+      {
+        psycube_id: 9,
+        description: "A (비상성)",
+      },
+      {
+        psycube_id: 75,
+        description: "A",
+      },
+    ],
   },
 ];

@@ -11,13 +11,14 @@ export default function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+  const showCarousel = carouselItems.filter((item) => item.open !== false);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === carouselItems.length - 1 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (prevIndex === showCarousel.length - 1 ? 0 : prevIndex + 1));
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? carouselItems.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? showCarousel.length - 1 : prevIndex - 1));
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -63,7 +64,7 @@ export default function Carousel() {
           className="flex h-full transition-transform duration-500"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {carouselItems.map((item) => (
+          {showCarousel.map((item) => (
             <div key={item.id} className="relative aspect-[4/1] w-full flex-shrink-0">
               {item.link ? (
                 <Link href={item.link} className="relative block h-full w-full">
@@ -105,7 +106,7 @@ export default function Carousel() {
           variant="ghost"
           size="icon"
           onClick={handlePrev}
-          className="absolute left-4 top-1/2 z-10 -translate-y-1/2 transform bg-black/50 text-white"
+          className="absolute left-2 top-1/2 z-10 h-5 w-5 -translate-y-1/2 transform bg-black/50 text-sm text-white sm:left-4 sm:h-10 sm:w-10 sm:text-base"
         >
           ◀
         </Button>
@@ -113,14 +114,14 @@ export default function Carousel() {
           variant="ghost"
           size="icon"
           onClick={handleNext}
-          className="absolute right-4 top-1/2 z-10 -translate-y-1/2 transform bg-black/50 text-white"
+          className="absolute right-2 top-1/2 z-10 h-5 w-5 -translate-y-1/2 transform bg-black/50 text-sm text-white sm:right-4 sm:h-10 sm:w-10 sm:text-base"
         >
           ▶
         </Button>
 
         {/* 인디케이터 */}
         <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 transform space-x-2">
-          {carouselItems.map((_, index) => (
+          {showCarousel.map((_, index) => (
             <div
               key={index}
               className={`rounded-full ${

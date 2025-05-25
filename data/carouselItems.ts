@@ -28,25 +28,32 @@ export const carouselItems: CarouselItem[] = [
   },
   {
     id: 3,
-    title: "청사진 모음",
-    image: "/infos/carousel_img/blueprint_setting.webp",
-    link: "/blueprint_setting",
+    title: "후원 링크",
+    image: "/infos/carousel_img/donate_carousel.webp",
+    link: "https://buymeacoffee.com/vertin_suitcase",
     type: "event",
   },
   {
     id: 4,
+    title: "청사진 모음",
+    image: "/infos/carousel_img/blueprint_setting.webp",
+    link: "/blueprint_setting",
+    type: "event",
+    open: false,
+  },
+  {
+    id: 5,
     title: "광상 가이드",
     image: "/infos/carousel_img/euphoria_guide.webp",
     link: "/euphoria_guide",
     type: "event",
     open: false, // 로직 수정 필요
   },
-  // {
-  //   id: 5,
-  //   title: "추천조합의 모든 것  ",
-  //   image: "/infos/carousel_img/blueprint_setting.webp",
-  //   link: "/blueprint_setting",
-  //   type: "event",
-  //   open: false,
-  // },
+  {
+    id: 6,
+    title: "추천조합의 모든 것",
+    image: "/infos/carousel_img/recommend_team.webp",
+    link: "/recommend_team",
+    type: "event",
+  },
 ];
