@@ -282,7 +282,7 @@ export const PSYCUBE_DATA: Psycube[] = [
   },
   {
     id: 35,
-    name: "마음의 감옥",
+    name: "뇌실=감방",
     engName: "mental_cage",
     rarity: 6,
     version: "2.6",
@@ -306,7 +306,7 @@ export const PSYCUBE_DATA: Psycube[] = [
   },
   {
     id: 38,
-    name: "렌즈 구석",
+    name: "장면 메모",
     engName: "off_the_scene",
     rarity: 5,
     version: "2.6",

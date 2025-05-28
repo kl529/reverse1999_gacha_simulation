@@ -3,9 +3,16 @@ export interface PsycubeInfo {
   description: string;
 }
 
+export interface ResonanceInfo {
+  code: string;
+  description: string;
+}
+
 export interface CharacterSettingData {
   character_id: number;
   psycubes: PsycubeInfo[];
+  resonance?: ResonanceInfo[]; // 추후 수정
+  resonance_patterns?: string[]; // 추후 수정
 }
 
 export const character_setting_data: CharacterSettingData[] = [
@@ -29,6 +36,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A+ (나무팟)",
       },
     ],
+    resonance: [
+      {
+        code: "APAkLUQtFEMFQANBVEhmPGA8UDQyNDA6ADsRRQE",
+        description: "유틸",
+      },
+      {
+        code: "ACQELxQvRCpQKFEmVPAkPQA0ESQBOCI7MA",
+        description: "크리티컬/데미지",
+      },
+    ],
+    resonance_patterns: ["Equibalance", "Genuinity"],
   },
   {
     character_id: 2, // "릴리아"
@@ -260,6 +278,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A+ (비상성)",
       },
     ],
+    resonance: [
+      {
+        code: "ACZQ8CQmVCQELxQtRDlAOEI8ADwQNCI0IA",
+        description: "데미지",
+      },
+      {
+        code: "AEAASBE0AiQELRTwJC1EJlRFYEFSJEFBQCghKiA",
+        description: "크리티컬",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Equibalance"],
   },
   {
     character_id: 13, // "피클즈"
@@ -911,6 +940,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (비상성)",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "크리티컬",
+      },
+      {
+        code: "APQkJQQ4BThFK0QoUSpQJAEtEUMyQTFEMEYARSA",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Hyperphrenia"],
   },
   {
     character_id: 44, // "알레프"
@@ -932,6 +972,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (빠른 술식)",
       },
     ],
+    resonance: [
+      {
+        code: "APgkJQQmVCwFLUQ5AToAKBE8MC1AQVBCUkVC",
+        description: "바르카롤라와 함께",
+      },
+      {
+        code: "APgkJQQsBSwyJlQtRChRSGBBQDkwOxBAAEACRBM",
+        description: "바르카롤라 없이",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Delirament"],
   },
   {
     character_id: 45, // "하사베스"
