@@ -68,6 +68,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "크리티컬",
+      },
+      {
+        code: "APQkJQQ4BThFK0QoUSpQJAEtEUMyQTFEMEYARSA",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Aspirational"],
   },
   {
     character_id: 3, // "A 나이트"
@@ -89,6 +100,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUA0UkBQSGE",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Equibalance"],
   },
   {
     character_id: 4, // "소더비"
@@ -110,6 +128,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APAkMEU7UzQVPAM6M0ATJAA9IjQQQDBCQExhSGBIYg==",
+        description: "힐러",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
   },
   {
     character_id: 5, // "레굴루스"
@@ -131,6 +156,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S-",
       },
     ],
+    resonance: [
+      {
+        code: "APgkJQQsBSwyJlQtRChRSGBBQDkwOxBAAEACRBM",
+        description: "크리티컬",
+      },
+      {
+        code: "ADQRJQA5AjsTNAX4JC9EL0IvQCZQPDA8Yw",
+        description: "섭딜",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Hyper"],
   },
   {
     character_id: 6, // "센츄리온"
@@ -152,6 +188,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APQkK0Q4RTgFJQQkAS8RKFEqUDQyRABDIEEw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Hyperphrenia"],
   },
   {
     character_id: 7, // "안안 리"
@@ -173,6 +216,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (딜 보조)",
       },
     ],
+    resonance: [
+      {
+        code: "ADQRJQA5AjsTNAX4JC9EL0IvQCZQPDA8Yw",
+        description: "범용",
+      },
+      {
+        code: "APgkJQQsBSwyJlQtRChRSGBBQDkwOxBAAEACRBM",
+        description: "크리티컬",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Delirament"],
   },
   {
     character_id: 8, // "메디슨 포켓"
@@ -194,6 +248,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APwlNAU0VTxhPAE4IjokKhJBQkhUQFBBACsgRCE",
+        description: "힐러",
+      },
+    ],
+    resonance_patterns: ["Hyper", "Equanimity"],
   },
   {
     character_id: 9, // "이터니티"
@@ -215,6 +276,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "ACZQ8CQmVCQELxQtRDlAOEI8ADwQNCI0IA",
+        description: "범용",
+      },
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUA0UkBQSGE",
+        description: "크리티컬",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Equibalance"],
   },
   {
     character_id: 10, // "뉴바벨"
@@ -236,6 +308,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S-",
       },
     ],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0X9Iw",
+        description: "생존",
+      },
+    ],
+    resonance_patterns: ["Quiescence"],
   },
   {
     character_id: 11, // "보이저"
@@ -257,6 +336,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A ",
       },
     ],
+    resonance: [
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUA0UkBQSGE",
+        description: "크리티컬",
+      },
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUBEUUZQNFI=",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Equibalance"],
   },
   {
     character_id: 12, // "멜라니아"
@@ -310,6 +400,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (딜 보조)",
       },
     ],
+    resonance: [
+      {
+        code: "ACZQ8CQmVCQELxQtRDlAOEI8ADwQNCI0IA",
+        description: "범용",
+      },
+      {
+        code: "AEAASBE0AiQELRTwJC1EJlRFYEFSJEFBQCghKiA",
+        description: "크리티컬",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Genuinity"],
   },
   {
     character_id: 14, // "투스 페어리"
@@ -331,6 +432,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (딜 보조)",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Stupefaction", "Hyperphrenia"],
   },
   {
     character_id: 15, // "제시카"
@@ -352,6 +460,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (노 광상)",
       },
     ],
+    resonance: [
+      {
+        code: "ADQRJQA5AjsTNAX4JC9EL0IvQCZQPDA8Yw",
+        description: "딜러",
+      },
+      {
+        code: "AC1CLUAmUDxjNAU5AjsTNBE8MCUARVVFRPgk",
+        description: "크리티컬",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Delirament"],
   },
   {
     character_id: 16, // "갈라보나"
@@ -373,6 +492,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (2스택 이상)",
       },
     ],
+    resonance: [
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUA0UkBQSGE",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Genuinity"],
   },
   {
     character_id: 17, // "갈기 모래"
@@ -394,6 +520,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S",
       },
     ],
+    resonance: [
+      {
+        code: "AEAASBE0AiQELRTwJC1EJlRFYEFSJEFBQCghKiA",
+        description: "범용",
+      },
+      {
+        code: "ACpQKFEkBC0ULUQmVPAkRDBFIEYAJjFAAUEiQgJIIw",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Equibalance"],
   },
   {
     character_id: 18, // "37"
@@ -415,6 +552,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (명함, 추가행동) (풀)",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "명함",
+      },
+      {
+        code: "APQjSDY0FTRFJlQqBDxgPAA5EDogLBJCQERCRkM",
+        description: "1형상 이상",
+      },
+    ],
+    resonance_patterns: ["Aspirational", "Hyperphrenia"],
   },
   {
     character_id: 19, // "6"
@@ -436,6 +584,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A+",
       },
     ],
+    resonance: [
+      {
+        code: "ACQELxQvRCpQKFEmVPAkPQA0ESQBOCI7MA",
+        description: "범용",
+      },
+      {
+        code: "AEAASBE0AiQELRTwJC1EJlRFYEFSJEFBQCghKiA",
+        description: "딜러",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Equibalance"],
   },
   {
     character_id: 20, // "스파토데아"
@@ -457,6 +616,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APgkJQQsBSwyJlQtRChRSGBBQDkwOxBAAEACRBM",
+        description: "크리티컬",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Hyper"],
   },
   {
     character_id: 21, // "에즈라"
@@ -478,6 +644,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (신혈 광상)",
       },
     ],
+    resonance: [
+      {
+        code: "APQkOEU4BSUEK0QoUSpQPAA8ECYwRDNFMUgjTCJIIUwg",
+        description: "서폿",
+      },
+    ],
+    resonance_patterns: ["Stupefaction"],
   },
   {
     character_id: 22, // "곡랑"
@@ -499,6 +672,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (디버퍼 필요) (풀)",
       },
     ],
+    resonance: [
+      {
+        code: "AEAASBE0AiQELRTwJC1EJlRFYEFSJEFBQCghKiA",
+        description: "크리티컬",
+      },
+      {
+        code: "ACpQKFEkBC0ULUQmVPAkRDBFIEYAJjFAAUEiQgJIIw",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Equibalance"],
   },
   {
     character_id: 23, // "갈천"
@@ -520,6 +704,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (데미지) (풀)",
       },
     ],
+    resonance: [
+      {
+        code: "ADQANAI8IDkwOkAoUSwyJQQsBfgkL0QmVA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Delirament"],
   },
   {
     character_id: 24, // "이졸데"
@@ -541,6 +732,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "AEAASBE0AiQELRTwJC1EJlRFYEFSJEFBQCghKiA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Equibalance"],
   },
   {
     character_id: 25, // "마커스"
@@ -562,6 +760,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "ADQRJQA5AjsTNAX4JC9EL0IvQCZQPDA8Yw",
+        description: "범용",
+      },
+      {
+        code: "APgkJQQsBSwyJlQtRChRSGBBQDkwOxBAAEACRBM",
+        description: "크리티컬",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Delirament"],
   },
   {
     character_id: 26, // "빌라"
@@ -583,6 +792,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (빠른 술식)",
       },
     ],
+    resonance: [
+      {
+        code: "AD0GPQX8RTFTMUIxMTtQNANDIzQgOAFAAExATFA",
+        description: "힐러",
+      },
+    ],
+    resonance_patterns: ["Equanimity", "Hyper"],
   },
   {
     character_id: 27, // "윈드송"
@@ -604,6 +820,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "AEAASBE0AiQELRTwJC1EJlRFYEFSJEFBQCghKiA",
+        description: "범용",
+      },
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUBEUUZQNFI=",
+        description: "2형상 이상",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Equibalance"],
   },
   {
     character_id: 28, // "제멜바이스"
@@ -625,6 +852,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (광상, 보조)",
       },
     ],
+    resonance: [
+      {
+        code: "ACQELxQvRCpQKFEmVPAkPQA0ESQBOCI7MA",
+        description: "범용",
+      },
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUA0UkBQSGE",
+        description: "크리티컬",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Equibalance"],
   },
   {
     character_id: 29, // "루시"
@@ -646,6 +884,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (풀)",
       },
     ],
+    resonance: [
+      {
+        code: "ADQwNDIqUChRJAEtEUQARSD0JDhFOAUlBCtE",
+        description: "크리티컬",
+      },
+      {
+        code: "ADQwNDIkAS0RRABFIEhQSGBFUShR9CQlBCtEOEU4BQ",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Hyperphrenia"],
   },
   {
     character_id: 30, // "카카니아"
@@ -667,6 +916,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "ACUAJxA5AjgTMzEzQjNTPQU9BkQSREBIUUhiTGFMYPxF",
+        description: "범용 (생존)",
+      },
+    ],
+    resonance_patterns: ["Overindulgence"],
   },
   {
     character_id: 31, // "머큐리아"
@@ -688,6 +944,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (빠른 술식)",
       },
     ],
+    resonance: [
+      {
+        code: "APQkOEU4BTwCPGI0QzQTKxIrECkAJUAsQQ",
+        description: "범용",
+      },
+      {
+        code: "APQkK0Q4RTgFJQQkAS8RKFEqUDQyRABDIEEw",
+        description: "딜러",
+      },
+    ],
+    resonance_patterns: ["Stupefaction", "Hyperphrenia"],
   },
   {
     character_id: 32, // "J"
@@ -709,6 +976,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A+ (풀)",
       },
     ],
+    resonance: [
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUA0UkBQSGE",
+        description: "범용",
+      },
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUBEUUZQNFI=",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Equibalance"],
   },
   {
     character_id: 33, // "튜즈데이"
@@ -730,6 +1008,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A-",
       },
     ],
+    resonance: [
+      {
+        code: "APgkNBQ0RChUQwVIBDwAPGA5ETtBQRBAQEcwRTJII0xD",
+        description: "범용",
+      },
+      {
+        code: "APgkNBQ0RChUQwVIBDwAPGA5EDgSQSBBMkVSR1BHQA",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Hyper", "Delirament"],
   },
   {
     character_id: 34, // "아르고스"
@@ -751,6 +1040,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (풀)",
       },
     ],
+    resonance: [
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUA0UkBQSGE",
+        description: "범용",
+      },
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUBEUUZQNFI=",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Equibalance"],
   },
   {
     character_id: 35, // "안조 날라"
@@ -772,6 +1072,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (영혼지능 계약) (풀)",
       },
     ],
+    resonance: [
+      {
+        code: "AEAASBE0AiQELRTwJC1EJlRFYEFSJEFBQCghKiA",
+        description: "범용",
+      },
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUBEUUZQNFI=",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Elucidation"],
   },
   {
     character_id: 36, // "로페라"
@@ -793,6 +1104,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A- (디버퍼 필요)",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "범용",
+      },
+      {
+        code: "APQkJQQ4BThFK0QoUSpQJAEtEUMyQTFEMEYARSA",
+        description: "범용 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Aspirational", "Hyperphrenia"],
   },
   {
     character_id: 37, // "윌로우"
@@ -814,6 +1136,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A-",
       },
     ],
+    resonance: [
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUA0UkBQSGE",
+        description: "튜즈데이와 함께",
+      },
+      {
+        code: "ADRENBUoVCoEQAFCAkQA8CQ8YDxQOCI5IEEwSEI",
+        description: "튜즈데이 없이",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
   },
   {
     character_id: 38, // "플러터 페이지"
@@ -835,6 +1168,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (딜보조)",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "크리티컬",
+      },
+      {
+        code: "APQkJQQ4BThFK0QoUSpQJAEtEUMyQTFEMEYARSA",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Hyperphrenia"],
   },
   {
     character_id: 39, // "바르카롤라"
@@ -856,6 +1200,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (빠른 술식)",
       },
     ],
+    resonance: [
+      {
+        code: "APgkJQQsBSwyJlQtRChRSGBBQDkwOxBAAEACRBM",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Delirament"],
   },
   {
     character_id: 40, // "파투투"
@@ -877,6 +1228,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A+ (장기전) (풀)",
       },
     ],
+    resonance: [
+      {
+        code: "APgkPAM8Y0ETQEM7RDkUJ0EpAUUyQQA0IDRATGA",
+        description: "힐러",
+      },
+    ],
+    resonance_patterns: ["Hyper", "Delirament"],
   },
   {
     character_id: 41, // "양월"
@@ -898,6 +1256,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (풀)",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "범용",
+      },
+      {
+        code: "APQkJQQ4BThFK0QoUSpQJAEtEUMyQTFEMEYARSA",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Hyperphrenia"],
   },
   {
     character_id: 42, // "누아르"
@@ -919,6 +1288,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APgkJQQmVCwFLUQ5AToAKBE8MC1AQVBCUkVC",
+        description: "크리티컬 (추천)",
+      },
+      {
+        code: "ADQRJQA5AjsTNAX4JC9EL0IvQCZQPDA8Yw",
+        description: "딜링",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Delirament"],
   },
   {
     character_id: 43, // "레콜레타"
@@ -1004,6 +1384,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A-",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "크리티컬",
+      },
+      {
+        code: "APQkJQQ4BThFK0QoUSpQJAEtEUMyQTFEMEYARSA",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Hyperphrenia"],
   },
   {
     character_id: 46, // "키페리나"
@@ -1088,6 +1479,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (생존 보조)",
       },
     ],
+    resonance: [
+      {
+        code: "APwlNFU0BTxhPFElQCQCOiQ4Ei0AQTJCIEggSBA",
+        description: "데미지",
+      },
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0X9Iw",
+        description: "생존",
+      },
+    ],
+    resonance_patterns: ["Hyper"],
   },
   {
     character_id: 102, // "마틸다"
@@ -1109,6 +1511,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S-",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Aspirational", "Hyperphrenia"],
   },
   {
     character_id: 103, // "X"
@@ -1130,6 +1539,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "ACZQ8CQmVCQELxQtRDlAOEI8ADwQNCI0IA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Equibalance"],
   },
   {
     character_id: 104, // "마릴린"
@@ -1151,6 +1567,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (술식 위주)",
       },
     ],
+    resonance: [
+      {
+        code: "APQkK0Q4RTgFJQQkAS8RKFEqUDQyRABDIEEw",
+        description: "크리티컬",
+      },
+      {
+        code: "APQkOEU4BTxiPDA0QzQRJQQlACkCKkAxUA",
+        description: "생존",
+      },
+    ],
+    resonance_patterns: ["Aspirational", "Hyperphrenia"],
   },
   {
     character_id: 105, // "베이비 블루"
@@ -1172,6 +1599,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "B",
       },
     ],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0X9Iw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Prudentiality"],
   },
   {
     character_id: 106, // "찰리"
@@ -1193,6 +1627,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "ADQRJQA5AjsTNAX4JC9EL0IvQCZQPDA8Yw",
+        description: "데미지",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Delirament"],
   },
   {
     character_id: 107, // "콘블룸"
@@ -1214,6 +1655,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "AEAASBE0AiQELRTwJC1EJlRFYEFSJEFBQCghKiA",
+        description: "데미지",
+      },
+      {
+        code: "APAkJAQmVC1ELRQoASoAJCFBIEEyRUBEUUZQNFI=",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Equibalance"],
   },
   {
     character_id: 108, // "디케"
@@ -1235,6 +1687,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (딜 보조)",
       },
     ],
+    resonance: [
+      {
+        code: "APAkLRQtREAQQVRDBUhmOQI7ETxgPFA0MjQwSAFMAA",
+        description: "힐러",
+      },
+      {
+        code: "APAkNBU0VSVEPAM5EjkARhBFMERAQyFAQUJCPGBMMw",
+        description: "딜러",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
   },
   {
     character_id: 109, // "벌룬 파티"
@@ -1256,6 +1719,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APwVMSMxEiUALAE8AzxDNFU0UzhBOTBIYExhTFBIQA",
+        description: "힐러",
+      },
+    ],
+    resonance_patterns: ["Quiescence"],
   },
   {
     character_id: 110, // "네크롤로지스트"
@@ -1277,6 +1747,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (데미지)",
       },
     ],
+    resonance: [
+      {
+        code: "APgkLAUtREFUSGY5AzsSNDI0MDxgPFBCAUEQTAFIAA",
+        description: "힐러",
+      },
+      {
+        code: "APgkMRQqBDtEOjM8YzwgJAEmADRRNDFEQExgTDA",
+        description: "생존",
+      },
+    ],
+    resonance_patterns: ["Hyper", "Delirament"],
   },
   {
     character_id: 111, // "사츠키"
@@ -1298,6 +1779,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "크리티컬",
+      },
+      {
+        code: "APQkOEU4BSUEK0QkAS0RKwA0MjQwPFA8YA",
+        description: "데미지",
+      },
+    ],
+    resonance_patterns: ["Aspirational", "Hyperphrenia"],
   },
   {
     character_id: 112, // "테넌트"
@@ -1319,6 +1811,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (딜 보조) (풀)",
       },
     ],
+    resonance: [
+      {
+        code: "APQkOEU4BTwCPGI0QzQTKxIrECkAJUAsQQ",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Stupefaction", "Hyperphrenia"],
   },
   {
     character_id: 113, // "클릭"
@@ -1340,6 +1839,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APAkJwU0BDwAPBAwRTozO1MlIiZQNCBMQExSSFFIQQ",
+        description: "데미지",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
   },
   {
     character_id: 114, // "디거스"
@@ -1361,6 +1867,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APAkJwU0BDwAPBAwRTozO1MlIiZQNCBMQExSSFFIQQ",
+        description: "데미지",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
   },
   {
     character_id: 115, // "블로니"
@@ -1382,6 +1895,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "크리티컬",
+      },
+    ],
+    resonance_patterns: ["Aspirational"],
   },
   {
     character_id: 116, // "호러피디아"
@@ -1403,6 +1923,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "ACZQ8CQmVCQELxQtRDlAOEI8ADwQNCI0IA",
+        description: "데미지",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Equibalance"],
   },
   {
     character_id: 117, // "칸지라"
@@ -1424,6 +1951,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APAkJwUoVCogNEQ0BDxgPFA7MDgiQgJAAEgCSBE",
+        description: "중독덱",
+      },
+      {
+        code: "ACZQ8CQmVCQELxQtRDlAOEI8ADwQNCI0IA",
+        description: "데미지",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
   },
   {
     character_id: 118, // "데저트 플란넬"
@@ -1445,6 +1983,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (데미지)",
       },
     ],
+    resonance: [
+      {
+        code: "APAkJwUkAyZULURAE0AQQhFIAkUAPDA8QCpQKFE",
+        description: "크리티컬",
+      },
+      {
+        code: "APAkLRQkBCQBJgA8IDwwRWJHYEBAKEEwRStETEI",
+        description: "생존",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
   },
   {
     character_id: 119, // "울루"
@@ -1466,6 +2015,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (데미지)",
       },
     ],
+    resonance: [
+      {
+        code: "APgkMRQqBDtEOjM8YzwgJAEmADRRNDFEQExgTDA",
+        description: "생존",
+      },
+      {
+        code: "ADQRJQA5AjsTNAX4JC9EL0IvQCZQPDA8Yw",
+        description: "데미지",
+      },
+    ],
+    resonance_patterns: ["Hyper", "Delirament"],
   },
   {
     character_id: 120, // "예니세이"
@@ -1487,6 +2047,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A+ (딜보조)",
       },
     ],
+    resonance: [
+      {
+        code: "APwlMTMxIjEgPBM8AzRVNFM6ADhBK0BMQUgSTAJIAQ",
+        description: "힐러",
+      },
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0X9Iw",
+        description: "생존",
+      },
+    ],
+    resonance_patterns: ["Overindulgence"],
   },
   {
     character_id: 121, // "아브구스트"
@@ -1508,6 +2079,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APAkJAQlQC0UMEU5QjtTRFFMUkxiPAA8EDQiNCA",
+        description: "생존",
+      },
+      {
+        code: "APAkLRQkBDwAPBA0IjQgOkA7UUFFQVRAQ0hmTEJMQQ",
+        description: "힐러/생존",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
   },
   {
     character_id: 122, // "로렐라이"
@@ -1529,6 +2111,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (디버퍼 필요)",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "크리티컬",
+      },
+      {
+        code: "APQkJQQ4BThFK0QoUSpQJAEtEUMyQTFEMEYARSA",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Stupefaction", "Hyperphrenia"],
   },
   {
     character_id: 123, // "바바라"
@@ -1550,6 +2143,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (딜보조)",
       },
     ],
+    resonance: [
+      {
+        code: "APwlMTMxIjEgPBM8AzRVNFM6ADhBK0BMQUgSTAJIAQ",
+        description: "HP",
+      },
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0X9Iw",
+        description: "생존",
+      },
+    ],
+    resonance_patterns: ["Overindulgence", "Equanimity"],
   },
   {
     character_id: 124, // "던컨"
@@ -1571,6 +2175,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A- (풀)",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "데미지",
+      },
+    ],
+    resonance_patterns: ["Elucidation"],
   },
   {
     character_id: 125, // "슬라우치 햇"
@@ -1592,6 +2203,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "AD0GPQX8RTFTMUIxMTtQNANDIzQgOAFAAExATFA",
+        description: "데미지",
+      },
+    ],
+    resonance_patterns: ["Hyper"],
   },
   {
     character_id: 126, // "로거헤드"
@@ -1613,6 +2231,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APgkJAQwRTQUPAA8EDQgJSI6MztTRFFGUEhSSEFMYkxA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Delirament"],
   },
   {
     character_id: 127, // "네임데이"
@@ -1634,6 +2259,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A- (딜 보조)",
       },
     ],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0X9Iw",
+        description: "생존",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
   },
   {
     character_id: 128, // "버디 페어차일드"

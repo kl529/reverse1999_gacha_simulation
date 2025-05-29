@@ -54,4 +54,5 @@ export const updateLogs = [
   { date: "2025-05-20", content: "추천 조합 페이지 오픈" },
   { date: "2025-05-25", content: "데이터 최신화 및 편의성 업데이트" },
   { date: "2025-05-28", content: "2.6 버젼 업데이트" },
+  { date: "2025-05-30", content: "공명 페이지 외부사이트 삭제 및 정리" },
 ];

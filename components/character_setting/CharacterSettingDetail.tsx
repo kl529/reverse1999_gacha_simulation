@@ -152,7 +152,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                 <div key={idx} className="flex flex-col items-center text-center">
                   <div className="relative bg-gray-500">
                     <Image
-                      src={`/infos/resonance_img/${pattern}.png`}
+                      src={`/infos/resonance_pattern/${character.resonanceType}_${pattern}.png`}
                       alt={pattern}
                       width={200}
                       height={200}
@@ -163,7 +163,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                     </div>
                   </div>
                   <span className="mt-2 text-base font-semibold text-gray-700 dark:text-gray-300">
-                    {RESONANCE_PATTERN[pattern] || pattern}
+                    {RESONANCE_PATTERN[character.resonanceType][pattern] || pattern}
                   </span>
                 </div>
               ))}
