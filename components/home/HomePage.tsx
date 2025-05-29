@@ -293,6 +293,16 @@ export default function HomePage() {
               >
                 중섭정보 (nga)
               </Link>
+              <br />-{" "}
+              <Link
+                href="https://docs.google.com/spreadsheets/u/1/d/1Xpd7HKO2CAnsPa40Ho-scMfubGXGKKYaefs0bHkpDpc/htmlview#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                공명 정보 (An Incredibly Scuffed Page of Recommended Character Resonance Layouts and
+                their Corresponding Codes)
+              </Link>
             </p>
           </ConfirmModal>
         )}
