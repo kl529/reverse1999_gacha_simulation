@@ -120,7 +120,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
 
             {/* 설명서 모달 */}
             <Dialog open={showDialog} onOpenChange={setShowDialog}>
-              <DialogContent className="max-h-[90vh] max-w-md overflow-y-auto sm:max-w-lg">
+              <DialogContent className="max-h-[90vh] max-w-md overflow-y-auto sm:max-w-3xl">
                 <DialogHeader>
                   <DialogTitle>공명 코드 사용 방법</DialogTitle>
                 </DialogHeader>
@@ -135,6 +135,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                         width={300}
                         height={200}
                         className="w-full rounded border dark:border-gray-600"
+                        unoptimized
                       />
                     ))}
                   </div>
