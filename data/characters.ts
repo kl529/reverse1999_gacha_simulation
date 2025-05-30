@@ -217,7 +217,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       inspiration: "beast",
       engName: "getian",
       version: "1.6",
-      resonanceType: "balance",
+      resonanceType: "support",
     },
     {
       id: 24,
@@ -226,7 +226,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       inspiration: "spirit",
       engName: "isolde",
       version: "1.7",
-      resonanceType: "support",
+      resonanceType: "balance",
     },
     {
       id: 25,
@@ -372,7 +372,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       inspiration: "mineral",
       engName: "fatutu",
       version: "2.4",
-      resonanceType: "damage",
+      resonanceType: "support",
     },
     {
       id: 41,
