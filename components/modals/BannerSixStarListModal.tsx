@@ -49,7 +49,7 @@ export function BannerSixStarListModal({ banner }: ModalProps) {
             >
               <div className="flex items-center gap-2">
                 <Image
-                  src={`/characters/6stars_small/${char.engName}.png`}
+                  src={`/characters/6stars_small/${char.engName}.webp`}
                   alt={char.name}
                   width={40}
                   height={40}

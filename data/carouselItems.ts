@@ -17,6 +17,7 @@ export const carouselItems: CarouselItem[] = [
     description: "지금 가챠 시뮬레이터에서 만나보세요.",
     link: "/gacha_simulator",
     type: "pick_up",
+    open: false,
   },
   {
     id: 2,
@@ -47,7 +48,7 @@ export const carouselItems: CarouselItem[] = [
     image: "/infos/carousel_img/euphoria_guide.webp",
     link: "/euphoria_guide",
     type: "event",
-    open: false, // 로직 수정 필요
+    open: false,
   },
   {
     id: 6,
@@ -55,5 +56,13 @@ export const carouselItems: CarouselItem[] = [
     image: "/infos/carousel_img/recommend_team.webp",
     link: "/recommend_team",
     type: "event",
+  },
+  {
+    id: 8,
+    title: "현질 가이드",
+    image: "/infos/carousel_img/cash_guide_carousel.webp",
+    link: "/cash_guide",
+    type: "event",
+    open: false,
   },
 ];

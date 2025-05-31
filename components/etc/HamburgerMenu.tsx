@@ -27,33 +27,46 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
 
   const menuItems: MenuItem[] = [
     {
-      iconImg: "/infos/menu/gacha_simulator_menu.png",
+      iconImg: "/infos/menu/gacha_simulator_menu.webp",
       label: "가챠 시뮬레이터",
       href: "/gacha_simulator",
     },
     {
-      iconImg: "/infos/menu/character_quiz_menu.png",
+      iconImg: "/infos/menu/character_quiz_menu.webp",
       label: "캐릭터 퀴즈",
       href: "/character_quiz",
     },
     { divider: true },
-    { iconImg: "/infos/menu/material_menu.png", label: "재료 파밍", modalType: "material" },
-    { iconImg: "/infos/menu/resonance_menu.png", label: "공명 & 의지", href: "/character_setting" },
-    { iconImg: "/infos/menu/skin_menu.png", label: "스킨 갤러리", href: "/skin" },
-    { iconImg: "/infos/menu/recommend_team_menu.png", label: "추천 조합", href: "/recommend_team" },
+    { iconImg: "/infos/menu/material_menu.webp", label: "재료 파밍", modalType: "material" },
     {
-      iconImg: "/infos/menu/future_insight_menu.png",
+      iconImg: "/infos/menu/resonance_menu.webp",
+      label: "공명 & 의지",
+      href: "/character_setting",
+    },
+    { iconImg: "/infos/menu/skin_menu.webp", label: "스킨 갤러리", href: "/skin" },
+    {
+      iconImg: "/infos/menu/future_insight_menu.webp",
       label: "미래시 정리",
       href: "/future_insight",
     },
-    { divider: true },
-    { iconImg: "/infos/menu/path_quiz_menu.png", label: "오솔길 정답", href: "/path_quiz" },
     {
-      iconImg: "/infos/menu/euphoria_guide_menu.png",
+      iconImg: "/infos/menu/recommend_team_menu.webp",
+      label: "추천 조합",
+      href: "/recommend_team",
+    },
+    {
+      iconImg: "/infos/menu/blueprint_menu.webp",
+      label: "청사진 모음",
+      href: "/blueprint_setting",
+    },
+    { divider: true },
+    { iconImg: "/infos/menu/path_quiz_menu.webp", label: "오솔길 정답", href: "/path_quiz" },
+    {
+      iconImg: "/infos/menu/euphoria_guide_menu.webp",
       label: "광상 가이드",
       href: "/euphoria_guide",
     },
-    { iconImg: "/infos/menu/blueprint_menu.png", label: "청사진 모음", href: "/blueprint_setting" },
+    { iconImg: "/infos/menu/cash_guide_menu.webp", label: "현질 가이드", href: "/cash_guide" },
   ];
 
   useEffect(() => {

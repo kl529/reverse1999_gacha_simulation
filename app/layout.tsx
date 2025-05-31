@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
-        <link rel="apple-touch-icon" href="/pwa_icon.png" />
+        <link rel="apple-touch-icon" href="/pwa_icon.webp" />
         {isProd && (
           <>
             <Script

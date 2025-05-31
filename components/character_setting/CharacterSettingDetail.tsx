@@ -24,7 +24,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
   const psycube_list = (setting?.psycubes || []).map((p) => {
     const psycube = PSYCUBE_DATA.find((d) => d.id === p.psycube_id);
     return {
-      src: `/infos/psycube_img/${psycube?.engName}.png`,
+      src: `/infos/psycube_img/${psycube?.engName}.webp`,
       label: psycube?.name || "",
       description: p.description,
       type: psycube?.type,
@@ -45,7 +45,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
         <div className="flex flex-wrap justify-center gap-6">
           <div className="h-[150px] w-[150px] overflow-hidden rounded border dark:border-gray-700">
             <Image
-              src={`/characters/${character.rarity}stars/${character.engName}.png`}
+              src={`/characters/${character.rarity}stars/${character.engName}.webp`}
               alt={character.name}
               width={150}
               height={150}
@@ -152,7 +152,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                 <div key={idx} className="flex flex-col items-center text-center">
                   <div className="relative bg-gray-500">
                     <Image
-                      src={`/infos/resonance_pattern/${character.resonanceType}_${pattern}.png`}
+                      src={`/infos/resonance_pattern/${character.resonanceType}_${pattern}.webp`}
                       alt={pattern}
                       width={200}
                       height={200}
@@ -221,7 +221,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                     <div className="flex flex-col items-center rounded p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800">
                       <div className="relative h-10 w-10">
                         <Image
-                          src={`/characters/${ch.rarity}stars_small/${ch.engName}.png`}
+                          src={`/characters/${ch.rarity}stars_small/${ch.engName}.webp`}
                           alt={ch.name}
                           fill
                           sizes="40px"

@@ -28,7 +28,7 @@ export function ModalProvider({ children }: { children: ReactNode }) {
           isOpen={true}
           onClose={closeModal}
           title="재료 파밍표"
-          image="/infos/modal_img/material_sheet.png"
+          image="/infos/modal_img/material_sheet.webp"
           source="https://bbs.nga.cn/read.php?tid=41840172&rand=968"
         />
       )}

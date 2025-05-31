@@ -11,7 +11,7 @@ import UpdateModal from "@/components/modals/UpdateModal";
 import CardInfoModal from "@/components/modals/CardInfoModal";
 import Carousel from "@/components/etc/Carousel";
 
-const bgImages = Array.from({ length: 32 }, (_, i) => `/infos/home/poster${i + 1}.png`);
+const bgImages = Array.from({ length: 32 }, (_, i) => `/infos/home/poster${i + 1}.webp`);
 
 export default function HomePage() {
   const [bgImage, setBgImage] = useState<string | null>(null);
@@ -60,16 +60,16 @@ export default function HomePage() {
               subTitle="Just for Fun"
               items={[
                 {
-                  icon: "/infos/menu/gacha_simulator_menu.png",
+                  icon: "/infos/menu/gacha_simulator_menu.webp",
                   label: "가챠\n시뮬레이터",
                   href: "/gacha_simulator",
                 },
                 {
-                  icon: "/infos/menu/character_quiz_menu.png",
+                  icon: "/infos/menu/character_quiz_menu.webp",
                   label: "캐릭터\n퀴즈",
                   href: "/character_quiz",
                 },
-                { icon: "/infos/menu/bingo_menu.png", label: "빙고\n(준비중)", href: "#" },
+                { icon: "/infos/menu/bingo_menu.webp", label: "빙고\n(준비중)", href: "#" },
               ]}
             />
 
@@ -79,28 +79,33 @@ export default function HomePage() {
               onItemClick={handleItemClick}
               items={[
                 {
-                  icon: "/infos/menu/material_menu.png",
+                  icon: "/infos/menu/material_menu.webp",
                   label: "재료 파밍",
                   title: "재료 파밍표",
                   href: "#",
-                  image: "/infos/modal_img/material_sheet.png",
+                  image: "/infos/modal_img/material_sheet.webp",
                   source: "https://bbs.nga.cn/read.php?tid=41840172&rand=968",
                 },
                 {
-                  icon: "/infos/menu/resonance_menu.png",
+                  icon: "/infos/menu/resonance_menu.webp",
                   label: "공명 & 의지",
                   href: "/character_setting",
                 },
-                { icon: "/infos/menu/skin_menu.png", label: "스킨 갤러리", href: "/skin" },
+                { icon: "/infos/menu/skin_menu.webp", label: "스킨 갤러리", href: "/skin" },
                 {
-                  icon: "/infos/menu/future_insight_menu.png",
+                  icon: "/infos/menu/future_insight_menu.webp",
                   label: "미래시 정리",
                   href: "/future_insight",
                 },
                 {
-                  icon: "/infos/menu/recommend_team_menu.png",
+                  icon: "/infos/menu/recommend_team_menu.webp",
                   label: "추천 조합",
                   href: "/recommend_team",
+                },
+                {
+                  icon: "/infos/menu/blueprint_menu.webp",
+                  label: "청사진 모음",
+                  href: "/blueprint_setting",
                 },
               ]}
             />
@@ -110,20 +115,16 @@ export default function HomePage() {
               subTitle="당신을 위한 친절한 가이드"
               items={[
                 {
-                  icon: "/infos/menu/path_quiz_menu.png",
+                  icon: "/infos/menu/path_quiz_menu.webp",
                   label: "오솔길 정답",
                   href: "/path_quiz",
                 },
                 {
-                  icon: "/infos/menu/euphoria_guide_menu.png",
+                  icon: "/infos/menu/euphoria_guide_menu.webp",
                   label: "광상 가이드",
                   href: "/euphoria_guide",
                 },
                 {
-                  icon: "/infos/menu/blueprint_menu.png",
-                  label: "청사진 모음",
-                  href: "/blueprint_setting",
-                },
                 {
                   icon: "/infos/menu/cash_in_guide_menu.png",
                   label: "현질 가이드\n(준비중)",
@@ -177,8 +178,8 @@ export default function HomePage() {
               <Image
                 src={
                   theme === "dark"
-                    ? "/infos/button/github_light.png"
-                    : "/infos/button/github_dark.png"
+                    ? "/infos/button/github_light.webp"
+                    : "/infos/button/github_dark.webp"
                 }
                 alt="GitHub"
                 width={20}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { carouselItems } from "@/data/carouselItems";
@@ -13,13 +13,13 @@ export default function Carousel() {
   const touchEndX = useRef<number | null>(null);
   const showCarousel = carouselItems.filter((item) => item.open !== false);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex === showCarousel.length - 1 ? 0 : prevIndex + 1));
-  };
+  }, [showCarousel.length]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? showCarousel.length - 1 : prevIndex - 1));
-  };
+  }, [showCarousel.length]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.changedTouches[0].clientX;
@@ -50,7 +50,7 @@ export default function Carousel() {
       handleNext();
     }, 7000);
     return () => clearInterval(interval);
-  }, []);
+  }, [handleNext]);
 
   return (
     <Card className="relative mx-auto aspect-[4/1] w-full max-w-7xl overflow-hidden rounded-lg">

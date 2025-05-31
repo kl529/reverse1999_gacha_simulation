@@ -27,7 +27,7 @@ export default function GachaResults({ results }: Props) {
           {/* (1) 캐릭터 이미지 */}
           {char && (
             <Image
-              src={`/characters/${char.rarity}stars/${char.engName}.png`}
+              src={`/characters/${char.rarity}stars/${char.engName}.webp`}
               alt={char.name}
               width={200} // 최대 폭 200
               height={303} // 최대 높이 303
@@ -38,7 +38,7 @@ export default function GachaResults({ results }: Props) {
           {char?.inspiration && (
             <div className="absolute left-3 top-0 z-10">
               <Image
-                src={`/infos/inspiration/${char.inspiration}.png`}
+                src={`/infos/inspiration/${char.inspiration}.webp`}
                 alt={char.inspiration}
                 width={80}
                 height={80}
@@ -50,7 +50,7 @@ export default function GachaResults({ results }: Props) {
           {/* (3) 별 효과 (캐릭터 이미지 아래에 깔기) */}
           {char && (
             <Image
-              src={`/infos/effects/${char.rarity}stars.png`}
+              src={`/infos/effects/${char.rarity}stars.webp`}
               alt={`성급 효과 ${char.rarity}`}
               width={200}
               height={303}

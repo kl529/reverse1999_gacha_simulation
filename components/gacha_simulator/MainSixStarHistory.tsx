@@ -65,7 +65,7 @@ export default function MainSixStarHistory({
                 {labelText} ({suffix})
               </span>
               <Image
-                src={`/characters/6stars_small/${entry.char.engName}.png`}
+                src={`/characters/6stars_small/${entry.char.engName}.webp`}
                 alt={entry.char.name}
                 width={56}
                 height={56}

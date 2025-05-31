@@ -47,7 +47,7 @@ export default function BlueprintSetting() {
               />
               <div className="absolute right-0 top-0 h-4 w-4">
                 <Image
-                  src={`/infos/inspiration/${boss.inspiration}.png`}
+                  src={`/infos/inspiration/${boss.inspiration}.webp`}
                   alt={`${boss.inspiration} 아이콘`}
                   width={20}
                   height={20}

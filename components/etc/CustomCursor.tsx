@@ -21,7 +21,7 @@ export default function CustomCursor() {
       style={{
         top: position.y - 16,
         left: position.x - 16,
-        background: "url('/infos/button/cursor.png') no-repeat center/contain",
+        background: "url('/infos/button/cursor.webp') no-repeat center/contain",
       }}
     />
   );

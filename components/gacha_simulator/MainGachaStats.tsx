@@ -103,7 +103,7 @@ export default function MainGachaStats({
         </div>
         <Image
           key={selectedBanner.id}
-          src={`/infos/banner_img/${selectedBanner.id}.png`}
+          src={`/infos/banner_img/${selectedBanner.id}.webp`}
           alt="배너 이미지"
           width={400}
           height={200}

@@ -8,6 +8,7 @@ import { version } from "@/data/version";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Character } from "@/data/characters";
+
 const priorityDescriptions: { [key: number]: string } = {
   1: "대부분 상황에서 좋은 모습을 보이며, 매우 추천됨",
   2: "특정 덱에서 주로 사용되고, 해두면 잘쓰임",
@@ -72,7 +73,7 @@ export default function EuphoriaGuide() {
                         <div className="flex h-[120px] w-full items-stretch gap-1 overflow-hidden sm:h-[140px]">
                           <div className="relative aspect-[2/3] h-full w-[30%] overflow-hidden rounded-lg">
                             <Image
-                              src={`/characters/${char.rarity}stars/${char.engName}.png`}
+                              src={`/characters/${char.rarity}stars/${char.engName}.webp`}
                               alt={char.name}
                               width={100}
                               height={100}
@@ -81,7 +82,7 @@ export default function EuphoriaGuide() {
                           </div>
                           <div className="relative aspect-square h-full flex-1 overflow-hidden rounded-lg">
                             <Image
-                              src={`/infos/euphoria/${char.engName.replace(/-/g, "_")}_${item.number}.png`}
+                              src={`/infos/euphoria/${char.engName.replace(/-/g, "_")}_${item.number}.webp`}
                               alt={`${char.name} 광상`}
                               width={100}
                               height={100}

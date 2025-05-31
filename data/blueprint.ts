@@ -3,31 +3,31 @@ export const BOSSES = [
   {
     id: "mountain_ghost",
     name: "산귀",
-    image: "/infos/blueprint/boss/mountain_ghost.png",
+    image: "/infos/blueprint/boss/mountain_ghost.webp",
     inspiration: "plant",
   },
   {
     id: "star_of_misfortune",
     name: "천체의 흉조",
-    image: "/infos/blueprint/boss/star_of_misfortune.png",
+    image: "/infos/blueprint/boss/star_of_misfortune.webp",
     inspiration: "star",
   },
   {
     id: "operatic_reflection",
     name: "연극의 굴절",
-    image: "/infos/blueprint/boss/operatic_reflection.png",
+    image: "/infos/blueprint/boss/operatic_reflection.webp",
     inspiration: "beast",
   },
   {
     id: "ashen_beast",
     name: "뼈의 늑대",
-    image: "/infos/blueprint/boss/ashen_beast.png",
+    image: "/infos/blueprint/boss/ashen_beast.webp",
     inspiration: "mineral",
   },
   {
     id: "primitive_urge",
     name: "원시적 기쁨",
-    image: "/infos/blueprint/boss/primitive_urge.png",
+    image: "/infos/blueprint/boss/primitive_urge.webp",
     inspiration: "spirit",
   },
 ] as const;

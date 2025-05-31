@@ -33,7 +33,7 @@ export async function generateMetadata({
   const baseUrl = "https://www.reverse1999-simulator.com";
   const title = `리버스 1999 ${character.name} 광상 가이드`;
   const description = `${character.name}의 광상 특징과 출시 정보를 확인해보세요.`;
-  const imageUrl = `${baseUrl}/infos/euphoria/${character.engName.replace(/-/g, "_")}_${entry.number}.png`;
+  const imageUrl = `${baseUrl}/infos/euphoria/${character.engName.replace(/-/g, "_")}_${entry.number}.webp`;
 
   return {
     metadataBase: new URL(baseUrl),

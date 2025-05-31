@@ -466,7 +466,7 @@ export default function CharacterQuiz() {
             >
               {showHint && (
                 <Image
-                  src={`/infos/inspiration/${ch.inspiration}.png`}
+                  src={`/infos/inspiration/${ch.inspiration}.webp`}
                   alt={ch.inspiration}
                   width={8}
                   height={16}
@@ -475,7 +475,7 @@ export default function CharacterQuiz() {
               )}
               {isOpened ? (
                 <Image
-                  src={`/characters/${ch.rarity}stars/${ch.engName}.png`}
+                  src={`/characters/${ch.rarity}stars/${ch.engName}.webp`}
                   alt={ch.name}
                   width={40}
                   height={80}
@@ -485,8 +485,8 @@ export default function CharacterQuiz() {
                 <Image
                   src={
                     mounted && theme === "dark"
-                      ? "/quiz/question/question_img_dark.png"
-                      : "/quiz/question/question_img.png"
+                      ? "/quiz/question/question_img_dark.webp"
+                      : "/quiz/question/question_img.webp"
                   }
                   alt="?"
                   width={40}
@@ -595,7 +595,7 @@ export default function CharacterQuiz() {
         {isGiveUp ? (
           <>
             <Image
-              src="/quiz/results/fail.png"
+              src="/quiz/results/fail.webp"
               alt="fail"
               width={80}
               height={80}
@@ -612,7 +612,7 @@ export default function CharacterQuiz() {
         ) : (
           <>
             <Image
-              src="/quiz/results/success.png"
+              src="/quiz/results/success.webp"
               alt="success"
               width={80}
               height={80}

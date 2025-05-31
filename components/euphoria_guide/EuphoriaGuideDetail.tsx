@@ -35,7 +35,7 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
           <Card className="w-40">
             <AspectRatio ratio={2 / 3}>
               <Image
-                src={`/characters/${character.rarity}stars/${character.engName}.png`}
+                src={`/characters/${character.rarity}stars/${character.engName}.webp`}
                 alt={character.name}
                 width={100}
                 height={100}
@@ -46,11 +46,12 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
           <Card className="relative w-60">
             <AspectRatio ratio={1}>
               <Image
-                src={`/infos/euphoria/${character.engName.replace(/-/g, "_")}_${item.number}.png`}
+                src={`/infos/euphoria/${character.engName.replace(/-/g, "_")}_${item.number}.webp`}
                 alt={`${character.name} 광상`}
                 width={100}
                 height={100}
                 className="h-full w-full object-contain"
+                unoptimized
               />
             </AspectRatio>
             <div className="absolute bottom-1 right-1 z-10 rounded bg-gray-200 px-1 py-0.5 text-[10px] text-gray-800 shadow dark:bg-gray-700 dark:text-gray-100">
@@ -98,7 +99,7 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
                           <div key={id} className="w-18 flex flex-col items-center">
                             <div className="relative h-16 w-16">
                               <Image
-                                src={`/characters/${partyChar.rarity}stars_small/${partyChar.engName}.png`}
+                                src={`/characters/${partyChar.rarity}stars_small/${partyChar.engName}.webp`}
                                 alt={partyChar.name}
                                 width={100}
                                 height={100}

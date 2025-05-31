@@ -88,7 +88,7 @@ export default function RecommendTeamPage() {
                 <div className="w-full">
                   <div className="relative aspect-square w-full">
                     <Image
-                      src={`/characters/${ch.rarity}stars_small/${ch.engName}.png`}
+                      src={`/characters/${ch.rarity}stars_small/${ch.engName}.webp`}
                       alt={ch.name}
                       fill
                       className="rounded object-contain"
@@ -149,21 +149,21 @@ export default function RecommendTeamPage() {
                         }`}
                       >
                         <Image
-                          src={`/characters/${character.rarity}stars/${character.engName}.png`}
+                          src={`/characters/${character.rarity}stars/${character.engName}.webp`}
                           alt={character.name}
                           width={72}
                           height={72}
                           className="rounded object-contain"
                         />
                         <Image
-                          src={`/infos/effects/${character.rarity}stars.png`}
+                          src={`/infos/effects/${character.rarity}stars.webp`}
                           alt={`${character.rarity}성`}
                           width={72}
                           height={16}
                           className="absolute bottom-0 left-0 z-10"
                         />
                         <Image
-                          src={`/infos/inspiration/${character.inspiration}.png`}
+                          src={`/infos/inspiration/${character.inspiration}.webp`}
                           alt={character.inspiration}
                           width={12}
                           height={12}
@@ -217,7 +217,7 @@ export default function RecommendTeamPage() {
                                   className="flex items-center gap-2 px-2 py-1 text-xs"
                                 >
                                   <Image
-                                    src={`/characters/${altChar.rarity}stars_small/${altChar.engName}.png`}
+                                    src={`/characters/${altChar.rarity}stars_small/${altChar.engName}.webp`}
                                     alt={altChar.name}
                                     width={24}
                                     height={24}
@@ -265,7 +265,7 @@ export default function RecommendTeamPage() {
                 <p className="text-sm">리버스에 존재하는 추천 조합 정보를 보여주는 페이지입니다.</p>
                 <p className="mb-3 text-sm">설명을 읽고 즐거운 리버스 생활되시길 바랍니다.</p>
                 <Image
-                  src="/infos/modal_img/recommend_team_guide.png"
+                  src="/infos/modal_img/recommend_team_guide.webp"
                   alt="추천 조합"
                   width={800}
                   height={400}

@@ -628,7 +628,7 @@ export default function GachaGame() {
               className="relative h-[50px] w-[140px] lg:h-[60px] lg:w-[180px]"
             >
               <Image
-                src="/infos/button/single_pull.png"
+                src="/infos/button/single_pull.webp"
                 alt="1회 뽑기"
                 width={180}
                 height={60}
@@ -640,7 +640,7 @@ export default function GachaGame() {
               className="relative h-[50px] w-[140px] lg:h-[60px] lg:w-[180px]"
             >
               <Image
-                src="/infos/button/ten_pull.png"
+                src="/infos/button/ten_pull.webp"
                 alt="10회 뽑기"
                 width={180}
                 height={60}

@@ -120,7 +120,7 @@ export default function FutureInsightPage() {
                         className="rounded-xl border border-zinc-300 bg-zinc-100 p-3 dark:border-zinc-600 dark:bg-zinc-700"
                       >
                         <Image
-                          src={`/infos/banner_img/${banner.id}.png`}
+                          src={`/infos/banner_img/${banner.id}.webp`}
                           alt={banner.name}
                           className="mb-2 w-full rounded-md border border-zinc-300 dark:border-zinc-600"
                           width={1200}

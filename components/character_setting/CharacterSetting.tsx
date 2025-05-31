@@ -65,7 +65,7 @@ export default function CharacterSetting() {
               <div className="flex cursor-pointer flex-col items-center rounded border border-gray-400 p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800">
                 <div className="relative h-10 w-10">
                   <Image
-                    src={`/characters/${ch.rarity}stars_small/${ch.engName}.png`}
+                    src={`/characters/${ch.rarity}stars_small/${ch.engName}.webp`}
                     alt={ch.name}
                     width={40}
                     height={40}
