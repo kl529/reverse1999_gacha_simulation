@@ -15,6 +15,7 @@ export async function GET() {
     "/euphoria_guide",
     "/blueprint_setting",
     "/recommend_team",
+    "/cash_guide",
   ].map((path) => `${baseUrl}${path}`);
 
   const characterSettingUrls = SETTING_CHARACTERS.map(

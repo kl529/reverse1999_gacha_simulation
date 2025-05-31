@@ -125,10 +125,9 @@ export default function HomePage() {
                   href: "/euphoria_guide",
                 },
                 {
-                {
-                  icon: "/infos/menu/cash_in_guide_menu.png",
-                  label: "현질 가이드\n(준비중)",
-                  href: "#",
+                  icon: "/infos/menu/cash_guide_menu.webp",
+                  label: "현질 가이드",
+                  href: "/cash_guide",
                 },
               ]}
             />
@@ -303,6 +302,24 @@ export default function HomePage() {
               >
                 공명 정보 (An Incredibly Scuffed Page of Recommended Character Resonance Layouts and
                 their Corresponding Codes)
+              </Link>
+              <br />-{" "}
+              <Link
+                href="https://tenor.com/ko/view/vila-r99-reverse-1999-gacha-thumbs-up-gif-2265939147565929775"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                로딩 이미지
+              </Link>
+              <br />-{" "}
+              <Link
+                href="https://ko-fi.com/s/84d0588da5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                마우스 커서
               </Link>
             </p>
           </ConfirmModal>
