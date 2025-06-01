@@ -6,69 +6,126 @@ interface Props {
   results: Character[];
 }
 
+/**
+ * GachaResults – 모바일과 데스크톱 UI 분리
+ *   • 데스크톱(≥ sm): 원본 고정 폭/높이(200×303) 레이아웃 복원
+ *   • 모바일(< sm): 5×2, 카드·아이콘·텍스트 축소
+ */
 export default function GachaResults({ results }: Props) {
-  // 단일 뽑기 시 첫 칸만 캐릭터, 나머지는 빈칸
+  // 10칸 확보 (단일 뽑기면 첫 칸만 채움)
   const displayResults =
     results.length === 1
       ? Array(10)
           .fill(null)
-          .map((_, index) => (index === 0 ? results[0] : null))
+          .map((_, idx) => (idx === 0 ? results[0] : null))
       : results.slice(0, 10);
 
-  return (
-    <div className="/* 필요하다면 여기서 또는 등 추가 가능 */ grid w-full max-w-[] grid-cols-2 items-start justify-items-center gap-4 overflow-x-auto dark:bg-gray-900 sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5">
-      {displayResults.map((char, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: char ? 1 : 0 }}
-          className={`relative flex max-h-[320px] w-full max-w-[300px] flex-col items-center justify-center overflow-hidden rounded shadow-none ${char ? "" : "opacity-0"} `}
-        >
-          {/* (1) 캐릭터 이미지 */}
-          {char && (
+  /** 카드 렌더러 */
+  const renderCard = (char: Character | null, idx: number, isMobile: boolean) => {
+    // 모바일 전용 크기 변수
+    const iconSize = isMobile ? 60 : 80;
+    const iconWidthClass = isMobile ? "w-4" : "w-5";
+    const nameClasses = isMobile ? "bottom-1 text-xs" : "bottom-2 text-base";
+
+    // 데스크톱 컨테이너 클래스(원본)
+    const desktopContainer =
+      "relative flex max-h-[320px] w-full max-w-[300px] flex-col items-center justify-center overflow-hidden rounded shadow-none";
+
+    return (
+      <motion.div
+        key={idx}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: char ? 1 : 0 }}
+        style={
+          isMobile
+            ? {
+                width: "var(--card-w)",
+                height: "calc(var(--card-w)*1.5)",
+              }
+            : undefined
+        }
+        className={`${isMobile ? "relative flex flex-col items-center justify-center overflow-hidden rounded shadow-none" : desktopContainer} ${char ? "" : "opacity-0"}`}
+      >
+        {/* (1) 캐릭터 이미지 */}
+        {char &&
+          (isMobile ? (
             <Image
               src={`/characters/${char.rarity}stars/${char.engName}.webp`}
               alt={char.name}
-              width={200} // 최대 폭 200
-              height={303} // 최대 높이 303
+              fill
+              sizes="25vw"
+              className="object-cover object-top"
+              priority
             />
-          )}
+          ) : (
+            <Image
+              src={`/characters/${char.rarity}stars/${char.engName}.webp`}
+              alt={char.name}
+              width={200}
+              height={303}
+              priority
+            />
+          ))}
 
-          {/* (2) 왼쪽 상단 영감 아이콘 */}
-          {char?.inspiration && (
-            <div className="absolute left-3 top-0 z-10">
-              <Image
-                src={`/infos/inspiration/${char.inspiration}.webp`}
-                alt={char.inspiration}
-                width={80}
-                height={80}
-                className="h-auto w-5"
-              />
-            </div>
-          )}
+        {/* (2) 영감 아이콘 */}
+        {char?.inspiration && (
+          <Image
+            src={`/infos/inspiration/${char.inspiration}.webp`}
+            alt={char.inspiration}
+            width={iconSize}
+            height={iconSize}
+            className={`absolute left-2 top-0 z-10 h-auto ${iconWidthClass}`}
+            priority
+          />
+        )}
 
-          {/* (3) 별 효과 (캐릭터 이미지 아래에 깔기) */}
-          {char && (
+        {/* (3) 별 효과 오버레이 */}
+        {char &&
+          (isMobile ? (
+            <Image
+              src={`/infos/effects/${char.rarity}stars.webp`}
+              alt={`성급 효과 ${char.rarity}`}
+              fill
+              className="pointer-events-none absolute inset-0 z-10 h-full"
+              priority
+            />
+          ) : (
             <Image
               src={`/infos/effects/${char.rarity}stars.webp`}
               alt={`성급 효과 ${char.rarity}`}
               width={200}
               height={303}
-              className="pointer-events-none absolute inset-0 z-10 mx-auto h-full"
+              className="pointer-events-none absolute inset-0 z-10 h-full"
+              priority
             />
-          )}
+          ))}
 
-          {/* (4) 이름 (별 효과와 이미지 위에) */}
-          {char && (
-            <p
-              className="absolute bottom-2 z-40 w-full text-center font-semibold text-white"
-              style={{ textShadow: "0 0 4px rgba(0,0,0,0.8)" }}
-            >
-              {char.name}
-            </p>
-          )}
-        </motion.div>
-      ))}
-    </div>
+        {/* (4) 이름 */}
+        {char && (
+          <p
+            className={`absolute z-40 w-full text-center font-semibold text-white drop-shadow-[0_0_4px_rgba(0,0,0,0.8)] ${nameClasses}`}
+          >
+            {char.name}
+          </p>
+        )}
+      </motion.div>
+    );
+  };
+
+  const desktopCards = displayResults.map((c, i) => renderCard(c, i, false));
+  const mobileCards = displayResults.map((c, i) => renderCard(c, i, true));
+
+  return (
+    <>
+      {/* 모바일(< sm) */}
+      <div className="grid w-full grid-cols-4 justify-items-center gap-2 [--card-w:calc((100vw/1.1-0.5rem)/4)] sm:hidden">
+        {mobileCards}
+      </div>
+
+      {/* 데스크톱(≥ sm) – 원본 고정 사이즈 */}
+      <div className="hidden w-full grid-cols-2 items-start justify-items-center gap-4 overflow-x-auto dark:bg-gray-900 sm:grid sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5">
+        {desktopCards}
+      </div>
+    </>
   );
 }

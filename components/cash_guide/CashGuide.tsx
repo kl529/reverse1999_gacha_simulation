@@ -105,6 +105,16 @@ export default function CashGuide() {
           <br />
           계좌이체를 통해 할인을 받는 방식이며, 핀번호를 받는 형식으로 진행됩니다.
         </p>
+        <Image
+          src="/infos/cash_guide/cash_guide4.webp"
+          alt="에그머니 할인"
+          width={800}
+          height={400}
+          className="mb-2 rounded"
+        />
+        <p className="mb-2 text-center text-sm text-muted-foreground">
+          위와 같이, 패키지 구매시에, 잔액으로 결제 해야 충전 하신 금액이 사용됩니다.
+        </p>
       </Card>
 
       <Card className="mb-4 p-4">
@@ -152,6 +162,25 @@ export default function CashGuide() {
         </ul>
         <p className="mb-4 text-center">
           <b className="text-red-500">PS. 스킨은 현금으로 사는게 가장 좋습니다.</b>
+        </p>
+        <div className="flex w-full flex-row items-center gap-2">
+          <Image
+            src="/infos/cash_guide/cash_guide5.webp"
+            alt="월정액 패키지"
+            width={400}
+            height={200}
+            className="mb-2 w-1/2 rounded object-contain"
+          />
+          <Image
+            src="/infos/cash_guide/cash_guide6.webp"
+            alt="월정액 패키지"
+            width={400}
+            height={200}
+            className="mb-2 w-1/2 rounded object-contain"
+          />
+        </div>
+        <p className="mb-2 text-center text-sm text-muted-foreground">
+          3000원, 6000원 패키지는 위와 같은 구성입니다. (이름은 다를 수 있음.)
         </p>
       </Card>
 

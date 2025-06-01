@@ -10,6 +10,7 @@ import { OffCanvas } from "@/components/gacha_simulator/OffCanvas";
 import MainGachaStats from "@/components/gacha_simulator/MainGachaStats";
 import MainSixStarHistory from "@/components/gacha_simulator/MainSixStarHistory";
 import { version } from "@/data/version";
+import { toast, Toaster } from "react-hot-toast";
 
 export const isValidGachaCharacterForPool = (char: Character): boolean => {
   if (char.exclude_gacha) return false;
@@ -203,6 +204,7 @@ export default function GachaGame() {
   // 4) 6성 기록
   const recordSixStar = (char: Character, pullIndex: number) => {
     setSixStarHistory((prev) => [{ char, pullNumber: totalPulls + pullIndex + 1 }, ...prev]);
+    toast.success(`🎉 ${totalPulls + pullIndex + 1}번째 토끼로 🏆${char.name}🏆 획득!`);
   };
 
   /**
@@ -622,7 +624,7 @@ export default function GachaGame() {
         {/* 🎯 뽑기 버튼 & 결과 (스크롤 가능 영역) */}
         <div className="flex flex-grow flex-col items-center gap-5 overflow-y-auto">
           {/* 뽑기 버튼 */}
-          <div className="flex items-center gap-4 lg:gap-6">
+          <div className="flex items-center gap-2 lg:gap-6">
             <button
               onClick={() => handleGacha(1)}
               className="relative h-[50px] w-[140px] lg:h-[60px] lg:w-[180px]"
@@ -648,7 +650,7 @@ export default function GachaGame() {
               />
             </button>
             <button
-              className="lg:text-md h-[30px] rounded-lg bg-red-500 px-3 text-sm text-white transition-transform hover:scale-105 active:scale-95 lg:h-[40px] lg:px-6"
+              className="h-[30px] rounded-lg bg-red-500 px-1 text-xs text-white transition-transform hover:scale-105 active:scale-95 lg:h-[40px] lg:px-6 lg:text-sm"
               onClick={resetAll}
             >
               리셋
@@ -689,6 +691,7 @@ export default function GachaGame() {
       >
         📒
       </button>
+      <Toaster position="bottom-center" />
     </div>
   );
 }

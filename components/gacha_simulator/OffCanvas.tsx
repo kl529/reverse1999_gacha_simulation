@@ -33,7 +33,7 @@ export function OffCanvas({ isOpen, onClose, position = "left", children }: OffC
 
           {/* ✅ 실제 패널 - position에 따라 left 또는 right 설정 */}
           <motion.aside
-            className={`fixed top-0 ${isLeft ? "left-0" : "right-0"} z-50 h-full w-1/2 overflow-y-auto bg-white p-4 shadow-lg dark:bg-gray-800 lg:w-1/4`}
+            className={`fixed top-0 ${isLeft ? "left-0" : "right-0"} z-50 h-full w-2/3 overflow-y-auto bg-white p-4 shadow-lg dark:bg-gray-800 lg:w-1/4`}
             variants={variants}
             initial="hidden"
             animate="visible"
