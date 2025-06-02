@@ -1,6 +1,5 @@
 import "@/app/globals.css";
 import CustomCursor from "@/components/etc/CustomCursor";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import SecurityWrapper from "@/components/etc/SecurityWrapper";
 import { ModalProvider } from "@/components/etc/ModalProvider";
@@ -46,7 +45,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <GlobalLoadingManager />
               <HamburgerConditional />
               <CustomCursor />
-              <SpeedInsights />
               <Analytics />
               {children}
             </SecurityWrapper>
