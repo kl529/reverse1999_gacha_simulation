@@ -69,7 +69,7 @@ export default function HomePage() {
                   label: "캐릭터\n퀴즈",
                   href: "/character_quiz",
                 },
-                { icon: "/infos/menu/bingo_menu.webp", label: "빙고\n(준비중)", href: "#" },
+                { icon: "/infos/menu/bingo_menu.webp", label: "빙고", href: "/bingo" },
               ]}
             />
 

@@ -215,26 +215,26 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                 {rarity === 6 ? "🌟 6성" : "⭐ 5성"}
               </h3>
               <Separator className="my-2" />
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(64px,1fr))] gap-2">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(88px,1fr))] gap-3">
                 {getSortedCharList(rarity).map((ch) => (
                   <Link key={ch.id} href={`/character_setting/${ch.id}`}>
                     <div className="flex flex-col items-center rounded p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800">
-                      <div className="relative h-10 w-10">
+                      <div className="relative h-16 w-16">
                         <Image
                           src={`/characters/${ch.rarity}stars_small/${ch.engName}.webp`}
                           alt={ch.name}
                           fill
-                          sizes="40px"
+                          sizes="64px"
                           className="rounded object-contain"
                           priority
                         />
                         {ch.version && (
-                          <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[8px] text-white shadow">
+                          <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
                             {ch.version}
                           </div>
                         )}
                       </div>
-                      <div className="w-full truncate text-center text-[11px] font-semibold text-gray-600 dark:text-gray-200">
+                      <div className="w-full truncate text-center text-sm font-semibold text-black">
                         {ch.name}
                       </div>
                     </div>

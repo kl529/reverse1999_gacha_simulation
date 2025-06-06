@@ -59,25 +59,25 @@ export default function CharacterSetting() {
     return (
       <div className="space-y-2">
         <h2 className={`text-xl font-bold ${colorClass} pb-2`}>{label}</h2>
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(76px,1fr))] gap-2">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(92px,1fr))] gap-1">
           {group.map((ch) => (
             <Link key={`${ch.id}-${ch.version}`} href={`/character_setting/${ch.id}`}>
               <div className="flex cursor-pointer flex-col items-center rounded border border-gray-400 p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800">
-                <div className="relative h-10 w-10">
+                <div className="relative h-16 w-16">
                   <Image
                     src={`/characters/${ch.rarity}stars_small/${ch.engName}.webp`}
                     alt={ch.name}
-                    width={40}
-                    height={40}
+                    width={64}
+                    height={64}
                     className="h-full w-full rounded object-contain"
                   />
                   {ch.version && (
-                    <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[8px] text-white shadow">
+                    <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
                       {ch.version}
                     </div>
                   )}
                 </div>
-                <div className="w-full truncate text-center text-xs font-bold text-black dark:text-gray-100">
+                <div className="w-full truncate text-center text-sm font-bold text-black dark:text-gray-100">
                   {ch.name}
                 </div>
               </div>

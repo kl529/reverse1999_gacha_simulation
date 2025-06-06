@@ -36,6 +36,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
       label: "캐릭터 퀴즈",
       href: "/character_quiz",
     },
+    { iconImg: "/infos/menu/bingo_menu.webp", label: "빙고", href: "/bingo" },
     { divider: true },
     { iconImg: "/infos/menu/material_menu.webp", label: "재료 파밍", modalType: "material" },
     {

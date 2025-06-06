@@ -14,7 +14,10 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
       e.preventDefault();
       alert("우클릭이 금지되어 있습니다.");
     };
-    document.addEventListener("contextmenu", disableRightClick);
+    const rightClickExceptionPaths = ["/bingo"];
+    if (!rightClickExceptionPaths.includes(pathname)) {
+      document.addEventListener("contextmenu", disableRightClick);
+    }
 
     // 2️⃣ 개발자 도구(F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+Shift+J) 방지
     const blockDevTools = (e: KeyboardEvent) => {
@@ -41,7 +44,8 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
       !pathname.startsWith("/euphoria_guide") &&
       pathname !== "/blueprint_setting" &&
       pathname !== "/recommend_team" &&
-      pathname !== "/cash_guide"
+      pathname !== "/cash_guide" &&
+      pathname !== "/bingo"
     ) {
       alert("잘못된 접근입니다. 홈으로 이동합니다.");
       router.push("/");
