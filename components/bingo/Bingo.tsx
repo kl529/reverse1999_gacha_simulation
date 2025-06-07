@@ -7,6 +7,12 @@ import { toast, Toaster } from "react-hot-toast";
 const BINGO_SIZE = 5;
 const TOTAL_BINGO_LINES = 12; // 5x5 빙고판의 전체 빙고 줄 개수
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 function getBingoLines(board: boolean[][]) {
   const lines: number[][][] = [];
   // 가로
@@ -47,6 +53,15 @@ export default function Bingo() {
       });
       return;
     }
+
+    const text = bingoTexts[row * BINGO_SIZE + col];
+
+    // 🔹 GA 이벤트 전송
+    window.gtag?.("event", "bingo_cell_click", {
+      event_category: "Bingo",
+      event_label: text,
+    });
+
     setBoard((prev) => {
       const copy = prev.map((r) => [...r]);
       copy[row][col] = !copy[row][col];
