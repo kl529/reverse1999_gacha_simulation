@@ -9,7 +9,16 @@ const TOTAL_BINGO_LINES = 12; // 5x5 빙고판의 전체 빙고 줄 개수
 
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
+    gtag?: (
+      command: "event",
+      eventName: string,
+      eventParams?: {
+        event_category?: string;
+        event_label?: string;
+        value?: number;
+        [key: string]: unknown;
+      }
+    ) => void;
   }
 }
 
@@ -153,23 +162,21 @@ export default function Bingo() {
             const idx = i * BINGO_SIZE + j;
             const text = bingoTexts[idx];
             const isBingo = bingoCells.has(`${i},${j}`);
-            const baseStyle =
-              "relative flex items-center justify-center break-words rounded border p-1 text-center font-semibold leading-snug transition";
-            const checkedStyle = checked
-              ? "bg-blue-500 text-white dark:bg-blue-600 dark:text-white"
-              : "bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600";
-            const ringStyle = isBingo ? "z-10 ring-4 ring-green-400 dark:ring-green-500" : "";
 
             return (
-              <button
-                key={`${i}-${j}`}
-                className={`${baseStyle} border-gray-300 ${checkedStyle} ${ringStyle} aspect-square w-full sm:h-[90px] sm:w-[90px] md:h-[100px] md:w-[100px] lg:h-[110px] lg:w-[110px]`}
-                onClick={() => handleCellClick(i, j)}
-              >
-                <span className="pointer-events-none block w-full whitespace-pre-line break-words text-center text-[11px] sm:text-xs md:text-sm lg:text-base">
-                  {text}
-                </span>
-              </button>
+              <div key={`${i}-${j}`} className="aspect-square w-full">
+                <button
+                  className={`relative flex h-full w-full items-center justify-center rounded border border-gray-300 p-2 text-center text-[11px] font-semibold leading-snug sm:text-xs md:text-sm lg:text-base ${checked ? "bg-blue-500 text-white dark:bg-blue-600 dark:text-white" : "bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"} ${isBingo ? "z-10 ring-4 ring-green-400 dark:ring-green-500" : ""} `}
+                  onClick={() => handleCellClick(i, j)}
+                >
+                  <span
+                    className="w-full text-center leading-tight"
+                    style={{ fontSize: "clamp(9px, 2vw, 14px)" }}
+                  >
+                    {text}
+                  </span>
+                </button>
+              </div>
             );
           })
         )}
