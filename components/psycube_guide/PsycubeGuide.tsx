@@ -43,7 +43,8 @@ export default function PsycubeGuide() {
         {version} 이후의 정보는 모두 번역본이며, 오역이 있을 수 있습니다.
         <br />
         <span className="text-red-500">
-          반송파 여행가방은 &quot;호기심쟁이&quot; or 아무거나 해도 무방합니다.
+          반송파 여행가방은 &quot;호기심쟁이&quot; or 아무거나 해도 무방합니다. <br />
+          무조건 증폭하는게 아닌, 본인 캐릭터 풀에 맞게 의지를 육성하시는걸 추천합니다.
         </span>
       </p>
 
