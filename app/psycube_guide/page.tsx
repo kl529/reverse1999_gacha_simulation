@@ -19,7 +19,7 @@ export const metadata = {
     siteName: "버틴의 여행가방",
     images: [
       {
-        url: `/infos/link_img/euphoria_guide_link_img.webp`,
+        url: `/infos/link_img/psycube_guide_link_img.webp`,
         width: 1200,
         height: 630,
         alt: "리버스 1999 의지 육성 가이드 미리보기 이미지",
