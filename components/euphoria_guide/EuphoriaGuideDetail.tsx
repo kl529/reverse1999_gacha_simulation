@@ -6,6 +6,7 @@ import Image from "next/image";
 import { charactersByRarity } from "@/data/characters";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Link from "next/link";
 
 interface Props {
   item: Euphoria;
@@ -63,6 +64,12 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
         <div className="mb-6 text-center text-sm text-black dark:text-gray-200">
           <p className="whitespace-pre-line">{item.note}</p>
           <p className="mt-1 whitespace-pre-line">출시 : v{item.version}</p>
+          <Link
+            href={`/character_setting/${character.id}`}
+            className="mt-2 inline-block text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            {character.name} 세팅 보기 →
+          </Link>
         </div>
 
         <Card className="mb-6">

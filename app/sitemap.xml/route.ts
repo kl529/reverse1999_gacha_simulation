@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
 import { characterSkin } from "@/data/character_skin";
 import { euphoriaList } from "@/data/euphoria";
+import { psycube_list } from "@/data/psycube_data";
+
 export async function GET() {
   const baseUrl = "https://www.reverse1999-simulator.com";
   const staticUrls = [
@@ -17,6 +19,7 @@ export async function GET() {
     "/recommend_team",
     "/cash_guide",
     "/bingo",
+    "/psycube_guide",
   ].map((path) => `${baseUrl}${path}`);
 
   const characterSettingUrls = SETTING_CHARACTERS.map(
@@ -27,7 +30,15 @@ export async function GET() {
 
   const euphoriaGuideUrls = euphoriaList.map((e) => `${baseUrl}/euphoria_guide/${e.id}`);
 
-  const urls = [...staticUrls, ...characterSettingUrls, ...characterSkinUrls, ...euphoriaGuideUrls];
+  const psycubeGuideUrls = psycube_list.map((p) => `${baseUrl}/psycube_guide/${p.id}`);
+
+  const urls = [
+    ...staticUrls,
+    ...characterSettingUrls,
+    ...characterSkinUrls,
+    ...euphoriaGuideUrls,
+    ...psycubeGuideUrls,
+  ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

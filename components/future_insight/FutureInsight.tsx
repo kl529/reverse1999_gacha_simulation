@@ -8,6 +8,7 @@ import { version } from "@/data/version";
 import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 function getCharNameById(id: number | Character | undefined): string {
   if (typeof id === "object" && id !== null && "name" in id) {
@@ -100,7 +101,7 @@ export default function FutureInsightPage() {
 
               <Separator />
               <div>
-                <h2 className="mb-2 font-bold">📌 픽업 배너</h2>
+                <h2 className="mb-2 font-bold">📌 픽업 배너 (클릭시 캐릭터 세팅 보기)</h2>
                 <div className="grid gap-4 md:grid-cols-2">
                   {item.banners.map((bannerId, idx) => {
                     const banner = banners.find((b) => b.id === bannerId);
@@ -119,13 +120,15 @@ export default function FutureInsightPage() {
                         key={banner.id}
                         className="rounded-xl border border-zinc-300 bg-zinc-100 p-3 dark:border-zinc-600 dark:bg-zinc-700"
                       >
-                        <Image
-                          src={`/infos/banner_img/${banner.id}.webp`}
-                          alt={banner.name}
-                          className="mb-2 w-full rounded-md border border-zinc-300 dark:border-zinc-600"
-                          width={1200}
-                          height={600}
-                        />
+                        <Link href={`/character_setting/${banner.pickup6}`}>
+                          <Image
+                            src={`/infos/banner_img/${banner.id}.webp`}
+                            alt={banner.name}
+                            className="mb-2 w-full rounded-md border border-zinc-300 dark:border-zinc-600"
+                            width={1200}
+                            height={600}
+                          />
+                        </Link>
                         <div className="flex items-center gap-2">
                           <span className="rounded bg-black/60 px-2 py-0.5 text-xs text-white">
                             {halfLabel}
@@ -146,7 +149,7 @@ export default function FutureInsightPage() {
 
               <Separator />
               <div>
-                <h2 className="mb-1 font-bold">🌀 광상 목록</h2>
+                <h2 className="mb-1 font-bold">🌀 광상 목록 (클릭시 설명)</h2>
                 <p>
                   <strong>6성:</strong>{" "}
                   {item.euphoria.star6

@@ -2,6 +2,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { recommendTeams } from "@/data/recommend_team";
 import { charactersByRarity } from "@/data/characters";
@@ -143,51 +144,53 @@ export default function RecommendTeamPage() {
 
                   return (
                     <div key={overrideKey} className="flex w-[72px] flex-col items-center">
-                      <div
-                        className={`relative w-[72px] rounded border object-contain ${
-                          ch.isMain ? "border-2 border-red-500" : "border-gray-400"
-                        }`}
-                      >
-                        <Image
-                          src={`/characters/${character.rarity}stars/${character.engName}.webp`}
-                          alt={character.name}
-                          width={72}
-                          height={72}
-                          className="rounded object-contain"
-                        />
-                        <Image
-                          src={`/infos/effects/${character.rarity}stars.webp`}
-                          alt={`${character.rarity}성`}
-                          width={72}
-                          height={16}
-                          className="absolute bottom-0 left-0 z-10"
-                        />
-                        <Image
-                          src={`/infos/inspiration/${character.inspiration}.webp`}
-                          alt={character.inspiration}
-                          width={12}
-                          height={12}
-                          className="absolute right-1 top-0 z-10"
-                        />
-                        <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white">
-                          v{character.version}
+                      <Link href={`/character_setting/${character.id}`}>
+                        <div
+                          className={`relative w-[72px] cursor-pointer rounded border object-contain ${
+                            ch.isMain ? "border-2 border-red-500" : "border-gray-400"
+                          }`}
+                        >
+                          <Image
+                            src={`/characters/${character.rarity}stars/${character.engName}.webp`}
+                            alt={character.name}
+                            width={72}
+                            height={72}
+                            className="rounded object-contain"
+                          />
+                          <Image
+                            src={`/infos/effects/${character.rarity}stars.webp`}
+                            alt={`${character.rarity}성`}
+                            width={72}
+                            height={16}
+                            className="absolute bottom-0 left-0 z-10"
+                          />
+                          <Image
+                            src={`/infos/inspiration/${character.inspiration}.webp`}
+                            alt={character.inspiration}
+                            width={12}
+                            height={12}
+                            className="absolute right-1 top-0 z-10"
+                          />
+                          <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white">
+                            v{character.version}
+                          </div>
+                          {isEuphoria && (
+                            <div className="absolute bottom-6 right-1 z-10 rounded-sm bg-purple-600 px-1 py-[1px] text-[10px] text-white">
+                              광상
+                            </div>
+                          )}
+                          {ch.isMain && (
+                            <div className="absolute left-1 top-1 z-10 rounded-sm bg-red-600 px-1 py-[1px] text-[10px] text-white">
+                              메인
+                            </div>
+                          )}
+                          {role && (
+                            <div className="absolute bottom-1 left-1 z-10 rounded-sm bg-green-600 px-1 py-[1px] text-[10px] text-white">
+                              {role}
+                            </div>
+                          )}
                         </div>
-                        {isEuphoria && (
-                          <div className="absolute bottom-6 right-1 z-10 rounded-sm bg-purple-600 px-1 py-[1px] text-[10px] text-white">
-                            광상
-                          </div>
-                        )}
-                        {ch.isMain && (
-                          <div className="absolute left-1 top-1 z-10 rounded-sm bg-red-600 px-1 py-[1px] text-[10px] text-white">
-                            메인
-                          </div>
-                        )}
-                        {role && (
-                          <div className="absolute bottom-1 left-1 z-10 rounded-sm bg-green-600 px-1 py-[1px] text-[10px] text-white">
-                            {role}
-                          </div>
-                        )}
-                      </div>
+                      </Link>
                       <span className="mt-1 w-full truncate text-center text-xs">
                         {character.name}
                       </span>

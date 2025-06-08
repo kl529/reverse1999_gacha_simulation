@@ -125,6 +125,11 @@ export default function HomePage() {
                   href: "/euphoria_guide",
                 },
                 {
+                  icon: "/infos/menu/psycube_guide_menu.webp",
+                  label: "의지 육성",
+                  href: "/psycube_guide",
+                },
+                {
                   icon: "/infos/menu/cash_guide_menu.webp",
                   label: "현질 가이드",
                   href: "/cash_guide",

@@ -67,6 +67,11 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
       label: "광상 가이드",
       href: "/euphoria_guide",
     },
+    {
+      iconImg: "/infos/menu/psycube_guide_menu.webp",
+      label: "의지 육성 가이드",
+      href: "/psycube_guide",
+    },
     { iconImg: "/infos/menu/cash_guide_menu.webp", label: "현질 가이드", href: "/cash_guide" },
   ];
 

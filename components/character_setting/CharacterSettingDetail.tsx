@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Character } from "@/data/characters";
 import { character_setting_data } from "@/data/character_setting_data";
-import { PSYCUBE_DATA } from "@/data/psycube_data";
+import { psycube_list } from "@/data/psycube_data";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -21,8 +21,8 @@ import { RESONANCE_PATTERN } from "@/data/resonance_pattern";
 export default function CharacterSettingDetail({ character }: { character: Character }) {
   const setting = character_setting_data.find((c) => c.character_id === character.id);
 
-  const psycube_list = (setting?.psycubes || []).map((p) => {
-    const psycube = PSYCUBE_DATA.find((d) => d.id === p.psycube_id);
+  const psycubeItems = (setting?.psycubes || []).map((p) => {
+    const psycube = psycube_list.find((d) => d.id === p.psycube_id);
     return {
       src: `/infos/psycube_img/${psycube?.engName}.webp`,
       label: psycube?.name || "",
@@ -177,7 +177,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
             의지는 추천순이며, 순위도 100% 정답이 아닐 수도 있습니다.
           </p>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {psycube_list.map((item, idx) => (
+            {psycubeItems.map((item, idx) => (
               <Card key={idx} className="text-center">
                 <CardContent className="space-y-1 p-2">
                   <div className="relative mx-auto h-[100px] w-[100px]">
