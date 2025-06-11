@@ -538,7 +538,8 @@ export default function CharacterQuiz() {
         isOpen={showHelpModal}
         onClose={closeAllModals}
         modalClassName="
-          w-full sm:max-w-3xl sm:min-w-[600px] min-h-[500px] px-4
+          w-[95vw] max-w-3xl px-4 py-4
+          max-h-[90vh] overflow-y-auto
           bg-white dark:bg-gray-800
           text-black dark:text-white
           rounded-lg shadow-lg

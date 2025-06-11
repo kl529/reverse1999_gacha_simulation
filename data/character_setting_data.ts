@@ -11,8 +11,8 @@ export interface ResonanceInfo {
 export interface CharacterSettingData {
   character_id: number;
   psycubes: PsycubeInfo[];
-  resonance?: ResonanceInfo[]; // 추후 수정
-  resonance_patterns?: string[]; // 추후 수정
+  resonance?: ResonanceInfo[];
+  resonance_patterns?: string[];
 }
 
 export const character_setting_data: CharacterSettingData[] = [

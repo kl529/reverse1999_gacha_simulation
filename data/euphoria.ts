@@ -285,7 +285,7 @@ export const euphoriaList: Euphoria[] = [
   {
     id: 15,
     character_id: 8, // 메디슨 포켓
-    priority: 2,
+    priority: 1,
     name: "5ml 혈액 연금술",
     note: "보호막 & 힐러 / 자해 서폿",
     number: 1,
