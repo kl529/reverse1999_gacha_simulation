@@ -24,7 +24,6 @@
     "@radix-ui/react-slot": "^1.2.2",
     "@radix-ui/react-switch": "^1.2.4",
     "@tailwindcss/line-clamp": "^0.4.4",
-    "@vercel/analytics": "^1.5.0",
     "animate.css": "^4.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
