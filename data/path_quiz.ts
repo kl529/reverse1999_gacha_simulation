@@ -8,7 +8,7 @@ export const pathQuizList: PathQuizItem[] = [
   {
     question: "1장-7. 신비한 유니콘",
     answerImage: "/infos/path_quiz/1_7.webp",
-    answerDescription: "정답 : 조용한 레이븐 하트",
+    answerDescription: "정답 : 조용한 레이븐하트",
   },
   {
     question: "1장-10. 마틸다의 성적표",

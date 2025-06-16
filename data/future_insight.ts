@@ -15,6 +15,7 @@ export interface FutureInsightItem {
     star6: { characterId: number; euphoriaId?: number }[];
     star5: { characterId: number; euphoriaId?: number }[];
   };
+  note?: string;
 }
 
 export const futureInsightData: FutureInsightItem[] = [
@@ -105,27 +106,30 @@ export const futureInsightData: FutureInsightItem[] = [
       ],
       star5: [],
     },
+    note: "무료 광상 캐릭터 선택권 지급 (2.6 기준 광상 캐릭터까지)",
   },
-  // {
-  //   version: "2.8",
-  //   title: "복낙원",
-  //   period: {
-  //     start: "2025-08-07",
-  //     end: "2025-09-11",
-  //     week: 5,
-  //   },
-  //   album_shop: {
-  //     rare6: 18,
-  //     rare5: 105,
-  //   },
-  //   banners: ["nautika_pick_up"],
-  //   euphoria: {
-  //     star6: [
-  //       { characterId: 22, euphoriaId: 17 },
-  //       { characterId: 21, euphoriaId: 18 },
-  //       { characterId: 21, euphoriaId: 19 },
-  //     ],
-  //     star5: [],
-  //   },
-  // },
+  {
+    version: "2.8",
+    title: "복낙원",
+    period: {
+      start: "2025-09-18",
+      end: "2025-10-30",
+      week: 6,
+    },
+    album_shop: {
+      rare6: 18,
+      rare5: 110,
+    },
+    banners: ["nautika_pick_up", "moldir_pick_up"],
+    euphoria: {
+      star6: [
+        { characterId: 29, euphoriaId: 20 },
+        { characterId: 28, euphoriaId: 23 },
+        { characterId: 15, euphoriaId: 22 },
+        { characterId: 5, euphoriaId: 21 },
+      ],
+      star5: [],
+    },
+    note: "37,000원 6성 선택권 판매 (상시 캐릭만 가능 ~2.5), 무료 형상권 지급 (상시 캐릭만 가능 ~2.5)",
+  },
 ];

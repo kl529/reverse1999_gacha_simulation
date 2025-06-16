@@ -17,13 +17,16 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { toast, Toaster } from "react-hot-toast";
 import { useState } from "react";
 import { RESONANCE_PATTERN } from "@/data/resonance_pattern";
+import { useRouter } from "next/navigation";
 
 export default function CharacterSettingDetail({ character }: { character: Character }) {
   const setting = character_setting_data.find((c) => c.character_id === character.id);
+  const router = useRouter();
 
   const psycubeItems = (setting?.psycubes || []).map((p) => {
     const psycube = psycube_list.find((d) => d.id === p.psycube_id);
     return {
+      id: psycube?.id,
       src: `/infos/psycube_img/${psycube?.engName}.webp`,
       label: psycube?.name || "",
       description: p.description,
@@ -178,7 +181,11 @@ export default function CharacterSettingDetail({ character }: { character: Chara
           </p>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {psycubeItems.map((item, idx) => (
-              <Card key={idx} className="text-center">
+              <Card
+                key={idx}
+                className="cursor-pointer text-center transition-shadow hover:shadow-lg"
+                onClick={() => router.push(`/psycube_guide/${item.id}`)}
+              >
                 <CardContent className="space-y-1 p-2">
                   <div className="relative mx-auto h-[100px] w-[100px]">
                     <Image
@@ -234,7 +241,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                           </div>
                         )}
                       </div>
-                      <div className="w-full truncate text-center text-sm font-semibold text-black">
+                      <div className="w-full truncate text-center text-sm font-semibold text-black dark:text-white">
                         {ch.name}
                       </div>
                     </div>

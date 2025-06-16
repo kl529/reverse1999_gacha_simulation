@@ -11,13 +11,20 @@ export type Banner = {
 };
 
 export const banners: Banner[] = [
-  // {
-  //   id: "nautika_pick_up",
-  //   name: "[2.8] 노티카 픽업",
-  //   pickup6: 47,
-  //   pickup5: [128],
-  //   version: "2.8",
-  // },
+  {
+    id: "moldir_pick_up",
+    name: "[2.8] 몰디르 픽업",
+    pickup6: 49,
+    pickup5: [103, 120],
+    version: "2.8",
+  },
+  {
+    id: "nautika_pick_up",
+    name: "[2.8] 노티카 픽업",
+    pickup6: 47,
+    pickup5: [],
+    version: "2.8",
+  },
   {
     id: "kiperina_pick_up",
     name: "[2.7] 키페리나 픽업",

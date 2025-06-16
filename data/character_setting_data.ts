@@ -1460,6 +1460,27 @@ export const character_setting_data: CharacterSettingData[] = [
     ],
   },
   {
+    character_id: 49, // "몰디르"
+    psycubes: [
+      {
+        psycube_id: 73,
+        description: "S",
+      },
+      {
+        psycube_id: 36,
+        description: "A",
+      },
+      {
+        psycube_id: 9,
+        description: "A(비상성)",
+      },
+      {
+        psycube_id: 24,
+        description: "A-",
+      },
+    ],
+  },
+  {
     character_id: 101, // "소네트"
     psycubes: [
       {
