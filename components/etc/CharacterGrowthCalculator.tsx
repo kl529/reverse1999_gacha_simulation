@@ -481,7 +481,7 @@ export default function MaterialCalculator({ characterId }: Props) {
         <div className="flex flex-col gap-3">
           {baseItems.length > 0 && (
             <div className="rounded-lg bg-white p-4 pb-2 shadow-sm dark:bg-gray-800">
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-1 sm:gap-3">
                 {baseItems.map(({ id, count }) => {
                   const material = materialList.find((m: Material) => m.id === id);
                   return (
@@ -491,12 +491,12 @@ export default function MaterialCalculator({ characterId }: Props) {
                           <Image
                             src={`/infos/materials/${id}.webp`}
                             alt={material?.name || String(id)}
-                            width={48}
-                            height={48}
-                            className="rounded"
+                            width={40}
+                            height={40}
+                            className="rounded sm:h-12 sm:w-12"
                           />
                         </div>
-                        <div className="mt-1 text-center text-sm font-medium">
+                        <div className="mt-1 text-center text-xs font-medium sm:text-sm">
                           {count.toLocaleString()}
                         </div>
                         <div className="absolute bottom-full left-1/2 z-50 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded-md bg-black/90 px-3 py-1.5 text-sm font-medium text-white group-hover:block">
@@ -513,7 +513,7 @@ export default function MaterialCalculator({ characterId }: Props) {
             .sort(([rarityA], [rarityB]) => Number(rarityB) - Number(rarityA))
             .map(([rarity, items]) => (
               <div key={rarity} className="rounded-lg bg-white p-4 pb-2 shadow-sm dark:bg-gray-800">
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-1 sm:gap-3">
                   {items.map(({ id, count }) => {
                     const material = materialList.find((m: Material) => m.id === id);
                     return (
@@ -538,12 +538,12 @@ export default function MaterialCalculator({ characterId }: Props) {
                             <Image
                               src={`/infos/materials/${id}.webp`}
                               alt={material?.name || String(id)}
-                              width={48}
-                              height={48}
-                              className="rounded"
+                              width={40}
+                              height={40}
+                              className="rounded sm:h-12 sm:w-12"
                             />
                           </div>
-                          <div className="mt-1 text-center text-sm font-medium">
+                          <div className="mt-1 text-center text-xs font-medium sm:text-sm">
                             {count.toLocaleString()}
                           </div>
                           <div className="absolute bottom-full left-1/2 z-50 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded-md bg-black/90 px-3 py-1.5 text-sm font-medium text-white group-hover:block">
