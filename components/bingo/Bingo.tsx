@@ -68,7 +68,7 @@ export default function Bingo() {
     // 🔹 GA 이벤트 전송
     window.gtag?.("event", "bingo_cell_click", {
       event_category: "Bingo",
-      event_label: text,
+      bingo_text: text,
     });
 
     setBoard((prev) => {
