@@ -15,13 +15,29 @@ import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast, Toaster } from "react-hot-toast";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { RESONANCE_PATTERN } from "@/data/resonance_pattern";
+import CharacterGrowthCalculator from "@/components/etc/CharacterGrowthCalculator";
 import { useRouter } from "next/navigation";
+import { resonanceMaterialList } from "@/data/resonance_material";
+import { euphoriaMaterialList } from "@/data/euphoria_material";
+import { resonancePatternMaterial } from "@/data/resonance_pattern_material";
+import { insightMaterial } from "@/data/insight_material";
 
 export default function CharacterSettingDetail({ character }: { character: Character }) {
   const setting = character_setting_data.find((c) => c.character_id === character.id);
   const router = useRouter();
+
+  const hasGrowthData = useMemo(() => {
+    const hasResonance = resonanceMaterialList.some((c) => c.character_id === character.id);
+    const hasEuphoria = euphoriaMaterialList.some((c) => c.character_id === character.id);
+    const hasResonancePattern = resonancePatternMaterial.some(
+      (c) => c.character_id === character.id
+    );
+    const hasInsight = insightMaterial.some((c) => c.character_id === character.id);
+
+    return hasResonance || hasEuphoria || hasResonancePattern || hasInsight;
+  }, [character.id]);
 
   const psycubeItems = (setting?.psycubes || []).map((p) => {
     const psycube = psycube_list.find((d) => d.id === p.psycube_id);
@@ -214,6 +230,8 @@ export default function CharacterSettingDetail({ character }: { character: Chara
             ))}
           </div>
         </div>
+
+        {hasGrowthData && <CharacterGrowthCalculator characterId={character.id} />}
 
         <div className="space-y-6">
           {[6, 5].map((rarity) => (
