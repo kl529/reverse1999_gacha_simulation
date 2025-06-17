@@ -328,7 +328,7 @@ export const euphoriaList: Euphoria[] = [
     id: 17,
     character_id: 22, // 곡랑
     priority: 2,
-    name: "자유로운 하늘의 별에 바치는 술",
+    name: "하늘의 별에게 바쳤어야 할 술",
     note: "추가공격 딜러",
     number: 1,
     version: "2.7",
