@@ -839,7 +839,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       rarity: 4,
       inspiration: "spirit",
       engName: "poltergeist",
-      version: "2.0",
+      version: "1.0",
       resonanceType: "defense",
     },
     {
@@ -959,7 +959,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       rarity: 3,
       inspiration: "spirit",
       engName: "pioneer",
-      version: "1.0",
+      version: "2.0",
       resonanceType: "defense",
     },
   ],
