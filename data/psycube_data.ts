@@ -609,7 +609,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 35,
-    name: "뇌실=감방",
+    name: "뇌실은 감옥이다",
     engName: "mental_cage",
     rarity: 6,
     version: "2.6",

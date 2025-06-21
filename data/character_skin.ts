@@ -8,6 +8,8 @@ export interface CharacterSkin {
   price?: string;
   resell: string;
   version: string;
+  shorts_url?: string;
+  tarot_number?: string;
 }
 
 export const characterSkin: CharacterSkin[] = [
@@ -41,6 +43,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.1",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/9NTK-29lufA",
   },
   {
     id: 4,
@@ -52,6 +55,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.1",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/fWA0myogwXs",
   },
   {
     id: 5,
@@ -73,6 +77,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.2",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/gyCnsBSId-o",
   },
   {
     id: 7,
@@ -83,6 +88,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "1.2",
+    shorts_url: "https://www.youtube.com/embed/IwzxmBYaEdM",
   },
   {
     id: 8,
@@ -94,6 +100,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.2",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/_DX5W8mHJKw",
   },
   {
     id: 9,
@@ -104,6 +111,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "1.2",
+    shorts_url: "https://www.youtube.com/embed/3JjwuNZU-TM",
   },
   {
     id: 10,
@@ -115,6 +123,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.3",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/YqHG9S6RKSE",
   },
   {
     id: 11,
@@ -126,6 +135,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.3",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/zxJa2kzIdHY",
   },
   {
     id: 12,
@@ -136,6 +146,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "1.3",
+    shorts_url: "https://www.youtube.com/embed/H5IwSto1W6c",
   },
   {
     id: 13,
@@ -146,6 +157,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "1.3",
+    shorts_url: "https://www.youtube.com/embed/8flL8k-Hhik",
   },
   {
     id: 14,
@@ -157,6 +169,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.4",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/h1tczx28Duo",
   },
   {
     id: 15,
@@ -168,6 +181,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.4",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/ZdbWwyu7j7A",
   },
   {
     id: 16,
@@ -178,6 +192,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "1.4",
+    shorts_url: "https://www.youtube.com/embed/RvkJ4NtjBA4",
   },
   {
     id: 17,
@@ -240,6 +255,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "무료",
     resell: "X",
     version: "1.6",
+    shorts_url: "https://www.youtube.com/embed/-9heAmHhgzM",
   },
   {
     id: 23,
@@ -251,6 +267,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.6",
     price: "14,000₩ / 1080빗방울",
+    shorts_url: "https://www.youtube.com/embed/R3pWMpyJ9qw",
   },
   {
     id: 24,
@@ -262,6 +279,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.6",
     price: "14,000₩ / 1080빗방울",
+    shorts_url: "https://www.youtube.com/embed/_Mn-EeLOTyE",
   },
   {
     id: 25,
@@ -272,6 +290,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "1.6",
+    shorts_url: "https://www.youtube.com/embed/Z9Wy5ZBr4pU",
   },
   {
     id: 26,
@@ -293,6 +312,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.7",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/-Ra1KFb7R6g",
   },
   {
     id: 28,
@@ -304,6 +324,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.7",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/zQtKo2tOo1w",
   },
   {
     id: 29,
@@ -314,6 +335,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "1.7",
+    shorts_url: "https://www.youtube.com/embed/i5IOJamRHzU",
   },
   {
     id: 30,
@@ -324,6 +346,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "1.7",
+    shorts_url: "https://www.youtube.com/embed/RseJ6werhGc",
   },
   {
     id: 31,
@@ -335,6 +358,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.7",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/93NcUdAKQEU",
   },
   {
     id: 32,
@@ -346,6 +370,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.8",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/ng_hhqv6Zr0",
   },
   {
     id: 33,
@@ -357,6 +382,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.8",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/-gNKXoslX6Y",
   },
   {
     id: 34,
@@ -377,6 +403,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "1.8",
+    shorts_url: "https://www.youtube.com/embed/yo-d53DUqa4",
   },
   {
     id: 36,
@@ -387,6 +414,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "1.8",
+    shorts_url: "https://www.youtube.com/embed/VMrBdXGopmM",
   },
   {
     id: 37,
@@ -398,6 +426,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.9",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/In1cgJHgs7s",
   },
   {
     id: 38,
@@ -409,6 +438,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.9",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/PaK0jpdDr8Y",
   },
   {
     id: 39,
@@ -420,6 +450,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "1.9",
     price: "19,000₩ / 1,680빗방울",
+    shorts_url: "https://www.youtube.com/embed/JDzpUc0qiCk",
   },
   {
     id: 40,
@@ -430,6 +461,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "1.9",
+    shorts_url: "https://www.youtube.com/embed/naHwgMrl4E8",
   },
   {
     id: 41,
@@ -440,6 +472,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "1.9",
+    shorts_url: "https://www.youtube.com/embed/KbT0N_ntoTs",
   },
   {
     id: 42,
@@ -450,6 +483,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "1.9",
+    shorts_url: "https://www.youtube.com/embed/MYQGl4Ab0nw",
   },
   {
     id: 43,
@@ -471,6 +505,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.0",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/eUhiWLiQswM",
   },
   {
     id: 45,
@@ -482,6 +517,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.0",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/nX_b2wZlicM",
   },
   {
     id: 46,
@@ -492,6 +528,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "2.0",
+    shorts_url: "https://www.youtube.com/embed/hiBCXF6Etis",
   },
   {
     id: 47,
@@ -502,6 +539,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "2.0",
+    shorts_url: "https://www.youtube.com/embed/P2yIa3IV8Sk",
   },
   {
     id: 48,
@@ -513,6 +551,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.0",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/g0GaWZ6ZNQc",
   },
   {
     id: 49,
@@ -524,6 +563,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.0",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/tZdun02IzM4",
   },
   {
     id: 50,
@@ -535,6 +575,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.1",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/VNmMO9ulVro",
   },
   {
     id: 51,
@@ -546,6 +587,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.1",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/Zc-8wTWKCzo",
   },
   {
     id: 52,
@@ -556,6 +598,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "2.1",
+    shorts_url: "https://www.youtube.com/embed/dv5JH-bRwCY",
   },
   {
     id: 53,
@@ -566,6 +609,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "2.1",
+    shorts_url: "https://www.youtube.com/embed/KGGVoRXipUA",
   },
   {
     id: 54,
@@ -577,6 +621,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.2",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/dt0wpk3ZCgI",
   },
   {
     id: 55,
@@ -588,6 +633,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.2",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/AeIafmdWWu8",
   },
   {
     id: 56,
@@ -599,6 +645,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.2",
     price: "19,000₩ / 1,680빗방울",
+    shorts_url: "https://www.youtube.com/embed/EQQcTrX4tnw",
   },
   {
     id: 57,
@@ -610,6 +657,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.2",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/WClLM1WtyuU",
   },
   {
     id: 58,
@@ -620,6 +668,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "2.2",
+    shorts_url: "https://www.youtube.com/embed/JpdR7HtRRig",
   },
   {
     id: 59,
@@ -641,6 +690,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.3",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/-I0PIhlpAcw",
   },
   {
     id: 61,
@@ -652,6 +702,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.3",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/TDdP9EFDWcA",
   },
   {
     id: 62,
@@ -662,6 +713,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "2.3",
+    shorts_url: "https://www.youtube.com/embed/MGKmifMg2zc",
   },
   {
     id: 63,
@@ -672,6 +724,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "2.3",
+    shorts_url: "https://www.youtube.com/embed/Ap4VNSeX6h8",
   },
   {
     id: 64,
@@ -682,6 +735,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "2.4",
+    shorts_url: "https://www.youtube.com/embed/8kzO7p6wxdM",
   },
   {
     id: 65,
@@ -693,6 +747,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.4",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/ch698ZKQRlQ",
   },
   {
     id: 66,
@@ -703,6 +758,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "2.4",
+    shorts_url: "https://www.youtube.com/embed/BZgK3epu4KM",
   },
   {
     id: 67,
@@ -714,6 +770,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.4",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/JdGWWjpxxnQ",
   },
   {
     id: 68,
@@ -724,6 +781,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "2.4",
+    shorts_url: "https://www.youtube.com/embed/42L2b2Soh6k",
   },
   {
     id: 69,
@@ -735,6 +793,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.4",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/p_j9AGTNnoI",
   },
   {
     id: 70,
@@ -746,6 +805,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.4",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/AZEQa_gTzyw",
   },
   {
     id: 71,
@@ -757,6 +817,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.5",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/ltnzys5VGLk",
   },
   {
     id: 72,
@@ -768,6 +829,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.5",
     price: "19,000₩ / 1,680빗방울",
+    shorts_url: "https://www.youtube.com/embed/dpu9y8gVmdQ",
   },
   {
     id: 73,
@@ -778,6 +840,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "무료",
     resell: "X",
     version: "2.5",
+    shorts_url: "https://www.youtube.com/embed/FGkVJs_zaH0",
   },
   {
     id: 74,
@@ -789,6 +852,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.5",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/Ro9MbYii0Pw",
   },
   {
     id: 75,
@@ -799,6 +863,8 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "2.5",
+    shorts_url: "https://www.youtube.com/embed/C3QOXQJqXRI",
+    tarot_number: "2",
   },
   {
     id: 76,
@@ -809,6 +875,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "2.5",
+    shorts_url: "https://www.youtube.com/embed/75gMgtjmFJg",
   },
   {
     id: 77,
@@ -820,6 +887,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.6",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/0ZPXxi0jXWA",
   },
   {
     id: 78,
@@ -831,6 +899,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.6",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/AmRu_VDjBxU",
   },
   {
     id: 79,
@@ -841,6 +910,8 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "2.6",
+    shorts_url: "https://www.youtube.com/embed/MYYr99C-jw4",
+    tarot_number: "1",
   },
   {
     id: 80,
@@ -851,6 +922,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "2.6",
+    shorts_url: "https://www.youtube.com/embed/Iw3PUfod-Do",
   },
   {
     id: 81,
@@ -883,6 +955,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "2.7",
+    tarot_number: "17",
   },
   {
     id: 84,
@@ -915,6 +988,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.8",
     price: "14,000₩ / 1,080빗방울",
+    tarot_number: "21",
   },
   {
     id: 87,
@@ -947,6 +1021,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "주크박스",
     resell: "X",
     version: "2.8",
+    tarot_number: "6",
   },
   {
     id: 90,

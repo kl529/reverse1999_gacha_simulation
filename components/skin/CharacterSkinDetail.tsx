@@ -35,6 +35,11 @@ export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
               가격: {skin.price}
             </Badge>
           )}
+          {skin.tarot_number && (
+            <Badge variant="secondary" className="bg-yellow-200 dark:bg-yellow-700">
+              타로 번호: {skin.tarot_number}
+            </Badge>
+          )}
         </div>
 
         {/* 일러스트 */}
@@ -66,6 +71,21 @@ export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
             </div>
           ))}
         </div>
+
+        {/* 유튜브 쇼츠 */}
+        {skin.shorts_url && (
+          <div className="mx-auto w-full max-w-sm">
+            <AspectRatio ratio={9 / 16}>
+              <iframe
+                src={skin.shorts_url}
+                title={`${skin.name} 스킨 쇼츠`}
+                className="h-full w-full rounded-lg"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </AspectRatio>
+          </div>
+        )}
       </div>
     </div>
   );

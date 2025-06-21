@@ -200,6 +200,11 @@ export default function SkinGalleryPage() {
                       <span className="absolute bottom-2 right-2 rounded bg-orange-300 px-2 py-0.5 text-xs text-white dark:bg-orange-700">
                         {skin.version}
                       </span>
+                      {skin.tarot_number && (
+                        <span className="absolute bottom-2 left-2 rounded bg-purple-500 px-2 py-0.5 text-xs text-white">
+                          타로 {skin.tarot_number}번
+                        </span>
+                      )}
                     </div>
                     <div className="truncate bg-white p-2 text-center text-sm font-medium text-black dark:bg-gray-900 dark:text-white">
                       {skin.name}
