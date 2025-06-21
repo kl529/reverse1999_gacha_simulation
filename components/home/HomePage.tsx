@@ -115,6 +115,11 @@ export default function HomePage() {
               subTitle="당신을 위한 친절한 가이드"
               items={[
                 {
+                  icon: "/infos/menu/character_menu.webp",
+                  label: "캐릭터 가이드",
+                  href: "/character",
+                },
+                {
                   icon: "/infos/menu/path_quiz_menu.webp",
                   label: "오솔길 정답",
                   href: "/path_quiz",
@@ -326,6 +331,15 @@ export default function HomePage() {
               >
                 마우스 커서
               </Link>
+              <br />-{" "}
+              <Link
+                href="https://www.reddit.com/user/Jvaevictis/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                인포그래픽 출처 (reddit)
+              </Link>
             </p>
           </ConfirmModal>
         )}
@@ -381,7 +395,7 @@ function CardBox({ title, subTitle, items, onItemClick }: CardBoxProps) {
     <div className="flex w-full flex-col items-center rounded-lg bg-gray-900/60 px-4 py-5 sm:px-6 lg:px-0">
       <h3 className="mb-1 text-center text-xl font-bold">{title}</h3>
       <p className="mb-4 text-center text-sm">{subTitle}</p>
-      <div className={`grid ${gridColsClass} h-full w-full items-center justify-center gap-3`}>
+      <div className={`grid ${gridColsClass} h-full w-full items-center justify-center gap-1`}>
         {items.map((item: CardItem, idx: number) => (
           <LinkBox
             key={idx}

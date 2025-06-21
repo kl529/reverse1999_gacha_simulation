@@ -63,12 +63,20 @@ export const carouselItems: CarouselItem[] = [
     image: "/infos/carousel_img/cash_guide_carousel.webp",
     link: "/cash_guide",
     type: "event",
+    open: false,
   },
   {
     id: 9,
     title: "의지 증폭 가이드",
     image: "/infos/carousel_img/psycube_guide_carousel.webp",
     link: "/psycube_guide",
+    type: "event",
+  },
+  {
+    id: 10,
+    title: "캐릭터 가이드",
+    image: "/infos/carousel_img/character_guide_carousel.webp",
+    link: "/character",
     type: "event",
   },
 ];

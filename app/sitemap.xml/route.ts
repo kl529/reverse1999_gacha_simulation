@@ -3,6 +3,7 @@ import { SETTING_CHARACTERS } from "@/data/setting_character";
 import { characterSkin } from "@/data/character_skin";
 import { euphoriaList } from "@/data/euphoria";
 import { psycube_list } from "@/data/psycube_data";
+import { characterGuideList } from "@/data/character_guide";
 
 export async function GET() {
   const baseUrl = "https://www.reverse1999-simulator.com";
@@ -11,6 +12,7 @@ export async function GET() {
     "/gacha_simulator",
     "/character_quiz",
     "/character_setting",
+    "/character",
     "/skin",
     "/path_quiz",
     "/future_insight",
@@ -32,12 +34,17 @@ export async function GET() {
 
   const psycubeGuideUrls = psycube_list.map((p) => `${baseUrl}/psycube_guide/${p.id}`);
 
+  const characterGuideUrls = characterGuideList.map(
+    (c) => `${baseUrl}/character/${c.character_id}`
+  );
+
   const urls = [
     ...staticUrls,
     ...characterSettingUrls,
     ...characterSkinUrls,
     ...euphoriaGuideUrls,
     ...psycubeGuideUrls,
+    ...characterGuideUrls,
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

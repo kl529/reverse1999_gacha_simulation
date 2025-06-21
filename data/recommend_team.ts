@@ -126,7 +126,6 @@ export const recommendTeams: RecommendTeam[] = [
         id: 15,
         euphoria: true,
         role: "서폿",
-        alternatives: [{ id: 4, euphoria: true, role: "힐러" }],
       },
     ],
   },
@@ -318,7 +317,6 @@ export const recommendTeams: RecommendTeam[] = [
         role: "서폿",
         alternatives: [
           { id: 17, euphoria: true, role: "서폿" },
-          { id: 12, euphoria: true, role: "서폿" },
           { id: 42, euphoria: true, role: "서폿" },
         ],
       },

@@ -61,6 +61,11 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
       href: "/blueprint_setting",
     },
     { divider: true },
+    {
+      iconImg: "/infos/menu/character_menu.webp",
+      label: "캐릭터 가이드",
+      href: "/character",
+    },
     { iconImg: "/infos/menu/path_quiz_menu.webp", label: "오솔길 정답", href: "/path_quiz" },
     {
       iconImg: "/infos/menu/euphoria_guide_menu.webp",
@@ -116,7 +121,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 top-full mt-2 w-64 rounded-md border bg-white text-black shadow-lg dark:bg-gray-900 dark:text-white">
+        <div className="absolute left-0 top-full mt-2 w-48 rounded-md border bg-white text-black shadow-lg dark:bg-gray-900 dark:text-white sm:w-64">
           <ul className="py-2">
             {menuItems.map((item, index) => {
               if (item.divider) {
@@ -142,12 +147,18 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener noreferrer" : undefined}
                       onClick={() => setIsOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2 hover:bg-gray-200 dark:hover:bg-gray-700"
+                      className="flex items-center gap-3 px-3 py-2 text-xs hover:bg-gray-200 dark:hover:bg-gray-700 sm:text-sm"
                     >
                       {item.iconImg ? (
-                        <Image src={item.iconImg} alt="" width={30} height={30} />
+                        <Image
+                          src={item.iconImg}
+                          alt=""
+                          width={30}
+                          height={30}
+                          className="h-6 w-6 sm:h-8 sm:w-8"
+                        />
                       ) : (
-                        <span className="text-lg">{item.icon}</span>
+                        <span className="text-base sm:text-lg">{item.icon}</span>
                       )}
                       <span>{item.label}</span>
                     </Link>
@@ -159,12 +170,18 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                 <li key={index}>
                   <button
                     onClick={handleClick}
-                    className="flex w-full items-center gap-3 px-3 py-2 text-left hover:bg-gray-200 dark:hover:bg-gray-700"
+                    className="flex w-full items-center gap-3 px-3 py-2 text-left text-xs hover:bg-gray-200 dark:hover:bg-gray-700 sm:text-sm"
                   >
                     {item.iconImg ? (
-                      <Image src={item.iconImg} alt="" width={30} height={30} />
+                      <Image
+                        src={item.iconImg}
+                        alt=""
+                        width={30}
+                        height={30}
+                        className="h-6 w-6 sm:h-8 sm:w-8"
+                      />
                     ) : (
-                      <span className="text-lg">{item.icon}</span>
+                      <span className="text-base sm:text-lg">{item.icon}</span>
                     )}
                     <span>{item.label}</span>
                   </button>
