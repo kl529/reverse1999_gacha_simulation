@@ -1485,7 +1485,7 @@ export const characterGuideList: CharacterGuide[] = [
     },
     youtube_links: ["https://www.youtube.com/watch?v=HK1jEmvzJSw"],
     keywords: ["메인딜러", "술식위주", "현실피해"],
-    guide_images: [],
+    guide_images: [1],
   },
   {
     character_id: 44, // 알레프
@@ -1519,7 +1519,7 @@ export const characterGuideList: CharacterGuide[] = [
     },
     youtube_links: ["https://www.youtube.com/watch?v=l1WbgHg3iM4"],
     keywords: ["서포터", "계시", "정신피해"],
-    guide_images: [],
+    guide_images: [1],
   },
   {
     character_id: 45, // 히사베스
