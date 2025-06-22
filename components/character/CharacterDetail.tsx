@@ -228,13 +228,13 @@ export default function CharacterDetail({ character }: { character: Character })
                   형상대비 상승량 수치임. 분석러마다 효율이 다를 수 있으니 참고만 하시길
                 </p>
                 <div className="overflow-x-auto">
-                  <table className="w-full min-w-[500px] rounded-lg border dark:border-gray-700">
+                  <table className="w-full rounded-lg border dark:border-gray-700">
                     <thead>
                       <tr className="border-b bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
                         {guide.portrait_info?.headers?.map((header, index) => (
                           <th
                             key={index}
-                            className={`p-3 text-sm font-semibold ${index === 0 ? "text-left" : "text-center"}`}
+                            className={`p-2 text-xs font-semibold sm:p-3 sm:text-sm ${index === 0 ? "text-left" : "text-center"}`}
                           >
                             {header}
                           </th>
@@ -251,14 +251,17 @@ export default function CharacterDetail({ character }: { character: Character })
                           index: number
                         ) => (
                           <tr key={index} className="border-b last:border-0 dark:border-gray-700">
-                            <td className="p-3 text-sm font-medium">{row.name}</td>
+                            <td className="p-2 text-xs font-medium sm:p-3 sm:text-sm">
+                              {row.name}
+                            </td>
                             {row.efficiencies
                               .slice(0, (guide?.portrait_info?.headers?.length ?? 1) - 1)
                               .map((efficiency: string | undefined, effIndex: number) => (
-                                <td key={effIndex} className="p-3 text-center">
+                                <td key={effIndex} className="p-2 text-center sm:p-3">
                                   <Badge
                                     variant="secondary"
                                     className={cn(
+                                      "whitespace-nowrap text-xs sm:text-sm",
                                       effIndex === 0 &&
                                         "bg-blue-100 text-blue-800 hover:bg-blue-100 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-900",
                                       effIndex === 1 &&
