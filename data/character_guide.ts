@@ -52,7 +52,34 @@ export const characterGuideList: CharacterGuide[] = [
   },
   {
     character_id: 2, // 릴리아
-    portrait_info: {},
+    portrait_info: {
+      headers: ["형상", "1인 기준", "다인전 기준"],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["4.7%", "3.94%"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["6.62%", "3.11%"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["2.91%", "2.42%"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["0%", "0%"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["4.28%", "3.59%"],
+        },
+      ],
+      summary: "1형상 > 5형상 > 3형상 > 2형상 > 4형상 (1인 기준)",
+      source: "米嘉·风焰",
+      note: "1형상이 가장 효율이 높으며, 형상 효율이 대체적 낮음. 4형상 효율이 0%인 이유는 최종술식 흡혈률 증가가 효과이기 때문",
+    },
     youtube_links: ["https://www.youtube.com/watch?v=7CCtUuXgupQ"],
     keywords: ["딜러", "추가공격", "현실피해"],
     guide_images: [],

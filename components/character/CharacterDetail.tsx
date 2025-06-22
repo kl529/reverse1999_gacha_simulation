@@ -215,12 +215,12 @@ export default function CharacterDetail({ character }: { character: Character })
               </div>
             )}
 
-            {guide.portrait_info && (
+            {guide.portrait_info && guide.portrait_info.headers && guide.portrait_info.rows && (
               <div id="resonance-info" className="space-y-4">
                 <h2 className="text-center text-xl font-bold">형상 효율 정리</h2>
                 <p className="text-center text-sm text-gray-600 dark:text-gray-400">
                   안조 날라 이전의 형상 효율표는 명함 대비 상승량 수치임. 안조 날라 부터는 이전
-                  형상대비 상승량 수치임.
+                  형상대비 상승량 수치임. 분석러마다 효율이 다를 수 있으니 참고만 하시길
                 </p>
                 <div className="overflow-x-auto">
                   <table className="w-full min-w-[500px] rounded-lg border dark:border-gray-700">
