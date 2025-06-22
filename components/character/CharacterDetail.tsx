@@ -95,6 +95,11 @@ export default function CharacterDetail({ character }: { character: Character })
             <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white">
               v{character.version}
             </div>
+            {euphoriaList.some((e) => e.character_id === character.id) && (
+              <div className="absolute bottom-1 left-1 z-10 rounded-sm bg-rose-600 px-1 py-[1px] text-[10px] text-white shadow">
+                광상
+              </div>
+            )}
           </div>
           <Link
             href={`/character_setting/${character.id}`}
@@ -553,6 +558,11 @@ export default function CharacterDetail({ character }: { character: Character })
                     {ch.version && (
                       <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
                         {ch.version}
+                      </div>
+                    )}
+                    {euphoriaList.some((e) => e.character_id === ch.id) && (
+                      <div className="absolute bottom-0 left-0 rounded-sm bg-rose-600 px-1 py-[1px] text-[10px] text-white shadow">
+                        광상
                       </div>
                     )}
                   </div>

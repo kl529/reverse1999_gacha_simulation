@@ -1007,7 +1007,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "해당 형상 효율은 예열 뒤 추가타가 없는 기준인 것 참고 바람, 가장 효율이 높은 형상은 1형상임. 추가타를 포함하면, 형상효율이 더 높아짐.",
     },
-    youtube_links: [],
+    youtube_links: ["https://www.youtube.com/watch?v=yjt0jZfHVpw"],
     keywords: ["딜러", "추가공격", "전력", "현실피해", "한정"],
     guide_images: [],
   },
