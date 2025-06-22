@@ -216,12 +216,83 @@ export default function CharacterDetail({ character }: { character: Character })
             )}
 
             {guide.portrait_info && (
-              <div id="resonance-info">
-                <h2 className="mb-4 text-center text-xl font-bold">형상 효율 정리</h2>
-                <div className="rounded-lg border p-4 dark:border-gray-700">
-                  <p className="whitespace-pre-wrap text-sm leading-relaxed">
-                    {guide.portrait_info}
-                  </p>
+              <div id="resonance-info" className="space-y-4">
+                <h2 className="text-center text-xl font-bold">형상 효율 정리</h2>
+                <p className="text-center text-sm text-gray-600 dark:text-gray-400">
+                  안조 날라 이전의 형상 효율표는 명함 대비 상승량 수치임. 안조 날라 부터는 이전
+                  형상대비 상승량 수치임.
+                </p>
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[500px] rounded-lg border dark:border-gray-700">
+                    <thead>
+                      <tr className="border-b bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
+                        {guide.portrait_info?.headers?.map((header, index) => (
+                          <th
+                            key={index}
+                            className={`p-3 text-sm font-semibold ${index === 0 ? "text-left" : "text-center"}`}
+                          >
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {guide?.portrait_info?.rows?.map(
+                        (
+                          row: {
+                            name: string;
+                            efficiencies: [string, string?, string?, string?, string?, string?];
+                          },
+                          index: number
+                        ) => (
+                          <tr key={index} className="border-b last:border-0 dark:border-gray-700">
+                            <td className="p-3 text-sm font-medium">{row.name}</td>
+                            {row.efficiencies
+                              .slice(0, (guide?.portrait_info?.headers?.length ?? 1) - 1)
+                              .map((efficiency: string | undefined, effIndex: number) => (
+                                <td key={effIndex} className="p-3 text-center">
+                                  <Badge
+                                    variant="secondary"
+                                    className={cn(
+                                      effIndex === 0 &&
+                                        "bg-blue-100 text-blue-800 hover:bg-blue-100 dark:bg-blue-900 dark:text-blue-200 dark:hover:bg-blue-900",
+                                      effIndex === 1 &&
+                                        "bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900 dark:text-green-200 dark:hover:bg-green-900",
+                                      effIndex === 2 &&
+                                        "bg-purple-100 text-purple-800 hover:bg-purple-100 dark:bg-purple-900 dark:text-purple-200 dark:hover:bg-purple-900"
+                                    )}
+                                  >
+                                    {efficiency ?? "-"}
+                                  </Badge>
+                                </td>
+                              ))}
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                  {guide.portrait_info?.summary && (
+                    <div className="mt-4 rounded-lg border p-4 dark:border-gray-700">
+                      <p className="whitespace-pre-wrap text-sm leading-relaxed text-black dark:text-white">
+                        <span className="text-red-500">형상 효율 정리 : </span>
+                        {guide.portrait_info.summary}
+                      </p>
+                      {guide.portrait_info.source && (
+                        <p className="whitespace-pre-wrap text-sm leading-relaxed text-black dark:text-white">
+                          <span className="text-red-500">출처 : </span>
+                          {guide.portrait_info.source}
+                        </p>
+                      )}
+                      {guide.portrait_info?.note && (
+                        <div className="mt-4 rounded-lg border p-4 dark:border-gray-700">
+                          <p className="whitespace-pre-wrap text-sm leading-relaxed text-black dark:text-white">
+                            <span className="text-red-500">Comment : </span>
+                            {guide.portrait_info.note}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             )}

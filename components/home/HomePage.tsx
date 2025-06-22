@@ -17,6 +17,7 @@ export default function HomePage() {
   const [bgImage, setBgImage] = useState<string | null>(null);
   const [showPolicy, setShowPolicy] = useState(false);
   const [showSource, setShowSource] = useState(false);
+  const [showContributors, setShowContributors] = useState(false);
   const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
   const [selectedInfo, setSelectedInfo] = useState<CardItem | null>(null);
@@ -164,6 +165,12 @@ export default function HomePage() {
               className="hover:text-blue-400 hover:underline"
             >
               출처
+            </button>
+            <button
+              onClick={() => setShowContributors(true)}
+              className="hover:text-blue-400 hover:underline"
+            >
+              기여자
             </button>
             <Link
               href="https://buymeacoffee.com/vertin_suitcase"
@@ -340,6 +347,15 @@ export default function HomePage() {
               >
                 인포그래픽 출처 (reddit)
               </Link>
+            </p>
+          </ConfirmModal>
+        )}
+        {showContributors && (
+          <ConfirmModal isOpen={showContributors} onClose={() => setShowContributors(false)}>
+            <h2 className="text-lg font-bold">도움을 주신 분들</h2>
+            <p className="whitespace-pre-line text-sm leading-relaxed">
+              - 개발자: Lyva
+              <br />- 데이터 정리: 잠쿨
             </p>
           </ConfirmModal>
         )}
