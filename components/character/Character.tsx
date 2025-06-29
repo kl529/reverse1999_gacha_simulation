@@ -102,7 +102,7 @@ export default function Character() {
         {attrMap.map((attr) => (
           <button
             key={attr.value}
-            className={`rounded px-3 py-1 ${selectedAttr === attr.value ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+            className={`rounded px-3 py-1 text-black ${selectedAttr === attr.value ? "bg-blue-500 text-white" : "bg-gray-200"}`}
             onClick={() => setSelectedAttr(attr.value)}
           >
             {attr.label}
