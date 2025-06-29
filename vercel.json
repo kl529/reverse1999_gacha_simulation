@@ -1,3 +1,13 @@
 {
-  "regions": ["icn1"]
+  "headers": [
+    {
+      "source": "/(favicon.ico|pwa_icon.webp|manifest.json|ads.txt)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
 }
