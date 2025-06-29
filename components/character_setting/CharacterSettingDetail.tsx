@@ -23,6 +23,7 @@ import { resonanceMaterialList } from "@/data/resonance_material";
 import { euphoriaMaterialList } from "@/data/euphoria_material";
 import { resonancePatternMaterial } from "@/data/resonance_pattern_material";
 import { insightMaterial } from "@/data/insight_material";
+import { euphoriaList } from "@/data/euphoria";
 
 export default function CharacterSettingDetail({ character }: { character: Character }) {
   const setting = character_setting_data.find((c) => c.character_id === character.id);
@@ -62,16 +63,51 @@ export default function CharacterSettingDetail({ character }: { character: Chara
         <h1 className="text-center text-2xl font-bold sm:text-3xl">{character.name}</h1>
 
         <div className="flex flex-wrap justify-center gap-6">
-          <div className="h-[150px] w-[150px] overflow-hidden rounded border dark:border-gray-700">
+          {/* 캐릭터 초상화 + 정보 */}
+          <div className="relative h-[150px] w-[150px] overflow-hidden rounded border dark:border-gray-700">
             <Image
               src={`/characters/${character.rarity}stars/${character.engName}.webp`}
               alt={character.name}
               width={150}
               height={150}
-              className="object-cover object-top"
+              className="h-full w-full object-cover object-top"
               priority
             />
+            {/* 영감 아이콘 */}
+            <Image
+              src={`/infos/inspiration/${character.inspiration}.webp`}
+              alt={character.inspiration}
+              width={16}
+              height={16}
+              className="absolute left-1 top-0 z-10"
+            />
+            {/* 버전 뱃지 */}
+            <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white">
+              v{character.version}
+            </div>
+            {/* 광상 여부 */}
+            {euphoriaList.some((e) => e.character_id === character.id) && (
+              <div className="absolute bottom-1 left-1 z-10 rounded-sm bg-rose-600 px-1 py-[1px] text-[10px] text-white shadow">
+                광상
+              </div>
+            )}
           </div>
+          {/* 캐릭터 가이드로 바로가기 버튼 */}
+          <Link
+            href={`/character/${character.id}`}
+            className="flex h-[150px] w-[150px] flex-col items-center justify-center gap-2"
+          >
+            <div className="overflow-hidden rounded border transition-opacity hover:opacity-80 dark:border-gray-700">
+              <Image
+                src="/infos/menu/gacha_simulator_menu.webp"
+                alt="캐릭터 가이드 바로가기"
+                width={150}
+                height={150}
+                className="object-cover object-top"
+              />
+            </div>
+            <span className="text-sm text-gray-600 dark:text-gray-400">캐릭터 가이드로 이동</span>
+          </Link>
         </div>
 
         {setting?.resonance && setting.resonance.length > 0 && (

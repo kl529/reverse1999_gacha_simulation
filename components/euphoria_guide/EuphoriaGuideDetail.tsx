@@ -7,6 +7,15 @@ import { charactersByRarity } from "@/data/characters";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
+import { recommendTeams } from "@/data/recommend_team";
+import { useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface Props {
   item: Euphoria;
@@ -23,6 +32,24 @@ function getCharacterById(id: number) {
 
 export default function EuphoriaGuideDetail({ item, character }: Props) {
   const romanNumerals = ["I", "II", "III", "IV"];
+
+  const recommendedTeams = useMemo(() => {
+    return recommendTeams.filter((team) =>
+      team.characters.some(
+        (c) => c.id === character.id || c.alternatives?.some((alt) => alt.id === character.id)
+      )
+    );
+  }, [character.id]);
+
+  const allCharacters = useMemo(() => {
+    let arr: Character[] = [];
+    for (const rarity in charactersByRarity) {
+      arr = arr.concat(charactersByRarity[Number(rarity)]);
+    }
+    return arr;
+  }, []);
+
+  const [selectedCharacters, setSelectedCharacters] = useState<Record<string, string>>({});
 
   return (
     <div className="min-h-screen w-full bg-white text-black dark:bg-gray-900 dark:text-white">
@@ -128,6 +155,99 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
               })}
             </CardContent>
           </Card>
+        )}
+
+        {recommendedTeams.length > 0 && (
+          <div className="mt-10">
+            <div className="mb-4 flex justify-end">
+              <Link href="/recommend_team">
+                <Button variant="outline" size="sm">
+                  전체 추천조합 보기
+                </Button>
+              </Link>
+            </div>
+            <h2 className="mb-4 text-center text-xl font-bold">이 캐릭터가 포함된 추천 조합</h2>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {recommendedTeams.map((team) => (
+                <div key={team.id} className="rounded-lg border p-4 dark:border-gray-700">
+                  <h3 className="mb-2 text-center text-lg font-semibold">{team.name}</h3>
+                  <div className="mb-4 flex flex-wrap justify-center gap-2">
+                    {team.concepts.map((concept, idx) => (
+                      <span
+                        key={idx}
+                        className="rounded-full bg-gray-200 px-2 py-1 text-sm dark:bg-gray-800"
+                      >
+                        {concept}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mb-4 flex justify-center gap-2 rounded-sm border p-2">
+                    {team.characters.map((ch) => {
+                      const key = `team_${team.id}_char_${ch.id}`;
+                      const currentDisplayedCharId = selectedCharacters[key] || ch.id.toString();
+                      const displayedChar = allCharacters.find(
+                        (c) => c.id.toString() === currentDisplayedCharId
+                      );
+                      if (!displayedChar) return null;
+
+                      const alternatives = ch.alternatives || [];
+
+                      return (
+                        <div key={ch.id} className="flex flex-col items-center">
+                          <Link href={`/character/${currentDisplayedCharId}`}>
+                            <div className="relative">
+                              <Image
+                                src={`/characters/${displayedChar.rarity}stars/${displayedChar.engName}.webp`}
+                                alt={displayedChar.name}
+                                width={48}
+                                height={48}
+                                className="rounded-lg"
+                              />
+                            </div>
+                          </Link>
+                          <span className="mt-1 text-xs">{displayedChar.name}</span>
+                          {alternatives.length > 0 && (
+                            <DropdownMenu>
+                              <DropdownMenuTrigger className="text-xs text-blue-600 underline">
+                                대체 캐릭터
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="center">
+                                {[{ id: ch.id }, ...alternatives].map((alt) => {
+                                  const altChar = allCharacters.find((c) => c.id === alt.id);
+                                  if (!altChar) return null;
+                                  return (
+                                    <DropdownMenuItem
+                                      key={alt.id}
+                                      className="flex items-center gap-2 px-2 py-1 text-xs"
+                                      onClick={() => {
+                                        setSelectedCharacters((prev) => ({
+                                          ...prev,
+                                          [key]: alt.id.toString(),
+                                        }));
+                                      }}
+                                    >
+                                      <Image
+                                        src={`/characters/${altChar.rarity}stars_small/${altChar.engName}.webp`}
+                                        alt={altChar.name}
+                                        width={24}
+                                        height={24}
+                                        className="rounded"
+                                      />
+                                      {altChar.name}
+                                    </DropdownMenuItem>
+                                  );
+                                })}
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         )}
       </div>
     </div>

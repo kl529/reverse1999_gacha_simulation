@@ -927,7 +927,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 81,
     character_id: 39,
-    name: "별자리 알레그로 (미래시)",
+    name: "소행성 알레그로",
     engName: "asteroid_allegro",
     rarity: "Advanced",
     source: "판매",
@@ -938,7 +938,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 82,
     character_id: 34,
-    name: "스타 바운드 현상금 사냥꾼 (미래시)",
+    name: "성간 사냥꾼",
     engName: "starbound_bounty_hunter",
     rarity: "Garment",
     source: "판매",
@@ -949,7 +949,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 83,
     character_id: 11,
-    name: "별들의 합창단 (미래시)",
+    name: "별들의 합창",
     engName: "choir_of_the_stars",
     rarity: "Garment",
     source: "주크박스",
@@ -960,7 +960,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 84,
     character_id: 210,
-    name: "우주 여행자 (미래시)",
+    name: "우주 유람",
     engName: "space_traveler",
     rarity: "Garment",
     source: "컨텐츠",
@@ -1032,5 +1032,48 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "2.8",
+  },
+  {
+    id: 91,
+    character_id: 38, // 플러터페이지
+    name: "내일의 봄바람 (미래시)",
+    engName: "gently_comes_the_thawing_breeze",
+    rarity: "Advanced",
+    source: "판매",
+    resell: "X",
+    version: "3.0",
+    price: "14,000₩ / 1,080빗방울",
+  },
+  {
+    id: 92,
+    character_id: 32, // J
+    name: "고독한 늑대의 울부짖음 (미래시)",
+    engName: "the_lone_wolfs_howl",
+    rarity: "Advanced",
+    source: "판매",
+    resell: "X",
+    version: "3.0",
+    price: "14,000₩ / 1,080빗방울",
+  },
+  {
+    id: 93,
+    character_id: 28, // 제멜바이스
+    name: "마음의 손익 (미래시)",
+    engName: "the_wax_and_wane_of_the_heart",
+    rarity: "Garment",
+    source: "주크박스",
+    resell: "X",
+    version: "3.0",
+    tarot_number: "18",
+  },
+  {
+    id: 94,
+    character_id: 401, // 미스라디오
+    name: "전선의 생명줄 (미래시)",
+    engName: "lifeline_of_the_battlefield",
+    rarity: "Garment",
+    source: "컨텐츠",
+    resell: "X",
+    version: "3.0",
   },
 ];

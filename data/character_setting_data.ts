@@ -1416,6 +1416,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "APwlNAU0VTxhPAE4IjokKhJBQkhUQFBBACsgRCE",
+        description: "쉴드 & 크리티컬",
+      },
+    ],
+    resonance_patterns: ["Hyper", "Equanimity"],
   },
   {
     character_id: 47, // "노티카"
@@ -1437,6 +1444,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A-",
       },
     ],
+    resonance: [
+      {
+        code: "APQkOEU4BSUEK0QkAS0RKFEqUDxAPDBMAEwgSBBIIQ",
+        description: "데미지",
+      },
+      {
+        code: "APQkOEU4BSUEK0QoUSpQJAEtET0AR0BHMUdCSDNIIQ",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Stupefaction", "Elucidation"],
   },
   {
     character_id: 48, // "울리히"
@@ -1458,6 +1476,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A-",
       },
     ],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "범용",
+      },
+      {
+        code: "APQkJQQ4BThFK0QoUSpQJAEtEUMyQTFEMEYARSA",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Aspirational"],
   },
   {
     character_id: 49, // "몰디르"
@@ -1479,6 +1508,37 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A-",
       },
     ],
+    resonance: [
+      {
+        code: "ADRENBUoVCoEQAFCAkQA8CQ8YDxQOCI5IEEwSEI",
+        description: "범용",
+      },
+      {
+        code: "ACZQ8CQmVCQELxQtRDlAOEI8ADwQNCI0IA",
+        description: "크리티컬",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Mercy"],
+  },
+  {
+    character_id: 50, // "센티넬"
+    psycubes: [
+      {
+        psycube_id: 76,
+        description: "S",
+      },
+    ],
+    resonance: [
+      {
+        code: "APAkJAMmVCcFLUQoUSpQPEA8MDkSOxBIAkgATAFMEA",
+        description: "크리티컬",
+      },
+      {
+        code: "APAkLUQtFCQEJlQoUSpQPEA8MDgCOxBIAkgATBBMAQ",
+        description: "데미지",
+      },
+    ],
+    resonance_patterns: ["Equanimity", "Equibalance"],
   },
   {
     character_id: 101, // "소네트"

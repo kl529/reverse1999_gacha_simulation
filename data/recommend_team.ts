@@ -134,9 +134,9 @@ export const recommendTeams: RecommendTeam[] = [
     name: "노티카 자해덱",
     description: [
       "노티카를 메인으로 한 [신혈]기믹을 사용하는 자해조합",
-      "노티카와 광상 제멜바이스를 채용하여 자해를 쌓아 딜을 하는 조합",
-      "추가공격도 있고, 술진도 있어 다양한 서포터들과 조합가능",
-      "2.8 기준 압도적인 체급과 덱파워를 보여주는 0티어 조합",
+      "노티카와 광상 제멜바이스 & 센티넬을 채용하여 자해를 쌓아 딜을 하는 조합",
+      "힐러는 파투투, 광상 에즈라를 주로 채용",
+      "3.0 기준 센티넬의 합류로 압도적인 체급과 덱파워를 보여주는 0티어 조합",
       "제멜바이스의 술진으로 로페라 등의 술진 서포터와는 쓰기 힘듦",
     ],
     concepts: ["신혈", "자해"],
@@ -152,7 +152,14 @@ export const recommendTeams: RecommendTeam[] = [
           { id: 40, role: "힐러" },
         ],
       },
-      { id: 9, euphoria: true, role: "서폿", alternatives: [{ id: 38, role: "서폿" }] },
+      {
+        id: 50,
+        role: "서폿",
+        alternatives: [
+          { id: 38, role: "서폿" },
+          { id: 9, euphoria: true, role: "서폿" },
+        ],
+      },
     ],
   },
   {

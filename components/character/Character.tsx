@@ -7,9 +7,20 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { euphoriaList } from "@/data/euphoria";
 
+const attrMap = [
+  { label: "전체", value: "all" },
+  { label: "야수", value: "beast" },
+  { label: "천체", value: "star" },
+  { label: "암석", value: "mineral" },
+  { label: "나무", value: "plant" },
+  { label: "영혼", value: "spirit" },
+  { label: "지능", value: "intellect" },
+];
+
 export default function Character() {
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
+  const [selectedAttr, setSelectedAttr] = useState<string>("all");
 
   useEffect(() => {
     const handler = setTimeout(() => setDebouncedQuery(searchQuery), 300);
@@ -22,7 +33,8 @@ export default function Character() {
     const matchesSearch =
       ch.name.includes(debouncedQuery) ||
       ch.engName.toLowerCase().includes(debouncedQuery.toLowerCase());
-    return matchesSearch;
+    const matchesAttr = selectedAttr === "all" || ch.inspiration === selectedAttr;
+    return matchesSearch && matchesAttr;
   });
 
   // 캐릭터별 광상 데이터 매핑
@@ -84,6 +96,18 @@ export default function Character() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
+      </div>
+
+      <div className="mb-4 flex justify-center gap-2">
+        {attrMap.map((attr) => (
+          <button
+            key={attr.value}
+            className={`rounded px-3 py-1 ${selectedAttr === attr.value ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+            onClick={() => setSelectedAttr(attr.value)}
+          >
+            {attr.label}
+          </button>
+        ))}
       </div>
 
       <div className="w-full space-y-6 px-4">

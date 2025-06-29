@@ -23,6 +23,12 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
           4: 3,
         },
       },
+      {
+        level: 2,
+        materials: {
+          801: 1,
+        },
+      },
     ],
     upgrade: [
       {
@@ -235,8 +241,55 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
   },
   {
     character_id: 6, // "Centurion",
-    euphoria: [],
-    upgrade: [],
+    euphoria: [
+      {
+        level: 1,
+        materials: {
+          701: 12,
+          702: 40,
+          703: 200,
+          4: 3,
+        },
+      },
+    ],
+    upgrade: [
+      {
+        level: 1,
+        materials: {
+          702: 20,
+          703: 275,
+          3: 1,
+          110: 1,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          702: 30,
+          703: 371,
+          5: 1,
+          109: 2,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          702: 35,
+          703: 470,
+          4: 2,
+          108: 2,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          702: 40,
+          703: 1195,
+          1: 2,
+          107: 2,
+        },
+      },
+    ],
   },
   {
     character_id: 7, // "An-an Lee",
@@ -855,8 +908,55 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
   },
   {
     character_id: 23, // "Getian",
-    euphoria: [],
-    upgrade: [],
+    euphoria: [
+      {
+        level: 1,
+        materials: {
+          701: 12,
+          702: 40,
+          703: 200,
+          1: 3,
+        },
+      },
+    ],
+    upgrade: [
+      {
+        level: 1,
+        materials: {
+          702: 20,
+          703: 275,
+          2: 1,
+          14: 1,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          702: 30,
+          703: 371,
+          3: 1,
+          15: 2,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          702: 35,
+          703: 470,
+          5: 2,
+          103: 2,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          702: 40,
+          703: 1195,
+          4: 2,
+          106: 2,
+        },
+      },
+    ],
   },
   {
     character_id: 24, // "Isolde",

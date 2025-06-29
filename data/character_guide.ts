@@ -46,7 +46,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "1형상의 효율이 0%인것은 작성자분께서 사이클을 다르게 운용하셨기 때문이니 참고 바람. 실전 효율은 다른 형상보다 1형상이 압도적 우세.",
     },
-    youtube_links: [],
+    youtube_links: ["https://www.youtube.com/watch?v=C9zX9KC02HE"],
     keywords: ["서포터", "석화", "정신피해"],
     guide_images: [],
   },
@@ -1689,6 +1689,40 @@ export const characterGuideList: CharacterGuide[] = [
     },
     youtube_links: ["https://www.youtube.com/watch?v=Kej4pd1-zDM"],
     keywords: ["서포터", "술식위주", "현실피해"],
+    guide_images: [],
+  },
+  {
+    character_id: 50, // 센티넬
+    portrait_info: {
+      headers: ["형상", "본인", "팀 전체"],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["28%", "12%"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["18%", "9%"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["7%", "4%"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["2%", "1%"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["39%", "21%"],
+        },
+      ],
+      summary: "5형상 > 1형상 > 2형상 > 3형상 > 4형상 (팀 전체)",
+      source: "icehood",
+      note: "본인 형상 효율은 오차가 존재할 수 있음. 팀 효율 위주로 참고해주세요.",
+    },
+    youtube_links: ["https://www.youtube.com/watch?v=F7i1EI35ovI"],
+    keywords: ["서포터", "신혈", "총알", "현실피해"],
     guide_images: [],
   },
 ];

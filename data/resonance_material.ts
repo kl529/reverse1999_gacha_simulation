@@ -5720,4 +5720,126 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       },
     ],
   },
+  {
+    character_id: 49, // "Moldir"
+    resonance: [
+      {
+        level: 2,
+        materials: { 601: 5 },
+      },
+      {
+        level: 3,
+        materials: { 601: 5, 402: 5 },
+      },
+      {
+        level: 4,
+        materials: { 601: 5, 404: 4, 301: 3 },
+      },
+      {
+        level: 5,
+        materials: { 602: 5, 310: 4, 303: 4 },
+      },
+      {
+        level: 6,
+        materials: { 1002: 30000, 602: 5, 207: 3 },
+      },
+      {
+        level: 7,
+        materials: { 602: 6, 209: 5 },
+      },
+      {
+        level: 8,
+        materials: { 602: 6, 201: 5, 307: 5 },
+      },
+      {
+        level: 9,
+        materials: { 602: 8, 203: 5, 309: 4 },
+      },
+      {
+        level: 10,
+        materials: { 604: 1, 603: 5, 205: 6, 106: 6 },
+      },
+      {
+        level: 11,
+        materials: { 604: 1, 1002: 120000, 603: 5, 107: 4 },
+      },
+      {
+        level: 12,
+        materials: { 604: 1, 603: 6, 106: 4, 210: 5 },
+      },
+      {
+        level: 13,
+        materials: { 604: 1, 603: 6, 101: 5, 211: 6 },
+      },
+      {
+        level: 14,
+        materials: { 604: 1, 603: 8, 4: 2, 109: 4 },
+      },
+      {
+        level: 15,
+        materials: { 604: 1, 603: 8, 1: 3, 101: 4 },
+      },
+    ],
+  },
+  {
+    character_id: 50, // "Sentinel"
+    resonance: [
+      {
+        level: 2,
+        materials: { 601: 5 },
+      },
+      {
+        level: 3,
+        materials: { 601: 5, 404: 4 },
+      },
+      {
+        level: 4,
+        materials: { 601: 5, 401: 6, 301: 3 },
+      },
+      {
+        level: 5,
+        materials: { 602: 5, 308: 3, 310: 4 },
+      },
+      {
+        level: 6,
+        materials: { 1002: 30000, 602: 5, 207: 3 },
+      },
+      {
+        level: 7,
+        materials: { 602: 6, 201: 5 },
+      },
+      {
+        level: 8,
+        materials: { 602: 6, 205: 4, 305: 4 },
+      },
+      {
+        level: 9,
+        materials: { 602: 8, 210: 4, 306: 6 },
+      },
+      {
+        level: 10,
+        materials: { 604: 1, 603: 5, 208: 6, 211: 6 },
+      },
+      {
+        level: 11,
+        materials: { 604: 1, 1002: 120000, 603: 5, 107: 4 },
+      },
+      {
+        level: 12,
+        materials: { 604: 1, 603: 6, 101: 4, 209: 5 },
+      },
+      {
+        level: 13,
+        materials: { 604: 1, 603: 6, 104: 5, 106: 5 },
+      },
+      {
+        level: 14,
+        materials: { 604: 1, 603: 8, 4: 2, 110: 4 },
+      },
+      {
+        level: 15,
+        materials: { 604: 1, 603: 8, 3: 3, 103: 4 },
+      },
+    ],
+  },
 ];

@@ -470,6 +470,14 @@ export const materialList: Material[] = [
     engName: "Seed of Insight",
     rarity: 4,
   },
+  // 특별 재료
+  {
+    id: 801,
+    name: "새싹의 열쇠",
+    category: "euphoria_material",
+    engName: "Key of New Sprout",
+    rarity: 6,
+  },
 
   // 기본 재료
   {

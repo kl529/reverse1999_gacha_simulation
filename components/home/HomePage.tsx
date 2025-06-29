@@ -10,6 +10,7 @@ import { useTheme } from "next-themes";
 import UpdateModal from "@/components/modals/UpdateModal";
 import CardInfoModal from "@/components/modals/CardInfoModal";
 import Carousel from "@/components/etc/Carousel";
+import { ColourfulText } from "@/components/ui/ColourfulText";
 
 const bgImages = Array.from({ length: 32 }, (_, i) => `/infos/home/poster${i + 1}.webp`);
 
@@ -231,6 +232,15 @@ export default function HomePage() {
             <p className="whitespace-pre-line text-sm leading-relaxed">
               -{" "}
               <Link
+                href="https://cafe.naver.com/reverse1999?iframe_url_utf8=%2FArticleRead.nhn%253Farticleid%3D122878%2526where%3Dmain%2526clubid%3D30989886"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                미래시 정보 및 많은 캐릭터 검수 (내이름은김융털)
+              </Link>
+              <br />-{" "}
+              <Link
                 href="https://res1999.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -353,10 +363,7 @@ export default function HomePage() {
         {showContributors && (
           <ConfirmModal isOpen={showContributors} onClose={() => setShowContributors(false)}>
             <h2 className="text-lg font-bold">도움을 주신 분들</h2>
-            <p className="whitespace-pre-line text-sm leading-relaxed">
-              - 개발자: Lyva
-              <br />- 데이터 정리: 잠쿨
-            </p>
+            <ColourfulText text={`- 개발자: Lyva\n- 데이터 정리: 잠쿨`} />
           </ConfirmModal>
         )}
         {infoModalOpen && selectedInfo && (

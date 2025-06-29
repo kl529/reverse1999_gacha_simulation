@@ -1571,4 +1571,68 @@ export const insightMaterial: InsightMaterial[] = [
       },
     ],
   },
+  {
+    character_id: 49, // "Moldir",
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 18000,
+          501: 6,
+          403: 5,
+          305: 5,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 40000,
+          502: 10,
+          307: 5,
+          205: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          1002: 200000,
+          503: 16,
+          110: 6,
+          4: 3,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 50, // "Sentinel",
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 18000,
+          510: 6,
+          403: 6,
+          307: 5,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 40000,
+          511: 10,
+          306: 6,
+          205: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          1002: 200000,
+          512: 16,
+          109: 6,
+          2: 3,
+        },
+      },
+    ],
+  },
 ];

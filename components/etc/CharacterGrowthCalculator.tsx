@@ -38,6 +38,8 @@ export default function MaterialCalculator({ characterId }: Props) {
   const [showCurrentSlider, setShowCurrentSlider] = useState(false);
   const [showTargetSlider, setShowTargetSlider] = useState(false);
   const [targetResonancePatterns, setTargetResonancePatterns] = useState<number[]>([]);
+  const [currentEuphoriaLevels, setCurrentEuphoriaLevels] = useState<number[]>([]);
+  const [targetEuphoriaLevels, setTargetEuphoriaLevels] = useState<number[]>([]);
 
   const character = useMemo(() => {
     const allCharacters = Object.values(charactersByRarity).flat();
@@ -60,6 +62,8 @@ export default function MaterialCalculator({ characterId }: Props) {
     setShowCurrentSlider(false);
     setShowTargetSlider(false);
     setTargetResonancePatterns([]);
+    setCurrentEuphoriaLevels([]);
+    setTargetEuphoriaLevels([]);
   }, [characterId]);
 
   const resonancePatterns = useMemo(() => {
@@ -140,6 +144,26 @@ export default function MaterialCalculator({ characterId }: Props) {
     currentZoneLevel,
     targetZoneLevel,
   ]);
+
+  // 목표/현재 광상 OFF 시 zoneLevel 0으로 자동 설정
+  useEffect(() => {
+    if (targetEuphoriaLevels.length === 0 && targetZoneLevel !== 0) {
+      setTargetZoneLevel(0);
+    }
+  }, [targetEuphoriaLevels, targetZoneLevel]);
+  useEffect(() => {
+    if (currentEuphoriaLevels.length === 0 && currentZoneLevel !== 0) {
+      setCurrentZoneLevel(0);
+    }
+  }, [currentEuphoriaLevels, currentZoneLevel]);
+
+  // 현재 광상 ON 시 목표 광상도 자동 ON
+  useEffect(() => {
+    setTargetEuphoriaLevels((prev) => {
+      const merged = Array.from(new Set([...prev, ...currentEuphoriaLevels]));
+      return merged;
+    });
+  }, [currentEuphoriaLevels]);
 
   const renderInsightImages = (
     selected: number,
@@ -295,20 +319,29 @@ export default function MaterialCalculator({ characterId }: Props) {
 
   const getEuphoriaMaterials = () => {
     const data = euphoriaMaterialList.find((c) => c.character_id === characterId);
-    if (!data || (!targetZoneOn && !currentZoneOn)) return {};
+    if (!data) return {};
     const materialsMap: Record<number, number> = {};
-    if (!currentZoneOn && targetZoneOn && data.euphoria[0]) {
-      for (const [id, count] of Object.entries(data.euphoria[0].materials)) {
-        const key = Number(id);
-        materialsMap[key] = (materialsMap[key] || 0) + count;
-      }
-    }
-    for (let i = currentZoneLevel + 1; i <= targetZoneLevel; i++) {
-      const step = data.upgrade.find((u) => u.level === i);
-      if (step) {
-        for (const [id, count] of Object.entries(step.materials)) {
-          const key = Number(id);
-          materialsMap[key] = (materialsMap[key] || 0) + count;
+    // 1. euphoria 재료: 목표에서 새로 ON되는 레벨만 (zoneLevel과 무관)
+    targetEuphoriaLevels
+      .filter((level) => !currentEuphoriaLevels.includes(level))
+      .forEach((level) => {
+        const euphoria = data.euphoria.find((e) => e.level === level);
+        if (euphoria) {
+          for (const [id, count] of Object.entries(euphoria.materials)) {
+            const key = Number(id);
+            materialsMap[key] = (materialsMap[key] || 0) + count;
+          }
+        }
+      });
+    // 2. upgrade 재료: zoneLevel이 1 이상일 때만
+    if (targetZoneLevel > 0) {
+      for (let i = currentZoneLevel + 1; i <= targetZoneLevel; i++) {
+        const step = data.upgrade.find((u) => u.level === i);
+        if (step) {
+          for (const [id, count] of Object.entries(step.materials)) {
+            const key = Number(id);
+            materialsMap[key] = (materialsMap[key] || 0) + count;
+          }
         }
       }
     }
@@ -396,7 +429,7 @@ export default function MaterialCalculator({ characterId }: Props) {
     return (
       <div className="flex flex-wrap gap-1">
         {availablePatterns.map((patternId) => {
-          const pattern = resonancePatterns.find((p, idx) => idx === patternId - 1);
+          const pattern = resonancePatterns.find((p) => p.pattern === patternId.toString());
           if (!pattern) return null;
           const patternName = `${character.resonanceType}_${pattern.pattern}`;
           const isSelected = targetResonancePatterns.includes(patternId);
@@ -612,15 +645,28 @@ export default function MaterialCalculator({ characterId }: Props) {
                 euphoriaData.euphoria.length > 0 && (
                   <div>
                     <p className="mb-2">광상</p>
-                    <div className="flex items-center gap-2">
-                      <Button
-                        size="sm"
-                        variant={currentZoneOn ? "default" : "outline"}
-                        onClick={() => setCurrentZoneOn((prev) => !prev)}
-                      >
-                        {currentZoneOn ? "ON" : "OFF"}
-                      </Button>
-                      {currentZoneOn && renderZoneButtons(currentZoneLevel, setCurrentZoneLevel)}
+                    <div className="flex flex-col gap-2">
+                      {euphoriaData.euphoria.map((e) => (
+                        <Button
+                          key={e.level}
+                          size="sm"
+                          variant={currentEuphoriaLevels.includes(e.level) ? "default" : "outline"}
+                          onClick={() => {
+                            setCurrentEuphoriaLevels((prev) =>
+                              prev.includes(e.level)
+                                ? prev.filter((l) => l !== e.level)
+                                : [...prev, e.level]
+                            );
+                          }}
+                        >
+                          {`광상 ${e.level}차 ${currentEuphoriaLevels.includes(e.level) ? "ON" : "OFF"}`}
+                        </Button>
+                      ))}
+                      {currentEuphoriaLevels.length > 0 && (
+                        <div className="mt-2 flex items-center gap-2">
+                          {renderZoneButtons(currentZoneLevel, setCurrentZoneLevel)}
+                        </div>
+                      )}
                     </div>
                   </div>
                 )
@@ -680,21 +726,33 @@ export default function MaterialCalculator({ characterId }: Props) {
                 euphoriaData.euphoria.length > 0 && (
                   <div>
                     <p className="mb-2">광상</p>
-                    <div className="flex items-center gap-2">
-                      <Button
-                        size="sm"
-                        variant={targetZoneOn ? "default" : "outline"}
-                        onClick={() => setTargetZoneOn((prev) => !prev)}
-                      >
-                        {targetZoneOn ? "ON" : "OFF"}
-                      </Button>
-                      {targetZoneOn &&
-                        renderZoneButtons(
-                          targetZoneLevel,
-                          setTargetZoneLevel,
-                          true,
-                          currentZoneLevel
-                        )}
+                    <div className="flex flex-col gap-2">
+                      {euphoriaData.euphoria.map((e) => (
+                        <Button
+                          key={e.level}
+                          size="sm"
+                          variant={targetEuphoriaLevels.includes(e.level) ? "default" : "outline"}
+                          onClick={() => {
+                            setTargetEuphoriaLevels((prev) =>
+                              prev.includes(e.level)
+                                ? prev.filter((l) => l !== e.level)
+                                : [...prev, e.level]
+                            );
+                          }}
+                        >
+                          {`광상 ${e.level}차 ${targetEuphoriaLevels.includes(e.level) ? "ON" : "OFF"}`}
+                        </Button>
+                      ))}
+                      {targetEuphoriaLevels.length > 0 && (
+                        <div className="mt-2 flex items-center gap-2">
+                          {renderZoneButtons(
+                            targetZoneLevel,
+                            setTargetZoneLevel,
+                            true,
+                            currentZoneLevel
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 )

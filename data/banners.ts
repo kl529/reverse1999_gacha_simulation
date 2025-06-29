@@ -26,6 +26,12 @@ export const banners: Banner[] = [
     version: "2.8",
   },
   {
+    id: "doublepick_flutter_page_barcarola",
+    name: "플러터페이지 & 바르카롤라",
+    bannerType: "doublePick",
+    twoPickup6: [38, 39],
+  },
+  {
     id: "kiperina_pick_up",
     name: "[2.7] 키페리나 픽업",
     pickup6: 46,

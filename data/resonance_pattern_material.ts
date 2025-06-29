@@ -7,6 +7,108 @@ export interface ResonancePatternMaterial {
 }
 
 export const resonancePatternMaterial: ResonancePatternMaterial[] = [
+  // 3.0
+  {
+    character_id: 50, // "Sentinel",
+    pattern: [
+      {
+        pattern: "Elucidation",
+        materials: {
+          4: 1,
+          103: 2,
+          203: 5,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Genuinity",
+        materials: {
+          5: 1,
+          101: 2,
+          206: 4,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Mercy",
+        materials: {
+          2: 1,
+          104: 2,
+          211: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Equanimity",
+        materials: {
+          1: 1,
+          106: 2,
+          203: 5,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Equibalance",
+        materials: {
+          5: 1,
+          110: 2,
+          210: 3,
+          1002: 120000,
+        },
+      },
+    ],
+  },
+  // 2.8
+  {
+    character_id: 49, // "Moldir",
+    pattern: [
+      {
+        pattern: "Elucidation",
+        materials: {
+          1: 1,
+          106: 2,
+          205: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Genuinity",
+        materials: {
+          4: 1,
+          107: 2,
+          207: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Mercy",
+        materials: {
+          1: 1,
+          109: 2,
+          207: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Equanimity",
+        materials: {
+          3: 1,
+          111: 2,
+          208: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Equibalance",
+        materials: {
+          2: 1,
+          104: 2,
+          206: 4,
+          1002: 120000,
+        },
+      },
+    ],
+  },
   {
     character_id: 48, // "Ulrich",
     pattern: [
