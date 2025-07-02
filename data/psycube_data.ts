@@ -591,7 +591,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 34,
-    name: "신구 가요",
+    name: "올드앤뉴 멜로디",
     engName: "melodies_old_and_new",
     rarity: 5,
     priority: 6,
@@ -1242,7 +1242,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 71,
-    name: "겨울 후의 오로라",
+    name: "살포시 다가오는 봄날",
     engName: "aurora_after_winter",
     rarity: 6,
     version: "2.7",

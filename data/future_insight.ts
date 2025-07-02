@@ -87,7 +87,7 @@ export const futureInsightData: FutureInsightItem[] = [
   },
   {
     version: "2.7",
-    title: "1987 코스믹 오버추어",
+    title: "1987 우주의 서곡",
     period: {
       start: "2025-07-03",
       end: "2025-08-07",
