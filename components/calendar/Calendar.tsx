@@ -380,7 +380,6 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
         >
           <div
             style={{
-              background: "#fff",
               borderRadius: 12,
               padding: 24,
               minWidth: 280,
@@ -388,6 +387,7 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
               boxShadow: "0 4px 24px rgba(0,0,0,0.15)",
               position: "relative",
             }}
+            className="bg-white dark:bg-gray-800 dark:text-gray-200"
             onClick={(e) => e.stopPropagation()}
           >
             <div style={{ fontWeight: "bold", fontSize: "1.2rem", marginBottom: 8 }}>
@@ -403,7 +403,7 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
                 style={{ width: "100%", height: "auto", borderRadius: 8, marginBottom: 12 }}
               />
             )}
-            <div style={{ color: "#666", marginBottom: 8 }}>
+            <div className="text-gray-500 dark:text-gray-400" style={{ marginBottom: 8 }}>
               {selectedEvent.start && selectedEvent.end
                 ? `${formatDate(selectedEvent.start)} ~ ${formatDate(selectedEvent.end)}`
                 : selectedEvent.start
@@ -462,8 +462,8 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
                 border: "none",
                 fontSize: 20,
                 cursor: "pointer",
-                color: "#888",
               }}
+              className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
               onClick={() => setSelectedEvent(null)}
               aria-label="닫기"
             >
