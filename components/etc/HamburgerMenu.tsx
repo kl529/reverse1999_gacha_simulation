@@ -60,6 +60,11 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
       label: "청사진 모음",
       href: "/blueprint_setting",
     },
+    {
+      iconImg: "/infos/menu/calendar_menu.webp",
+      label: "캘린더",
+      href: "/calendar",
+    },
     { divider: true },
     {
       iconImg: "/infos/menu/character_menu.webp",

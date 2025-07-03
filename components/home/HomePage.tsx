@@ -109,6 +109,11 @@ export default function HomePage() {
                   label: "청사진 모음",
                   href: "/blueprint_setting",
                 },
+                {
+                  icon: "/infos/menu/calendar_menu.webp",
+                  label: "캘린더",
+                  href: "/calendar",
+                },
               ]}
             />
 
