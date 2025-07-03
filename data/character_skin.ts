@@ -934,6 +934,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.7",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/QJkfaQaSzqg",
   },
   {
     id: 82,
@@ -945,6 +946,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.7",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/X-ERTSdLArw",
   },
   {
     id: 83,
