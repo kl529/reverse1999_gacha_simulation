@@ -22,6 +22,7 @@ export async function GET() {
     "/cash_guide",
     "/bingo",
     "/psycube_guide",
+    "/calendar",
   ].map((path) => `${baseUrl}${path}`);
 
   const characterSettingUrls = SETTING_CHARACTERS.map(

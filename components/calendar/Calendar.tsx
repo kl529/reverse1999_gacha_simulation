@@ -136,11 +136,13 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
     minWidth: 40,
   };
 
-  function formatDate(val: any): string {
+  function formatDate(
+    val: Date | string | number | string[] | number[] | null | undefined
+  ): string {
     if (!val) return "";
     if (typeof val === "string") return val;
     if (val instanceof Date) return val.toLocaleDateString();
-    if (Array.isArray(val)) return val.join(", ");
+    if (Array.isArray(val)) return val.map((v) => String(v)).join(", ");
     if (typeof val === "number") return new Date(val).toLocaleDateString();
     return String(val);
   }

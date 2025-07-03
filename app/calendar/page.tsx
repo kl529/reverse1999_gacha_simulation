@@ -9,7 +9,6 @@ export default function CalendarPage() {
     </div>
   );
 }
-
 export const metadata = {
   metadataBase: new URL("https://www.reverse1999-simulator.com"),
   title: "리버스 1999 이벤트 캘린더",
