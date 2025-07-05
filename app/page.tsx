@@ -1,5 +1,9 @@
 import HomePage from "@/components/home/HomePage";
 
+// 정적 생성 강제 - Edge 요청 줄이기
+export const dynamic = 'force-static';
+export const revalidate = false; // 완전 정적
+
 export default function Home() {
   return <HomePage />;
 }

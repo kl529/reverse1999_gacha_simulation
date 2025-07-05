@@ -8,6 +8,17 @@ import { ReactNode } from "react";
 import ThemeProvider from "@/components/etc/ThemeProvider";
 import HamburgerConditional from "@/components/etc/HamburgerConditional";
 import ThemeToggle from "@/components/etc/ThemeToggle";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "버틴의 여행가방",
+  description: "리버스1999 종합정보 사이트입니다.",
+  icons: {
+    icon: "/pwa_icon.webp",
+    apple: "/pwa_icon.webp",
+  },
+  manifest: "/manifest.json",
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const isProd = process.env.NODE_ENV === "production";

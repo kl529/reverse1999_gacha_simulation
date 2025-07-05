@@ -1,9 +1,14 @@
+// 정적 생성으로 변경하여 Edge 요청 줄이기
 import { NextResponse } from "next/server";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
 import { characterSkin } from "@/data/character_skin";
 import { euphoriaList } from "@/data/euphoria";
 import { psycube_list } from "@/data/psycube_data";
 import { characterGuideList } from "@/data/character_guide";
+
+// 정적 생성 강제
+export const dynamic = 'force-static';
+export const revalidate = 86400; // 24시간마다 재생성
 
 export async function GET() {
   const baseUrl = "https://www.reverse1999-simulator.com";
@@ -55,12 +60,18 @@ export async function GET() {
       (url) => `
   <url>
     <loc>${url}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>`
     )
     .join("")}
 </urlset>`;
 
   return new NextResponse(xml, {
-    headers: { "Content-Type": "application/xml" },
+    headers: { 
+      "Content-Type": "application/xml",
+      "Cache-Control": "public, max-age=86400, stale-while-revalidate=86400"
+    },
   });
 }
