@@ -1551,9 +1551,9 @@ export const characterGuideList: CharacterGuide[] = [
       source: "icehood",
       note: "2형상은 의미가 없을정도. (추가예정)",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=NBgZBzi64Zw"],
+    youtube_links: ["https://www.youtube.com/watch?v=eR9gbWg0PyQ"],
     keywords: ["딜러", "술식위주", "정신피해"],
-    guide_images: [],
+    guide_images: [1, 2, 3],
   },
   {
     character_id: 46, // 키페리나
