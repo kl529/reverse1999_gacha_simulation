@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/(favicon.ico|pwa_icon.webp|manifest.json|ads.txt)",
+      "source": "/(favicon.ico|ads.txt)",
       "headers": [
         {
           "key": "Cache-Control",
