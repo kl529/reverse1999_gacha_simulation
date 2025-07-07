@@ -10,7 +10,7 @@ import { useTheme } from "next-themes";
 import UpdateModal from "@/components/modals/UpdateModal";
 import CardInfoModal from "@/components/modals/CardInfoModal";
 import Carousel from "@/components/etc/Carousel";
-import { ColourfulText } from "@/components/ui/ColourfulText";
+import ColourfulText from "@/components/ui/ColourfulText";
 
 const bgImages = Array.from({ length: 32 }, (_, i) => `/infos/home/poster${i + 1}.webp`);
 
