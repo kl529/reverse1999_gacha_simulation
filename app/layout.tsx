@@ -8,6 +8,7 @@ import { ReactNode } from "react";
 import ThemeProvider from "@/components/etc/ThemeProvider";
 import HamburgerConditional from "@/components/etc/HamburgerConditional";
 import ThemeToggle from "@/components/etc/ThemeToggle";
+import { InstallPrompt } from "@/components/etc/InstallPrompt";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const isProd = process.env.NODE_ENV === "production";
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               <GlobalLoadingManager />
               <HamburgerConditional />
               <CustomCursor />
+              <InstallPrompt />
               {children}
             </SecurityWrapper>
           </ModalProvider>

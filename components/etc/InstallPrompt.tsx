@@ -1,4 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -7,35 +10,66 @@ interface BeforeInstallPromptEvent extends Event {
 
 export function InstallPrompt() {
   const [promptEvent, setPromptEvent] = useState<BeforeInstallPromptEvent | null>(null);
+  const [showPrompt, setShowPrompt] = useState(true);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
       setPromptEvent(e as BeforeInstallPromptEvent);
     };
 
+    const handleAppInstalled = () => {
+      setPromptEvent(null);
+      setShowPrompt(false);
+    };
+
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-    return () => window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    window.addEventListener("appinstalled", handleAppInstalled);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+      window.removeEventListener("appinstalled", handleAppInstalled);
+    };
   }, []);
 
   const handleInstallClick = async () => {
     if (!promptEvent) return;
-    await promptEvent.prompt(); // 유저에게 설치 팝업 노출
-    await promptEvent.userChoice; // outcome ('accepted' or 'dismissed')
-    setPromptEvent(null); // ✅ 설치 후 prompt 제거
+
+    try {
+      await promptEvent.prompt();
+      const choiceResult = await promptEvent.userChoice;
+
+      if (choiceResult.outcome === "accepted") {
+        setPromptEvent(null);
+      }
+    } catch (error) {
+      console.error("Installation prompt error:", error);
+    }
   };
 
-  if (!promptEvent) return null; // ✅ prompt가 없으면 UI 숨김
+  if (!promptEvent || !showPrompt) return null;
 
   return (
-    <div className="fixed bottom-4 left-1/2 flex -translate-x-1/2 transform items-center space-x-3 rounded bg-gray-800 p-4 text-white shadow-lg">
-      <p className="text-sm">앱을 설치하시겠습니까?</p>
-      <button
-        onClick={handleInstallClick}
-        className="rounded bg-green-500 px-3 py-1 text-sm hover:bg-green-600"
-      >
-        설치하기
-      </button>
+    <div className="fixed left-0 right-0 top-0 z-50 bg-gradient-to-r from-blue-500 to-purple-500 p-4 text-white shadow-lg">
+      <div className="mx-auto flex max-w-screen-xl items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <Image src="/pwa_icon.webp" alt="pwa_icon" width={24} height={24} />
+          <p className="text-sm font-medium">앱으로 설치하시겠습니까?</p>
+        </div>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={handleInstallClick}
+            className="rounded-full bg-white px-4 py-1 text-sm font-medium text-blue-500 transition hover:bg-opacity-90"
+          >
+            설치
+          </button>
+          <button
+            onClick={() => setShowPrompt(false)}
+            className="rounded-full border border-white px-4 py-1 text-sm font-medium text-white transition hover:bg-white hover:bg-opacity-10"
+          >
+            나중에
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
