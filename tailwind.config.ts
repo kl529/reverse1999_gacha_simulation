@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 import animate from "tailwindcss-animate";
+import lineClamp from "@tailwindcss/line-clamp";
 
 const config: Config = {
   darkMode: ["class"],
@@ -98,6 +99,7 @@ const config: Config = {
     },
   },
   plugins: [
+    lineClamp,
     plugin(function ({ addVariant, theme }) {
       const screens = theme("screens") as Record<string, string>;
 

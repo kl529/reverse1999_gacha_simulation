@@ -1,46 +1,13 @@
 {
-  "functions": {
-    "app/sitemap.xml/route.ts": {
-      "maxDuration": 10
-    }
-  },
   "headers": [
     {
-      "source": "/(.*)\\.(ico|webp|png|jpg|jpeg|gif|svg|css|js|woff|woff2|ttf|json)$",
+      "source": "/(favicon.ico|pwa_icon.webp|manifest.json|ads.txt)",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/infos/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/_next/image(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400, stale-while-revalidate=86400"
         }
       ]
     }
-  ],
-  "crons": []
+  ]
 }
