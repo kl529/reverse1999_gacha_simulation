@@ -119,64 +119,70 @@ export default function ReveriesInTheRainDetail({ floorId }: ReveriesInTheRainDe
                   key={index}
                   className="flex flex-col items-center rounded-lg border border-gray-300 bg-muted p-4"
                 >
-                  <div className="mb-4 flex flex-wrap justify-center gap-2">
-                    {team.characters.map((char) => {
-                      const character = charactersByRarity[6].find(
-                        (c) => c.id === char.character_id
-                      );
-                      const psycube = psycube_list.find((p) => p.id === char.psycube_id);
+                  <div className="mb-4 w-full overflow-hidden">
+                    <div className="grid w-full grid-cols-4 gap-1 md:gap-2">
+                      {team.characters.map((char) => {
+                        const character = charactersByRarity[6].find(
+                          (c) => c.id === char.character_id
+                        );
+                        const psycube = psycube_list.find((p) => p.id === char.psycube_id);
 
-                      return (
-                        <div key={char.character_id} className="flex flex-col items-center gap-2">
-                          <Link
-                            href={`/character_setting/${character?.id}`}
-                            className="cursor-pointer"
-                          >
-                            <div className="relative w-[72px]">
-                              <Image
-                                src={`/characters/${character?.rarity}stars/${character?.engName}.webp`}
-                                alt={character?.name ?? "character"}
-                                width={72}
-                                height={72}
-                                className="rounded object-contain"
-                              />
-                              <Image
-                                src={`/infos/effects/${character?.rarity}stars.webp`}
-                                alt={`${character?.rarity}성`}
-                                width={72}
-                                height={16}
-                                className="absolute bottom-0 left-0 z-10"
-                              />
-                              <Image
-                                src={`/infos/inspiration/${character?.inspiration}.webp`}
-                                alt={character?.inspiration ?? ""}
-                                width={12}
-                                height={12}
-                                className="absolute right-1 top-0 z-10"
-                              />
-                              {char.euphoria && (
-                                <div className="absolute bottom-1 left-1 z-10 rounded-sm bg-purple-600 px-1 py-[1px] text-[10px] text-white">
-                                  광상
+                        return (
+                          <div key={char.character_id} className="flex flex-col items-center">
+                            <Link
+                              href={`/character_setting/${character?.id}`}
+                              className="cursor-pointer"
+                            >
+                              <div className="relative w-[60px] md:w-[84px]">
+                                <Image
+                                  src={`/characters/${character?.rarity}stars/${character?.engName}.webp`}
+                                  alt={character?.name ?? "character"}
+                                  width={84}
+                                  height={84}
+                                  className="rounded object-cover"
+                                />
+                                <Image
+                                  src={`/infos/effects/${character?.rarity}stars.webp`}
+                                  alt={`${character?.rarity}성`}
+                                  width={72}
+                                  height={16}
+                                  className="absolute bottom-0 left-0 z-10 w-full"
+                                />
+                                <Image
+                                  src={`/infos/inspiration/${character?.inspiration}.webp`}
+                                  alt={character?.inspiration ?? ""}
+                                  width={12}
+                                  height={12}
+                                  className="absolute right-1 top-0 z-10"
+                                />
+                                {char.euphoria && (
+                                  <div className="absolute bottom-1 left-1 z-10 rounded-sm bg-purple-600 px-1 py-[1px] text-[8px] text-white md:text-[10px]">
+                                    광상
+                                  </div>
+                                )}
+                                <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[8px] text-white md:text-[10px]">
+                                  v{character?.version}
                                 </div>
-                              )}
-                              <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white">
-                                v{character?.version}
                               </div>
-                            </div>
-                          </Link>
-                          <span className="text-sm font-medium">{character?.name}</span>
-                          <Link href={`/psycube_guide/${psycube?.id}`} className="cursor-pointer">
-                            <Image
-                              src={`/infos/psycube_img/${psycube?.engName}.webp`}
-                              alt={psycube?.name ?? "psycube"}
-                              width={60}
-                              height={60}
-                              className="rounded-lg"
-                            />
-                          </Link>
-                        </div>
-                      );
-                    })}
+                            </Link>
+                            <span className="text-xs font-medium md:text-sm">
+                              {character?.name}
+                            </span>
+                            <Link href={`/psycube_guide/${psycube?.id}`} className="cursor-pointer">
+                              <div className="w-[40px] md:w-[60px]">
+                                <Image
+                                  src={`/infos/psycube_img/${psycube?.engName}.webp`}
+                                  alt={psycube?.name ?? "psycube"}
+                                  width={60}
+                                  height={60}
+                                  className="h-auto w-full rounded-lg"
+                                />
+                              </div>
+                            </Link>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                   <Link href="/blueprint_setting" className="mb-4 cursor-pointer">
                     <div className="flex items-center gap-2">

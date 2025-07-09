@@ -110,10 +110,8 @@ export default function ReveriesInTheRain() {
               {floors.map((floor) => (
                 <Link href={`/reveries_in_the_rain/${floor.id}`} key={floor.id}>
                   <Card className="transition-colors duration-200 hover:bg-accent">
-                    <div className="flex items-center justify-between rounded-lg border border-gray-300 p-6">
-                      <div>
-                        <h3 className="mb-2 text-xl font-semibold">{floor.id}</h3>
-                      </div>
+                    <div className="flex h-24 items-center justify-center rounded-lg border border-gray-300">
+                      <h3 className="text-lg font-medium">{floor.id}</h3>
                     </div>
                   </Card>
                 </Link>
