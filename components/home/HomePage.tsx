@@ -114,6 +114,11 @@ export default function HomePage() {
                   label: "캘린더",
                   href: "/calendar",
                 },
+                {
+                  icon: "/infos/menu/reveries_in_the_rain_menu.webp",
+                  label: "빗속의 공상",
+                  href: "/reveries_in_the_rain",
+                },
               ]}
             />
 
@@ -145,6 +150,21 @@ export default function HomePage() {
                   icon: "/infos/menu/cash_guide_menu.webp",
                   label: "현질 가이드",
                   href: "/cash_guide",
+                },
+                {
+                  icon: "/infos/menu/newbie_guide_menu.webp",
+                  label: "뉴비 가이드 \n (준비중)",
+                  href: "/#",
+                },
+                {
+                  icon: "/infos/menu/cash_package_shop_menu.webp",
+                  label: "현질 패키지 \n (준비중)",
+                  href: "/#",
+                },
+                {
+                  icon: "/infos/menu/gacha_guide_menu.webp",
+                  label: "가챠 가이드 \n (준비중)",
+                  href: "/#",
                 },
               ]}
             />

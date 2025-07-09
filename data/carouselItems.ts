@@ -71,12 +71,20 @@ export const carouselItems: CarouselItem[] = [
     image: "/infos/carousel_img/psycube_guide_carousel.webp",
     link: "/psycube_guide",
     type: "event",
+    open: false,
   },
   {
     id: 10,
     title: "캐릭터 가이드",
     image: "/infos/carousel_img/character_guide_carousel.webp",
     link: "/character",
+    type: "event",
+  },
+  {
+    id: 11,
+    title: "빗속의 공상",
+    image: "/infos/carousel_img/reveries_in_the_rain_carousel.webp",
+    link: "/reveries_in_the_rain",
     type: "event",
   },
 ];

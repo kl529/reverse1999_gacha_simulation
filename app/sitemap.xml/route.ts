@@ -4,6 +4,7 @@ import { characterSkin } from "@/data/character_skin";
 import { euphoriaList } from "@/data/euphoria";
 import { psycube_list } from "@/data/psycube_data";
 import { characterGuideList } from "@/data/character_guide";
+import { reveriesInTheRain } from "@/data/reveries_in_the_rain";
 
 export async function GET() {
   const baseUrl = "https://www.reverse1999-simulator.com";
@@ -23,6 +24,7 @@ export async function GET() {
     "/bingo",
     "/psycube_guide",
     "/calendar",
+    "/reveries_in_the_rain",
   ].map((path) => `${baseUrl}${path}`);
 
   const characterSettingUrls = SETTING_CHARACTERS.map(
@@ -39,6 +41,10 @@ export async function GET() {
     (c) => `${baseUrl}/character/${c.character_id}`
   );
 
+  const reveriesInTheRainUrls = Object.keys(reveriesInTheRain).map(
+    (r) => `${baseUrl}/reveries_in_the_rain/${r}`
+  );
+
   const urls = [
     ...staticUrls,
     ...characterSettingUrls,
@@ -46,6 +52,7 @@ export async function GET() {
     ...euphoriaGuideUrls,
     ...psycubeGuideUrls,
     ...characterGuideUrls,
+    ...reveriesInTheRainUrls,
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

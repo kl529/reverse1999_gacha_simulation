@@ -65,6 +65,11 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
       label: "캘린더",
       href: "/calendar",
     },
+    {
+      iconImg: "/infos/menu/reveries_in_the_rain_menu.webp",
+      label: "빗속의 공상",
+      href: "/reveries_in_the_rain",
+    },
     { divider: true },
     {
       iconImg: "/infos/menu/character_menu.webp",
