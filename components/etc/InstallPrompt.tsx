@@ -11,8 +11,20 @@ interface BeforeInstallPromptEvent extends Event {
 export function InstallPrompt() {
   const [promptEvent, setPromptEvent] = useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // 모바일 기기 체크
+    const checkMobile = () => {
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isMobileDevice = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
+        userAgent
+      );
+      setIsMobile(isMobileDevice);
+    };
+
+    checkMobile();
+
     const handleBeforeInstallPrompt = (e: Event) => {
       setPromptEvent(e as BeforeInstallPromptEvent);
     };
@@ -46,7 +58,8 @@ export function InstallPrompt() {
     }
   };
 
-  if (!promptEvent || !showPrompt) return null;
+  // 데스크톱이거나 프롬프트 이벤트가 없거나 프롬프트를 숨긴 경우 null 반환
+  if (!isMobile || !promptEvent || !showPrompt) return null;
 
   return (
     <div className="fixed left-0 right-0 top-0 z-50 bg-gradient-to-r from-blue-500 to-purple-500 p-4 text-white shadow-lg">
