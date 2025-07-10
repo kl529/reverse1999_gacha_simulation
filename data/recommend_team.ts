@@ -200,8 +200,6 @@ export const recommendTeams: RecommendTeam[] = [
     concepts: ["최종 술식", "나무"],
     characters: [
       { id: 45, isMain: true, role: "딜러" },
-      { id: 12, euphoria: true, role: "서폿" },
-      { id: 26, role: "힐러", alternatives: [{ id: 30, role: "탱커" }] },
       {
         id: 127,
         role: "서폿",
@@ -210,6 +208,8 @@ export const recommendTeams: RecommendTeam[] = [
           { id: 34, role: "서폿" },
         ],
       },
+      { id: 12, euphoria: true, role: "서폿" },
+      { id: 26, role: "힐러", alternatives: [{ id: 30, role: "탱커" }] },
     ],
   },
   {
