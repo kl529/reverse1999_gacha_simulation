@@ -14,7 +14,7 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
       e.preventDefault();
       alert("우클릭이 금지되어 있습니다.");
     };
-    const rightClickExceptionPaths = ["/bingo"];
+    const rightClickExceptionPaths = ["/bingo", "/gacha_guide"];
     if (!rightClickExceptionPaths.includes(pathname)) {
       document.addEventListener("contextmenu", disableRightClick);
     }
@@ -49,7 +49,8 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
       !pathname.startsWith("/psycube_guide") &&
       !pathname.startsWith("/character") &&
       pathname !== "/calendar" &&
-      !pathname.startsWith("/reveries_in_the_rain")
+      !pathname.startsWith("/reveries_in_the_rain") &&
+      pathname !== "/gacha_guide"
     ) {
       alert("잘못된 접근입니다. 홈으로 이동합니다.");
       router.push("/");

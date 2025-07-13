@@ -67,4 +67,5 @@ export const updateLogs = [
   { date: "2025-07-02", content: "2.7 버젼 데이터 변경" },
   { date: "2025-07-03", content: "이벤트 캘린더 추가" },
   { date: "2025-07-09", content: "빗속의 공상 페이지 오픈" },
+  { date: "2025-07-13", content: "가챠 가이드 페이지 오픈" },
 ];

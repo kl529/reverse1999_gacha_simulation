@@ -88,6 +88,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
       href: "/psycube_guide",
     },
     { iconImg: "/infos/menu/cash_guide_menu.webp", label: "현질 가이드", href: "/cash_guide" },
+    { iconImg: "/infos/menu/gacha_guide_menu.webp", label: "가챠 가이드", href: "/gacha_guide" },
   ];
 
   useEffect(() => {
@@ -157,7 +158,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noopener noreferrer" : undefined}
                       onClick={() => setIsOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2 text-xs hover:bg-gray-200 dark:hover:bg-gray-700 sm:text-sm"
+                      className="flex items-center gap-3 px-3 py-1 text-xs hover:bg-gray-200 dark:hover:bg-gray-700 sm:text-sm"
                     >
                       {item.iconImg ? (
                         <Image
@@ -180,7 +181,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                 <li key={index}>
                   <button
                     onClick={handleClick}
-                    className="flex w-full items-center gap-3 px-3 py-2 text-left text-xs hover:bg-gray-200 dark:hover:bg-gray-700 sm:text-sm"
+                    className="flex w-full items-center gap-3 px-3 py-1 text-left text-xs hover:bg-gray-200 dark:hover:bg-gray-700 sm:text-sm"
                   >
                     {item.iconImg ? (
                       <Image

@@ -405,7 +405,9 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
             )}
             <div className="text-gray-500 dark:text-gray-400" style={{ marginBottom: 8 }}>
               {selectedEvent.start && selectedEvent.end
-                ? `${formatDate(selectedEvent.start)} ~ ${formatDate(selectedEvent.end)}`
+                ? `${formatDate(selectedEvent.start)} ~ ${formatDate(
+                    new Date(new Date(selectedEvent.end as string).getTime() - 24 * 60 * 60 * 1000)
+                  )}`
                 : selectedEvent.start
                   ? formatDate(selectedEvent.start)
                   : ""}

@@ -25,6 +25,7 @@ export async function GET() {
     "/psycube_guide",
     "/calendar",
     "/reveries_in_the_rain",
+    "/gacha_guide",
   ].map((path) => `${baseUrl}${path}`);
 
   const characterSettingUrls = SETTING_CHARACTERS.map(

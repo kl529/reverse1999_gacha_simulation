@@ -28,6 +28,20 @@ export const calendarEvents: CalendarEvent[] = [
     type: "pickup",
     img: "/infos/banner_img/kiperina_pick_up.webp",
   },
+  // {
+  //   date: "2025-07-12",
+  //   end: "2025-07-31",
+  //   title: "호수의 물결 픽업",
+  //   type: "pickup",
+  //   img: "/infos/banner_img/kiperina_pick_up.webp",
+  // },
+  {
+    date: "2025-08-01",
+    end: "2025-08-14",
+    title: "바람의 호수 픽업",
+    type: "pickup",
+    img: "/infos/banner_img/doublepick_flutter_page_barcarola.webp",
+  },
   {
     date: "2025-08-07",
     end: "2025-09-18",

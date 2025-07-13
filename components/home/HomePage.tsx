@@ -12,7 +12,7 @@ import CardInfoModal from "@/components/modals/CardInfoModal";
 import Carousel from "@/components/etc/Carousel";
 import ColourfulText from "@/components/ui/ColourfulText";
 
-const bgImages = Array.from({ length: 32 }, (_, i) => `/infos/home/poster${i + 1}.webp`);
+const bgImages = Array.from({ length: 35 }, (_, i) => `/infos/home/poster${i + 1}.webp`);
 
 export default function HomePage() {
   const [bgImage, setBgImage] = useState<string | null>(null);
@@ -152,6 +152,11 @@ export default function HomePage() {
                   href: "/cash_guide",
                 },
                 {
+                  icon: "/infos/menu/gacha_guide_menu.webp",
+                  label: "가챠 가이드",
+                  href: "/gacha_guide",
+                },
+                {
                   icon: "/infos/menu/newbie_guide_menu.webp",
                   label: "뉴비 가이드 \n (준비중)",
                   href: "/#",
@@ -159,11 +164,6 @@ export default function HomePage() {
                 {
                   icon: "/infos/menu/cash_package_shop_menu.webp",
                   label: "현질 패키지 \n (준비중)",
-                  href: "/#",
-                },
-                {
-                  icon: "/infos/menu/gacha_guide_menu.webp",
-                  label: "가챠 가이드 \n (준비중)",
                   href: "/#",
                 },
               ]}

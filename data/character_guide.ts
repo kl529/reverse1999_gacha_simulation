@@ -387,7 +387,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "가장 효율이 높은 형상은 1형상, 하지만 실전성으로는 2형상이 더 높음.",
     },
-    youtube_links: [],
+    youtube_links: ["https://www.youtube.com/watch?v=ilI_1dDX0wY"],
     keywords: ["서포터", "계시", "정신피해"],
     guide_images: [],
   },
