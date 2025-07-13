@@ -24,7 +24,7 @@ interface ClearedCharacter {
 interface RecommendedTeam {
   characters: ClearedCharacter[];
   description: string;
-  blueprint: string;
+  blueprint?: string;
   player_name?: string;
 }
 
@@ -1101,6 +1101,31 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         description: "계시덱 (에즈라 대신 적당한 탱커 가능)",
         blueprint: "ashen_beast",
         player_name: "Lyva",
+      },
+      {
+        characters: [
+          {
+            character_id: 43, // 레콜레타
+            psycube_id: 58,
+          },
+          {
+            character_id: 13, // 피클즈
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 12, // 멜라니아
+            euphoria: true,
+            psycube_id: 43,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 15,
+          },
+        ],
+        description:
+          "카카니아, 중독덱, 보이저가 없어서 쓴 덱(원형 청사진 없이도 가능) 레콜레타의 깡딜과 파투투의 생존 서포팅, 멜라의 열정 강탈로 깰 수 있음",
+        player_name: "대굴레오",
       },
     ],
   },

@@ -288,6 +288,17 @@ export default function GachaGuide() {
           </div>
         </Card>
 
+        <Card className="mb-4 p-6">
+          <h2 className="mb-2 text-center text-xl font-bold text-black dark:text-white">
+            뽑기를 미리 해볼 수 있는, 가챠 시뮬레이터
+          </h2>
+          <Link href="/gacha_simulator">
+            <Button variant="outline" className="w-full">
+              가챠 시뮬레이터로 이동
+            </Button>
+          </Link>
+        </Card>
+
         {/* 이미지 모달 */}
         {/* <div className="flex justify-center">
           <Dialog>

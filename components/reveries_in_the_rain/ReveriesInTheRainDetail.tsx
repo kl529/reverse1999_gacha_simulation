@@ -184,20 +184,22 @@ export default function ReveriesInTheRainDetail({ floorId }: ReveriesInTheRainDe
                       })}
                     </div>
                   </div>
-                  <Link href="/blueprint_setting" className="mb-4 cursor-pointer">
-                    <div className="flex items-center gap-2">
-                      <Image
-                        src={`/infos/blueprint/boss/${team.blueprint}.webp`}
-                        alt={team.blueprint}
-                        width={60}
-                        height={60}
-                        className="rounded-lg"
-                      />
-                      <span className="text-sm font-medium">
-                        {BOSSES.find((boss) => boss.id === team.blueprint)?.name}
-                      </span>
-                    </div>
-                  </Link>
+                  {team.blueprint && (
+                    <Link href="/blueprint_setting" className="mb-4 cursor-pointer">
+                      <div className="flex items-center gap-2">
+                        <Image
+                          src={`/infos/blueprint/boss/${team.blueprint}.webp`}
+                          alt={team.blueprint}
+                          width={60}
+                          height={60}
+                          className="rounded-lg"
+                        />
+                        <span className="text-sm font-medium">
+                          {BOSSES.find((boss) => boss.id === team.blueprint)?.name}
+                        </span>
+                      </div>
+                    </Link>
+                  )}
                   <p className="text-center text-base text-black dark:text-gray-200">
                     {team.description}
                   </p>
