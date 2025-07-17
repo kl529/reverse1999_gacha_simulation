@@ -70,6 +70,11 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
       label: "빗속의 공상",
       href: "/reveries_in_the_rain",
     },
+    {
+      iconImg: "/infos/menu/cash_package_shop_menu.webp",
+      label: "현질 패키지",
+      href: "/cash_package_shop",
+    },
     { divider: true },
     {
       iconImg: "/infos/menu/character_menu.webp",

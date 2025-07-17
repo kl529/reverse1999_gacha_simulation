@@ -119,6 +119,11 @@ export default function HomePage() {
                   label: "빗속의 공상",
                   href: "/reveries_in_the_rain",
                 },
+                {
+                  icon: "/infos/menu/cash_package_shop_menu.webp",
+                  label: "현질 패키지",
+                  href: "/cash_package_shop",
+                },
               ]}
             />
 
@@ -159,11 +164,6 @@ export default function HomePage() {
                 {
                   icon: "/infos/menu/newbie_guide_menu.webp",
                   label: "뉴비 가이드 \n (준비중)",
-                  href: "/#",
-                },
-                {
-                  icon: "/infos/menu/cash_package_shop_menu.webp",
-                  label: "현질 패키지 \n (준비중)",
                   href: "/#",
                 },
               ]}
@@ -437,7 +437,7 @@ function CardBox({ title, subTitle, items, onItemClick }: CardBoxProps) {
       ? "grid-cols-2"
       : items.length === 3
         ? "grid-cols-3"
-        : "grid-cols-2 sm:grid-cols-4 lg:grid-cols-4";
+        : "grid-cols-2 sm:grid-cols-5 lg:grid-cols-5";
 
   return (
     <div className="flex w-full flex-col items-center rounded-lg bg-gray-900/60 px-4 py-5 sm:px-6 lg:px-0">
@@ -463,9 +463,14 @@ function LinkBox({ icon, label, href, onClick }: LinkBoxProps) {
   const content = (
     <div className="flex flex-col items-center p-2 transition-transform hover:scale-105">
       <Image src={icon} alt={label} width={48} height={48} className="h-auto w-auto" />
-      <span className="whitespace-pre-wrap break-words pt-1 text-center text-sm text-white dark:text-gray-100">
-        {label}
-      </span>
+      <p className="mt-1 whitespace-nowrap text-center text-xs text-gray-800 dark:text-gray-300">
+        {label.split("\n").map((line, i) => (
+          <span key={i}>
+            {i > 0 && <br />}
+            {line}
+          </span>
+        ))}
+      </p>
     </div>
   );
 
