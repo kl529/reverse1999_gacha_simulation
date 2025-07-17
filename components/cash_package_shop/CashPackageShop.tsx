@@ -10,6 +10,7 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/s
 import { ShoppingCart, ChevronDown, ChevronRight } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import Link from "next/link";
+import Image from "next/image";
 
 const formatQuantity = (quantity: number) => {
   if (quantity >= 1000) {
@@ -125,15 +126,10 @@ export default function CashPackageShop() {
   const PackageSection = ({
     title,
     packages,
-    badgeText,
-    badgeVariant,
     sectionKey,
-    defaultOpen = true,
   }: {
     title: string;
     packages: CashPackage[];
-    badgeText: string;
-    badgeVariant: "secondary" | "destructive" | "default" | "outline";
     sectionKey: string;
     defaultOpen?: boolean;
   }) => {
@@ -145,7 +141,7 @@ export default function CashPackageShop() {
       <Collapsible
         open={isOpen}
         onOpenChange={(open) => updateSectionOpen(sectionKey, open)}
-        className="mb-4 rounded-lg border border-gray-200 p-4 dark:border-gray-700"
+        className="mb-4 rounded-lg border border-black p-4 dark:border-white"
       >
         <CollapsibleTrigger className="flex w-full items-center justify-between">
           <h2 className="text-xl font-semibold text-black dark:text-white">{title}</h2>
@@ -189,9 +185,6 @@ export default function CashPackageShop() {
                 <div className="flex justify-between">
                   <div>
                     <h3 className="text-lg font-semibold">{pkg.name}</h3>
-                    {/* <Badge variant={badgeVariant} className="mt-1">
-                      {badgeText}
-                    </Badge> */}
                     <p className="text-sm text-gray-600 dark:text-gray-400">{pkg.description}</p>
                   </div>
                   <div className="text-right">
@@ -215,10 +208,12 @@ export default function CashPackageShop() {
                     {pkg.items.map((item, idx) => (
                       <div key={idx} className="group relative flex items-center gap-1">
                         <div className="relative">
-                          <img
+                          <Image
                             src={`/infos/materials/${item.id}.webp`}
                             alt={item.name}
-                            className="h-8 w-8 rounded-md"
+                            width={32}
+                            height={32}
+                            className="rounded-md"
                           />
                           <div className="absolute -bottom-2 left-1/2 flex h-4 min-w-4 -translate-x-1/2 items-center justify-center rounded-full bg-black/70 px-1 text-center text-[10px] leading-none text-white">
                             {formatQuantity(item.quantity)}
@@ -259,11 +254,13 @@ export default function CashPackageShop() {
         ) : (
           <div className="space-y-4">
             {cart.map((item) => (
-              <Card key={item.package.id} className="p-3">
+              <Card key={item.package.id} className="border p-3">
                 <div className="flex justify-between">
                   <div>
                     <h3 className="font-semibold">{item.package.name}</h3>
-                    <p className="text-sm text-gray-600">{item.package.price.toLocaleString()}원</p>
+                    <p className="text-sm text-black dark:text-white">
+                      {item.package.price.toLocaleString()}원
+                    </p>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Button
@@ -322,10 +319,12 @@ export default function CashPackageShop() {
               ).map(([key, item]) => (
                 <div key={key} className="group relative flex items-center gap-1">
                   <div className="relative">
-                    <img
+                    <Image
                       src={`/infos/materials/${item.id}.webp`}
                       alt={item.name}
-                      className="h-8s w-8 rounded-md"
+                      width={32}
+                      height={32}
+                      className="rounded-md"
                     />
                     <div className="absolute -bottom-2 left-1/2 flex h-4 min-w-4 -translate-x-1/2 items-center justify-center rounded-full bg-black/70 px-1 text-center text-[10px] leading-none text-white">
                       {formatQuantity(item.quantity)}
@@ -391,7 +390,7 @@ export default function CashPackageShop() {
 
       <div className="mx-auto max-w-7xl p-4">
         {/* 설명 섹션 */}
-        <Collapsible className="mb-6 rounded-lg border border-gray-200 p-4 dark:border-gray-700">
+        <Collapsible className="mb-6 rounded-lg border border-black p-4 dark:border-white">
           <CollapsibleTrigger className="flex w-full items-center justify-between">
             <h2 className="text-lg font-semibold text-black dark:text-white">패키지 선택 가이드</h2>
             <ChevronDown className="h-5 w-5 transform transition-transform" />
@@ -460,12 +459,12 @@ export default function CashPackageShop() {
 
         {/* 스킨 갤러리 링크 */}
         <Link href="/skin" className="mb-6 block">
-          <div className="flex items-center justify-between rounded-lg border border-gray-200 p-4 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
+          <div className="flex items-center justify-between rounded-lg border border-black p-4 transition-colors hover:bg-gray-50 dark:border-white dark:hover:bg-gray-800">
             <div className="flex items-center gap-2">
               <h2 className="text-lg font-semibold text-black dark:text-white">
                 스킨 갤러리 보러가기 🎨
               </h2>
-              <Badge variant="outline" className="ml-2">
+              <Badge variant="outline" className="ml-2 border-black dark:border-white">
                 NEW
               </Badge>
             </div>
@@ -479,32 +478,24 @@ export default function CashPackageShop() {
             <PackageSection
               title="리필 패키지"
               packages={groupedPackages.refill}
-              badgeText="리필형"
-              badgeVariant="secondary"
               sectionKey="refill"
               defaultOpen={true}
             />
             <PackageSection
               title="1회성 패키지"
               packages={groupedPackages.oneTime}
-              badgeText="1회성"
-              badgeVariant="destructive"
               sectionKey="oneTime"
               defaultOpen={false}
             />
             <PackageSection
               title="버전 패키지"
               packages={groupedPackages.version}
-              badgeText="버전"
-              badgeVariant="default"
               sectionKey="version"
               defaultOpen={false}
             />
             <PackageSection
               title="빗방울 패키지"
               packages={groupedPackages.raindrop}
-              badgeText="빗방울"
-              badgeVariant="outline"
               sectionKey="raindrop"
               defaultOpen={false}
             />
