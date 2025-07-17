@@ -463,7 +463,7 @@ function LinkBox({ icon, label, href, onClick }: LinkBoxProps) {
   const content = (
     <div className="flex flex-col items-center p-2 transition-transform hover:scale-105">
       <Image src={icon} alt={label} width={48} height={48} className="h-auto w-auto" />
-      <p className="mt-1 whitespace-nowrap text-center text-xs text-gray-800 dark:text-gray-300">
+      <p className="mt-1 whitespace-nowrap text-center text-xs text-black dark:text-white">
         {label.split("\n").map((line, i) => (
           <span key={i}>
             {i > 0 && <br />}
