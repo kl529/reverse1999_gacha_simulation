@@ -11,6 +11,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { BannerSixStarListModal } from "@/components/modals/BannerSixStarListModal";
+import Link from "next/link";
 
 interface GachaStatsProps {
   rarityStats: { [key: number]: number };
@@ -138,6 +139,11 @@ export default function MainGachaStats({
         <h2 className="pb-2 text-base font-semibold text-gray-700 dark:text-gray-300">
           🖥️ 개발자 : <span className="font-bold text-blue-500">{nickname}</span>
         </h2>
+        <p className="border-t border-gray-300 pt-2 text-sm text-gray-500 dark:text-gray-400">
+          <Link href="/gacha_guide" className="text-green-500 hover:underline">
+            🔥 가챠 가이드 & 기댓값 보러가기 🔥
+          </Link>
+        </p>
       </div>
     </div>
   );

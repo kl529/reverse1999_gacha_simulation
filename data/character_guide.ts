@@ -1585,9 +1585,9 @@ export const characterGuideList: CharacterGuide[] = [
       source: "icehood",
       note: "형상효율을 정확하게 계산하는 분석가가 없을 정도로, 명함으로 사용해도 무리가 없는 캐릭터임. (5형상이 명함대비 효율 : 15% 미만) (추가예정)",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=w3CTWcolZE4"],
+    youtube_links: ["https://www.youtube.com/watch?v=ltISZg0dQQc"],
     keywords: ["탱커", "계시", "정신피해"],
-    guide_images: [],
+    guide_images: [1, 2, 3],
   },
   {
     character_id: 47, // 노티카
