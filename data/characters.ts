@@ -466,6 +466,15 @@ export const charactersByRarity: Record<number, Character[]> = {
       version: "3.0",
       resonanceType: "balance",
     },
+    {
+      id: 51,
+      name: "카론",
+      rarity: 6,
+      inspiration: "spirit",
+      engName: "charon",
+      version: "3.0",
+      resonanceType: "defense",
+    },
   ],
   5: [
     {

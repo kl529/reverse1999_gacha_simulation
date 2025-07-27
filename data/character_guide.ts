@@ -1725,4 +1725,38 @@ export const characterGuideList: CharacterGuide[] = [
     keywords: ["서포터", "신혈", "총알", "현실피해"],
     guide_images: [],
   },
+  {
+    character_id: 51, // 카론
+    portrait_info: {
+      headers: ["형상", "본인", "팀 전체"],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["11.1%", "5%"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["1.5%", "1%"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["15.3%", "8%"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["14.8%", "8%"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["16.1%", "9%"],
+        },
+      ],
+      summary: "5형상 > 1형상 > 2형상 > 3형상 > 4형상 (팀 전체)",
+      source: "icehood",
+      note: "본인 형상 효율은 오차가 존재할 수 있음. 팀 효율 위주로 참고해주세요. 2형상을 제외한 나머지 상승폭은 괜찮음. 5형상시 개인 효율은 72%, 팀 전체는 35% 정도",
+    },
+    youtube_links: ["https://www.youtube.com/watch?v=2JtXL7HWpTA"],
+    keywords: ["서포터", "서브딜러", "전력", "정신피해"],
+    guide_images: [],
+  },
 ];

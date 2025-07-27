@@ -1263,7 +1263,7 @@ export const psycube_list: Psycube[] = [
     name: "과거의 포용",
     engName: "embrace_the_past",
     rarity: 6,
-    priority: 99,
+    priority: 1,
     version: "2.8",
     type: "상점",
     stats: {
@@ -1281,7 +1281,7 @@ export const psycube_list: Psycube[] = [
     name: "가족 멘토",
     engName: "family_mentor",
     rarity: 6,
-    priority: 99,
+    priority: 4,
     version: "2.8",
     type: "상점",
     stats: {
@@ -1299,7 +1299,7 @@ export const psycube_list: Psycube[] = [
     name: "생각의 따끔거림",
     engName: "a_tingle_of_a_thought",
     rarity: 6,
-    priority: 99,
+    priority: 4,
     version: "2.8",
     type: "컨텐츠",
     stats: {
@@ -1334,7 +1334,7 @@ export const psycube_list: Psycube[] = [
     name: "귀향의 애도사",
     engName: "homecoming_lament",
     rarity: 6,
-    priority: 99,
+    priority: 4,
     version: "3.0",
     type: "상점",
     stats: {
@@ -1345,26 +1345,26 @@ export const psycube_list: Psycube[] = [
       HP증가: "16%",
     },
     option:
-      "기억자의 영감이 [암석]이라면, 공격 시 [땔나무 피/신혈]의 상한이 50이상일때, 가하는 피해가 8/10/12/14/16% 증가함. 기억자가 한 번 피해를 받을 때 마다, 턴 종료 시 치명타 피해가 2/2.5/3/3.5/4%씩 증가함. 이 효과는 최대 9스택까지 중첩 가능.",
+      "기억자의 영감이 [암석]이라면, 공격 시 [신혈]의 상한이 50이상일때, 가하는 피해가 8/10/12/14/16% 증가함. 기억자가 한 번 피해를 받을 때 마다, 턴 종료 시 치명타 피해가 2/2.5/3/3.5/4%씩 증가함. 이 효과는 최대 9스택까지 중첩 가능.",
   },
-  // {
-  //   id: 77,
-  //   name: "씨앗들의 속삭임",
-  //   engName: "buds_yet_to_bloom",
-  //   rarity: 6,
-  //   priority: 99,
-  //   version: "3.0",
-  //   type: "상점",
-  //   stats: {
-  //     공격: "360",
-  //     HP: "3000",
-  //     현실방어: "160",
-  //     정신방어: "160",
-  //     치명타율: "16%",
-  //   },
-  //   option:
-  //     "기억자의 영감이 [지능]일 경우 음송 유형 주문 발동 후 공격 (1/1.5/2/2.5/3) % 증가, 최대 3스택 중첩. 턴 종료 시 아군이 [전력]을 1회 주입할 때마다 기억자 치명타 피해 (1.2/1.4/1.6/1.8/2) % 증가, 최대 6스택 중첩.",
-  // },
+  {
+    id: 77,
+    name: "씨앗들의 속삭임",
+    engName: "buds_yet_to_bloom",
+    rarity: 6,
+    priority: 3,
+    version: "3.0",
+    type: "상점",
+    stats: {
+      공격: "360",
+      HP: "3000",
+      현실방어: "160",
+      정신방어: "160",
+      치명타율: "16%",
+    },
+    option:
+      "기억자의 영감이 [지능]일 경우 음송 유형 주문 발동 후 공격 (1/1.5/2/2.5/3) % 증가, 최대 3스택 중첩. 턴 종료 시 아군이 [전력]을 1회 주입할 때마다 기억자 치명타 피해 (1.2/1.4/1.6/1.8/2) % 증가, 최대 6스택 중첩.",
+  },
   {
     id: 78,
     name: "하늘을 속이고 태양을 바꾸다",

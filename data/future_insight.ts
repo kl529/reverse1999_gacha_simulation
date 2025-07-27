@@ -6,7 +6,7 @@ export interface FutureInsightItem {
     end: string; // 예: '2025-05-29'
     week: number; // 예: 5
   };
-  album_shop: {
+  album_shop?: {
     rare6: number; // 6성 캐릭터 id
     rare5: number; // 5성 캐릭터 id
   };
@@ -108,11 +108,30 @@ export const futureInsightData: FutureInsightItem[] = [
     },
     note: "무료 광상 캐릭터 선택권 지급 (2.6 기준 광상 캐릭터까지)",
   },
+  // {
+  //   version: "2.75",
+  //   title: "어쌔신 크리드 콜라보",
+  //   period: {
+  //     start: "2025-08-07",
+  //     end: "2025-09-19",
+  //     week: 6,
+  //   },
+  //   banners: ["ezio_pick_up", "kassandra_pick_up"],
+  //   euphoria: {
+  //     star6: [
+  //       { characterId: 9, euphoriaId: 27 }, //이터니티
+  //       { characterId: 25, euphoriaId: 28 }, //마커스
+  //       { characterId: 26, euphoriaId: 29 }, //빌라
+  //     ],
+  //     star5: [],
+  //   },
+  //   note: "어쌔신 크리드 콜라보",
+  // },
   {
     version: "2.8",
     title: "복낙원",
     period: {
-      start: "2025-09-18",
+      start: "2025-09-19",
       end: "2025-10-30",
       week: 6,
     },
@@ -131,5 +150,27 @@ export const futureInsightData: FutureInsightItem[] = [
       star5: [],
     },
     note: "37,000원 6성 선택권 판매 (상시 캐릭만 가능 ~2.5), 무료 형상권 지급 (상시 캐릭만 가능 ~2.5)",
+  },
+  {
+    version: "3.0",
+    title: "머나먼 길",
+    period: {
+      start: "2025-10-30",
+      end: "2025-11-04",
+      week: 5,
+    },
+    album_shop: {
+      rare6: 21,
+      rare5: 118,
+    },
+    banners: ["sentinel_pick_up", "charon_pick_up"],
+    euphoria: {
+      star6: [
+        { characterId: 23, euphoriaId: 25 },
+        { characterId: 6, euphoriaId: 26 },
+        { characterId: 1, euphoriaId: 24 },
+      ],
+      star5: [],
+    },
   },
 ];

@@ -28,13 +28,6 @@ export const calendarEvents: CalendarEvent[] = [
     type: "pickup",
     img: "/infos/banner_img/kiperina_pick_up.webp",
   },
-  // {
-  //   date: "2025-07-12",
-  //   end: "2025-07-31",
-  //   title: "호수의 물결 픽업",
-  //   type: "pickup",
-  //   img: "/infos/banner_img/kiperina_pick_up.webp",
-  // },
   {
     date: "2025-08-01",
     end: "2025-08-14",
@@ -44,12 +37,26 @@ export const calendarEvents: CalendarEvent[] = [
   },
   {
     date: "2025-08-07",
-    end: "2025-09-18",
+    end: "2025-09-19",
     title: "콜라보",
     type: "version",
   },
   {
-    date: "2025-09-18",
+    date: "2025-08-07",
+    end: "2025-09-19",
+    title: "에지오 픽업",
+    type: "pickup",
+    img: "/infos/banner_img/ezio_pick_up.webp",
+  },
+  {
+    date: "2025-08-28",
+    end: "2025-09-19",
+    title: "카산드라 픽업",
+    type: "pickup",
+    img: "/infos/banner_img/kassandra_pick_up.webp",
+  },
+  {
+    date: "2025-09-19",
     end: "2025-10-30",
     title: "2.8",
     type: "version",
@@ -579,5 +586,10 @@ export const calendarEvents: CalendarEvent[] = [
     date: "01-15",
     type: "birthday",
     title: "화이트럼",
+  },
+  {
+    date: "06-27",
+    type: "birthday",
+    title: "카론",
   },
 ];

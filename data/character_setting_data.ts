@@ -1527,6 +1527,10 @@ export const character_setting_data: CharacterSettingData[] = [
         psycube_id: 76,
         description: "S",
       },
+      {
+        psycube_id: 72,
+        description: "A",
+      },
     ],
     resonance: [
       {
@@ -1539,6 +1543,21 @@ export const character_setting_data: CharacterSettingData[] = [
       },
     ],
     resonance_patterns: ["Equanimity", "Equibalance"],
+  },
+  {
+    character_id: 51, // "카론"
+    psycubes: [
+      {
+        psycube_id: 77,
+        description: "S",
+      },
+      {
+        psycube_id: 39,
+        description: "A+",
+      },
+    ],
+    resonance: [],
+    resonance_patterns: [],
   },
   {
     character_id: 101, // "소네트"

@@ -77,11 +77,11 @@ export default function MaterialCalculator({ characterId }: Props) {
     if (!type) return [];
     const patterns = RESONANCE_PATTERN[type];
     if (!patterns) return [];
-    return Object.keys(patterns);
+    return Object.entries(patterns);
   };
 
   const availablePatterns = useMemo(() => {
-    return getResonanceTypePatterns(character.resonanceType).map((_, index) => index + 1);
+    return getResonanceTypePatterns(character.resonanceType).map(([pattern]) => pattern);
   }, [character.resonanceType]);
 
   const getPatternName = (type: string, pattern: string) => {
@@ -306,7 +306,9 @@ export default function MaterialCalculator({ characterId }: Props) {
     const materialsMap: Record<number, number> = {};
 
     targetResonancePatterns.forEach((patternId) => {
-      const pattern = patternData.pattern[patternId - 1];
+      const pattern = patternData.pattern.find(
+        (p) => p.pattern === availablePatterns[patternId - 1]
+      );
       if (!pattern) return;
       for (const [id, count] of Object.entries(pattern.materials)) {
         const key = Number(id);
@@ -428,19 +430,20 @@ export default function MaterialCalculator({ characterId }: Props) {
   const renderResonancePatternButtons = () => {
     return (
       <div className="flex flex-wrap gap-1">
-        {availablePatterns.map((patternId) => {
-          const pattern = resonancePatterns.find((p) => p.pattern === patternId.toString());
+        {availablePatterns.map((patternName, index) => {
+          const pattern = resonancePatterns.find((p) => p.pattern === patternName);
           if (!pattern) return null;
-          const patternName = `${character.resonanceType}_${pattern.pattern}`;
-          const isSelected = targetResonancePatterns.includes(patternId);
-          const koreanName = getPatternName(character.resonanceType, pattern.pattern);
+          const koreanName = getPatternName(character.resonanceType, patternName);
+          const isSelected = targetResonancePatterns.includes(index + 1);
+
+          const patternName2 = `${character.resonanceType}_${pattern.pattern}`;
 
           return (
-            <div key={patternId} className="group relative">
+            <div key={patternName} className="group relative">
               <Button
                 variant={isSelected ? "default" : "outline"}
                 size="icon"
-                onClick={() => toggleResonancePattern(patternId)}
+                onClick={() => toggleResonancePattern(index + 1)}
                 className={`relative h-[48px] min-w-[48px] p-0 transition-colors ${
                   isSelected
                     ? "bg-gray-800 hover:bg-gray-900 dark:bg-gray-900 dark:hover:bg-black"
@@ -448,7 +451,7 @@ export default function MaterialCalculator({ characterId }: Props) {
                 }`}
               >
                 <Image
-                  src={`/infos/resonance_pattern/${patternName}.webp`}
+                  src={`/infos/resonance_pattern/${patternName2}.webp`}
                   alt={`공명 변조 ${koreanName}`}
                   width={48}
                   height={48}

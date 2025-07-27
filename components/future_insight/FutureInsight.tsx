@@ -95,8 +95,12 @@ export default function FutureInsightPage() {
               <Separator />
               <div>
                 <h2 className="mb-1 font-bold">🎯 고음 카운터</h2>
-                <p>6성: {getCharNameById(item.album_shop.rare6)}</p>
-                <p>5성: {getCharNameById(item.album_shop.rare5)}</p>
+                {item.album_shop && (
+                  <>
+                    <p>6성: {getCharNameById(item.album_shop.rare6)}</p>
+                    <p>5성: {getCharNameById(item.album_shop.rare5)}</p>
+                  </>
+                )}
               </div>
 
               <Separator />
@@ -202,12 +206,14 @@ export default function FutureInsightPage() {
                 )}
               </div>
 
-              <Separator />
               {item.note && (
-                <div>
-                  <h2 className="mb-1 font-bold">👀 비고</h2>
-                  <p className="text-sm text-red-600 dark:text-red-400">{item.note}</p>
-                </div>
+                <>
+                  <Separator />
+                  <div>
+                    <h2 className="mb-1 font-bold">👀 비고</h2>
+                    <p className="text-sm text-red-600 dark:text-red-400">{item.note}</p>
+                  </div>
+                </>
               )}
 
               <Separator />

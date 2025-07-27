@@ -5842,4 +5842,65 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       },
     ],
   },
+  {
+    character_id: 51, // "Charon"
+    resonance: [
+      {
+        level: 2,
+        materials: { 601: 5 },
+      },
+      {
+        level: 3,
+        materials: { 601: 5, 403: 4 },
+      },
+      {
+        level: 4,
+        materials: { 601: 5, 405: 4, 301: 3 },
+      },
+      {
+        level: 5,
+        materials: { 602: 5, 310: 4, 307: 3 },
+      },
+      {
+        level: 6,
+        materials: { 1002: 30000, 602: 5, 207: 3 },
+      },
+      {
+        level: 7,
+        materials: { 602: 6, 206: 5 },
+      },
+      {
+        level: 8,
+        materials: { 602: 6, 209: 4, 310: 5 },
+      },
+      {
+        level: 9,
+        materials: { 602: 8, 203: 5, 303: 5 },
+      },
+      {
+        level: 10,
+        materials: { 607: 1, 603: 5, 201: 8, 211: 6 },
+      },
+      {
+        level: 11,
+        materials: { 607: 1, 1002: 120000, 603: 5, 107: 4 },
+      },
+      {
+        level: 12,
+        materials: { 607: 1, 603: 6, 101: 4, 210: 5 },
+      },
+      {
+        level: 13,
+        materials: { 607: 1, 603: 6, 104: 5, 208: 6 },
+      },
+      {
+        level: 14,
+        materials: { 607: 1, 603: 8, 5: 2, 106: 4 },
+      },
+      {
+        level: 15,
+        materials: { 607: 1, 603: 8, 1: 3, 109: 4 },
+      },
+    ],
+  },
 ];

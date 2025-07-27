@@ -171,6 +171,7 @@ export const recommendTeams: RecommendTeam[] = [
       "광상루시와 울리히의 엄청난 체급과 버프들로 고점이 높음",
       "전력 광상 에즈라와도 궁합이 좋으며, 루시가 '술식위력증가'효과도 받게 되어 광상 멜라니아와 궁합이 좋음",
       "특정 캐릭터들이 강제되고, 술진 서폿은 사용하기 힘듦",
+      "3.0 기준 카론의 합류로 뛰어난 덱파워를 보여주는 0티어 조합",
     ],
     concepts: ["전력", "술진"],
     characters: [
@@ -178,11 +179,12 @@ export const recommendTeams: RecommendTeam[] = [
       { id: 29, isMain: true, euphoria: true, role: "딜러" },
       { id: 48, isMain: true, role: "서폿" },
       {
-        id: 31,
+        id: 51,
         role: "서폿",
         alternatives: [
           { id: 38, role: "서폿" },
           { id: 12, euphoria: true, role: "서폿" },
+          { id: 31, role: "서폿" },
         ],
       },
     ],

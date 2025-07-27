@@ -35,7 +35,7 @@ export const euphoriaList: Euphoria[] = [
   {
     id: 2,
     character_id: 1, // 드루비스
-    priority: 3,
+    priority: 4,
     name: "돌 사이의 푸른 빛, 숲속의 나",
     note: "석화 서폿 / 나무덱 특화 서폿",
     number: 1,

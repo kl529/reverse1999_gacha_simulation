@@ -1635,4 +1635,39 @@ export const insightMaterial: InsightMaterial[] = [
       },
     ],
   },
+  {
+    character_id: 51, // "Charon",
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 18000,
+          504: 3,
+          501: 3,
+          404: 6,
+          305: 5,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 40000,
+          505: 5,
+          502: 5,
+          308: 5,
+          210: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          1002: 200000,
+          506: 8,
+          503: 8,
+          108: 6,
+          5: 3,
+        },
+      },
+    ],
+  },
 ];
