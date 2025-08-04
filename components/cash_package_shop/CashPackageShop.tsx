@@ -29,6 +29,7 @@ export default function CashPackageShop() {
       oneTime: { key: "", ascending: true },
       version: { key: "", ascending: true },
       raindrop: { key: "", ascending: true },
+      skin: { key: "", ascending: true },
     }
   );
 
@@ -116,6 +117,7 @@ export default function CashPackageShop() {
       oneTime: cashPackages.filter((pkg) => pkg.type === "one-time"),
       version: cashPackages.filter((pkg) => pkg.type === "version"),
       raindrop: cashPackages.filter((pkg) => pkg.type === "raindrop"),
+      skin: cashPackages.filter((pkg) => pkg.type === "skin"),
     };
     return grouped;
   };
@@ -390,7 +392,10 @@ export default function CashPackageShop() {
 
       <div className="mx-auto max-w-7xl p-4">
         {/* 설명 섹션 */}
-        <Collapsible className="mb-6 rounded-lg border border-black p-4 dark:border-white">
+        <Collapsible
+          defaultOpen={true}
+          className="mb-6 rounded-lg border border-black p-4 dark:border-white"
+        >
           <CollapsibleTrigger className="flex w-full items-center justify-between">
             <h2 className="text-lg font-semibold text-black dark:text-white">패키지 선택 가이드</h2>
             <ChevronDown className="h-5 w-5 transform transition-transform" />
@@ -497,6 +502,12 @@ export default function CashPackageShop() {
               title="빗방울 패키지"
               packages={groupedPackages.raindrop}
               sectionKey="raindrop"
+              defaultOpen={false}
+            />
+            <PackageSection
+              title="스킨 패키지"
+              packages={groupedPackages.skin}
+              sectionKey="skin"
               defaultOpen={false}
             />
           </div>

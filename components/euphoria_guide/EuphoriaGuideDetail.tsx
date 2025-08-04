@@ -16,6 +16,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { euphoriaMaterialList } from "@/data/euphoria_material";
+import { materialList } from "@/data/material";
 
 interface Props {
   item: Euphoria;
@@ -28,6 +30,14 @@ function getCharacterById(id: number) {
     if (found) return found;
   }
   return null;
+}
+
+function getMaterialById(id: number) {
+  return materialList.find((material) => material.id === id);
+}
+
+function getEuphoriaMaterialByCharacterId(characterId: number) {
+  return euphoriaMaterialList.find((material) => material.character_id === characterId);
 }
 
 export default function EuphoriaGuideDetail({ item, character }: Props) {
@@ -50,6 +60,10 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
   }, []);
 
   const [selectedCharacters, setSelectedCharacters] = useState<Record<string, string>>({});
+
+  const euphoriaMaterial = useMemo(() => {
+    return getEuphoriaMaterialByCharacterId(character.id);
+  }, [character.id]);
 
   return (
     <div className="min-h-screen w-full bg-white text-black dark:bg-gray-900 dark:text-white">
@@ -114,6 +128,109 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
             </ul>
           </CardContent>
         </Card>
+
+        {euphoriaMaterial &&
+          (euphoriaMaterial.euphoria.length > 0 || euphoriaMaterial.upgrade.length > 0) && (
+            <Card className="mb-6">
+              <CardHeader>
+                <CardTitle>🔧 재료 정보</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {euphoriaMaterial.euphoria.length > 0 && (
+                  <div>
+                    <h3 className="mb-3 text-lg font-semibold text-black dark:text-white">
+                      광상 해금
+                    </h3>
+                    <div className="space-y-3">
+                      {euphoriaMaterial.euphoria
+                        .filter((euphoria) => euphoria.level === item.number)
+                        .map((euphoria, idx) => (
+                          <div key={idx} className="rounded-lg border p-3 dark:border-gray-700">
+                            <div className="flex flex-wrap gap-2">
+                              {Object.entries(euphoria.materials).map(([materialId, quantity]) => {
+                                const material = getMaterialById(Number(materialId));
+                                if (!material) return null;
+                                return (
+                                  <div
+                                    key={materialId}
+                                    className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-2 dark:bg-gray-800"
+                                  >
+                                    <div className="relative h-8 w-8">
+                                      <Image
+                                        src={`/infos/materials/${material.id}.webp`}
+                                        alt={material.name}
+                                        width={32}
+                                        height={32}
+                                        className="h-full w-full object-contain"
+                                      />
+                                    </div>
+                                    <div className="flex flex-col">
+                                      <span className="text-sm font-medium text-black dark:text-white">
+                                        {material.name}
+                                      </span>
+                                      <span className="text-xs text-gray-600 dark:text-gray-400">
+                                        {quantity}개
+                                      </span>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
+
+                {euphoriaMaterial.upgrade.length > 0 && (
+                  <div>
+                    <h3 className="mb-3 text-lg font-semibold text-black dark:text-white">
+                      광상 업그레이드
+                    </h3>
+                    <div className="space-y-3">
+                      {euphoriaMaterial.upgrade.map((upgrade, idx) => (
+                        <div key={idx} className="rounded-lg border p-3 dark:border-gray-700">
+                          <h4 className="mb-2 font-medium text-black dark:text-white">
+                            레벨 {upgrade.level}
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {Object.entries(upgrade.materials).map(([materialId, quantity]) => {
+                              const material = getMaterialById(Number(materialId));
+                              if (!material) return null;
+                              return (
+                                <div
+                                  key={materialId}
+                                  className="flex items-center gap-2 rounded-lg bg-gray-100 px-3 py-2 dark:bg-gray-800"
+                                >
+                                  <div className="relative h-8 w-8">
+                                    <Image
+                                      src={`/infos/materials/${material.id}.webp`}
+                                      alt={material.name}
+                                      width={32}
+                                      height={32}
+                                      className="h-full w-full object-contain"
+                                    />
+                                  </div>
+                                  <div className="flex flex-col">
+                                    <span className="text-sm font-medium text-black dark:text-white">
+                                      {material.name}
+                                    </span>
+                                    <span className="text-xs text-gray-600 dark:text-gray-400">
+                                      {quantity}개
+                                    </span>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )}
 
         {item.recommendParty && Object.keys(item.recommendParty).length > 0 && (
           <Card className="mb-6">

@@ -2,7 +2,7 @@ export interface CashPackage {
   id: number;
   name: string;
   price: number;
-  type: "one-time" | "refill" | "version" | "raindrop";
+  type: "one-time" | "refill" | "version" | "raindrop" | "skin";
   items: {
     id: number;
     name: string;
@@ -531,5 +531,33 @@ export const cashPackages: CashPackage[] = [
     efficiency: 57,
     unilog: 45.56,
     description: "빗방울 첫구매 이후 적용",
+  },
+  // 스킨 패키지
+  {
+    id: 400,
+    name: "Garment 스킨",
+    price: 8800,
+    type: "skin",
+    items: [],
+    efficiency: 0,
+    unilog: 0,
+  },
+  {
+    id: 401,
+    name: "Advanced 스킨",
+    price: 14000,
+    type: "skin",
+    items: [],
+    efficiency: 0,
+    unilog: 0,
+  },
+  {
+    id: 402,
+    name: "Unique 스킨",
+    price: 19000,
+    type: "skin",
+    items: [],
+    efficiency: 0,
+    unilog: 0,
   },
 ];

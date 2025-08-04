@@ -46,7 +46,7 @@ export const materialList: Material[] = [
   // 5성 재료
   {
     id: 101,
-    name: "미지광이 헛소리",
+    name: "미치광이 헛소리",
     category: "growth_material",
     engName: "Murmur of Insanity",
     rarity: 5,
