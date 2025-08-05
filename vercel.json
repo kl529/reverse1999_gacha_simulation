@@ -3,7 +3,7 @@
   "regions": ["hnd1"],
   "headers": [
     {
-      "source": "/(favicon.ico|ads.txt)",
+      "source": "/:file(favicon.ico|ads.txt)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "source": "/public/(.*)",
+      "source": "/public/:path*",
       "headers": [
         {
           "key": "Cache-Control",
@@ -21,16 +21,14 @@
       ]
     },
     {
-      "source": "/api/(.*)",
-      "headers": [
+      "source": "/:file*",
+      "has": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=300"
+          "type": "header",
+          "key": "accept",
+          "value": ".*(js|css|png|jpg|jpeg|gif|webp|svg|ico|woff|woff2|ttf|eot).*"
         }
-      ]
-    },
-    {
-      "source": "/(.*\\.(js|css|png|jpg|jpeg|gif|webp|svg|ico|woff|woff2|ttf|eot))",
+      ],
       "headers": [
         {
           "key": "Cache-Control",
@@ -39,7 +37,14 @@
       ]
     },
     {
-      "source": "/(.*\\.(json|xml))",
+      "source": "/:file*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*(json|xml).*"
+        }
+      ],
       "headers": [
         {
           "key": "Cache-Control",
