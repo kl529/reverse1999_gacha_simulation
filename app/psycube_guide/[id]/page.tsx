@@ -4,7 +4,7 @@ import PsycubeGuideDetail from "@/components/psycube_guide/PsycubeGuideDetail";
 import type { Metadata } from "next";
 
 // ISR 설정 추가 - 1시간마다 재생성
-export const revalidate = 3600;
+export const revalidate = 7200;
 
 export async function generateStaticParams() {
   return psycube_list.map((item) => ({ id: item.id.toString() }));
