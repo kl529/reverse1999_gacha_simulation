@@ -89,7 +89,7 @@ export default function EuphoriaGuide() {
                               className="h-full w-full object-contain object-right"
                             />
                             <div className="absolute bottom-1 right-1 z-10 rounded bg-gray-200 px-1 py-0.5 text-[10px] text-gray-800 shadow dark:bg-gray-700 dark:text-gray-100">
-                              v{item.version}
+                              v{item.version === "2.75" ? "콜라보" : item.version}
                             </div>
                           </div>
                         </div>

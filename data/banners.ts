@@ -14,31 +14,39 @@ export const banners: Banner[] = [
   {
     id: "charon_pick_up",
     name: "[3.0] 카론 픽업",
-    pickup6: 51,
+    pickup6: 52,
     pickup5: [104, 125],
     version: "3.0",
   },
   {
     id: "sentinel_pick_up",
     name: "[3.0] 센티넬 픽업",
-    pickup6: 50,
+    pickup6: 51,
     pickup5: [111, 123],
     version: "3.0",
   },
   {
     id: "moldir_pick_up",
     name: "[2.8] 몰디르 픽업",
-    pickup6: 49,
+    pickup6: 50,
     pickup5: [103, 120],
     version: "2.8",
   },
   {
     id: "nautika_pick_up",
     name: "[2.8] 노티카 픽업",
-    pickup6: 47,
+    pickup6: 49,
     pickup5: [],
     version: "2.8",
   },
+  {
+    id: "ezio_auditore_pick_up",
+    name: "[콜라보] 에지오 아디토레 픽업",
+    pickup6: 47,
+    pickup5: [],
+    version: "2.75",
+  },
+  // 키신ㄷ,리 츠기 ㅍ;ㄹ여
   {
     id: "doublepick_flutter_page_barcarola",
     name: "플러터페이지 & 바르카롤라",

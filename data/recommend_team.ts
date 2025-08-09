@@ -13,7 +13,6 @@ export type RecommendTeamCharacter = {
 };
 
 export type RecommendTeam = {
-  id: number;
   name: string;
   description: string[];
   concepts: string[]; // 예: "서포트", "딜러 중심"
@@ -23,7 +22,6 @@ export type RecommendTeam = {
 // 나중에 몰디르 추가하기
 export const recommendTeams: RecommendTeam[] = [
   {
-    id: 0,
     name: "모든 덱의 기초",
     description: [
       "조합의 기본 : 딜러 1~2명 + 서폿 1~2명 + 힐러/탱커 1명",
@@ -45,7 +43,7 @@ export const recommendTeams: RecommendTeam[] = [
           { id: 42, role: "딜러" },
           { id: 43, role: "딜러" },
           { id: 45, role: "딜러" },
-          { id: 47, role: "딜러" },
+          { id: 49, role: "딜러" },
         ],
       },
       {
@@ -82,7 +80,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 1,
     name: "계시덱",
     description: [
       "계시로 즉흥주문을 강화시키며, 딜을 하는 조합",
@@ -108,7 +105,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 2,
     name: "중독덱",
     description: [
       "중독을 중첩시키고, 독성저주로 변환하며 결산하여 딜을 하는 조합",
@@ -130,7 +126,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 3,
     name: "노티카 자해덱",
     description: [
       "노티카를 메인으로 한 [신혈]기믹을 사용하는 자해조합",
@@ -141,7 +136,7 @@ export const recommendTeams: RecommendTeam[] = [
     ],
     concepts: ["신혈", "자해"],
     characters: [
-      { id: 47, isMain: true, role: "딜러" },
+      { id: 49, isMain: true, role: "딜러" },
       { id: 28, euphoria: true, isMain: true, role: "서폿" },
       {
         id: 21,
@@ -153,7 +148,7 @@ export const recommendTeams: RecommendTeam[] = [
         ],
       },
       {
-        id: 50,
+        id: 52,
         role: "서폿",
         alternatives: [
           { id: 38, role: "서폿" },
@@ -163,7 +158,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 4,
     name: "전력덱",
     description: [
       "광상 루시와, 울리히의 전력 키워드를 메인으로 하는 조합",
@@ -177,9 +171,9 @@ export const recommendTeams: RecommendTeam[] = [
     characters: [
       { id: 21, euphoria: true, role: "서폿" },
       { id: 29, isMain: true, euphoria: true, role: "딜러" },
-      { id: 48, isMain: true, role: "서폿" },
+      { id: 50, isMain: true, role: "서폿" },
       {
-        id: 51,
+        id: 53,
         role: "서폿",
         alternatives: [
           { id: 38, role: "서폿" },
@@ -190,7 +184,163 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 5,
+    name: "추공 에지오덱 (정리중)",
+    description: [
+      "에지오의 추가공격 관련 무기(베네치아 파르지온 + 채널드 친퀘데아)를 사용하여 활용하는 덱",
+      "주력딜은 에지오의 추가공격 및 1스킬을 활용",
+      "대부분의 추공덱과 비슷한 구성을 가짐.",
+      "카산드라가 나와봐야 완성덱이 나올 예정",
+    ],
+    concepts: ["추가 공격", "암살"],
+    characters: [
+      { id: 47, isMain: true, role: "딜러" },
+      { id: 38, isMain: true, role: "서폿" },
+      {
+        id: 40,
+        role: "힐러",
+        alternatives: [
+          { id: 46, role: "탱커" },
+          { id: 26, euphoria: true, role: "힐러" },
+        ],
+      },
+      {
+        id: 36,
+        role: "서폿",
+        alternatives: [
+          { id: 31, role: "서폿" },
+          { id: 18, role: "서폿" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "술식 에지오덱 (정리중)",
+    description: [
+      "에지오의 중독 관련 무기(콘도티에로 전쟁 망치 + 채널드 친퀘데아)를 사용하여 활용하는 덱",
+      "덱의 핵심은 광상 갈천과 에지오의 현실 피해",
+      "아직 연구가 더 필요한 조합. 카산드라가 나오면 바뀔 가능성 높음",
+    ],
+    concepts: ["술식", "암살"],
+    characters: [
+      {
+        id: 36,
+        role: "서폿",
+        alternatives: [
+          { id: 8, euphoria: true, role: "힐러" },
+          { id: 26, euphoria: true, role: "힐러" },
+        ],
+      },
+      { id: 47, isMain: true, role: "딜러" },
+      {
+        id: 23,
+        role: "서폿",
+        isMain: true,
+        euphoria: true,
+      },
+      { id: 12, euphoria: true, role: "서폿", alternatives: [{ id: 34, role: "서폿" }] },
+    ],
+  },
+  {
+    name: "중독 에지오덱 (정리중)",
+    description: [
+      "에지오의 중독 관련 무기를 사용하여 활용하는 덱",
+      "중독 유지를 위해, 튜즈데이는 필수로 기용해야함.",
+      "에지오의 중독 관련 능력이 엄청 뛰어나서 높은 포텐셜이 있음",
+      "나머지 2자리는 힐러나 탱커, 미행동 중독 캐릭터로 구성하면됨",
+      "양월이나 플러터페이지를 활용해서 서포팅하는 덱도 가능",
+    ],
+    concepts: ["중독", "고정딜"],
+    characters: [
+      { id: 47, isMain: true, role: "딜러" },
+      { id: 33, isMain: true, role: "서폿" },
+      {
+        id: 4,
+        euphoria: true,
+        role: "힐러",
+        alternatives: [{ id: 26, euphoria: true, role: "힐러" }],
+      },
+      {
+        id: 38,
+        role: "서폿",
+        alternatives: [
+          { id: 31, role: "서폿" },
+          { id: 37, role: "서폿" },
+          { id: 41, role: "서폿" },
+          { id: 15, euphoria: true, role: "서폿" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "광상 마커스 성급덱",
+    description: [
+      "광상 마커스를 메인으로, 주문 강화를 통해 높은 성급 주문으로 딜을 하는 조합",
+      "콜라보 버젼 기준 광상 마커스의 체급이 엄청나고, 광상 빌라와의 궁합도 압도적",
+      "머큐리아의 진급과, 아르고스의 추가공격 등 좋은 서포터도 많고 덱이 유연함",
+      "체급 자체는 0티어까진 아니고 1~2티어 정도의 덱파워를 보여줌",
+    ],
+    concepts: ["나무", "주문강화", "비주류"],
+    characters: [
+      { id: 25, isMain: true, euphoria: true, role: "딜러" },
+      {
+        id: 26,
+        isMain: true,
+        euphoria: true,
+        role: "힐러",
+      },
+      {
+        id: 31,
+        role: "서폿",
+        alternatives: [{ id: 36, role: "서폿" }],
+      },
+      {
+        id: 34,
+        role: "서폿",
+        alternatives: [
+          { id: 30, role: "탱커" },
+          { id: 1, euphoria: true, role: "서폿" },
+          { id: 7, euphoria: true, role: "서폿" },
+          { id: 45, role: "딜러" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "센츄리온 덱",
+    description: [
+      "광상 센츄리온과 광상 갈천을 메인으로 하는 현실 공격 조합",
+      "적은 행동으로 술진과 현실피해 버프를 주는 갈천과, 센츄리온의 깡딜의 조합이 좋음",
+      "멜라니아의 열정 저장 및 술식 딜증 버프가 좋아서 궁합이 좋음",
+      "특별히 복잡한 기믹은 없지만, 센츄리온의 좋은 계수와 갈천의 서포팅으로 준수한 성능",
+    ],
+    concepts: ["현실피해", "야수"],
+    characters: [
+      { id: 6, euphoria: true, isMain: true, role: "딜러" },
+      { id: 23, euphoria: true, isMain: true, role: "서폿" },
+      {
+        id: 12,
+        euphoria: true,
+        role: "서폿",
+        alternatives: [
+          { id: 31, role: "서폿" },
+          { id: 34, role: "서폿" },
+          { id: 50, role: "서폿" },
+          { id: 51, role: "서폿" },
+        ],
+      },
+      {
+        id: 8,
+        euphoria: true,
+        role: "힐러",
+        alternatives: [
+          { id: 30, role: "탱커" },
+          { id: 46, role: "탱커" },
+          { id: 36, role: "서폿" },
+        ],
+      },
+    ],
+  },
+  {
     name: "히사베스 술식덱",
     description: [
       "히사베스를 메인으로, 고정 피해와 지속 피해 위주로 딜링하는 조합",
@@ -215,7 +365,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 6,
     name: "레콜레타 술식덱",
     description: [
       "레콜레타를 메인으로, 광상멜라니아와 함께 술식 위주로 딜링하는 조합",
@@ -232,7 +381,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 7,
     name: "누아르 술식덱",
     description: [
       "누아르를 메인으로 상태이상을 곁들인 술식 조합",
@@ -258,7 +406,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 8,
     name: "양월 추공덱",
     description: [
       "양월을 메인으로 사용하는 추공조합 (추공조합은 거의 딜러들만 바뀌는 경우가 많음)",
@@ -282,7 +429,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 9,
     name: "안조 추공덱",
     description: [
       "안조를 메인으로, 천체/암석/영혼/지능 계약을 하는 조합",
@@ -309,7 +455,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 10,
     name: "안조 술식덱",
     description: [
       "안조를 메인으로, 야수/나무 계약을 하는 술식 조합",
@@ -333,7 +478,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 11,
     name: "곡랑 추공덱",
     description: [
       "곡랑을 메인으로, 피클즈와 함께하는 추공 조합",
@@ -350,7 +494,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 12,
     name: "37 추공덱",
     description: [
       "37을 메인으로, 다양한 추공 캐릭터들을 채운 조합",
@@ -366,7 +509,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 13,
     name: "제시카 석화덱",
     description: [
       "제시카 석화광상과, 광상 드루비스를 필두로 석화 제어 위주 조합",
@@ -390,7 +532,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 14,
     name: "윈드송덱",
     description: [
       "윈드송을 메인으로, 머신건으로 폭딜을 넣는 조합",
@@ -407,30 +548,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 15,
-    name: "마커스 성급덱",
-    description: [
-      "마커스를 메인으로, 주문 강화를 통해 높은 성급 주문으로 딜을 하는 조합",
-      "머큐리아의 진급과, 아르고스의 추가공격 등 좋은 서포팅이 많지만, 체급자체가 낮은편",
-      "여러 주문강화 서포터나, 마커스의 광상 등으로 추가 지원이 필요한 상황",
-    ],
-    concepts: ["나무", "주문강화", "비주류"],
-    characters: [
-      { id: 25, isMain: true, role: "딜러" },
-      { id: 31, role: "서폿" },
-      { id: 26, role: "힐러", alternatives: [{ id: 30, role: "탱커" }] },
-      {
-        id: 36,
-        role: "힐러",
-        alternatives: [
-          { id: 34, role: "서폿" },
-          { id: 1, euphoria: true, role: "서폿" },
-        ],
-      },
-    ],
-  },
-  {
-    id: 16,
     name: "릴리아 추공덱",
     description: [
       "광상 릴리아를 메인으로 하는 추공 조합",
@@ -454,7 +571,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 17,
     name: "제멜 자해덱",
     description: [
       "제멜을 메인으로, 광상 이터니티, 피클즈의 서포팅으로 좋은 체급을 보여주는 조합",
@@ -483,7 +599,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 18,
     name: "J 반격덱",
     description: [
       "J와 뉴바벨의 반격을 통해 딜을 하는 조합",
@@ -508,7 +623,6 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    id: 19,
     name: "연소 술식덱",
     description: [
       "스파토데아와 이졸데의 연소를 메인으로, 연소를 쌓아 술식딜을 하는 조합",

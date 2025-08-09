@@ -25,6 +25,7 @@ import { cn } from "@/lib/utils";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { euphoriaList } from "@/data/euphoria";
+import { getDisplayVersion } from "@/data/version";
 
 export default function CharacterDetail({ character }: { character: Character }) {
   const guide = characterGuideList.find((g) => g.character_id === character.id);
@@ -93,7 +94,7 @@ export default function CharacterDetail({ character }: { character: Character })
               className="absolute left-1 top-0 z-10"
             />
             <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white">
-              v{character.version}
+              {getDisplayVersion(character.version)}
             </div>
             {euphoriaList.some((e) => e.character_id === character.id) && (
               <div className="absolute bottom-1 left-1 z-10 rounded-sm bg-rose-600 px-1 py-[1px] text-[10px] text-white shadow">
@@ -409,7 +410,7 @@ export default function CharacterDetail({ character }: { character: Character })
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {recommendedTeams.map((team) => {
                   return (
-                    <div key={team.id} className="rounded-lg border p-4 dark:border-gray-700">
+                    <div key={team.name} className="rounded-lg border p-4 dark:border-gray-700">
                       <h3 className="mb-2 text-center text-lg font-semibold">{team.name}</h3>
                       <div className="mb-4 flex flex-wrap justify-center gap-2">
                         {team.concepts.map((concept, idx) => (
@@ -433,7 +434,8 @@ export default function CharacterDetail({ character }: { character: Character })
                           const isCurrentCharacterAlternative = "isAlternative" in ch;
 
                           const currentDisplayedCharId =
-                            selectedCharacters[`team_${team.id}_char_${ch.id}`] || ch.id.toString();
+                            selectedCharacters[`team_${team.name}_char_${ch.id}`] ||
+                            ch.id.toString();
                           const displayedChar = allCharacters.find(
                             (c) => c.id.toString() === currentDisplayedCharId
                           );
@@ -468,7 +470,7 @@ export default function CharacterDetail({ character }: { character: Character })
                                     className="absolute right-1 top-0 z-10"
                                   />
                                   <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white">
-                                    v{displayedChar?.version || teamChar?.version}
+                                    {getDisplayVersion(displayedChar?.version || teamChar?.version)}
                                   </div>
                                   {ch.euphoria && (
                                     <div className="absolute bottom-6 right-1 z-10 rounded-sm bg-purple-600 px-1 py-[1px] text-[10px] text-white">
@@ -509,7 +511,7 @@ export default function CharacterDetail({ character }: { character: Character })
                                             onClick={() => {
                                               setSelectedCharacters((prev) => ({
                                                 ...prev,
-                                                [`team_${team.id}_char_${ch.id}`]:
+                                                [`team_${team.name}_char_${ch.id}`]:
                                                   alt.id.toString(),
                                               }));
                                             }}

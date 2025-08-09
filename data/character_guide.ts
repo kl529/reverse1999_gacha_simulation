@@ -1590,7 +1590,41 @@ export const characterGuideList: CharacterGuide[] = [
     guide_images: [1, 2, 3],
   },
   {
-    character_id: 47, // 노티카
+    character_id: 47, // 에지오 아디토레
+    portrait_info: {
+      headers: ["형상", "추공", "술식", "중독"],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["15.5%", "19.2%", "??"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["14.1%", "7.2%", "??"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["10.1%", "13.4%", "??"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["15.4%", "17.5%", "??"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["12.9%", "7.5%", "??"],
+        },
+      ],
+      summary: "1형상 > 4형상 > 3형상 > 2형상 > 5형상 (전반적 효율)",
+      source: "icehood",
+      note: "무기조합에 따라 형상효율이 많이 갈리는 편. 명함으로도 충분하지만, 1형상이 가성비이고, 4형상까지도 괜찮은 편이다. 아직 연구가 다 나오지 않았고, 카산드라가 나오면 평가가 더욱 좋아질 수 있음 ",
+    },
+    youtube_links: [],
+    keywords: ["딜러", "암살", "현실피해", "한정", "추공", "술식", "중독", "콜라보"],
+    guide_images: [],
+  },
+  {
+    character_id: 49, // 노티카
     portrait_info: {
       headers: ["형상", "1인 기준", "다인 기준"],
       rows: [
@@ -1624,7 +1658,7 @@ export const characterGuideList: CharacterGuide[] = [
     guide_images: [],
   },
   {
-    character_id: 48, // 울리히
+    character_id: 50, // 울리히
     portrait_info: {
       headers: ["형상", "전반적 효율"],
       rows: [
@@ -1658,7 +1692,7 @@ export const characterGuideList: CharacterGuide[] = [
     guide_images: [],
   },
   {
-    character_id: 49, // 몰디르
+    character_id: 51, // 몰디르
     portrait_info: {
       headers: ["형상", "본인", "팀 전체"],
       rows: [
@@ -1692,7 +1726,7 @@ export const characterGuideList: CharacterGuide[] = [
     guide_images: [],
   },
   {
-    character_id: 50, // 센티넬
+    character_id: 52, // 센티넬
     portrait_info: {
       headers: ["형상", "본인", "팀 전체"],
       rows: [
@@ -1726,7 +1760,7 @@ export const characterGuideList: CharacterGuide[] = [
     guide_images: [],
   },
   {
-    character_id: 51, // 카론
+    character_id: 53, // 카론
     portrait_info: {
       headers: ["형상", "본인", "팀 전체"],
       rows: [

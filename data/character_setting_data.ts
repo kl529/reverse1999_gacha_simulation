@@ -1425,7 +1425,39 @@ export const character_setting_data: CharacterSettingData[] = [
     resonance_patterns: ["Hyper", "Equanimity"],
   },
   {
-    character_id: 47, // "노티카"
+    character_id: 47, // "에지오 아디토레"
+    psycubes: [
+      {
+        psycube_id: 79,
+        description: "S (술식)",
+      },
+      {
+        psycube_id: 18,
+        description: "S (중독)",
+      },
+      {
+        psycube_id: 52,
+        description: "S (추공, 단기전)",
+      },
+      {
+        psycube_id: 42,
+        description: "S (추공, 장기전)",
+      },
+    ],
+    resonance: [
+      {
+        code: "ADQwNDIqUChRJAEtEUQARSD0JDhFOAUlBCtE",
+        description: "크리티컬",
+      },
+      {
+        code: "ADQwNDIkAS0RRABFIEhQSGBFUShR9CQlBCtEOEU4BQ",
+        description: "크리티컬 (12공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Aspirational", "Genuinity"],
+  },
+  {
+    character_id: 49, // "노티카"
     psycubes: [
       {
         psycube_id: 72,
@@ -1457,7 +1489,7 @@ export const character_setting_data: CharacterSettingData[] = [
     resonance_patterns: ["Stupefaction", "Elucidation"],
   },
   {
-    character_id: 48, // "울리히"
+    character_id: 50, // "울리히"
     psycubes: [
       {
         psycube_id: 40,
@@ -1489,7 +1521,7 @@ export const character_setting_data: CharacterSettingData[] = [
     resonance_patterns: ["Elucidation", "Aspirational"],
   },
   {
-    character_id: 49, // "몰디르"
+    character_id: 51, // "몰디르"
     psycubes: [
       {
         psycube_id: 73,
@@ -1521,7 +1553,7 @@ export const character_setting_data: CharacterSettingData[] = [
     resonance_patterns: ["Elucidation", "Mercy"],
   },
   {
-    character_id: 50, // "센티넬"
+    character_id: 52, // "센티넬"
     psycubes: [
       {
         psycube_id: 76,
@@ -1545,7 +1577,7 @@ export const character_setting_data: CharacterSettingData[] = [
     resonance_patterns: ["Equanimity", "Equibalance"],
   },
   {
-    character_id: 51, // "카론"
+    character_id: 53, // "카론"
     psycubes: [
       {
         psycube_id: 77,

@@ -9,7 +9,7 @@ export interface ResonancePatternMaterial {
 export const resonancePatternMaterial: ResonancePatternMaterial[] = [
   // 3.0
   {
-    character_id: 51, // "Charon",
+    character_id: 53, // "Charon",
     pattern: [
       {
         pattern: "Hyper",
@@ -59,7 +59,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
     ],
   },
   {
-    character_id: 50, // "Sentinel",
+    character_id: 52, // "Sentinel",
     pattern: [
       {
         pattern: "Elucidation",
@@ -110,7 +110,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
   },
   // 2.8
   {
-    character_id: 49, // "Moldir",
+    character_id: 51, // "Moldir",
     pattern: [
       {
         pattern: "Elucidation",
@@ -160,7 +160,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
     ],
   },
   {
-    character_id: 48, // "Ulrich",
+    character_id: 50, // "Ulrich",
     pattern: [
       {
         pattern: "Elucidation",
@@ -210,7 +210,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
     ],
   },
   {
-    character_id: 47, // "Nautika",
+    character_id: 49, // "Nautika",
     pattern: [
       {
         pattern: "Elucidation",
@@ -254,6 +254,57 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
           3: 1,
           107: 2,
           206: 4,
+          1002: 120000,
+        },
+      },
+    ],
+  },
+  // 2.75
+  {
+    character_id: 47, // "ezio",
+    pattern: [
+      {
+        pattern: "Elucidation",
+        materials: {
+          4: 1,
+          101: 2,
+          201: 4,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Genuinity",
+        materials: {
+          3: 1,
+          101: 2,
+          205: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Stupefaction",
+        materials: {
+          1: 1,
+          108: 2,
+          210: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Aspirational",
+        materials: {
+          2: 1,
+          101: 2,
+          203: 5,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Hyperphrenia",
+        materials: {
+          3: 1,
+          106: 2,
+          211: 3,
           1002: 120000,
         },
       },

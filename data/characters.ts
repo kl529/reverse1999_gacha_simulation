@@ -431,6 +431,16 @@ export const charactersByRarity: Record<number, Character[]> = {
     },
     {
       id: 47,
+      name: "에지오 아디토레",
+      rarity: 6,
+      inspiration: "star",
+      engName: "ezio-auditore",
+      version: "2.75",
+      resonanceType: "damage",
+      exclude_gacha: true,
+    },
+    {
+      id: 49,
       name: "노티카",
       rarity: 6,
       inspiration: "spirit",
@@ -440,7 +450,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       exclude_gacha: true,
     },
     {
-      id: 48,
+      id: 50,
       name: "울리히",
       rarity: 6,
       inspiration: "intellect",
@@ -449,7 +459,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       resonanceType: "damage",
     },
     {
-      id: 49,
+      id: 51,
       name: "몰디르",
       rarity: 6,
       inspiration: "beast",
@@ -458,7 +468,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       resonanceType: "balance",
     },
     {
-      id: 50,
+      id: 52,
       name: "센티넬",
       rarity: 6,
       inspiration: "mineral",
@@ -467,7 +477,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       resonanceType: "balance",
     },
     {
-      id: 51,
+      id: 53,
       name: "카론",
       rarity: 6,
       inspiration: "spirit",

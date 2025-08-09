@@ -407,6 +407,15 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
           2: 3,
         },
       },
+      {
+        level: 2,
+        materials: {
+          702: 30,
+          703: 371,
+          4: 1,
+          109: 2,
+        },
+      },
     ],
     upgrade: [
       {
@@ -965,13 +974,107 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
   },
   {
     character_id: 25, // "Marcus",
-    euphoria: [],
-    upgrade: [],
+    euphoria: [
+      {
+        level: 1,
+        materials: {
+          701: 12,
+          702: 40,
+          703: 200,
+          2: 3,
+        },
+      },
+    ],
+    upgrade: [
+      {
+        level: 1,
+        materials: {
+          702: 20,
+          703: 275,
+          1: 1,
+          101: 1,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          702: 30,
+          703: 371,
+          2: 1,
+          102: 2,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          702: 35,
+          703: 470,
+          4: 2,
+          111: 2,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          702: 40,
+          703: 1195,
+          5: 2,
+          110: 2,
+        },
+      },
+    ],
   },
   {
     character_id: 26, // "Vila",
-    euphoria: [],
-    upgrade: [],
+    euphoria: [
+      {
+        level: 1,
+        materials: {
+          701: 12,
+          702: 40,
+          703: 200,
+          3: 3,
+        },
+      },
+    ],
+    upgrade: [
+      {
+        level: 1,
+        materials: {
+          702: 20,
+          703: 275,
+          4: 1,
+          109: 1,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          702: 30,
+          703: 371,
+          1: 1,
+          102: 2,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          702: 35,
+          703: 470,
+          2: 2,
+          108: 2,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          702: 40,
+          703: 1195,
+          4: 2,
+          104: 2,
+        },
+      },
+    ],
   },
   {
     character_id: 27, // "Windsong",
@@ -1168,12 +1271,17 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
     upgrade: [],
   },
   {
-    character_id: 47, // "Ulrich",
+    character_id: 47, // "Ezio Auditore",
     euphoria: [],
     upgrade: [],
   },
   {
-    character_id: 48, // "Nautika",
+    character_id: 49, // "Nautika",
+    euphoria: [],
+    upgrade: [],
+  },
+  {
+    character_id: 50, // "Ulrich",
     euphoria: [],
     upgrade: [],
   },

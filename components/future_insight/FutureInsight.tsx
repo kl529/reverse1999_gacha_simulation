@@ -9,6 +9,7 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
+import { getDisplayVersion } from "@/data/version";
 
 function getCharNameById(id: number | Character | undefined): string {
   if (typeof id === "object" && id !== null && "name" in id) {
@@ -70,7 +71,7 @@ export default function FutureInsightPage() {
           <Card key={item.version} className="space-y-1">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <div className="text-2xl font-semibold">
-                {item.title} (v{item.version})
+                {item.title} (v{getDisplayVersion(item.version)})
               </div>
               <span
                 className={`rounded px-2 py-1 text-xs font-medium ${
@@ -222,7 +223,7 @@ export default function FutureInsightPage() {
                   href={`/skin?version=${item.version}`}
                   className="text-sm text-blue-600 hover:underline dark:text-blue-400"
                 >
-                  👕 {item.version} 버전 스킨 보기 →
+                  👕 {getDisplayVersion(item.version)} 버전 스킨 보기 →
                 </a>
               </div>
             </CardContent>

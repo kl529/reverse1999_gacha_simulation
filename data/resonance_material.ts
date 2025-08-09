@@ -5482,7 +5482,126 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
     ],
   },
   {
-    character_id: 47, // "Nautika"
+    character_id: 47, // "ezio"
+    resonance: [
+      {
+        level: 2,
+        materials: {
+          601: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          601: 5,
+          402: 5,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          601: 5,
+          403: 6,
+          301: 3,
+        },
+      },
+      {
+        level: 5,
+        materials: {
+          602: 5,
+          309: 3,
+          303: 3,
+        },
+      },
+      {
+        level: 6,
+        materials: {
+          1002: 30000,
+          602: 5,
+          204: 3,
+        },
+      },
+      {
+        level: 7,
+        materials: {
+          602: 6,
+          209: 5,
+        },
+      },
+      {
+        level: 8,
+        materials: {
+          602: 6,
+          203: 4,
+          304: 6,
+        },
+      },
+      {
+        level: 9,
+        materials: {
+          602: 8,
+          211: 6,
+          307: 6,
+        },
+      },
+      {
+        level: 10,
+        materials: {
+          605: 1,
+          603: 5,
+          205: 6,
+          210: 5,
+        },
+      },
+      {
+        level: 11,
+        materials: {
+          605: 1,
+          1002: 120000,
+          603: 5,
+          102: 4,
+        },
+      },
+      {
+        level: 12,
+        materials: {
+          605: 1,
+          603: 6,
+          103: 4,
+          206: 5,
+        },
+      },
+      {
+        level: 13,
+        materials: {
+          605: 1,
+          603: 6,
+          104: 5,
+          208: 6,
+        },
+      },
+      {
+        level: 14,
+        materials: {
+          605: 1,
+          603: 8,
+          2: 2,
+          101: 4,
+        },
+      },
+      {
+        level: 15,
+        materials: {
+          605: 1,
+          603: 8,
+          5: 3,
+          109: 4,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 49, // "Nautika"
     resonance: [
       {
         level: 2,
@@ -5602,7 +5721,7 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
     ],
   },
   {
-    character_id: 48, // "Ulrich"
+    character_id: 50, // "Ulrich"
     resonance: [
       {
         level: 2,
@@ -5721,7 +5840,7 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
     ],
   },
   {
-    character_id: 49, // "Moldir"
+    character_id: 51, // "Moldir"
     resonance: [
       {
         level: 2,
@@ -5782,7 +5901,7 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
     ],
   },
   {
-    character_id: 50, // "Sentinel"
+    character_id: 52, // "Sentinel"
     resonance: [
       {
         level: 2,
@@ -5843,7 +5962,7 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
     ],
   },
   {
-    character_id: 51, // "Charon"
+    character_id: 53, // "Charon"
     resonance: [
       {
         level: 2,

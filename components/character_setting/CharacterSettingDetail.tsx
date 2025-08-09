@@ -24,6 +24,7 @@ import { euphoriaMaterialList } from "@/data/euphoria_material";
 import { resonancePatternMaterial } from "@/data/resonance_pattern_material";
 import { insightMaterial } from "@/data/insight_material";
 import { euphoriaList } from "@/data/euphoria";
+import { getDisplayVersion } from "@/data/version";
 
 export default function CharacterSettingDetail({ character }: { character: Character }) {
   const setting = character_setting_data.find((c) => c.character_id === character.id);
@@ -83,7 +84,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
             />
             {/* 버전 뱃지 */}
             <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white">
-              v{character.version}
+              {getDisplayVersion(character.version)}
             </div>
             {/* 광상 여부 */}
             {euphoriaList.some((e) => e.character_id === character.id) && (
@@ -254,7 +255,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                       {item.type}
                     </div>
                     <div className="absolute bottom-1 right-1 rounded-sm bg-blue-600 px-1 text-[10px] text-white">
-                      v{item.version}
+                      {item.version && getDisplayVersion(item.version)}
                     </div>
                   </div>
                   <div className="text-sm font-semibold">{item.label}</div>
@@ -291,7 +292,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                         />
                         {ch.version && (
                           <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
-                            {ch.version}
+                            {getDisplayVersion(ch.version)}
                           </div>
                         )}
                       </div>

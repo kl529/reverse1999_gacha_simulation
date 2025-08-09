@@ -117,7 +117,7 @@ export default function SkinGalleryPage() {
               <SelectItem value="전체">전체</SelectItem>
               {versionList.map((v) => (
                 <SelectItem key={v} value={v}>
-                  {v}
+                  {v === "2.75" ? "콜라보" : v}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -198,7 +198,7 @@ export default function SkinGalleryPage() {
                         className="h-auto w-full object-cover"
                       />
                       <span className="absolute bottom-2 right-2 rounded bg-orange-300 px-2 py-0.5 text-xs text-white dark:bg-orange-700">
-                        {skin.version}
+                        {skin.version === "2.75" ? "콜라보" : skin.version}
                       </span>
                       {skin.tarot_number && (
                         <span className="absolute bottom-2 left-2 rounded bg-purple-500 px-2 py-0.5 text-xs text-white">

@@ -71,4 +71,5 @@ export const updateLogs = [
   { date: "2025-07-17", content: "현질 패키지 정리 페이지 오픈" },
   { date: "2025-07-27", content: "3.0 버젼 데이터 추가" },
   { date: "2025-08-04", content: "광상 가이드 재료 추가 &  현질 패키지 스킨 추가" },
+  { date: "2025-08-09", content: "콜라보 버젼 데이터 추가" },
 ];

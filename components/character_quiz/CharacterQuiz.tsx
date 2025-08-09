@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/select";
 import { useMemo, useCallback } from "react";
 import { version } from "@/data/version";
+import { getDisplayVersion } from "@/data/version";
 
 export default function CharacterQuiz() {
   // (B) 열림 상태 (Set)
@@ -84,7 +85,10 @@ export default function CharacterQuiz() {
         return aMajor !== bMajor ? aMajor - bMajor : aMinor - bMinor;
       });
   }, []);
-  const VERSIONS = useMemo(() => ["ALL", ...versionList], [versionList]);
+  const VERSIONS = useMemo(() => {
+    const versions = versionList.map((v) => getDisplayVersion(v));
+    return ["ALL", ...new Set(["콜라보", ...versions])];
+  }, [versionList]);
 
   useEffect(() => {
     setMounted(true);
@@ -314,7 +318,11 @@ export default function CharacterQuiz() {
   }
   // version
   if (versionFilter !== "ALL") {
-    displayedChars = displayedChars.filter((ch) => ch.version === versionFilter);
+    if (versionFilter === "콜라보") {
+      displayedChars = displayedChars.filter((ch) => ch.version === "2.75");
+    } else {
+      displayedChars = displayedChars.filter((ch) => ch.version === versionFilter);
+    }
   }
 
   // 현황
@@ -663,7 +671,7 @@ export default function CharacterQuiz() {
           rounded-lg shadow-lg
         "
         >
-          <h2 className="mb-2 text-center text-xl font-bold text-red-600">🔥 하드 모드 설명 🔥</h2>
+          <h2 className="mb-2 text-center text-xl font-bold text-red-600">🔥 하드모드 설명 🔥</h2>
           <p>
             - 띄어쓰기와 영어 대소문자를 정확히 입력해야 정답으로 인정됩니다. <br />
             - 하드모드를 활성화하면, 새로 게임을 시작합니다. <br />

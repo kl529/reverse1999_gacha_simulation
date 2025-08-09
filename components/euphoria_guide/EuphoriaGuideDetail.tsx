@@ -97,14 +97,16 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
               />
             </AspectRatio>
             <div className="absolute bottom-1 right-1 z-10 rounded bg-gray-200 px-1 py-0.5 text-[10px] text-gray-800 shadow dark:bg-gray-700 dark:text-gray-100">
-              v{item.version}
+              v{item.version === "2.75" ? "콜라보" : item.version}
             </div>
           </Card>
         </div>
 
         <div className="mb-6 text-center text-sm text-black dark:text-gray-200">
           <p className="whitespace-pre-line">{item.note}</p>
-          <p className="mt-1 whitespace-pre-line">출시 : v{item.version}</p>
+          <p className="mt-1 whitespace-pre-line">
+            출시 : v{item.version === "2.75" ? "콜라보" : item.version}
+          </p>
           <Link
             href={`/character_setting/${character.id}`}
             className="mt-2 inline-block text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
@@ -286,7 +288,7 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
             <h2 className="mb-4 text-center text-xl font-bold">이 캐릭터가 포함된 추천 조합</h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {recommendedTeams.map((team) => (
-                <div key={team.id} className="rounded-lg border p-4 dark:border-gray-700">
+                <div key={team.name} className="rounded-lg border p-4 dark:border-gray-700">
                   <h3 className="mb-2 text-center text-lg font-semibold">{team.name}</h3>
                   <div className="mb-4 flex flex-wrap justify-center gap-2">
                     {team.concepts.map((concept, idx) => (
@@ -300,7 +302,7 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
                   </div>
                   <div className="mb-4 flex justify-center gap-2 rounded-sm border p-2">
                     {team.characters.map((ch) => {
-                      const key = `team_${team.id}_char_${ch.id}`;
+                      const key = `team_${team.name}_char_${ch.id}`;
                       const currentDisplayedCharId = selectedCharacters[key] || ch.id.toString();
                       const displayedChar = allCharacters.find(
                         (c) => c.id.toString() === currentDisplayedCharId

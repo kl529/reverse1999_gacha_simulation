@@ -7,14 +7,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { version } from "@/data/version";
+import { isIncludedInGachaPool } from "@/data/version";
 interface ModalProps {
   banner: EnrichedBanner;
 }
 
 export function BannerSixStarListModal({ banner }: ModalProps) {
   const allSixStars: Character[] = charactersByRarity[6].filter(
-    (char) => !char.exclude_gacha && parseFloat(char.version) <= parseFloat(version) - 0.3
+    (char) => !char.exclude_gacha && isIncludedInGachaPool(char.version)
   );
   const pickupSixStars = banner.bannerType === "doublePick" ? banner.twoPickup6 : [banner.pickup6];
   const uniqueSixStars = new Set(allSixStars.map((char) => char.engName));

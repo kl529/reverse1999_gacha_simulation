@@ -73,7 +73,7 @@ export default function CharacterSetting() {
                   />
                   {ch.version && (
                     <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
-                      {ch.version}
+                      {ch.version === "2.75" ? "콜라보" : ch.version}
                     </div>
                   )}
                 </div>

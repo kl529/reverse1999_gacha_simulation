@@ -84,7 +84,7 @@ export default function PsycubeGuide() {
                         {item.type}
                       </div>
                       <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
-                        v{item.version}
+                        v{item.version === "2.75" ? "콜라보" : item.version}
                       </div>
                     </div>
                     <div className="w-full truncate text-center text-sm font-bold text-black dark:text-gray-100">
@@ -122,7 +122,7 @@ export default function PsycubeGuide() {
                         {item.type}
                       </div>
                       <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
-                        v{item.version}
+                        v{item.version === "2.75" ? "콜라보" : item.version}
                       </div>
                     </div>
                     <div className="w-full truncate text-center text-sm font-bold text-black dark:text-gray-100">

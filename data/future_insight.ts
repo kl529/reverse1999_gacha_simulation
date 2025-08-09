@@ -108,25 +108,29 @@ export const futureInsightData: FutureInsightItem[] = [
     },
     note: "무료 광상 캐릭터 선택권 지급 (2.6 기준 광상 캐릭터까지)",
   },
-  // {
-  //   version: "2.75",
-  //   title: "어쌔신 크리드 콜라보",
-  //   period: {
-  //     start: "2025-08-07",
-  //     end: "2025-09-19",
-  //     week: 6,
-  //   },
-  //   banners: ["ezio_pick_up", "kassandra_pick_up"],
-  //   euphoria: {
-  //     star6: [
-  //       { characterId: 9, euphoriaId: 27 }, //이터니티
-  //       { characterId: 25, euphoriaId: 28 }, //마커스
-  //       { characterId: 26, euphoriaId: 29 }, //빌라
-  //     ],
-  //     star5: [],
-  //   },
-  //   note: "어쌔신 크리드 콜라보",
-  // },
+  {
+    version: "2.75",
+    title: "어쌔신 크리드 콜라보",
+    period: {
+      start: "2025-08-07",
+      end: "2025-09-19",
+      week: 6,
+    },
+    album_shop: {
+      rare6: 20,
+      rare5: 119,
+    },
+    banners: ["ezio_auditore_pick_up", "kassandra_pick_up"],
+    euphoria: {
+      star6: [
+        { characterId: 9, euphoriaId: 29 }, //이터니티
+        { characterId: 25, euphoriaId: 27 }, //마커스
+        { characterId: 26, euphoriaId: 28 }, //빌라
+      ],
+      star5: [],
+    },
+    note: "어쌔신 크리드 콜라보",
+  },
   {
     version: "2.8",
     title: "복낙원",

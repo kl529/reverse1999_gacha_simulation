@@ -973,6 +973,64 @@ export const characterSkin: CharacterSkin[] = [
   },
   {
     id: 85,
+    character_id: 26, // 빌라
+    name: "와인색 바다의 딸",
+    engName: "daughter_of_the_wine_dark_sea",
+    rarity: "Advanced",
+    source: "콜라보 판매",
+    resell: "X",
+    version: "2.75",
+    price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/9-l0nhwNn2Q",
+  },
+  {
+    id: 86,
+    character_id: 45, // 히사베스
+    name: "꿈틀대는 봄",
+    engName: "serpentine_primavera",
+    rarity: "Advanced",
+    source: "콜라보 판매",
+    resell: "X",
+    version: "2.75",
+    price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/fP_ml-Nz2_k",
+  },
+  {
+    id: 87,
+    character_id: 25, // 마커스
+    name: "지하세계의 문으로",
+    engName: "to_the_gates_of_the_underworld",
+    rarity: "Advanced",
+    source: "콜라보 판매",
+    resell: "X",
+    version: "2.75",
+    price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/HOWwwzehHdk",
+  },
+  {
+    id: 88,
+    character_id: 9, // 이터니티
+    name: "풍요의 손길",
+    engName: "the_golden_nurturer",
+    rarity: "Garment",
+    source: "주크박스",
+    resell: "X",
+    version: "2.75",
+    tarot_number: "3",
+    shorts_url: "https://www.youtube.com/embed/HtUhNl--Bho",
+  },
+  {
+    id: 89,
+    character_id: 208, // APPLe
+    name: "지혜의 열매",
+    engName: "the_fruit_of_wisdom",
+    rarity: "Garment",
+    source: "컨텐츠",
+    resell: "X",
+    version: "2.75",
+  },
+  {
+    id: 90,
     character_id: 29, //루시
     name: "퀸즈 게임 (미래시)",
     engName: "the_queen's_game",
@@ -983,8 +1041,8 @@ export const characterSkin: CharacterSkin[] = [
     price: "19,000₩ / 1,680빗방울",
   },
   {
-    id: 86,
-    character_id: 48, // 울리히
+    id: 91,
+    character_id: 50, // 울리히
     name: "우주의 일단면 (미래시)",
     engName: "a_glimpse_of_the_cosmos",
     rarity: "Advanced",
@@ -995,7 +1053,7 @@ export const characterSkin: CharacterSkin[] = [
     tarot_number: "21",
   },
   {
-    id: 87,
+    id: 92,
     character_id: 43, // 레콜레타
     name: "라 만차의 기사 (미래시)",
     engName: "the_knight_of_la_mancha",
@@ -1006,7 +1064,7 @@ export const characterSkin: CharacterSkin[] = [
     price: "14,000₩ / 1,080빗방울",
   },
   {
-    id: 88,
+    id: 93,
     character_id: 46, // 키페리나
     name: "껍질 속의 우주 (미래시)",
     engName: "the_universe_in_the_rook's_shell",
@@ -1017,7 +1075,7 @@ export const characterSkin: CharacterSkin[] = [
     price: "8,800₩ / 880빗방울",
   },
   {
-    id: 89,
+    id: 94,
     character_id: 15, // 제시카
     name: "천국의 소리 (미래시)",
     engName: "the_sound_of_paradise",
@@ -1028,7 +1086,7 @@ export const characterSkin: CharacterSkin[] = [
     tarot_number: "6",
   },
   {
-    id: 90,
+    id: 95,
     character_id: 306, // 리사&루이스
     name: "승변의 왈츠 (미래시)",
     engName: "the_pawn's_promotional_waltz",
@@ -1038,7 +1096,7 @@ export const characterSkin: CharacterSkin[] = [
     version: "2.8",
   },
   {
-    id: 91,
+    id: 96,
     character_id: 38, // 플러터페이지
     name: "내일의 봄바람 (미래시)",
     engName: "gently_comes_the_thawing_breeze",
@@ -1049,7 +1107,7 @@ export const characterSkin: CharacterSkin[] = [
     price: "14,000₩ / 1,080빗방울",
   },
   {
-    id: 92,
+    id: 97,
     character_id: 32, // J
     name: "고독한 늑대의 울부짖음 (미래시)",
     engName: "the_lone_wolfs_howl",
@@ -1060,7 +1118,7 @@ export const characterSkin: CharacterSkin[] = [
     price: "14,000₩ / 1,080빗방울",
   },
   {
-    id: 93,
+    id: 98,
     character_id: 28, // 제멜바이스
     name: "마음의 손익 (미래시)",
     engName: "the_wax_and_wane_of_the_heart",
@@ -1071,7 +1129,7 @@ export const characterSkin: CharacterSkin[] = [
     tarot_number: "18",
   },
   {
-    id: 94,
+    id: 99,
     character_id: 401, // 미스라디오
     name: "전선의 생명줄 (미래시)",
     engName: "lifeline_of_the_battlefield",

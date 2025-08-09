@@ -1502,7 +1502,39 @@ export const insightMaterial: InsightMaterial[] = [
     ],
   },
   {
-    character_id: 47, // "Nautika",
+    character_id: 47, // "ezio",
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 18000,
+          507: 6,
+          405: 6,
+          304: 5,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 40000,
+          508: 10,
+          310: 6,
+          203: 6,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          1002: 200000,
+          509: 16,
+          106: 6,
+          1: 3,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 49, // "Nautika",
     insight: [
       {
         level: 1,
@@ -1537,7 +1569,7 @@ export const insightMaterial: InsightMaterial[] = [
     ],
   },
   {
-    character_id: 48, // "Ulrich",
+    character_id: 50, // "Ulrich",
     insight: [
       {
         level: 1,
@@ -1572,7 +1604,7 @@ export const insightMaterial: InsightMaterial[] = [
     ],
   },
   {
-    character_id: 49, // "Moldir",
+    character_id: 51, // "Moldir",
     insight: [
       {
         level: 1,
@@ -1604,7 +1636,7 @@ export const insightMaterial: InsightMaterial[] = [
     ],
   },
   {
-    character_id: 50, // "Sentinel",
+    character_id: 52, // "Sentinel",
     insight: [
       {
         level: 1,
@@ -1636,7 +1668,7 @@ export const insightMaterial: InsightMaterial[] = [
     ],
   },
   {
-    character_id: 51, // "Charon",
+    character_id: 53, // "Charon",
     insight: [
       {
         level: 1,

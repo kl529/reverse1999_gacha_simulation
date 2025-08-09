@@ -5,6 +5,7 @@ import { CharacterSkin } from "@/data/character_skin";
 import { charactersByRarity } from "@/data/characters";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
+import { getDisplayVersion } from "@/data/version";
 
 export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
   const character = Object.values(charactersByRarity)
@@ -22,7 +23,7 @@ export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
         {/* 태그들 */}
         <div className="flex flex-wrap justify-center gap-2">
           <Badge variant="secondary" className="bg-orange-200 dark:bg-orange-700">
-            버전: {skin.version}
+            버전: {getDisplayVersion(skin.version)}
           </Badge>
           <Badge variant="secondary" className="bg-sky-200 dark:bg-sky-700">
             희귀도: {skin.rarity}

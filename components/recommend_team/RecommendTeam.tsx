@@ -22,6 +22,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { getDisplayVersion } from "@/data/version";
 
 const filteredCharacters = Object.values(charactersByRarity)
   .flat()
@@ -97,7 +98,7 @@ export default function RecommendTeamPage() {
                     />
                     {ch.version && (
                       <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[8px] text-white">
-                        {ch.version}
+                        {getDisplayVersion(ch.version)}
                       </div>
                     )}
                   </div>
@@ -128,11 +129,11 @@ export default function RecommendTeamPage() {
 
       <div className="grid grid-cols-1 gap-6 pb-8 md:grid-cols-2">
         {filteredTeams.map((team) => (
-          <Card key={team.id} className="p-4">
+          <Card key={team.name} className="p-4">
             <CardContent className="flex flex-col items-start gap-4 p-0 sm:flex-row sm:items-center">
               <div className="flex gap-2 rounded-sm border p-0">
                 {team.characters.map((ch, idx) => {
-                  const overrideKey = `${team.id}-${idx}`;
+                  const overrideKey = `${team.name}-${idx}`;
                   const selectedId = overrideMap[overrideKey] || ch.id;
                   const character = allCharacters.find((c) => c.id === selectedId);
                   if (!character) return null;
@@ -172,7 +173,7 @@ export default function RecommendTeamPage() {
                             className="absolute right-1 top-0 z-10"
                           />
                           <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white">
-                            v{character.version}
+                            v{getDisplayVersion(character.version)}
                           </div>
                           {isEuphoria && (
                             <div className="absolute bottom-6 right-1 z-10 rounded-sm bg-purple-600 px-1 py-[1px] text-[10px] text-white">
@@ -238,9 +239,7 @@ export default function RecommendTeamPage() {
                 })}
               </div>
               <div className="flex-1">
-                <h2 className="text-lg font-semibold">
-                  {team.id}. {team.name}
-                </h2>
+                <h2 className="text-lg font-semibold">{team.name}</h2>
                 <div className="mb-2 mt-1 flex flex-wrap gap-1">
                   {team.concepts.map((c, idx) => (
                     <Badge key={idx} className="bg-purple-600 text-white">

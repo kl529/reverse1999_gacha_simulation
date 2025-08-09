@@ -37,7 +37,7 @@ export default function PsycubeGuideSetting({ item }: Props) {
               {item.rarity}성
             </span>
             <span className="rounded-full bg-purple-100 px-3 py-1 text-sm text-purple-800 dark:bg-purple-900 dark:text-purple-100">
-              v{item.version}
+              v{item.version === "2.75" ? "콜라보" : item.version}
             </span>
             {item.priority && (
               <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-800 dark:bg-green-900 dark:text-green-100">

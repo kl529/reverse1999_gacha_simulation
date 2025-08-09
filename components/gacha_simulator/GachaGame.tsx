@@ -9,14 +9,12 @@ import GachaResults from "@/components/gacha_simulator/GachaResults";
 import { OffCanvas } from "@/components/gacha_simulator/OffCanvas";
 import MainGachaStats from "@/components/gacha_simulator/MainGachaStats";
 import MainSixStarHistory from "@/components/gacha_simulator/MainSixStarHistory";
-import { version } from "@/data/version";
+import { version, isIncludedInGachaPool } from "@/data/version";
 import { toast, Toaster } from "react-hot-toast";
 
 export const isValidGachaCharacterForPool = (char: Character): boolean => {
   if (char.exclude_gacha) return false;
-  const charVersion = parseFloat(char.version);
-  const maxAllowed = parseFloat(version) - 0.3;
-  return charVersion <= maxAllowed;
+  return isIncludedInGachaPool(char.version);
 };
 
 interface SixStarHistoryEntry {
