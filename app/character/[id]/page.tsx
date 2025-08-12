@@ -4,7 +4,7 @@ import CharacterDetail from "@/components/character/CharacterDetail";
 import type { Metadata } from "next";
 
 // ISR 설정 추가 - 1시간마다 재생성
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   return GUIDE_CHARACTERS.map((ch) => ({ id: ch.id.toString() }));

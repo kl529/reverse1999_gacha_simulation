@@ -5,7 +5,7 @@ import EuphoriaGuideDetail from "@/components/euphoria_guide/EuphoriaGuideDetail
 import type { Metadata } from "next";
 
 // ISR 설정 추가 - 1시간마다 재생성
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 function getCharacterById(id: number) {
   for (const rarity in charactersByRarity) {

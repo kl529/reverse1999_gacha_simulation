@@ -10,47 +10,6 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
-    },
-    {
-      "source": "/public/:path*",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, s-maxage=31536000, stale-while-revalidate=86400"
-        }
-      ]
-    },
-    {
-      "source": "/:file*",
-      "has": [
-        {
-          "type": "header",
-          "key": "accept",
-          "value": ".*(js|css|png|jpg|jpeg|gif|webp|svg|ico|woff|woff2|ttf|eot).*"
-        }
-      ],
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, s-maxage=31536000, stale-while-revalidate=86400"
-        }
-      ]
-    },
-    {
-      "source": "/:file*",
-      "has": [
-        {
-          "type": "header",
-          "key": "accept",
-          "value": ".*(json|xml).*"
-        }
-      ],
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=300"
-        }
-      ]
     }
   ]
 }

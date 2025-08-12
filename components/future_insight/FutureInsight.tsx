@@ -9,7 +9,7 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import { getDisplayVersion } from "@/data/version";
+import { getDisplayVersion, versionList } from "@/data/version";
 
 function getCharNameById(id: number | Character | undefined): string {
   if (typeof id === "object" && id !== null && "name" in id) {
@@ -45,9 +45,16 @@ function getVersionStatus(
 }
 
 function getUpcomingStandardPoolChars(versionStr: string): Character[] {
-  const targetVersion = (parseFloat(versionStr) - 0.3).toFixed(1);
+  const currentIdx = versionList.indexOf(versionStr);
+  const targetVersion = versionList[currentIdx - 3];
+
   const allChars = Object.values(charactersByRarity).flat();
-  return allChars.filter((char) => char.version === targetVersion && !char.exclude_gacha);
+  return allChars.filter(
+    (char) =>
+      char.version === targetVersion &&
+      !char.exclude_gacha &&
+      (char.rarity === 5 || char.rarity === 6)
+  );
 }
 
 export default function FutureInsightPage() {
@@ -71,7 +78,8 @@ export default function FutureInsightPage() {
           <Card key={item.version} className="space-y-1">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
               <div className="text-2xl font-semibold">
-                {item.title} (v{getDisplayVersion(item.version)})
+                {item.title} (v
+                {item.version === "2.75" ? "콜라보" : getDisplayVersion(item.version)})
               </div>
               <span
                 className={`rounded px-2 py-1 text-xs font-medium ${
@@ -223,7 +231,8 @@ export default function FutureInsightPage() {
                   href={`/skin?version=${item.version}`}
                   className="text-sm text-blue-600 hover:underline dark:text-blue-400"
                 >
-                  👕 {getDisplayVersion(item.version)} 버전 스킨 보기 →
+                  👕 {item.version === "2.75" ? "콜라보" : getDisplayVersion(item.version)} 버전
+                  스킨 보기 →
                 </a>
               </div>
             </CardContent>
