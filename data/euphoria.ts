@@ -515,7 +515,7 @@ export const euphoriaList: Euphoria[] = [
     id: 27,
     character_id: 25, // 마커스
     priority: 2,
-    name: "운명은 이 쪽으로 기운다",
+    name: "이전 페이지가 소중한 이유",
     note: "정신 딜러 / 성급 강화 / 추가 행동",
     number: 1,
     version: "2.75",
@@ -531,7 +531,7 @@ export const euphoriaList: Euphoria[] = [
     id: 28,
     character_id: 26, // 빌라
     priority: 1,
-    name: "운명은 이 쪽으로 기운다",
+    name: "하나의 이상을 받드는 방법",
     note: "광역 힐러 / 광역 버퍼",
     number: 1,
     version: "2.75",
@@ -548,7 +548,7 @@ export const euphoriaList: Euphoria[] = [
     id: 29,
     character_id: 9, // 이터니티
     priority: 3,
-    name: "운명은 이 쪽으로 기운다",
+    name: "조석처럼 바뀌는 생명",
     note: "현실 딜러 / 신혈 딜러 / 술식 딜러",
     number: 2,
     version: "2.75",
