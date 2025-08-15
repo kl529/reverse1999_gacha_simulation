@@ -22,7 +22,9 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { getDisplayVersion } from "@/data/version";
+import { getDisplayVersion, isNewerVersion } from "@/data/version";
+import { euphoriaList } from "@/data/euphoria";
+import { RecommendTeam } from "@/data/recommend_team";
 
 const filteredCharacters = Object.values(charactersByRarity)
   .flat()
@@ -31,6 +33,34 @@ const filteredCharacters = Object.values(charactersByRarity)
 
 const allCharacters = Object.values(charactersByRarity).flat();
 
+// Toast 컴포넌트
+const Toast = ({
+  message,
+  isVisible,
+  onClose,
+}: {
+  message: string;
+  isVisible: boolean;
+  onClose: () => void;
+}) => {
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => {
+        onClose();
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible, onClose]);
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="fixed right-4 top-4 z-50 rounded-md bg-blue-600 px-4 py-2 text-white shadow-lg">
+      {message}
+    </div>
+  );
+};
+
 export default function RecommendTeamPage() {
   const [showCharacterFilter, setShowCharacterFilter] = useState(false);
   const [showConceptFilter, setShowConceptFilter] = useState(false);
@@ -38,6 +68,9 @@ export default function RecommendTeamPage() {
   const [selectedConcept, setSelectedConcept] = useState<string | null>(null);
   const [overrideMap, setOverrideMap] = useState<Record<string, number>>({});
   const [showIntroDialog, setShowIntroDialog] = useState(false);
+  const [serverFilter, setServerFilter] = useState<"kr" | "cn">("cn");
+  const [toastMessage, setToastMessage] = useState("");
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -49,7 +82,100 @@ export default function RecommendTeamPage() {
     }
   }, []);
 
+  // Toast 표시 함수
+  const showToastMessage = (message: string) => {
+    setToastMessage(message);
+    setShowToast(true);
+  };
+
+  // 서버 필터 변경 핸들러
+  const handleServerFilterChange = (newFilter: "kr" | "cn") => {
+    setServerFilter(newFilter);
+    const message =
+      newFilter === "kr" ? "한섭 필터가 적용되었습니다" : "중섭 필터가 적용되었습니다";
+    showToastMessage(message);
+  };
+
+  // 캐릭터 필터 변경 핸들러
+  const handleCharacterFilterChange = (characterId: number | null) => {
+    setSelectedCharacterId(characterId);
+    if (characterId) {
+      const character = allCharacters.find((c) => c.id === characterId);
+      showToastMessage(`${character?.name || "캐릭터"} 필터가 적용되었습니다`);
+    } else {
+      showToastMessage("캐릭터 필터가 해제되었습니다");
+    }
+  };
+
+  // 컨셉 필터 변경 핸들러
+  const handleConceptFilterChange = (concept: string | null) => {
+    setSelectedConcept(concept);
+    if (concept) {
+      showToastMessage(`"${concept}" 컨셉 필터가 적용되었습니다`);
+    } else {
+      showToastMessage("컨셉 필터가 해제되었습니다");
+    }
+  };
+
+  // 광상 캐릭터의 최신 버전 확인 함수
+  const getLatestEuphoriaVersion = (characterId: number): string | null => {
+    const characterEuphorias = euphoriaList.filter((e) => e.character_id === characterId);
+    if (characterEuphorias.length === 0) return null;
+
+    // 버전별로 정렬하여 최신 버전 반환
+    return characterEuphorias.reduce((latest, current) => {
+      if (isNewerVersion(latest)) {
+        return current.version;
+      }
+      return latest;
+    }, characterEuphorias[0].version);
+  };
+
+  // 한섭 필터링 함수: 현재 버전보다 높은 버전의 캐릭터가 포함된 덱 제외
+  const isTeamAvailableInKorea = (team: RecommendTeam) => {
+    for (const ch of team.characters) {
+      const character = allCharacters.find((c) => c.id === ch.id);
+
+      // 기본 캐릭터 버전 확인
+      if (character && isNewerVersion(character.version)) {
+        return false;
+      }
+
+      // 광상 캐릭터인 경우 광상의 최신 버전 기준으로 확인
+      if (ch.euphoria && character) {
+        const latestEuphoriaVersion = getLatestEuphoriaVersion(character.id);
+        if (latestEuphoriaVersion && isNewerVersion(latestEuphoriaVersion)) {
+          return false;
+        }
+      }
+
+      // 대체 캐릭터도 확인
+      if (ch.alternatives) {
+        for (const alt of ch.alternatives) {
+          const altCharacter = allCharacters.find((c) => c.id === alt.id);
+          if (altCharacter && isNewerVersion(altCharacter.version)) {
+            return false;
+          }
+
+          // 대체 캐릭터도 광상인 경우 광상 버전 확인
+          if (alt.euphoria && altCharacter) {
+            const latestAltEuphoriaVersion = getLatestEuphoriaVersion(altCharacter.id);
+            if (latestAltEuphoriaVersion && isNewerVersion(latestAltEuphoriaVersion)) {
+              return false;
+            }
+          }
+        }
+      }
+    }
+    return true;
+  };
+
   const filteredTeams = recommendTeams.filter((team) => {
+    // 서버 필터 적용
+    if (serverFilter === "kr" && !isTeamAvailableInKorea(team)) {
+      return false;
+    }
+
     const matchCharacter = selectedCharacterId
       ? team.characters.some((c) =>
           [c.id, ...(c.alternatives?.map((a) => a.id) || [])].includes(selectedCharacterId)
@@ -63,14 +189,40 @@ export default function RecommendTeamPage() {
     <div className="min-h-screen w-full px-4 sm:px-6 lg:px-8">
       <h1 className="my-8 text-center text-3xl font-bold">추천 조합 모음</h1>
 
-      <div className="mb-4 flex flex-wrap items-center justify-center gap-4">
+      <div className="mb-4 flex flex-wrap items-center justify-center gap-3">
+        {/* 서버 필터 */}
+        <div className="flex items-center gap-2">
+          <div className="flex rounded-md border">
+            <button
+              onClick={() => handleServerFilterChange("cn")}
+              className={`px-3 py-1 text-sm transition ${
+                serverFilter === "cn"
+                  ? "bg-blue-500 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+              }`}
+            >
+              중섭
+            </button>
+            <button
+              onClick={() => handleServerFilterChange("kr")}
+              className={`px-3 py-1 text-sm transition ${
+                serverFilter === "kr"
+                  ? "bg-blue-500 text-white"
+                  : "bg-white text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+              }`}
+            >
+              한섭
+            </button>
+          </div>
+        </div>
+
         <Button onClick={() => setShowCharacterFilter(!showCharacterFilter)}>
           {showCharacterFilter ? "캐릭터 필터" : "캐릭터 필터"}
         </Button>
         <Button onClick={() => setShowConceptFilter(!showConceptFilter)}>
           {showConceptFilter ? "덱 컨셉 필터" : "덱 컨셉 필터"}
         </Button>
-        <Button onClick={() => setShowIntroDialog(true)}>설명서 보기</Button>
+        <Button onClick={() => setShowIntroDialog(true)}>설명서</Button>
       </div>
 
       {showCharacterFilter && (
@@ -79,7 +231,9 @@ export default function RecommendTeamPage() {
             {filteredCharacters.map((ch) => (
               <button
                 key={ch.id}
-                onClick={() => setSelectedCharacterId((prev) => (prev === ch.id ? null : ch.id))}
+                onClick={() =>
+                  handleCharacterFilterChange(selectedCharacterId === ch.id ? null : ch.id)
+                }
                 className={`flex flex-col items-center rounded border p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800 ${
                   selectedCharacterId === ch.id
                     ? "border-blue-500 bg-blue-100 dark:bg-blue-900"
@@ -118,7 +272,9 @@ export default function RecommendTeamPage() {
             <Badge
               key={concept}
               variant={selectedConcept === concept ? "default" : "secondary"}
-              onClick={() => setSelectedConcept((prev) => (prev === concept ? null : concept))}
+              onClick={() =>
+                handleConceptFilterChange(selectedConcept === concept ? null : concept)
+              }
               className="cursor-pointer"
             >
               {concept}
@@ -257,6 +413,9 @@ export default function RecommendTeamPage() {
           </Card>
         ))}
       </div>
+
+      {/* Toast 알림 */}
+      <Toast message={toastMessage} isVisible={showToast} onClose={() => setShowToast(false)} />
 
       <Dialog open={showIntroDialog} onOpenChange={setShowIntroDialog}>
         <DialogContent className="max-h-[90vh] w-[90vw] max-w-xl overflow-y-auto sm:max-w-2xl lg:max-w-4xl">

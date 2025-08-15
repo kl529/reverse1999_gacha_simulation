@@ -1619,7 +1619,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "icehood",
       note: "무기조합에 따라 형상효율이 많이 갈리는 편. 명함으로도 충분하지만, 1형상이 가성비이고, 4형상까지도 괜찮은 편이다. 아직 연구가 다 나오지 않았고, 카산드라가 나오면 평가가 더욱 좋아질 수 있음.",
     },
-    youtube_links: [],
+    youtube_links: ["https://www.youtube.com/watch?v=2k-gACiJHVU"],
     keywords: ["딜러", "암살", "현실피해", "한정", "추공", "술식", "중독", "콜라보"],
     guide_images: [],
   },

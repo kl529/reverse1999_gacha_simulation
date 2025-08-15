@@ -8,26 +8,114 @@ import { charactersByRarity } from "@/data/characters";
 import { psycube_list } from "@/data/psycube_data";
 import Link from "next/link";
 import { BOSSES } from "@/data/blueprint";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight, List } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useRouter } from "next/navigation";
 
 interface ReveriesInTheRainDetailProps {
   floorId: string;
 }
 
 export default function ReveriesInTheRainDetail({ floorId }: ReveriesInTheRainDetailProps) {
+  const router = useRouter();
   const floorData = reveriesInTheRain[floorId];
 
   if (!floorData) {
     return <div>층 정보를 찾을 수 없습니다.</div>;
   }
 
+  // 이전/다음 방 ID 찾기
+  function compareFloors(a: string, b: string): number {
+    // 층수 추출 (예: "100m-1" -> [100, 1], "90m" -> [90, 0])
+    const parseFloor = (floor: string) => {
+      const match = floor.match(/(\d+)m(?:-(\d+))?/);
+      if (!match) return [0, 0];
+      return [parseInt(match[1], 10), match[2] ? parseInt(match[2], 10) : 0];
+    };
+
+    const [aFloor, aSubFloor] = parseFloor(a);
+    const [bFloor, bSubFloor] = parseFloor(b);
+
+    // 먼저 층수로 비교
+    if (aFloor !== bFloor) {
+      return aFloor - bFloor;
+    }
+    // 층수가 같으면 서브층수로 비교
+    return aSubFloor - bSubFloor;
+  }
+
+  const allFloors = Object.keys(reveriesInTheRain).sort(compareFloors);
+  const currentIndex = allFloors.indexOf(floorId);
+  const prevFloor = currentIndex > 0 ? allFloors[currentIndex - 1] : null;
+  const nextFloor = currentIndex < allFloors.length - 1 ? allFloors[currentIndex + 1] : null;
+
+  const handleFloorChange = (value: string) => {
+    router.push(`/reveries_in_the_rain/${value}`);
+  };
+
   return (
-    <div className="flex min-h-screen w-full flex-col items-center bg-white p-4 dark:bg-gray-900 dark:text-gray-200">
+    <div className="mt-10 flex min-h-screen w-full flex-col items-center bg-white p-4 dark:bg-gray-900 dark:text-gray-200">
       {/* 헤더 섹션 */}
-      <div className="mb-8">
-        <h1 className="mt-8 p-3 text-center text-2xl font-bold text-black dark:text-gray-100 lg:text-3xl">
-          빗속의 공상 {floorData.id} 공략
-        </h1>
-        <p className="mb-4 text-lg">{floorData.description}</p>
+      <div className="mb-8 w-full max-w-4xl">
+        <div className="flex flex-col gap-4">
+          {/* 제목 */}
+          <h1 className="text-center text-2xl font-bold text-black dark:text-gray-100 lg:text-3xl">
+            빗속의 공상 {floorData.id} 공략
+          </h1>
+
+          {/* 네비게이션 컨트롤 */}
+          <div className="grid grid-cols-1 gap-2">
+            <Select value={floorId} onValueChange={handleFloorChange}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="층수 선택" />
+              </SelectTrigger>
+              <SelectContent>
+                {allFloors.map((floor) => (
+                  <SelectItem key={floor} value={floor}>
+                    {floor === floorData.id ? (
+                      <span className="font-bold">{floor}</span>
+                    ) : (
+                      `${floor}`
+                    )}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            {/* 네비게이션 버튼들 */}
+            <div className="grid grid-cols-3 gap-2">
+              <Button
+                variant="outline"
+                onClick={() => prevFloor && router.push(`/reveries_in_the_rain/${prevFloor}`)}
+                disabled={!prevFloor}
+              >
+                <ChevronLeft className="mr-2 h-4 w-4" />
+                이전 방
+              </Button>
+              <Link href="/reveries_in_the_rain">
+                <Button variant="outline" className="w-full">
+                  <List className="mr-2 h-4 w-4" />
+                  목록
+                </Button>
+              </Link>
+              <Button
+                variant="outline"
+                onClick={() => nextFloor && router.push(`/reveries_in_the_rain/${nextFloor}`)}
+                disabled={!nextFloor}
+              >
+                다음 방
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="w-full max-w-4xl space-y-8">
@@ -78,13 +166,6 @@ export default function ReveriesInTheRainDetail({ floorId }: ReveriesInTheRainDe
                 className="flex flex-grow basis-[150px] items-center justify-center"
               >
                 <div className="flex flex-col items-center">
-                  {/* <Image
-                    src={`/infos/blueprint/boss/${enemy.id}.webp`}
-                    alt={enemy.name}
-                    width={60}
-                    height={60}
-                    className="rounded-lg"
-                  /> */}
                   {enemy.type === "boss" && <span className="h-6">👑</span>}
                   {enemy.type !== "boss" && <span className="h-6" />}
                   <h4 className="text-sm font-semibold">{enemy.name}</h4>

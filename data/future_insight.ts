@@ -160,7 +160,7 @@ export const futureInsightData: FutureInsightItem[] = [
     title: "머나먼 길",
     period: {
       start: "2025-10-30",
-      end: "2025-11-04",
+      end: "2025-12-11",
       week: 5,
     },
     album_shop: {
