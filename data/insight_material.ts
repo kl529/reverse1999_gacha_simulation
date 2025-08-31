@@ -1534,6 +1534,38 @@ export const insightMaterial: InsightMaterial[] = [
     ],
   },
   {
+    character_id: 48, // "kassandra",
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 18000,
+          510: 6,
+          402: 6,
+          306: 6,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 40000,
+          511: 10,
+          303: 5,
+          209: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          1002: 200000,
+          512: 16,
+          103: 6,
+          3: 3,
+        },
+      },
+    ],
+  },
+  {
     character_id: 49, // "Nautika",
     insight: [
       {

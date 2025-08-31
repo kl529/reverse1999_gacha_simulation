@@ -260,19 +260,19 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 9, // "이터니티"
     psycubes: [
       {
-        psycube_id: 37,
-        description: "S (풀)",
+        psycube_id: 57,
+        description: "S (신혈덱 보조)",
+      },
+      {
+        psycube_id: 81,
+        description: "S (신혈덱 메인딜러)",
+      },
+      {
+        psycube_id: 76,
+        description: "S- (신혈덱 메인딜러)",
       },
       {
         psycube_id: 20,
-        description: "S (풀)",
-      },
-      {
-        psycube_id: 27,
-        description: "A",
-      },
-      {
-        psycube_id: 25,
         description: "A",
       },
     ],
@@ -1457,6 +1457,26 @@ export const character_setting_data: CharacterSettingData[] = [
     resonance_patterns: ["Aspirational", "Genuinity"],
   },
   {
+    character_id: 48, // "카산드라"
+    psycubes: [
+      {
+        psycube_id: 80,
+        description: "S",
+      },
+    ],
+    resonance: [
+      {
+        code: "APQkOAUoRDxjOUItQCZQJQQ0IjQgKAEqAA",
+        description: "추공 조합",
+      },
+      {
+        code: "APQkOAU4RSUEK0Q8ADwQNCA0IitAR0FGQy1R",
+        description: "술식 조합",
+      },
+    ],
+    resonance_patterns: ["Elucidation"],
+  },
+  {
     character_id: 49, // "노티카"
     psycubes: [
       {
@@ -2400,7 +2420,23 @@ export const character_setting_data: CharacterSettingData[] = [
     resonance_patterns: ["Equanimity"],
   },
   {
-    character_id: 128, // "버디 페어차일드"
+    character_id: 128, // "알렉시오스"
+    psycubes: [
+      {
+        psycube_id: 36,
+        description: "S (딜 보조)",
+      },
+    ],
+    resonance: [
+      {
+        code: "APQkK0Q4RTgFJQQkAS8RKFEqUDQyRABDIEEw",
+        description: "크리티컬",
+      },
+    ],
+    resonance_patterns: ["Elucidation"],
+  },
+  {
+    character_id: 129, // "버디 페어차일드"
     psycubes: [
       {
         psycube_id: 36,

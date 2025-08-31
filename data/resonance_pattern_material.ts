@@ -261,6 +261,56 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
   },
   // 2.75
   {
+    character_id: 48, // "kassandra",
+    pattern: [
+      {
+        pattern: "Elucidation",
+        materials: {
+          1: 1,
+          111: 2,
+          201: 4,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Genuinity",
+        materials: {
+          2: 1,
+          107: 2,
+          204: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Stupefaction",
+        materials: {
+          2: 1,
+          107: 2,
+          204: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Aspirational",
+        materials: {
+          1: 1,
+          102: 2,
+          206: 4,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Hyperphrenia",
+        materials: {
+          2: 1,
+          110: 2,
+          211: 3,
+          1002: 120000,
+        },
+      },
+    ],
+  },
+  {
     character_id: 47, // "ezio",
     pattern: [
       {

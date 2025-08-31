@@ -562,7 +562,7 @@ export default function CharacterDetail({ character }: { character: Character })
                     />
                     {ch.version && (
                       <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
-                        {ch.version}
+                        {getDisplayVersion(ch.version)}
                       </div>
                     )}
                     {euphoriaList.some((e) => e.character_id === ch.id) && (

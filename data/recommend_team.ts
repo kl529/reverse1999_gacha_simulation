@@ -184,17 +184,17 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    name: "추공 에지오덱 (정리중)",
+    name: "추공 에지오덱",
     description: [
       "에지오의 추가공격 관련 무기(베네치아 파르지온 + 채널드 친퀘데아)를 사용하여 활용하는 덱",
-      "주력딜은 에지오의 추가공격 및 1스킬을 활용",
-      "대부분의 추공덱과 비슷한 구성을 가짐.",
-      "카산드라가 나와봐야 완성덱이 나올 예정",
+      "주력딜은 에지오의 2스킬 반격 추공을 최대한 많이 하는 것",
+      "에지오 위주로 스킬을 굴리고, 카산드라는 사이클에 맞춰 카드를 쓰면 됨.",
+      "카산드라 특성은 302를 사용함.",
     ],
     concepts: ["추가 공격", "암살"],
     characters: [
       { id: 47, isMain: true, role: "딜러" },
-      { id: 38, isMain: true, role: "서폿" },
+      { id: 48, isMain: true, role: "서폿" },
       {
         id: 40,
         role: "힐러",
@@ -204,7 +204,7 @@ export const recommendTeams: RecommendTeam[] = [
         ],
       },
       {
-        id: 36,
+        id: 38,
         role: "서폿",
         alternatives: [
           { id: 31, role: "서폿" },
@@ -214,34 +214,36 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    name: "술식 에지오덱 (정리중)",
+    name: "술식 에지오덱",
     description: [
       "에지오의 중독 관련 무기(콘도티에로 전쟁 망치 + 채널드 친퀘데아)를 사용하여 활용하는 덱",
-      "덱의 핵심은 광상 갈천과 에지오의 현실 피해",
-      "아직 연구가 더 필요한 조합. 카산드라가 나오면 바뀔 가능성 높음",
+      "덱의 핵심은 광상 갈천과 에지오 + 카산드라 술식의 현실 피해",
+      "카산드라의 술식을 최대한 많이 굴리면서 사이클을 굴려야함. (광상 갈천이 있어야 완전체)",
+      "카산드라 특성은 203를 사용함.",
     ],
     concepts: ["술식", "암살"],
     characters: [
-      {
-        id: 36,
-        role: "서폿",
-        alternatives: [
-          { id: 8, euphoria: true, role: "힐러" },
-          { id: 26, euphoria: true, role: "힐러" },
-        ],
-      },
       { id: 47, isMain: true, role: "딜러" },
+      { id: 48, isMain: true, role: "서폿" },
       {
         id: 23,
         role: "서폿",
-        isMain: true,
         euphoria: true,
+        alternatives: [
+          { id: 12, euphoria: true, role: "서폿" },
+          { id: 45, role: "딜러" },
+        ],
       },
-      { id: 12, euphoria: true, role: "서폿", alternatives: [{ id: 34, role: "서폿" }] },
+      {
+        id: 8,
+        euphoria: true,
+        role: "서폿",
+        alternatives: [{ id: 26, euphoria: true, role: "힐러" }],
+      },
     ],
   },
   {
-    name: "중독 에지오덱 (정리중)",
+    name: "중독 에지오덱",
     description: [
       "에지오의 중독 관련 무기를 사용하여 활용하는 덱",
       "중독 유지를 위해, 튜즈데이는 필수로 기용해야함.",

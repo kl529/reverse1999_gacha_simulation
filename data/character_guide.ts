@@ -871,7 +871,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "가장 효율이 높은 형상은 4형상이며, 형상 효율이 대체적으로 낮음.",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=PZ12Oi3NRQw"],
+    youtube_links: ["https://www.youtube.com/watch?v=txh9Hd_2fns"],
     keywords: ["딜러", "성급강화", "정신피해"],
     guide_images: [],
   },
@@ -905,7 +905,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "빌라는 공격기가 없어 딜러마다 형상 효율이 다 다르므로 자가 성능 효율만 기술.",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=klG_OXFknB8"],
+    youtube_links: ["https://www.youtube.com/watch?v=xhTMa2L5J0M"],
     keywords: ["힐러", "단일힐위주", "정신피해"],
     guide_images: [],
   },
@@ -1617,10 +1617,44 @@ export const characterGuideList: CharacterGuide[] = [
       ],
       summary: "1형상 > 4형상 > 3형상 > 2형상 > 5형상 (전반적 효율)",
       source: "icehood",
-      note: "무기조합에 따라 형상효율이 많이 갈리는 편. 명함으로도 충분하지만, 1형상이 가성비이고, 4형상까지도 괜찮은 편이다. 아직 연구가 다 나오지 않았고, 카산드라가 나오면 평가가 더욱 좋아질 수 있음.",
+      note: "무기조합에 따라 형상효율이 많이 갈리는 편. 명함으로도 충분하지만, 1형상이 가성비이고, 4형상까지도 괜찮은 편이다.",
     },
     youtube_links: ["https://www.youtube.com/watch?v=2k-gACiJHVU"],
     keywords: ["딜러", "암살", "현실피해", "한정", "추공", "술식", "중독", "콜라보"],
+    guide_images: [],
+  },
+  {
+    character_id: 48, // 카산드라
+    portrait_info: {
+      headers: ["형상", "추공(팀 전체)", "술식(팀 전체)"],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["0.4%", "0.3%"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["14.6%", "14.2%"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["0.7%", "16%"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["9%", "11.5%"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["12.3%", "11.8%"],
+        },
+      ],
+      summary: "3형상 > 2형상 > 5형상 > 4형상 > 1형상 (술식 기준)",
+      source: "icehood",
+      note: "주로 에지오와 함께쓰며, 형상효율은 엄청 높진 않음. 주로 술식, 추공 에지오 조합에서 사용하고, 유리한 상황이 다름. \n 반격 1~2회 -> 술식덱 / 반격 3~4회 -> 추공덱 \n 스킬빌드는 다음과 같음 230 or 131 : 추공 메인 딜러 / 203 : 술식 서브 딜러 / 302 : 암살 보조 에지오 특화 / 320 : 추공 서브 에지오 특화",
+    },
+    youtube_links: [],
+    keywords: ["서포터", "암살", "현실피해", "한정", "추공", "술식", "콜라보"],
     guide_images: [],
   },
   {

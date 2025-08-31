@@ -1407,7 +1407,16 @@ export const psycube_list: Psycube[] = [
     priority: 99,
     rarity: 6,
     version: "2.75",
-    type: "상점",
+    type: "컨텐츠",
+    stats: {
+      공격: "380",
+      HP: "2600",
+      현실방어: "160",
+      정신방어: "160",
+      공격증가: "10%",
+    },
+    option:
+      "기억자가 [암살] 캐릭터면 [암살]시 공격 목표와의 기술 차이 100당 이번 공격의 주는 최종 피해 추가로 (1/1.5/1.5/2/2)% 증가. 아군의 공격 [암살] 발동 후 기억자가 [역장]을 보유할 경우 모든 아군이 주는 피해 (1/1/1.5/1.5/2) % 증가, 최대 6스택 중첩",
   },
   {
     id: 81,
@@ -1415,7 +1424,7 @@ export const psycube_list: Psycube[] = [
     engName: "into_the_gentle_current",
     priority: 4,
     rarity: 6,
-    version: "2.75",
+    version: "3.0",
     type: "컨텐츠",
     stats: {
       공격: "360",

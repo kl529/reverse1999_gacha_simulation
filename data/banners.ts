@@ -40,13 +40,19 @@ export const banners: Banner[] = [
     version: "2.8",
   },
   {
+    id: "kassandra_pick_up",
+    name: "[콜라보] 카산드라 픽업",
+    pickup6: 48,
+    pickup5: [],
+    version: "2.75",
+  },
+  {
     id: "ezio_auditore_pick_up",
     name: "[콜라보] 에지오 아디토레 픽업",
     pickup6: 47,
     pickup5: [],
     version: "2.75",
   },
-  // 키신ㄷ,리 츠기 ㅍ;ㄹ여
   {
     id: "doublepick_flutter_page_barcarola",
     name: "플러터페이지 & 바르카롤라",
