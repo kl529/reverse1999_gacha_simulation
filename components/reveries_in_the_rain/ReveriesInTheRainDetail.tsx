@@ -159,19 +159,44 @@ export default function ReveriesInTheRainDetail({ floorId }: ReveriesInTheRainDe
           </div>
           <Separator className="my-4" />
           <h3 className="mb-4 text-xl font-semibold">적 정보</h3>
-          <div className="flex flex-wrap gap-4">
-            {floorData.enemies.map((enemy) => (
-              <div
-                key={enemy.id}
-                className="flex flex-grow basis-[150px] items-center justify-center"
-              >
-                <div className="flex flex-col items-center">
-                  {enemy.type === "boss" && <span className="h-6">👑</span>}
-                  {enemy.type !== "boss" && <span className="h-6" />}
-                  <h4 className="text-sm font-semibold">{enemy.name}</h4>
-                </div>
-              </div>
-            ))}
+          <div className="space-y-6">
+            {(() => {
+              const enemiesByStage = floorData.enemies.reduce(
+                (acc, enemy) => {
+                  const stage = enemy.stage || 1;
+                  if (!acc[stage]) {
+                    acc[stage] = [];
+                  }
+                  acc[stage].push(enemy);
+                  return acc;
+                },
+                {} as Record<number, typeof floorData.enemies>
+              );
+
+              return Object.entries(enemiesByStage)
+                .sort(([a], [b]) => Number(a) - Number(b))
+                .map(([stage, enemies]) => (
+                  <div key={stage}>
+                    <h4 className="mb-3 text-lg font-semibold text-blue-600 dark:text-blue-400">
+                      {stage}스테이지
+                    </h4>
+                    <div className="flex flex-wrap gap-4">
+                      {enemies.map((enemy) => (
+                        <div
+                          key={enemy.id}
+                          className="flex flex-grow basis-[150px] items-center justify-center"
+                        >
+                          <div className="flex flex-col items-center">
+                            {enemy.type === "boss" && <span className="h-6">👑</span>}
+                            {enemy.type !== "boss" && <span className="h-6" />}
+                            <h5 className="text-sm font-semibold">{enemy.name}</h5>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ));
+            })()}
           </div>
         </Card>
 

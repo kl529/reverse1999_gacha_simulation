@@ -2,6 +2,7 @@ export interface Enemy {
   id: string;
   name: string;
   type?: "boss";
+  stage?: number;
   inspiration?: string;
   skills?: {
     name: string;
@@ -1129,106 +1130,240 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
       },
     ],
   },
-  // "210m": {
-  //   id: "210m",
-  //   floor_type: "미광층",
-  //   wholeEffect: [
-  //     "상성 피해 계수 20% 증가. 비상성 공격을 받을 시 최종 피해 면역 10% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
-  //   ],
-  //   teamEffect: ["3턴 시마다 열정이 5보다 낮은 캐릭터 열정 -1"],
-  //   enemies: [
-  //     {
-  //       id: "enemy_110m_1",
-  //       name: "무라비",
-  //       inspiration: "beast",
-  //     },
-  //   ],
-  //   strategy: {
-  //     overview: "",
-  //     details: [],
-  //   },
-  //   recommendedTeams: [],
-  // },
-  // "220m": {
-  //   id: "220m",
-  //   floor_type: "미광층",
-  //   wholeEffect: [
-  //     "상성 피해 계수 20% 증가. 비상성 공격을 받을 시 최종 피해 면역 10% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
-  //   ],
-  //   teamEffect: ["3턴 시마다 열정이 5보다 낮은 캐릭터 열정 -1"],
-  //   enemies: [
-  //     {
-  //       id: "enemy_110m_1",
-  //       name: "무라비",
-  //       inspiration: "beast",
-  //     },
-  //   ],
-  //   strategy: {
-  //     overview: "",
-  //     details: [],
-  //   },
-  //   recommendedTeams: [],
-  // },
-  // "230m": {
-  //   id: "230m",
-  //   floor_type: "미광층",
-  //   wholeEffect: [
-  //     "상성 피해 계수 20% 증가. 비상성 공격을 받을 시 최종 피해 면역 10% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
-  //   ],
-  //   teamEffect: ["3턴 시마다 열정이 5보다 낮은 캐릭터 열정 -1"],
-  //   enemies: [
-  //     {
-  //       id: "enemy_110m_1",
-  //       name: "무라비",
-  //       inspiration: "beast",
-  //     },
-  //   ],
-  //   strategy: {
-  //     overview: "",
-  //     details: [],
-  //   },
-  //   recommendedTeams: [],
-  // },
-  // "240m": {
-  //   id: "240m",
-  //   floor_type: "미광층",
-  //   wholeEffect: [
-  //     "상성 피해 계수 20% 증가. 비상성 공격을 받을 시 최종 피해 면역 10% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
-  //   ],
-  //   teamEffect: ["3턴 시마다 열정이 5보다 낮은 캐릭터 열정 -1"],
-  //   enemies: [
-  //     {
-  //       id: "enemy_110m_1",
-  //       name: "무라비",
-  //       inspiration: "beast",
-  //     },
-  //   ],
-  //   strategy: {
-  //     overview: "",
-  //     details: [],
-  //   },
-  //   recommendedTeams: [],
-  // },
-  // "250m": {
-  //   id: "250m",
-  //   floor_type: "미광층",
-  //   wholeEffect: [
-  //     "상성 피해 계수 20% 증가. 비상성 공격을 받을 시 최종 피해 면역 10% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
-  //   ],
-  //   teamEffect: ["3턴 시마다 열정이 5보다 낮은 캐릭터 열정 -1"],
-  //   enemies: [
-  //     {
-  //       id: "enemy_110m_1",
-  //       name: "무라비",
-  //       inspiration: "beast",
-  //     },
-  //   ],
-  //   strategy: {
-  //     overview: "",
-  //     details: [],
-  //   },
-  //   recommendedTeams: [],
-  // },
+  "210m": {
+    id: "210m",
+    floor_type: "미광층",
+    wholeEffect: [
+      "상성 피해 계수 30% 증가. 비상성 공격을 받을 시 최종 피해 면역 15% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: ["전투 진입 및 2턴 시작 시마다 자신 최대 HP * 20%의 보호막 획득, 2턴간 지속"],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_210m_1",
+        name: "이빨요정 여제",
+        inspiration: "mineral",
+        type: "boss",
+      },
+      {
+        id: "enemy_210m_2",
+        name: "이빨요정 아이",
+        inspiration: "mineral",
+      },
+
+      {
+        id: "enemy_210m_3",
+        name: "이빨요정 아이",
+        inspiration: "mineral",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "보스는 계속해서 잡몹들에게, 버프를 부여하고 체력이 낮아질때마다 잡몹을 소환함",
+        "잡몹들은 매턴 부활버프를 얻는데, 상성피해나 치명타피해 3번을 주면 해당 버프가 해제됨",
+        "별다른 어려운 기믹은 없고, 보스만 열심히 일점사하면 무난하게 클리어가능",
+        "200m를 깼다면 천체딜러를 들고가면 쉽게 클리어 가능",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "220m": {
+    id: "220m",
+    floor_type: "미광층",
+    wholeEffect: [
+      "상성 피해 계수 30% 증가. 비상성 공격을 받을 시 최종 피해 면역 15% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: ["퇴장 시 모든 적군에게 공격자 공격 * 200%의 고정 피해를 줌"],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_220m_1",
+        name: "좀비",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_220m_2",
+        name: "그린 레이크 키로구아나",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_220m_3",
+        type: "boss",
+        name: "그린 레이크 엔젤캣",
+        inspiration: "spirit",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "잡몹들은 부활을하고, 계속해서 기믹으로 오염을 부여함",
+        "오염이 쌓이면 꽤나 데미지가 많이 들어오니 주의할 것",
+        "무조건 보스를 일점사하는 것을 추천. 잡몹이 죽으면 보스가 잡몹을 소환함",
+        "특정덱이 강제되진 않고, 가장 강한 덱으로 밀어버리면 됨",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "230m": {
+    id: "230m",
+    floor_type: "미광층",
+    wholeEffect: [
+      "상성 피해 계수 30% 증가. 비상성 공격을 받을 시 최종 피해 면역 15% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: ["2턴 시작 시마다 모든 아군의 [속성 감소][상태 이상][제어] 상태 정화"],
+    enemies: [
+      {
+        id: "enemy_230m_1",
+        name: "도살자",
+        inspiration: "mineral",
+      },
+      {
+        id: "enemy_230m_2",
+        name: "도살자의 비눗방울",
+        type: "boss",
+        inspiration: "spirit",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "도살자는 절대 죽지 않고, 비눗방울만 죽이면 되지만 꽤나 난이도가 높은 스테이지",
+        "비눗방울을 공격하면, 도살자에게 버프가 들어가고, 체력이 낮아지면 행동횟수도 늘어남",
+        "도살자는 죽이면, 1턴 기절하고 버프를 얻으면서 부활하니, 최대한 안죽이는 것을 추천함",
+        "최대한 비눗방울만 일점사해서 죽이면 되고, 버프해제 캐릭터를 사용해서 도살자의 버프들을 지워주는게 좋음 (도발도 있음)",
+        "도살자가 술식을 자주 사용하니, 열정깎는 캐릭터도 기용할만하고, 적들은 2턴마다 모든 상태 이상 정화가 되는 것도 참고.",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "240m": {
+    id: "240m",
+    floor_type: "미광층",
+    wholeEffect: [
+      "상성 피해 계수 30% 증가. 비상성 공격을 받을 시 최종 피해 면역 15% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    teamEffect: [
+      "광역 일반 주문을 사용하여 공격 시 피해 100% 감소. 광역 일반 주문 사용 후 랜덤으로 자신에게 [상태 이상 집합] 중 2가지 부여, 1턴간 지속",
+    ],
+    enemies: [
+      {
+        id: "enemy_240m_1",
+        name: "봉합물",
+        inspiration: "beast",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "광역공격보다는, 단일공격으로 공략해야하는 스테이지",
+        "보스는 공격을 하면 목표가 추가피해를 입고, 보스는 HP 비례 회복을 함.",
+        "제어의 영향을 받지 않고, 단일 공격으로는 한번에 최대 HP의 5%까지만 데미지를 받음",
+        "단일 공격의 타수가 많은 조합을 추천하고, 보스의 최종술식을 막는게 핵심임",
+        "딜로 찍어누르던가, 아니면 추공 + 콘블룸으로 공략하면 무난함.",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "250m-1": {
+    id: "250m-1",
+    floor_type: "미광층",
+    wholeEffect: [],
+    enemyEffect: [
+      "상성 피해 계수 40% 증가. 비상성 공격을 받을 시 최종 피해 면역 20% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+      "공격 시 자신이 보유한 디버프 상태 종류가 2가지 이하일 경우, 목표가 [두려움] 1스택 획득",
+    ],
+    teamEffect: [
+      "턴 종료 시 HP 비율이 90%보다 높을 경우, [산만][기린혈] 1스택 획득",
+      "받는 치료 효과 -30%",
+    ],
+    enemies: [
+      {
+        id: "enemy_250m_1_1",
+        name: "핥은 손",
+        inspiration: "spirit",
+        stage: 1,
+      },
+      {
+        id: "enemy_250m_1_2",
+        name: "핥은 손",
+        inspiration: "spirit",
+        stage: 1,
+      },
+      {
+        id: "enemy_250m_1_3",
+        name: "고난의 왕",
+        inspiration: "spirit",
+        stage: 1,
+      },
+      {
+        id: "enemy_250m_1_4",
+        name: "공포의 모자지간",
+        type: "boss",
+        inspiration: "spirit",
+        stage: 2,
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "2개의 스테이지로 이루어져있고, 동행하는 빨간 망토의 술식은 대상의 모든 '버티기 스택'을 제거하기 때문에 꼭 사용해야함.",
+        "1스테이지에서는, 제멜바이스와 잡몹 2마리가 소환되는데, 제멜바이스의 술진이 꽤나 위협적이기 때문에, 술진 캐릭터나 안조 보스를 동행하는 것을 추천 (술진은 1개만 존재가능)",
+        "적군들은 매턴 부활스택을 얻으므로, 빨간 망토의 술식으로 부활스택(버티기)를 모두 제거한 후 해당 턴에 죽이는 것이 핵심",
+        "2스테이지는 꽤나 보스의 체급이 높고, 맵기믹으로 치유율도 떨어지니 빠르게 공략하는게 좋음",
+        "보스에게 최대한 디버프를 많이 걸고 보스의 술식을 맞으면 혼란, 공포, 악몽 상태를 부여하기 때문에, 주의할 것",
+        "2스테이지 보스 또한 빨간망토의 술식으로 부활스택을 모두 없애고 죽이기",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "250m-2": {
+    id: "250m-2",
+    floor_type: "미광층",
+    wholeEffect: [],
+    enemyEffect: [
+      "상성 피해 계수 40% 증가. 비상성 공격을 받을 시 최종 피해 면역 20% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+      "피해 회복 + 20%",
+    ],
+    teamEffect: [
+      "턴 시작 시 [제어] 상태인 경우, 열정 -1",
+      "최종 술식 시전 후 2턴간 [심란] 상태부여",
+    ],
+    enemies: [
+      {
+        id: "enemy_250m_2_1",
+        name: "견고한 돌기사",
+        inspiration: "mineral",
+      },
+      {
+        id: "enemy_250m_2_2",
+        name: "견고한 돌기사",
+        inspiration: "mineral",
+      },
+      {
+        id: "enemy_250m_2_3",
+        name: "견고한 돌기사",
+        inspiration: "mineral",
+      },
+      {
+        id: "enemy_250m_2_4",
+        name: "신비한 의료 상자",
+        type: "boss",
+        inspiration: "mineral",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "다 적지 못했지만 견고한 돌기사는 28마리가 있음",
+        "무조건 보스인 상자만 일점사해야함. 보스만 잡으면 클리어. 돌기사들은 최대한 건들이지 말자.",
+        "보스는 3턴마다 변신을 하는데, 해당 상태에서는 공격받을수록 데미지를 더 많이 받으니 잘 활용해야함",
+        "가장 좋은 방법은 천체 추공덱으로 무난하게 미는 것이 좋음.",
+        "딜만 충분하다면 엄청나게 쉬운 스테이지",
+      ],
+    },
+    recommendedTeams: [],
+  },
   // "110m": {
   //   id: "110m",
   //   floor_type: "약광층",
