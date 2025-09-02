@@ -1463,6 +1463,18 @@ export const character_setting_data: CharacterSettingData[] = [
         psycube_id: 80,
         description: "S",
       },
+      {
+        psycube_id: 79,
+        description: "S (에지오 없을때)",
+      },
+      {
+        psycube_id: 33,
+        description: "A",
+      },
+      {
+        psycube_id: 36,
+        description: "A",
+      },
     ],
     resonance: [
       {
@@ -2423,8 +2435,20 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 128, // "알렉시오스"
     psycubes: [
       {
+        psycube_id: 79,
+        description: "S (에지오 없을때)",
+      },
+      {
         psycube_id: 36,
         description: "S (딜 보조)",
+      },
+      {
+        psycube_id: 9,
+        description: "A- (비상성)",
+      },
+      {
+        psycube_id: 7,
+        description: "B",
       },
     ],
     resonance: [
