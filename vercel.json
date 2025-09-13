@@ -29,10 +29,5 @@
         }
       ]
     }
-  ],
-  "functions": {
-    "app/**/*.tsx": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  ]
 }
