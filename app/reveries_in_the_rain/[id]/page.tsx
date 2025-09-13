@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { reveriesInTheRain } from "@/data/reveries_in_the_rain";
 
-// ISR 설정 추가 - 1시간마다 재생성
-export const revalidate = 86400;
+// 완전 정적 생성 - 재검증 없음
+export const revalidate = false;
 
 export async function generateStaticParams() {
   return Object.keys(reveriesInTheRain).map((id) => ({ id }));

@@ -3,8 +3,8 @@ import { SETTING_CHARACTERS } from "@/data/setting_character";
 import CharacterSettingDetail from "@/components/character_setting/CharacterSettingDetail";
 import type { Metadata } from "next";
 
-// ISR 설정 추가 - 1시간마다 재생성
-export const revalidate = 86400;
+// 완전 정적 생성 - 재검증 없음
+export const revalidate = false;
 
 export async function generateStaticParams() {
   return SETTING_CHARACTERS.map((ch) => ({ id: ch.id.toString() }));

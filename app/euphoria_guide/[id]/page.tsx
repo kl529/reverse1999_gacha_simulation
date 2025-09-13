@@ -4,8 +4,8 @@ import { charactersByRarity } from "@/data/characters";
 import EuphoriaGuideDetail from "@/components/euphoria_guide/EuphoriaGuideDetail";
 import type { Metadata } from "next";
 
-// ISR 설정 추가 - 1시간마다 재생성
-export const revalidate = 86400;
+// 완전 정적 생성 - 재검증 없음
+export const revalidate = false;
 
 function getCharacterById(id: number) {
   for (const rarity in charactersByRarity) {

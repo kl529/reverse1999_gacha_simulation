@@ -3,7 +3,25 @@
   "regions": ["hnd1"],
   "headers": [
     {
-      "source": "/:file(favicon.ico|ads.txt)",
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/:file(favicon.ico|ads.txt|robots.txt)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -11,5 +29,10 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "app/**/*.tsx": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
