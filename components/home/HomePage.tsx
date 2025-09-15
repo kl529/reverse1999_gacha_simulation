@@ -124,6 +124,11 @@ export default function HomePage() {
                   label: "현질 패키지",
                   href: "/cash_package_shop",
                 },
+                {
+                  icon: "/infos/menu/shop_efficiency_menu.webp",
+                  label: "상점 효율",
+                  href: "/shop_efficiency",
+                },
               ]}
             />
 

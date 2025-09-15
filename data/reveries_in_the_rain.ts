@@ -1364,68 +1364,309 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
     },
     recommendedTeams: [],
   },
-  // "110m": {
-  //   id: "110m",
-  //   floor_type: "약광층",
-  //   wholeEffect: [
-  //     "상성 피해 계수 20% 증가. 비상성 공격을 받을 시 최종 피해 면역 10% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
-  //   ],
-  //   teamEffect: ["3턴 시마다 열정이 5보다 낮은 캐릭터 열정 -1"],
-  //   enemies: [
-  //     {
-  //       id: "enemy_110m_1",
-  //       name: "무라비",
-  //       inspiration: "beast",
-  //     },
-  //   ],
-  //   strategy: {
-  //     overview: "",
-  //     details: [],
-  //   },
-  //   recommendedTeams: [],
-  // },
-  // "210m": {
-  //   id: "210m",
-  //   floor_type: "미광층",
-  //   description: "고급 난이도의 구역으로, 정교한 전략과 팀 구성이 요구됩니다.",
-  //   wholeEffect: [
-  //     "상성 피해 계수 10% 증가. 비상성 공격을 받을 시 최종 피해 면역 5% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
-  //   ],
-  //   enemyEffect: ["현실 방어 및 정신 방어 +10%"],
-  //   enemies: [
-  //     {
-  //       id: "enemy_200m_1",
-  //       name: "심연의 지배자",
-  //       inspiration: "수",
-  //       skills: [
-  //         {
-  //           name: "심연의 물결",
-  //           description: "전체 대상에게 150% 피해를 입히고 2턴간 행동 속도를 감소시킵니다.",
-  //         },
-  //       ],
-  //       stats: {
-  //         hp: 30000,
-  //         atk: 2000,
-  //         def: 800,
-  //         res: 800,
-  //       },
-  //     },
-  //   ],
-  //   strategy: {
-  //     overview: "속도 감소 대응과 높은 생존력이 필요한 구역입니다.",
-  //     details: [
-  //       "속도 감소 해제 능력을 가진 캐릭터가 필수적입니다.",
-  //       "지속적인 힐링이 가능한 캐릭터를 포함시키세요.",
-  //     ],
-  //   },
-  //   recommendedTeams: [
-  //     {
-  //       name: "생존 특화팀",
-  //       characters: ["A-나이트", "메이플", "릴리야"],
-  //       description: "높은 생존력과 디버프 해제가 가능한 팀 구성입니다.",
-  //     },
-  //   ],
-  // },
+  "260m": {
+    id: "260m",
+    floor_type: "미광층",
+    wholeEffect: [
+      "상성 피해 계수 30% 증가. 비상성 공격을 받을 시 최종 피해 면역 15% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    teamEffect: ["턴 시작 시 모든 아군이 [느릿느릿] 2스택 획득"],
+    enemies: [
+      {
+        id: "enemy_260m_1",
+        name: "동굴거미",
+        inspiration: "star",
+      },
+      {
+        id: "enemy_260m_2",
+        name: "동굴거미",
+        inspiration: "star",
+      },
+      {
+        id: "enemy_260m_3",
+        name: "동굴거미",
+        inspiration: "star",
+      },
+      {
+        id: "enemy_260m_4",
+        name: "동굴거미",
+        inspiration: "star",
+      },
+      {
+        id: "enemy_260m_5",
+        name: "대문의 눈",
+        inspiration: "spirit",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "천장에 달려있는 거미를 잡는것이 중요함. 모든 피해를 1로 받음.",
+        "땅거미들이 살아있으면, 천장거미는 매턴회복하니, 쫄몹처리가 정말 중요함",
+        "쫄몹을 잡으면 아군 피해보너스 감면과, 천장거미에게 딜을 줌",
+        "타수기믹으로 하는게 최선. 추공이나 계시덱으로 데미지를 넣으면 쉬움",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "270m": {
+    id: "270m",
+    floor_type: "미광층",
+    wholeEffect: [
+      "상성 피해 계수 30% 증가. 비상성 공격을 받을 시 최종 피해 면역 15% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: ["현실 피해를 받을 시 치명타 저항률 +100%"],
+    enemies: [
+      {
+        id: "enemy_270m_1",
+        type: "boss",
+        name: "시끄러운 유령",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_270m_2",
+        type: "boss",
+        name: "파파라치 유령",
+        inspiration: "spirit",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "현실 딜러를 사용하면, 거의 딜이 들어가지 않는 기믹이므로, 무조건 정신딜러를 추천함.",
+        "클릭을 먼저 일점사해서 죽이는게 좋음. 폴터는 단단하고 도발만 있지 위협적이지 않음",
+        "적군이 디버프를 가지고 있으면, 주는 피해증가 + 받는 피해 감소가 있으므로 조심",
+        "버프 해제 캐릭터가 있으면 폴터의 도발 및 버프를 지울 수 있어서 유용함",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "280m": {
+    id: "280m",
+    floor_type: "미광층",
+    wholeEffect: [
+      "상성 피해 계수 30% 증가. 비상성 공격을 받을 시 최종 피해 면역 15% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: ["공격받은 후 공격자에게 [오염] 3스택 부여, 2턴간 지속"],
+    enemies: [
+      {
+        id: "enemy_280m_1",
+        name: "새",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_280m_2",
+        name: "새",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_280m_3",
+        name: "새",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_280m_4",
+        name: "새",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_280m_5",
+        name: "새",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_280m_6",
+        name: "새",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_280m_7",
+        name: "새",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_280m_8",
+        name: "새",
+        inspiration: "spirit",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "모든 몬스터는 받는 광역피해 감소, 받는 단일 피해 증가가 있음",
+        "모든 몹들은 턴 종료 시 HP가 40%보다 낮으면 새로운 몹을 자동 소환함 (무한 증식)",
+        "맵 기믹과 더불어, [오염]을 많이 걸기때문에 면역이 있으면 좋음",
+        "무조건 마지막 남은 4명의 적을 한턴에 죽여야함. 안그러면 증식함",
+        "딜 조절을 하면서 체력 비율을 맞춰둔 후, 한번에 광역 궁으로 쓸어담는 것을 추천",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "290m": {
+    id: "290m",
+    floor_type: "미광층",
+    wholeEffect: [
+      "상성 피해 계수 30% 증가. 비상성 공격을 받을 시 최종 피해 면역 15% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    teamEffect: ["첫 턴 및 2턴 시작 시마다 모든 아군에게 1턴간 [침묵] 상태 부여"],
+    enemies: [
+      {
+        id: "enemy_290m_1",
+        type: "boss",
+        name: "소리의 경청자",
+        inspiration: "mineral",
+      },
+      {
+        id: "enemy_290m_2",
+        name: "떠들썩한 소리",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_290m_3",
+        name: "술렁이는 소리",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_290m_4",
+        name: "떠들썩한 소리",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_290m_5",
+        name: "술렁이는 소리",
+        inspiration: "spirit",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "추공, 딜찍누, 계시 등이 없으면 매우까다로운 기믹을 가짐",
+        "2턴마다 침묵을 걸고, 매턴 적군은 무흔을 걸고, 무흔히 사라지면 보스는 버티기(부활스택)을 얻음",
+        "최대한 단일 공격으로 보스만 일점사하고, 쫄몹들은 무시하는 것을 추천",
+        "보스의 버티기를 최대한 빠르게 제거하고 죽이는 것이 관건이고, 침묵을 유의해야함.",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "300m-1": {
+    id: "300m-1",
+    floor_type: "미광층",
+    wholeEffect: [],
+    enemyEffect: [
+      "상성 피해 계수 40% 증가. 비상성 공격을 받을 시 최종 피해 면역 20% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+      "턴 종료 시마다 공격 5% 증가 (중첩 가능)",
+    ],
+    teamEffect: [
+      "최종 술식 시전 후 1턴간 [꿈의 방문] 상태 진입",
+      "1단계 공격, 디버프 유형 주문 사용 후 [산만] 1스택 획득",
+    ],
+    enemies: [
+      {
+        id: "enemy_300m_1_1",
+        name: "꿈속의 왕 (모체)",
+        type: "boss",
+        inspiration: "intellect",
+      },
+      {
+        id: "enemy_300m_1_2",
+        name: "꿈속의 왕 (오른팔)",
+        inspiration: "intellect",
+      },
+      {
+        id: "enemy_300m_1_3",
+        name: "꿈속의 왕 (왼팔)",
+        inspiration: "intellect",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "특별한 기믹도 없고, 300m 중에서는 가장 무난한 스테이지",
+        "아군이 술식을 사용 한 후, 카드를 쓰면 안됨. ",
+        "바바라가 5번째 멤버로 참여하고, 주문강화를 해주는 카드 및 도움을 줌",
+        "고단계 주문으로 공격하면 딜이 잘 들어가고, 팔부터 뗀 후 모체를 죽이는 것을 추천",
+        "특별한 기믹 없이, 아무 체급 좋은 덱을 들고가면 무난함.",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "300m-2": {
+    id: "300m-2",
+    floor_type: "미광층",
+    wholeEffect: [],
+    enemyEffect: [
+      "상성 피해 계수 40% 증가. 비상성 공격을 받을 시 최종 피해 면역 20% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+      "전투 진입 시 최대 HP x 50%의 [보호막] 획득, 2턴간 지속",
+      "단일 공격을 받은 후 [견고] 1스택 획득",
+    ],
+    teamEffect: ["최종 술식 시전 후마다 술식 위력 10% 영구 감소 (효과 중첩 가능)"],
+    enemies: [
+      {
+        id: "enemy_300m_2_1",
+        name: "야수 카벙클",
+        inspiration: "beast",
+      },
+      {
+        id: "enemy_300m_2_2",
+        name: "그린 레이크 카벙클",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_300m_2_3",
+        name: "선인장 크리터 무리",
+        inspiration: "plant",
+      },
+      {
+        id: "enemy_300m_2_4",
+        type: "boss",
+        name: "실망한 방랑자",
+        inspiration: "plant",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "매턴 아군 1명에게 석화를 걸기때문에, 정화나 면역이 필수",
+        "쫄몹은 부활하기에, 무시하고, 무조건 보스만 일점사하는 것을 추천함.",
+        "보스가 자힐이 있고, 딜이 꽤나 아프기때문에 빠르게 공략하는 것을 추천",
+        "술식 딜러나, 단일공격 딜러는 딜이 잘 안들어가니 참고.",
+        "정화, 면역 캐릭터가 없으면 5성도 충분히 쓸만함.",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "300m-3": {
+    id: "300m-3",
+    floor_type: "미광층",
+    wholeEffect: [],
+    enemyEffect: [
+      "상성 피해 계수 40% 증가. 비상성 공격을 받을 시 최종 피해 면역 20% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+      "공격받을 시 비상성 피해 50% 감소",
+    ],
+    teamEffect: [
+      "턴 종료 시 해당 턴에 행동하지 않은 캐릭터 [장애] 1스택, [위축] 3스택 획득",
+      "최종 술식 시전 후 모든 적군 열정 +1",
+    ],
+    enemies: [
+      {
+        id: "enemy_300m_3_1",
+        type: "boss",
+        name: "안조 날라",
+        inspiration: "beast",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "상성 딜이 아니면 반감되니까, 상성 딜러를 추천하고, 단일딜러면 더 좋음.",
+        "보스가 아닌, 뒤에 있는 몬스터 안조날라부터 잡는 것을 추천.",
+        "안조 날라의 술식이 정말 아프기 때문에 조심",
+        "내성이 많기때문에, 열정 감소 캐릭터를 넣어서 안조날라가 궁을 못쓰게 하는 것을 추천",
+        "딜러 및 서브 딜러는 매턴 행동하는게 중요하고, 열정감소 없이 트라이할 경우, 탱커가 꼭 필요함.",
+      ],
+    },
+    recommendedTeams: [],
+  },
   // "310m": {
   //   id: "310m",
   //   floor_type: "흑암층",

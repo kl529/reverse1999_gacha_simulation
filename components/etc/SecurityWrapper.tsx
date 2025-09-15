@@ -51,7 +51,8 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
       pathname !== "/calendar" &&
       !pathname.startsWith("/reveries_in_the_rain") &&
       pathname !== "/gacha_guide" &&
-      pathname !== "/cash_package_shop"
+      pathname !== "/cash_package_shop" &&
+      pathname !== "/shop_efficiency"
     ) {
       alert("잘못된 접근입니다. 홈으로 이동합니다.");
       router.push("/");

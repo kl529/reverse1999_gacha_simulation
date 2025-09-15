@@ -1032,7 +1032,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 90,
     character_id: 29, //루시
-    name: "퀸즈 게임 (미래시)",
+    name: "체스라는 삶",
     engName: "the_queen's_game",
     rarity: "Unique",
     source: "판매",
@@ -1043,7 +1043,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 91,
     character_id: 50, // 울리히
-    name: "우주의 일단면 (미래시)",
+    name: "우주와의 공명",
     engName: "a_glimpse_of_the_cosmos",
     rarity: "Advanced",
     source: "판매", //
@@ -1055,7 +1055,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 92,
     character_id: 43, // 레콜레타
-    name: "라 만차의 기사 (미래시)",
+    name: "나이트 오브 라만차",
     engName: "the_knight_of_la_mancha",
     rarity: "Advanced",
     source: "판매",
@@ -1066,7 +1066,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 93,
     character_id: 46, // 키페리나
-    name: "껍질 속의 우주 (미래시)",
+    name: "룩의 껍데기 속 우주",
     engName: "the_universe_in_the_rook's_shell",
     rarity: "Garment",
     source: "판매",
@@ -1077,7 +1077,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 94,
     character_id: 15, // 제시카
-    name: "천국의 소리 (미래시)",
+    name: "낙원의 소리",
     engName: "the_sound_of_paradise",
     rarity: "Garment",
     source: "주크박스",
@@ -1088,7 +1088,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 95,
     character_id: 306, // 리사&루이스
-    name: "승변의 왈츠 (미래시)",
+    name: "폰의 승급 왈츠",
     engName: "the_pawn's_promotional_waltz",
     rarity: "Garment",
     source: "컨텐츠",

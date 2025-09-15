@@ -75,6 +75,11 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
       label: "현질 패키지",
       href: "/cash_package_shop",
     },
+    {
+      iconImg: "/infos/menu/shop_efficiency_menu.webp",
+      label: "상점 효율 정리",
+      href: "/shop_efficiency",
+    },
     { divider: true },
     {
       iconImg: "/infos/menu/character_menu.webp",

@@ -1260,7 +1260,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 72,
-    name: "과거의 포용",
+    name: "마음의 묘비명",
     engName: "embrace_the_past",
     rarity: 6,
     priority: 1,
@@ -1296,7 +1296,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 74,
-    name: "생각의 따끔거림",
+    name: "떠오른 생각",
     engName: "a_tingle_of_a_thought",
     rarity: 6,
     priority: 4,

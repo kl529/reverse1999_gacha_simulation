@@ -300,8 +300,8 @@ export const cashPackages: CashPackage[] = [
   },
   {
     id: 205,
-    name: "37000원 패키지",
-    price: 37000,
+    name: "39000원 패키지",
+    price: 39000,
     type: "version",
     items: [
       { id: 1003, name: "빗방울", quantity: 1200 },
@@ -317,8 +317,8 @@ export const cashPackages: CashPackage[] = [
   },
   {
     id: 206,
-    name: "63000원 패키지",
-    price: 63000,
+    name: "65000원 패키지",
+    price: 65000,
     type: "version",
     items: [
       { id: 1003, name: "빗방울", quantity: 1500 },
@@ -406,10 +406,94 @@ export const cashPackages: CashPackage[] = [
     name: "10회 모집·[호수의 물결]",
     price: 14800,
     type: "version",
-    items: [{ id: 3001, name: "10회 모집·[호수의 물결]", quantity: 1 }],
+    items: [{ id: 3002, name: "10회 모집·[호수의 물결]", quantity: 1 }],
     efficiency: 101,
     unilog: 10,
     description: "버전당 2회 구매 가능 + 광상픽업 전용",
+  },
+  {
+    id: 213,
+    name: "생각의 광상곡",
+    price: 32500,
+    type: "version",
+    items: [
+      { id: 3005, name: "생각의 고치", quantity: 1 }, ////
+      { id: 3002, name: "10회 모집·[호수의 물결]", quantity: 1 },
+    ],
+    efficiency: 46,
+    unilog: 10,
+    description: "버전당 1회 구매 가능 + 광상픽업권 + 광상권",
+  },
+  {
+    id: 214,
+    name: "선각자의 기념",
+    price: 2580,
+    type: "version",
+    items: [
+      { id: 1003, name: "빗방울", quantity: 2580 },
+      { id: 610, name: "선각자의 목소리", quantity: 1 },
+    ],
+    efficiency: 0,
+    unilog: 0,
+    description: "버전당 1회 구매 가능. 가격은 보라빗방울임 (현금 아님)",
+  },
+  {
+    id: 215,
+    name: "19,000원 필라멘트 패키지",
+    price: 19000,
+    type: "version",
+    items: [
+      { id: 3000, name: "모노로그", quantity: 10 },
+      { id: 3004, name: "빛나는 필라멘트", quantity: 600 }, ////
+    ],
+    efficiency: 79,
+    unilog: 10,
+    description: "버전당 2회 구매 가능",
+  },
+  {
+    id: 216,
+    name: "98,000원 패키지",
+    price: 98000,
+    type: "version",
+    items: [
+      { id: 1003, name: "빗방울", quantity: 5000 },
+      { id: 3000, name: "모노로그", quantity: 15 },
+      { id: 1013, name: "특급 비밀 궤짝", quantity: 5 },
+      { id: 701, name: "생각의 열쇠", quantity: 12 },
+      { id: 702, name: "구상의 새싹", quantity: 120 },
+      { id: 703, name: "영감의 씨앗", quantity: 2400 },
+      { id: 1002, name: "톱니동전", quantity: 150000 },
+      { id: 1001, name: "미세먼지", quantity: 200000 },
+    ],
+    efficiency: 64,
+    unilog: 42,
+    description: "버전당 1회 구매 가능",
+  },
+  {
+    id: 217,
+    name: "5,000원 빗방울 패키지",
+    price: 5000,
+    type: "version",
+    items: [
+      { id: 1003, name: "빗방울", quantity: 900 },
+      { id: 1005, name: "탕약 캔디", quantity: 5 },
+    ],
+    efficiency: 150,
+    unilog: 5,
+    description: "버전당 1회 구매 가능. 4일간 빗방울 분할지급",
+  },
+  {
+    id: 218,
+    name: "만남의 기념",
+    price: 39000,
+    type: "version",
+    items: [
+      { id: 3000, name: "모노로그", quantity: 10 },
+      { id: 3003, name: "가방 속 우정", quantity: 1 },
+    ],
+    efficiency: 38,
+    unilog: 10,
+    description: "버전당 1회 구매 가능. 6성 선택권",
   },
   // 빗방울 패키지
   {
