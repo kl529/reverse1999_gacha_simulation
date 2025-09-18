@@ -385,7 +385,7 @@ export const euphoriaList: Euphoria[] = [
     id: 20,
     character_id: 29, // 루시
     priority: 2,
-    name: "계단의 끝은, 여명일 것이다",
+    name: "계단의 끝은 새벽",
     note: "전력 딜러",
     number: 1,
     version: "2.8",
@@ -405,7 +405,7 @@ export const euphoriaList: Euphoria[] = [
     id: 21,
     character_id: 5, // 레굴루스
     priority: 3,
-    name: "레굴루스처럼 반짝이다",
+    name: "레굴루스처럼 반짝거린다",
     note: "계시 서포터",
     number: 1,
     version: "2.8",
@@ -425,7 +425,7 @@ export const euphoriaList: Euphoria[] = [
     id: 22,
     character_id: 15, // 제시카
     priority: 3,
-    name: "이야기는 반드시 잔가지로 이어져야 한다",
+    name: "가는 가지로 엮어야 할 이야기",
     note: "중독 서포터",
     number: 2,
     version: "2.8",
@@ -444,7 +444,7 @@ export const euphoriaList: Euphoria[] = [
     id: 23,
     character_id: 28, // 제멜바이스
     priority: 2,
-    name: "홍색빛의 수많은 달들",
+    name: "천 개의 달처럼 붉은",
     note: "자해 서포터 / 딜러",
     number: 1,
     version: "2.8",

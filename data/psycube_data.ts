@@ -1278,7 +1278,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 73,
-    name: "가족 멘토",
+    name: "가정 지도사",
     engName: "family_mentor",
     rarity: 6,
     priority: 4,

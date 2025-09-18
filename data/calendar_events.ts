@@ -58,6 +58,27 @@ export const calendarEvents: CalendarEvent[] = [
   {
     date: "2025-09-19",
     end: "2025-10-30",
+    title: "노티카 픽업",
+    type: "pickup",
+    img: "/infos/banner_img/nautika_pick_up.webp",
+  },
+  {
+    date: "2025-10-01",
+    end: "2025-10-15",
+    title: "루시 픽업",
+    type: "pickup",
+    img: "/infos/banner_img/lucy_pick_up.webp",
+  },
+  {
+    date: "2025-10-09",
+    end: "2025-10-30",
+    title: "몰디르 픽업",
+    type: "pickup",
+    img: "/infos/banner_img/moldir_pick_up.webp",
+  },
+  {
+    date: "2025-09-19",
+    end: "2025-10-30",
     title: "2.8",
     type: "version",
   },

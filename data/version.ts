@@ -2,7 +2,6 @@ export interface VersionInfo {
   version: string;
   displayName?: string;
   isCollab: boolean;
-  releaseDate?: string;
 }
 
 // 게임의 모든 버전 목록 (오름차순 정렬)
@@ -31,7 +30,7 @@ export const versionList = [
 ];
 
 // 현재 게임 버전
-export const version = "2.75";
+export const version = "2.8";
 
 // 버전별 특별 정보
 export const versionInfoMap: Record<string, VersionInfo> = {
@@ -39,7 +38,6 @@ export const versionInfoMap: Record<string, VersionInfo> = {
     version: "2.75",
     displayName: "콜라보",
     isCollab: true,
-    releaseDate: "2024-03",
   },
 };
 

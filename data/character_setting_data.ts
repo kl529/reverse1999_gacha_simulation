@@ -172,20 +172,20 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 6, // "센츄리온"
     psycubes: [
       {
-        psycube_id: 68,
-        description: "S (디버퍼 필요) (풀)",
-      },
-      {
-        psycube_id: 31,
-        description: "S (디버퍼 필요) (풀)",
-      },
-      {
         psycube_id: 27,
-        description: "S (2스택 이상) (풀)",
+        description: "S (다인전)",
       },
       {
-        psycube_id: 27,
-        description: "A",
+        psycube_id: 58,
+        description: "S",
+      },
+      {
+        psycube_id: 13,
+        description: "A+ (상태이상 필요)",
+      },
+      {
+        psycube_id: 9,
+        description: "A (비상성)",
       },
     ],
     resonance: [
@@ -236,16 +236,16 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (광상)",
       },
       {
+        psycube_id: 73,
+        description: "S (딜 보조)",
+      },
+      {
         psycube_id: 34,
         description: "S (딜 보조)",
       },
       {
         psycube_id: 55,
         description: "S",
-      },
-      {
-        psycube_id: 30,
-        description: "A",
       },
     ],
     resonance: [
@@ -356,16 +356,16 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S",
       },
       {
+        psycube_id: 73,
+        description: "S (딜 보조)",
+      },
+      {
         psycube_id: 36,
         description: "A+",
       },
       {
-        psycube_id: 44,
-        description: "A+ (디버퍼 필요)",
-      },
-      {
         psycube_id: 9,
-        description: "A+ (비상성)",
+        description: "A (비상성)",
       },
     ],
     resonance: [
@@ -688,20 +688,20 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 23, // "갈천"
     psycubes: [
       {
-        psycube_id: 46,
-        description: "S (데미지) (풀)",
+        psycube_id: 40,
+        description: "S (광상)",
       },
       {
-        psycube_id: 61,
-        description: "S (보조) (풀)",
+        psycube_id: 36,
+        description: "S- (광상)",
       },
       {
         psycube_id: 39,
-        description: "A (2형이상, 빠른 술식)",
+        description: "A+ (광상)",
       },
       {
         psycube_id: 68,
-        description: "A (데미지) (풀)",
+        description: "A (광상)",
       },
     ],
     resonance: [
@@ -776,7 +776,7 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 26, // "빌라"
     psycubes: [
       {
-        psycube_id: 16,
+        psycube_id: 15,
         description: "S",
       },
       {
@@ -1532,12 +1532,12 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S",
       },
       {
-        psycube_id: 67,
-        description: "A",
+        psycube_id: 61,
+        description: "A (맨 앞 배치)",
       },
       {
-        psycube_id: 46,
-        description: "A-",
+        psycube_id: 77,
+        description: "A (카론 없을시)",
       },
     ],
     resonance: [

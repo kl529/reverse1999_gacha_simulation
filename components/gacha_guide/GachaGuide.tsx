@@ -11,7 +11,7 @@ import {
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { version } from "@/data/version";
+import { version, isIncludedInGachaPool } from "@/data/version";
 import { charactersByRarity } from "@/data/characters";
 import {
   Select,
@@ -152,7 +152,7 @@ export default function GachaGuide() {
                   {charactersByRarity[6]
                     .filter(
                       (char) =>
-                        !char.exclude_gacha && parseFloat(char.version) <= parseFloat(version) - 0.3
+                        !char.exclude_gacha && isIncludedInGachaPool(char.version)
                     )
                     .map((char) => (
                       <Link
