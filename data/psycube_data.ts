@@ -1299,7 +1299,7 @@ export const psycube_list: Psycube[] = [
     name: "떠오른 생각",
     engName: "a_tingle_of_a_thought",
     rarity: 6,
-    priority: 4,
+    priority: 3,
     version: "2.8",
     type: "컨텐츠",
     stats: {
@@ -1334,7 +1334,7 @@ export const psycube_list: Psycube[] = [
     name: "귀향의 애도사",
     engName: "homecoming_lament",
     rarity: 6,
-    priority: 4,
+    priority: 2,
     version: "3.0",
     type: "상점",
     stats: {
@@ -1352,7 +1352,7 @@ export const psycube_list: Psycube[] = [
     name: "씨앗들의 속삭임",
     engName: "buds_yet_to_bloom",
     rarity: 6,
-    priority: 3,
+    priority: 1,
     version: "3.0",
     type: "상점",
     stats: {

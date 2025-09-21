@@ -1685,11 +1685,11 @@ export const characterGuideList: CharacterGuide[] = [
       ],
       summary: "5형상 > 1형상 > 2형상 > 3형상 > 4형상 (1인 기준)",
       source: "icehood",
-      note: "(추가예정)",
+      note: "1형상 or 5형상을 추천함. 압도적인 성능이라 명함만 해도 충분하지만 딜적인 면에서는 1형상 5형상이 꽤나 체감이 좋을 정도로 올라감",
     },
     youtube_links: ["https://www.youtube.com/watch?v=MpoJZ6Oibfo"],
-    keywords: ["딜러", "자해", "현실피해", "한정"],
-    guide_images: [],
+    keywords: ["딜러", "자해", "현실피해", "한정", "신혈"],
+    guide_images: [1, 2, 3],
   },
   {
     character_id: 50, // 울리히
@@ -1719,7 +1719,7 @@ export const characterGuideList: CharacterGuide[] = [
       ],
       summary: "1형상 > 3형상 > 5형상 > 2형상 > 4형상 (전반적 효율)",
       source: "icehood",
-      note: "1형상이 가장 효율이 좋은 형상 (추가예정)",
+      note: "1형상이 가장 효율이 좋고 5형상도 꽤나 좋음. 전력덱 핵심 딜서폿에 사용되므로 1형상까지는 추천함",
     },
     youtube_links: ["https://www.youtube.com/watch?v=SmVqltHZ3C8"],
     keywords: ["딜러", "전력", "현실피해"],
