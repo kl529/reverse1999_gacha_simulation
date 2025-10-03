@@ -18,6 +18,33 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
+
+  // Cloudtype 및 범용 배포를 위한 헤더 설정
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin'
+          }
+        ]
+      }
+    ]
+  }
 };
 
 const withPWA = require("next-pwa")({
@@ -31,12 +58,14 @@ const withPWA = require("next-pwa")({
   runtimeCaching: [
     {
       urlPattern: /^https?.*/,
-      handler: 'CacheFirst',
+      handler: 'NetworkFirst',
       options: {
         cacheName: 'offlineCache',
         expiration: {
           maxEntries: 200,
+          maxAgeSeconds: 24 * 60 * 60, // 24시간
         },
+        networkTimeoutSeconds: 10,
       },
     },
   ],
