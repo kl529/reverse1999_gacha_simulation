@@ -22,6 +22,7 @@ export default function HomePage() {
   const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
   const [selectedInfo, setSelectedInfo] = useState<CardItem | null>(null);
+  const [showNoticeModal, setShowNoticeModal] = useState(false);
 
   const handleItemClick = (item: CardItem) => {
     setSelectedInfo(item);
@@ -33,6 +34,15 @@ export default function HomePage() {
   useEffect(() => {
     const random = Math.floor(Math.random() * bgImages.length);
     setBgImage(bgImages[random]);
+
+    // 서비스 점검 공지 표시 (localStorage로 하루에 한 번만 표시)
+    const today = new Date().toDateString();
+    const lastShown = localStorage.getItem("noticeShownDate");
+
+    if (lastShown !== today) {
+      setShowNoticeModal(true);
+      localStorage.setItem("noticeShownDate", today);
+    }
   }, []);
 
   if (!bgImage) return null;
@@ -407,6 +417,20 @@ export default function HomePage() {
           />
         )}
         <UpdateModal isOpen={isUpdateModalOpen} onClose={() => setUpdateModalOpen(false)} />
+        {showNoticeModal && (
+          <ConfirmModal isOpen={showNoticeModal} onClose={() => setShowNoticeModal(false)}>
+            <h2 className="mb-4 text-lg font-bold text-black dark:text-white">📢 공지사항</h2>
+            <p className="whitespace-pre-line text-sm leading-relaxed text-black dark:text-white">
+              현재 서비스 점검 중으로 인해 일부 기능 이용에 불편이 있을 수 있습니다.
+              <br />
+              <br />
+              접속이 원활하지 않거나 페이지 로딩이 느린 경우, 잠시 후 다시 시도해 주세요.
+              <br />
+              <br />
+              빠른 시일 내에 정상화될 예정이니 양해 부탁드립니다. 항상 서비스 이용에 감사드립니다.
+            </p>
+          </ConfirmModal>
+        )}
       </div>
     </div>
   );
