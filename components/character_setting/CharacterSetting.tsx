@@ -116,7 +116,7 @@ export default function CharacterSetting() {
               alt={type.label}
               width={20}
               height={20}
-              style={{ height: "auto", width: "auto" }}
+              className="h-5 w-5 object-contain"
             />
             {type.label}
           </Button>

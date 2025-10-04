@@ -491,7 +491,13 @@ function LinkBox({ icon, label, href, onClick }: LinkBoxProps) {
   const isExternal = href.startsWith("http");
   const content = (
     <div className="flex flex-col items-center p-2 transition-transform hover:scale-105">
-      <Image src={icon} alt={label} width={48} height={48} className="h-auto w-auto" />
+      <Image
+        src={icon}
+        alt={label}
+        width={48}
+        height={48}
+        className="h-12 w-12 object-contain"
+      />
       <p className="mt-1 whitespace-nowrap text-center text-xs text-white dark:text-gray-100">
         {label.split("\n").map((line, i) => (
           <span key={i}>
