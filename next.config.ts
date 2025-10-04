@@ -4,14 +4,12 @@ const nextConfig: NextConfig = {
   // 정적 최적화 설정
   output: 'standalone', // 정적 파일 최적화
 
-  // 이미지 최적화 설정
+  // 이미지 최적화 설정 (메모리 절약을 위해 비활성화)
   images: {
+    unoptimized: true, // Cloudtype 메모리 부족 방지
     formats: ['image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256],
-    minimumCacheTTL: 60 * 60 * 24 * 365, // 1년 캐시
   },
 
   // 압축 설정
