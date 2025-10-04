@@ -1,5 +1,10 @@
 import type { NextConfig } from "next";
 
+// 번들 분석기 (개발 시에만 사용)
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 const nextConfig: NextConfig = {
   // 정적 최적화 설정
   output: 'standalone', // 정적 파일 최적화
@@ -101,9 +106,9 @@ const withPWA = require("next-pwa")({
   ],
 });
 
-module.exports = withPWA({
+module.exports = withBundleAnalyzer(withPWA({
   ...nextConfig,
   reactStrictMode: true,
-});
+}));
 
 export default nextConfig;
