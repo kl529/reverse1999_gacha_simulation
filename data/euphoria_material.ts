@@ -1248,7 +1248,12 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
     upgrade: [],
   },
   {
-    character_id: 33, // "Argus",
+    character_id: 33, // "Tuesday",
+    euphoria: [],
+    upgrade: [],
+  },
+  {
+    character_id: 34, // "Argus",
     euphoria: [
       {
         level: 1,
@@ -1298,11 +1303,6 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
         },
       },
     ],
-  },
-  {
-    character_id: 34, // "Tuesday",
-    euphoria: [],
-    upgrade: [],
   },
   {
     character_id: 35, // "Anjo Nala",
