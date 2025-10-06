@@ -35,14 +35,14 @@ export default function HomePage() {
     const random = Math.floor(Math.random() * bgImages.length);
     setBgImage(bgImages[random]);
 
-    // 서비스 점검 공지 표시 (localStorage로 하루에 한 번만 표시)
-    const today = new Date().toDateString();
-    const lastShown = localStorage.getItem("noticeShownDate");
+    // // 서비스 점검 공지 표시 (localStorage로 하루에 한 번만 표시)
+    // const today = new Date().toDateString();
+    // const lastShown = localStorage.getItem("noticeShownDate");
 
-    if (lastShown !== today) {
-      setShowNoticeModal(true);
-      localStorage.setItem("noticeShownDate", today);
-    }
+    // if (lastShown !== today) {
+    //   setShowNoticeModal(true);
+    //   localStorage.setItem("noticeShownDate", today);
+    // }
   }, []);
 
   if (!bgImage) return null;
