@@ -82,157 +82,157 @@ export const shops: Shop[] = [
     items: [
       {
         materialId: 205, // 이빨 상자
-        cost: 0,
+        cost: 10,
         efficiency: 3.85,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 202, // 맨드레이크 절임
-        cost: 0,
+        cost: 10,
         efficiency: 3.46,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 201, // 쌍두골
-        cost: 0,
+        cost: 10,
         efficiency: 3.14,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 206, // 신성한 은괴
-        cost: 0,
+        cost: 8,
         efficiency: 3.73,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 203, // 스마트 버드
-        cost: 0,
+        cost: 8,
         efficiency: 3.04,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 204, // 황금 펜듈럼
-        cost: 0,
+        cost: 12,
         efficiency: 3.53,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 211, // 날개 열쇠
-        cost: 0,
+        cost: 12,
         efficiency: 3.17,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 210, // 굽은 거위 목
-        cost: 0,
+        cost: 12,
         efficiency: 3.36,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 207, // 사금 딱정벌레
-        cost: 0,
+        cost: 12,
         efficiency: 3.87,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 209, // 풀 냄새 향
-        cost: 0,
+        cost: 12,
         efficiency: 3.68,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 208, // 붉은 점토판
-        cost: 0,
+        cost: 10,
         efficiency: 3.79,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 303, //액체 전율
-        cost: 0,
+        cost: 4,
         efficiency: 2.65,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 302, // 고운 소금
-        cost: 0,
+        cost: 3,
         efficiency: 2.84,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 304, // 정체불명의 뼈
-        cost: 0,
+        cost: 3,
         efficiency: 2.72,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 305, // 투박한 은괴
-        cost: 0,
+        cost: 2,
         efficiency: 3.07,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 306, // 행운의 주문
-        cost: 0,
+        cost: 2,
         efficiency: 2.93,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 301, // 로마 금화
-        cost: 0,
+        cost: 5,
         efficiency: 2.9,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 310, // 마른 매미 날개
-        cost: 0,
+        cost: 3,
         efficiency: 3.18,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 309, // 멈추지 않는 바퀴
-        cost: 0,
+        cost: 4,
         efficiency: 2.81,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 308, // 여우 꼬리
-        cost: 0,
+        cost: 3,
         efficiency: 2.82,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 307, // 휘석 광석
-        cost: 0,
+        cost: 3,
         efficiency: 2.87,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 405, // 덜덜이빨
-        cost: 0,
+        cost: 2,
         efficiency: 1.7,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 404, // 암염
-        cost: 0,
+        cost: 2,
         efficiency: 1.02,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 403, // 부서진 뼛조각
-        cost: 0,
+        cost: 2,
         efficiency: 0.97,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 402, // 은광석
-        cost: 0,
+        cost: 1,
         efficiency: 1.43,
         description: "재화가 남고, 필요하면 구매",
       },
       {
         materialId: 401, // 청소 주문
-        cost: 0,
+        cost: 1,
         efficiency: 1.36,
         description: "재화가 남고, 필요하면 구매",
       },
@@ -618,6 +618,7 @@ export const shops: Shop[] = [
         efficiency: 1.13,
         description: "필요시 구매",
         isEstimate: true,
+        isRequired: true,
       },
       {
         materialId: 602, //순간의 소란

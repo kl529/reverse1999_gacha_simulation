@@ -10,7 +10,7 @@ export default function CashGuide() {
     <div className="mx-auto max-w-3xl px-4 py-10 text-gray-900 dark:text-gray-100">
       <h1 className="mb-4 mt-8 text-center text-3xl font-bold">현질 가이드 💸</h1>
       <p className="mb-6 text-center text-sm text-muted-foreground">
-        2025.05.26 기준으로 작성되었습니다. <br /> 무조건적인 정답이 아닐수 있으니, 참고만 하시길
+        2025.10.05 기준으로 작성되었습니다. <br /> 무조건적인 정답이 아닐수 있으니, 참고만 하시길
         바랍니다.
       </p>
 
@@ -79,12 +79,13 @@ export default function CashGuide() {
           <b className="text-red-500">10% 할인</b>을 받을 수 있습니다.
           <br />
           여기서 우리는 추가 할인을 받으려면,{" "}
-          <b className="text-red-500">{`충전 방식에서 'Eggmoney'`}</b>를 선택하면 됩니다.
+          <b className="text-red-500">{`충전 방식에서 'Culture Land'`}</b>를 선택하면 됩니다.
+          (Eggmoney는 충전 혜택이 사라짐)
         </p>
       </Card>
 
       <Card className="mb-4 p-4">
-        <h2 className="mb-2 text-2xl font-semibold">2. 에그머니 할인</h2>
+        <h2 className="mb-2 text-2xl font-semibold">2. 컬쳐랜드(문화상품권) 할인</h2>
         <Image
           src="/infos/cash_guide/cash_guide3.webp"
           alt="에그머니 구매"
@@ -92,18 +93,18 @@ export default function CashGuide() {
           height={400}
           className="mb-2 rounded"
         />
-        <p className="mb-2 text-center text-sm text-muted-foreground">에그머니 판매 사이트들</p>
+        <p className="mb-2 text-center text-sm text-muted-foreground">컬쳐랜드 판매 사이트들</p>
         <p className="mb-4 leading-relaxed">
-          에그머니 할인 받는 방법은 간단합니다. <br />
-          구글이나 네이버에, <b className="text-red-500">{`'에그머니 할인'`}</b>을 검색해서 나오는
+          컬쳐랜드 할인 받는 방법은 간단합니다. <br />
+          구글이나 네이버에, <b className="text-red-500">{`'문화상품권 할인'`}</b>을 검색해서 나오는
           사이트들에서 할인받아 구매하면 됩니다.
           <br />
-          주로 평소에는 <b className="text-red-500">7 ~ 9% 정도 할인</b>하고, 가끔 지마켓이나
+          주로 평소에는 <b className="text-red-500">6 ~ 9% 정도 할인</b>하고, 가끔 지마켓이나
           11번가에서 <b className="text-red-500">10%할인</b>이 나오니 참고하세요.
           <br />
-          에그머니가 불법적인 것은 전혀 아니며, 문화상품권과 비슷하다고 생각하시면 됩니다.
+          문화상품권은 불법적인 것은 전혀 아니며 상품권이라고 생각하시면 됩니다.
           <br />
-          계좌이체를 통해 할인을 받는 방식이며, 핀번호를 받는 형식으로 진행됩니다.
+          계좌이체 및 결제를 진행해서 핀번호를 받는 형식으로 진행됩니다.
         </p>
         <Image
           src="/infos/cash_guide/cash_guide4.webp"
@@ -120,8 +121,8 @@ export default function CashGuide() {
       <Card className="mb-4 p-4">
         <h2 className="mb-2 text-2xl font-semibold">💸 할인금액 계산</h2>
         <p className="mb-4 leading-relaxed">
-          - 119,000원 충전을 HAOPLAY 10% 할인 = 107,100원 에그머니 결제 <br />- 107,100원을 에그머니
-          9% 할인 = 약 97,461원 지출
+          - 119,000원 충전을 HAOPLAY 10% 할인 = 107,100원 문화상품권 결제 <br />- 107,100원을
+          문화상품권 9% 할인 = 약 97,461원 지출
         </p>
         <p>
           119,000원 어치 게임머니를 97,461원으로 구매 =
@@ -140,7 +141,7 @@ export default function CashGuide() {
         </p>
         <ul className="mb-4 list-disc pl-5">
           <li>
-            우리가 에그머니를 107,100원을 충전하고 싶으면, 5만원 2개에 1만원 1개까지 3개의 상품권을
+            우리가 문화상품권 107,100원을 충전하고 싶으면, 5만원 2개에 1만원 1개까지 3개의 상품권을
             결제해야하고, 딱 맞아 떨어지지 않는다는 단점이 있습니다. (물론 남은 잔액은 다음번에
             사용가능)
           </li>
@@ -161,7 +162,10 @@ export default function CashGuide() {
           </li>
         </ul>
         <p className="mb-4 text-center">
-          <b className="text-red-500">PS. 스킨은 현금으로 사는게 가장 좋습니다.</b>
+          <b className="text-red-500">
+            PS. 스킨은 현금으로 사는 것을 추천합니다. (80레벨 지원 패키지까지 모두 구매했다면,
+            순결의 빗방울 추천)
+          </b>
         </p>
         <div className="flex w-full flex-row items-center gap-2">
           <Image

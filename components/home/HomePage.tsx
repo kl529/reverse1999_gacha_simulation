@@ -56,6 +56,18 @@ export default function HomePage() {
       />
 
       <div className="relative z-20 flex min-h-screen flex-col">
+        {/* 이벤트 배너 */}
+        <a
+          href="https://forms.gle/yuoKe77JmDpz3qHF7"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 py-3 text-center transition-all hover:from-purple-700 hover:via-pink-700 hover:to-blue-700"
+        >
+          <p className="animate-pulse text-sm font-bold text-white sm:text-base">
+            🎉 사이트 0.5 주년 이벤트 진행중! 클릭하여 참여 →
+          </p>
+        </a>
+
         <main className="flex flex-grow flex-col items-center justify-center">
           <h2 className="mb-4 mt-20 text-4xl font-bold text-black dark:text-white lg:mt-0">
             버틴의 여행가방 🧳
@@ -178,8 +190,8 @@ export default function HomePage() {
                 },
                 {
                   icon: "/infos/menu/newbie_guide_menu.webp",
-                  label: "뉴비 가이드 \n (준비중)",
-                  href: "/#",
+                  label: "뉴비 가이드",
+                  href: "/newbie_guide",
                 },
               ]}
             />
@@ -491,13 +503,7 @@ function LinkBox({ icon, label, href, onClick }: LinkBoxProps) {
   const isExternal = href.startsWith("http");
   const content = (
     <div className="flex flex-col items-center p-2 transition-transform hover:scale-105">
-      <Image
-        src={icon}
-        alt={label}
-        width={48}
-        height={48}
-        className="h-12 w-12 object-contain"
-      />
+      <Image src={icon} alt={label} width={48} height={48} className="h-12 w-12 object-contain" />
       <p className="mt-1 whitespace-nowrap text-center text-xs text-white dark:text-gray-100">
         {label.split("\n").map((line, i) => (
           <span key={i}>

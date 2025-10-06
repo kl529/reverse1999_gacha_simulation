@@ -15,91 +15,129 @@ type MenuItem = {
   modalType?: "material";
 };
 
+type MenuCategory = {
+  title: string;
+  items: MenuItem[];
+};
+
 type HamburgerMenuProps = {
   onModalOpen?: (type: string) => void;
 };
 
 export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [expandedCategories, setExpandedCategories] = useState<string[]>([]); // 펼쳐진 카테고리
   const menuRef = useRef<HTMLDivElement>(null);
   const { openModal } = useModal();
   const pathname = usePathname();
 
-  const menuItems: MenuItem[] = [
+  const menuCategories: MenuCategory[] = [
     {
-      iconImg: "/infos/menu/gacha_simulator_menu.webp",
-      label: "가챠 시뮬레이터",
-      href: "/gacha_simulator",
+      title: "놀이터",
+      items: [
+        {
+          iconImg: "/infos/menu/gacha_simulator_menu.webp",
+          label: "가챠 시뮬레이터",
+          href: "/gacha_simulator",
+        },
+        {
+          iconImg: "/infos/menu/character_quiz_menu.webp",
+          label: "캐릭터 퀴즈",
+          href: "/character_quiz",
+        },
+        { iconImg: "/infos/menu/bingo_menu.webp", label: "빙고", href: "/bingo" },
+      ],
     },
     {
-      iconImg: "/infos/menu/character_quiz_menu.webp",
-      label: "캐릭터 퀴즈",
-      href: "/character_quiz",
-    },
-    { iconImg: "/infos/menu/bingo_menu.webp", label: "빙고", href: "/bingo" },
-    { divider: true },
-    { iconImg: "/infos/menu/material_menu.webp", label: "재료 파밍", modalType: "material" },
-    {
-      iconImg: "/infos/menu/resonance_menu.webp",
-      label: "공명 & 의지",
-      href: "/character_setting",
-    },
-    { iconImg: "/infos/menu/skin_menu.webp", label: "스킨 갤러리", href: "/skin" },
-    {
-      iconImg: "/infos/menu/future_insight_menu.webp",
-      label: "미래시 정리",
-      href: "/future_insight",
-    },
-    {
-      iconImg: "/infos/menu/recommend_team_menu.webp",
-      label: "추천 조합",
-      href: "/recommend_team",
-    },
-    {
-      iconImg: "/infos/menu/blueprint_menu.webp",
-      label: "청사진 모음",
-      href: "/blueprint_setting",
-    },
-    {
-      iconImg: "/infos/menu/calendar_menu.webp",
-      label: "캘린더",
-      href: "/calendar",
-    },
-    {
-      iconImg: "/infos/menu/reveries_in_the_rain_menu.webp",
-      label: "빗속의 공상",
-      href: "/reveries_in_the_rain",
-    },
-    {
-      iconImg: "/infos/menu/cash_package_shop_menu.webp",
-      label: "현질 패키지",
-      href: "/cash_package_shop",
-    },
-    {
-      iconImg: "/infos/menu/shop_efficiency_menu.webp",
-      label: "상점 효율 정리",
-      href: "/shop_efficiency",
-    },
-    { divider: true },
-    {
-      iconImg: "/infos/menu/character_menu.webp",
-      label: "캐릭터 가이드",
-      href: "/character",
-    },
-    { iconImg: "/infos/menu/path_quiz_menu.webp", label: "오솔길 정답", href: "/path_quiz" },
-    {
-      iconImg: "/infos/menu/euphoria_guide_menu.webp",
-      label: "광상 가이드",
-      href: "/euphoria_guide",
+      title: "도서관",
+      items: [
+        { iconImg: "/infos/menu/material_menu.webp", label: "재료 파밍", modalType: "material" },
+        {
+          iconImg: "/infos/menu/resonance_menu.webp",
+          label: "공명 & 의지",
+          href: "/character_setting",
+        },
+        { iconImg: "/infos/menu/skin_menu.webp", label: "스킨 갤러리", href: "/skin" },
+        {
+          iconImg: "/infos/menu/future_insight_menu.webp",
+          label: "미래시 정리",
+          href: "/future_insight",
+        },
+        {
+          iconImg: "/infos/menu/recommend_team_menu.webp",
+          label: "추천 조합",
+          href: "/recommend_team",
+        },
+        {
+          iconImg: "/infos/menu/blueprint_menu.webp",
+          label: "청사진 모음",
+          href: "/blueprint_setting",
+        },
+        {
+          iconImg: "/infos/menu/calendar_menu.webp",
+          label: "캘린더",
+          href: "/calendar",
+        },
+        {
+          iconImg: "/infos/menu/reveries_in_the_rain_menu.webp",
+          label: "빗속의 공상",
+          href: "/reveries_in_the_rain",
+        },
+        {
+          iconImg: "/infos/menu/cash_package_shop_menu.webp",
+          label: "현질 패키지",
+          href: "/cash_package_shop",
+        },
+        {
+          iconImg: "/infos/menu/shop_efficiency_menu.webp",
+          label: "상점 효율",
+          href: "/shop_efficiency",
+        },
+      ],
     },
     {
-      iconImg: "/infos/menu/psycube_guide_menu.webp",
-      label: "의지 육성 가이드",
-      href: "/psycube_guide",
+      title: "가이드",
+      items: [
+        {
+          iconImg: "/infos/menu/character_menu.webp",
+          label: "캐릭터 가이드",
+          href: "/character",
+        },
+        { iconImg: "/infos/menu/path_quiz_menu.webp", label: "오솔길 정답", href: "/path_quiz" },
+        {
+          iconImg: "/infos/menu/euphoria_guide_menu.webp",
+          label: "광상 가이드",
+          href: "/euphoria_guide",
+        },
+        {
+          iconImg: "/infos/menu/psycube_guide_menu.webp",
+          label: "의지 육성",
+          href: "/psycube_guide",
+        },
+        {
+          iconImg: "/infos/menu/cash_guide_menu.webp",
+          label: "현질 가이드",
+          href: "/cash_guide",
+        },
+        {
+          iconImg: "/infos/menu/gacha_guide_menu.webp",
+          label: "가챠 가이드",
+          href: "/gacha_guide",
+        },
+        {
+          iconImg: "/infos/menu/newbie_guide_menu.webp",
+          label: "뉴비 가이드",
+          href: "/newbie_guide",
+        },
+      ],
     },
-    { iconImg: "/infos/menu/cash_guide_menu.webp", label: "현질 가이드", href: "/cash_guide" },
-    { iconImg: "/infos/menu/gacha_guide_menu.webp", label: "가챠 가이드", href: "/gacha_guide" },
   ];
+
+  const toggleCategory = (title: string) => {
+    setExpandedCategories((prev) =>
+      prev.includes(title) ? prev.filter((cat) => cat !== title) : [...prev, title]
+    );
+  };
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -144,68 +182,101 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
       {isOpen && (
         <div className="absolute left-0 top-full mt-2 w-48 rounded-md border bg-white text-black shadow-lg dark:bg-gray-900 dark:text-white sm:w-64">
           <ul className="py-2">
-            {menuItems.map((item, index) => {
-              if (item.divider) {
-                return (
-                  <hr key={index} className="mx-3 my-2 h-px border-0 bg-black dark:bg-gray-500" />
-                );
-              }
-
-              const handleClick = () => {
-                setIsOpen(false);
-                if (item.modalType) {
-                  openModal(item.modalType);
-                  onModalOpen?.(item.modalType);
-                }
-              };
-
-              if (item.href) {
-                const isExternal = item.href.startsWith("http");
-                return (
-                  <li key={index}>
-                    <Link
-                      href={item.href}
-                      target={isExternal ? "_blank" : undefined}
-                      rel={isExternal ? "noopener noreferrer" : undefined}
-                      onClick={() => setIsOpen(false)}
-                      className="flex items-center gap-3 px-3 py-1 text-xs hover:bg-gray-200 dark:hover:bg-gray-700 sm:text-sm"
-                    >
-                      {item.iconImg ? (
-                        <Image
-                          src={item.iconImg}
-                          alt=""
-                          width={30}
-                          height={30}
-                          className="h-6 w-6 sm:h-8 sm:w-8"
-                        />
-                      ) : (
-                        <span className="text-base sm:text-lg">{item.icon}</span>
-                      )}
-                      <span>{item.label}</span>
-                    </Link>
-                  </li>
-                );
-              }
+            {menuCategories.map((category, categoryIndex) => {
+              const isExpanded = expandedCategories.includes(category.title);
 
               return (
-                <li key={index}>
+                <li key={categoryIndex}>
+                  {/* 카테고리 헤더 */}
                   <button
-                    onClick={handleClick}
-                    className="flex w-full items-center gap-3 px-3 py-1 text-left text-xs hover:bg-gray-200 dark:hover:bg-gray-700 sm:text-sm"
+                    onClick={() => toggleCategory(category.title)}
+                    className="flex w-full items-center justify-between px-3 py-2 text-left font-semibold hover:bg-gray-100 dark:hover:bg-gray-800"
                   >
-                    {item.iconImg ? (
-                      <Image
-                        src={item.iconImg}
-                        alt=""
-                        width={30}
-                        height={30}
-                        className="h-6 w-6 sm:h-8 sm:w-8"
+                    <span className="text-sm">{category.title}</span>
+                    <svg
+                      className={`h-4 w-4 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
                       />
-                    ) : (
-                      <span className="text-base sm:text-lg">{item.icon}</span>
-                    )}
-                    <span>{item.label}</span>
+                    </svg>
                   </button>
+
+                  {/* 카테고리 아이템들 */}
+                  {isExpanded && (
+                    <ul className="bg-gray-50 dark:bg-gray-950">
+                      {category.items.map((item, itemIndex) => {
+                        const handleClick = () => {
+                          setIsOpen(false);
+                          if (item.modalType) {
+                            openModal(item.modalType);
+                            onModalOpen?.(item.modalType);
+                          }
+                        };
+
+                        if (item.href) {
+                          const isExternal = item.href.startsWith("http");
+                          return (
+                            <li key={itemIndex}>
+                              <Link
+                                href={item.href}
+                                target={isExternal ? "_blank" : undefined}
+                                rel={isExternal ? "noopener noreferrer" : undefined}
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center gap-3 px-6 py-1.5 text-xs hover:bg-gray-200 dark:hover:bg-gray-700 sm:text-sm"
+                              >
+                                {item.iconImg ? (
+                                  <Image
+                                    src={item.iconImg}
+                                    alt=""
+                                    width={30}
+                                    height={30}
+                                    className="h-6 w-6 sm:h-7 sm:w-7"
+                                  />
+                                ) : (
+                                  <span className="text-base sm:text-lg">{item.icon}</span>
+                                )}
+                                <span>{item.label}</span>
+                              </Link>
+                            </li>
+                          );
+                        }
+
+                        return (
+                          <li key={itemIndex}>
+                            <button
+                              onClick={handleClick}
+                              className="flex w-full items-center gap-3 px-6 py-1.5 text-left text-xs hover:bg-gray-200 dark:hover:bg-gray-700 sm:text-sm"
+                            >
+                              {item.iconImg ? (
+                                <Image
+                                  src={item.iconImg}
+                                  alt=""
+                                  width={30}
+                                  height={30}
+                                  className="h-6 w-6 sm:h-7 sm:w-7"
+                                />
+                              ) : (
+                                <span className="text-base sm:text-lg">{item.icon}</span>
+                              )}
+                              <span>{item.label}</span>
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+
+                  {/* 카테고리 구분선 (마지막 카테고리 제외) */}
+                  {categoryIndex < menuCategories.length - 1 && (
+                    <hr className="mx-3 my-1 h-px border-0 bg-gray-300 dark:bg-gray-700" />
+                  )}
                 </li>
               );
             })}

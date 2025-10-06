@@ -8,7 +8,7 @@ export interface FutureInsightItem {
   };
   album_shop?: {
     rare6: number; // 6성 캐릭터 id
-    rare5: number; // 5성 캐릭터 id
+    rare5?: number; // 5성 캐릭터 id
   };
   banners: string[];
   euphoria: {
@@ -173,6 +173,26 @@ export const futureInsightData: FutureInsightItem[] = [
         { characterId: 23, euphoriaId: 25 },
         { characterId: 6, euphoriaId: 26 },
         { characterId: 1, euphoriaId: 24 },
+      ],
+      star5: [],
+    },
+  },
+  {
+    version: "3.1",
+    title: "기괴한 밤",
+    period: {
+      start: "2025-12-11",
+      end: "2026-01-22",
+      week: 5,
+    },
+    album_shop: {
+      rare6: 23,
+    },
+    banners: ["rubuska_pick_up"],
+    euphoria: {
+      star6: [
+        { characterId: 34, euphoriaId: 30 },
+        { characterId: 3, euphoriaId: 31 },
       ],
       star5: [],
     },

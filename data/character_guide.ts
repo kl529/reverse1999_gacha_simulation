@@ -735,7 +735,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "가장 효율이 높은 형상은 3형상 또는 4형상, 하지만 에즈라는 버프 위주의 서포터이고, 실전에선 큰 도움이 되지 않으므로, 최고 효율은 사실상 명함임",
     },
-    youtube_links: [],
+    youtube_links: ["https://www.youtube.com/watch?v=T8CXuu0Xc1c"],
     keywords: ["서포터", "전력", "자해", "정신피해"],
     guide_images: [],
   },
@@ -1007,7 +1007,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "해당 형상 효율은 예열 뒤 추가타가 없는 기준인 것 참고 바람, 가장 효율이 높은 형상은 1형상임. 추가타를 포함하면, 형상효율이 더 높아짐.",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=yjt0jZfHVpw"],
+    youtube_links: ["https://www.youtube.com/watch?v=PhuwIP3M3c0"],
     keywords: ["딜러", "추가공격", "전력", "현실피해", "한정"],
     guide_images: [],
   },
@@ -1753,7 +1753,7 @@ export const characterGuideList: CharacterGuide[] = [
       ],
       summary: "2형상 > 1형상 > 5형상 > 4형상 > 3형상 (팀 전체)",
       source: "icehood",
-      note: "3형상의 효율이 0%인 이유는 효과가 반격시 얻는 열정 2로 증가이기 때문. (추가예정)",
+      note: "3형상의 효율이 0%인 이유는 효과가 반격시 얻는 열정 2로 증가이기 때문. 1형상과 2형상이 효율이 많이 좋은편이고, 고형상은 애정으로만 하는 것을 추천",
     },
     youtube_links: ["https://www.youtube.com/watch?v=Kej4pd1-zDM"],
     keywords: ["서포터", "술식위주", "현실피해"],
@@ -1821,10 +1821,44 @@ export const characterGuideList: CharacterGuide[] = [
       ],
       summary: "5형상 > 1형상 > 2형상 > 3형상 > 4형상 (팀 전체)",
       source: "icehood",
-      note: "본인 형상 효율은 오차가 존재할 수 있음. 팀 효율 위주로 참고해주세요. 2형상을 제외한 나머지 상승폭은 괜찮음. 5형상시 개인 효율은 72%, 팀 전체는 35% 정도",
+      note: "본인 형상 효율은 오차가 존재할 수 있음. 팀 효율 위주로 참고. 2형상을 제외한 나머지 상승폭은 괜찮음. 5형상시 개인 효율은 72%, 팀 전체는 35% 정도",
     },
     youtube_links: ["https://www.youtube.com/watch?v=2JtXL7HWpTA"],
     keywords: ["서포터", "서브딜러", "전력", "정신피해"],
+    guide_images: [],
+  },
+  {
+    character_id: 54, // 루부스카
+    portrait_info: {
+      headers: ["형상", "팀 전체"],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["11.3%"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["11.5%"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["0.1%"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["2.9%"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["15.5%"],
+        },
+      ],
+      summary: "5형상 > 2형상 > 1형상 > 4형상 > 3형상",
+      source: "icehood",
+      note: "힐러이기에, 형상 효율이 좋은 편은아니고, 좋은 옵션들이 1,2형상에 몰려있음.",
+    },
+    youtube_links: [],
+    keywords: ["힐러", "신혈", "정신피해"],
     guide_images: [],
   },
 ];

@@ -1138,4 +1138,48 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "3.0",
   },
+
+  {
+    id: 100,
+    character_id: 44, // 알레프
+    name: "이미지의 향연 (미래시)",
+    engName: "a_feast_of_imagery",
+    rarity: "Advanced",
+    source: "판매",
+    resell: "X",
+    version: "3.1",
+    price: "14,000₩ / 1,080빗방울",
+  },
+  {
+    id: 101,
+    character_id: 27, // 윈드송
+    name: "악몽과 밤 (미래시)",
+    engName: "the_nightmare's_trespasser",
+    rarity: "Advanced",
+    source: "판매",
+    resell: "X",
+    version: "3.1",
+    price: "14,000₩ / 1,080빗방울",
+  },
+  {
+    id: 102,
+    character_id: 3, // A나이트
+    name: "영원히 푸르를 영혼 (미래시)",
+    engName: "the_evergreen_soul",
+    rarity: "Garment",
+    source: "주크박스",
+    resell: "X",
+    version: "3.1",
+    tarot_number: "20",
+  },
+  {
+    id: 103,
+    character_id: 209, // 크리스탈로
+    name: "유리창 앞에서의 꿈 (미래시)",
+    engName: "a_dream_in_stained_glass",
+    rarity: "Garment",
+    source: "컨텐츠",
+    resell: "X",
+    version: "3.1",
+  },
 ];

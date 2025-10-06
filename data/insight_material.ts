@@ -941,7 +941,7 @@ export const insightMaterial: InsightMaterial[] = [
           1002: 200000,
           512: 8,
           509: 8,
-          106: 6,
+          111: 6,
           3: 3,
         },
       },
@@ -973,7 +973,7 @@ export const insightMaterial: InsightMaterial[] = [
         materials: {
           1002: 200000,
           506: 16,
-          106: 6,
+          111: 6,
           4: 3,
         },
       },
@@ -1730,6 +1730,38 @@ export const insightMaterial: InsightMaterial[] = [
           503: 8,
           108: 6,
           5: 3,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 54, // "Rhais",
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 18000,
+          510: 6,
+          405: 5,
+          309: 5,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 40000,
+          511: 10,
+          306: 6,
+          201: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          1002: 200000,
+          512: 16,
+          111: 6,
+          1: 3,
         },
       },
     ],

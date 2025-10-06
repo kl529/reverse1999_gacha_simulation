@@ -618,5 +618,5 @@ export const calendarEvents: CalendarEvent[] = [
     type: "birthday",
     title: "에지오 아디토레",
   },
-  // 카산드라랑 알렉 없음
+  // 카산드라랑 알렉 없음(Unknown임) + 루부스카 없음 (얜 진짜 데이터가 없음)
 ];

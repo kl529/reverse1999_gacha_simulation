@@ -169,7 +169,11 @@ export default function CharacterQuiz() {
       return charNameNormalized === inputNoSpaceLower;
     });
 
-    if (inputNoSpaceLower === "내아내") {
+    if (
+      inputNoSpaceLower === "내아내" ||
+      inputNoSpaceLower === "아내" ||
+      inputNoSpaceLower === "최애"
+    ) {
       toast(`제 아내는 멜라니아입니다.`, { icon: "❤️" });
       setInputValue("");
       return;

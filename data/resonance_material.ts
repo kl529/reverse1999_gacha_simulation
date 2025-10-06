@@ -6141,4 +6141,123 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       },
     ],
   },
+  {
+    character_id: 54, // "Rubuska"
+    resonance: [
+      {
+        level: 2,
+        materials: {
+          601: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          601: 5,
+          401: 6,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          601: 5,
+          402: 4,
+          301: 3,
+        },
+      },
+      {
+        level: 5,
+        materials: {
+          602: 5,
+          303: 3,
+          304: 4,
+        },
+      },
+      {
+        level: 6,
+        materials: {
+          1002: 30000,
+          602: 5,
+          204: 3,
+        },
+      },
+      {
+        level: 7,
+        materials: {
+          602: 6,
+          208: 4,
+        },
+      },
+      {
+        level: 8,
+        materials: {
+          602: 6,
+          209: 4,
+          310: 5,
+        },
+      },
+      {
+        level: 9,
+        materials: {
+          602: 8,
+          201: 5,
+          309: 4,
+        },
+      },
+      {
+        level: 10,
+        materials: {
+          607: 1,
+          603: 5,
+          210: 6,
+          205: 6,
+        },
+      },
+      {
+        level: 11,
+        materials: {
+          607: 1,
+          1002: 120000,
+          603: 5,
+          102: 4,
+        },
+      },
+      {
+        level: 12,
+        materials: {
+          607: 1,
+          603: 6,
+          111: 4,
+          203: 5,
+        },
+      },
+      {
+        level: 13,
+        materials: {
+          607: 1,
+          603: 6,
+          103: 5,
+          206: 5,
+        },
+      },
+      {
+        level: 14,
+        materials: {
+          607: 1,
+          603: 8,
+          4: 2,
+          108: 4,
+        },
+      },
+      {
+        level: 15,
+        materials: {
+          607: 1,
+          603: 8,
+          2: 3,
+          104: 4,
+        },
+      },
+    ],
+  },
 ];

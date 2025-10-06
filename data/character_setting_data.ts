@@ -240,12 +240,12 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (딜 보조)",
       },
       {
-        psycube_id: 34,
-        description: "S (딜 보조)",
+        psycube_id: 82,
+        description: "S (술식 보조)",
       },
       {
-        psycube_id: 55,
-        description: "S",
+        psycube_id: 34,
+        description: "S (딜 보조)",
       },
     ],
     resonance: [
@@ -392,12 +392,12 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (장기전)",
       },
       {
-        psycube_id: 7,
-        description: "S- (광상, 장기전)",
+        psycube_id: 83,
+        description: "S (암석팟)",
       },
       {
-        psycube_id: 34,
-        description: "S (딜 보조)",
+        psycube_id: 82,
+        description: "S (술식 보조)",
       },
     ],
     resonance: [
@@ -788,8 +788,8 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (딜 증가 보조)",
       },
       {
-        psycube_id: 39,
-        description: "A (빠른 술식)",
+        psycube_id: 82,
+        description: "S (술식 보조)",
       },
     ],
     resonance: [
@@ -1216,16 +1216,16 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (딜 증가 보조)",
       },
       {
+        psycube_id: 82,
+        description: "S (술식 보조)",
+      },
+      {
         psycube_id: 34,
         description: "S (딜 보조)",
       },
       {
         psycube_id: 38,
         description: "S- (딜 증가 보조)",
-      },
-      {
-        psycube_id: 42,
-        description: "A+ (장기전) (풀)",
       },
     ],
     resonance: [
@@ -1592,8 +1592,16 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S",
       },
       {
+        psycube_id: 81,
+        description: "S (술식)",
+      },
+      {
         psycube_id: 72,
-        description: "A",
+        description: "A+",
+      },
+      {
+        psycube_id: 61,
+        description: "A+",
       },
     ],
     resonance: [
@@ -1616,8 +1624,39 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S",
       },
       {
-        psycube_id: 39,
+        psycube_id: 50,
         description: "A+",
+      },
+      {
+        psycube_id: 46,
+        description: "A-",
+      },
+      {
+        psycube_id: 38,
+        description: "A-",
+      },
+    ],
+    resonance: [],
+    resonance_patterns: [],
+  },
+  {
+    character_id: 54, // "루부스카"
+    psycubes: [
+      {
+        psycube_id: 82,
+        description: "S",
+      },
+      {
+        psycube_id: 83,
+        description: "A+ (암석팟)",
+      },
+      {
+        psycube_id: 15,
+        description: "A",
+      },
+      {
+        psycube_id: 34,
+        description: "A",
       },
     ],
     resonance: [],
@@ -1875,12 +1914,12 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (딜 보조)",
       },
       {
-        psycube_id: 30,
-        description: "A (장기전)",
+        psycube_id: 82,
+        description: "S (술식 보조)",
       },
       {
-        psycube_id: 55,
-        description: "A",
+        psycube_id: 30,
+        description: "A (장기전)",
       },
     ],
     resonance: [
@@ -1895,20 +1934,20 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 110, // "네크롤로지스트"
     psycubes: [
       {
+        psycube_id: 83,
+        description: "S (암석팟)",
+      },
+      {
+        psycube_id: 82,
+        description: "S (술식 보조)",
+      },
+      {
         psycube_id: 34,
         description: "S (딜 보조)",
       },
       {
         psycube_id: 38,
         description: "S (딜 보조)",
-      },
-      {
-        psycube_id: 24,
-        description: "A",
-      },
-      {
-        psycube_id: 32,
-        description: "A (데미지)",
       },
     ],
     resonance: [
@@ -2411,16 +2450,16 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (딜 보조)",
       },
       {
+        psycube_id: 83,
+        description: "S (암석팟)",
+      },
+      {
+        psycube_id: 82,
+        description: "S (술식 보조)",
+      },
+      {
         psycube_id: 34,
         description: "S (딜 보조)",
-      },
-      {
-        psycube_id: 24,
-        description: "A",
-      },
-      {
-        psycube_id: 15,
-        description: "A- (딜 보조)",
       },
     ],
     resonance: [

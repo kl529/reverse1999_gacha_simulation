@@ -132,8 +132,55 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
   },
   {
     character_id: 3, // "A Knight",
-    euphoria: [],
-    upgrade: [],
+    euphoria: [
+      {
+        level: 1,
+        materials: {
+          701: 12,
+          702: 40,
+          703: 200,
+          1: 3,
+        },
+      },
+    ],
+    upgrade: [
+      {
+        level: 1,
+        materials: {
+          702: 20,
+          703: 275,
+          3: 1,
+          102: 1,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          702: 30,
+          703: 371,
+          5: 1,
+          111: 2,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          702: 35,
+          703: 470,
+          4: 2,
+          110: 2,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          702: 40,
+          703: 1195,
+          1: 2,
+          109: 2,
+        },
+      },
+    ],
   },
   {
     character_id: 4, // "Sotheby",
@@ -1202,8 +1249,55 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
   },
   {
     character_id: 33, // "Argus",
-    euphoria: [],
-    upgrade: [],
+    euphoria: [
+      {
+        level: 1,
+        materials: {
+          701: 12,
+          702: 40,
+          703: 200,
+          4: 3,
+        },
+      },
+    ],
+    upgrade: [
+      {
+        level: 1,
+        materials: {
+          702: 20,
+          703: 275,
+          5: 1,
+          104: 1,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          702: 30,
+          703: 371,
+          4: 1,
+          103: 2,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          702: 35,
+          703: 470,
+          1: 2,
+          106: 2,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          702: 40,
+          703: 1195,
+          2: 2,
+          101: 2,
+        },
+      },
+    ],
   },
   {
     character_id: 34, // "Tuesday",

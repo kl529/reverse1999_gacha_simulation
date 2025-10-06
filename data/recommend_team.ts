@@ -126,12 +126,12 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    name: "노티카 자해덱",
+    name: "노티카 신혈덱",
     description: [
       "노티카를 메인으로 한 [신혈]기믹을 사용하는 자해조합",
       "노티카와 광상 제멜바이스 & 센티넬을 채용하여 자해를 쌓아 딜을 하는 조합",
-      "힐러는 파투투, 광상 에즈라를 주로 채용",
-      "3.0 기준 센티넬의 합류로 압도적인 체급과 덱파워를 보여주는 0티어 조합",
+      "힐러는 루부스카가 압도적으로 좋고, 파투투나 광상 메디슨 포켓도 사용가능",
+      "3.1 기준 루부스카의 합류로 압도적인 체급으로 부동의 0티어 조합",
       "제멜바이스의 술진으로 로페라 등의 술진 서포터와는 쓰기 힘듦",
     ],
     concepts: ["신혈", "자해"],
@@ -139,10 +139,10 @@ export const recommendTeams: RecommendTeam[] = [
       { id: 49, isMain: true, role: "딜러" },
       { id: 28, euphoria: true, isMain: true, role: "서폿" },
       {
-        id: 21,
-        euphoria: true,
-        role: "서폿",
+        id: 54,
+        role: "힐러",
         alternatives: [
+          { id: 21, euphoria: true, role: "서폿" },
           { id: 8, euphoria: true, role: "힐러" },
           { id: 40, role: "힐러" },
         ],
@@ -278,9 +278,9 @@ export const recommendTeams: RecommendTeam[] = [
     name: "광상 마커스 성급덱",
     description: [
       "광상 마커스를 메인으로, 주문 강화를 통해 높은 성급 주문으로 딜을 하는 조합",
-      "콜라보 버젼 기준 광상 마커스의 체급이 엄청나고, 광상 빌라와의 궁합도 압도적",
-      "머큐리아의 진급과, 아르고스의 추가공격 등 좋은 서포터도 많고 덱이 유연함",
-      "체급 자체는 0티어까진 아니고 1~2티어 정도의 덱파워를 보여줌",
+      "광상 마커스의 체급이 엄청나고, 광상 빌라와의 궁합도 압도적으로 좋음",
+      "광상 아르고스의 서포팅으로 1티어 덱파워를 보여주고, 여러 좋은 서포터도 많고 덱이 유연함",
+      "드루비스까지 넣으면 4캐릭터의 광상이 필요하지만 체급으로는 1티어 정도의 덱파워를 보여줌 (계시덱과 비슷)",
     ],
     concepts: ["나무", "주문강화", "비주류"],
     characters: [
@@ -292,16 +292,18 @@ export const recommendTeams: RecommendTeam[] = [
         role: "힐러",
       },
       {
-        id: 31,
+        id: 34,
         role: "서폿",
+        euphoria: true,
         alternatives: [{ id: 36, role: "서폿" }],
       },
       {
-        id: 34,
+        id: 1,
         role: "서폿",
+        euphoria: true,
         alternatives: [
           { id: 30, role: "탱커" },
-          { id: 1, euphoria: true, role: "서폿" },
+          { id: 31, role: "서폿" },
           { id: 7, euphoria: true, role: "서폿" },
           { id: 45, role: "딜러" },
         ],

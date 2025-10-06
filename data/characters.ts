@@ -495,6 +495,15 @@ export const charactersByRarity: Record<number, Character[]> = {
       version: "3.0",
       resonanceType: "defense",
     },
+    {
+      id: 54,
+      name: "루부스카",
+      rarity: 6,
+      inspiration: "mineral",
+      engName: "rubuska",
+      version: "3.1",
+      resonanceType: "defense",
+    },
   ],
   5: [
     {
@@ -751,6 +760,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "alexios",
       version: "2.75",
       resonanceType: "damage",
+      exclude_gacha: true,
     },
     {
       id: 129,
