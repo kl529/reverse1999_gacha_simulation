@@ -5,12 +5,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import ConfirmModal from "@/components/modals/ConfirmModal";
+import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
-import UpdateModal from "@/components/modals/UpdateModal";
-import CardInfoModal from "@/components/modals/CardInfoModal";
 import Carousel from "@/components/etc/Carousel";
-import ColourfulText from "@/components/ui/ColourfulText";
+import HomePageSkeleton from "@/components/home/HomePageSkeleton";
+
+// Dynamic imports로 코드 스플리팅
+const ConfirmModal = dynamic(() => import("@/components/modals/ConfirmModal"));
+const UpdateModal = dynamic(() => import("@/components/modals/UpdateModal"));
+const CardInfoModal = dynamic(() => import("@/components/modals/CardInfoModal"));
+const ColourfulText = dynamic(() => import("@/components/ui/ColourfulText"));
 
 const bgImages = Array.from({ length: 35 }, (_, i) => `/infos/home/poster${i + 1}.webp`);
 
@@ -45,15 +49,20 @@ export default function HomePage() {
     // }
   }, []);
 
-  if (!bgImage) return null;
+  if (!bgImage) return <HomePageSkeleton />;
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden text-white">
-      <div className="pointer-events-none absolute inset-0 z-10 bg-gray-200/40 dark:bg-black/60" />
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('${bgImage}')` }}
+      {/* 배경 이미지 */}
+      <Image
+        src={bgImage}
+        alt="Background"
+        fill
+        priority
+        quality={85}
+        className="object-cover"
       />
+      <div className="pointer-events-none absolute inset-0 z-10 bg-gray-200/40 dark:bg-black/60" />
 
       <div className="relative z-20 flex min-h-screen flex-col">
         {/* 이벤트 배너 */}
@@ -253,6 +262,7 @@ export default function HomePage() {
                 alt="GitHub"
                 width={20}
                 height={20}
+                loading="lazy"
                 className="rounded-full"
               />
             </Link>
@@ -503,7 +513,14 @@ function LinkBox({ icon, label, href, onClick }: LinkBoxProps) {
   const isExternal = href.startsWith("http");
   const content = (
     <div className="flex flex-col items-center p-2 transition-transform hover:scale-105">
-      <Image src={icon} alt={label} width={48} height={48} className="h-12 w-12 object-contain" />
+      <Image
+        src={icon}
+        alt={label}
+        width={48}
+        height={48}
+        loading="lazy"
+        className="h-12 w-12 object-contain"
+      />
       <p className="mt-1 whitespace-nowrap text-center text-xs text-white dark:text-gray-100">
         {label.split("\n").map((line, i) => (
           <span key={i}>
