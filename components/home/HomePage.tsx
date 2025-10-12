@@ -1,4 +1,4 @@
-// HomePage.tsx (shadcn 적용 + 배경색 수정 및 footer 링크 형태 적용)
+// HomePage.tsx (Refactored with separated components)
 
 "use client";
 
@@ -6,9 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { useTheme } from "next-themes";
 import Carousel from "@/components/etc/Carousel";
 import HomePageSkeleton from "@/components/home/HomePageSkeleton";
+import CardBox from "@/components/home/CardBox";
+import HomeFooter from "@/components/home/HomeFooter";
+import { CardItem, isModalCardItem } from "@/lib/types/menuTypes";
+import { PLAYGROUND_ITEMS, LIBRARY_ITEMS, GUIDE_ITEMS } from "@/lib/constants/menuItems";
 
 // Dynamic imports로 코드 스플리팅
 const ConfirmModal = dynamic(() => import("@/components/modals/ConfirmModal"));
@@ -33,8 +36,6 @@ export default function HomePage() {
     setInfoModalOpen(true);
   };
 
-  const { theme } = useTheme();
-
   useEffect(() => {
     const random = Math.floor(Math.random() * bgImages.length);
     setBgImage(bgImages[random]);
@@ -54,14 +55,7 @@ export default function HomePage() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden text-white">
       {/* 배경 이미지 */}
-      <Image
-        src={bgImage}
-        alt="Background"
-        fill
-        priority
-        quality={85}
-        className="object-cover"
-      />
+      <Image src={bgImage} alt="Background" fill priority quality={85} className="object-cover" />
       <div className="pointer-events-none absolute inset-0 z-10 bg-gray-200/40 dark:bg-black/60" />
 
       <div className="relative z-20 flex min-h-screen flex-col">
@@ -83,123 +77,17 @@ export default function HomePage() {
           </h2>
           <p className="mb-8 text-black dark:text-white">당신이 폭풍우를 이겨낼 수 있도록..</p>
 
-          <div className="grid w-full max-w-7xl grid-cols-1 gap-10 px-10 md:px-20 lg:grid-cols-3 lg:px-6">
-            <CardBox
-              title="놀이터"
-              subTitle="Just for Fun"
-              items={[
-                {
-                  icon: "/infos/menu/gacha_simulator_menu.webp",
-                  label: "가챠\n시뮬레이터",
-                  href: "/gacha_simulator",
-                },
-                {
-                  icon: "/infos/menu/character_quiz_menu.webp",
-                  label: "캐릭터\n퀴즈",
-                  href: "/character_quiz",
-                },
-                { icon: "/infos/menu/bingo_menu.webp", label: "빙고", href: "/bingo" },
-              ]}
-            />
+          <div className="grid w-full max-w-7xl grid-cols-1 gap-7 px-10 md:px-20 lg:grid-cols-3 lg:px-6">
+            <CardBox title="놀이터" subTitle="Just for Fun" items={PLAYGROUND_ITEMS} />
 
             <CardBox
               title="도서관"
               subTitle="찾고 싶은 게 있나요?"
               onItemClick={handleItemClick}
-              items={[
-                {
-                  icon: "/infos/menu/material_menu.webp",
-                  label: "재료 파밍",
-                  title: "재료 파밍표",
-                  href: "#",
-                  image: "/infos/modal_img/material_sheet.webp",
-                  source: "https://bbs.nga.cn/read.php?tid=41840172&rand=968",
-                },
-                {
-                  icon: "/infos/menu/resonance_menu.webp",
-                  label: "공명 & 의지",
-                  href: "/character_setting",
-                },
-                { icon: "/infos/menu/skin_menu.webp", label: "스킨 갤러리", href: "/skin" },
-                {
-                  icon: "/infos/menu/future_insight_menu.webp",
-                  label: "미래시 정리",
-                  href: "/future_insight",
-                },
-                {
-                  icon: "/infos/menu/recommend_team_menu.webp",
-                  label: "추천 조합",
-                  href: "/recommend_team",
-                },
-                {
-                  icon: "/infos/menu/blueprint_menu.webp",
-                  label: "청사진 모음",
-                  href: "/blueprint_setting",
-                },
-                {
-                  icon: "/infos/menu/calendar_menu.webp",
-                  label: "캘린더",
-                  href: "/calendar",
-                },
-                {
-                  icon: "/infos/menu/reveries_in_the_rain_menu.webp",
-                  label: "빗속의 공상",
-                  href: "/reveries_in_the_rain",
-                },
-                {
-                  icon: "/infos/menu/cash_package_shop_menu.webp",
-                  label: "현질 패키지",
-                  href: "/cash_package_shop",
-                },
-                {
-                  icon: "/infos/menu/shop_efficiency_menu.webp",
-                  label: "상점 효율",
-                  href: "/shop_efficiency",
-                },
-              ]}
+              items={LIBRARY_ITEMS}
             />
 
-            <CardBox
-              title="가이드"
-              subTitle="당신을 위한 친절한 가이드"
-              items={[
-                {
-                  icon: "/infos/menu/character_menu.webp",
-                  label: "캐릭터 가이드",
-                  href: "/character",
-                },
-                {
-                  icon: "/infos/menu/path_quiz_menu.webp",
-                  label: "오솔길 정답",
-                  href: "/path_quiz",
-                },
-                {
-                  icon: "/infos/menu/euphoria_guide_menu.webp",
-                  label: "광상 가이드",
-                  href: "/euphoria_guide",
-                },
-                {
-                  icon: "/infos/menu/psycube_guide_menu.webp",
-                  label: "의지 육성",
-                  href: "/psycube_guide",
-                },
-                {
-                  icon: "/infos/menu/cash_guide_menu.webp",
-                  label: "현질 가이드",
-                  href: "/cash_guide",
-                },
-                {
-                  icon: "/infos/menu/gacha_guide_menu.webp",
-                  label: "가챠 가이드",
-                  href: "/gacha_guide",
-                },
-                {
-                  icon: "/infos/menu/newbie_guide_menu.webp",
-                  label: "뉴비 가이드",
-                  href: "/newbie_guide",
-                },
-              ]}
-            />
+            <CardBox title="가이드" subTitle="당신을 위한 친절한 가이드" items={GUIDE_ITEMS} />
           </div>
 
           {/* 캐러셀 - 모든 화면 크기에서 하단에 표시 */}
@@ -208,63 +96,12 @@ export default function HomePage() {
           </div>
         </main>
 
-        <footer className="mt-5 flex flex-col items-center gap-2 bg-black/30 p-0 text-sm">
-          <div className="flex min-h-[2rem] items-center gap-4 text-gray-200">
-            <a href="mailto:jiwon803@gmail.com" className="hover:text-blue-400 hover:underline">
-              문의
-            </a>
-            <button
-              onClick={() => setShowPolicy(true)}
-              className="hover:text-blue-400 hover:underline"
-            >
-              Policy
-            </button>
-            <button
-              onClick={() => setShowSource(true)}
-              className="hover:text-blue-400 hover:underline"
-            >
-              출처
-            </button>
-            <button
-              onClick={() => setShowContributors(true)}
-              className="hover:text-blue-400 hover:underline"
-            >
-              기여자
-            </button>
-            <Link
-              href="https://buymeacoffee.com/vertin_suitcase"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-400 hover:underline"
-            >
-              커피 사주기 ☕️
-            </Link>
-            <button
-              onClick={() => setUpdateModalOpen(true)}
-              className="hover:text-blue-400 hover:underline"
-            >
-              업데이트
-            </button>
-            <Link
-              href="https://github.com/kl529/reverse1999_gacha_simulation"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                src={
-                  theme === "dark"
-                    ? "/infos/button/github_light.webp"
-                    : "/infos/button/github_dark.webp"
-                }
-                alt="GitHub"
-                width={20}
-                height={20}
-                loading="lazy"
-                className="rounded-full"
-              />
-            </Link>
-          </div>
-        </footer>
+        <HomeFooter
+          onPolicyClick={() => setShowPolicy(true)}
+          onSourceClick={() => setShowSource(true)}
+          onContributorsClick={() => setShowContributors(true)}
+          onUpdateClick={() => setUpdateModalOpen(true)}
+        />
 
         {showPolicy && (
           <ConfirmModal isOpen={showPolicy} onClose={() => setShowPolicy(false)}>
@@ -425,12 +262,12 @@ export default function HomePage() {
             <ColourfulText text={`- 개발자: Lyva\n- 데이터 정리: 잠쿨`} />
           </ConfirmModal>
         )}
-        {infoModalOpen && selectedInfo && (
+        {infoModalOpen && selectedInfo && isModalCardItem(selectedInfo) && (
           <CardInfoModal
             isOpen={infoModalOpen}
             onClose={() => setInfoModalOpen(false)}
-            title={selectedInfo.title || ""}
-            image={selectedInfo.image || ""}
+            title={selectedInfo.title}
+            image={selectedInfo.image}
             description={selectedInfo.description || ""}
             source={selectedInfo.source || ""}
           />
@@ -453,93 +290,4 @@ export default function HomePage() {
       </div>
     </div>
   );
-}
-
-interface CardItem {
-  icon: string;
-  label: string;
-  href: string;
-  title?: string;
-  description?: string;
-  image?: string;
-  source?: string;
-}
-
-interface CardBoxProps {
-  title: string;
-  subTitle: string;
-  items: CardItem[];
-  onItemClick?: (item: CardItem) => void;
-}
-
-interface LinkBoxProps {
-  icon: string;
-  label: string;
-  href: string;
-  onClick?: () => void;
-}
-
-function CardBox({ title, subTitle, items, onItemClick }: CardBoxProps) {
-  const gridColsClass =
-    items.length === 2
-      ? "grid-cols-2"
-      : items.length === 3
-        ? "grid-cols-3"
-        : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
-
-  return (
-    <div className="flex w-full flex-col items-center rounded-lg bg-gray-900/60 px-4 py-5 sm:px-6 lg:px-0">
-      <h3 className="mb-1 text-center text-xl font-bold">{title}</h3>
-      <p className="mb-4 text-center text-sm">{subTitle}</p>
-      <div className={`grid ${gridColsClass} h-full w-full items-center justify-center gap-2 sm:gap-3 lg:gap-4`}>
-        {items.map((item: CardItem, idx: number) => (
-          <LinkBox
-            key={idx}
-            icon={item.icon}
-            label={item.label}
-            href={item.href}
-            onClick={() => item.image && onItemClick?.(item)}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function LinkBox({ icon, label, href, onClick }: LinkBoxProps) {
-  const isExternal = href.startsWith("http");
-  const content = (
-    <div className="flex flex-col items-center p-2 transition-transform hover:scale-105">
-      <Image
-        src={icon}
-        alt={label}
-        width={48}
-        height={48}
-        loading="lazy"
-        className="h-12 w-12 object-contain"
-      />
-      <p className="mt-1 whitespace-nowrap text-center text-xs text-white dark:text-gray-100">
-        {label.split("\n").map((line, i) => (
-          <span key={i}>
-            {i > 0 && <br />}
-            {line}
-          </span>
-        ))}
-      </p>
-    </div>
-  );
-
-  if (isExternal)
-    return (
-      <Link href={href} target="_blank" rel="noopener noreferrer" onClick={onClick}>
-        {content}
-      </Link>
-    );
-  if (href !== "#")
-    return (
-      <Link href={href} onClick={onClick}>
-        {content}
-      </Link>
-    );
-  return <button onClick={onClick}>{content}</button>;
 }

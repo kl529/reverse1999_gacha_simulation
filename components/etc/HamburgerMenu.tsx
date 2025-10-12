@@ -5,20 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useModal } from "@/components/etc/ModalProvider";
-
-type MenuItem = {
-  icon?: string;
-  iconImg?: string;
-  label?: string;
-  href?: string;
-  divider?: boolean;
-  modalType?: "material";
-};
-
-type MenuCategory = {
-  title: string;
-  items: MenuItem[];
-};
+import { HAMBURGER_MENU_CATEGORIES } from "@/lib/constants/menuItems";
 
 type HamburgerMenuProps = {
   onModalOpen?: (type: string) => void;
@@ -30,108 +17,6 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
   const { openModal } = useModal();
   const pathname = usePathname();
-
-  const menuCategories: MenuCategory[] = [
-    {
-      title: "놀이터",
-      items: [
-        {
-          iconImg: "/infos/menu/gacha_simulator_menu.webp",
-          label: "가챠 시뮬레이터",
-          href: "/gacha_simulator",
-        },
-        {
-          iconImg: "/infos/menu/character_quiz_menu.webp",
-          label: "캐릭터 퀴즈",
-          href: "/character_quiz",
-        },
-        { iconImg: "/infos/menu/bingo_menu.webp", label: "빙고", href: "/bingo" },
-      ],
-    },
-    {
-      title: "도서관",
-      items: [
-        { iconImg: "/infos/menu/material_menu.webp", label: "재료 파밍", modalType: "material" },
-        {
-          iconImg: "/infos/menu/resonance_menu.webp",
-          label: "공명 & 의지",
-          href: "/character_setting",
-        },
-        { iconImg: "/infos/menu/skin_menu.webp", label: "스킨 갤러리", href: "/skin" },
-        {
-          iconImg: "/infos/menu/future_insight_menu.webp",
-          label: "미래시 정리",
-          href: "/future_insight",
-        },
-        {
-          iconImg: "/infos/menu/recommend_team_menu.webp",
-          label: "추천 조합",
-          href: "/recommend_team",
-        },
-        {
-          iconImg: "/infos/menu/blueprint_menu.webp",
-          label: "청사진 모음",
-          href: "/blueprint_setting",
-        },
-        {
-          iconImg: "/infos/menu/calendar_menu.webp",
-          label: "캘린더",
-          href: "/calendar",
-        },
-        {
-          iconImg: "/infos/menu/reveries_in_the_rain_menu.webp",
-          label: "빗속의 공상",
-          href: "/reveries_in_the_rain",
-        },
-        {
-          iconImg: "/infos/menu/cash_package_shop_menu.webp",
-          label: "현질 패키지",
-          href: "/cash_package_shop",
-        },
-        {
-          iconImg: "/infos/menu/shop_efficiency_menu.webp",
-          label: "상점 효율",
-          href: "/shop_efficiency",
-        },
-      ],
-    },
-    {
-      title: "가이드",
-      items: [
-        {
-          iconImg: "/infos/menu/character_menu.webp",
-          label: "캐릭터 가이드",
-          href: "/character",
-        },
-        { iconImg: "/infos/menu/path_quiz_menu.webp", label: "오솔길 정답", href: "/path_quiz" },
-        {
-          iconImg: "/infos/menu/euphoria_guide_menu.webp",
-          label: "광상 가이드",
-          href: "/euphoria_guide",
-        },
-        {
-          iconImg: "/infos/menu/psycube_guide_menu.webp",
-          label: "의지 육성",
-          href: "/psycube_guide",
-        },
-        {
-          iconImg: "/infos/menu/cash_guide_menu.webp",
-          label: "현질 가이드",
-          href: "/cash_guide",
-        },
-        {
-          iconImg: "/infos/menu/gacha_guide_menu.webp",
-          label: "가챠 가이드",
-          href: "/gacha_guide",
-        },
-        {
-          iconImg: "/infos/menu/newbie_guide_menu.webp",
-          label: "뉴비 가이드",
-          href: "/newbie_guide",
-        },
-      ],
-    },
-  ];
 
   const toggleCategory = (title: string) => {
     setExpandedCategories((prev) =>
@@ -168,7 +53,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
         aria-label="홈으로 이동"
         title="홈으로"
         onClick={() => setIsOpen(false)}
-        className="grid h-10 w-10 place-items-center rounded-md border bg-white text-black dark:bg-black dark:text-white"
+        className="grid h-10 w-10 place-items-center rounded-md border bg-white text-black transition-transform active:scale-95 dark:bg-black dark:text-white"
       >
         🏠
       </Link>
@@ -178,7 +63,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
         aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
         aria-expanded={isOpen}
         aria-controls="hamburger-menu"
-        className="grid h-10 w-10 place-items-center rounded-md border bg-white text-black dark:bg-black dark:text-white"
+        className="grid h-10 w-10 place-items-center rounded-md border bg-white text-black transition-transform active:scale-95 dark:bg-black dark:text-white"
       >
         ☰
       </button>
@@ -188,10 +73,10 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
           id="hamburger-menu"
           role="navigation"
           aria-label="메인 메뉴"
-          className="absolute left-0 top-full mt-2 w-48 rounded-md border bg-white text-black shadow-lg dark:bg-gray-900 dark:text-white sm:w-64"
+          className="absolute left-0 top-full mt-2 w-48 rounded-md border bg-white text-black shadow-lg duration-200 animate-in fade-in zoom-in-95 slide-in-from-top-2 dark:bg-gray-900 dark:text-white sm:w-64"
         >
           <ul className="py-2">
-            {menuCategories.map((category, categoryIndex) => {
+            {HAMBURGER_MENU_CATEGORIES.map((category, categoryIndex) => {
               const isExpanded = expandedCategories.includes(category.title);
 
               return (
@@ -286,7 +171,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                   )}
 
                   {/* 카테고리 구분선 (마지막 카테고리 제외) */}
-                  {categoryIndex < menuCategories.length - 1 && (
+                  {categoryIndex < HAMBURGER_MENU_CATEGORIES.length - 1 && (
                     <hr className="mx-3 my-1 h-px border-0 bg-gray-300 dark:bg-gray-700" />
                   )}
                 </li>

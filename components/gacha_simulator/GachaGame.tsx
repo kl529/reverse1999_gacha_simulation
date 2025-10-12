@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef, useReducer } from "react";
+import { gachaReducer, initialGachaState, SixStarHistoryEntry as ReducerSixStarHistoryEntry } from "@/lib/reducers/gachaReducer";
 import Image from "next/image";
 import { charactersByRarity, Character } from "@/data/characters";
 import { banners, Banner } from "@/data/banners";
@@ -17,10 +18,8 @@ export const isValidGachaCharacterForPool = (char: Character): boolean => {
   return isIncludedInGachaPool(char.version);
 };
 
-interface SixStarHistoryEntry {
-  char: Character;
-  pullNumber: number;
-}
+// SixStarHistoryEntry is now imported from reducer
+type SixStarHistoryEntry = ReducerSixStarHistoryEntry;
 
 export interface EnrichedBanner extends Banner {
   pickup6?: Character;
@@ -80,44 +79,28 @@ export default function GachaGame() {
     )
   );
 
-  // 1) React 상태
-  const [results, setResults] = useState<Character[]>([]);
-  const [totalPulls, setTotalPulls] = useState<number>(0);
-  const [rarityStats, setRarityStats] = useState<{ [key: number]: number }>({
-    2: 0,
-    3: 0,
-    4: 0,
-    5: 0,
-    6: 0,
-  });
-  const [pityCount, setPityCount] = useState<number>(0);
-  const [pickupGuarantee, setPickupGuarantee] = useState<boolean>(false);
-  const [sixStarHistory, setSixStarHistory] = useState<SixStarHistoryEntry[]>([]);
+  // 1) React 상태 - useReducer로 통합
+  const [state, dispatch] = useReducer(gachaReducer, initialGachaState);
   const nickname = "Lyva";
-  const [isLeftOpen, setIsLeftOpen] = useState(false); // 모바일에서 왼쪽 사이드바 펼침 여부
-  const [isRightOpen, setIsRightOpen] = useState(false); // 모바일에서 오른쪽 사이드바 펼침 여부
-  const [isFirstPull, setIsFirstPull] = useState(true); // 첫 뽑기인지 확인하는 상태
-  const [showDoublePick, setShowDoublePick] = useState(false);
-  const [pickupShape, setPickupShape] = useState<string | null>(null); // 이번에 뽑은 픽업캐릭 형상
-  const [pickupRank, setPickupRank] = useState<number | null>(null); // 픽업 상위 몇 %인지
+  const [showDoublePick, setShowDoublePick] = useState(false); // 배너 타입 전환용 (별도 관리)
   const historyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (results.length < 1) return;
+    if (state.results.length < 1) return;
 
     // 🔹 가장 최근에 뽑힌 6성을 찾음 (배열을 역순으로 탐색)
-    const lastSixStar = [...results].reverse().find((c) => c.rarity === 6);
+    const lastSixStar = [...state.results].reverse().find((c) => c.rarity === 6);
     if (!lastSixStar) {
-      if (!pickupShape) {
+      if (!state.pickupShape) {
         // 아직 픽업 6성을 한 번도 못 뽑았음 => 항상 100% 표시
-        setPickupRank(100);
+        dispatch({ type: "UPDATE_PICKUP_INFO", payload: { shape: null, rank: 100 } });
       }
       // pickupShape가 이미 있으면 => 이전 픽업 유지
       // (ex. 일전에 픽업 뽑았는데 지금은 6성 없는 상태)
       else {
         // totalPulls가 늘었을 경우, rank 재계산
-        const rp = getShapeRankPercent(totalPulls, pickupShape);
-        setPickupRank(rp ?? 100);
+        const rp = getShapeRankPercent(state.totalPulls, state.pickupShape);
+        dispatch({ type: "UPDATE_PICKUP_INFO", payload: { shape: state.pickupShape, rank: rp ?? 100 } });
       }
       return;
     }
@@ -132,31 +115,30 @@ export default function GachaGame() {
 
     if (!isPickup) {
       // 6성 있는데 픽뚫 => 이전 pickupShape가 있으면 rank만 재계산
-      if (pickupShape) {
-        const rp = getShapeRankPercent(totalPulls, pickupShape);
-        setPickupRank(rp ?? 100);
+      if (state.pickupShape) {
+        const rp = getShapeRankPercent(state.totalPulls, state.pickupShape);
+        dispatch({ type: "UPDATE_PICKUP_INFO", payload: { shape: state.pickupShape, rank: rp ?? 100 } });
       } else {
         // 여전히 한 번도 픽업 6성 못 뽑은 상태 => 상위 100%
-        setPickupRank(100);
+        dispatch({ type: "UPDATE_PICKUP_INFO", payload: { shape: null, rank: 100 } });
       }
       return;
     }
 
     // 🔹 형상 계산 => sixStarHistory 중 해당 engName 몇번 나왔는지
-    const sameCount = sixStarHistory.filter((h) => h.char.engName === lastSixStar.engName).length;
+    const sameCount = state.sixStarHistory.filter((h) => h.char.engName === lastSixStar.engName).length;
     const shapeStr = getShapeString(sameCount - 1);
 
     // 🔹 상위 % 계산
-    const rp = getShapeRankPercent(totalPulls, shapeStr);
+    const rp = getShapeRankPercent(state.totalPulls, shapeStr);
 
     // 🔹 상태 업데이트 (즉시 UI 반영)
-    setPickupShape(shapeStr);
-    setPickupRank(rp ?? null);
-  }, [results, sixStarHistory, totalPulls, selectedBanner, pickupShape]);
+    dispatch({ type: "UPDATE_PICKUP_INFO", payload: { shape: shapeStr, rank: rp ?? null } });
+  }, [state.results, state.sixStarHistory, state.totalPulls, selectedBanner, state.pickupShape]);
 
   useEffect(() => {
     historyRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [sixStarHistory]);
+  }, [state.sixStarHistory]);
 
   const displayedBanners = useMemo(() => {
     return banners.filter(
@@ -171,7 +153,7 @@ export default function GachaGame() {
     let pickup = 0;
     let nonPickup = 0;
 
-    sixStarHistory.forEach((entry) => {
+    state.sixStarHistory.forEach((entry) => {
       if (selectedBanner.bannerType === "doublePick" && selectedBanner.twoPickup6) {
         if (selectedBanner.twoPickup6.some((c) => c.engName === entry.char.engName)) {
           pickup++;
@@ -188,7 +170,7 @@ export default function GachaGame() {
     });
 
     return { pickupCount: pickup, nonPickupCount: nonPickup };
-  }, [sixStarHistory, selectedBanner]);
+  }, [state.sixStarHistory, selectedBanner]);
 
   // 2) 6성 확률 계산
   const getSixStarRate = (localPity: number) => {
@@ -201,8 +183,8 @@ export default function GachaGame() {
 
   // 4) 6성 기록
   const recordSixStar = (char: Character, pullIndex: number) => {
-    setSixStarHistory((prev) => [{ char, pullNumber: totalPulls + pullIndex + 1 }, ...prev]);
-    toast.success(`🎉 ${totalPulls + pullIndex + 1}번째 토끼로 🏆${char.name}🏆 획득!`);
+    dispatch({ type: "ADD_SIX_STAR_HISTORY", payload: { char, pullNumber: state.totalPulls + pullIndex + 1 } });
+    toast.success(`🎉 ${state.totalPulls + pullIndex + 1}번째 토끼로 🏆${char.name}🏆 획득!`);
   };
 
   /**
@@ -307,18 +289,18 @@ export default function GachaGame() {
    * - 반복이 끝난 후, React 상태에 최종 반영
    */
   const handleGacha = (times: number) => {
-    let localPity = pityCount;
-    let localPickup = pickupGuarantee;
+    let localPity = state.pityCount;
+    let localPickup = state.pickupGuarantee;
 
     const newResults: Character[] = [];
-    const newStats = { ...rarityStats };
+    const newStats = { ...state.rarityStats };
 
     for (let i = 0; i < times; i++) {
       let char: Character | null = null;
 
       // ───────────── 첫 뽑기 로직 ─────────────
       // (만약 첫 뽑기를 5성 확정 등으로 처리하고 싶다면 이 부분에서 로직 구현)
-      if (isFirstPull && i === 0) {
+      if (state.isFirstPull && i === 0) {
         // 예: 첫 뽑기는 5성 확정 (픽업 5성 or 일반 5성)
         char = getRandomFrom([
           ...(selectedBanner.pickup5 ?? []),
@@ -326,7 +308,7 @@ export default function GachaGame() {
         ]);
         // 6성 아니므로 pity 1 증가
         localPity += 1;
-        setIsFirstPull(false);
+        dispatch({ type: "SET_FIRST_PULL", payload: false });
       }
       // ───────────────────────────────
       else {
@@ -358,26 +340,23 @@ export default function GachaGame() {
     }
 
     // 뽑기 후 상태 업데이트
-    setResults(newResults);
-    setTotalPulls((prev) => prev + times);
-    setRarityStats(newStats);
-    setPityCount(localPity);
-    setPickupGuarantee(localPickup);
+    dispatch({
+      type: "GACHA_PULL",
+      payload: {
+        newResults,
+        times,
+        newPity: localPity,
+        newPickupGuarantee: localPickup,
+        newStats,
+      },
+    });
   };
 
   /**
    * 7) 전체 리셋
    */
   const resetAll = () => {
-    setResults([]);
-    setTotalPulls(0);
-    setRarityStats({ 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 });
-    setPityCount(0);
-    setPickupGuarantee(false);
-    setSixStarHistory([]);
-    setIsFirstPull(true); // 초기화 후 첫 뽑기에서도 5성 확정
-    setPickupShape(null);
-    setPickupRank(null);
+    dispatch({ type: "RESET_ALL" });
   };
 
   /**
@@ -385,7 +364,6 @@ export default function GachaGame() {
    */
   const handleBannerChange = (bannerId: string) => {
     resetAll(); // ✅ 배너 변경 시 모든 상태 초기화
-    setIsFirstPull(true);
 
     const newBanner = banners.find((b) => b.id === bannerId) || banners[0];
 
@@ -558,14 +536,14 @@ export default function GachaGame() {
       className={`/* 다크 모드 시 배경/글자색 */ relative mx-auto flex h-screen w-full max-w-screen-2xl flex-col items-start gap-2 bg-gray-100 p-2 text-black dark:bg-gray-900 dark:text-gray-100 lg:flex-row lg:gap-4 lg:p-6`}
     >
       {/* 🌟 왼쪽 패널 (통계) */}
-      <OffCanvas isOpen={isLeftOpen} onClose={() => setIsLeftOpen(false)} position="left">
+      <OffCanvas isOpen={state.isLeftOpen} onClose={() => dispatch({ type: "TOGGLE_LEFT_SIDEBAR" })} position="left">
         <MainGachaStats
-          rarityStats={rarityStats}
-          totalPulls={totalPulls}
-          pickupShape={pickupShape}
-          pickupRank={pickupRank}
-          pityCount={pityCount}
-          pickupGuarantee={pickupGuarantee}
+          rarityStats={state.rarityStats}
+          totalPulls={state.totalPulls}
+          pickupShape={state.pickupShape}
+          pickupRank={state.pickupRank}
+          pityCount={state.pityCount}
+          pickupGuarantee={state.pickupGuarantee}
           getSixStarRate={getSixStarRate}
           selectedBanner={selectedBanner}
           showDoublePick={showDoublePick}
@@ -577,9 +555,9 @@ export default function GachaGame() {
       </OffCanvas>
 
       {/* 🌟 오른쪽 패널 (6성 히스토리) */}
-      <OffCanvas isOpen={isRightOpen} onClose={() => setIsRightOpen(false)} position="right">
+      <OffCanvas isOpen={state.isRightOpen} onClose={() => dispatch({ type: "TOGGLE_RIGHT_SIDEBAR" })} position="right">
         <MainSixStarHistory
-          sixStarHistory={sixStarHistory}
+          sixStarHistory={state.sixStarHistory}
           selectedBanner={selectedBanner}
           pickupCount={pickupCount}
           nonPickupCount={nonPickupCount}
@@ -592,12 +570,12 @@ export default function GachaGame() {
       {/* ===================================== */}
       <aside className="hidden h-full flex-shrink-0 overflow-y-auto lg:flex lg:w-[22%] lg:max-w-xs">
         <MainGachaStats
-          rarityStats={rarityStats}
-          totalPulls={totalPulls}
-          pickupShape={pickupShape}
-          pickupRank={pickupRank}
-          pityCount={pityCount}
-          pickupGuarantee={pickupGuarantee}
+          rarityStats={state.rarityStats}
+          totalPulls={state.totalPulls}
+          pickupShape={state.pickupShape}
+          pickupRank={state.pickupRank}
+          pityCount={state.pityCount}
+          pickupGuarantee={state.pickupGuarantee}
           getSixStarRate={getSixStarRate}
           selectedBanner={selectedBanner}
           showDoublePick={showDoublePick}
@@ -657,7 +635,7 @@ export default function GachaGame() {
 
           {/* 뽑기 결과 (스크롤 가능) */}
           <div className="w-full flex-grow overflow-y-auto">
-            <GachaResults results={results} />
+            <GachaResults results={state.results} />
           </div>
         </div>
       </main>
@@ -667,7 +645,7 @@ export default function GachaGame() {
       {/* ===================================== */}
       <aside className="hidden h-full flex-shrink-0 overflow-y-auto lg:flex lg:w-[22%] lg:max-w-xs">
         <MainSixStarHistory
-          sixStarHistory={sixStarHistory}
+          sixStarHistory={state.sixStarHistory}
           selectedBanner={selectedBanner}
           pickupCount={pickupCount}
           nonPickupCount={nonPickupCount}
@@ -677,14 +655,14 @@ export default function GachaGame() {
 
       {/* 🟢 모바일 전용 Floating 버튼 (사이드바 열기) */}
       <button
-        onClick={() => setIsLeftOpen((prev) => !prev)}
+        onClick={() => dispatch({ type: "TOGGLE_LEFT_SIDEBAR" })}
         className="fixed bottom-4 left-4 z-[9999] flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-4xl font-bold text-white shadow-xl transition hover:bg-green-600 lg:hidden"
       >
         📊
       </button>
 
       <button
-        onClick={() => setIsRightOpen((prev) => !prev)}
+        onClick={() => dispatch({ type: "TOGGLE_RIGHT_SIDEBAR" })}
         className="fixed bottom-4 right-4 z-[9999] flex h-16 w-16 items-center justify-center rounded-full bg-red-500 text-4xl font-bold text-white shadow-xl transition hover:bg-red-600 lg:hidden"
       >
         📒
