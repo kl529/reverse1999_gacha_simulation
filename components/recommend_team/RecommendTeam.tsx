@@ -25,6 +25,7 @@ import {
 import { getDisplayVersion, isNewerVersion } from "@/data/version";
 import { euphoriaList } from "@/data/euphoria";
 import { RecommendTeam } from "@/data/recommend_team";
+import { storage, STORAGE_KEYS } from "@/lib/storage";
 
 const filteredCharacters = Object.values(charactersByRarity)
   .flat()
@@ -73,14 +74,19 @@ export default function RecommendTeamPage() {
   const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const hasSeen = localStorage.getItem("seenRecommendIntro");
-      if (!hasSeen) {
-        setShowIntroDialog(true);
-        localStorage.setItem("seenRecommendIntro", "true");
-      }
+    const hasSeen = storage.get<boolean>(STORAGE_KEYS.SEEN_RECOMMEND_INTRO);
+    if (!hasSeen) {
+      setShowIntroDialog(true);
     }
   }, []);
+
+  // 다이얼로그를 닫을 때 로컬 스토리지에 저장
+  const handleCloseIntroDialog = (open: boolean) => {
+    setShowIntroDialog(open);
+    if (!open) {
+      storage.set(STORAGE_KEYS.SEEN_RECOMMEND_INTRO, true);
+    }
+  };
 
   // Toast 표시 함수
   const showToastMessage = (message: string) => {
@@ -417,7 +423,7 @@ export default function RecommendTeamPage() {
       {/* Toast 알림 */}
       <Toast message={toastMessage} isVisible={showToast} onClose={() => setShowToast(false)} />
 
-      <Dialog open={showIntroDialog} onOpenChange={setShowIntroDialog}>
+      <Dialog open={showIntroDialog} onOpenChange={handleCloseIntroDialog}>
         <DialogContent className="max-h-[90vh] w-[90vw] max-w-xl overflow-y-auto sm:max-w-2xl lg:max-w-4xl">
           <DialogHeader>
             <DialogTitle className="text-center font-bold">추천 조합 사용법</DialogTitle>

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import { newbieGuideSteps } from "@/data/newbie_guide";
+import { storage, STORAGE_KEYS } from "@/lib/storage";
 
 export default function NewbieGuide() {
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
@@ -11,9 +12,9 @@ export default function NewbieGuide() {
 
   // localStorage에서 완료된 단계 불러오기
   useEffect(() => {
-    const saved = localStorage.getItem("newbieGuideProgress");
+    const saved = storage.get<number[]>(STORAGE_KEYS.NEWBIE_GUIDE_PROGRESS);
     if (saved) {
-      setCompletedSteps(JSON.parse(saved));
+      setCompletedSteps(saved);
     }
   }, []);
 
@@ -24,7 +25,7 @@ export default function NewbieGuide() {
       : [...completedSteps, stepId];
 
     setCompletedSteps(newCompleted);
-    localStorage.setItem("newbieGuideProgress", JSON.stringify(newCompleted));
+    storage.set(STORAGE_KEYS.NEWBIE_GUIDE_PROGRESS, newCompleted);
   };
 
   const toggleCollapse = (stepId: number) => {

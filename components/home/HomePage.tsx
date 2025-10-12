@@ -83,10 +83,6 @@ export default function HomePage() {
           </h2>
           <p className="mb-8 text-black dark:text-white">당신이 폭풍우를 이겨낼 수 있도록..</p>
 
-          <div className="mb-6 block w-full px-10 md:hidden">
-            <Carousel />
-          </div>
-
           <div className="grid w-full max-w-7xl grid-cols-1 gap-10 px-10 md:px-20 lg:grid-cols-3 lg:px-6">
             <CardBox
               title="놀이터"
@@ -206,7 +202,8 @@ export default function HomePage() {
             />
           </div>
 
-          <div className="mt-6 hidden w-full max-w-7xl px-10 md:block md:px-20 lg:px-6">
+          {/* 캐러셀 - 모든 화면 크기에서 하단에 표시 */}
+          <div className="mt-6 w-full max-w-7xl px-10 md:px-20 lg:px-6">
             <Carousel />
           </div>
         </main>
@@ -488,13 +485,13 @@ function CardBox({ title, subTitle, items, onItemClick }: CardBoxProps) {
       ? "grid-cols-2"
       : items.length === 3
         ? "grid-cols-3"
-        : "grid-cols-2 sm:grid-cols-5 lg:grid-cols-5";
+        : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
 
   return (
     <div className="flex w-full flex-col items-center rounded-lg bg-gray-900/60 px-4 py-5 sm:px-6 lg:px-0">
       <h3 className="mb-1 text-center text-xl font-bold">{title}</h3>
       <p className="mb-4 text-center text-sm">{subTitle}</p>
-      <div className={`grid ${gridColsClass} h-full w-full items-center justify-center gap-1`}>
+      <div className={`grid ${gridColsClass} h-full w-full items-center justify-center gap-2 sm:gap-3 lg:gap-4`}>
         {items.map((item: CardItem, idx: number) => (
           <LinkBox
             key={idx}

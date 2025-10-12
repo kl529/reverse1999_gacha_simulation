@@ -1,7 +1,14 @@
 import HomePage from "@/components/home/HomePage";
+import { WebsiteStructuredData, VideoGameStructuredData } from "@/components/etc/StructuredData";
 
 export default function Home() {
-  return <HomePage />;
+  return (
+    <>
+      <WebsiteStructuredData />
+      <VideoGameStructuredData />
+      <HomePage />
+    </>
+  );
 }
 
 export const metadata = {

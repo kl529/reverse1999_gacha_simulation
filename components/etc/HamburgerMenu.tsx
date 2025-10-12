@@ -165,6 +165,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
     <div ref={menuRef} className="fixed left-4 top-4 z-50 flex gap-2">
       <Link
         href="/"
+        aria-label="홈으로 이동"
         title="홈으로"
         onClick={() => setIsOpen(false)}
         className="grid h-10 w-10 place-items-center rounded-md border bg-white text-black dark:bg-black dark:text-white"
@@ -174,13 +175,21 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
+        aria-expanded={isOpen}
+        aria-controls="hamburger-menu"
         className="grid h-10 w-10 place-items-center rounded-md border bg-white text-black dark:bg-black dark:text-white"
       >
         ☰
       </button>
 
       {isOpen && (
-        <div className="absolute left-0 top-full mt-2 w-48 rounded-md border bg-white text-black shadow-lg dark:bg-gray-900 dark:text-white sm:w-64">
+        <nav
+          id="hamburger-menu"
+          role="navigation"
+          aria-label="메인 메뉴"
+          className="absolute left-0 top-full mt-2 w-48 rounded-md border bg-white text-black shadow-lg dark:bg-gray-900 dark:text-white sm:w-64"
+        >
           <ul className="py-2">
             {menuCategories.map((category, categoryIndex) => {
               const isExpanded = expandedCategories.includes(category.title);
@@ -190,6 +199,8 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                   {/* 카테고리 헤더 */}
                   <button
                     onClick={() => toggleCategory(category.title)}
+                    aria-expanded={isExpanded}
+                    aria-label={`${category.title} ${isExpanded ? "접기" : "펼치기"}`}
                     className="flex w-full items-center justify-between px-3 py-2 text-left font-semibold hover:bg-gray-100 dark:hover:bg-gray-800"
                   >
                     <span className="text-sm">{category.title}</span>
@@ -198,6 +209,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
+                      aria-hidden="true"
                     >
                       <path
                         strokeLinecap="round"
@@ -281,7 +293,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
               );
             })}
           </ul>
-        </div>
+        </nav>
       )}
     </div>
   );

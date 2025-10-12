@@ -9,6 +9,8 @@ import ThemeProvider from "@/components/etc/ThemeProvider";
 import HamburgerConditional from "@/components/etc/HamburgerConditional";
 import ThemeToggle from "@/components/etc/ThemeToggle";
 import { InstallPrompt } from "@/components/etc/InstallPrompt";
+import ErrorBoundary from "@/components/etc/ErrorBoundary";
+import { NetworkStatusToast } from "@/components/etc/NetworkStatusToast";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const isProd = process.env.NODE_ENV === "production";
@@ -46,15 +48,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <ThemeProvider>
           <ThemeToggle />
-          <ModalProvider>
-            <SecurityWrapper>
-              <GlobalLoadingManager />
-              <HamburgerConditional />
-              <CustomCursor />
-              <InstallPrompt />
-              {children}
-            </SecurityWrapper>
-          </ModalProvider>
+          <ErrorBoundary>
+            <ModalProvider>
+              <SecurityWrapper>
+                <GlobalLoadingManager />
+                <HamburgerConditional />
+                <CustomCursor />
+                <InstallPrompt />
+                <NetworkStatusToast />
+                {children}
+              </SecurityWrapper>
+            </ModalProvider>
+          </ErrorBoundary>
         </ThemeProvider>
       </body>
     </html>

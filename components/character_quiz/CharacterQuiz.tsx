@@ -20,6 +20,7 @@ import {
 import { useMemo, useCallback } from "react";
 import { version } from "@/data/version";
 import { getDisplayVersion } from "@/data/version";
+import { storage, STORAGE_KEYS } from "@/lib/storage";
 
 export default function CharacterQuiz() {
   // (B) 열림 상태 (Set)
@@ -95,12 +96,11 @@ export default function CharacterQuiz() {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const hasVisited = localStorage.getItem("hasSeenHelpModal");
-      if (!hasVisited) {
-        setShowHelpModal(true);
-        localStorage.setItem("hasSeenHelpModal", "true");
-      }
+    const hasVisited = storage.get<boolean>(STORAGE_KEYS.HAS_SEEN_HELP_MODAL);
+
+    if (!hasVisited) {
+      setShowHelpModal(true);
+      storage.set(STORAGE_KEYS.HAS_SEEN_HELP_MODAL, true);
     }
   }, []);
 
