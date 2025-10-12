@@ -19,7 +19,7 @@ export interface Enemy {
 interface ClearedCharacter {
   character_id: number;
   euphoria?: boolean;
-  psycube_id: number;
+  psycube_id?: number;
 }
 
 interface RecommendedTeam {
@@ -929,6 +929,55 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         blueprint: "operatic_reflection",
         player_name: "Lyva",
       },
+      {
+        characters: [
+          {
+            character_id: 22, // 곡랑
+            psycube_id: 42,
+          },
+          {
+            character_id: 13, // 피클즈
+            euphoria: true,
+            psycube_id: 29,
+          },
+          {
+            character_id: 10, // 뉴바벨
+            euphoria: true,
+            psycube_id: 38,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 15,
+          },
+        ],
+        description: "다른 힐러 사용 시 무장해제를 조심할 것 + 뉴바벨 대신 에즈라도 가능",
+        blueprint: "ashen_beast",
+        player_name: "스바토모",
+      },
+      {
+        characters: [
+          {
+            character_id: 48, // 카산드라
+            psycube_id: 80,
+          },
+          {
+            character_id: 128, // 알렉시오스
+            psycube_id: 43,
+          },
+          {
+            character_id: 101, // 소네트
+            psycube_id: 58,
+          },
+          {
+            character_id: 8, // 메디슨 포켓
+            euphoria: true,
+            psycube_id: 33,
+          },
+        ],
+        description: "(조건)알렉시오스3통+소네트버프유지+113카산드라+광상메포힐은 죽기직전에만 씀",
+        blueprint: "ashen_beast",
+        player_name: "jodiake",
+      },
     ],
   },
   "200m-2": {
@@ -1002,6 +1051,31 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         description: "안조 & 37 계약 매혹으로 처리",
         blueprint: "star_of_misfortune",
         player_name: "Lyva",
+      },
+      {
+        characters: [
+          {
+            character_id: 18, // 37
+            psycube_id: 18,
+          },
+          {
+            character_id: 29, // 루시
+            euphoria: true,
+            psycube_id: 51,
+          },
+          {
+            character_id: 21, // 에즈라
+            psycube_id: 61,
+          },
+          {
+            character_id: 120, // 예니세이
+            psycube_id: 55,
+          },
+        ],
+        description:
+          "37+루시(대여)로 딜합니다. 다른 추공천체딜러면 아무나 37과 교체가능합니다. 나머지자리는 2통이상 아무나 넣어주시면 무난합니다.",
+        blueprint: "star_of_misfortune",
+        player_name: "jodiake",
       },
     ],
   },
@@ -1127,6 +1201,32 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         description:
           "카카니아, 중독덱, 보이저가 없어서 쓴 덱(원형 청사진 없이도 가능) 레콜레타의 깡딜과 파투투의 생존 서포팅, 멜라의 열정 강탈로 깰 수 있음",
         player_name: "대굴레오",
+      },
+      {
+        characters: [
+          {
+            character_id: 47, // 에지오
+            psycube_id: 18,
+          },
+          {
+            character_id: 15, // 제시카
+            euphoria: true,
+            psycube_id: 43,
+          },
+          {
+            character_id: 4, // 소더비
+            euphoria: true,
+            psycube_id: 55,
+          },
+          {
+            character_id: 107, // 콘블룸
+            psycube_id: 33,
+          },
+        ],
+        description:
+          "에지오(선장의검+클리버)+소더비유합관리+초반에 콘블룸궁미리만들어두고 3~4턴에 사용",
+        blueprint: "star_of_misfortune",
+        player_name: "jodiake",
       },
     ],
   },
@@ -1588,7 +1688,27 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "특별한 기믹 없이, 아무 체급 좋은 덱을 들고가면 무난함.",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 303, // 에일리언 T
+          },
+          {
+            character_id: 111, // 사츠키
+          },
+          {
+            character_id: 211, // 무아상
+          },
+          {
+            character_id: 105, // 베이비블루
+          },
+        ],
+        description: "캐릭터들의 술식을 돌아가면서 쓰면 됩니다!!",
+        blueprint: "operatic_reflection",
+        player_name: "해무기",
+      },
+    ],
   },
   "300m-2": {
     id: "300m-2",
@@ -1694,7 +1814,31 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "제어 내성이 없어서 제어를 활용할 수도 있고, 쉬움",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 31, // 머큐리아
+            psycube_id: 50,
+          },
+          {
+            character_id: 35, // 안조 날라
+            psycube_id: 67,
+          },
+          {
+            character_id: 36, // 로페라
+            psycube_id: 61,
+          },
+          {
+            character_id: 43, // 레콜레타
+            psycube_id: 58,
+          },
+        ],
+        description: "상성캐릭터 들고가는것이 매우매우중요",
+        blueprint: "operatic_reflection",
+        player_name: "디케광상을무척바라는포첼",
+      },
+    ],
   },
   "320m": {
     id: "320m",
@@ -1729,14 +1873,39 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
     strategy: {
       overview: "",
       details: [
-        "4명의 봉투중, 진짜 쓰레기 봉투 보스를 찾아 잡으면 종료되는 스테이지",
+        "4명의 봉투 중, 진짜 쓰레기 봉투 보스를 찾아 잡으면 종료되는 스테이지",
         "홀수 턴마다 적들은 서로 위치를 바꿈. 그 후에 적 3명은 공격하고, 1명은 공격을 안할텐데, 공격을 안한 봉투가 진짜",
-        "처음에 순서 바뀌고, 타겟팅(클릭)을 해두면 자리가 바뀌어도 타게팅이 지속되서 외울 필요가 없음",
+        "처음에 순서 바뀌고, 타겟팅(클릭)을 해두면 자리가 바뀌어도 타겟팅이 지속되서 외울 필요가 없음",
         "스테이지 체급은 높지 않아 힘들지는 않지만, 귀찮은 정도",
         "한번에 모두 죽이는 전략도 가능함.",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 4, // 소더비
+            euphoria: true,
+            psycube_id: 55,
+          },
+          {
+            character_id: 30, // 카카니아
+            psycube_id: 57,
+          },
+          {
+            character_id: 33, // 튜즈데이
+            psycube_id: 6,
+          },
+          {
+            character_id: 37, // 윌로우
+            psycube_id: 23,
+          },
+        ],
+        description: "한명만 우선 줘팬다,사실 독덱 안쓰는게 더 좋을것같음",
+        blueprint: "mountain_ghost",
+        player_name: "포첼(디케광상좀)",
+      },
+    ],
   },
   "330m": {
     id: "330m",
@@ -1839,7 +2008,31 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "가장 강한 덱으로 치면 큰 어려움 없이 클리어 가능",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 108, // 디케
+            psycube_id: 53,
+          },
+          {
+            character_id: 35, // 안조 날라
+            psycube_id: 67,
+          },
+          {
+            character_id: 31, // 머큐리아
+            psycube_id: 50,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 15,
+          },
+        ],
+        description: "디케는 꼭대려가야함",
+        blueprint: "operatic_reflection",
+        player_name: "디케광상좀(포첼)",
+      },
+    ],
   },
   "350m-1": {
     id: "350m-1",
@@ -1917,7 +2110,34 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "잡몹을 죽이면 제시카 체력이 20% 깎이니 참고하면서 골고루 잡으면 쉽게 클리어 가능",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 45, // 히사베스
+            psycube_id: 36,
+          },
+          {
+            character_id: 12, // 멜라니아
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 26, // 빌라
+            psycube_id: 16,
+          },
+          {
+            character_id: 1, // 드루비스
+            euphoria: true,
+            psycube_id: 68,
+          },
+        ],
+        description:
+          "제시카 페이즈 넘길때 석면 비늘이 걸려있으면 석면 비늘이 증발해서 예열을 다시 해야하므로 페이즈는 멜라니아가 넘겨주는게 좋음",
+        blueprint: "primitive_urge",
+        player_name: "galliv",
+      },
+    ],
   },
   "350m-3": {
     id: "350m-3",
@@ -1927,7 +2147,7 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
     ],
     enemyEffect: [
       "모든 아군이 받는 고정 피해 100% 감소",
-      "아군이 정신 피해를 받을 때마다 모든 아군의 현실 방어 10% 증가, 3턴간 지속, 중첩 가능. 아군이 현실 피해를 받을 때마다 모든 아군의 정신 방어 10% 증가, 3턴가 지속, 중첩가능",
+      "아군이 정신 피해를 받을 때마다 모든 아군의 현실 방어 10% 증가, 3턴간 지속, 중첩 가능. 아군이 현실 피해를 받을 때마다 모든 아군의 정신 방어 10% 증가, 3턴간 지속, 중첩가능",
       "자신 퇴장 시 모든 아군이 [총력] 3스택 획득",
     ],
     teamEffect: [],
@@ -1962,7 +2182,57 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "위에 서술했던 대로, 꽤나 피감이나 딜타임 조건이 많아서 스펙을 조금 요구하는 편이고 힘들수도 있음.",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 45, // 히사베스
+            psycube_id: 36,
+          },
+          {
+            character_id: 127, // 네임데이
+            psycube_id: 27,
+          },
+          {
+            character_id: 12, // 멜라니아
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 34,
+          },
+        ],
+        description:
+          "원시적 기쁨은 켜져있어도 에너지가 4이상 있을때마다 눌러줘서(안눌러지면 다음턴에) 버프 꺼지지 않게 하는게 중요",
+        blueprint: "primitive_urge",
+        player_name: "키브",
+      },
+      {
+        characters: [
+          {
+            character_id: 41, // 양월
+            psycube_id: 43,
+          },
+          {
+            character_id: 24, // 이졸데
+            psycube_id: 29,
+          },
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 41,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 15,
+          },
+        ],
+        description:
+          "현실 피해 덱이라면 지팡이, 정신 피해덱이라면 갑옷을 잡고 본체 딜 4턴 7턴에 재소환하니 딜 조절해서 3턴 6턴에는 죽이면 안됨 ",
+        blueprint: "star_of_misfortune",
+        player_name: "galliv",
+      },
+    ],
   },
   "360m": {
     id: "360m",
@@ -2027,7 +2297,7 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
     strategy: {
       overview: "",
       details: [
-        "슬라우치 햇이 메인 딜러여서, 제일 유의해야함. 절대 술식을  사용하지 못하게 해야함",
+        "슬라우치 햇이 메인 딜러여서, 제일 유의해야함. 절대 술식을 사용하지 못하게 해야함",
         "광역딜러로 다같이 골고루 공격하는게 좋은데, 안되면 슬라우치 햇이라도 먼저 잡아야함",
         "적들이 열정수급이 빨라서, 빠르게 클리어하는 것을 추천",
       ],
@@ -2145,14 +2415,38 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
       details: [
         "목표는 벽 보스 2개를 잡는 것이고, 비호의 정령이 매턴 전체 리필됨",
         "비호의 정령은 체력이 5이고, 모든 데미지를 1로 받으며, 매턴 체력을 모두 회복하고, 살아있으면 나머지 적들이 모두 공격을 회피하고, 퇴장시 아군 신기한 빛 + 1",
-        "벽 보스는 3회 공격할때마다 강력한 공격을히고, 신기한 빛을 3 달성하면 강력한 공격을 함. 또한 퇴장시 전체 기절을 부여",
+        "벽 보스는 3회 공격할때마다 강력한 공격을하고, 신기한 빛을 3 달성하면 강력한 공격을 함. 또한 퇴장시 전체 기절을 부여",
         "보통 오른쪽 벽을 먼저 잡는게 좋고, 최대한 한턴에 보스 둘을 같이 잡는게 좋음. 한개만 잡으면 다음턴부터 비호의 정령이 2마리씩 리필됨.",
-        "3턴마다 전체 기적을 걸고, 힐량도 감소되어서 정화/면역 및 힐량이 높은 캐릭들이 필수로 요구됨",
+        "3턴마다 전체 기절을 걸고, 힐량도 감소되어서 정화/면역 및 힐량이 높은 캐릭들이 필수로 요구됨",
         "비호의 정령을 쉽게 잡기 위해, 타수가 많으면 좋기에, 추가공격 & 계시 조합들이 추천됨. (상성상으로도 유리)",
         "37이나 플러터 페이지는 타수가 많아서 비호의 정령을 잡기 좋음.",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 40,
+          },
+          {
+            character_id: 18, // 37
+            psycube_id: 18,
+          },
+          {
+            character_id: 41, // 양월
+            psycube_id: 43,
+          },
+          {
+            character_id: 46, // 키페리나
+            psycube_id: 71,
+          },
+        ],
+        description: "",
+        blueprint: "star_of_misfortune",
+        player_name: "Ava",
+      },
+    ],
   },
   "400m-2": {
     id: "400m-2",
@@ -2187,12 +2481,40 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "버프가 있을때마다 주는 피해 증가, 받는 피해 감소가 생기기 때문에, 광상 피클즈 처럼 버프 해제 요원이 있으면 난이도가 내려감",
         "보스는 단일 공격을 받으면 반격을 진행하는데, 분신들도 반격을 따라하기때문에 한번에 4번 맞을 수도 있음",
         "분신들은 모든 보스의 행동을 따라하고, 아군이 체력을 잃으면(자해를 하면) 분신들의 피가 깎임.",
-        "면도날을 무선적으로 공략할수도 있고, 분신들만 때려잡으면서 광격공격으로 공략하는 방법도 있음",
+        "면도날을 우선적으로 공략할수도 있고, 분신들만 때려잡으면서 광역공격으로 공략하는 방법도 있음",
         "분신들이 많이 쌓였을때, 술식 4연타는 꽤나 아프므로 틈틈히 분신들을 잡거나 대비책을 세워야함.",
         "암석덱을 잘 맞췄다면 무난하게 클리어가능하고, 스푸트니크 같은 열정감소 기믹을 사용할 수도 있음",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 9, // 이터니티
+            euphoria: true,
+            psycube_id: 3,
+          },
+          {
+            character_id: 10, // 뉴바벨
+            euphoria: true,
+            psycube_id: 38,
+          },
+          {
+            character_id: 13, // 피클즈
+            euphoria: true,
+            psycube_id: 25,
+          },
+          {
+            character_id: 28, // 제멜바이스
+            euphoria: true,
+            psycube_id: 20,
+          },
+        ],
+        description: "400-2 제멜이 주요딜, 다른파츠는 보조+힐",
+        blueprint: "ashen_beast",
+        player_name: "Ava",
+      },
+    ],
   },
   "400m-3": {
     id: "400m-3",
@@ -2205,7 +2527,7 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
       "전투 진입 시 적군 필드에 존재하는 자연 영감 캐릭터 1명당 전쟁 노역자의 최대 HP 25% 증가",
     ],
     teamEffect: [
-      "턴 시작 시 랜덤으로 아군 캐릭터 1명이 [폭로] 획득, 1턴간 지속. 랜덤으로 아군 캐릭터 1명이 [코일] 획득, 1턴간 지속. 랜덤으로 캐릭터 1명이 [수액관] 획득, 1턴간 지속.",
+      "턴 시작 시 랜덤으로 아군 캐릭터 1명이 [폭로] 획득, 1턴간 지속. 랜덤으로 아군 캐릭터 1명이 [코일] 획득, 1턴간 지속. 랜덤으로 아군 캐릭터 1명이 [수액관] 획득, 1턴간 지속.",
     ],
     enemies: [
       {
@@ -2236,7 +2558,32 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "의료 상자를 잡으면 체력회복이 잘되서 힐러는 필요없고, 최대한 보스의 술식을 막고 딜 조절하는 것이 중요함.",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 11, // 보이저
+            euphoria: true,
+            psycube_id: 4,
+          },
+          {
+            character_id: 29, // 루시
+            psycube_id: 51,
+          },
+          {
+            character_id: 215, // 화이트럼
+            psycube_id: 20,
+          },
+          {
+            character_id: 50, // 울리히
+            psycube_id: 74,
+          },
+        ],
+        description: "",
+        blueprint: "mountain_ghost",
+        player_name: "Ava",
+      },
+    ],
   },
   "400m-4": {
     id: "400m-4",
@@ -2246,7 +2593,7 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
     ],
     enemyEffect: ["전투 진입 및 3턴 시작 시마다 행동 횟수 +1"],
     teamEffect: [
-      "턴마다 1번째 최중 실식을 시전한 캐릭터가 이후 3턴간 주는 피해 50% 감소",
+      "턴마다 1번째 최종 술식을 시전한 캐릭터가 이후 3턴간 주는 피해 50% 감소",
       "턴 시작 시 아군 캐릭터가 보유한 [산만]이 6스택 이상일 경우 1턴간 [석화] 진입, [산만] 2스택 차감",
     ],
     enemies: [
@@ -2263,14 +2610,92 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "보스에게 [속성감소][상태이상]이 많이 걸려있을 수록 살살 때림. 최대한 많이 걸면서 진행하는 것이 기믹의 핵심",
         "보스는 전투 진입 및 3턴마다 행동을 2번함. 또한 술식이 아닌 공격을 받으면 공격자에게 [산만] 1스택 부여 (산만 스택 관리 안하면 석화 걸림)",
         "거의 매턴, 2턴후에 터지는 폭탄쫄몹 / 3턴후에 터지는 폭탄 쫄몹을 랜덤으로 1개 소환하고, 체력이 50%보다 낮으면 2마리씩 소환함.",
-        "폭탄은 턴수가 지나고 폭팔하는데, 체력이 50%이하이면 덜 아프게 때리니 참고",
+        "폭탄은 턴수가 지나고 폭발하는데, 체력이 50%이하이면 덜 아프게 때리니 참고",
         "보스는 술식 데미지를 더 받고, 고정피해 감소와 일반 주문 공격 피해 감면버프가 상시 유지인데, 최종술식을 누적 3회 받으면 해제됨",
         "석화 / 봉인 / 유혹 / 열정감소 내성이 부실해서, 제어를 잘 활용하는 것도 중요함",
         "기믹상 주로 술식덱이나, 상태이상 덱으로 깨는 것이 유리하고 청사진은 영혼보스나 야수보스가 유리함",
         "보스가 꽤나 단단해서, 턴수가 늘어져도 딜만 누적시키면 클리어가능",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 8, // 메디슨 포켓
+            euphoria: true,
+            psycube_id: 15,
+          },
+          {
+            character_id: 12, // 멜라니아
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 30, // 카카니아
+            psycube_id: 57,
+          },
+          {
+            character_id: 43, // 레콜레타
+            psycube_id: 58,
+          },
+        ],
+        description: "",
+        blueprint: "primitive_urge",
+        player_name: "galliv",
+      },
+      {
+        characters: [
+          {
+            character_id: 126, // 로거헤드
+            psycube_id: 70,
+          },
+          {
+            character_id: 42, // 누아르
+            psycube_id: 43,
+          },
+          {
+            character_id: 107, // 콘블룸
+            euphoria: true,
+            psycube_id: 58,
+          },
+          {
+            character_id: 1, // 드루비스
+            euphoria: true,
+            psycube_id: 67,
+          },
+        ],
+        description:
+          "해파리를 콘블룸 광상효과빨로(미공격한 적군에게 쇠약 부여) 맞고 버티는 기전이니 자폭 카운트다운 1일 때에는 감독 1스 쓰지 말 것(쇠약 스택이 전부 이동함)",
+        blueprint: "primitive_urge",
+        player_name: "Boo",
+      },
+      {
+        characters: [
+          {
+            character_id: 45, // 히사베스
+            psycube_id: 36,
+          },
+          {
+            character_id: 1, // 드루비스
+            euphoria: true,
+            psycube_id: 13,
+          },
+          {
+            character_id: 12, // 멜라니아
+            euphoria: true,
+            psycube_id: 56,
+          },
+          {
+            character_id: 8, // 메디슨 포켓
+            euphoria: true,
+            psycube_id: 69,
+          },
+        ],
+        description: "",
+        blueprint: "primitive_urge",
+        player_name: "Ava",
+      },
+    ],
   },
   // "410m": {
   //   id: "410m",

@@ -186,10 +186,21 @@ export default function ReveriesInTheRainDetail({ floorId }: ReveriesInTheRainDe
                           key={enemy.id}
                           className="flex flex-grow basis-[150px] items-center justify-center"
                         >
-                          <div className="flex flex-col items-center">
+                          <div className="flex flex-col items-center gap-1">
                             {enemy.type === "boss" && <span className="h-6">👑</span>}
                             {enemy.type !== "boss" && <span className="h-6" />}
-                            <h5 className="text-sm font-semibold">{enemy.name}</h5>
+                            <div className="flex items-center gap-2">
+                              <h5 className="text-sm font-semibold">{enemy.name}</h5>
+                              {enemy.inspiration && (
+                                <Image
+                                  src={`/infos/inspiration/${enemy.inspiration}.webp`}
+                                  alt={enemy.inspiration}
+                                  width={20}
+                                  height={20}
+                                  className="inline-block"
+                                />
+                              )}
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -228,10 +239,13 @@ export default function ReveriesInTheRainDetail({ floorId }: ReveriesInTheRainDe
                   <div className="mb-4 w-full overflow-hidden">
                     <div className="grid w-full grid-cols-4 gap-1 md:gap-2">
                       {team.characters.map((char) => {
-                        const character = charactersByRarity[6].find(
-                          (c) => c.id === char.character_id
-                        );
-                        const psycube = psycube_list.find((p) => p.id === char.psycube_id);
+                        // 모든 등급에서 캐릭터 찾기
+                        const character = Object.values(charactersByRarity)
+                          .flat()
+                          .find((c) => c.id === char.character_id);
+                        const psycube = char.psycube_id
+                          ? psycube_list.find((p) => p.id === char.psycube_id)
+                          : null;
 
                         return (
                           <div key={char.character_id} className="flex flex-col items-center">
@@ -267,24 +281,29 @@ export default function ReveriesInTheRainDetail({ floorId }: ReveriesInTheRainDe
                                   </div>
                                 )}
                                 <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[8px] text-white md:text-[10px]">
-                                  v{character?.version}
+                                  v{character?.version === "2.75" ? "콜라보" : character?.version}
                                 </div>
                               </div>
                             </Link>
                             <span className="text-xs font-medium md:text-sm">
                               {character?.name}
                             </span>
-                            <Link href={`/psycube_guide/${psycube?.id}`} className="cursor-pointer">
-                              <div className="w-[40px] md:w-[60px]">
-                                <Image
-                                  src={`/infos/psycube_img/${psycube?.engName}.webp`}
-                                  alt={psycube?.name ?? "psycube"}
-                                  width={60}
-                                  height={60}
-                                  className="h-auto w-full rounded-lg"
-                                />
-                              </div>
-                            </Link>
+                            {psycube && (
+                              <Link
+                                href={`/psycube_guide/${psycube.id}`}
+                                className="cursor-pointer"
+                              >
+                                <div className="w-[40px] md:w-[60px]">
+                                  <Image
+                                    src={`/infos/psycube_img/${psycube.engName}.webp`}
+                                    alt={psycube.name}
+                                    width={60}
+                                    height={60}
+                                    className="h-auto w-full rounded-lg"
+                                  />
+                                </div>
+                              </Link>
+                            )}
                           </div>
                         );
                       })}
