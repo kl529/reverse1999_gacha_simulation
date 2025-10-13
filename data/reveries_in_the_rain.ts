@@ -1228,6 +1228,31 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         blueprint: "star_of_misfortune",
         player_name: "jodiake",
       },
+      {
+        characters: [
+          {
+            character_id: 8, // 메디슨 포켓
+            euphoria: true,
+            psycube_id: 55,
+          },
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 40,
+          },
+          {
+            character_id: 26, // 빌라
+            euphoria: true,
+            psycube_id: 16,
+          },
+          {
+            character_id: 47, // 에지오
+            psycube_id: 79,
+          },
+        ],
+        description: "",
+        blueprint: "star_of_misfortune",
+        player_name: "스바토모",
+      },
     ],
   },
   "210m": {
@@ -1708,6 +1733,54 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         blueprint: "operatic_reflection",
         player_name: "해무기",
       },
+      {
+        characters: [
+          {
+            character_id: 41, // 양월
+            psycube_id: 43,
+          },
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 41,
+          },
+          {
+            character_id: 39, // 바르카롤라
+            psycube_id: 4,
+          },
+          {
+            character_id: 26, // 빌라
+            psycube_id: 16,
+          },
+        ],
+        description: "",
+        blueprint: "primitive_urge",
+        player_name: "샤리",
+      },
+      {
+        characters: [
+          {
+            character_id: 39, // 바르카롤라
+            psycube_id: 4,
+          },
+          {
+            character_id: 11, // 보이저
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 40,
+          },
+          {
+            character_id: 10, // 뉴바벨
+            euphoria: true,
+            psycube_id: 8,
+          },
+        ],
+        description: "",
+        blueprint: "star_of_misfortune",
+        player_name: "사상운",
+      },
     ],
   },
   "300m-2": {
@@ -1753,7 +1826,31 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "정화, 면역 캐릭터가 없으면 5성도 충분히 쓸만함.",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 31, // 머큐리아
+            psycube_id: 41,
+          },
+          {
+            character_id: 35, // 안조 날라
+            psycube_id: 67,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 55,
+          },
+          {
+            character_id: 36, // 로페라
+            psycube_id: 61,
+          },
+        ],
+        description: "",
+        blueprint: "operatic_reflection",
+        player_name: "샤리",
+      },
+    ],
   },
   "300m-3": {
     id: "300m-3",
@@ -1785,7 +1882,57 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "딜러 및 서브 딜러는 매턴 행동하는게 중요하고, 열정감소 없이 트라이할 경우, 탱커가 꼭 필요함.",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 37, // 윌로우
+            psycube_id: 39,
+          },
+          {
+            character_id: 30, // 카카니아
+            psycube_id: 57,
+          },
+          {
+            character_id: 4, // 소더비
+            euphoria: true,
+            psycube_id: 55,
+          },
+          {
+            character_id: 33, // 튜즈데이
+            psycube_id: 6,
+          },
+        ],
+        description: "",
+        blueprint: "mountain_ghost",
+        player_name: "샤리",
+      },
+      {
+        characters: [
+          {
+            character_id: 22, // 곡랑
+            psycube_id: 42,
+          },
+          {
+            character_id: 9, // 이터니티
+            euphoria: true,
+            psycube_id: 37,
+          },
+          {
+            character_id: 28, // 뉴바벨
+            psycube_id: 20,
+          },
+          {
+            character_id: 10, // 뉴바벨
+            euphoria: true,
+            psycube_id: 8,
+          },
+        ],
+        description: "",
+        blueprint: "ashen_beast",
+        player_name: "사상운",
+      },
+    ],
   },
   "310m": {
     id: "310m",
@@ -2067,7 +2214,58 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "꽤나 아프고, 체력도 많고, 버프제거까지 해줘야 할만함. 세 박자가 모두 맞아야 클리어 가능",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 28, // 제멜바이스
+            psycube_id: 20,
+          },
+          {
+            character_id: 13, // 피클즈
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 9, // 이터니티
+            euphoria: true,
+            psycube_id: 14,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 15,
+          },
+        ],
+        description: "",
+        blueprint: "ashen_beast",
+        player_name: "테이풍",
+      },
+      {
+        characters: [
+          {
+            character_id: 22, // 곡랑
+            psycube_id: 42,
+          },
+          {
+            character_id: 13, // 피클즈
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 10, // 뉴바벨
+            euphoria: true,
+            psycube_id: 45,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 15,
+          },
+        ],
+        description: "",
+        blueprint: "ashen_beast",
+        player_name: "대세는 백합",
+      },
+    ],
   },
   "350m-2": {
     id: "350m-2",
@@ -2136,6 +2334,32 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
           "제시카 페이즈 넘길때 석면 비늘이 걸려있으면 석면 비늘이 증발해서 예열을 다시 해야하므로 페이즈는 멜라니아가 넘겨주는게 좋음",
         blueprint: "primitive_urge",
         player_name: "galliv",
+      },
+      {
+        characters: [
+          {
+            character_id: 15, // 제시카
+            euphoria: true,
+            psycube_id: 68,
+          },
+          {
+            character_id: 107, // 콘블룸
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 1, // 드루비스
+            euphoria: true,
+            psycube_id: 14,
+          },
+          {
+            character_id: 30, // 카카니아
+            psycube_id: 57,
+          },
+        ],
+        description: "",
+        blueprint: "mountain_ghost",
+        player_name: "테이풍",
       },
     ],
   },
@@ -2231,6 +2455,53 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
           "현실 피해 덱이라면 지팡이, 정신 피해덱이라면 갑옷을 잡고 본체 딜 4턴 7턴에 재소환하니 딜 조절해서 3턴 6턴에는 죽이면 안됨 ",
         blueprint: "star_of_misfortune",
         player_name: "galliv",
+      },
+      {
+        characters: [
+          {
+            character_id: 41, // 양월
+            psycube_id: 43,
+          },
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 41,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 15,
+          },
+          {
+            character_id: 36, // 로페라
+            psycube_id: 61,
+          },
+        ],
+        description: "",
+        blueprint: "operatic_reflection",
+        player_name: "테이풍",
+      },
+      {
+        characters: [
+          {
+            character_id: 41, // 양월
+            psycube_id: 43,
+          },
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 40,
+          },
+          {
+            character_id: 8, // 메디슨 포켓
+            euphoria: true,
+            psycube_id: 55,
+          },
+          {
+            character_id: 31, // 머큐리아
+            psycube_id: 50,
+          },
+        ],
+        description: "",
+        blueprint: "star_of_misfortune",
+        player_name: "대세는 백합",
       },
     ],
   },
@@ -2446,6 +2717,55 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         blueprint: "star_of_misfortune",
         player_name: "Ava",
       },
+      {
+        characters: [
+          {
+            character_id: 45, // 히사베스
+            psycube_id: 36,
+          },
+          {
+            character_id: 37, // 윌로우
+            psycube_id: 23,
+          },
+          {
+            character_id: 4, // 소더비
+            euphoria: true,
+            psycube_id: 55,
+          },
+          {
+            character_id: 33, // 튜즈데이
+            psycube_id: 6,
+          },
+        ],
+        description:
+          "소더비 힐로 버티면서 최대한 중독을 쌓고 10턴쯤에 튜즈 술식 소더비 술식 순으로 쓰고 다음턴에 소더비 술식 튜즈 술식 순으로 쓰면 됨",
+        blueprint: "primitive_urge",
+        player_name: "해무기",
+      },
+      {
+        characters: [
+          {
+            character_id: 41, // 양월
+            psycube_id: 43,
+          },
+          {
+            character_id: 18, // 37
+            psycube_id: 18,
+          },
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 40,
+          },
+          {
+            character_id: 4, // 소더비
+            euphoria: true,
+            psycube_id: 55,
+          },
+        ],
+        description: "",
+        blueprint: "star_of_misfortune",
+        player_name: "대세는 백합",
+      },
     ],
   },
   "400m-2": {
@@ -2510,9 +2830,60 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
             psycube_id: 20,
           },
         ],
-        description: "400-2 제멜이 주요딜, 다른파츠는 보조+힐",
+        description: "제멜이 주요딜, 다른파츠는 보조+힐",
         blueprint: "ashen_beast",
         player_name: "Ava",
+      },
+      {
+        characters: [
+          {
+            character_id: 310, // 스푸트니크
+            psycube_id: 57,
+          },
+          {
+            character_id: 22, // 곡랑
+            euphoria: true,
+            psycube_id: 42,
+          },
+          {
+            character_id: 13, // 피클즈
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 15,
+          },
+        ],
+        description:
+          "면도날 궁턴에 스푸트니크 카운터->공격 스킬로 열정 빼줘야함 (카운터는 미리 써둬도 됨)",
+        blueprint: "ashen_beast",
+        player_name: "테이풍",
+      },
+      {
+        characters: [
+          {
+            character_id: 28, // 제멜바이스
+            psycube_id: 43,
+          },
+          {
+            character_id: 13, // 피클즈
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 310, // 스푸트니크
+            psycube_id: 61,
+          },
+          {
+            character_id: 8, // 메디슨 포켓
+            euphoria: true,
+            psycube_id: 55,
+          },
+        ],
+        description: "",
+        blueprint: "ashen_beast",
+        player_name: "대세는 백합",
       },
     ],
   },
@@ -2582,6 +2953,78 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         description: "",
         blueprint: "mountain_ghost",
         player_name: "Ava",
+      },
+      {
+        characters: [
+          {
+            character_id: 29, // 루시
+            psycube_id: 51,
+          },
+          {
+            character_id: 215, // 화이트 럼
+            psycube_id: 57,
+          },
+          {
+            character_id: 19, // 6
+            psycube_id: 9,
+          },
+          {
+            character_id: 44, // 알레프
+            psycube_id: 35,
+          },
+        ],
+        description:
+          "눈금 잘 가늠하면서 스턴 먹이면 좋음 잘 모르겠으면 버프턴에 눈금 빼고 힐상자 부숴서 힐",
+        blueprint: "mountain_ghost",
+        player_name: "테이풍",
+      },
+      {
+        characters: [
+          {
+            character_id: 29, // 루시
+            psycube_id: 51,
+          },
+          {
+            character_id: 24, // 이졸데
+            psycube_id: 29,
+          },
+          {
+            character_id: 19, // 6
+            psycube_id: 9,
+          },
+          {
+            character_id: 31, // 머큐리아
+            psycube_id: 50,
+          },
+        ],
+        description: "",
+        blueprint: "mountain_ghost",
+        player_name: "대세는 백합",
+      },
+      {
+        characters: [
+          {
+            character_id: 29, // 루시
+            psycube_id: 51,
+          },
+          {
+            character_id: 19, // 6
+            psycube_id: 4,
+          },
+          {
+            character_id: 24, // 이졸데
+            psycube_id: 15,
+          },
+
+          {
+            character_id: 10, // 뉴바벨
+            euphoria: true,
+            psycube_id: 38,
+          },
+        ],
+        description: "",
+        blueprint: "primitive_urge",
+        player_name: "사상운",
       },
     ],
   },
@@ -2694,6 +3137,56 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         description: "",
         blueprint: "primitive_urge",
         player_name: "Ava",
+      },
+      {
+        characters: [
+          {
+            character_id: 39, // 바르카롤라
+            psycube_id: 4,
+          },
+          {
+            character_id: 11, // 보이저
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 44, // 알레프
+            psycube_id: 35,
+          },
+          {
+            character_id: 30, // 카카니아
+            psycube_id: 57,
+          },
+        ],
+        description: "",
+        blueprint: "primitive_urge",
+        player_name: "대세는 백합",
+      },
+      {
+        characters: [
+          {
+            character_id: 25, // 마커스
+            euphoria: true,
+            psycube_id: 7,
+          },
+          {
+            character_id: 107, // 콘블룸
+            euphoria: true,
+            psycube_id: 47,
+          },
+          {
+            character_id: 34, // 아르고스
+            psycube_id: 52,
+          },
+          {
+            character_id: 26, // 빌라
+            euphoria: true,
+            psycube_id: 16,
+          },
+        ],
+        description: "",
+        blueprint: "mountain_ghost",
+        player_name: "사상운",
       },
     ],
   },
