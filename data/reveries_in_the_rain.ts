@@ -432,7 +432,32 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "최종술식 이후 진화하니까 조심해야함",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 11, // 보이저
+            euphoria: true,
+            psycube_id: 10,
+          },
+          {
+            character_id: 39, // 바르카롤라
+            psycube_id: 4,
+          },
+          {
+            character_id: 44, // 알레프
+            psycube_id: 35,
+          },
+          {
+            character_id: 31, // 머큐리아
+            psycube_id: 41,
+          },
+        ],
+        description: "머큐리아 자리에 아무거나 넣어도 상관X (천체보스 빛의계시)",
+        blueprint: "star_of_misfortune",
+        player_name: "버틴",
+      },
+    ],
   },
   "100m-2": {
     id: "100m-2",
@@ -470,7 +495,33 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "최종술식 이후 진화하니까 조심해야함",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 36, // 로페라
+            psycube_id: 61,
+          },
+          {
+            character_id: 43, // 레콜레타
+            psycube_id: 58,
+          },
+          {
+            character_id: 12, // 멜라니아
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 8, // 메디슨 포켓
+            euphoria: true,
+            psycube_id: 15,
+          },
+        ],
+        description: "레콜레타보단 멜라니아가 메인딜러 (영혼보스 술식위력)",
+        blueprint: "primitive_urge",
+        player_name: "버틴",
+      },
+    ],
   },
   "100m-3": {
     id: "100m-3",
@@ -505,7 +556,57 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "최종술식 이후 진화하니까 조심해야함",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 1, // 드루비스
+            euphoria: true,
+            psycube_id: 24,
+          },
+          {
+            character_id: 45, // 히사베스
+            psycube_id: 36,
+          },
+          {
+            character_id: 127, // 네임데이
+            psycube_id: 38,
+          },
+          {
+            character_id: 4, // 빌라
+            euphoria: true,
+            psycube_id: 55,
+          },
+        ],
+        description: "드루비스, 소더비는 세워놓기만 해도 O (나무보스 승급노드) ",
+        blueprint: "mountain_ghost",
+        player_name: "버틴",
+      },
+      {
+        characters: [
+          {
+            character_id: 30, // 카카니아
+            psycube_id: 57,
+          },
+          {
+            character_id: 37, // 윌로우
+            psycube_id: 23,
+          },
+          {
+            character_id: 33, // 튜즈데이
+            psycube_id: 6,
+          },
+          {
+            character_id: 4, // 소더비
+            euphoria: true,
+            psycube_id: 55,
+          },
+        ],
+        description: "(나무보스 중독노드)",
+        blueprint: "mountain_ghost",
+        player_name: "버틴",
+      },
+    ],
   },
   "110m": {
     id: "110m",
@@ -538,7 +639,32 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "적 특성으로, 4턴에 최종술식을 모두 시전하니 조심하면 됨",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 11, // 보이저
+            euphoria: true,
+            psycube_id: 10,
+          },
+          {
+            character_id: 39, // 바르카롤라
+            psycube_id: 4,
+          },
+          {
+            character_id: 44, // 알레프
+            psycube_id: 35,
+          },
+          {
+            character_id: 8, // 메디슨 포켓
+            psycube_id: 15,
+          },
+        ],
+        description: "계시로 하면 편함",
+        blueprint: "star_of_misfortune",
+        player_name: "버틴",
+      },
+    ],
   },
   "120m": {
     id: "120m",
@@ -572,7 +698,32 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "37, 6의 스킬이 특별한게 없어서, 별다른 기믹은 없음",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 11, // 보이저
+            euphoria: true,
+            psycube_id: 10,
+          },
+          {
+            character_id: 39, // 바르카롤라
+            psycube_id: 4,
+          },
+          {
+            character_id: 44, // 알레프
+            psycube_id: 35,
+          },
+          {
+            character_id: 8, // 메디슨 포켓
+            psycube_id: 15,
+          },
+        ],
+        description: "계시로 하면 편함",
+        blueprint: "star_of_misfortune",
+        player_name: "버틴",
+      },
+    ],
   },
   "130m": {
     id: "130m",
@@ -607,7 +758,32 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "팀이 딜을 못버티지 않는 이상, 보스(마릴린)만 일점사하는 것을 추천",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 11, // 보이저
+            euphoria: true,
+            psycube_id: 10,
+          },
+          {
+            character_id: 39, // 바르카롤라
+            psycube_id: 4,
+          },
+          {
+            character_id: 44, // 알레프
+            psycube_id: 35,
+          },
+          {
+            character_id: 8, // 메디슨 포켓
+            psycube_id: 15,
+          },
+        ],
+        description: "계시로 하면 편함",
+        blueprint: "star_of_misfortune",
+        player_name: "버틴",
+      },
+    ],
   },
   "140m": {
     id: "140m",
@@ -646,7 +822,32 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "잘 키운 캐릭터들을 조합하면 클리어 가능",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 11, // 보이저
+            euphoria: true,
+            psycube_id: 10,
+          },
+          {
+            character_id: 39, // 바르카롤라
+            psycube_id: 4,
+          },
+          {
+            character_id: 44, // 알레프
+            psycube_id: 35,
+          },
+          {
+            character_id: 8, // 메디슨 포켓
+            psycube_id: 15,
+          },
+        ],
+        description: "계시로 하면 편함",
+        blueprint: "star_of_misfortune",
+        player_name: "버틴",
+      },
+    ],
   },
   "150m": {
     id: "150m",
@@ -705,7 +906,32 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "단일 딜이 부족하다면 쫄몹들을 먼저 잡으면서, 포겟미낫이 술식을 사용하려고 할 때마다 남은 쫄을 잡아 술식을 차단하는 것을 추천",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 11, // 보이저
+            euphoria: true,
+            psycube_id: 10,
+          },
+          {
+            character_id: 39, // 바르카롤라
+            psycube_id: 4,
+          },
+          {
+            character_id: 44, // 알레프
+            psycube_id: 35,
+          },
+          {
+            character_id: 8, // 메디슨 포켓
+            psycube_id: 15,
+          },
+        ],
+        description: "계시로 하면 편함",
+        blueprint: "star_of_misfortune",
+        player_name: "버틴",
+      },
+    ],
   },
   "160m": {
     id: "160m",
@@ -1077,6 +1303,31 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         blueprint: "star_of_misfortune",
         player_name: "jodiake",
       },
+      {
+        characters: [
+          {
+            character_id: 45, // 히사베스
+            psycube_id: 36,
+          },
+          {
+            character_id: 12, // 멜라니아
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 1, // 드루비스
+            euphoria: true,
+            psycube_id: 24,
+          },
+          {
+            character_id: 26, // 빌라
+            psycube_id: 16,
+          },
+        ],
+        description: "올명함, 30렙 10공명 히사도 가능, 다른 힐러도 채용 가능",
+        blueprint: "mountain_ghost",
+        player_name: "스바토모",
+      },
     ],
   },
   "200m-3": {
@@ -1251,6 +1502,52 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         ],
         description: "",
         blueprint: "star_of_misfortune",
+        player_name: "스바토모",
+      },
+      {
+        characters: [
+          {
+            character_id: 43, // 레콜레타
+            psycube_id: 58,
+          },
+          {
+            character_id: 12, // 멜라니아
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 30, // 카카니아
+            psycube_id: 57,
+          },
+        ],
+        description: "이렇게도 클리어가 가능하다~ 왠만하면 4인클 추천",
+        blueprint: "primitive_urge",
+        player_name: "스바토모",
+      },
+      {
+        characters: [
+          {
+            character_id: 43, // 레콜레타
+            psycube_id: 58,
+          },
+          {
+            character_id: 13, // 피클즈
+            euphoria: true,
+            psycube_id: 29,
+          },
+          {
+            character_id: 12, // 멜라니아
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 8, // 메디슨 포켓
+            euphoria: true,
+            psycube_id: 15,
+          },
+        ],
+        description: "멜라궁3번쓰고 레콜 궁)",
+        blueprint: "primitive_urge",
         player_name: "스바토모",
       },
     ],
@@ -1532,7 +1829,32 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "타수기믹으로 하는게 최선. 추공이나 계시덱으로 데미지를 넣으면 쉬움",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 30, // 카카니아
+            psycube_id: 57,
+          },
+          {
+            character_id: 33, // 튜즈데이
+            psycube_id: 6,
+          },
+          {
+            character_id: 47, // 에지오
+            psycube_id: 79,
+          },
+          {
+            character_id: 4, // 소더비
+            euphoria: true,
+            psycube_id: 55,
+          },
+        ],
+        description: "에지오 평타는 땅에 있는애들한테 중독은 천장에 달린애한테 묻혀야함",
+        blueprint: "mountain_ghost",
+        player_name: "러럳",
+      },
+    ],
   },
   "270m": {
     id: "270m",
@@ -1564,7 +1886,31 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "버프 해제 캐릭터가 있으면 폴터의 도발 및 버프를 지울 수 있어서 유용함",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 47, // 에지오
+            psycube_id: 79,
+          },
+          {
+            character_id: 48, // 카산드라
+            psycube_id: 80,
+          },
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 40,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 15,
+          },
+        ],
+        description: "클릭 궁이 매우 아프므로 메디슨포켓이나 파투투 가져가는것 추천",
+        blueprint: "star_of_misfortune",
+        player_name: "러럳",
+      },
+    ],
   },
   "280m": {
     id: "280m",
@@ -1625,7 +1971,31 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "딜 조절을 하면서 체력 비율을 맞춰둔 후, 한번에 광역 궁으로 쓸어담는 것을 추천",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 47, // 에지오
+            psycube_id: 79,
+          },
+          {
+            character_id: 48, // 카산드라
+            psycube_id: 80,
+          },
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 40,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 15,
+          },
+        ],
+        description: "에지오, 플러터가 궁을 쓰면 죽는데 상관없이 카산드라와 파투투 딜로 잡으면 됨",
+        blueprint: "star_of_misfortune",
+        player_name: "러럳",
+      },
+    ],
   },
   "290m": {
     id: "290m",
@@ -1671,7 +2041,32 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         "보스의 버티기를 최대한 빠르게 제거하고 죽이는 것이 관건이고, 침묵을 유의해야함.",
       ],
     },
-    recommendedTeams: [],
+    recommendedTeams: [
+      {
+        characters: [
+          {
+            character_id: 47, // 에지오
+            psycube_id: 79,
+          },
+          {
+            character_id: 48, // 카산드라
+            psycube_id: 80,
+          },
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 40,
+          },
+          {
+            character_id: 40, // 파투투
+            psycube_id: 15,
+          },
+        ],
+        description:
+          "2턴까지 공격,최종술식 제외 모든 마도술이 얼기 때문에 2턴까지 에지오 살리고 3턴부터 딜량으로 밀어야함",
+        blueprint: "star_of_misfortune",
+        player_name: "러럳",
+      },
+    ],
   },
   "300m-1": {
     id: "300m-1",
@@ -1850,6 +2245,31 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         blueprint: "operatic_reflection",
         player_name: "샤리",
       },
+      {
+        characters: [
+          {
+            character_id: 10, // 뉴바벨
+            euphoria: true,
+            psycube_id: 42,
+          },
+          {
+            character_id: 28, // 제멜바이스
+            psycube_id: 32,
+          },
+          {
+            character_id: 19, // 6
+            psycube_id: 9,
+          },
+          {
+            character_id: 8, // 메디슨 포켓
+            euphoria: true,
+            psycube_id: 15,
+          },
+        ],
+        description: "",
+        blueprint: "ashen_beast",
+        player_name: "스신",
+      },
     ],
   },
   "300m-3": {
@@ -1919,7 +2339,7 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
             psycube_id: 37,
           },
           {
-            character_id: 28, // 뉴바벨
+            character_id: 28, // 제멜바이스
             psycube_id: 20,
           },
           {
@@ -1931,6 +2351,30 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         description: "",
         blueprint: "ashen_beast",
         player_name: "사상운",
+      },
+      {
+        characters: [
+          {
+            character_id: 11, // 보이저
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 39, // 바르카롤라
+            psycube_id: 4,
+          },
+          {
+            character_id: 44, // 알레프
+            psycube_id: 9,
+          },
+          {
+            character_id: 30, // 카카니아
+            psycube_id: 57,
+          },
+        ],
+        description: "6으로 석화 정화",
+        blueprint: "star_of_misfortune",
+        player_name: "스신",
       },
     ],
   },
@@ -2265,6 +2709,27 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         blueprint: "ashen_beast",
         player_name: "대세는 백합",
       },
+      {
+        characters: [
+          {
+            character_id: 22, // 곡랑
+            psycube_id: 42,
+          },
+          {
+            character_id: 13, // 피클즈
+            euphoria: true,
+            psycube_id: 29,
+          },
+          {
+            character_id: 10, // 뉴바벨
+            euphoria: true,
+            psycube_id: 8,
+          },
+        ],
+        description: "간파 2스택 이하로 유지",
+        blueprint: "ashen_beast",
+        player_name: "스신",
+      },
     ],
   },
   "350m-2": {
@@ -2360,6 +2825,30 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         description: "",
         blueprint: "mountain_ghost",
         player_name: "테이풍",
+      },
+      {
+        characters: [
+          {
+            character_id: 35, // 안조 날라
+            psycube_id: 67,
+          },
+          {
+            character_id: 31, // 머큐리아
+            psycube_id: 50,
+          },
+          {
+            character_id: 30, // 카카니아
+            psycube_id: 57,
+          },
+          {
+            character_id: 4, // 소더비
+            euphoria: true,
+            psycube_id: 55,
+          },
+        ],
+        description: "카카니아+소더비로 버티고, 안조로 딜",
+        blueprint: "operatic_reflection",
+        player_name: "스신",
       },
     ],
   },
@@ -2766,6 +3255,102 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         blueprint: "star_of_misfortune",
         player_name: "대세는 백합",
       },
+      {
+        characters: [
+          {
+            character_id: 30, // 카카니아
+            psycube_id: 61,
+          },
+          {
+            character_id: 46, // 키페리나
+            psycube_id: 36,
+          },
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 67,
+          },
+          {
+            character_id: 26, // 양월
+            euphoria: true,
+            psycube_id: 16,
+          },
+        ],
+        description: "광상 빌라 힐을 카카니아에게",
+        blueprint: "star_of_misfortune",
+        player_name: "œ",
+      },
+      {
+        characters: [
+          {
+            character_id: 46, // 키페리나
+            psycube_id: 24,
+          },
+          {
+            character_id: 18, // 37
+            psycube_id: 10,
+          },
+          {
+            character_id: 38, // 플러터 페이지
+            psycube_id: 67,
+          },
+          {
+            character_id: 2, // 릴리아
+            psycube_id: 43,
+          },
+        ],
+        description: "양월 대체",
+        blueprint: "star_of_misfortune",
+        player_name: "œ",
+      },
+      {
+        characters: [
+          {
+            character_id: 30, // 카카니아
+            psycube_id: 61,
+          },
+          {
+            character_id: 18, // 37
+            psycube_id: 10,
+          },
+          {
+            character_id: 46, // 키페리나
+            psycube_id: 24,
+          },
+          {
+            character_id: 41, // 양월
+            psycube_id: 43,
+          },
+        ],
+        description: "플러터페이지 대체",
+        blueprint: "star_of_misfortune",
+        player_name: "œ",
+      },
+      {
+        characters: [
+          {
+            character_id: 4, // 소더비
+            euphoria: true,
+            psycube_id: 30,
+          },
+          {
+            character_id: 18, // 37
+            psycube_id: 18,
+          },
+          {
+            character_id: 41, // 양월
+            psycube_id: 43,
+          },
+          {
+            character_id: 22, // 곡랑
+            euphoria: true,
+            psycube_id: 42,
+          },
+        ],
+        description:
+          " 양월12공명필요, 양월 면역활용과  카드성급 증가로 고성급 소더비힐 반복필요, 곡랑의 추공이 오른쪽적을 때리는경우가 많아, 최대한 양월로 왼쪽적을 떄려 동시에 죽이는게 중요",
+        blueprint: "star_of_misfortune",
+        player_name: "여실정행",
+      },
     ],
   },
   "400m-2": {
@@ -3026,6 +3611,30 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         blueprint: "primitive_urge",
         player_name: "사상운",
       },
+      {
+        characters: [
+          {
+            character_id: 29, // 루시
+            psycube_id: 51,
+          },
+          {
+            character_id: 31, // 머큐리아
+            psycube_id: 50,
+          },
+          {
+            character_id: 24, // 이졸데
+            psycube_id: 29,
+          },
+          {
+            character_id: 123, // 바바라
+            psycube_id: 9,
+          },
+        ],
+        description:
+          "바바라는 통찰패시브와 배리어때문에 쓰기에 3통찰1레벨 9공명으로도 충분함, 스테이지 기믹을 통해 회복과 보스의 전력을 잘 조절 해야함",
+        blueprint: "operatic_reflection",
+        player_name: "여실정행",
+      },
     ],
   },
   "400m-4": {
@@ -3160,7 +3769,7 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         ],
         description: "",
         blueprint: "primitive_urge",
-        player_name: "대세는 백합",
+        player_name: "대세는 백합", // 이상
       },
       {
         characters: [
@@ -3187,6 +3796,31 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
         description: "",
         blueprint: "mountain_ghost",
         player_name: "사상운",
+      },
+      {
+        characters: [
+          {
+            character_id: 308, // 다그닥 달리
+            psycube_id: 39,
+          },
+          {
+            character_id: 5, // 레굴루스
+            psycube_id: 14,
+          },
+          {
+            character_id: 107, // 콘블룸
+            euphoria: true,
+            psycube_id: 33,
+          },
+          {
+            character_id: 43, // 레콜레타
+            psycube_id: 58,
+          },
+        ],
+        description:
+          "최종술식을 쓰다보면 열정이 부족할때가 생기기에 레콜레타 추가술식으로 다그닥달리의 술식을 사용해 꾸준히 열정을 채운다는 생각으로 반복하면 좋음",
+        blueprint: "primitive_urge",
+        player_name: "여실정행",
       },
     ],
   },
