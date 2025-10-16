@@ -91,8 +91,6 @@ export const recommendTeams: RecommendTeam[] = [
     concepts: ["즉흥주문"],
     characters: [
       { id: 39, isMain: true, role: "딜러" },
-      { id: 44, isMain: true, role: "서폿" },
-      { id: 46, alternatives: [{ id: 40, role: "힐러" }], role: "탱커" },
       {
         id: 11,
         euphoria: true,
@@ -102,6 +100,8 @@ export const recommendTeams: RecommendTeam[] = [
         ],
         role: "서폿",
       },
+      { id: 44, isMain: true, role: "서폿" },
+      { id: 46, alternatives: [{ id: 40, role: "힐러" }], role: "탱커" },
     ],
   },
   {
@@ -137,6 +137,14 @@ export const recommendTeams: RecommendTeam[] = [
     concepts: ["신혈", "자해"],
     characters: [
       { id: 49, isMain: true, role: "딜러" },
+      {
+        id: 52,
+        role: "서폿",
+        alternatives: [
+          { id: 38, role: "서폿" },
+          { id: 9, euphoria: true, role: "서폿" },
+        ],
+      },
       { id: 28, euphoria: true, isMain: true, role: "서폿" },
       {
         id: 54,
@@ -145,14 +153,6 @@ export const recommendTeams: RecommendTeam[] = [
           { id: 21, euphoria: true, role: "서폿" },
           { id: 8, euphoria: true, role: "힐러" },
           { id: 40, role: "힐러" },
-        ],
-      },
-      {
-        id: 52,
-        role: "서폿",
-        alternatives: [
-          { id: 38, role: "서폿" },
-          { id: 9, euphoria: true, role: "서폿" },
         ],
       },
     ],

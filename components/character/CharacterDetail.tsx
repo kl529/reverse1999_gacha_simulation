@@ -4,7 +4,7 @@
 
 import Image from "next/image";
 import { Character } from "@/data/characters";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CharacterGrowthCalculator from "@/components/etc/CharacterGrowthCalculator";
 import { resonanceMaterialList } from "@/data/resonance_material";
 import { euphoriaMaterialList } from "@/data/euphoria_material";
@@ -12,6 +12,7 @@ import { resonancePatternMaterial } from "@/data/resonance_pattern_material";
 import { insightMaterial } from "@/data/insight_material";
 import { characterGuideList } from "@/data/character_guide";
 import { recommendTeams } from "@/data/recommend_team";
+import type { RecommendTeamCharacter } from "@/data/recommend_team";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { GUIDE_CHARACTERS } from "@/data/setting_character";
@@ -30,7 +31,13 @@ import { getDisplayVersion } from "@/data/version";
 export default function CharacterDetail({ character }: { character: Character }) {
   const guide = characterGuideList.find((g) => g.character_id === character.id);
   const allCharacters = [...GUIDE_CHARACTERS].reverse();
-  const [selectedCharacters, setSelectedCharacters] = useState<Record<string, string>>({});
+  const [selectedCharacters, setSelectedCharacters] = useState<
+    Record<string, { id: string; euphoria?: boolean; role?: string }>
+  >({});
+
+  useEffect(() => {
+    setSelectedCharacters({});
+  }, [character.id]);
 
   const recommendedTeams = useMemo(() => {
     return recommendTeams
@@ -42,14 +49,22 @@ export default function CharacterDetail({ character }: { character: Character })
       .map((team) => {
         // 현재 캐릭터가 대체 캐릭터인 경우, 해당 캐릭터를 메인 캐릭터 위치로 이동
         const modifiedCharacters = team.characters.map((ch) => {
-          if (ch.alternatives?.some((alt) => alt.id === character.id)) {
+          const matchedAlternative = ch.alternatives?.find((alt) => alt.id === character.id);
+
+          if (matchedAlternative) {
             return {
               ...ch,
               id: character.id,
+              euphoria:
+                matchedAlternative.euphoria !== undefined
+                  ? matchedAlternative.euphoria
+                  : ch.euphoria,
+              role: matchedAlternative.role ?? ch.role,
               isAlternative: true,
               originalCharacter: ch,
             };
           }
+
           return ch;
         });
 
@@ -432,14 +447,41 @@ export default function CharacterDetail({ character }: { character: Character })
                             (alt) => alt.id !== character.id
                           );
                           const isCurrentCharacterAlternative = "isAlternative" in ch;
+                          const originalCharacterData =
+                            isCurrentCharacterAlternative && "originalCharacter" in ch
+                              ? (ch as typeof ch & { originalCharacter: RecommendTeamCharacter })
+                                  .originalCharacter
+                              : null;
+                          const originalCharacterOption = originalCharacterData
+                            ? {
+                                id: originalCharacterData.id,
+                                euphoria: originalCharacterData.euphoria,
+                                role: originalCharacterData.role,
+                              }
+                            : null;
+                          const dropdownOptions = [
+                            ...(originalCharacterOption ? [originalCharacterOption] : []),
+                            { id: ch.id, euphoria: ch.euphoria, role: ch.role },
+                            ...(alternatives || []),
+                          ].filter(
+                            (option, index, array) =>
+                              array.findIndex((opt) => opt.id === option.id) === index
+                          );
 
-                          const currentDisplayedCharId =
-                            selectedCharacters[`team_${team.name}_char_${ch.id}`] ||
-                            ch.id.toString();
+                          const selectedCharInfo =
+                            selectedCharacters[`team_${team.name}_char_${ch.id}`];
+                          const currentDisplayedCharId = selectedCharInfo?.id || ch.id.toString();
                           const displayedChar = allCharacters.find(
                             (c) => c.id.toString() === currentDisplayedCharId
                           );
                           if (!displayedChar) return null;
+
+                          // 선택된 캐릭터의 euphoria와 role 정보 가져오기
+                          const displayEuphoria = euphoriaList.some(
+                            (e) => e.character_id === Number(currentDisplayedCharId)
+                          );
+                          const displayRole =
+                            selectedCharInfo !== undefined ? selectedCharInfo.role : ch.role;
 
                           return (
                             <div key={ch.id} className="flex flex-col items-center">
@@ -472,7 +514,7 @@ export default function CharacterDetail({ character }: { character: Character })
                                   <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white">
                                     {getDisplayVersion(displayedChar?.version || teamChar?.version)}
                                   </div>
-                                  {ch.euphoria && (
+                                  {displayEuphoria && (
                                     <div className="absolute bottom-6 right-1 z-10 rounded-sm bg-purple-600 px-1 py-[1px] text-[10px] text-white">
                                       광상
                                     </div>
@@ -482,15 +524,15 @@ export default function CharacterDetail({ character }: { character: Character })
                                       메인
                                     </div>
                                   )}
-                                  {ch.role && (
+                                  {displayRole && (
                                     <div className="absolute bottom-1 left-1 z-10 rounded-sm bg-green-600 px-1 py-[1px] text-[10px] text-white">
-                                      {ch.role}
+                                      {displayRole}
                                     </div>
                                   )}
                                 </div>
                               </Link>
                               <div className="mt-1 flex flex-col items-center gap-1">
-                                <span className="text-center text-xs">{teamChar?.name}</span>
+                                <span className="text-center text-xs">{displayedChar?.name}</span>
                                 {((alternatives && alternatives.length > 0) ||
                                   isCurrentCharacterAlternative) && (
                                   <DropdownMenu>
@@ -498,10 +540,7 @@ export default function CharacterDetail({ character }: { character: Character })
                                       대체 캐릭터
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent align="center">
-                                      {[
-                                        { id: teamChar.id, euphoria: ch.euphoria, role: ch.role },
-                                        ...(alternatives || []),
-                                      ].map((alt) => {
+                                      {dropdownOptions.map((alt) => {
                                         const altChar = allCharacters.find((c) => c.id === alt.id);
                                         if (!altChar) return null;
                                         return (
@@ -511,8 +550,11 @@ export default function CharacterDetail({ character }: { character: Character })
                                             onClick={() => {
                                               setSelectedCharacters((prev) => ({
                                                 ...prev,
-                                                [`team_${team.name}_char_${ch.id}`]:
-                                                  alt.id.toString(),
+                                                [`team_${team.name}_char_${ch.id}`]: {
+                                                  id: alt.id.toString(),
+                                                  euphoria: alt.euphoria,
+                                                  role: alt.role,
+                                                },
                                               }));
                                             }}
                                           >
