@@ -55,6 +55,7 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
       "/shop_efficiency",
       "/newbie_guide",
       "/error-test", // 에러 테스트 페이지
+      "/coupon",
     ];
 
     const allowedPathPrefixes = [

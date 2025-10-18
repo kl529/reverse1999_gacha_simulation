@@ -37,6 +37,8 @@
     "class-variance-authority": "^0.7.1",
     "cmdk": "^1.1.1",
     "css-loader": "^7.1.2",
+    "firebase": "^12.4.0",
+    "firebase-admin": "^13.5.0",
     "framer-motion": "^12.4.3",
     "lucide-react": "^0.510.0",
     "next": "^15.5.4",

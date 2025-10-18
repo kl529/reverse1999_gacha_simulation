@@ -11,6 +11,7 @@ import ThemeToggle from "@/components/etc/ThemeToggle";
 import { InstallPrompt } from "@/components/etc/InstallPrompt";
 import ErrorBoundary from "@/components/etc/ErrorBoundary";
 import { NetworkStatusToast } from "@/components/etc/NetworkStatusToast";
+import PushNotificationManager from "@/components/etc/PushNotificationManager";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const isProd = process.env.NODE_ENV === "production";
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <CustomCursor />
                 <InstallPrompt />
                 <NetworkStatusToast />
+                <PushNotificationManager />
                 {children}
               </SecurityWrapper>
             </ModalProvider>

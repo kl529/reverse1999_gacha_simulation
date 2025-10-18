@@ -113,6 +113,11 @@ export const GUIDE_ITEMS: CardItem[] = [
     label: "뉴비 가이드",
     href: "/newbie_guide",
   },
+  {
+    icon: "/infos/menu/coupon_menu.webp",
+    label: "쿠폰 목록",
+    href: "/coupon",
+  },
 ];
 
 // Menu category structure (for HamburgerMenu)
@@ -229,6 +234,11 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
         iconImg: "/infos/menu/newbie_guide_menu.webp",
         label: "뉴비 가이드",
         href: "/newbie_guide",
+      },
+      {
+        iconImg: "/infos/menu/coupon_menu.webp",
+        label: "쿠폰 목록",
+        href: "/coupon",
       },
     ],
   },
