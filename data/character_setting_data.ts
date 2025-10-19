@@ -1585,7 +1585,7 @@ export const character_setting_data: CharacterSettingData[] = [
     resonance_patterns: ["Elucidation", "Mercy"],
   },
   {
-    character_id: 52, // "센티넬"
+    character_id: 52, // "센티널"
     psycubes: [
       {
         psycube_id: 76,
@@ -1636,8 +1636,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A-",
       },
     ],
-    resonance: [],
-    resonance_patterns: [],
+    resonance: [
+      {
+        code: "APwlJAQmAyhUKlMtIzxBPTA0UTQBQSJDIEQA",
+        description: "범용",
+      },
+      {
+        code: "APwlPGM8UzQFNAM6JDgiJwEpQUMAQlBAMEQQSFA",
+        description: "생존",
+      },
+    ],
+    resonance_patterns: ["Hyper"],
   },
   {
     character_id: 54, // "루부스카"
@@ -1656,6 +1665,29 @@ export const character_setting_data: CharacterSettingData[] = [
       },
       {
         psycube_id: 34,
+        description: "A",
+      },
+    ],
+    resonance: [],
+    resonance_patterns: [],
+  },
+  {
+    character_id: 55, // "코르부스"
+    psycubes: [
+      {
+        psycube_id: 40,
+        description: "S",
+      },
+      {
+        psycube_id: 42,
+        description: "S (장기전)",
+      },
+      {
+        psycube_id: 52,
+        description: "A+",
+      },
+      {
+        psycube_id: 84,
         description: "A",
       },
     ],

@@ -77,9 +77,36 @@ export const calendarEvents: CalendarEvent[] = [
     img: "/infos/banner_img/moldir_pick_up.webp",
   },
   {
+    date: "2025-10-30",
+    end: "2025-11-20",
+    title: "센티널 픽업",
+    type: "pickup",
+    img: "/infos/banner_img/nautika_pick_up.webp",
+  },
+  {
+    date: "2025-11-20",
+    end: "2025-12-11",
+    title: "카론 픽업",
+    type: "pickup",
+    img: "/infos/banner_img/charon_pick_up.webp",
+  },
+  {
+    date: "2025-11-01",
+    end: "2025-11-14",
+    title: "파투투 & 레콜레타 이중 픽업",
+    type: "pickup",
+    img: "/infos/banner_img/doublepick_fatutu_recoleta.webp",
+  },
+  {
     date: "2025-09-19",
     end: "2025-10-30",
     title: "2.8",
+    type: "version",
+  },
+  {
+    date: "2025-10-30",
+    end: "2025-12-11",
+    title: "3.0",
     type: "version",
   },
   //🎂
@@ -618,5 +645,10 @@ export const calendarEvents: CalendarEvent[] = [
     type: "birthday",
     title: "에지오 아디토레",
   },
-  // 카산드라랑 알렉 없음(Unknown임) + 루부스카 없음 (얜 진짜 데이터가 없음)
+  {
+    date: "05-29",
+    type: "birthday",
+    title: "루부스카",
+  },
+  // 카산드라랑 알렉 없음(Unknown임) + 코르부스 없음 (얜 진짜 데이터가 없음)
 ];

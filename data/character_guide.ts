@@ -182,7 +182,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "가장 효율이 좋은 형상은 1형상, 5형상 효과는 [신나는 로큰롤] 지속시간 연장이기에 효율 0%. 계시 관련 광상을 받았지만 1인전에만 뛰어난 성능으로 많이 사용하지는 않음.",
     },
-    youtube_links: [],
+    youtube_links: ["https://www.youtube.com/watch?v=dW0nfkz1gBw"],
     keywords: ["딜러", "계시", "정신피해"],
     guide_images: [],
   },
@@ -523,7 +523,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "가장 효율이 높은 형상은 1형상, 하지만 실전 효율은 2형상임. 물론 제시카는 명함 완성형 딜러인지라 최고 효율은 명함",
     },
-    youtube_links: [],
+    youtube_links: ["https://www.youtube.com/watch?v=EGzEZdbIzkw"],
     keywords: ["딜러", "중독", "상태이상", "현실피해"],
     guide_images: [],
   },
@@ -1755,12 +1755,12 @@ export const characterGuideList: CharacterGuide[] = [
       source: "icehood",
       note: "3형상의 효율이 0%인 이유는 효과가 반격시 얻는 열정 2로 증가이기 때문. 1형상과 2형상이 효율이 많이 좋은편이고, 고형상은 애정으로만 하는 것을 추천",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=Kej4pd1-zDM"],
+    youtube_links: ["https://www.youtube.com/watch?v=tK2mgbMEW_8"],
     keywords: ["서포터", "술식위주", "현실피해"],
     guide_images: [],
   },
   {
-    character_id: 52, // 센티넬
+    character_id: 52, // 센티널
     portrait_info: {
       headers: ["형상", "본인", "팀 전체"],
       rows: [
@@ -1859,6 +1859,40 @@ export const characterGuideList: CharacterGuide[] = [
     },
     youtube_links: [],
     keywords: ["힐러", "신혈", "정신피해"],
+    guide_images: [],
+  },
+  {
+    character_id: 55, // 코르부스
+    portrait_info: {
+      headers: ["형상", "개인", "팀 전체"],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["21%", "15%"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["35%", "26.3%"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["11.6%", "9.3%"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["11.3%", "9.3%"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["11.9%", "10%"],
+        },
+      ],
+      summary: "2형상 > 1형상 > 5형상 > 3형상 > 4형상 (개인)",
+      source: "icehood",
+      note: "1,2형상이 효율이 꽤나 좋은편이고, 모든 통계는 8턴 기준이라, 장기전으로 가면 5형의 효율이 급증함",
+    },
+    youtube_links: [],
+    keywords: ["딜러", "전력", "정신피해"],
     guide_images: [],
   },
 ];

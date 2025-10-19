@@ -1420,7 +1420,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 81,
-    name: "흐르는 물과 함께",
+    name: "개울 속으로",
     engName: "into_the_gentle_current",
     priority: 4,
     rarity: 6,
@@ -1470,5 +1470,23 @@ export const psycube_list: Psycube[] = [
     },
     option:
       "전투 진입 시 기억자를 포함한 아군의 모든 [암석] 캐릭터 1명 당 모든 [암석] 영감의 캐릭터들이 주는 피해가 (2/2.5/3/3.5/4) %씩 증가함.",
+  },
+  {
+    id: 84,
+    name: "생자의 고행",
+    engName: "bitter_march_of_the_living",
+    priority: 99,
+    rarity: 6,
+    version: "3.1",
+    type: "상점",
+    stats: {
+      공격: "380",
+      HP: "2600",
+      현실방어: "160",
+      정신방어: "160",
+      치명타율: "16%",
+    },
+    option:
+      "기억자가 공격 시, [전기장 폭주 Lv.3]에 있다면 술식 위력이 12/15/18/21/24% 증가함. 기억자가 단일 주문을 사용한 후, 주는 피해를 1.4/1.8/2.2/2.6/3% 증가시킴. 이 효과는 최대 6스택까지 중첩 가능하며, 광역 주문 사용 시 효과가 제거됨.",
   },
 ];

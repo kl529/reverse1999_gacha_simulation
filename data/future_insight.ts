@@ -161,7 +161,7 @@ export const futureInsightData: FutureInsightItem[] = [
     period: {
       start: "2025-10-30",
       end: "2025-12-11",
-      week: 5,
+      week: 6,
     },
     album_shop: {
       rare6: 21,
@@ -187,8 +187,9 @@ export const futureInsightData: FutureInsightItem[] = [
     },
     album_shop: {
       rare6: 23,
+      rare5: 102,
     },
-    banners: ["rubuska_pick_up"],
+    banners: ["rubuska_pick_up", "corvus_pick_up"],
     euphoria: {
       star6: [
         { characterId: 34, euphoriaId: 30 },

@@ -80,6 +80,75 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
+    name: "코르부스 전력덱",
+    description: [
+      "코르부스와, 카론 전력 키워드를 메인으로 하는 조합",
+      "[요동치는 전기장]이라는 술진을 강화시키며, 압도적인 화력으로 찍어누름.",
+      "코르부스는 단일 딜링이 매우 뛰어나고, 장기전에서 루시와 비교해서 우위를 보임",
+      "빠른 전기장 사이클을 위해, 카론과 잘 어울리고, 조합은 루시 전력덱과 거의 비슷함",
+      "특정 캐릭터들이 강제되고, 술진 서폿은 사용하기 힘듦",
+    ],
+    concepts: ["전력", "술진", "단일"],
+    characters: [
+      {
+        id: 21,
+        euphoria: true,
+        role: "서폿",
+        alternatives: [
+          { id: 8, euphoria: true, role: "힐러" },
+          { id: 40, role: "힐러" },
+          { id: 54, role: "힐러" },
+        ],
+      },
+      { id: 55, isMain: true, euphoria: true, role: "딜러" },
+      { id: 50, role: "서폿" },
+      {
+        id: 53,
+        role: "서폿",
+        isMain: true,
+        alternatives: [
+          { id: 38, role: "서폿" },
+          { id: 12, euphoria: true, role: "서폿" },
+          { id: 31, role: "서폿" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "루시 전력덱",
+    description: [
+      "광상 루시와, 울리히의 전력 키워드를 메인으로 하는 조합",
+      "[요동치는 전기장]이라는 술진을 강화시키며, 전기장 3레벨을 활용하여 극딜하는 조합",
+      "전력 광상 에즈라와도 궁합이 좋으며, 루시가 '술식위력증가'효과도 받게 되어 광상 멜라니아와 궁합이 좋음",
+      "특정 캐릭터들이 강제되고, 술진 서폿은 사용하기 힘듦",
+      "코르부스 전력덱과 비교해서, 다수의 적을 상대할때 우위를 보임.",
+    ],
+    concepts: ["전력", "술진", "광역"],
+    characters: [
+      {
+        id: 21,
+        euphoria: true,
+        role: "서폿",
+        alternatives: [
+          { id: 8, euphoria: true, role: "힐러" },
+          { id: 40, role: "힐러" },
+          { id: 54, role: "힐러" },
+        ],
+      },
+      { id: 29, isMain: true, euphoria: true, role: "딜러" },
+      { id: 50, isMain: true, role: "서폿" },
+      {
+        id: 53,
+        role: "서폿",
+        alternatives: [
+          { id: 38, role: "서폿" },
+          { id: 12, euphoria: true, role: "서폿" },
+          { id: 31, role: "서폿" },
+        ],
+      },
+    ],
+  },
+  {
     name: "계시덱",
     description: [
       "계시로 즉흥주문을 강화시키며, 딜을 하는 조합",
@@ -129,7 +198,7 @@ export const recommendTeams: RecommendTeam[] = [
     name: "노티카 신혈덱",
     description: [
       "노티카를 메인으로 한 [신혈]기믹을 사용하는 자해조합",
-      "노티카와 광상 제멜바이스 & 센티넬을 채용하여 자해를 쌓아 딜을 하는 조합",
+      "노티카와 광상 제멜바이스 & 센티널을 채용하여 자해를 쌓아 딜을 하는 조합",
       "힐러는 루부스카가 압도적으로 좋고, 파투투나 광상 메디슨 포켓도 사용가능",
       "3.1 기준 루부스카의 합류로 압도적인 체급으로 부동의 0티어 조합",
       "제멜바이스의 술진으로 로페라 등의 술진 서포터와는 쓰기 힘듦",
@@ -158,27 +227,30 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
-    name: "전력덱",
+    name: "이터니티 신혈덱",
     description: [
-      "광상 루시와, 울리히의 전력 키워드를 메인으로 하는 조합",
-      "[요동치는 전기장]이라는 술진을 강화시키며, 압도적인 화력으로 찍어누름.",
-      "광상루시와 울리히의 엄청난 체급과 버프들로 고점이 높음",
-      "전력 광상 에즈라와도 궁합이 좋으며, 루시가 '술식위력증가'효과도 받게 되어 광상 멜라니아와 궁합이 좋음",
-      "특정 캐릭터들이 강제되고, 술진 서폿은 사용하기 힘듦",
-      "3.0 기준 카론의 합류로 뛰어난 덱파워를 보여주는 0티어 조합",
+      "노티카를 메인으로 한 [신혈]기믹을 사용하는 자해조합",
+      "노티카와 광상 제멜바이스 & 센티널을 채용하여 자해를 쌓아 딜을 하는 조합",
+      "힐러는 루부스카가 압도적으로 좋고, 파투투나 광상 메디슨 포켓도 사용가능",
+      "3.1 기준 루부스카의 합류로 압도적인 체급으로 부동의 0티어 조합",
+      "제멜바이스의 술진으로 로페라 등의 술진 서포터와는 쓰기 힘듦",
     ],
-    concepts: ["전력", "술진"],
+    concepts: ["신혈", "자해"],
     characters: [
-      { id: 21, euphoria: true, role: "서폿" },
-      { id: 29, isMain: true, euphoria: true, role: "딜러" },
-      { id: 50, isMain: true, role: "서폿" },
+      { id: 9, euphoria: true, isMain: true, role: "딜러" },
       {
-        id: 53,
+        id: 52,
         role: "서폿",
+        alternatives: [{ id: 38, role: "서폿" }],
+      },
+      { id: 28, euphoria: true, role: "서폿" },
+      {
+        id: 54,
+        role: "힐러",
         alternatives: [
-          { id: 38, role: "서폿" },
-          { id: 12, euphoria: true, role: "서폿" },
-          { id: 31, role: "서폿" },
+          { id: 21, euphoria: true, role: "서폿" },
+          { id: 8, euphoria: true, role: "힐러" },
+          { id: 40, role: "힐러" },
         ],
       },
     ],

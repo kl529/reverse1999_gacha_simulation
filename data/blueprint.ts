@@ -30,6 +30,12 @@ export const BOSSES = [
     image: "/infos/blueprint/boss/primitive_urge.webp",
     inspiration: "spirit",
   },
+  // {
+  //   id: "new_era_declarer",
+  //   name: "새 시대 선언자",
+  //   image: "/infos/blueprint/boss/new_era_declarer.webp",
+  //   inspiration: "intellect",
+  // },
 ] as const;
 
 export type BossId = (typeof BOSSES)[number]["id"];

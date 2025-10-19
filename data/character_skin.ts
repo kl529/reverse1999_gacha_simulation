@@ -1098,7 +1098,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 96,
     character_id: 38, // 플러터페이지
-    name: "내일의 봄바람 (미래시)",
+    name: "내일을 여는 봄바람",
     engName: "gently_comes_the_thawing_breeze",
     rarity: "Advanced",
     source: "판매",
@@ -1109,7 +1109,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 97,
     character_id: 32, // J
-    name: "고독한 늑대의 울부짖음 (미래시)",
+    name: "늑대의 포효",
     engName: "the_lone_wolfs_howl",
     rarity: "Advanced",
     source: "판매",
@@ -1120,7 +1120,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 98,
     character_id: 28, // 제멜바이스
-    name: "마음의 손익 (미래시)",
+    name: "마음의 손익",
     engName: "the_wax_and_wane_of_the_heart",
     rarity: "Garment",
     source: "주크박스",
@@ -1131,7 +1131,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 99,
     character_id: 401, // 미스라디오
-    name: "전선의 생명줄 (미래시)",
+    name: "전장의 생명선",
     engName: "lifeline_of_the_battlefield",
     rarity: "Garment",
     source: "컨텐츠",
