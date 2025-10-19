@@ -40,7 +40,7 @@ export const coupons: Coupon[] = [
     code: "신화를찾는젊은이",
     description: "2주년 기념 쿠폰",
     expiresAt: "2025-10-30",
-    pushSent: false,
+    pushSent: true,
   },
   {
     id: "8",

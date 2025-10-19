@@ -23,7 +23,7 @@ export const metadata = {
     siteName: "버틴의 여행가방",
     images: [
       {
-        url: `/pwa_icon.webp`,
+        url: `/infos/link_img/coupon_link_img.webp`,
         width: 1200,
         height: 630,
         alt: "리버스 1999 쿠폰 목록 미리보기 이미지",
