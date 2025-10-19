@@ -19,7 +19,7 @@
 - **UI Library**: Radix UI, Tailwind CSS 3.4.1, Framer Motion
 - **Styling**: Tailwind CSS, Sass, CSS Modules
 - **Testing**: Jest, Testing Library
-- **Build & Deploy**: Vercel, PWA 지원
+- **Build & Deploy**: Cloudtype, PWA 지원
 - **개발 도구**: ESLint, Prettier, PostCSS
 
 ### 아키텍처
@@ -106,7 +106,7 @@ project/
 1. 기능 개발 또는 데이터 업데이트
 2. 로컬 테스트 및 빌드 확인
 3. main 브랜치에 커밋 및 푸시
-4. Vercel 자동 배포
+4. Cloudtype 자동 배포
 
 ### 테스트 방법
 ```bash
@@ -128,8 +128,28 @@ npm run format
 
 ### 배포 프로세스
 1. **개발 환경**: localhost:3000에서 개발 및 테스트
-2. **프로덕션 환경**: main 브랜치 푸시 시 Vercel에 자동 배포
+2. **프로덕션 환경**: main 브랜치 푸시 시 Cloudtype에 자동 배포
 3. **PWA 업데이트**: next-sitemap을 통한 사이트맵 자동 생성
+
+### Cloudtype 환경 변수 설정
+배포 시 다음 환경 변수들을 설정해야 합니다:
+
+**Firebase Client (Public):**
+- `NEXT_PUBLIC_FIREBASE_API_KEY`
+- `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
+- `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
+- `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
+- `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+- `NEXT_PUBLIC_FIREBASE_APP_ID`
+- `NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID`
+- `NEXT_PUBLIC_FIREBASE_VAPID_KEY`
+
+**Firebase Admin (Server-side):**
+- `FIREBASE_PROJECT_ID`
+- `FIREBASE_CLIENT_EMAIL`
+- `FIREBASE_PRIVATE_KEY`
+
+💡 `.env.local` 파일을 참고하여 Cloudtype 대시보드에서 환경 변수를 설정하세요.
 
 ### 주요 명령어
 ```bash
@@ -166,7 +186,8 @@ npm run format
 
 ### 배포 정보
 - **도메인**: https://www.reverse1999-simulator.com
-- **플랫폼**: Vercel
+- **플랫폼**: Cloudtype
+- **CDN**: Cloudflare
 - **PWA**: 모바일 앱 설치 지원
 
 ---

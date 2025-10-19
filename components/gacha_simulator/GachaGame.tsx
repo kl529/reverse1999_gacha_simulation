@@ -18,8 +18,8 @@ export const isValidGachaCharacterForPool = (char: Character): boolean => {
   return isIncludedInGachaPool(char.version);
 };
 
-// SixStarHistoryEntry is now imported from reducer
-type SixStarHistoryEntry = ReducerSixStarHistoryEntry;
+// Export SixStarHistoryEntry type for external use
+export type SixStarHistoryEntry = ReducerSixStarHistoryEntry;
 
 export interface EnrichedBanner extends Banner {
   pickup6?: Character;

@@ -12,6 +12,7 @@ import CardBox from "@/components/home/CardBox";
 import HomeFooter from "@/components/home/HomeFooter";
 import { CardItem, isModalCardItem } from "@/lib/types/menuTypes";
 import { PLAYGROUND_ITEMS, LIBRARY_ITEMS, GUIDE_ITEMS } from "@/lib/constants/menuItems";
+import { checkNewCouponsQuietly } from "@/lib/utils/checkNewCoupons";
 
 // Dynamic imports로 코드 스플리팅
 const ConfirmModal = dynamic(() => import("@/components/modals/ConfirmModal"));
@@ -39,6 +40,9 @@ export default function HomePage() {
   useEffect(() => {
     const random = Math.floor(Math.random() * bgImages.length);
     setBgImage(bgImages[random]);
+
+    // 새 쿠폰 체크 (조용하게, 서버에서 간격 제어)
+    checkNewCouponsQuietly();
 
     // // 서비스 점검 공지 표시 (localStorage로 하루에 한 번만 표시)
     // const today = new Date().toDateString();

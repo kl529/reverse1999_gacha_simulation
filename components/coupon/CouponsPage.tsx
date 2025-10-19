@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { coupons, Coupon } from "@/data/coupon";
-import { Copy, Check, Calendar, CheckCircle2, Circle } from "lucide-react";
+import { Copy, Check, Calendar, CheckCircle2, Circle, Bell } from "lucide-react";
 import toast from "react-hot-toast";
 
 const USED_COUPONS_KEY = "reverse1999_used_coupons";
@@ -10,6 +10,7 @@ const USED_COUPONS_KEY = "reverse1999_used_coupons";
 export default function CouponsPage() {
   const [usedCoupons, setUsedCoupons] = useState<string[]>([]);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const [showNotificationButton, setShowNotificationButton] = useState(false);
 
   // 로컬 스토리지에서 사용한 쿠폰 목록 불러오기
   useEffect(() => {
@@ -22,20 +23,12 @@ export default function CouponsPage() {
       }
     }
 
-    // 새 쿠폰 확인 및 푸시 전송
-    const checkNewCoupons = async () => {
-      try {
-        const response = await fetch("/api/check-new-coupons", {
-          method: "POST",
-        });
-        const data = await response.json();
-        console.log("New coupons check result:", data);
-      } catch (error) {
-        console.error("Failed to check new coupons:", error);
-      }
-    };
-
-    checkNewCoupons();
+    // 알림 설정 버튼 표시 여부 확인
+    const fcmToken = localStorage.getItem("fcm_token");
+    const dismissed = localStorage.getItem("notification_dismissed");
+    if (!fcmToken && dismissed === "true") {
+      setShowNotificationButton(true);
+    }
 
     // Service Worker 메시지 리스너 (푸시 알림에서 복사 버튼 클릭 시)
     const handleServiceWorkerMessage = (event: MessageEvent) => {
@@ -66,7 +59,7 @@ export default function CouponsPage() {
       setCopiedCode(code);
       toast.success(`쿠폰 코드 "${code}"가 복사되었습니다!`);
       setTimeout(() => setCopiedCode(null), 2000);
-    } catch (error) {
+    } catch {
       toast.error("복사에 실패했습니다. 다시 시도해주세요.");
     }
   };
@@ -107,6 +100,16 @@ export default function CouponsPage() {
     return Math.ceil(diff / (1000 * 60 * 60 * 24));
   };
 
+  // 알림 재설정 핸들러
+  const handleEnableNotifications = () => {
+    localStorage.removeItem("notification_dismissed");
+    setShowNotificationButton(false);
+    toast.success("페이지를 새로고침하면 알림 설정 팝업이 다시 표시됩니다.");
+    setTimeout(() => {
+      window.location.reload();
+    }, 1500);
+  };
+
   // 만료되지 않은 쿠폰 필터링
   const allActiveCoupons = coupons.filter((coupon) => !isExpired(coupon));
 
@@ -126,6 +129,20 @@ export default function CouponsPage() {
         <br />
         💡 만료일자는 하루정도 차이가 날 수 있습니다.
       </p>
+
+      {/* 알림 켜기 버튼 */}
+      {showNotificationButton && (
+        <div className="mb-4 flex justify-center">
+          <button
+            onClick={handleEnableNotifications}
+            className="flex items-center gap-2 rounded-lg bg-purple-600 px-4 py-2 text-sm font-medium text-white hover:bg-purple-700 dark:bg-purple-700 dark:hover:bg-purple-600"
+            aria-label="알림 설정"
+          >
+            <Bell className="h-4 w-4" />
+            <span>쿠폰 알림 받기</span>
+          </button>
+        </div>
+      )}
 
       {/* 사용 현황 표시 */}
       {allActiveCoupons.length > 0 && (
@@ -163,12 +180,19 @@ export default function CouponsPage() {
                   return (
                     <div
                       key={coupon.id}
-                      className={`rounded-lg border shadow-sm transition-all ${
+                      className={`relative rounded-lg border shadow-sm transition-all ${
                         isUsed
                           ? "border-gray-300 bg-gray-100 opacity-60 dark:border-gray-600 dark:bg-gray-800"
                           : "border-purple-200 bg-card hover:shadow-md dark:border-purple-800"
                       }`}
                     >
+                      {/* NEW 스티커 */}
+                      {!coupon.pushSent && !isUsed && (
+                        <div className="absolute -right-2 -top-2 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-red-500 to-pink-600 shadow-lg">
+                          <span className="text-xs font-bold text-white">NEW</span>
+                        </div>
+                      )}
+
                       <div className="p-4 sm:p-5">
                         {/* 쿠폰 코드, 복사 버튼, 체크박스 */}
                         <div className="flex items-center justify-between gap-3">
@@ -342,8 +366,8 @@ export default function CouponsPage() {
         <h3 className="mb-2 font-semibold">📢 쿠폰 사용 방법</h3>
         <ol className="list-inside list-decimal space-y-1 text-sm">
           <li>게임 실행 후 좌측 하단 메뉴 아이콘 클릭</li>
-          <li>'설정' 메뉴 진입</li>
-          <li>"교환 코드" 메뉴 선택</li>
+          <li>&apos;설정&apos; 메뉴 진입</li>
+          <li>&quot;교환 코드&quot; 메뉴 선택</li>
           <li>복사한 쿠폰 코드 입력 및 교환</li>
         </ol>
       </div>

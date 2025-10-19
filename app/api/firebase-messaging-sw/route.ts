@@ -24,24 +24,31 @@ firebase.initializeApp(firebaseConfig);
 
 const messaging = firebase.messaging();
 
+// skipWaiting ë©”ì‹œì§€ í•¸ë“¤ëŸ¬
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
 // Background message handler
 messaging.onBackgroundMessage((payload) => {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
 
-  const notificationTitle = payload.notification?.title || '¬„¤ 1999';
+  const notificationTitle = payload.notification?.title || 'ë¦¬ë²„ìŠ¤ 1999';
   const notificationOptions = {
-    body: payload.notification?.body || 'È\´ L¼t ˆµÈä.',
+    body: payload.notification?.body || 'ìƒˆë¡œìš´ ì¿ í°ì´ ë„ì°©í–ˆìŠµë‹ˆë‹¤.',
     icon: '/icons/icon-192x192.png',
     badge: '/icons/icon-72x72.png',
     data: payload.data,
     actions: [
       {
         action: 'copy',
-        title: '=Ë õ¬X0',
+        title: 'ë³µì‚¬',
       },
       {
         action: 'view',
-        title: '< àğ ô0',
+        title: 'ë³´ê¸°',
       },
     ],
   };
@@ -112,7 +119,7 @@ self.addEventListener('notificationclick', (event) => {
 
   return new NextResponse(swContent, {
     headers: {
-      "Content-Type": "application/javascript",
+      "Content-Type": "application/javascript; charset=utf-8",
       "Service-Worker-Allowed": "/",
     },
   });
