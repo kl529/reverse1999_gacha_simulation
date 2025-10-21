@@ -187,7 +187,7 @@ export const futureInsightData: FutureInsightItem[] = [
     },
     album_shop: {
       rare6: 23,
-      rare5: 102,
+      rare5: 112,
     },
     banners: ["rubuska_pick_up", "corvus_pick_up"],
     euphoria: {

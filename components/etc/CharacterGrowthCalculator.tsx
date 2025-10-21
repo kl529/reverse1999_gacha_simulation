@@ -249,13 +249,16 @@ export default function MaterialCalculator({ characterId }: Props) {
     setter: (v: number) => void,
     max: number,
     isTarget: boolean = false,
-    currentValue: number = 1
+    currentValue: number = 1,
+    currentInsightLevel: number = 0,
+    targetInsightLevel: number = 0
   ) => (
     <div className="flex flex-wrap gap-1">
       {[1, 10, 20, 30, 40, 50, 60]
         .filter((v) => v <= max)
         .map((num) => {
-          const isDisabled = isTarget && num < currentValue;
+          // 목표 레벨일 때: 같은 통찰이면 현재 레벨 이상만, 다른 통찰이면 모두 허용
+          const isDisabled = isTarget && currentInsightLevel === targetInsightLevel && num < currentValue;
           return (
             <Button
               key={num}
@@ -615,7 +618,11 @@ export default function MaterialCalculator({ characterId }: Props) {
               {renderLevelButtons(
                 currentLevel,
                 setCurrentLevel,
-                MAX_LEVEL_BY_INSIGHT[currentInsight]
+                MAX_LEVEL_BY_INSIGHT[currentInsight],
+                false,
+                1,
+                currentInsight,
+                currentInsight
               )}
               <div className="mt-2 flex items-center gap-2">
                 <span className="text-sm text-gray-600 dark:text-gray-300">
@@ -696,7 +703,9 @@ export default function MaterialCalculator({ characterId }: Props) {
                 setTargetLevel,
                 MAX_LEVEL_BY_INSIGHT[targetInsight],
                 true,
-                currentLevel
+                currentLevel,
+                currentInsight,
+                targetInsight
               )}
               <div className="mt-2 flex items-center gap-2">
                 <span className="text-sm text-gray-600 dark:text-gray-300">
@@ -713,7 +722,7 @@ export default function MaterialCalculator({ characterId }: Props) {
               </div>
               {showTargetSlider && (
                 <Slider
-                  min={1}
+                  min={currentInsight === targetInsight ? currentLevel : 1}
                   max={MAX_LEVEL_BY_INSIGHT[targetInsight]}
                   step={1}
                   value={[targetLevel]}

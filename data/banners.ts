@@ -49,14 +49,14 @@ export const banners: Banner[] = [
     id: "moldir_pick_up",
     name: "[2.8] 몰디르 픽업",
     pickup6: 51,
-    pickup5: [103, 120],
+    pickup5: [103, 105],
     version: "2.8",
   },
   {
     id: "nautika_pick_up",
     name: "[2.8] 노티카 픽업",
     pickup6: 49,
-    pickup5: [],
+    pickup5: [104, 114],
     version: "2.8",
   },
   {
