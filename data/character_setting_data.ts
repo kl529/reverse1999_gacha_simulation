@@ -2550,5 +2550,16 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
+    resonance: [
+      {
+        code: "ACZQ8CQmVCQELxQtRDlAOEI8ADwQNCI0IA",
+        description: "딜러",
+      },
+      {
+        code: "APAkJAQtFC1EJlQ8ADwQNCA0IjhCOUBFYURQ",
+        description: "크리티컬",
+      },
+    ],
+    resonance_patterns: ["Elucidation"],
   },
 ];

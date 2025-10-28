@@ -14,7 +14,7 @@ export const banners: Banner[] = [
   {
     id: "corvus_pick_up",
     name: "[3.1] 코르부스 픽업",
-    pickup6: 54,
+    pickup6: 55,
     pickup5: [111, 104],
     version: "3.1",
   },
