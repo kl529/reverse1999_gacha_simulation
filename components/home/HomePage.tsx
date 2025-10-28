@@ -64,7 +64,7 @@ export default function HomePage() {
 
       <div className="relative z-20 flex min-h-screen flex-col">
         {/* 이벤트 배너 */}
-        <a
+        {/* <a
           href="https://forms.gle/yuoKe77JmDpz3qHF7"
           target="_blank"
           rel="noopener noreferrer"
@@ -73,7 +73,7 @@ export default function HomePage() {
           <p className="animate-pulse text-sm font-bold text-white sm:text-base">
             🎉 사이트 0.5 주년 이벤트 진행중! 클릭하여 참여 →
           </p>
-        </a>
+        </a> */}
 
         <main className="flex flex-grow flex-col items-center justify-center">
           <h2 className="mb-4 mt-20 text-4xl font-bold text-black dark:text-white lg:mt-0">
