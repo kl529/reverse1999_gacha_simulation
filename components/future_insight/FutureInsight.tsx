@@ -197,6 +197,25 @@ export default function FutureInsightPage() {
                       return [...acc, <span key={`comma5-${idx}`}>, </span>, curr];
                     }, [])}
                 </p>
+                {item.euphoria_pick_up && item.euphoria_pick_up.length > 0 && (
+                  <p>
+                    <strong>픽업 :</strong>{" "}
+                    {item.euphoria_pick_up
+                      .map((characterId) => (
+                        <a
+                          key={characterId}
+                          href={`/character/${characterId}`}
+                          className="text-blue-600 hover:underline dark:text-blue-400"
+                        >
+                          {getCharNameById(characterId)}
+                        </a>
+                      ))
+                      .reduce<React.ReactNode[]>((acc, curr, idx) => {
+                        if (idx === 0) return [curr];
+                        return [...acc, <span key={`comma-pickup-${idx}`}>, </span>, curr];
+                      }, [])}
+                  </p>
+                )}
               </div>
 
               <Separator />

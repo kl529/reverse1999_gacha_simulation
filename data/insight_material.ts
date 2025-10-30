@@ -1735,7 +1735,7 @@ export const insightMaterial: InsightMaterial[] = [
     ],
   },
   {
-    character_id: 54, // "Rhais",
+    character_id: 54, // "루부스카",
     insight: [
       {
         level: 1,
@@ -1752,7 +1752,7 @@ export const insightMaterial: InsightMaterial[] = [
           1002: 40000,
           511: 10,
           306: 6,
-          201: 5,
+          201: 6,
         },
       },
       {
@@ -1762,6 +1762,41 @@ export const insightMaterial: InsightMaterial[] = [
           512: 16,
           111: 6,
           1: 3,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 55, // "코르부스",
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 18000,
+          510: 3,
+          507: 3,
+          401: 6,
+          310: 6,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 40000,
+          511: 5,
+          508: 5,
+          305: 4,
+          208: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          1002: 200000,
+          512: 8,
+          509: 8,
+          103: 6,
+          4: 3,
         },
       },
     ],

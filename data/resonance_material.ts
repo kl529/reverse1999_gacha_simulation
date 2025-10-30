@@ -6260,4 +6260,123 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       },
     ],
   },
+  {
+    character_id: 55, // "Corvus"
+    resonance: [
+      {
+        level: 2,
+        materials: {
+          601: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          601: 5,
+          405: 4,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          601: 5,
+          403: 4,
+          301: 3,
+        },
+      },
+      {
+        level: 5,
+        materials: {
+          602: 5,
+          306: 4,
+          309: 3,
+        },
+      },
+      {
+        level: 6,
+        materials: {
+          1002: 30000,
+          602: 5,
+          207: 3,
+        },
+      },
+      {
+        level: 7,
+        materials: {
+          602: 6,
+          206: 5,
+        },
+      },
+      {
+        level: 8,
+        materials: {
+          602: 6,
+          205: 4,
+          307: 5,
+        },
+      },
+      {
+        level: 9,
+        materials: {
+          602: 8,
+          203: 5,
+          309: 4,
+        },
+      },
+      {
+        level: 10,
+        materials: {
+          605: 1,
+          603: 5,
+          10: 6,
+          209: 6,
+        },
+      },
+      {
+        level: 11,
+        materials: {
+          605: 1,
+          1002: 120000,
+          603: 5,
+          107: 4,
+        },
+      },
+      {
+        level: 12,
+        materials: {
+          605: 1,
+          603: 6,
+          109: 4,
+          201: 5,
+        },
+      },
+      {
+        level: 13,
+        materials: {
+          605: 1,
+          603: 6,
+          106: 5,
+          211: 6,
+        },
+      },
+      {
+        level: 14,
+        materials: {
+          605: 1,
+          603: 8,
+          3: 2,
+          104: 4,
+        },
+      },
+      {
+        level: 15,
+        materials: {
+          605: 1,
+          603: 8,
+          5: 3,
+          101: 4,
+        },
+      },
+    ],
+  },
 ];

@@ -9,6 +9,56 @@ export interface ResonancePatternMaterial {
 export const resonancePatternMaterial: ResonancePatternMaterial[] = [
   // 3.1
   {
+    character_id: 55, // "Corvus",
+    pattern: [
+      {
+        pattern: "Elucidation",
+        materials: {
+          3: 1,
+          104: 2,
+          201: 4,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Genuinity",
+        materials: {
+          4: 1,
+          103: 2,
+          210: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Stupefaction",
+        materials: {
+          5: 1,
+          107: 2,
+          203: 5,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Aspirational",
+        materials: {
+          5: 1,
+          102: 2,
+          209: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Hyperphrenia",
+        materials: {
+          3: 1,
+          104: 2,
+          205: 3,
+          1002: 120000,
+        },
+      },
+    ],
+  },
+  {
     character_id: 54, // "Rubuska",
     pattern: [
       {

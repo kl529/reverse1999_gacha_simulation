@@ -15,6 +15,7 @@ export interface FutureInsightItem {
     star6: { characterId: number; euphoriaId?: number }[];
     star5: { characterId: number; euphoriaId?: number }[];
   };
+  euphoria_pick_up?: number[]; // 픽업 캐릭터 id 목록
   note?: string;
 }
 
@@ -84,6 +85,7 @@ export const futureInsightData: FutureInsightItem[] = [
       ],
       star5: [],
     },
+    euphoria_pick_up: [8, 12, 17, 11, 9],
   },
   {
     version: "2.7",
@@ -107,6 +109,7 @@ export const futureInsightData: FutureInsightItem[] = [
       star5: [],
     },
     note: "무료 광상 캐릭터 선택권 지급 (2.6 기준 광상 캐릭터까지)",
+    euphoria_pick_up: [7, 15, 21, 1, 11],
   },
   {
     version: "2.75",
@@ -130,6 +133,7 @@ export const futureInsightData: FutureInsightItem[] = [
       star5: [],
     },
     note: "어쌔신 크리드 콜라보",
+    euphoria_pick_up: [13, 26, 25, 9, 12, 15],
   },
   {
     version: "2.8",
@@ -154,6 +158,7 @@ export const futureInsightData: FutureInsightItem[] = [
       star5: [],
     },
     note: "39,000원 6성 선택권 판매 (상시 캐릭만 가능 ~2.6), 무료 형상권 지급 (상시 캐릭만 가능 ~2.6), 32,500원 광상권 판매",
+    euphoria_pick_up: [21, 5, 28, 15, 12, 8],
   },
   {
     version: "3.0",
@@ -176,6 +181,7 @@ export const futureInsightData: FutureInsightItem[] = [
       ],
       star5: [],
     },
+    euphoria_pick_up: [23, 6, 1, 28, 21, 8],
   },
   {
     version: "3.1",
@@ -197,5 +203,7 @@ export const futureInsightData: FutureInsightItem[] = [
       ],
       star5: [],
     },
+    euphoria_pick_up: [21, 34, 3, 9, 8],
   },
+  // 3.2 광상 픽업 - 에즈라 / 갈라보나 / 이졸데 / 빌라 / 아르고스 / 마커스
 ];

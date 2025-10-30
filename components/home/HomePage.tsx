@@ -63,18 +63,6 @@ export default function HomePage() {
       <div className="pointer-events-none absolute inset-0 z-10 bg-gray-200/40 dark:bg-black/60" />
 
       <div className="relative z-20 flex min-h-screen flex-col">
-        {/* 이벤트 배너 */}
-        {/* <a
-          href="https://forms.gle/yuoKe77JmDpz3qHF7"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 py-3 text-center transition-all hover:from-purple-700 hover:via-pink-700 hover:to-blue-700"
-        >
-          <p className="animate-pulse text-sm font-bold text-white sm:text-base">
-            🎉 사이트 0.5 주년 이벤트 진행중! 클릭하여 참여 →
-          </p>
-        </a> */}
-
         <main className="flex flex-grow flex-col items-center justify-center">
           <h2 className="mb-4 mt-20 text-4xl font-bold text-black dark:text-white lg:mt-0">
             버틴의 여행가방 🧳
