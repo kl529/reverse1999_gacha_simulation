@@ -5,6 +5,7 @@ export type Coupon = {
   expiresAt: string; // 만료일 (YYYY-MM-DD 형식)
   pushSent?: boolean; // 푸시 전송 여부 (true: 전송됨, false/생략: 전송 안 됨)
   isPermanent?: boolean; // 무제한 쿠폰 여부 (true: 만료일 없음, 푸시 전송 안 함)
+  isHidden?: boolean; // 숨김 여부 (true: 무조건 안보임)
 };
 
 /**
@@ -27,10 +28,16 @@ export type Coupon = {
  * - 푸시 알림이 자동으로 전송되지 않음
  * - 쿠폰 페이지에서 "만료 없음" 표시
  *
+ * 🙈 숨김 쿠폰 (isHidden: true):
+ * - UI에서 무조건 표시되지 않음 (만료 여부와 무관)
+ * - 푸시 알림도 전송되지 않음
+ * - 쿠폰을 임시로 비활성화할 때 사용
+ *
  * ⚠️ 주의사항:
  * - 쿠폰 id는 반드시 고유해야 합니다
  * - pushSent: true인 쿠폰은 절대 푸시가 전송되지 않습니다
  * - isPermanent: true인 쿠폰은 푸시가 전송되지 않습니다
+ * - isHidden: true인 쿠폰은 UI에 표시되지 않고 푸시도 전송되지 않습니다
  * - 재전송이 필요하면 pushSent: false로 변경하세요
  */
 export const coupons: Coupon[] = [
@@ -41,6 +48,7 @@ export const coupons: Coupon[] = [
     description: "2주년 기념 쿠폰",
     expiresAt: "2025-10-30",
     pushSent: true,
+    isHidden: true,
   },
   {
     id: "8",
@@ -48,6 +56,7 @@ export const coupons: Coupon[] = [
     description: "2주년 기념 쿠폰",
     expiresAt: "2025-10-30",
     pushSent: true,
+    isHidden: true,
   },
   {
     id: "9",
@@ -55,6 +64,14 @@ export const coupons: Coupon[] = [
     description: "2주년 기념 쿠폰",
     expiresAt: "2025-10-30",
     pushSent: true,
+    isHidden: true,
+  },
+  {
+    id: "10",
+    code: "머나먼길의여정",
+    description: "3.0 쿠폰",
+    expiresAt: "2025-11-20",
+    pushSent: false,
   },
   // 무제한 쿠폰 (영구 사용 가능)
   {

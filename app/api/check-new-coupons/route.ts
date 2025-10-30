@@ -14,6 +14,7 @@ const MIN_CHECK_INTERVAL = 12 * 60 * 60 * 1000;
 /**
  * 새로운 쿠폰이 추가되었는지 확인하고 푸시 알림 전송
  * pushSent 플래그가 없거나 false인 쿠폰만 푸시 전송됩니다.
+ * isHidden이 true인 쿠폰과 isPermanent가 true인 쿠폰은 푸시가 전송되지 않습니다.
  * 서버 메모리 캐싱으로 한 배포 사이클 내에서 중복 전송 방지.
  */
 export async function POST() {
@@ -35,9 +36,10 @@ export async function POST() {
     lastCheckTime = now;
     console.log("🔍 새 쿠폰 체크 시작...");
 
-    // pushSent가 true가 아니고, 메모리에도 없는 활성 쿠폰만 찾기 (무제한 쿠폰 제외)
+    // pushSent가 true가 아니고, 메모리에도 없는 활성 쿠폰만 찾기 (무제한 쿠폰 및 숨김 쿠폰 제외)
     const newCoupons = coupons.filter((coupon) => {
       if (coupon.isPermanent) return false; // 무제한 쿠폰은 푸시 전송 안 함
+      if (coupon.isHidden) return false; // 숨김 쿠폰은 푸시 전송 안 함
       if (sentCouponIds.has(coupon.id)) return false; // 이미 전송한 쿠폰 제외
       const isExpired = new Date(coupon.expiresAt) < new Date();
       const notSent = coupon.pushSent !== true; // pushSent가 없거나 false인 경우
@@ -112,6 +114,7 @@ export async function POST() {
 export async function GET() {
   const pendingCoupons = coupons.filter((coupon) => {
     if (coupon.isPermanent) return false; // 무제한 쿠폰은 푸시 전송 안 함
+    if (coupon.isHidden) return false; // 숨김 쿠폰은 푸시 전송 안 함
     if (sentCouponIds.has(coupon.id)) return false; // 이미 전송한 쿠폰 제외
     const isExpired = new Date(coupon.expiresAt) < new Date();
     const notSent = coupon.pushSent !== true;

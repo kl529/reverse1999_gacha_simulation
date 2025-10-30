@@ -110,8 +110,8 @@ export default function CouponsPage() {
     }, 1500);
   };
 
-  // 만료되지 않은 쿠폰 필터링
-  const allActiveCoupons = coupons.filter((coupon) => !isExpired(coupon));
+  // 만료되지 않고 숨겨지지 않은 쿠폰 필터링
+  const allActiveCoupons = coupons.filter((coupon) => !isExpired(coupon) && !coupon.isHidden);
 
   // 일반 쿠폰과 영구 쿠폰 분리
   const regularCoupons = allActiveCoupons
