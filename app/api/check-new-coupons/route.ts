@@ -19,11 +19,37 @@ const MIN_CHECK_INTERVAL = 12 * 60 * 60 * 1000;
  */
 export async function POST() {
   try {
+    // 🚫 ngrok 환경에서는 푸시 알림 전송 차단 (개발/테스트 환경)
+    const isProduction = process.env.NODE_ENV === "production";
+    const host = process.env.VERCEL_URL || process.env.NEXT_PUBLIC_SITE_URL || "";
+    const isNgrok = host.includes("ngrok") || host.includes("localhost");
+
+    if (!isProduction || isNgrok) {
+      console.log("⚠️ 개발/테스트 환경에서는 푸시 알림을 전송하지 않습니다.");
+      console.log(`  환경: ${process.env.NODE_ENV}, 호스트: ${host}`);
+      return NextResponse.json({
+        success: true,
+        message: "Push notifications disabled in development/ngrok environment",
+        environment: process.env.NODE_ENV,
+        host: host,
+        sentCount: 0,
+      });
+    }
+
+    // Firebase Admin 초기화 확인
+    if (!messaging) {
+      console.error("❌ Firebase Admin Messaging이 초기화되지 않았습니다");
+      return NextResponse.json(
+        { error: "Firebase Admin not initialized" },
+        { status: 500 }
+      );
+    }
+
     // 최소 체크 간격 확인 (12시간 이내면 스킵)
     const now = Date.now();
     if (lastCheckTime !== null && now - lastCheckTime < MIN_CHECK_INTERVAL) {
       const minutesRemaining = Math.ceil((MIN_CHECK_INTERVAL - (now - lastCheckTime)) / 60000);
-      console.log(`⏰ 쿠폰 체크 스킵: ${minutesRemaining}분 후 다시 시도 가능`);
+      // 로그 출력 안 함 (너무 많은 로그 생성 방지)
       return NextResponse.json({
         success: true,
         message: "Too soon to check again",
@@ -56,38 +82,57 @@ export async function POST() {
     }
 
     console.log(`📤 ${newCoupons.length}개의 새 쿠폰 푸시 전송 중...`);
+    console.log("새 쿠폰 목록:", newCoupons.map((c) => `${c.id}: ${c.code}`).join(", "));
 
     // 각 새 쿠폰에 대해 푸시 전송
     const results = await Promise.allSettled(
       newCoupons.map(async (coupon) => {
-        const message = {
-          notification: {
-            title: "🎁 새로운 쿠폰이 등록되었습니다!",
-            body: `쿠폰 코드: ${coupon.code}\n지금 바로 사용하세요!`,
-          },
-          data: {
+        try {
+          console.log(`  → 쿠폰 "${coupon.code}" (ID: ${coupon.id}) 푸시 전송 시도 중...`);
+
+          const message = {
+            notification: {
+              title: "🎁 새로운 쿠폰이 등록되었습니다!",
+              body: `쿠폰 코드: ${coupon.code}\n지금 바로 사용하세요!`,
+            },
+            data: {
+              couponId: coupon.id,
+              couponCode: coupon.code,
+              url: "/coupon",
+            },
+            topic: "coupons",
+          };
+
+          const messageId = await messaging.send(message);
+          console.log(`  ✓ 쿠폰 "${coupon.code}" 전송 성공 (메시지 ID: ${messageId})`);
+
+          // 전송 성공 시 메모리에 기록
+          sentCouponIds.add(coupon.id);
+
+          return {
             couponId: coupon.id,
             couponCode: coupon.code,
-            url: "/coupon",
-          },
-          topic: "coupons",
-        };
-
-        const messageId = await messaging.send(message);
-
-        // 전송 성공 시 메모리에 기록
-        sentCouponIds.add(coupon.id);
-
-        return {
-          couponId: coupon.id,
-          couponCode: coupon.code,
-          messageId,
-        };
+            messageId,
+          };
+        } catch (error) {
+          console.error(`  ✗ 쿠폰 "${coupon.code}" 전송 실패:`, error);
+          throw error; // Promise.allSettled에서 rejected로 처리되도록
+        }
       })
     );
 
     const successful = results.filter((r) => r.status === "fulfilled");
     const failed = results.filter((r) => r.status === "rejected");
+
+    // 실패한 푸시의 에러 메시지 로깅
+    if (failed.length > 0) {
+      console.error("❌ 푸시 전송 실패 상세:");
+      failed.forEach((result, index) => {
+        if (result.status === "rejected") {
+          console.error(`  [${index + 1}] 에러:`, result.reason);
+        }
+      });
+    }
 
     console.log(`✅ 푸시 전송 완료: 성공 ${successful.length}개, 실패 ${failed.length}개`);
 

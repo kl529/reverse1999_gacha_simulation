@@ -30,12 +30,12 @@ export const BOSSES = [
     image: "/infos/blueprint/boss/primitive_urge.webp",
     inspiration: "spirit",
   },
-  // {
-  //   id: "new_era_declarer",
-  //   name: "새 시대 선언자",
-  //   image: "/infos/blueprint/boss/new_era_declarer.webp",
-  //   inspiration: "intellect",
-  // },
+  {
+    id: "harbinger_of_the_new_era",
+    name: "새 시대 선언자",
+    image: "/infos/blueprint/boss/harbinger_of_the_new_era.webp",
+    inspiration: "intellect",
+  },
 ] as const;
 
 export type BossId = (typeof BOSSES)[number]["id"];
@@ -46,6 +46,7 @@ export const FILTERS: Record<BossId, string[]> = {
   operatic_reflection: ["안조덱", "연소추공덱", "연소덱"],
   ashen_beast: ["제멜덱", "곡랑피클즈덱"],
   primitive_urge: ["술식덱"],
+  harbinger_of_the_new_era: ["정화 & 범용"],
 };
 
 export const BLUEPRINTS: Record<BossId, Record<string, string[]>> = {
@@ -70,5 +71,8 @@ export const BLUEPRINTS: Record<BossId, Record<string, string[]>> = {
   },
   primitive_urge: {
     술식덱: ["/infos/blueprint/primitive_urge/ulti.webp"],
+  },
+  harbinger_of_the_new_era: {
+    "정화 & 범용": ["/infos/blueprint/harbinger_of_the_new_era/purify.webp"],
   },
 };

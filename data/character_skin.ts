@@ -1028,6 +1028,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "2.75",
+    shorts_url: "https://www.youtube.com/embed/RxPIp_t_Oc4",
   },
   {
     id: 90,
@@ -1039,6 +1040,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.8",
     price: "19,000₩ / 1,680빗방울",
+    shorts_url: "https://www.youtube.com/embed/VBjo3HvpF2Y",
   },
   {
     id: 91,
@@ -1051,6 +1053,7 @@ export const characterSkin: CharacterSkin[] = [
     version: "2.8",
     price: "14,000₩ / 1,080빗방울",
     tarot_number: "21",
+    shorts_url: "https://www.youtube.com/embed/he4SQMbFWBo",
   },
   {
     id: 92,
@@ -1062,6 +1065,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.8",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/PKSkpGLdi5g",
   },
   {
     id: 93,
@@ -1073,6 +1077,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.8",
     price: "8,800₩ / 880빗방울",
+    shorts_url: "https://www.youtube.com/embed/E1xbmob1kzA",
   },
   {
     id: 94,
@@ -1084,6 +1089,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "2.8",
     tarot_number: "6",
+    shorts_url: "https://www.youtube.com/embed/ldbEgin8yqg",
   },
   {
     id: 95,
@@ -1094,6 +1100,7 @@ export const characterSkin: CharacterSkin[] = [
     source: "컨텐츠",
     resell: "X",
     version: "2.8",
+    shorts_url: "https://www.youtube.com/embed/gn7lrtAnSJQ",
   },
   {
     id: 96,
@@ -1105,6 +1112,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "3.0",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/Y5u8SlvrCUg",
   },
   {
     id: 97,
@@ -1116,6 +1124,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "3.0",
     price: "14,000₩ / 1,080빗방울",
+    shorts_url: "https://www.youtube.com/embed/ufc4hYDXi2g",
   },
   {
     id: 98,
@@ -1127,6 +1136,7 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "3.0",
     tarot_number: "18",
+    shorts_url: "https://www.youtube.com/embed/nfhANaPUAjY",
   },
   {
     id: 99,
@@ -1138,7 +1148,6 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "3.0",
   },
-
   {
     id: 100,
     character_id: 44, // 알레프
