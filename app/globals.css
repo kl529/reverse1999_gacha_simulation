@@ -134,4 +134,11 @@
   *:hover {
     transition: none;
   }
+
+  /* 모바일(터치) 환경에서만 커서 숨기기 */
+  @media (pointer: coarse) {
+    * {
+      cursor: none !important;
+    }
+  }
 }

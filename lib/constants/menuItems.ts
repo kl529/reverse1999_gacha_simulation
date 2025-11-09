@@ -74,6 +74,11 @@ export const LIBRARY_ITEMS: CardItem[] = [
     label: "상점 효율",
     href: "/shop_efficiency",
   },
+  // {
+  //   icon: "/infos/menu/material_menu.webp",
+  //   label: "데미지\n계산기",
+  //   href: "/damage_calculation",
+  // },
 ];
 
 // Menu items for "가이드" (Guide) section
@@ -199,6 +204,11 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
         label: "상점 효율",
         href: "/shop_efficiency",
       },
+      // {
+      //   iconImg: "/infos/menu/material_menu.webp",
+      //   label: "데미지 계산기",
+      //   href: "/damage_calculation",
+      // },
     ],
   },
   {

@@ -562,13 +562,15 @@ export default function MaterialCalculator({ characterId }: Props) {
                             className={`rounded-lg p-1 ${(() => {
                               switch (Number(rarity)) {
                                 case 6:
-                                  return "bg-gradient-to-br from-rose-500/20 to-amber-500/20";
+                                  return "bg-gradient-to-br from-[#D78324]/20 to-[#D78324]/40";
                                 case 5:
-                                  return "bg-gradient-to-br from-purple-500/20 to-pink-500/20";
+                                  return "bg-gradient-to-br from-[#EED483]/20 to-[#EED483]/40";
                                 case 4:
-                                  return "bg-gradient-to-br from-blue-500/20 to-indigo-500/20";
+                                  return "bg-gradient-to-br from-[#825D8C]/20 to-[#825D8C]/40";
                                 case 3:
-                                  return "bg-gradient-to-br from-emerald-500/20 to-teal-500/20";
+                                  return "bg-gradient-to-br from-[#5C6487]/20 to-[#5C6487]/40";
+                                case 2:
+                                  return "bg-gradient-to-br from-[#4F6E48]/20 to-[#4F6E48]/40";
                                 default:
                                   return "bg-gradient-to-br from-gray-400/20 to-gray-500/20";
                               }

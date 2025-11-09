@@ -421,9 +421,9 @@ export default function CashPackageShop() {
                   추천 패키지 선택 가이드 ⭐️
                 </h3>
                 <p className="mb-2 text-red-500 dark:text-red-400">
-                  월정액 &gt; 패스 &gt; 1회성 패키지 &gt; 버전 패키지 중 10,000원 이하 패키지 2개
-                  &gt; 골든 클래식 &gt; 월간 모집 세일 &gt; 고효율 초회 할인 빗방울 &gt; 그외 패키지
-                  &gt; 깡빗방울
+                  월정액(포효의 달) &gt; 패스(주크박스) &gt; 1회성 패키지 &gt; 버전 패키지 중
+                  10,000원 이하 패키지 2개 &gt; 골든 클래식 &gt; 월간 모집 세일 &gt; 고효율 초회
+                  할인 빗방울 &gt; 그외 패키지 &gt; 깡빗방울
                 </p>
                 <p className="mb-2 text-green-500 dark:text-green-400">
                   - 효율 좋은 기준, 월간 모집세일까지 사면, 버전당 6성 2명은 무난히 획득 가능 🎰
