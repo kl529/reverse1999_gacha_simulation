@@ -27,6 +27,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { euphoriaList } from "@/data/euphoria";
 import { getDisplayVersion } from "@/data/version";
+import { characterSkin } from "@/data/character_skin";
 
 export default function CharacterDetail({ character }: { character: Character }) {
   const guide = characterGuideList.find((g) => g.character_id === character.id);
@@ -86,54 +87,13 @@ export default function CharacterDetail({ character }: { character: Character })
     return hasResonance || hasEuphoria || hasResonancePattern || hasInsight;
   }, [character.id]);
 
+  const characterSkins = useMemo(() => {
+    return characterSkin.filter((skin) => skin.character_id === character.id);
+  }, [character.id]);
+
   return (
-    <div className="min-h-screen w-full bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100">
-      <div className="mx-auto max-w-4xl space-y-8 px-4 py-8">
-        <h1 className="text-center text-2xl font-bold sm:text-3xl">{character.name}</h1>
-
-        <div className="flex flex-wrap justify-center gap-6">
-          <div className="relative h-[150px] w-[150px] overflow-hidden rounded border dark:border-gray-700">
-            <Image
-              src={`/characters/${character.rarity}stars/${character.engName}.webp`}
-              alt={character.name}
-              width={150}
-              height={150}
-              className="h-full w-full object-cover object-top"
-              priority
-            />
-            <Image
-              src={`/infos/inspiration/${character.inspiration}.webp`}
-              alt={character.inspiration}
-              width={16}
-              height={16}
-              className="absolute left-1 top-0 z-10"
-            />
-            <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white">
-              {getDisplayVersion(character.version)}
-            </div>
-            {euphoriaList.some((e) => e.character_id === character.id) && (
-              <div className="absolute bottom-1 left-1 z-10 rounded-sm bg-rose-600 px-1 py-[1px] text-[10px] text-white shadow">
-                광상
-              </div>
-            )}
-          </div>
-          <Link
-            href={`/character_setting/${character.id}`}
-            className="flex h-[150px] w-[150px] flex-col items-center gap-2"
-          >
-            <div className="overflow-hidden rounded border transition-opacity hover:opacity-80 dark:border-gray-700">
-              <Image
-                src="/infos/menu/resonance_menu.webp"
-                alt="공명 & 의지 정보"
-                width={150}
-                height={150}
-                className="object-cover object-top"
-              />
-            </div>
-            <span className="text-sm text-gray-600 dark:text-gray-400">공명 & 의지 정보</span>
-          </Link>
-        </div>
-
+    <div className="min-h-screen w-full bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
+      <div className="mx-auto max-w-4xl space-y-8 px-4 pb-8">
         {guide && (
           <div className="space-y-6">
             <Alert variant="destructive" className="dark:bg-gray-600 dark:text-gray-100">
@@ -220,7 +180,7 @@ export default function CharacterDetail({ character }: { character: Character })
             </div>
 
             {guide.keywords && guide.keywords.length > 0 && (
-              <div className="mb-8 rounded-lg border bg-card p-6 dark:bg-card/40">
+              <div className="mb-8 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
                 <h2 className="mb-4 text-center text-xl font-bold">간단 소개</h2>
                 <div className="flex flex-wrap justify-center gap-2">
                   {guide.keywords.map((keyword, index) => (
@@ -237,7 +197,7 @@ export default function CharacterDetail({ character }: { character: Character })
             )}
 
             {guide.portrait_info && guide.portrait_info.headers && guide.portrait_info.rows && (
-              <div id="resonance-info" className="space-y-4">
+              <div id="resonance-info" className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 space-y-4">
                 <h2 className="text-center text-xl font-bold">형상 효율 정리</h2>
                 <p className="text-center text-sm text-gray-600 dark:text-gray-400">
                   안조 날라 이전의 형상 효율표는 명함 대비 상승량 수치임. 안조 날라 부터는 이전
@@ -322,7 +282,7 @@ export default function CharacterDetail({ character }: { character: Character })
             )}
 
             {guide.youtube_links && guide.youtube_links.length > 0 && (
-              <div id="guide-videos" className="space-y-4">
+              <div id="guide-videos" className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 space-y-4">
                 <h2 className="mb-4 text-center text-xl font-bold">가이드 영상</h2>
                 <div className="grid gap-4">
                   {guide.youtube_links.map((link, idx) => {
@@ -344,7 +304,7 @@ export default function CharacterDetail({ character }: { character: Character })
             )}
 
             {guide.guide_images && guide.guide_images.length > 0 && (
-              <div id="guide-images" className="space-y-4">
+              <div id="guide-images" className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 space-y-4">
                 <h2 className="mb-4 text-center text-xl font-bold">가이드 이미지</h2>
                 <div className="grid gap-4">
                   {guide.guide_images.map((image, idx) => (
@@ -371,7 +331,7 @@ export default function CharacterDetail({ character }: { character: Character })
         )}
 
         {euphoriaList.some((e) => e.character_id === character.id) && (
-          <div className="space-y-4">
+          <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 space-y-4">
             <h2 className="text-center text-xl font-bold">광상 정보</h2>
             <div
               className={cn(
@@ -411,9 +371,64 @@ export default function CharacterDetail({ character }: { character: Character })
           </div>
         )}
 
+        {characterSkins.length > 0 && (
+          <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 space-y-4">
+            <h2 className="text-center text-xl font-bold">스킨 정보</h2>
+            <div
+              className={cn(
+                "grid gap-8",
+                characterSkins.length === 1
+                  ? "grid-cols-1"
+                  : "grid-cols-1 lg:grid-cols-2"
+              )}
+            >
+              {characterSkins.map((skin) => (
+                <Link
+                  key={skin.id}
+                  href={`/skin/${skin.id}`}
+                  className="flex flex-col items-center gap-3"
+                >
+                  <div className="group relative w-full max-w-md aspect-[3/4] cursor-pointer overflow-hidden rounded-lg transition-all hover:shadow-xl">
+                    <Image
+                      src={`/infos/character_skin/illust/${skin.engName}.webp`}
+                      alt={skin.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform group-hover:scale-105"
+                    />
+                    {/* 오버레이 */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
+                    {/* 텍스트 정보 */}
+                    <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+                      <h3 className="text-xl font-bold mb-3">{skin.name}</h3>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-sm">
+                          {skin.rarity}
+                        </span>
+                        <span className="rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-sm">
+                          {skin.source}
+                        </span>
+                        {skin.version && (
+                          <span className="rounded-full bg-blue-500/80 backdrop-blur-sm px-3 py-1 text-sm">
+                            v{skin.version}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <span className="text-center text-xl font-semibold">{skin.name}</span>
+                </Link>
+              ))}
+            </div>
+            <p className="text-center text-sm text-gray-600 dark:text-gray-400">
+              이미지 클릭 시 스킨 상세 페이지로 이동
+            </p>
+          </div>
+        )}
+
         <div className="space-y-6">
           {recommendedTeams.length > 0 && (
-            <div id="recommended-teams">
+            <div id="recommended-teams" className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
               <div className="mb-6 flex flex-col items-center gap-4">
                 <h2 className="text-center text-xl font-bold">사용 조합 목록</h2>
                 <Link href="/recommend_team">
@@ -587,40 +602,6 @@ export default function CharacterDetail({ character }: { character: Character })
           )}
         </div>
 
-        <div className="space-y-6">
-          <h2 className="text-center text-xl font-bold">다른 캐릭터 정보</h2>
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(88px,1fr))] gap-3">
-            {allCharacters.map((ch) => (
-              <Link key={ch.id} href={`/character/${ch.id}`}>
-                <div className="flex flex-col items-center rounded p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800">
-                  <div className="relative h-16 w-16">
-                    <Image
-                      src={`/characters/${ch.rarity}stars_small/${ch.engName}.webp`}
-                      alt={ch.name}
-                      fill
-                      sizes="64px"
-                      className="rounded object-contain"
-                      priority
-                    />
-                    {ch.version && (
-                      <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
-                        {getDisplayVersion(ch.version)}
-                      </div>
-                    )}
-                    {euphoriaList.some((e) => e.character_id === ch.id) && (
-                      <div className="absolute bottom-0 left-0 rounded-sm bg-rose-600 px-1 py-[1px] text-[10px] text-white shadow">
-                        광상
-                      </div>
-                    )}
-                  </div>
-                  <div className="w-full truncate text-center text-sm font-semibold text-black dark:text-white">
-                    {ch.name}
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   );

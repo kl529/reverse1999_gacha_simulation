@@ -603,9 +603,9 @@ export default function MaterialCalculator({ characterId }: Props) {
   };
 
   return (
-    <div className="rounded-lg border p-4">
-      <h2 className="mb-4 text-center text-lg font-bold text-black dark:text-white">
-        육성 재화 계산기 - {character.name}
+    <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+      <h2 className="mb-4 text-center text-xl font-bold text-black dark:text-white">
+        육성 재화 계산기
       </h2>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <Card>

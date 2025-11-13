@@ -3,13 +3,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { Character } from "@/data/characters";
 import { character_setting_data } from "@/data/character_setting_data";
 import { psycube_list } from "@/data/psycube_data";
-import { SETTING_CHARACTERS } from "@/data/setting_character";
 import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
@@ -17,29 +14,15 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { toast, Toaster } from "react-hot-toast";
 import { useState, useMemo } from "react";
 import { RESONANCE_PATTERN } from "@/data/resonance_pattern";
-import CharacterGrowthCalculator from "@/components/etc/CharacterGrowthCalculator";
 import { useRouter } from "next/navigation";
-import { resonanceMaterialList } from "@/data/resonance_material";
-import { euphoriaMaterialList } from "@/data/euphoria_material";
-import { resonancePatternMaterial } from "@/data/resonance_pattern_material";
-import { insightMaterial } from "@/data/insight_material";
-import { euphoriaList } from "@/data/euphoria";
 import { getDisplayVersion } from "@/data/version";
+import { characterSkin } from "@/data/character_skin";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function CharacterSettingDetail({ character }: { character: Character }) {
   const setting = character_setting_data.find((c) => c.character_id === character.id);
   const router = useRouter();
-
-  const hasGrowthData = useMemo(() => {
-    const hasResonance = resonanceMaterialList.some((c) => c.character_id === character.id);
-    const hasEuphoria = euphoriaMaterialList.some((c) => c.character_id === character.id);
-    const hasResonancePattern = resonancePatternMaterial.some(
-      (c) => c.character_id === character.id
-    );
-    const hasInsight = insightMaterial.some((c) => c.character_id === character.id);
-
-    return hasResonance || hasEuphoria || hasResonancePattern || hasInsight;
-  }, [character.id]);
 
   const psycubeItems = (setting?.psycubes || []).map((p) => {
     const psycube = psycube_list.find((d) => d.id === p.psycube_id);
@@ -53,66 +36,17 @@ export default function CharacterSettingDetail({ character }: { character: Chara
     };
   });
 
-  const getSortedCharList = (rarity: number) =>
-    SETTING_CHARACTERS.filter((c) => c.rarity === rarity).sort((a, b) => b.id - a.id);
+  const characterSkins = useMemo(() => {
+    return characterSkin.filter((skin) => skin.character_id === character.id);
+  }, [character.id]);
 
   const [showDialog, setShowDialog] = useState(false);
 
   return (
-    <div className="min-h-screen w-full bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100">
-      <div className="mx-auto max-w-4xl space-y-8 px-4 py-8">
-        <h1 className="text-center text-2xl font-bold sm:text-3xl">{character.name}</h1>
-
-        <div className="flex flex-wrap justify-center gap-6">
-          {/* 캐릭터 초상화 + 정보 */}
-          <div className="relative h-[150px] w-[150px] overflow-hidden rounded border dark:border-gray-700">
-            <Image
-              src={`/characters/${character.rarity}stars/${character.engName}.webp`}
-              alt={character.name}
-              width={150}
-              height={150}
-              className="h-full w-full object-cover object-top"
-              priority
-            />
-            {/* 영감 아이콘 */}
-            <Image
-              src={`/infos/inspiration/${character.inspiration}.webp`}
-              alt={character.inspiration}
-              width={16}
-              height={16}
-              className="absolute left-1 top-0 z-10"
-            />
-            {/* 버전 뱃지 */}
-            <div className="absolute bottom-1 right-1 z-10 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white">
-              {getDisplayVersion(character.version)}
-            </div>
-            {/* 광상 여부 */}
-            {euphoriaList.some((e) => e.character_id === character.id) && (
-              <div className="absolute bottom-1 left-1 z-10 rounded-sm bg-rose-600 px-1 py-[1px] text-[10px] text-white shadow">
-                광상
-              </div>
-            )}
-          </div>
-          {/* 캐릭터 가이드로 바로가기 버튼 */}
-          <Link
-            href={`/character/${character.id}`}
-            className="flex h-[150px] w-[150px] flex-col items-center justify-center gap-2"
-          >
-            <div className="overflow-hidden rounded border transition-opacity hover:opacity-80 dark:border-gray-700">
-              <Image
-                src="/infos/menu/gacha_simulator_menu.webp"
-                alt="캐릭터 가이드 바로가기"
-                width={150}
-                height={150}
-                className="object-cover object-top"
-              />
-            </div>
-            <span className="text-sm text-gray-600 dark:text-gray-400">캐릭터 가이드로 이동</span>
-          </Link>
-        </div>
-
+    <div className="min-h-screen w-full bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
+      <div className="mx-auto max-w-4xl space-y-8 px-4 pb-0">
         {setting?.resonance && setting.resonance.length > 0 && (
-          <div>
+          <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
             <div className="mb-2 flex items-center justify-center gap-2">
               <h2 className="text-xl font-bold">공명 추천</h2>
               <Button
@@ -202,7 +136,8 @@ export default function CharacterSettingDetail({ character }: { character: Chara
         )}
 
         {setting?.resonance_patterns && setting.resonance_patterns.length > 0 && (
-          <div>
+          <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+            <h2 className="mb-4 text-center text-xl font-bold">공명 변조</h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {setting.resonance_patterns.map((pattern, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center">
@@ -227,8 +162,8 @@ export default function CharacterSettingDetail({ character }: { character: Chara
           </div>
         )}
 
-        <div>
-          <h2 className="mb-2 mt-6 text-center text-xl font-bold">의지 추천</h2>
+        <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+          <h2 className="mb-2 text-center text-xl font-bold">의지 추천</h2>
           <p className="mb-4 text-center text-xs text-gray-500 dark:text-gray-400">
             의지는 추천순이며, 순위도 100% 정답이 아닐 수도 있습니다.
           </p>
@@ -268,44 +203,60 @@ export default function CharacterSettingDetail({ character }: { character: Chara
           </div>
         </div>
 
-        {hasGrowthData && <CharacterGrowthCalculator characterId={character.id} />}
-
-        <div className="space-y-6">
-          {[6, 5].map((rarity) => (
-            <div key={rarity}>
-              <h3 className="text-center text-[15px] font-semibold">
-                {rarity === 6 ? "🌟 6성" : "⭐ 5성"}
-              </h3>
-              <Separator className="my-2" />
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(88px,1fr))] gap-3">
-                {getSortedCharList(rarity).map((ch) => (
-                  <Link key={ch.id} href={`/character_setting/${ch.id}`}>
-                    <div className="flex flex-col items-center rounded p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800">
-                      <div className="relative h-16 w-16">
-                        <Image
-                          src={`/characters/${ch.rarity}stars_small/${ch.engName}.webp`}
-                          alt={ch.name}
-                          fill
-                          sizes="64px"
-                          className="rounded object-contain"
-                          priority
-                        />
-                        {ch.version && (
-                          <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
-                            {getDisplayVersion(ch.version)}
-                          </div>
+        {characterSkins.length > 0 && (
+          <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 space-y-4">
+            <h2 className="text-center text-xl font-bold">스킨 정보</h2>
+            <div
+              className={cn(
+                "grid gap-8",
+                characterSkins.length === 1
+                  ? "grid-cols-1"
+                  : "grid-cols-1 lg:grid-cols-2"
+              )}
+            >
+              {characterSkins.map((skin) => (
+                <Link
+                  key={skin.id}
+                  href={`/skin/${skin.id}`}
+                  className="flex flex-col items-center gap-3"
+                >
+                  <div className="group relative w-full max-w-md aspect-[3/4] cursor-pointer overflow-hidden rounded-lg transition-all hover:shadow-xl">
+                    <Image
+                      src={`/infos/character_skin/illust/${skin.engName}.webp`}
+                      alt={skin.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform group-hover:scale-105"
+                    />
+                    {/* 오버레이 */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
+                    {/* 텍스트 정보 */}
+                    <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+                      <h3 className="text-xl font-bold mb-3">{skin.name}</h3>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-sm">
+                          {skin.rarity}
+                        </span>
+                        <span className="rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-sm">
+                          {skin.source}
+                        </span>
+                        {skin.version && (
+                          <span className="rounded-full bg-blue-500/80 backdrop-blur-sm px-3 py-1 text-sm">
+                            v{skin.version}
+                          </span>
                         )}
                       </div>
-                      <div className="w-full truncate text-center text-sm font-semibold text-black dark:text-white">
-                        {ch.name}
-                      </div>
                     </div>
-                  </Link>
-                ))}
-              </div>
+                  </div>
+                  <span className="text-center text-xl font-semibold">{skin.name}</span>
+                </Link>
+              ))}
             </div>
-          ))}
-        </div>
+            <p className="text-center text-sm text-gray-600 dark:text-gray-400">
+              이미지 클릭 시 스킨 상세 페이지로 이동
+            </p>
+          </div>
+        )}
       </div>
 
       <Toaster position="bottom-center" toastOptions={{ duration: 2000 }} />

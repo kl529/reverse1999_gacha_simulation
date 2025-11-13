@@ -19,21 +19,52 @@ export const PLAYGROUND_ITEMS: CardItem[] = [
   },
 ];
 
-// Menu items for "도서관" (Library) section
+// Menu items for "도서관" (Library) section - 캐릭터 육성 & 실제 게임 플레이 관련
 export const LIBRARY_ITEMS: CardItem[] = [
   {
-    icon: "/infos/menu/material_menu.webp",
-    label: "재료 파밍",
-    title: "재료 파밍표",
-    href: "#",
-    image: "/infos/modal_img/material_sheet.webp",
-    source: "https://bbs.nga.cn/read.php?tid=41840172&rand=968",
+    icon: "/infos/menu/character_menu.webp",
+    label: "캐릭터 가이드",
+    href: "/character",
   },
   {
-    icon: "/infos/menu/resonance_menu.webp",
-    label: "공명 & 의지",
-    href: "/character_setting",
+    icon: "/infos/menu/recommend_team_menu.webp",
+    label: "추천 조합",
+    href: "/recommend_team",
   },
+  {
+    icon: "/infos/menu/reveries_in_the_rain_menu.webp",
+    label: "빗속의 공상",
+    href: "/reveries_in_the_rain",
+  },
+  {
+    icon: "/infos/menu/blueprint_menu.webp",
+    label: "청사진 모음",
+    href: "/blueprint_setting",
+  },
+  {
+    icon: "/infos/menu/euphoria_guide_menu.webp",
+    label: "광상 가이드",
+    href: "/euphoria_guide",
+  },
+  {
+    icon: "/infos/menu/psycube_guide_menu.webp",
+    label: "의지 육성",
+    href: "/psycube_guide",
+  },
+  {
+    icon: "/infos/menu/path_quiz_menu.webp",
+    label: "오솔길 정답",
+    href: "/path_quiz",
+  },
+  // {
+  //   icon: "/infos/menu/material_menu.webp",
+  //   label: "데미지\n계산기",
+  //   href: "/damage_calculation",
+  // },
+];
+
+// Menu items for "가이드" (Guide) section - 플레이와 직접 연관 없는 정보/참고 자료
+export const GUIDE_ITEMS: CardItem[] = [
   {
     icon: "/infos/menu/skin_menu.webp",
     label: "스킨 갤러리",
@@ -45,26 +76,6 @@ export const LIBRARY_ITEMS: CardItem[] = [
     href: "/future_insight",
   },
   {
-    icon: "/infos/menu/recommend_team_menu.webp",
-    label: "추천 조합",
-    href: "/recommend_team",
-  },
-  {
-    icon: "/infos/menu/blueprint_menu.webp",
-    label: "청사진 모음",
-    href: "/blueprint_setting",
-  },
-  {
-    icon: "/infos/menu/calendar_menu.webp",
-    label: "캘린더",
-    href: "/calendar",
-  },
-  {
-    icon: "/infos/menu/reveries_in_the_rain_menu.webp",
-    label: "빗속의 공상",
-    href: "/reveries_in_the_rain",
-  },
-  {
     icon: "/infos/menu/cash_package_shop_menu.webp",
     label: "현질 패키지",
     href: "/cash_package_shop",
@@ -74,34 +85,10 @@ export const LIBRARY_ITEMS: CardItem[] = [
     label: "상점 효율",
     href: "/shop_efficiency",
   },
-  // {
-  //   icon: "/infos/menu/material_menu.webp",
-  //   label: "데미지\n계산기",
-  //   href: "/damage_calculation",
-  // },
-];
-
-// Menu items for "가이드" (Guide) section
-export const GUIDE_ITEMS: CardItem[] = [
   {
-    icon: "/infos/menu/character_menu.webp",
-    label: "캐릭터 가이드",
-    href: "/character",
-  },
-  {
-    icon: "/infos/menu/path_quiz_menu.webp",
-    label: "오솔길 정답",
-    href: "/path_quiz",
-  },
-  {
-    icon: "/infos/menu/euphoria_guide_menu.webp",
-    label: "광상 가이드",
-    href: "/euphoria_guide",
-  },
-  {
-    icon: "/infos/menu/psycube_guide_menu.webp",
-    label: "의지 육성",
-    href: "/psycube_guide",
+    icon: "/infos/menu/calendar_menu.webp",
+    label: "캘린더",
+    href: "/calendar",
   },
   {
     icon: "/infos/menu/cash_guide_menu.webp",
@@ -162,17 +149,10 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
   {
     title: "도서관",
     items: [
-      { iconImg: "/infos/menu/material_menu.webp", label: "재료 파밍", modalType: "material" },
       {
-        iconImg: "/infos/menu/resonance_menu.webp",
-        label: "공명 & 의지",
-        href: "/character_setting",
-      },
-      { iconImg: "/infos/menu/skin_menu.webp", label: "스킨 갤러리", href: "/skin" },
-      {
-        iconImg: "/infos/menu/future_insight_menu.webp",
-        label: "미래시 정리",
-        href: "/future_insight",
+        iconImg: "/infos/menu/character_menu.webp",
+        label: "캐릭터 가이드",
+        href: "/character",
       },
       {
         iconImg: "/infos/menu/recommend_team_menu.webp",
@@ -180,19 +160,41 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
         href: "/recommend_team",
       },
       {
+        iconImg: "/infos/menu/reveries_in_the_rain_menu.webp",
+        label: "빗속의 공상",
+        href: "/reveries_in_the_rain",
+      },
+      {
         iconImg: "/infos/menu/blueprint_menu.webp",
         label: "청사진 모음",
         href: "/blueprint_setting",
       },
       {
-        iconImg: "/infos/menu/calendar_menu.webp",
-        label: "캘린더",
-        href: "/calendar",
+        iconImg: "/infos/menu/euphoria_guide_menu.webp",
+        label: "광상 가이드",
+        href: "/euphoria_guide",
       },
       {
-        iconImg: "/infos/menu/reveries_in_the_rain_menu.webp",
-        label: "빗속의 공상",
-        href: "/reveries_in_the_rain",
+        iconImg: "/infos/menu/psycube_guide_menu.webp",
+        label: "의지 육성",
+        href: "/psycube_guide",
+      },
+      { iconImg: "/infos/menu/path_quiz_menu.webp", label: "오솔길 정답", href: "/path_quiz" },
+      // {
+      //   iconImg: "/infos/menu/material_menu.webp",
+      //   label: "데미지 계산기",
+      //   href: "/damage_calculation",
+      // },
+    ],
+  },
+  {
+    title: "가이드",
+    items: [
+      { iconImg: "/infos/menu/skin_menu.webp", label: "스킨 갤러리", href: "/skin" },
+      {
+        iconImg: "/infos/menu/future_insight_menu.webp",
+        label: "미래시 정리",
+        href: "/future_insight",
       },
       {
         iconImg: "/infos/menu/cash_package_shop_menu.webp",
@@ -204,31 +206,10 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
         label: "상점 효율",
         href: "/shop_efficiency",
       },
-      // {
-      //   iconImg: "/infos/menu/material_menu.webp",
-      //   label: "데미지 계산기",
-      //   href: "/damage_calculation",
-      // },
-    ],
-  },
-  {
-    title: "가이드",
-    items: [
       {
-        iconImg: "/infos/menu/character_menu.webp",
-        label: "캐릭터 가이드",
-        href: "/character",
-      },
-      { iconImg: "/infos/menu/path_quiz_menu.webp", label: "오솔길 정답", href: "/path_quiz" },
-      {
-        iconImg: "/infos/menu/euphoria_guide_menu.webp",
-        label: "광상 가이드",
-        href: "/euphoria_guide",
-      },
-      {
-        iconImg: "/infos/menu/psycube_guide_menu.webp",
-        label: "의지 육성",
-        href: "/psycube_guide",
+        iconImg: "/infos/menu/calendar_menu.webp",
+        label: "캘린더",
+        href: "/calendar",
       },
       {
         iconImg: "/infos/menu/cash_guide_menu.webp",

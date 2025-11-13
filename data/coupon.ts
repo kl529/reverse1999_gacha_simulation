@@ -71,6 +71,13 @@ export const coupons: Coupon[] = [
     code: "머나먼길의여정",
     description: "3.0 쿠폰",
     expiresAt: "2025-11-20",
+    pushSent: true,
+  },
+  {
+    id: "11",
+    code: "영혼인도자",
+    description: "3.0 쿠폰",
+    expiresAt: "2025-12-11",
     pushSent: false,
   },
   // 무제한 쿠폰 (영구 사용 가능)

@@ -69,21 +69,21 @@ export default function HomePage() {
           </h2>
           <p className="mb-8 text-black dark:text-white">당신이 폭풍우를 이겨낼 수 있도록..</p>
 
-          <div className="grid w-full max-w-7xl grid-cols-1 gap-7 px-10 md:px-20 lg:grid-cols-3 lg:px-6">
+          <div className="grid w-full max-w-7xl grid-cols-1 gap-7 px-6 md:px-12 lg:grid-cols-3 lg:px-4">
             <CardBox title="놀이터" subTitle="Just for Fun" items={PLAYGROUND_ITEMS} />
 
             <CardBox
               title="도서관"
-              subTitle="찾고 싶은 게 있나요?"
+              subTitle="게임 플레이를 위한 필수 정보"
               onItemClick={handleItemClick}
               items={LIBRARY_ITEMS}
             />
 
-            <CardBox title="가이드" subTitle="당신을 위한 친절한 가이드" items={GUIDE_ITEMS} />
+            <CardBox title="가이드" subTitle="유용한 참고 자료 모음" items={GUIDE_ITEMS} />
           </div>
 
           {/* 캐러셀 - 모든 화면 크기에서 하단에 표시 */}
-          <div className="mt-6 w-full max-w-7xl px-10 md:px-20 lg:px-6">
+          <div className="mt-6 w-full max-w-7xl px-6 md:px-12 lg:px-4">
             <Carousel />
           </div>
         </main>
