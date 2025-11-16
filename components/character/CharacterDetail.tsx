@@ -197,7 +197,10 @@ export default function CharacterDetail({ character }: { character: Character })
             )}
 
             {guide.portrait_info && guide.portrait_info.headers && guide.portrait_info.rows && (
-              <div id="resonance-info" className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 space-y-4">
+              <div
+                id="resonance-info"
+                className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
+              >
                 <h2 className="text-center text-xl font-bold">형상 효율 정리</h2>
                 <p className="text-center text-sm text-gray-600 dark:text-gray-400">
                   안조 날라 이전의 형상 효율표는 명함 대비 상승량 수치임. 안조 날라 부터는 이전
@@ -282,7 +285,10 @@ export default function CharacterDetail({ character }: { character: Character })
             )}
 
             {guide.youtube_links && guide.youtube_links.length > 0 && (
-              <div id="guide-videos" className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 space-y-4">
+              <div
+                id="guide-videos"
+                className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
+              >
                 <h2 className="mb-4 text-center text-xl font-bold">가이드 영상</h2>
                 <div className="grid gap-4">
                   {guide.youtube_links.map((link, idx) => {
@@ -304,7 +310,10 @@ export default function CharacterDetail({ character }: { character: Character })
             )}
 
             {guide.guide_images && guide.guide_images.length > 0 && (
-              <div id="guide-images" className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 space-y-4">
+              <div
+                id="guide-images"
+                className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
+              >
                 <h2 className="mb-4 text-center text-xl font-bold">가이드 이미지</h2>
                 <div className="grid gap-4">
                   {guide.guide_images.map((image, idx) => (
@@ -331,7 +340,7 @@ export default function CharacterDetail({ character }: { character: Character })
         )}
 
         {euphoriaList.some((e) => e.character_id === character.id) && (
-          <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 space-y-4">
+          <div className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
             <h2 className="text-center text-xl font-bold">광상 정보</h2>
             <div
               className={cn(
@@ -371,64 +380,12 @@ export default function CharacterDetail({ character }: { character: Character })
           </div>
         )}
 
-        {characterSkins.length > 0 && (
-          <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 space-y-4">
-            <h2 className="text-center text-xl font-bold">스킨 정보</h2>
-            <div
-              className={cn(
-                "grid gap-8",
-                characterSkins.length === 1
-                  ? "grid-cols-1"
-                  : "grid-cols-1 lg:grid-cols-2"
-              )}
-            >
-              {characterSkins.map((skin) => (
-                <Link
-                  key={skin.id}
-                  href={`/skin/${skin.id}`}
-                  className="flex flex-col items-center gap-3"
-                >
-                  <div className="group relative w-full max-w-md aspect-[3/4] cursor-pointer overflow-hidden rounded-lg transition-all hover:shadow-xl">
-                    <Image
-                      src={`/infos/character_skin/illust/${skin.engName}.webp`}
-                      alt={skin.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover transition-transform group-hover:scale-105"
-                    />
-                    {/* 오버레이 */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
-                    {/* 텍스트 정보 */}
-                    <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                      <h3 className="text-xl font-bold mb-3">{skin.name}</h3>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-sm">
-                          {skin.rarity}
-                        </span>
-                        <span className="rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-sm">
-                          {skin.source}
-                        </span>
-                        {skin.version && (
-                          <span className="rounded-full bg-blue-500/80 backdrop-blur-sm px-3 py-1 text-sm">
-                            v{skin.version}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  <span className="text-center text-xl font-semibold">{skin.name}</span>
-                </Link>
-              ))}
-            </div>
-            <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-              이미지 클릭 시 스킨 상세 페이지로 이동
-            </p>
-          </div>
-        )}
-
         <div className="space-y-6">
           {recommendedTeams.length > 0 && (
-            <div id="recommended-teams" className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+            <div
+              id="recommended-teams"
+              className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
+            >
               <div className="mb-6 flex flex-col items-center gap-4">
                 <h2 className="text-center text-xl font-bold">사용 조합 목록</h2>
                 <Link href="/recommend_team">
@@ -601,7 +558,6 @@ export default function CharacterDetail({ character }: { character: Character })
             </div>
           )}
         </div>
-
       </div>
     </div>
   );

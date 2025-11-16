@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useRef } from "react";
-import bingoTexts from "@/data/bingo_text";
+import { bingoData, BingoDifficulty } from "@/data/bingo_text";
 import { toast, Toaster } from "react-hot-toast";
 
-const BINGO_SIZE = 5;
-const TOTAL_BINGO_LINES = 12; // 5x5 빙고판의 전체 빙고 줄 개수
+// 빙고판 크기별 전체 빙고 줄 개수 (가로 + 세로 + 대각선 2)
+const getTotalBingoLines = (size: number) => size + size + 2;
 
 declare global {
   interface Window {
@@ -22,28 +22,32 @@ declare global {
   }
 }
 
-function getBingoLines(board: boolean[][]) {
+function getBingoLines(board: boolean[][], size: number) {
   const lines: number[][][] = [];
   // 가로
-  for (let i = 0; i < BINGO_SIZE; i++) {
-    if (board[i].every((v) => v)) lines.push(Array.from({ length: BINGO_SIZE }, (_, j) => [i, j]));
+  for (let i = 0; i < size; i++) {
+    if (board[i].every((v) => v)) lines.push(Array.from({ length: size }, (_, j) => [i, j]));
   }
   // 세로
-  for (let j = 0; j < BINGO_SIZE; j++) {
+  for (let j = 0; j < size; j++) {
     if (board.every((row) => row[j]))
-      lines.push(Array.from({ length: BINGO_SIZE }, (_, i) => [i, j]));
+      lines.push(Array.from({ length: size }, (_, i) => [i, j]));
   }
   // 대각선
   if (board.every((row, idx) => row[idx]))
-    lines.push(Array.from({ length: BINGO_SIZE }, (v, idx) => [idx, idx]));
-  if (board.every((row, idx) => row[BINGO_SIZE - 1 - idx]))
-    lines.push(Array.from({ length: BINGO_SIZE }, (v, idx) => [idx, BINGO_SIZE - 1 - idx]));
+    lines.push(Array.from({ length: size }, (v, idx) => [idx, idx]));
+  if (board.every((row, idx) => row[size - 1 - idx]))
+    lines.push(Array.from({ length: size }, (v, idx) => [idx, size - 1 - idx]));
   return lines;
 }
 
 export default function Bingo() {
+  const [difficulty, setDifficulty] = useState<BingoDifficulty>("veteran");
+  const currentBingoData = bingoData[difficulty];
+  const bingoSize = currentBingoData.size;
+
   const [board, setBoard] = useState(
-    Array.from({ length: BINGO_SIZE }, () => Array(BINGO_SIZE).fill(false))
+    Array.from({ length: bingoSize }, () => Array(bingoSize).fill(false))
   );
   const [result, setResult] = useState<{
     bingoCount: number;
@@ -52,6 +56,8 @@ export default function Bingo() {
     bingoLines: number[][][];
   } | null>(null);
   const boardRef = useRef<HTMLDivElement>(null);
+
+  const bingoTexts = currentBingoData.texts;
 
   // 셀 클릭 핸들러
   const handleCellClick = (row: number, col: number) => {
@@ -63,7 +69,7 @@ export default function Bingo() {
       return;
     }
 
-    const text = bingoTexts[row * BINGO_SIZE + col];
+    const text = bingoTexts[row * bingoSize + col];
 
     // 🔹 GA 이벤트 전송
     window.gtag?.("event", "bingo_cell_click", {
@@ -80,7 +86,7 @@ export default function Bingo() {
 
   // 리셋
   const handleReset = () => {
-    setBoard(Array.from({ length: BINGO_SIZE }, () => Array(BINGO_SIZE).fill(false)));
+    setBoard(Array.from({ length: bingoSize }, () => Array(bingoSize).fill(false)));
     setResult(null);
     toast.success("리셋되었습니다.", {
       duration: 1500,
@@ -88,9 +94,17 @@ export default function Bingo() {
     });
   };
 
+  // 난이도 변경 핸들러
+  const handleDifficultyChange = (newDifficulty: BingoDifficulty) => {
+    setDifficulty(newDifficulty);
+    const newSize = bingoData[newDifficulty].size;
+    setBoard(Array.from({ length: newSize }, () => Array(newSize).fill(false)));
+    setResult(null);
+  };
+
   // 빙고 체크 (가로, 세로, 대각선)
   const getBingoResult = () => {
-    const lines = getBingoLines(board);
+    const lines = getBingoLines(board, bingoSize);
     const bingoCells = new Set<string>();
     lines.forEach((line) => {
       line.forEach(([i, j]) => bingoCells.add(`${i},${j}`));
@@ -116,9 +130,42 @@ export default function Bingo() {
     <div className="mx-auto flex min-h-screen w-full max-w-screen-lg flex-col items-center bg-gray-100 px-2 py-8 dark:bg-gray-900">
       <Toaster position="top-center" toastOptions={{ duration: 1500 }} />
       <h1 className="mb-2 mt-8 text-center text-3xl font-bold">리버스 1999 빙고</h1>
-      <p className="mb-3 text-center text-gray-500 dark:text-gray-300">
-        추후 여러 빙고판이 추가될 예정입니다. + 재미로만 즐겨주세요.
-      </p>
+      <p className="mb-4 text-center text-gray-500 dark:text-gray-300">재미로만 즐겨주세요!</p>
+
+      {/* 난이도 탭 */}
+      <div className="mb-4 flex gap-2 rounded-lg bg-white p-1 shadow-sm dark:bg-gray-800">
+        <button
+          onClick={() => handleDifficultyChange("veteran")}
+          className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+            difficulty === "veteran"
+              ? "bg-blue-500 text-white dark:bg-blue-600"
+              : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+          }`}
+        >
+          고인물
+        </button>
+        <button
+          onClick={() => handleDifficultyChange("whale")}
+          className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+            difficulty === "whale"
+              ? "bg-blue-500 text-white dark:bg-blue-600"
+              : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+          }`}
+        >
+          돈통
+        </button>
+        {/* <button
+          onClick={() => handleDifficultyChange("lightSpender")}
+          className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+            difficulty === "lightSpender"
+              ? "bg-blue-500 text-white dark:bg-blue-600"
+              : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
+          }`}
+        >
+          릾청년
+        </button> */}
+      </div>
+
       <div className="mb-4 flex items-center gap-3">
         <button
           className="rounded bg-gray-200 px-4 py-2 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
@@ -133,9 +180,6 @@ export default function Bingo() {
         >
           완성
         </button>
-        <span className="flex h-full items-center text-black dark:text-gray-100">
-          난이도 : 고인물
-        </span>
       </div>
       {result && (
         <div className="w-full max-w-md rounded bg-white p-3 text-center text-sm shadow dark:bg-gray-800 dark:text-gray-100">
@@ -143,23 +187,27 @@ export default function Bingo() {
             <span className="font-bold text-blue-600 dark:text-blue-400">
               빙고 줄 : {result.bingoCount}
             </span>{" "}
-            / {TOTAL_BINGO_LINES}
+            / {getTotalBingoLines(bingoSize)}
             &nbsp;&nbsp;|&nbsp;&nbsp;
             <span className="font-bold text-green-600 dark:text-green-400">
               체크 : {result.checkedCount}
             </span>{" "}
-            / {BINGO_SIZE * BINGO_SIZE}
-            <span className="ml-2 font-bold text-black dark:text-gray-100"> 난이도 : 고인물 </span>
+            / {bingoSize * bingoSize}
+            <span className="ml-2 font-bold text-black dark:text-gray-100">
+              {" "}
+              난이도 : {currentBingoData.title}{" "}
+            </span>
           </p>
         </div>
       )}
       <div
         ref={boardRef}
-        className="mb-6 grid w-full max-w-full grid-cols-5 gap-1 rounded bg-white p-2 shadow-md dark:bg-gray-800 sm:gap-2 lg:w-[600px]"
+        className="mb-6 grid w-full max-w-full gap-1 rounded bg-white p-2 shadow-md dark:bg-gray-800 sm:gap-2 lg:w-[600px]"
+        style={{ gridTemplateColumns: `repeat(${bingoSize}, minmax(0, 1fr))` }}
       >
         {board.map((row, i) =>
           row.map((checked, j) => {
-            const idx = i * BINGO_SIZE + j;
+            const idx = i * bingoSize + j;
             const text = bingoTexts[idx];
             const isBingo = bingoCells.has(`${i},${j}`);
 

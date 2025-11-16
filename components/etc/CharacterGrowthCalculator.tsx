@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { resonanceMaterialList } from "@/data/resonance_material";
@@ -539,7 +540,10 @@ export default function MaterialCalculator({ characterId }: Props) {
                           {count.toLocaleString()}
                         </div>
                         <div className="absolute bottom-full left-1/2 z-50 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded-md bg-black/90 px-3 py-1.5 text-sm font-medium text-white group-hover:block">
-                          {material?.name || String(id)}
+                          <div>{material?.name || String(id)}</div>
+                          {material?.farmingStage && (
+                            <div className="text-xs text-blue-300 mt-1">파밍: {material.farmingStage}</div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -588,7 +592,10 @@ export default function MaterialCalculator({ characterId }: Props) {
                             {count.toLocaleString()}
                           </div>
                           <div className="absolute bottom-full left-1/2 z-50 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded-md bg-black/90 px-3 py-1.5 text-sm font-medium text-white group-hover:block">
-                            {material?.name || String(id)}
+                            <div>{material?.name || String(id)}</div>
+                            {material?.farmingStage && (
+                              <div className="text-xs text-blue-300 mt-1">파밍: {material.farmingStage}</div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -604,9 +611,16 @@ export default function MaterialCalculator({ characterId }: Props) {
 
   return (
     <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-      <h2 className="mb-4 text-center text-xl font-bold text-black dark:text-white">
-        육성 재화 계산기
-      </h2>
+      <div className="mb-4 flex items-center justify-center gap-4">
+        <h2 className="text-center text-xl font-bold text-black dark:text-white">
+          육성 재화 계산기
+        </h2>
+        <Link href="/growth_calculator">
+          <Button variant="outline" size="sm">
+            육성 계산기로 이동
+          </Button>
+        </Link>
+      </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <Card>
           <CardContent className="space-y-2 p-4">

@@ -32,6 +32,11 @@ export const LIBRARY_ITEMS: CardItem[] = [
     href: "/recommend_team",
   },
   {
+    icon: "/infos/menu/growth_calculator_menu.webp",
+    label: "육성 계산기",
+    href: "/growth_calculator",
+  },
+  {
     icon: "/infos/menu/reveries_in_the_rain_menu.webp",
     label: "빗속의 공상",
     href: "/reveries_in_the_rain",
@@ -43,7 +48,7 @@ export const LIBRARY_ITEMS: CardItem[] = [
   },
   {
     icon: "/infos/menu/euphoria_guide_menu.webp",
-    label: "광상 가이드",
+    label: "광상 목록",
     href: "/euphoria_guide",
   },
   {
@@ -56,6 +61,21 @@ export const LIBRARY_ITEMS: CardItem[] = [
     label: "오솔길 정답",
     href: "/path_quiz",
   },
+  {
+    icon: "/infos/menu/shop_efficiency_menu.webp",
+    label: "상점 효율",
+    href: "/shop_efficiency",
+  },
+  // {
+  //   icon: "/infos/menu/content_guide_menu.webp",
+  //   label: "컨텐츠\n가이드\n(준비중)",
+  //   href: "#",
+  // },
+  // {
+  //   icon: "/infos/menu/growth_calculator_menu.webp",
+  //   label: "육성\n계산기\n(준비중)",
+  //   href: "#",
+  // },
   // {
   //   icon: "/infos/menu/material_menu.webp",
   //   label: "데미지\n계산기",
@@ -65,6 +85,11 @@ export const LIBRARY_ITEMS: CardItem[] = [
 
 // Menu items for "가이드" (Guide) section - 플레이와 직접 연관 없는 정보/참고 자료
 export const GUIDE_ITEMS: CardItem[] = [
+  {
+    icon: "/infos/menu/material_menu.webp",
+    label: "재료 파밍",
+    modalType: "material",
+  },
   {
     icon: "/infos/menu/skin_menu.webp",
     label: "스킨 갤러리",
@@ -79,11 +104,6 @@ export const GUIDE_ITEMS: CardItem[] = [
     icon: "/infos/menu/cash_package_shop_menu.webp",
     label: "현질 패키지",
     href: "/cash_package_shop",
-  },
-  {
-    icon: "/infos/menu/shop_efficiency_menu.webp",
-    label: "상점 효율",
-    href: "/shop_efficiency",
   },
   {
     icon: "/infos/menu/calendar_menu.webp",
@@ -160,6 +180,11 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
         href: "/recommend_team",
       },
       {
+        iconImg: "/infos/menu/growth_calculator_menu.webp",
+        label: "육성 계산기",
+        href: "/growth_calculator",
+      },
+      {
         iconImg: "/infos/menu/reveries_in_the_rain_menu.webp",
         label: "빗속의 공상",
         href: "/reveries_in_the_rain",
@@ -171,7 +196,7 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
       },
       {
         iconImg: "/infos/menu/euphoria_guide_menu.webp",
-        label: "광상 가이드",
+        label: "광상 목록",
         href: "/euphoria_guide",
       },
       {
@@ -180,6 +205,23 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
         href: "/psycube_guide",
       },
       { iconImg: "/infos/menu/path_quiz_menu.webp", label: "오솔길 정답", href: "/path_quiz" },
+      {
+        iconImg: "/infos/menu/shop_efficiency_menu.webp",
+        label: "상점 효율",
+        href: "/shop_efficiency",
+      },
+      // {
+      //   iconImg: "/infos/menu/content_guide_menu.webp",
+      //   label: "컨텐츠 가이드",
+      //   href: "#",
+      //   disabled: true,
+      // },
+      // {
+      //   iconImg: "/infos/menu/growth_calculator_menu.webp",
+      //   label: "육성 계산기",
+      //   href: "#",
+      //   disabled: true,
+      // },
       // {
       //   iconImg: "/infos/menu/material_menu.webp",
       //   label: "데미지 계산기",
@@ -190,6 +232,11 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
   {
     title: "가이드",
     items: [
+      {
+        iconImg: "/infos/menu/material_menu.webp",
+        label: "재료 파밍",
+        modalType: "material",
+      },
       { iconImg: "/infos/menu/skin_menu.webp", label: "스킨 갤러리", href: "/skin" },
       {
         iconImg: "/infos/menu/future_insight_menu.webp",
@@ -200,11 +247,6 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
         iconImg: "/infos/menu/cash_package_shop_menu.webp",
         label: "현질 패키지",
         href: "/cash_package_shop",
-      },
-      {
-        iconImg: "/infos/menu/shop_efficiency_menu.webp",
-        label: "상점 효율",
-        href: "/shop_efficiency",
       },
       {
         iconImg: "/infos/menu/calendar_menu.webp",

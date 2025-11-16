@@ -29,7 +29,13 @@ export default function CardBox({ title, subTitle, items, onItemClick }: CardBox
             icon={item.icon}
             label={item.label}
             href={item.href}
-            onClick={() => "image" in item && item.image && onItemClick?.(item)}
+            onClick={() => {
+              if (item.modalType) {
+                onItemClick?.(item);
+              } else if ("image" in item && item.image) {
+                onItemClick?.(item);
+              }
+            }}
           />
         ))}
       </div>

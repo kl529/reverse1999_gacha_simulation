@@ -44,6 +44,11 @@ export default function ShopEfficiencyPage() {
   const currentShop = shops.find((shop) => shop.id === activeShop);
   const sortedItems = currentShop?.items.slice().sort((a, b) => {
     if (sortBy === "efficiency") {
+      // 1. 추천 항목(isRequired) 우선 정렬
+      if (a.isRequired && !b.isRequired) return -1;
+      if (!a.isRequired && b.isRequired) return 1;
+
+      // 2. 같은 그룹 내에서 효율순 정렬
       // null 효율은 가장 높은 우선순위로 처리 (제일 먼저 나옴)
       if (a.efficiency === null && b.efficiency === null) return 0;
       if (a.efficiency === null) return -1;

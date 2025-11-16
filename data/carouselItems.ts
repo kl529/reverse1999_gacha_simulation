@@ -44,7 +44,7 @@ export const carouselItems: CarouselItem[] = [
   },
   {
     id: 5,
-    title: "광상 가이드",
+    title: "광상 목록",
     image: "/infos/carousel_img/euphoria_guide.webp",
     link: "/euphoria_guide",
     type: "event",

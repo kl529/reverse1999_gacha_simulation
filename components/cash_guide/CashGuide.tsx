@@ -152,7 +152,7 @@ export default function CashGuide() {
       <Card className="mb-4 p-4">
         <h2 className="mb-2 text-2xl font-semibold">🪷 가성비 패키지 정리 (모노로그 기준)</h2>
         <ul className="mb-4 list-disc pl-5">
-          <li className="font-bold">1순위 : 월정액</li>
+          <li className="font-bold">1순위 : 월정액 (포효의 달)</li>
           <li className="font-bold">
             2순위 : 골든 클래식(1,500원, 매주 구매 가능), 버전 한정 3,000원, 6,000원 패키지 (버젼별
             전반기, 후반기 1번씩 구매 가능)

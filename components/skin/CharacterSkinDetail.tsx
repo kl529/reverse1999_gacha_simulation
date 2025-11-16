@@ -1,22 +1,42 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { CharacterSkin } from "@/data/character_skin";
 import { charactersByRarity } from "@/data/characters";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { getDisplayVersion } from "@/data/version";
+import { ArrowLeft, X } from "lucide-react";
 
-export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
+function SkinDetailContent({ skin }: { skin: CharacterSkin }) {
+  const searchParams = useSearchParams();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const character = Object.values(charactersByRarity)
     .flat()
     .find((c) => c.id === skin.character_id);
 
+  // URL에서 from 파라미터 가져오기 (필터 상태 포함된 목록 URL)
+  const fromUrl = searchParams.get("from") || "/skin";
+
   return (
     <div className="min-h-screen w-full bg-white px-4 py-10 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <div className="mx-auto flex max-w-4xl flex-col gap-8">
+        {/* 목록으로 돌아가기 버튼 */}
+        <div className="flex justify-start">
+          <Link href={fromUrl}>
+            <Button variant="outline" className="flex items-center gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              목록으로
+            </Button>
+          </Link>
+        </div>
+
         {/* 제목 */}
-        <h1 className="mt-8 text-center text-2xl font-bold sm:text-3xl">
+        <h1 className="text-center text-2xl font-bold sm:text-3xl">
           {skin.name} - {character?.name || "알 수 없음"}
         </h1>
 
@@ -44,7 +64,10 @@ export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
         </div>
 
         {/* 일러스트 */}
-        <div className="mx-auto w-full max-w-3xl">
+        <div
+          className="mx-auto w-full max-w-3xl cursor-pointer transition-transform hover:scale-[1.02]"
+          onClick={() => setSelectedImage(`/infos/character_skin/illust/${skin.engName}.webp`)}
+        >
           <AspectRatio ratio={9 / 7}>
             <Image
               src={`/infos/character_skin/illust/${skin.engName}.webp`}
@@ -59,7 +82,13 @@ export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
         {/* standing + mini */}
         <div className="flex flex-wrap justify-center gap-6">
           {["standing", "mini"].map((type) => (
-            <div key={type} className="w-[300px]">
+            <div
+              key={type}
+              className="w-[300px] cursor-pointer transition-transform hover:scale-[1.02]"
+              onClick={() =>
+                setSelectedImage(`/infos/character_skin/${type}/${skin.engName}.webp`)
+              }
+            >
               <AspectRatio ratio={3 / 5}>
                 <Image
                   src={`/infos/character_skin/${type}/${skin.engName}.webp`}
@@ -88,6 +117,39 @@ export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
           </div>
         )}
       </div>
+
+      {/* 이미지 확대 모달 */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute right-4 top-4 rounded-full bg-white p-2 text-black hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <div className="relative max-h-[90vh] max-w-[90vw]" onClick={(e) => e.stopPropagation()}>
+            <Image
+              src={selectedImage}
+              alt="확대된 스킨 이미지"
+              width={1200}
+              height={1600}
+              className="h-auto max-h-[90vh] w-auto max-w-full object-contain"
+              unoptimized
+            />
+          </div>
+        </div>
+      )}
     </div>
+  );
+}
+
+export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
+  return (
+    <Suspense fallback={<div>로딩 중...</div>}>
+      <SkinDetailContent skin={skin} />
+    </Suspense>
   );
 }

@@ -13,6 +13,7 @@ import HomeFooter from "@/components/home/HomeFooter";
 import { CardItem, isModalCardItem } from "@/lib/types/menuTypes";
 import { PLAYGROUND_ITEMS, LIBRARY_ITEMS, GUIDE_ITEMS } from "@/lib/constants/menuItems";
 import { checkNewCouponsQuietly } from "@/lib/utils/checkNewCoupons";
+import { useModal } from "@/components/etc/ModalProvider";
 
 // Dynamic imports로 코드 스플리팅
 const ConfirmModal = dynamic(() => import("@/components/modals/ConfirmModal"));
@@ -31,10 +32,15 @@ export default function HomePage() {
   const [infoModalOpen, setInfoModalOpen] = useState(false);
   const [selectedInfo, setSelectedInfo] = useState<CardItem | null>(null);
   const [showNoticeModal, setShowNoticeModal] = useState(false);
+  const { openModal } = useModal();
 
   const handleItemClick = (item: CardItem) => {
-    setSelectedInfo(item);
-    setInfoModalOpen(true);
+    if (item.modalType) {
+      openModal(item.modalType);
+    } else {
+      setSelectedInfo(item);
+      setInfoModalOpen(true);
+    }
   };
 
   useEffect(() => {
@@ -79,7 +85,12 @@ export default function HomePage() {
               items={LIBRARY_ITEMS}
             />
 
-            <CardBox title="가이드" subTitle="유용한 참고 자료 모음" items={GUIDE_ITEMS} />
+            <CardBox
+              title="가이드"
+              subTitle="유용한 참고 자료 모음"
+              onItemClick={handleItemClick}
+              items={GUIDE_ITEMS}
+            />
           </div>
 
           {/* 캐러셀 - 모든 화면 크기에서 하단에 표시 */}

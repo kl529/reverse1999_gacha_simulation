@@ -5,7 +5,7 @@ import Image from "next/image";
 import { characterSkin } from "@/data/character_skin";
 import { charactersByRarity } from "@/data/characters";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -19,26 +19,30 @@ import { Command, CommandInput, CommandList, CommandItem } from "@/components/ui
 import { Checkbox } from "@/components/ui/checkbox";
 
 export default function SkinGalleryPage() {
-  const [rarityFilter, setRarityFilter] = useState<string>("전체");
-  const [sourceFilter, setSourceFilter] = useState<string>("전체");
-  const [selectedCharacters, setSelectedCharacters] = useState<string[]>([]);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const rarityList = Array.from(new Set(characterSkin.map((s) => s.rarity)));
   const versionList = Array.from(new Set(characterSkin.map((s) => s.version)));
   const sourceList = Array.from(new Set(characterSkin.map((s) => s.source)));
 
-  const searchParams = useSearchParams();
-  const defaultVersion = searchParams.get("version");
-  const [versionFilter, setVersionFilter] = useState<string>(defaultVersion || "전체");
-
-  useEffect(() => {
-    if (defaultVersion && versionList.includes(defaultVersion)) {
-      setVersionFilter(defaultVersion);
-    }
-  }, [defaultVersion, versionList]);
+  // URL에서 필터 상태 초기화
+  const [rarityFilter, setRarityFilter] = useState<string>(
+    searchParams.get("rarity") || "전체"
+  );
+  const [versionFilter, setVersionFilter] = useState<string>(
+    searchParams.get("version") || "전체"
+  );
+  const [sourceFilter, setSourceFilter] = useState<string>(
+    searchParams.get("source") || "전체"
+  );
+  const [selectedCharacters, setSelectedCharacters] = useState<string[]>(
+    searchParams.get("characters")?.split(",").filter(Boolean) || []
+  );
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const allCharacters = Object.values(charactersByRarity).flat();
   const characterNameMap = Object.fromEntries(allCharacters.map((c) => [c.id, c.name]));
@@ -52,6 +56,18 @@ export default function SkinGalleryPage() {
     const name = characterNameMap[skin.character_id] || "알 수 없음";
     skinCountByCharacter[name] = (skinCountByCharacter[name] || 0) + 1;
   });
+
+  // 필터 변경 시 URL 업데이트
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (rarityFilter !== "전체") params.set("rarity", rarityFilter);
+    if (versionFilter !== "전체") params.set("version", versionFilter);
+    if (sourceFilter !== "전체") params.set("source", sourceFilter);
+    if (selectedCharacters.length > 0) params.set("characters", selectedCharacters.join(","));
+
+    const queryString = params.toString();
+    router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`, { scroll: false });
+  }, [rarityFilter, versionFilter, sourceFilter, selectedCharacters, router, pathname]);
 
   const toggleCharacter = (name: string) => {
     setSelectedCharacters((prev) =>
@@ -186,9 +202,19 @@ export default function SkinGalleryPage() {
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12">
             {filteredSkins
               .sort((a, b) => b.id - a.id)
-              .map((skin) => (
-                <Link href={`/skin/${skin.id}`} key={skin.id}>
-                  <div className="cursor-pointer overflow-hidden rounded border border-gray-200 transition dark:border-gray-700">
+              .map((skin) => {
+                const params = new URLSearchParams();
+                if (rarityFilter !== "전체") params.set("rarity", rarityFilter);
+                if (versionFilter !== "전체") params.set("version", versionFilter);
+                if (sourceFilter !== "전체") params.set("source", sourceFilter);
+                if (selectedCharacters.length > 0)
+                  params.set("characters", selectedCharacters.join(","));
+                const queryString = params.toString();
+                const linkHref = `/skin/${skin.id}${queryString ? `?from=${encodeURIComponent(`/skin?${queryString}`)}` : ""}`;
+
+                return (
+                  <Link href={linkHref} key={skin.id}>
+                    <div className="cursor-pointer overflow-hidden rounded border border-gray-200 transition dark:border-gray-700">
                     <div className="relative">
                       <Image
                         src={`/infos/character_skin/list/${skin.engName}.webp`}
@@ -206,12 +232,13 @@ export default function SkinGalleryPage() {
                         </span>
                       )}
                     </div>
-                    <div className="truncate bg-white p-2 text-center text-sm font-medium text-black dark:bg-gray-900 dark:text-white">
-                      {skin.name}
+                      <div className="truncate bg-white p-2 text-center text-sm font-medium text-black dark:bg-gray-900 dark:text-white">
+                        {skin.name}
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
           </div>
         )}
       </div>

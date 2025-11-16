@@ -36,7 +36,7 @@ export default function EuphoriaGuide() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <h1 className="mb-2 mt-8 text-center text-2xl font-bold text-black dark:text-white lg:text-3xl">
-        광상 가이드
+        광상 목록
       </h1>
       <p className="mb-6 text-center text-sm text-gray-500 dark:text-gray-400">
         광상 추천도는 무조건적인 정답이 아니며, 출시 상황이나 패치에 따라 변동될 수 있습니다. <br />

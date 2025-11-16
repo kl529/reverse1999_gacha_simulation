@@ -4,7 +4,8 @@
 export interface BaseCardItem {
   icon: string;
   label: string;
-  href: string;
+  href?: string;
+  modalType?: "material";
 }
 
 // Card item with modal information
@@ -31,6 +32,7 @@ export type HamburgerMenuItem = {
   href?: string;
   divider?: boolean;
   modalType?: "material";
+  disabled?: boolean;
 };
 
 export type HamburgerMenuCategory = {

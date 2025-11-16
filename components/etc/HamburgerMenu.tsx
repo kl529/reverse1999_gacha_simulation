@@ -18,6 +18,19 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
   const { openModal } = useModal();
   const pathname = usePathname();
 
+  // 현재 경로가 속한 카테고리 찾기
+  const findActiveCategoryTitle = () => {
+    for (const category of HAMBURGER_MENU_CATEGORIES) {
+      const hasActiveItem = category.items.some(
+        (item) => item.href && item.href !== "#" && pathname.startsWith(item.href)
+      );
+      if (hasActiveItem) {
+        return category.title;
+      }
+    }
+    return null;
+  };
+
   const toggleCategory = (title: string) => {
     setExpandedCategories((prev) =>
       prev.includes(title) ? prev.filter((cat) => cat !== title) : [...prev, title]
@@ -45,6 +58,19 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  // 메뉴가 열릴 때 활성 카테고리만 펼치기 (다른 것은 닫기)
+  useEffect(() => {
+    if (isOpen) {
+      const activeCategory = findActiveCategoryTitle();
+      if (activeCategory) {
+        setExpandedCategories([activeCategory]);
+      } else {
+        setExpandedCategories([]);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   return (
     <div ref={menuRef} className="fixed left-4 top-4 z-50 flex gap-2">
@@ -119,6 +145,29 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
 
                         if (item.href) {
                           const isExternal = item.href.startsWith("http");
+                          const isDisabled = item.disabled || item.href === "#";
+
+                          if (isDisabled) {
+                            return (
+                              <li key={itemIndex}>
+                                <div className="flex cursor-not-allowed items-center gap-3 px-6 py-1.5 text-xs opacity-50 sm:text-sm">
+                                  {item.iconImg ? (
+                                    <Image
+                                      src={item.iconImg}
+                                      alt=""
+                                      width={30}
+                                      height={30}
+                                      className="h-6 w-6 sm:h-7 sm:w-7"
+                                    />
+                                  ) : (
+                                    <span className="text-base sm:text-lg">{item.icon}</span>
+                                  )}
+                                  <span>{item.label}</span>
+                                </div>
+                              </li>
+                            );
+                          }
+
                           return (
                             <li key={itemIndex}>
                               <Link

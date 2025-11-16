@@ -4,6 +4,9 @@ export interface Material {
   category: string;
   engName: string;
   rarity: number;
+  showInInput?: boolean; // 보유 재료 입력 모달에 표시 여부
+  sortOrder?: number; // 같은 카테고리 내 정렬 순서 (숫자가 작을수록 먼저 표시)
+  farmingStage?: string; // 파밍 추천 스테이지 (growth_material 전용)
 }
 
 export const materialList: Material[] = [
@@ -14,6 +17,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Fruit of Good and Evil",
     rarity: 6,
+    showInInput: true,
+    sortOrder: 5,
   },
   {
     id: 2,
@@ -21,6 +26,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Mistilteinn",
     rarity: 6,
+    showInInput: true,
+    sortOrder: 4,
   },
   {
     id: 3,
@@ -28,6 +35,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Golden Fleece",
     rarity: 6,
+    showInInput: true,
+    sortOrder: 3,
   },
   {
     id: 4,
@@ -35,6 +44,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "RhineGold",
     rarity: 6,
+    showInInput: true,
+    sortOrder: 1,
   },
   {
     id: 5,
@@ -42,6 +53,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Serpent Scepter",
     rarity: 6,
+    showInInput: true,
+    sortOrder: 2,
   },
   // 5성 재료
   {
@@ -50,6 +63,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Murmur of Insanity",
     rarity: 5,
+    showInInput: true,
+    sortOrder: 7,
   },
   {
     id: 102,
@@ -57,6 +72,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Platinum Ouija",
     rarity: 5,
+    showInInput: true,
+    sortOrder: 2,
   },
   {
     id: 103,
@@ -64,6 +81,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Wyrmling Skeleton",
     rarity: 5,
+    showInInput: true,
+    sortOrder: 9,
   },
   {
     id: 104,
@@ -71,6 +90,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Bogeyman",
     rarity: 5,
+    showInInput: true,
+    sortOrder: 11,
   },
   {
     id: 105,
@@ -78,6 +99,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Incorrupt Monkeypaw",
     rarity: 5,
+    showInInput: true,
+    sortOrder: 10,
   },
   {
     id: 106,
@@ -85,6 +108,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Silver Bullet",
     rarity: 5,
+    showInInput: true,
+    sortOrder: 8,
   },
   {
     id: 107,
@@ -92,6 +117,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Golden Compass",
     rarity: 5,
+    showInInput: true,
+    sortOrder: 1,
   },
   {
     id: 108,
@@ -99,6 +126,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Emerald Slate",
     rarity: 5,
+    showInInput: true,
+    sortOrder: 3,
   },
   {
     id: 109,
@@ -106,6 +135,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Golden Bell Essence Bottle",
     rarity: 5,
+    showInInput: true,
+    sortOrder: 4,
   },
   {
     id: 110,
@@ -113,6 +144,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Watch Core",
     rarity: 5,
+    showInInput: true,
+    sortOrder: 5,
   },
   {
     id: 111,
@@ -120,6 +153,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Glowing Mothwing",
     rarity: 5,
+    showInInput: true,
+    sortOrder: 6,
   },
   // 4성 재료
   {
@@ -128,6 +163,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Bifurcated Skeleton",
     rarity: 4,
+    showInInput: true,
+    sortOrder: 9,
+    farmingStage: "10-13 하드 / 4-20 하드",
   },
   {
     id: 202,
@@ -135,6 +173,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Salted Mandrake",
     rarity: 4,
+    showInInput: true,
+    sortOrder: 10,
+    farmingStage: "3-13 하드",
   },
   {
     id: 203,
@@ -142,6 +183,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Prophetic Bird",
     rarity: 4,
+    showInInput: true,
+    sortOrder: 7,
+    farmingStage: "2-6 하드",
   },
   {
     id: 204,
@@ -149,6 +193,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Clawed Pendulum",
     rarity: 4,
+    showInInput: true,
+    sortOrder: 2,
+    farmingStage: "11-5 하드 / 5-14 하드",
   },
   {
     id: 205,
@@ -156,6 +203,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Biting Box",
     rarity: 4,
+    showInInput: true,
+    sortOrder: 11,
+    farmingStage: "7-26 하드 / 5-19 하드",
   },
   {
     id: 206,
@@ -163,6 +213,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Holy Silver",
     rarity: 4,
+    showInInput: true,
+    sortOrder: 8,
+    farmingStage: "10-9 하드 / 6-14 하드",
   },
   {
     id: 207,
@@ -170,6 +223,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Golden Beetle",
     rarity: 4,
+    showInInput: true,
+    sortOrder: 1,
+    farmingStage: "10-2 하드 / 3-15 노말",
   },
   {
     id: 208,
@@ -177,6 +233,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Red Lacquer Tablet",
     rarity: 4,
+    showInInput: true,
+    sortOrder: 3,
+    farmingStage: "9-1 하드",
   },
   {
     id: 209,
@@ -184,6 +243,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Golden Grass Incense",
     rarity: 4,
+    showInInput: true,
+    sortOrder: 4,
+    farmingStage: "4-4 노말 / 8-18 하드",
   },
   {
     id: 210,
@@ -191,6 +253,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Goose Neck",
     rarity: 4,
+    showInInput: true,
+    sortOrder: 5,
+    farmingStage: "5-4 하드 / 10-22 하드",
   },
   {
     id: 211,
@@ -198,6 +263,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Winged Key",
     rarity: 4,
+    showInInput: true,
+    sortOrder: 6,
+    farmingStage: "9-15 하드",
   },
   // 3성 재료
   {
@@ -206,6 +274,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Solidus",
     rarity: 3,
+    showInInput: true,
+    sortOrder: 1,
+    farmingStage: "합성",
   },
   {
     id: 302,
@@ -213,6 +284,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Milled Magnesia",
     rarity: 3,
+    showInInput: true,
+    sortOrder: 9,
+    farmingStage: "5-8 하드 / 6-10 하드",
   },
   {
     id: 303,
@@ -220,6 +294,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Liquefied Terror",
     rarity: 3,
+    showInInput: true,
+    sortOrder: 10,
+    farmingStage: "10-17 하드 / 9-3 하드",
   },
   {
     id: 304,
@@ -227,6 +304,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Esoteric Bones",
     rarity: 3,
+    showInInput: true,
+    sortOrder: 8,
+    farmingStage: "5-7 하드 / 5-3 하드",
   },
   {
     id: 305,
@@ -234,6 +314,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Rough Silver Ingot",
     rarity: 3,
+    showInInput: true,
+    sortOrder: 7,
+    farmingStage: "9-6 하드",
   },
   {
     id: 306,
@@ -241,6 +324,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Spell of Fortune",
     rarity: 3,
+    showInInput: true,
+    sortOrder: 6,
+    farmingStage: "4-20 하드",
   },
   {
     id: 307,
@@ -248,6 +334,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Luminite Ore",
     rarity: 3,
+    showInInput: true,
+    sortOrder: 2,
+    farmingStage: "9-1 하드",
   },
   {
     id: 308,
@@ -255,6 +344,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Fox Tail",
     rarity: 3,
+    showInInput: true,
+    sortOrder: 3,
+    farmingStage: "8-18 하드",
   },
   {
     id: 309,
@@ -262,6 +354,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Perpetual Cog",
     rarity: 3,
+    showInInput: true,
+    sortOrder: 4,
+    farmingStage: "7-16 하드",
   },
   {
     id: 310,
@@ -269,6 +364,9 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Cicada Wings",
     rarity: 3,
+    showInInput: true,
+    sortOrder: 5,
+    farmingStage: "10-4 하드",
   },
   // 2성 재료
   {
@@ -277,6 +375,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Spell of Banishing",
     rarity: 2,
+    showInInput: true,
+    farmingStage: "2-6 하드 / 4-20 하드",
   },
   {
     id: 402,
@@ -284,6 +384,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Silver Ore",
     rarity: 2,
+    showInInput: true,
+    farmingStage: "7-19 하드 / 2-3 하드",
   },
   {
     id: 403,
@@ -291,6 +393,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Shattered Bones",
     rarity: 2,
+    showInInput: true,
+    farmingStage: "2-8 하드",
   },
   {
     id: 404,
@@ -298,6 +402,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Magnesia Crystal",
     rarity: 2,
+    showInInput: true,
+    farmingStage: "2-9 하드",
   },
   {
     id: 405,
@@ -305,6 +411,8 @@ export const materialList: Material[] = [
     category: "growth_material",
     engName: "Trembling Tooth",
     rarity: 2,
+    showInInput: true,
+    farmingStage: "2-12 하드",
   },
 
   // 통찰 재료
@@ -315,6 +423,7 @@ export const materialList: Material[] = [
     category: "insight_material",
     engName: "Page of Beastly Thirst",
     rarity: 3,
+    showInInput: true,
   },
   {
     id: 502,
@@ -322,6 +431,7 @@ export const materialList: Material[] = [
     category: "insight_material",
     engName: "Scroll of Beastly Thirst",
     rarity: 4,
+    showInInput: true,
   },
   {
     id: 503,
@@ -329,6 +439,7 @@ export const materialList: Material[] = [
     category: "insight_material",
     engName: "Tome of Beastly Thirst",
     rarity: 5,
+    showInInput: true,
   },
   // 나무
   {
@@ -337,6 +448,7 @@ export const materialList: Material[] = [
     category: "insight_material",
     engName: "Page of Plantal Vimen",
     rarity: 3,
+    showInInput: true,
   },
   {
     id: 505,
@@ -344,6 +456,7 @@ export const materialList: Material[] = [
     category: "insight_material",
     engName: "Scroll of Plantal Vimen",
     rarity: 4,
+    showInInput: true,
   },
   {
     id: 506,
@@ -351,6 +464,7 @@ export const materialList: Material[] = [
     category: "insight_material",
     engName: "Tome of Plantal Vimen",
     rarity: 5,
+    showInInput: true,
   },
   // 천체
   {
@@ -359,6 +473,7 @@ export const materialList: Material[] = [
     category: "insight_material",
     engName: "Page of Starlit Ascent",
     rarity: 3,
+    showInInput: true,
   },
   {
     id: 508,
@@ -366,6 +481,7 @@ export const materialList: Material[] = [
     category: "insight_material",
     engName: "Scroll of Starlit Ascent",
     rarity: 4,
+    showInInput: true,
   },
   {
     id: 509,
@@ -373,6 +489,7 @@ export const materialList: Material[] = [
     category: "insight_material",
     engName: "Tome of Starlit Ascent",
     rarity: 5,
+    showInInput: true,
   },
   // 암석
   {
@@ -381,6 +498,7 @@ export const materialList: Material[] = [
     category: "insight_material",
     engName: "Page of Mineral Wealth",
     rarity: 3,
+    showInInput: true,
   },
   {
     id: 511,
@@ -388,6 +506,7 @@ export const materialList: Material[] = [
     category: "insight_material",
     engName: "Scroll of Mineral Wealth",
     rarity: 4,
+    showInInput: true,
   },
   {
     id: 512,
@@ -395,6 +514,7 @@ export const materialList: Material[] = [
     category: "insight_material",
     engName: "Tome of Mineral Wealth",
     rarity: 5,
+    showInInput: true,
   },
 
   // 공명 재료
@@ -404,6 +524,7 @@ export const materialList: Material[] = [
     category: "resonance_material",
     engName: "Moment of Dissonance",
     rarity: 3,
+    showInInput: true,
   },
   {
     id: 602,
@@ -411,6 +532,7 @@ export const materialList: Material[] = [
     category: "resonance_material",
     engName: "Brief Cacophony",
     rarity: 4,
+    showInInput: true,
   },
   {
     id: 603,
@@ -418,6 +540,7 @@ export const materialList: Material[] = [
     category: "resonance_material",
     engName: "Sonorous Knell",
     rarity: 5,
+    showInInput: true,
   },
   {
     id: 604,
@@ -453,6 +576,7 @@ export const materialList: Material[] = [
     category: "resonance_material",
     engName: "Crystal Casket",
     rarity: 6,
+    showInInput: true,
   },
   {
     id: 609,
@@ -476,6 +600,7 @@ export const materialList: Material[] = [
     category: "euphoria_material",
     engName: "Key of Reverie",
     rarity: 6,
+    showInInput: true,
   },
   {
     id: 702,
@@ -483,6 +608,7 @@ export const materialList: Material[] = [
     category: "euphoria_material",
     engName: "Sprout of Reverie",
     rarity: 5,
+    showInInput: true,
   },
   {
     id: 703,
@@ -490,6 +616,7 @@ export const materialList: Material[] = [
     category: "euphoria_material",
     engName: "Seed of Insight",
     rarity: 4,
+    showInInput: true,
   },
   // 특별 재료
   {
@@ -498,6 +625,7 @@ export const materialList: Material[] = [
     category: "euphoria_material",
     engName: "Key of New Sprout",
     rarity: 6,
+    showInInput: true,
   },
 
   // 기본 재료
@@ -507,6 +635,7 @@ export const materialList: Material[] = [
     category: "base_item",
     engName: "Dust",
     rarity: 3,
+    showInInput: true,
   },
   {
     id: 1002,
@@ -514,6 +643,7 @@ export const materialList: Material[] = [
     category: "base_item",
     engName: "Sharpodonty",
     rarity: 3,
+    showInInput: true,
   },
   {
     id: 1003,

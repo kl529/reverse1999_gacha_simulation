@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { X } from "lucide-react";
 
 export default function CardInfoModal({
   isOpen,
@@ -19,6 +20,7 @@ export default function CardInfoModal({
   description?: string;
 }) {
   const modalRef = useRef<HTMLDivElement>(null);
+  const [isImageEnlarged, setIsImageEnlarged] = useState(false);
 
   // 외부 클릭 시 닫기
   useEffect(() => {
@@ -60,11 +62,12 @@ export default function CardInfoModal({
             unoptimized
             width={600}
             height={600}
-            className="rounded-lg object-contain"
+            className="cursor-pointer rounded-lg object-contain transition-transform hover:scale-105"
             style={{
               width: "100%",
               height: "auto",
             }}
+            onClick={() => setIsImageEnlarged(true)}
           />
         </div>
 
@@ -83,6 +86,31 @@ export default function CardInfoModal({
           </p>
         )}
       </div>
+
+      {/* 이미지 확대 모달 */}
+      {isImageEnlarged && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setIsImageEnlarged(false)}
+        >
+          <button
+            className="absolute right-4 top-4 rounded-full bg-white p-2 text-black hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+            onClick={() => setIsImageEnlarged(false)}
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <div className="relative max-h-[90vh] max-w-[90vw]" onClick={(e) => e.stopPropagation()}>
+            <Image
+              src={image}
+              alt={`확대된 ${title}`}
+              width={1200}
+              height={1600}
+              className="h-auto max-h-[90vh] w-auto max-w-full object-contain"
+              unoptimized
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

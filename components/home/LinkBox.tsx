@@ -4,12 +4,12 @@ import Link from "next/link";
 export interface LinkBoxProps {
   icon: string;
   label: string;
-  href: string;
+  href?: string;
   onClick?: () => void;
 }
 
 export default function LinkBox({ icon, label, href, onClick }: LinkBoxProps) {
-  const isExternal = href.startsWith("http");
+  const isExternal = href?.startsWith("http");
   const content = (
     <div className="flex flex-col items-center p-2 transition-transform hover:scale-105">
       <Image
@@ -31,17 +31,17 @@ export default function LinkBox({ icon, label, href, onClick }: LinkBoxProps) {
     </div>
   );
 
+  if (!href || href === "#")
+    return <button onClick={onClick}>{content}</button>;
   if (isExternal)
     return (
       <Link href={href} target="_blank" rel="noopener noreferrer" onClick={onClick}>
         {content}
       </Link>
     );
-  if (href !== "#")
-    return (
-      <Link href={href} onClick={onClick}>
-        {content}
-      </Link>
-    );
-  return <button onClick={onClick}>{content}</button>;
+  return (
+    <Link href={href} onClick={onClick}>
+      {content}
+    </Link>
+  );
 }

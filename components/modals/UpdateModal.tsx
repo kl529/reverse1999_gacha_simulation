@@ -18,7 +18,7 @@ export default function UpdateModal({ isOpen, onClose }: UpdateModalProps) {
         </DialogHeader>
         <ScrollArea className="max-h-[500px] p-6">
           <ul className="list-disc pl-5 text-gray-900 dark:text-gray-100">
-            {updateLogs.map((log, index) => (
+            {[...updateLogs].reverse().map((log, index) => (
               <li key={index} className="mb-3 text-lg">
                 <strong>{log.date}:</strong> {log.content}
               </li>
