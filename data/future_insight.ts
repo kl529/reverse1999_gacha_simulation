@@ -189,7 +189,7 @@ export const futureInsightData: FutureInsightItem[] = [
     period: {
       start: "2025-12-11",
       end: "2026-01-22",
-      week: 5,
+      week: 6,
     },
     album_shop: {
       rare6: 23,
@@ -205,5 +205,27 @@ export const futureInsightData: FutureInsightItem[] = [
     },
     euphoria_pick_up: [21, 34, 3, 9, 8],
   },
-  // 3.2 광상 픽업 - 에즈라 / 갈라보나 / 이졸데 / 빌라 / 아르고스 / 마커스
+  {
+    version: "3.2",
+    title: "흐르는 축제",
+    period: {
+      start: "2026-01-22",
+      end: "2026-03-05",
+      week: 6,
+    },
+    album_shop: {
+      rare6: 24,
+      rare5: 113,
+    },
+    banners: ["beryl_pick_up", "brume_pick_up"],
+    euphoria: {
+      star6: [
+        { characterId: 35, euphoriaId: 32 },
+        { characterId: 24, euphoriaId: 33 },
+        { characterId: 16, euphoriaId: 34 },
+      ],
+      star5: [],
+    },
+    euphoria_pick_up: [21, 16, 24, 26, 34, 25],
+  },
 ];

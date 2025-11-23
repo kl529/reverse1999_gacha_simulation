@@ -152,7 +152,7 @@ export default function GachaGuide() {
                   {charactersByRarity[6]
                     .filter(
                       (char) =>
-                        !char.exclude_gacha && isIncludedInGachaPool(char.version)
+                        !char.exclude_gacha && isIncludedInGachaPool(char.version, char.immediate_standard)
                     )
                     .map((char) => (
                       <Link

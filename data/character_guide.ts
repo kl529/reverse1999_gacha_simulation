@@ -46,7 +46,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "1형상의 효율이 0%인것은 작성자분께서 사이클을 다르게 운용하셨기 때문이니 참고 바람. 실전 효율은 다른 형상보다 1형상이 압도적 우세.",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=C9zX9KC02HE"],
+    youtube_links: ["https://www.youtube.com/watch?v=R7UWjV3_jlQ"],
     keywords: ["서포터", "석화", "정신피해"],
     guide_images: [],
   },
@@ -216,7 +216,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "가장 효율이 높은 형상은 2형상, 1인전 기준은 1형상. 형상 효율이 대체적으로 낮음.",
     },
-    youtube_links: [],
+    youtube_links: ["https://www.youtube.com/watch?v=QAdA4ffj75w"],
     keywords: ["딜러", "열정", "현실피해"],
     guide_images: [],
   },
@@ -530,27 +530,27 @@ export const characterGuideList: CharacterGuide[] = [
   {
     character_id: 16, // 갈라보나
     portrait_info: {
-      headers: ["형상", "1인 기준", "다인전 기준"],
+      headers: ["형상", "1인 기준", "다인전 기준", "광상 후 (팀 기준)"],
       rows: [
         {
           name: "1형상",
-          efficiencies: ["6%", "7%"],
+          efficiencies: ["6%", "7%", "3%"],
         },
         {
           name: "2형상",
-          efficiencies: ["6.84%", "1.94%"],
+          efficiencies: ["6.84%", "1.94%", "4%"],
         },
         {
           name: "3형상",
-          efficiencies: ["11.42%", "5.9%"],
+          efficiencies: ["11.42%", "5.9%", "230%"],
         },
         {
           name: "4형상",
-          efficiencies: ["13%", "8.43%"],
+          efficiencies: ["13%", "8.43%", "1%"],
         },
         {
           name: "5형상",
-          efficiencies: ["19.94%", "15.42%"],
+          efficiencies: ["19.94%", "15.42%", "6%"],
         },
       ],
       summary: "5형상 > 1형상 > 2형상 > 3형상 > 4형상 (1인기준)",
@@ -558,7 +558,7 @@ export const characterGuideList: CharacterGuide[] = [
       note: "가장 효율이 높은 형상은 5형상, 실전 기준으론 1형상의 효율도 좋음.",
     },
     youtube_links: [],
-    keywords: ["딜러", "???", "정신피해"],
+    keywords: ["딜러", "추공딜러", "정신피해"],
     guide_images: [],
   },
   {
@@ -803,7 +803,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "가장 효율이 높은 형상은 3형상.",
     },
-    youtube_links: [],
+    youtube_links: ["https://www.youtube.com/watch?v=hCjFuck7LNo"],
     keywords: ["서포터", "술진", "현실피해"],
     guide_images: [],
   },
@@ -1184,27 +1184,27 @@ export const characterGuideList: CharacterGuide[] = [
   {
     character_id: 35, // 안조 날라
     portrait_info: {
-      headers: ["형상", "영혼 지능 계약", "야수 나무 계약", "천체 암석 계약"],
+      headers: ["형상", "영혼 지능 계약", "야수 나무 계약", "천체 암석 계약", "광상 후 (팀 기준)"],
       rows: [
         {
           name: "1형상",
-          efficiencies: ["6.7%", "6.9%", "27.1%"],
+          efficiencies: ["6.7%", "6.9%", "27.1%", "35%"],
         },
         {
           name: "2형상",
-          efficiencies: ["14.2%", "12.1%", "10.5%"],
+          efficiencies: ["14.2%", "12.1%", "10.5%", "315.6%"],
         },
         {
           name: "3형상",
-          efficiencies: ["8.7%", "14.9%", "6.9%"],
+          efficiencies: ["8.7%", "14.9%", "6.9%", "2%"],
         },
         {
           name: "4형상",
-          efficiencies: ["9.8%", "8.8%", "14.4%"],
+          efficiencies: ["9.8%", "8.8%", "14.4%", "5%"],
         },
         {
           name: "5형상",
-          efficiencies: ["20.6%", "32.2%", "19.1%"],
+          efficiencies: ["20.6%", "32.2%", "19.1%", "4%"],
         },
       ],
       summary: "5형상 > 2형상 > 5형상 > 4형상 > 3형상 (영혼 지능 계약)",
@@ -1823,7 +1823,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "icehood",
       note: "본인 형상 효율은 오차가 존재할 수 있음. 팀 효율 위주로 참고. 2형상을 제외한 나머지 상승폭은 괜찮음. 5형상시 개인 효율은 72%, 팀 전체는 35% 정도",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=2JtXL7HWpTA"],
+    youtube_links: ["https://www.youtube.com/watch?v=XzWTsy9n5pU"],
     keywords: ["서포터", "서브딜러", "전력", "정신피해"],
     guide_images: [],
   },
@@ -1893,6 +1893,79 @@ export const characterGuideList: CharacterGuide[] = [
     },
     youtube_links: ["https://www.youtube.com/watch?v=QDrL26NphnM"],
     keywords: ["딜러", "전력", "정신피해"],
+    guide_images: [],
+  },
+  {
+    character_id: 56, // 베릴
+    portrait_info: {
+      headers: [
+        "형상",
+        "자주색 수정 위주 (팀 기준)",
+        "파란색 수정 위주 (팀 기준)",
+        "두색 모두 수정 위주 (팀 기준)",
+      ],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["23.46%", "15.01%", "23.46%"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["19.52%", "37.71%", "25.53%"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["8.80%", "8.79%", "8.79%"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["13.66%", "13.69%", "13.69%"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["38.61%", "28.65%", "31.94%"],
+        },
+      ],
+      summary: "2형상 = 5형상 > 1형상 > 4형상 > 3형상 (팀 기준)",
+      source: "欧米嘉·风焰",
+      note: "2/5형상이 꽤나 효율이 높고, 1형상도 추후 나올 서폿을 받으면더욱 효율이 좋아질 수 있음. icehood의 분석과는 수치가 약간 다름",
+    },
+    youtube_links: ["https://www.youtube.com/watch?v=4uIOv59Epss"],
+    keywords: ["딜러", "잔광", "정신피해", "한정"],
+    guide_images: [],
+  },
+  {
+    character_id: 57, // 브륌
+    portrait_info: {
+      headers: ["형상", "코르부스 서폿 (팀 기준)", "메인딜 (팀 기준)"],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["17%", "18%"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["10%", "7%"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["4%", "9%"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["6%", "12%"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["10%", "7%"],
+        },
+      ],
+      summary: "1형상 > 5형상 > 2형상 > 4형상 > 3형상 (팀 기준)",
+      source: "icehood",
+      note: "1형상이 추천되고, 브륌 메인딜러로 쓰는 것이 추천됨. 효율 오차가 있을 수 있고, 개인 효율보단 팀효율 위주로 정리함",
+    },
+    youtube_links: ["https://www.youtube.com/watch?v=dSoUJ8-RLAw"],
+    keywords: ["딜러", "전력", "정신피해", "서폿"],
     guide_images: [],
   },
 ];

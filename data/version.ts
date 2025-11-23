@@ -90,8 +90,17 @@ export const isNewerVersion = (ver: string): boolean => {
  * - 예: 현재 3.0 -> 2.7까지 포함
  *      현재 2.8 -> 2.6까지 포함
  *      현재 2.75 -> 2.5까지 포함
+ * - immediate_standard 플래그가 true면 3버전 규칙 무시하고 즉시 상시 편입
  */
-export const isIncludedInGachaPool = (targetVersion: string): boolean => {
+export const isIncludedInGachaPool = (
+  targetVersion: string,
+  immediateStandard?: boolean
+): boolean => {
+  // 즉시 상시 편입 플래그가 있으면 무조건 포함
+  if (immediateStandard) {
+    return true;
+  }
+
   const currentVer = version;
   const currentIdx = versionList.indexOf(currentVer);
 

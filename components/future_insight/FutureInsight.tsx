@@ -49,12 +49,19 @@ function getUpcomingStandardPoolChars(versionStr: string): Character[] {
   const targetVersion = versionList[currentIdx - 3];
 
   const allChars = Object.values(charactersByRarity).flat();
-  return allChars.filter(
-    (char) =>
+  return allChars.filter((char) => {
+    // immediate_standard 플래그가 있는 캐릭터는 출시 버전에 바로 상시 편입 (표시 안함)
+    if (char.immediate_standard) {
+      return false;
+    }
+
+    // 일반 캐릭터는 3버전 이후에 표시
+    return (
       char.version === targetVersion &&
       !char.exclude_gacha &&
       (char.rarity === 5 || char.rarity === 6)
-  );
+    );
+  });
 }
 
 export default function FutureInsightPage() {

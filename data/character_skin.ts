@@ -1191,4 +1191,59 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "3.1",
   },
+  {
+    id: 104,
+    character_id: 35, // 안조 날라
+    name: "악의 과실 (미래시)",
+    engName: "forbidden_fruit",
+    rarity: "Unique",
+    source: "판매",
+    resell: "X",
+    version: "3.2",
+    price: "19,000₩ / 1,680빗방울",
+    tarot_number: "15",
+  },
+  {
+    id: 105,
+    character_id: 24, // 이졸데
+    name: "죽음을 향한 날개짓 (미래시)",
+    engName: "the_last_fluttering_beat",
+    rarity: "Advanced",
+    source: "판매",
+    resell: "X",
+    version: "3.2",
+    price: "14,000₩ / 1,080빗방울",
+  },
+  {
+    id: 106,
+    character_id: 30, // 카카니아
+    name: "시대병 간호사 (미래시)",
+    engName: "guardian_of_the_broken",
+    rarity: "Garment",
+    source: "주크박스",
+    resell: "X",
+    version: "3.2",
+    tarot_number: "16",
+  },
+  {
+    id: 107,
+    character_id: 16, // 칼라보나
+    name: "태양이 눈을 감을 때까지 (미래시)",
+    engName: "till_the_sun_falls",
+    rarity: "Garment",
+    source: "판매",
+    resell: "X",
+    version: "3.2",
+    price: "8,800₩ / 880빗방울",
+  },
+  {
+    id: 108,
+    character_id: 311, // 파이오니어
+    name: "피부 교식물 (미래시)",
+    engName: "idol_fascinations",
+    rarity: "Garment",
+    source: "컨텐츠",
+    resell: "X",
+    version: "3.2",
+  },
 ];

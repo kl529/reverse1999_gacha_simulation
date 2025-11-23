@@ -144,12 +144,12 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (계시 4인팟) ",
       },
       {
-        psycube_id: 10,
-        description: "S- (계시덱)",
+        psycube_id: 88,
+        description: "S (계시덱)",
       },
       {
-        psycube_id: 49,
-        description: "S (최대 스택) (풀)",
+        psycube_id: 10,
+        description: "S- (계시덱)",
       },
       {
         psycube_id: 36,
@@ -716,19 +716,19 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 24, // "이졸데"
     psycubes: [
       {
-        psycube_id: 29,
-        description: "S (풀)",
+        psycube_id: 87,
+        description: "S (광상, 보조)",
       },
       {
-        psycube_id: 68,
-        description: "A+ (풀)",
+        psycube_id: 29,
+        description: "S (딜증)",
+      },
+      {
+        psycube_id: 40,
+        description: "A+",
       },
       {
         psycube_id: 32,
-        description: "A",
-      },
-      {
-        psycube_id: 25,
         description: "A",
       },
     ],
@@ -1152,20 +1152,20 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 38, // "플러터 페이지"
     psycubes: [
       {
-        psycube_id: 40,
-        description: "S",
-      },
-      {
         psycube_id: 4,
         description: "S (계시 추가)",
       },
       {
         psycube_id: 71,
-        description: "S (딜 보조)",
+        description: "S (치피 보조)",
+      },
+      {
+        psycube_id: 88,
+        description: "S (마법 위력 보조)",
       },
       {
         psycube_id: 41,
-        description: "S (딜보조)",
+        description: "S (빠른 술식)",
       },
     ],
     resonance: [
@@ -1695,6 +1695,52 @@ export const character_setting_data: CharacterSettingData[] = [
     resonance_patterns: [],
   },
   {
+    character_id: 56, // "베릴"
+    psycubes: [
+      {
+        psycube_id: 85,
+        description: "S",
+      },
+      {
+        psycube_id: 32,
+        description: "S-",
+      },
+      {
+        psycube_id: 40,
+        description: "A+",
+      },
+      {
+        psycube_id: 29,
+        description: "A",
+      },
+    ],
+    resonance: [],
+    resonance_patterns: [],
+  },
+  {
+    character_id: 57, // "브륌"
+    psycubes: [
+      // {
+      //   psycube_id: 40,
+      //   description: "S",
+      // },
+      // {
+      //   psycube_id: 42,
+      //   description: "S (장기전)",
+      // },
+      // {
+      //   psycube_id: 52,
+      //   description: "A+",
+      // },
+      // {
+      //   psycube_id: 84,
+      //   description: "A",
+      // },
+    ],
+    resonance: [],
+    resonance_patterns: [],
+  },
+  {
     character_id: 101, // "소네트"
     psycubes: [
       {
@@ -1738,12 +1784,12 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (술식 위주) (풀)",
       },
       {
-        psycube_id: 10,
-        description: "S- (천체팟)",
+        psycube_id: 88,
+        description: "S (계시덱)",
       },
       {
-        psycube_id: 4,
-        description: "S-",
+        psycube_id: 10,
+        description: "S- (천체덱)",
       },
     ],
     resonance: [

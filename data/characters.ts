@@ -6,6 +6,7 @@ export type Character = {
   engName: string; // 영어 이름
   version: string; // 버전
   exclude_gacha?: boolean; // 차트 제외 여부
+  immediate_standard?: boolean; // 즉시 상시 편입 (3버전 후 규칙 무시)
   resonanceType: string; // 공명 & 의지 타입
 };
 
@@ -466,6 +467,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       inspiration: "intellect",
       engName: "ulrich",
       version: "2.8",
+      immediate_standard: true,
       resonanceType: "damage",
     },
     {
@@ -512,6 +514,24 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "corvus",
       version: "3.1",
       resonanceType: "damage",
+    },
+    {
+      id: 56,
+      name: "베릴",
+      rarity: 6,
+      inspiration: "intellect",
+      engName: "beryl",
+      version: "3.2",
+      resonanceType: "defense",
+    },
+    {
+      id: 57,
+      name: "브륌",
+      rarity: 6,
+      inspiration: "beast",
+      engName: "brume",
+      version: "3.2",
+      resonanceType: "balance",
     },
   ],
   5: [

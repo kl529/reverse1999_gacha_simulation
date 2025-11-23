@@ -14,7 +14,7 @@ interface ModalProps {
 
 export function BannerSixStarListModal({ banner }: ModalProps) {
   const allSixStars: Character[] = charactersByRarity[6].filter(
-    (char) => !char.exclude_gacha && isIncludedInGachaPool(char.version)
+    (char) => !char.exclude_gacha && isIncludedInGachaPool(char.version, char.immediate_standard)
   );
   const pickupSixStars = banner.bannerType === "doublePick" ? banner.twoPickup6 : [banner.pickup6];
   const uniqueSixStars = new Set(allSixStars.map((char) => char.engName));

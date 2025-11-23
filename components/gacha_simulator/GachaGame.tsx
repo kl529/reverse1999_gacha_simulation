@@ -15,7 +15,7 @@ import { toast, Toaster } from "react-hot-toast";
 
 export const isValidGachaCharacterForPool = (char: Character): boolean => {
   if (char.exclude_gacha) return false;
-  return isIncludedInGachaPool(char.version);
+  return isIncludedInGachaPool(char.version, char.immediate_standard);
 };
 
 // Export SixStarHistoryEntry type for external use

@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
 import { charactersByRarity } from "@/data/characters";
+import { insightMaterial } from "@/data/insight_material";
 import {
   Select,
   SelectContent,
@@ -43,8 +44,13 @@ export default function CharacterSelectionModal_Growth({
   const [sortOption, setSortOption] = useState<SortOption>("version-desc");
 
   const allCharacters = useMemo(() => {
-    // 5성과 6성만 선택 가능
-    return [...(charactersByRarity[6] || []), ...(charactersByRarity[5] || [])];
+    // insight_material이 있는 캐릭터 ID 세트 생성
+    const availableCharacterIds = new Set(insightMaterial.map((item) => item.character_id));
+
+    // 5성과 6성 중 insight_material이 있는 캐릭터만 선택 가능
+    return [...(charactersByRarity[6] || []), ...(charactersByRarity[5] || [])].filter((char) =>
+      availableCharacterIds.has(char.id)
+    );
   }, []);
 
   // 필터링 및 정렬
