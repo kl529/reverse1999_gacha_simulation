@@ -12,6 +12,7 @@ import { InstallPrompt } from "@/components/etc/InstallPrompt";
 import ErrorBoundary from "@/components/etc/ErrorBoundary";
 import { NetworkStatusToast } from "@/components/etc/NetworkStatusToast";
 import PushNotificationManager from "@/components/etc/PushNotificationManager";
+import { PostHogProvider } from "@/components/etc/PostHogProvider";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const isProd = process.env.NODE_ENV === "production";
@@ -47,22 +48,24 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         )}
       </head>
       <body>
-        <ThemeProvider>
-          <ThemeToggle />
-          <ErrorBoundary>
-            <ModalProvider>
-              <SecurityWrapper>
-                <GlobalLoadingManager />
-                <HamburgerConditional />
-                <CustomCursor />
-                <InstallPrompt />
-                <NetworkStatusToast />
-                <PushNotificationManager />
-                {children}
-              </SecurityWrapper>
-            </ModalProvider>
-          </ErrorBoundary>
-        </ThemeProvider>
+        <PostHogProvider>
+          <ThemeProvider>
+            <ThemeToggle />
+            <ErrorBoundary>
+              <ModalProvider>
+                <SecurityWrapper>
+                  <GlobalLoadingManager />
+                  <HamburgerConditional />
+                  <CustomCursor />
+                  <InstallPrompt />
+                  <NetworkStatusToast />
+                  <PushNotificationManager />
+                  {children}
+                </SecurityWrapper>
+              </ModalProvider>
+            </ErrorBoundary>
+          </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );

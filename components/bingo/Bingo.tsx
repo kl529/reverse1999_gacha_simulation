@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { bingoData, BingoDifficulty } from "@/data/bingo_text";
 import { toast, Toaster } from "react-hot-toast";
+import { analytics } from "@/lib/posthog";
 
 // 빙고판 크기별 전체 빙고 줄 개수 (가로 + 세로 + 대각선 2)
 const getTotalBingoLines = (size: number) => size + size + 2;
@@ -59,6 +60,11 @@ export default function Bingo() {
 
   const bingoTexts = currentBingoData.texts;
 
+  useEffect(() => {
+    // 빙고 게임 시작 추적
+    analytics.bingo.gameStarted();
+  }, []);
+
   // 셀 클릭 핸들러
   const handleCellClick = (row: number, col: number) => {
     if (result) {
@@ -71,7 +77,10 @@ export default function Bingo() {
 
     const text = bingoTexts[row * bingoSize + col];
 
-    // 🔹 GA 이벤트 전송
+    // PostHog 이벤트 추적: 빙고 셀 클릭
+    analytics.bingo.cellClicked(row, col, text);
+
+    // 🔹 GA 이벤트 전송 (기존 코드 유지)
     window.gtag?.("event", "bingo_cell_click", {
       event_category: "Bingo",
       bingo_text: text,
@@ -88,6 +97,10 @@ export default function Bingo() {
   const handleReset = () => {
     setBoard(Array.from({ length: bingoSize }, () => Array(bingoSize).fill(false)));
     setResult(null);
+
+    // 빙고 리셋 추적
+    analytics.bingo.gameReset();
+
     toast.success("리셋되었습니다.", {
       duration: 1500,
       position: "bottom-center",
@@ -120,7 +133,11 @@ export default function Bingo() {
 
   // 완성 버튼
   const handleComplete = () => {
-    setResult(getBingoResult());
+    const result = getBingoResult();
+    setResult(result);
+
+    // 빙고 완성 추적
+    analytics.bingo.bingoCompleted(result.bingoCount);
   };
 
   // 빙고 줄 셀 표시

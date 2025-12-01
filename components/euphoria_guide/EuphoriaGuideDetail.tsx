@@ -8,7 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
 import { recommendTeams } from "@/data/recommend_team";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { analytics } from "@/lib/posthog";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -42,6 +43,11 @@ function getEuphoriaMaterialByCharacterId(characterId: number) {
 
 export default function EuphoriaGuideDetail({ item, character }: Props) {
   const romanNumerals = ["I", "II", "III", "IV"];
+
+  useEffect(() => {
+    // 컨텐츠 인기도: 광상 가이드 조회 추적
+    analytics.content.guideViewed("광상", character.name);
+  }, [character.name]);
 
   const recommendedTeams = useMemo(() => {
     return recommendTeams.filter((team) =>

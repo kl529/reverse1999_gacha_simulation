@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useModal } from "@/components/etc/ModalProvider";
 import { HAMBURGER_MENU_CATEGORIES } from "@/lib/constants/menuItems";
+import { analytics } from "@/lib/posthog";
 
 type HamburgerMenuProps = {
   onModalOpen?: (type: string) => void;
@@ -85,7 +86,14 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
       </Link>
 
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          const newState = !isOpen;
+          setIsOpen(newState);
+          if (newState) {
+            // 메뉴 열림 추적
+            analytics.userBehavior.menuOpened();
+          }
+        }}
         aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
         aria-expanded={isOpen}
         aria-controls="hamburger-menu"

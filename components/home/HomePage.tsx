@@ -14,6 +14,7 @@ import { CardItem, isModalCardItem } from "@/lib/types/menuTypes";
 import { PLAYGROUND_ITEMS, LIBRARY_ITEMS, GUIDE_ITEMS } from "@/lib/constants/menuItems";
 import { checkNewCouponsQuietly } from "@/lib/utils/checkNewCoupons";
 import { useModal } from "@/components/etc/ModalProvider";
+import { analytics } from "@/lib/posthog";
 
 // Dynamic imports로 코드 스플리팅
 const ConfirmModal = dynamic(() => import("@/components/modals/ConfirmModal"));
@@ -49,6 +50,9 @@ export default function HomePage() {
 
     // 새 쿠폰 체크 (조용하게, 서버에서 간격 제어)
     checkNewCouponsQuietly();
+
+    // 퍼널 분석: 홈페이지 방문 추적
+    analytics.funnel.homeVisited();
 
     // // 서비스 점검 공지 표시 (localStorage로 하루에 한 번만 표시)
     // const today = new Date().toDateString();

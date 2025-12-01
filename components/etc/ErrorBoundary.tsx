@@ -2,6 +2,7 @@
 
 import React, { Component, ErrorInfo, ReactNode, createContext } from "react";
 import Link from "next/link";
+import { analytics } from "@/lib/posthog";
 
 // ErrorBoundary 활성화 상태를 공유하는 Context
 export const ErrorBoundaryContext = createContext<boolean>(false);
@@ -40,6 +41,15 @@ class ErrorBoundary extends Component<Props, State> {
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // 에러 로깅 서비스에 에러 정보 전송 가능
     console.error("ErrorBoundary caught an error:", error, errorInfo);
+
+    // PostHog에 에러 추적
+    analytics.errors.errorOccurred(
+      error.message,
+      error.stack,
+      {
+        componentStack: errorInfo.componentStack,
+      }
+    );
   }
 
   handleReset = () => {

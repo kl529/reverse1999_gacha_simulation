@@ -27,7 +27,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { euphoriaList } from "@/data/euphoria";
 import { getDisplayVersion } from "@/data/version";
-import { characterSkin } from "@/data/character_skin";
 
 export default function CharacterDetail({ character }: { character: Character }) {
   const guide = characterGuideList.find((g) => g.character_id === character.id);
@@ -85,10 +84,6 @@ export default function CharacterDetail({ character }: { character: Character })
     const hasInsight = insightMaterial.some((c) => c.character_id === character.id);
 
     return hasResonance || hasEuphoria || hasResonancePattern || hasInsight;
-  }, [character.id]);
-
-  const characterSkins = useMemo(() => {
-    return characterSkin.filter((skin) => skin.character_id === character.id);
   }, [character.id]);
 
   return (

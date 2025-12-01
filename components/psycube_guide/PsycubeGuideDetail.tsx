@@ -1,17 +1,24 @@
 "use client";
 
+import { useEffect } from "react";
 import { Psycube } from "@/data/psycube_data";
 import { character_setting_data } from "@/data/character_setting_data";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import { analytics } from "@/lib/posthog";
 
 interface Props {
   item: Psycube;
 }
 
 export default function PsycubeGuideSetting({ item }: Props) {
+  useEffect(() => {
+    // 컨텐츠 인기도: 가이드 조회 추적
+    analytics.content.guideViewed("사이큐브", item.name);
+  }, [item.name]);
+
   // 해당 의지를 사용하는 캐릭터 찾기
   const usingCharacters = character_setting_data
     .filter((char) => char.psycubes.some((p) => p.psycube_id === item.id))

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Character } from "@/data/characters";
 import CharacterDetail from "@/components/character/CharacterDetail";
 import CharacterSettingDetail from "@/components/character_setting/CharacterSettingDetail";
@@ -12,10 +12,16 @@ import Image from "next/image";
 import { euphoriaList } from "@/data/euphoria";
 import { getDisplayVersion } from "@/data/version";
 import { Separator } from "@/components/ui/separator";
+import { analytics } from "@/lib/posthog";
 
 export default function CharacterDetailTabs({ character }: { character: Character }) {
   const [activeTab, setActiveTab] = useState<string>("setting");
   const is6Star = character.rarity === 6;
+
+  useEffect(() => {
+    // 컨텐츠 인기도: 캐릭터 조회 추적
+    analytics.content.characterViewed(character.name, character.rarity);
+  }, [character.name, character.rarity]);
 
   const getSortedCharList = (rarity: number) =>
     SETTING_CHARACTERS.filter((c) => c.rarity === rarity).sort((a, b) => b.id - a.id);

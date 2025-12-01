@@ -1,0 +1,54 @@
+'use client';
+
+import { useEffect, Suspense } from 'react';
+import posthog from 'posthog-js';
+import { usePathname, useSearchParams } from 'next/navigation';
+
+function PostHogPageView() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (pathname && posthog.__loaded) {
+      let url = window.origin + pathname;
+      if (searchParams && searchParams.toString()) {
+        url = url + `?${searchParams.toString()}`;
+      }
+      posthog.capture('$pageview', {
+        $current_url: url,
+      });
+    }
+  }, [pathname, searchParams]);
+
+  return null;
+}
+
+export function PostHogProvider({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    if (
+      typeof window !== 'undefined' &&
+      process.env.NEXT_PUBLIC_POSTHOG_KEY &&
+      process.env.NEXT_PUBLIC_POSTHOG_HOST
+    ) {
+      posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
+        api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+        capture_pageview: false, // 수동으로 pageview를 추적
+        capture_pageleave: true,
+        loaded: (posthog) => {
+          if (process.env.NODE_ENV === 'development') {
+            posthog.debug(); // 개발 환경에서 디버그 모드 활성화
+          }
+        },
+      });
+    }
+  }, []);
+
+  return (
+    <>
+      <Suspense fallback={null}>
+        <PostHogPageView />
+      </Suspense>
+      {children}
+    </>
+  );
+}

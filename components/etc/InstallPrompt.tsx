@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { analytics } from "@/lib/posthog";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -27,11 +28,15 @@ export function InstallPrompt() {
 
     const handleBeforeInstallPrompt = (e: Event) => {
       setPromptEvent(e as BeforeInstallPromptEvent);
+      // PWA 프롬프트 표시 추적
+      analytics.userBehavior.pwaPromptShown();
     };
 
     const handleAppInstalled = () => {
       setPromptEvent(null);
       setShowPrompt(false);
+      // PWA 설치 완료 추적
+      analytics.userBehavior.pwaInstalled();
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
