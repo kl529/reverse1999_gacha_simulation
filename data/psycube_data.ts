@@ -1438,7 +1438,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 82,
-    name: "떠돌이의 즉흥연주",
+    name: "방랑 즉흥곡",
     engName: "the_wandering_improviser",
     priority: 2,
     rarity: 6,
