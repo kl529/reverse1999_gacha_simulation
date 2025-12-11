@@ -1857,7 +1857,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "icehood",
       note: "힐러이기에, 형상 효율이 좋은 편은아니고, 좋은 옵션들이 1,2형상에 몰려있음.",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=QTPbLh7Ter0"],
+    youtube_links: ["https://www.youtube.com/watch?v=dE4U5XQIfd8"],
     keywords: ["힐러", "신혈", "정신피해"],
     guide_images: [],
   },

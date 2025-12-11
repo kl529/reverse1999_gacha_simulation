@@ -1668,8 +1668,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
-    resonance: [],
-    resonance_patterns: [],
+    resonance: [
+      {
+        code: "APxFMVMxUTAjOzE6QCkFKxU9AD0BNANIJEwCTBJIIg==",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Overindulgence"],
   },
   {
     character_id: 55, // "코르부스"

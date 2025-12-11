@@ -72,12 +72,21 @@ export const coupons: Coupon[] = [
     description: "3.0 쿠폰",
     expiresAt: "2025-11-20",
     pushSent: true,
+    isHidden: true,
   },
   {
     id: "11",
     code: "영혼인도자",
     description: "3.0 쿠폰",
     expiresAt: "2025-12-11",
+    pushSent: true,
+    isHidden: true,
+  },
+  {
+    id: "12",
+    code: "섬뜩한열차여행",
+    description: "3.1 쿠폰",
+    expiresAt: "2026-01-02",
     pushSent: false,
   },
   // 무제한 쿠폰 (영구 사용 가능)
