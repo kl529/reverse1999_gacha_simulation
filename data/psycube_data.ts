@@ -1456,7 +1456,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 83,
-    name: "사라져버린 비문",
+    name: "사라진 비문",
     engName: "faded_epitaphs",
     rarity: 5,
     version: "3.1",
@@ -1473,7 +1473,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 84,
-    name: "생자의 고행",
+    name: "살아있는 자의 고행",
     engName: "bitter_march_of_the_living",
     priority: 3,
     rarity: 6,

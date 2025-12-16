@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 import { coupons } from "@/data/coupon";
 import { messaging } from "@/lib/firebase/admin";
 
+// 배포 버전 (새 쿠폰 추가 시 이 값을 변경하세요)
+// 예: "2025-12-13-v1" → "2025-12-13-v2"
+const DEPLOYMENT_VERSION = "2025-12-13-v1";
+
 // 서버 메모리에 전송 완료된 쿠폰 ID 저장 (재배포 시 초기화됨)
 const sentCouponIds = new Set<string>();
 
@@ -10,6 +14,9 @@ let lastCheckTime: number | null = null;
 
 // 최소 체크 간격 (12시간 = 43200000ms)
 const MIN_CHECK_INTERVAL = 12 * 60 * 60 * 1000;
+
+// 현재 배포 버전 추적 (새 배포 감지용)
+let currentDeploymentVersion: string | null = null;
 
 /**
  * 새로운 쿠폰이 추가되었는지 확인하고 푸시 알림 전송
@@ -39,10 +46,17 @@ export async function POST() {
     // Firebase Admin 초기화 확인
     if (!messaging) {
       console.error("❌ Firebase Admin Messaging이 초기화되지 않았습니다");
-      return NextResponse.json(
-        { error: "Firebase Admin not initialized" },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: "Firebase Admin not initialized" }, { status: 500 });
+    }
+
+    // 새 배포 감지: DEPLOYMENT_VERSION이 변경되었으면 메모리 초기화
+    if (currentDeploymentVersion !== DEPLOYMENT_VERSION) {
+      console.log("🔄 새 배포 감지! 메모리 초기화 중...");
+      console.log(`  이전 버전: ${currentDeploymentVersion}`);
+      console.log(`  새 버전: ${DEPLOYMENT_VERSION}`);
+      currentDeploymentVersion = DEPLOYMENT_VERSION;
+      sentCouponIds.clear();
+      lastCheckTime = null;
     }
 
     // 최소 체크 간격 확인 (12시간 이내면 스킵)
@@ -146,10 +160,7 @@ export async function POST() {
     });
   } catch (error) {
     console.error("Error checking new coupons:", error);
-    return NextResponse.json(
-      { error: "Failed to check new coupons" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to check new coupons" }, { status: 500 });
   }
 }
 

@@ -87,6 +87,13 @@ export const coupons: Coupon[] = [
     code: "섬뜩한열차여행",
     description: "3.1 쿠폰",
     expiresAt: "2026-01-02",
+    pushSent: true,
+  },
+  {
+    id: "13",
+    code: "흡혈귀열차",
+    description: "3.1 쿠폰",
+    expiresAt: "2026-01-04",
     pushSent: false,
   },
   // 무제한 쿠폰 (영구 사용 가능)

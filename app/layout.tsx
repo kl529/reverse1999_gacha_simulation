@@ -47,7 +47,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </>
         )}
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <PostHogProvider>
           <ThemeProvider>
             <ThemeToggle />

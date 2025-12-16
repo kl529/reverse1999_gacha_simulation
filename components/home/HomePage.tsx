@@ -260,6 +260,15 @@ export default function HomePage() {
               >
                 인포그래픽 출처 (reddit)
               </Link>
+              <br />-{" "}
+              <Link
+                href="https://kdocs.cn/l/cd5MWeCl5bKw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+              >
+                스테이지별 드롭률 출처(【WPS Docs】 必要的记录)
+              </Link>
             </p>
           </ConfirmModal>
         )}

@@ -564,7 +564,7 @@ export const euphoriaList: Euphoria[] = [
     id: 30,
     character_id: 34, // 아르고스
     priority: 3,
-    name: "곧 꺼질 백 개의 눈, 아직 따뜻한 총구",
+    name: "수많은 생명의 소멸, 여전히 뜨거운 총구",
     note: "성급 서폿 / 서브 딜러",
     number: 1,
     version: "3.1",
@@ -580,7 +580,7 @@ export const euphoriaList: Euphoria[] = [
     id: 31,
     character_id: 3, // A 나이트
     priority: 4,
-    name: "천계와 속세에 울려 퍼지는 소리",
+    name: "천국과 인간 세상에 울려 퍼지리라",
     note: "술식 딜러",
     number: 1,
     version: "3.1",

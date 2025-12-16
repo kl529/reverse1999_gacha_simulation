@@ -29,15 +29,9 @@ export default function SkinGalleryPage() {
   const sourceList = Array.from(new Set(characterSkin.map((s) => s.source)));
 
   // URL에서 필터 상태 초기화
-  const [rarityFilter, setRarityFilter] = useState<string>(
-    searchParams.get("rarity") || "전체"
-  );
-  const [versionFilter, setVersionFilter] = useState<string>(
-    searchParams.get("version") || "전체"
-  );
-  const [sourceFilter, setSourceFilter] = useState<string>(
-    searchParams.get("source") || "전체"
-  );
+  const [rarityFilter, setRarityFilter] = useState<string>(searchParams.get("rarity") || "전체");
+  const [versionFilter, setVersionFilter] = useState<string>(searchParams.get("version") || "전체");
+  const [sourceFilter, setSourceFilter] = useState<string>(searchParams.get("source") || "전체");
   const [selectedCharacters, setSelectedCharacters] = useState<string[]>(
     searchParams.get("characters")?.split(",").filter(Boolean) || []
   );
@@ -201,7 +195,16 @@ export default function SkinGalleryPage() {
         ) : (
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12">
             {filteredSkins
-              .sort((a, b) => b.id - a.id)
+              .sort((a, b) => {
+                // 버전을 숫자로 변환하여 비교 (높은 버전이 먼저)
+                const versionA = parseFloat(a.version);
+                const versionB = parseFloat(b.version);
+                if (versionA !== versionB) {
+                  return versionB - versionA;
+                }
+                // 같은 버전이면 id 역순
+                return b.id - a.id;
+              })
               .map((skin) => {
                 const params = new URLSearchParams();
                 if (rarityFilter !== "전체") params.set("rarity", rarityFilter);
@@ -215,23 +218,23 @@ export default function SkinGalleryPage() {
                 return (
                   <Link href={linkHref} key={skin.id}>
                     <div className="cursor-pointer overflow-hidden rounded border border-gray-200 transition dark:border-gray-700">
-                    <div className="relative">
-                      <Image
-                        src={`/infos/character_skin/list/${skin.engName}.webp`}
-                        alt={skin.name}
-                        width={300}
-                        height={400}
-                        className="h-auto w-full object-cover"
-                      />
-                      <span className="absolute bottom-2 right-2 rounded bg-orange-300 px-2 py-0.5 text-xs text-white dark:bg-orange-700">
-                        {skin.version === "2.75" ? "콜라보" : skin.version}
-                      </span>
-                      {skin.tarot_number && (
-                        <span className="absolute bottom-2 left-2 rounded bg-purple-500 px-2 py-0.5 text-xs text-white">
-                          타로 {skin.tarot_number}번
+                      <div className="relative">
+                        <Image
+                          src={`/infos/character_skin/list/${skin.engName}.webp`}
+                          alt={skin.name}
+                          width={300}
+                          height={400}
+                          className="h-auto w-full object-cover"
+                        />
+                        <span className="absolute bottom-2 right-2 rounded bg-orange-300 px-2 py-0.5 text-xs text-white dark:bg-orange-700">
+                          {skin.version === "2.75" ? "콜라보" : skin.version}
                         </span>
-                      )}
-                    </div>
+                        {skin.tarot_number && (
+                          <span className="absolute bottom-2 left-2 rounded bg-purple-500 px-2 py-0.5 text-xs text-white">
+                            타로 {skin.tarot_number}번
+                          </span>
+                        )}
+                      </div>
                       <div className="truncate bg-white p-2 text-center text-sm font-medium text-black dark:bg-gray-900 dark:text-white">
                         {skin.name}
                       </div>

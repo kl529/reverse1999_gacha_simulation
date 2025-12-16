@@ -26,6 +26,12 @@ export const banners: Banner[] = [
     version: "3.2",
   },
   {
+    id: "doublepick_aleph_kiperina",
+    name: "알레프 & 키페리나",
+    bannerType: "doublePick",
+    twoPickup6: [44, 46],
+  },
+  {
     id: "corvus_pick_up",
     name: "[3.1] 코르부스 픽업",
     pickup6: 55,

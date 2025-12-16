@@ -19,7 +19,6 @@ export type RecommendTeam = {
   characters: RecommendTeamCharacter[];
 };
 
-// 나중에 몰디르 추가하기
 export const recommendTeams: RecommendTeam[] = [
   {
     name: "모든 덱의 기초",
@@ -80,10 +79,105 @@ export const recommendTeams: RecommendTeam[] = [
     ],
   },
   {
+    name: "브륌 메인딜 전력덱",
+    description: [
+      "브륌을 메인딜러로 채용하는 전력덱",
+      "다른 전력덱과 마찬가지로 술진을 강화시키고 폭딜을 넣는 조합",
+      "울리히도 사용가능하지만, 광상 안조와의 계약이 훨씬 체급이 높음.",
+      "파투투를 채용하면, 브륌 메인딜 덱은 10턴 사이클 기준 노티카 신혈덱보다 높음.",
+      "브륌 - 안조 2딜 체제가 딜량이 압도적으로 높고 안조의 매턴 술식이 꽤나 좋게 평가됨",
+    ],
+    concepts: ["전력", "술진", "연소"],
+    characters: [
+      { id: 57, isMain: true, euphoria: true, role: "딜러" },
+      {
+        id: 53,
+        role: "서폿",
+        isMain: true,
+      },
+      { id: 35, euphoria: true, role: "서폿", alternatives: [{ id: 50, role: "서폿" }] },
+      {
+        id: 40,
+        role: "힐러",
+        alternatives: [
+          { id: 21, euphoria: true, role: "서폿" },
+          { id: 8, euphoria: true, role: "힐러" },
+          { id: 26, euphoria: true, role: "힐러" },
+          { id: 54, role: "힐러" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "브륌-코르부스 전력덱",
+    description: [
+      "코르부스를 메인딜로 사용하고, 브륌을 서포터로 사용하는 조합",
+      "앞서 소개한 브륌 메인딜보다는 체급이 낮고, 빠른 코르수브 사이클을 굴리려면 운도 필요한 조합",
+      "튜닝은 끝없는 튜닝을 추천히고 일반적인 전력덱처럼 술진을 1-1-3-3으로 유지되게 사용",
+      "많은 분석가들이, 코르부스 메인딜보다는 브륌을 메인딜러로 채용하는 것을 추천해, 추천은 개인차가 있음",
+    ],
+    concepts: ["전력", "술진", "연소"],
+    characters: [
+      { id: 55, isMain: true, euphoria: true, role: "딜러" },
+      { id: 57, isMain: true, role: "서폿" },
+      {
+        id: 53,
+        role: "서폿",
+        alternatives: [
+          { id: 38, role: "서폿" },
+          { id: 12, euphoria: true, role: "서폿" },
+          { id: 31, role: "서폿" },
+        ],
+      },
+      {
+        id: 26,
+        euphoria: true,
+        role: "힐러",
+        alternatives: [
+          { id: 21, euphoria: true, role: "서폿" },
+          { id: 8, euphoria: true, role: "힐러" },
+          { id: 40, role: "힐러" },
+          { id: 54, role: "힐러" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "베릴 잔광덱",
+    description: [
+      "3.2에 새로나온 한정캐릭터 베릴을 메인으로 하는 잔광 조합",
+      "신혈,전력,암살 정도의 체급을 가지며, 적당한 운용난이도로 꽤나 추천되는 덱",
+      "3.3 기준 잔광 서포터가 이졸데밖에 없어서 강해질 가능성이 높은덱",
+      "중단기전도 좋지만, 장기전으로 가면서 베릴의 딜 기여도가 높아짐.",
+      "잔광을 사용하는 추가공격이 메인이며, 베릴은 다양한 조합으로 사용될 가능성이 있음",
+    ],
+    concepts: ["잔광", "연소", "추가공격"],
+    characters: [
+      { id: 56, isMain: true, euphoria: true, role: "딜러" },
+      { id: 24, isMain: true, euphoria: true, role: "서폿" },
+      {
+        id: 40,
+        role: "힐러",
+        alternatives: [
+          { id: 46, role: "탱커" },
+          { id: 26, euphoria: true, role: "힐러" },
+        ],
+      },
+      {
+        id: 38,
+        role: "서폿",
+        alternatives: [
+          { id: 31, role: "서폿" },
+          { id: 18, role: "서폿" },
+        ],
+      },
+    ],
+  },
+  {
     name: "코르부스 전력덱",
     description: [
       "코르부스와, 카론 전력 키워드를 메인으로 하는 조합",
-      "[요동치는 전기장]이라는 술진을 강화시키며, 압도적인 화력으로 찍어누름.",
+      "[요동치는 전기장]이라는 술진을 강화시키며, 전기장 3레벨에 폭딜을 넣는 구조",
       "코르부스는 단일 딜링이 매우 뛰어나고, 장기전에서 루시와 비교해서 우위를 보임",
       "빠른 전기장 사이클을 위해, 카론과 잘 어울리고, 조합은 루시 전력덱과 거의 비슷함",
       "특정 캐릭터들이 강제되고, 술진 서폿은 사용하기 힘듦",
@@ -110,6 +204,38 @@ export const recommendTeams: RecommendTeam[] = [
           { id: 38, role: "서폿" },
           { id: 12, euphoria: true, role: "서폿" },
           { id: 31, role: "서폿" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "노티카 신혈덱",
+    description: [
+      "노티카를 메인으로 한 [신혈]기믹을 사용하는 자해조합",
+      "노티카와 광상 제멜바이스 & 센티널을 채용하여 자해를 쌓아 딜을 하는 조합",
+      "힐러는 루부스카가 압도적으로 좋고, 파투투나 광상 메디슨 포켓도 사용가능",
+      "3.1 기준 루부스카의 합류로 압도적인 체급으로 부동의 0티어 조합",
+      "제멜바이스의 술진으로 로페라 등의 술진 서포터와는 쓰기 힘듦",
+    ],
+    concepts: ["신혈", "자해"],
+    characters: [
+      { id: 49, isMain: true, role: "딜러" },
+      {
+        id: 52,
+        role: "서폿",
+        alternatives: [
+          { id: 38, role: "서폿" },
+          { id: 9, euphoria: true, role: "서폿" },
+        ],
+      },
+      { id: 28, euphoria: true, isMain: true, role: "서폿" },
+      {
+        id: 54,
+        role: "힐러",
+        alternatives: [
+          { id: 21, euphoria: true, role: "서폿" },
+          { id: 8, euphoria: true, role: "힐러" },
+          { id: 40, role: "힐러" },
         ],
       },
     ],
@@ -191,38 +317,6 @@ export const recommendTeams: RecommendTeam[] = [
         id: 15,
         euphoria: true,
         role: "서폿",
-      },
-    ],
-  },
-  {
-    name: "노티카 신혈덱",
-    description: [
-      "노티카를 메인으로 한 [신혈]기믹을 사용하는 자해조합",
-      "노티카와 광상 제멜바이스 & 센티널을 채용하여 자해를 쌓아 딜을 하는 조합",
-      "힐러는 루부스카가 압도적으로 좋고, 파투투나 광상 메디슨 포켓도 사용가능",
-      "3.1 기준 루부스카의 합류로 압도적인 체급으로 부동의 0티어 조합",
-      "제멜바이스의 술진으로 로페라 등의 술진 서포터와는 쓰기 힘듦",
-    ],
-    concepts: ["신혈", "자해"],
-    characters: [
-      { id: 49, isMain: true, role: "딜러" },
-      {
-        id: 52,
-        role: "서폿",
-        alternatives: [
-          { id: 38, role: "서폿" },
-          { id: 9, euphoria: true, role: "서폿" },
-        ],
-      },
-      { id: 28, euphoria: true, isMain: true, role: "서폿" },
-      {
-        id: 54,
-        role: "힐러",
-        alternatives: [
-          { id: 21, euphoria: true, role: "서폿" },
-          { id: 8, euphoria: true, role: "힐러" },
-          { id: 40, role: "힐러" },
-        ],
       },
     ],
   },
@@ -452,7 +546,15 @@ export const recommendTeams: RecommendTeam[] = [
     characters: [
       { id: 36, role: "서폿", alternatives: [{ id: 8, euphoria: true, role: "힐러" }] },
       { id: 43, isMain: true, role: "딜러" },
-      { id: 13, euphoria: true, role: "서폿", alternatives: [{ id: 127, role: "서폿" }] },
+      {
+        id: 51,
+        role: "서폿",
+        isMain: true,
+        alternatives: [
+          { id: 127, role: "서폿" },
+          { id: 13, euphoria: true, role: "서폿" },
+        ],
+      },
       { id: 12, euphoria: true, role: "서폿" },
     ],
   },

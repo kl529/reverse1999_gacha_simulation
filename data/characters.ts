@@ -533,6 +533,15 @@ export const charactersByRarity: Record<number, Character[]> = {
       version: "3.2",
       resonanceType: "balance",
     },
+    // {
+    //   id: 58,
+    //   name: "미샤",
+    //   rarity: 6,
+    //   inspiration: "beast",
+    //   engName: "marsha",
+    //   version: "3.3",
+    //   resonanceType: "balance",
+    // },
   ],
   5: [
     {
@@ -1070,3 +1079,11 @@ export const charactersByRarity: Record<number, Character[]> = {
     },
   ],
 };
+
+// 모든 캐릭터를 하나의 배열로 평탄화
+export const allCharacters: Character[] = Object.values(charactersByRarity).flat();
+
+// ID로 캐릭터 찾기 헬퍼 함수
+export function getCharacterById(id: number): Character | undefined {
+  return allCharacters.find((char) => char.id === id);
+}

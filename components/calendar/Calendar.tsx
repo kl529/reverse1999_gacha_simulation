@@ -7,6 +7,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import rrulePlugin from "@fullcalendar/rrule";
 import { EventInput, DatesSetArg, EventClickArg } from "@fullcalendar/core";
 import { CalendarEvent } from "@/data/calendar_events";
+import { getCharacterById } from "@/data/characters";
 import Image from "next/image";
 
 interface Props {
@@ -35,8 +36,13 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
           const [month, day] = ev.date.split("-").map(Number);
           const currentYear = new Date().getFullYear();
 
+          // character_id로 캐릭터 이름 가져오기
+          const characterName = ev.character_id
+            ? getCharacterById(ev.character_id)?.name || ev.title || "알 수 없음"
+            : ev.title || "알 수 없음";
+
           return {
-            title: `🎂 ${ev.title}`,
+            title: `🎂 ${characterName}`,
             start: `${currentYear}-${ev.date}`, // 현재 년도로 시작
             backgroundColor: "#43a047",
             borderColor: "#43a047",
@@ -51,8 +57,9 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
           };
         } else if (ev.type === "version") {
           // 버전 이벤트의 경우 - 모바일과 데스크톱에서 다르게 표시
+          const versionTitle = ev.title || "";
           return {
-            title: `v${ev.title.match(/\d+\.\d+/)?.[0] || ev.title}`,
+            title: `v${versionTitle.match(/\d+\.\d+/)?.[0] || versionTitle}`,
             start: ev.date,
             end: ev.end,
             display: isMobile ? "block" : "background",
@@ -61,7 +68,7 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
             textColor: "#fff",
             classNames: "version-event",
             extendedProps: {
-              version: ev.title.match(/\d+\.\d+/)?.[0] || ev.title,
+              version: versionTitle.match(/\d+\.\d+/)?.[0] || versionTitle,
               isVersion: true,
             },
           };
@@ -73,7 +80,7 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
           }
 
           return {
-            title: ev.title,
+            title: ev.title || "",
             start: ev.date,
             end: endDate?.toISOString().split("T")[0] || ev.end,
             url: ev.type === "pickup" ? "/gacha_simulator" : ev.link,
@@ -228,7 +235,7 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-white p-4 dark:bg-gray-900 dark:text-gray-200">
       <h1 className="top-0 z-20 mt-8 p-3 text-center text-2xl font-bold text-black dark:text-gray-100 lg:text-3xl">
-        리버스 이벤트 캘린더
+        리버스 캘린더
       </h1>
       {/* 상단 컨트롤 바 */}
       <div
