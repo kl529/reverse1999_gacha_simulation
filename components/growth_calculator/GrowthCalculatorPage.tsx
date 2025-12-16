@@ -8,6 +8,8 @@ import CharacterSelectionModal_Growth from "./CharacterSelectionModal_Growth";
 import GrowthPlanModal_Growth from "./GrowthPlanModal_Growth";
 import CharacterPlanCard_Growth from "./CharacterPlanCard_Growth";
 import MaterialSummary_Growth from "./MaterialSummary_Growth";
+import FarmingGuide_Growth from "./FarmingGuide_Growth";
+import SingleMaterialEditModal_Growth from "./SingleMaterialEditModal_Growth";
 import { UserMaterials, CharacterPlan } from "@/lib/types/growthCalculatorTypes";
 import {
   saveUserMaterials,
@@ -31,6 +33,8 @@ export default function GrowthCalculatorPage() {
   const [tempPlans, setTempPlans] = useState<
     Map<number, Omit<CharacterPlan, "id" | "createdAt" | "updatedAt">>
   >(new Map());
+  const [singleMaterialModalOpen, setSingleMaterialModalOpen] = useState(false);
+  const [selectedMaterialId, setSelectedMaterialId] = useState<number | null>(null);
 
   // 초기 데이터 로드
   useEffect(() => {
@@ -69,11 +73,24 @@ export default function GrowthCalculatorPage() {
   // 재료 요구사항 계산
   const materialRequirements = useMemo(() => {
     const aggregated = aggregateMaterials(characterPlans, characterResonanceTypes);
-    return calculateDeficit(userMaterials, aggregated);
+    const result = calculateDeficit(userMaterials, aggregated);
+    return result;
   }, [characterPlans, characterResonanceTypes, userMaterials]);
 
   const handleSaveMaterials = (materials: UserMaterials) => {
     setUserMaterials(materials);
+  };
+
+  const handleMaterialClick = (materialId: number) => {
+    setSelectedMaterialId(materialId);
+    setSingleMaterialModalOpen(true);
+  };
+
+  const handleSaveSingleMaterial = (materialId: number, newQuantity: number) => {
+    setUserMaterials((prev) => ({
+      ...prev,
+      [materialId]: newQuantity,
+    }));
   };
 
   const handleCharactersSelected = (characterIds: number[]) => {
@@ -230,10 +247,25 @@ export default function GrowthCalculatorPage() {
         </div>
       )}
 
+      {/* 파밍 가이드 */}
+      {characterPlans.length > 0 && (
+        <div className="mb-8 px-2">
+          <FarmingGuide_Growth
+            requirements={materialRequirements}
+            userMaterials={userMaterials}
+            onMaterialClick={handleMaterialClick}
+          />
+        </div>
+      )}
+
       {/* 재료 요약 */}
       <div className="mb-8 px-2">
         <h2 className="mb-4 text-center text-xl font-bold sm:text-2xl">재료 요약</h2>
-        <MaterialSummary_Growth requirements={materialRequirements} />
+        <MaterialSummary_Growth
+          requirements={materialRequirements}
+          userMaterials={userMaterials}
+          onMaterialClick={handleMaterialClick}
+        />
       </div>
 
       {/* 모달들 */}
@@ -268,6 +300,15 @@ export default function GrowthCalculatorPage() {
           tempPlan={tempPlans.get(selectedCharacterIdForGrowth)}
         />
       )}
+
+      {/* 단일 재료 수정 모달 */}
+      <SingleMaterialEditModal_Growth
+        open={singleMaterialModalOpen}
+        onOpenChange={setSingleMaterialModalOpen}
+        materialId={selectedMaterialId}
+        currentQuantity={selectedMaterialId ? userMaterials[selectedMaterialId] || 0 : 0}
+        onSave={handleSaveSingleMaterial}
+      />
     </div>
   );
 }
