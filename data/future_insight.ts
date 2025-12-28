@@ -227,5 +227,28 @@ export const futureInsightData: FutureInsightItem[] = [
       star5: [],
     },
     euphoria_pick_up: [21, 16, 24, 26, 34, 25],
+    note: "39,000원 6성 선택권 판매 (상시 캐릭만 가능 ~2.8)",
+  },
+  {
+    version: "3.3",
+    title: "원정기",
+    period: {
+      start: "2026-03-05",
+      end: "2026-04-16",
+      week: 6,
+    },
+    album_shop: {
+      rare6: 25,
+      rare5: 109,
+    },
+    banners: ["marsha_pick_up"],
+    euphoria: {
+      star6: [
+        { characterId: 7, euphoriaId: 35 },
+        { characterId: 31, euphoriaId: 36 },
+      ],
+      star5: [],
+    },
+    euphoria_pick_up: [7, 31, 23, 12, 24, 16],
   },
 ];

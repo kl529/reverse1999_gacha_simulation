@@ -2762,4 +2762,104 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
       },
     ],
   },
+  {
+    character_id: 57, // "Brume"
+    pattern: [
+      {
+        pattern: "Elucidation",
+        materials: {
+          3: 1,
+          102: 2,
+          201: 4,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Genuinity",
+        materials: {
+          1: 1,
+          108: 2,
+          203: 5,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Stupefaction",
+        materials: {
+          2: 1,
+          101: 2,
+          205: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Aspirational",
+        materials: {
+          4: 1,
+          109: 2,
+          209: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Inspirational",
+        materials: {
+          4: 1,
+          106: 2,
+          209: 3,
+          1002: 120000,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 56, // "Beryl"
+    pattern: [
+      {
+        pattern: "Pattern5",
+        materials: {
+          2: 1,
+          106: 2,
+          208: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Pattern4",
+        materials: {
+          4: 1,
+          102: 2,
+          209: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Pattern14",
+        materials: {
+          5: 1,
+          109: 2,
+          205: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Pattern2",
+        materials: {
+          5: 1,
+          106: 2,
+          210: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Pattern6",
+        materials: {
+          3: 1,
+          107: 2,
+          209: 3,
+          1002: 120000,
+        },
+      },
+    ],
+  },
 ];

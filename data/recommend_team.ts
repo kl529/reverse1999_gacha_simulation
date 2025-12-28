@@ -48,6 +48,7 @@ export const recommendTeams: RecommendTeam[] = [
       {
         id: 31,
         role: "서폿",
+        euphoria: true,
         alternatives: [
           { id: 13, euphoria: true, role: "서폿" },
           { id: 18, role: "서폿" },
@@ -126,7 +127,7 @@ export const recommendTeams: RecommendTeam[] = [
         alternatives: [
           { id: 38, role: "서폿" },
           { id: 12, euphoria: true, role: "서폿" },
-          { id: 31, role: "서폿" },
+          { id: 31, role: "서폿", euphoria: true },
         ],
       },
       {
@@ -156,9 +157,10 @@ export const recommendTeams: RecommendTeam[] = [
       { id: 56, isMain: true, euphoria: true, role: "딜러" },
       { id: 24, isMain: true, euphoria: true, role: "서폿" },
       {
-        id: 40,
+        id: 58,
         role: "힐러",
         alternatives: [
+          { id: 40, role: "힐러" },
           { id: 46, role: "탱커" },
           { id: 26, euphoria: true, role: "힐러" },
         ],
@@ -167,7 +169,7 @@ export const recommendTeams: RecommendTeam[] = [
         id: 38,
         role: "서폿",
         alternatives: [
-          { id: 31, role: "서폿" },
+          { id: 31, role: "서폿", euphoria: true },
           { id: 18, role: "서폿" },
         ],
       },
@@ -203,7 +205,7 @@ export const recommendTeams: RecommendTeam[] = [
         alternatives: [
           { id: 38, role: "서폿" },
           { id: 12, euphoria: true, role: "서폿" },
-          { id: 31, role: "서폿" },
+          { id: 31, role: "서폿", euphoria: true },
         ],
       },
     ],
@@ -269,7 +271,7 @@ export const recommendTeams: RecommendTeam[] = [
         alternatives: [
           { id: 38, role: "서폿" },
           { id: 12, euphoria: true, role: "서폿" },
-          { id: 31, role: "서폿" },
+          { id: 31, role: "서폿", euphoria: true },
         ],
       },
     ],
@@ -373,7 +375,7 @@ export const recommendTeams: RecommendTeam[] = [
         id: 38,
         role: "서폿",
         alternatives: [
-          { id: 31, role: "서폿" },
+          { id: 31, role: "서폿", euphoria: true },
           { id: 18, role: "서폿" },
         ],
       },
@@ -431,7 +433,7 @@ export const recommendTeams: RecommendTeam[] = [
         id: 38,
         role: "서폿",
         alternatives: [
-          { id: 31, role: "서폿" },
+          { id: 31, role: "서폿", euphoria: true },
           { id: 37, role: "서폿" },
           { id: 41, role: "서폿" },
           { id: 15, euphoria: true, role: "서폿" },
@@ -468,7 +470,7 @@ export const recommendTeams: RecommendTeam[] = [
         euphoria: true,
         alternatives: [
           { id: 30, role: "탱커" },
-          { id: 31, role: "서폿" },
+          { id: 31, role: "서폿", euphoria: true },
           { id: 7, euphoria: true, role: "서폿" },
           { id: 45, role: "딜러" },
         ],
@@ -492,7 +494,7 @@ export const recommendTeams: RecommendTeam[] = [
         euphoria: true,
         role: "서폿",
         alternatives: [
-          { id: 31, role: "서폿" },
+          { id: 31, role: "서폿", euphoria: true },
           { id: 34, role: "서폿" },
           { id: 50, role: "서폿" },
           { id: 51, role: "서폿" },
@@ -600,7 +602,7 @@ export const recommendTeams: RecommendTeam[] = [
         id: 36,
         role: "힐러",
         alternatives: [
-          { id: 31, role: "서폿" },
+          { id: 31, role: "서폿", euphoria: true },
           { id: 18, role: "서폿" },
         ],
       },
@@ -621,6 +623,7 @@ export const recommendTeams: RecommendTeam[] = [
       {
         id: 31,
         role: "서폿",
+        euphoria: true,
         alternatives: [
           { id: 29, role: "서폿" },
           { id: 2, euphoria: true, role: "서폿" },
@@ -683,7 +686,7 @@ export const recommendTeams: RecommendTeam[] = [
       { id: 18, isMain: true, role: "딜러" },
       { id: 38, role: "서폿" },
       { id: 46, role: "탱커", alternatives: [{ id: 40, role: "힐러" }] },
-      { id: 36, role: "힐러", alternatives: [{ id: 31, role: "서폿" }] },
+      { id: 36, role: "힐러", alternatives: [{ id: 31, role: "서폿", euphoria: true }] },
     ],
   },
   {
@@ -704,7 +707,7 @@ export const recommendTeams: RecommendTeam[] = [
         role: "서폿",
         alternatives: [
           { id: 34, role: "서폿" },
-          { id: 31, role: "서폿" },
+          { id: 31, role: "서폿", euphoria: true },
         ],
       },
     ],
@@ -722,7 +725,7 @@ export const recommendTeams: RecommendTeam[] = [
       { id: 27, isMain: true, role: "딜러" },
       { id: 38, role: "서폿" },
       { id: 26, euphoria: true, role: "힐러", alternatives: [{ id: 30, role: "탱커" }] },
-      { id: 31, role: "서폿" },
+      { id: 31, role: "서폿", euphoria: true },
     ],
   },
   {
@@ -742,7 +745,7 @@ export const recommendTeams: RecommendTeam[] = [
         id: 18,
         role: "서폿",
         alternatives: [
-          { id: 31, role: "서폿" },
+          { id: 31, role: "서폿", euphoria: true },
           { id: 36, role: "힐러" },
         ],
       },

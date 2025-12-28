@@ -1250,6 +1250,60 @@ export const characterSkin: CharacterSkin[] = [
     resell: "X",
     version: "3.2",
   },
+  {
+    id: 109,
+    character_id: 52, // 센티널
+    name: "거울 전당 선언 (미래시)",
+    engName: "by_reflections_witnessed",
+    rarity: "Advanced",
+    source: "판매",
+    resell: "X",
+    version: "3.3",
+    price: "14,000₩ / 1,080빗방울",
+  },
+  {
+    id: 110,
+    character_id: 51, // 몰디르
+    name: "뤼브롱의 만가 (미래시)",
+    engName: "idyll_of_the_luberon",
+    rarity: "Advanced",
+    source: "판매",
+    resell: "X",
+    version: "3.3",
+    price: "14,000₩ / 1,080빗방울",
+  },
+  {
+    id: 111,
+    character_id: 31, // 머큐리아
+    name: "호러나이트의 찬가",
+    engName: "the_nightmare's_carol",
+    rarity: "Advanced",
+    source: "판매",
+    resell: "X",
+    version: "3.1",
+    price: "14,000₩ / 1,080빗방울",
+  },
+  {
+    id: 112,
+    character_id: 8, // 메디슨 포켓
+    name: "영생은 아주 짧은 것 (미래시)",
+    engName: "forever_is_too_short",
+    rarity: "Garment",
+    source: "주크박스",
+    resell: "X",
+    version: "3.3",
+    tarot_number: "16",
+  },
+  {
+    id: 113,
+    character_id: 204, // 바니바니
+    name: "웨이트리스의 하루 (미래시)",
+    engName: "service_fit_for_royalty",
+    rarity: "Garment",
+    source: "컨텐츠",
+    resell: "X",
+    version: "3.3",
+  },
   // 2통찰 스킨
   {
     id: 1000,
@@ -2120,5 +2174,15 @@ export const characterSkin: CharacterSkin[] = [
     source: "2통찰 달성",
     resell: "X",
     version: "1.0",
+  },
+  {
+    id: 1087,
+    character_id: 58,
+    name: "미샤 2통찰",
+    engName: "marsha_insight_2",
+    rarity: "Insight",
+    source: "2통찰 달성",
+    resell: "X",
+    version: "3.3",
   },
 ];

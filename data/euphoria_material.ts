@@ -779,8 +779,55 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
   },
   {
     character_id: 16, // "Black Dwarf",
-    euphoria: [],
-    upgrade: [],
+    euphoria: [
+      {
+        level: 1,
+        materials: {
+          701: 12,
+          702: 40,
+          703: 200,
+          2: 3,
+        },
+      },
+    ],
+    upgrade: [
+      {
+        level: 1,
+        materials: {
+          702: 20,
+          703: 275,
+          2: 1,
+          108: 1,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          702: 30,
+          703: 371,
+          3: 1,
+          104: 2,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          702: 35,
+          703: 470,
+          5: 2,
+          103: 2,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          702: 40,
+          703: 1195,
+          4: 2,
+          106: 2,
+        },
+      },
+    ],
   },
   {
     character_id: 17, // "Shamane",
@@ -1306,8 +1353,55 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
   },
   {
     character_id: 35, // "Anjo Nala",
-    euphoria: [],
-    upgrade: [],
+    euphoria: [
+      {
+        level: 1,
+        materials: {
+          701: 12,
+          702: 40,
+          703: 200,
+          5: 3,
+        },
+      },
+    ],
+    upgrade: [
+      {
+        level: 1,
+        materials: {
+          702: 20,
+          703: 275,
+          4: 1,
+          107: 1,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          702: 30,
+          703: 371,
+          1: 1,
+          109: 2,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          702: 35,
+          703: 470,
+          2: 2,
+          108: 2,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          702: 40,
+          703: 1195,
+          3: 2,
+          104: 2,
+        },
+      },
+    ],
   },
   {
     character_id: 36, // "Lopera",

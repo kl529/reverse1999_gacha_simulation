@@ -1177,7 +1177,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "단순 DPM 피해 수치 계산으론 가장 효율이 높은 형상은 1형상, 하지만 서포터 능력의 개선율과 RDPM의 개선을 감안하면 2/4형상의 중요도가 더욱 높음.",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=GSU-rQZwuLQ"],
+    youtube_links: ["https://www.youtube.com/watch?v=62QYs-saTsA"],
     keywords: ["서포터", "단일약화", "현실피해"],
     guide_images: [],
   },
@@ -1192,7 +1192,7 @@ export const characterGuideList: CharacterGuide[] = [
         },
         {
           name: "2형상",
-          efficiencies: ["14.2%", "12.1%", "10.5%", "315.6%"],
+          efficiencies: ["14.2%", "12.1%", "10.5%", "3%"],
         },
         {
           name: "3형상",
@@ -1966,6 +1966,40 @@ export const characterGuideList: CharacterGuide[] = [
     },
     youtube_links: ["https://www.youtube.com/watch?v=dSoUJ8-RLAw"],
     keywords: ["딜러", "전력", "정신피해", "서폿"],
+    guide_images: [],
+  },
+  {
+    character_id: 58, // 미샤
+    portrait_info: {
+      headers: ["형상", "팀 전체"],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["8.1%"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["6.0%"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["11.1%"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["0%"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["20.3%"],
+        },
+      ],
+      summary: "5형상 > 3형상 > 1형상 > 2형상 > 4형상 (팀 전체)",
+      source: "icehood",
+      note: "일반적인 효율을 보이며, 서폿으로써는 나쁘지 않은 형상들",
+    },
+    youtube_links: ["https://www.youtube.com/watch?v=5h3g2GTzqfc"],
+    keywords: ["쉴더", "여휘", "정신피해", "서폿"],
     guide_images: [],
   },
 ];

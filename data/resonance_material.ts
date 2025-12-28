@@ -6379,4 +6379,242 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       },
     ],
   },
+  {
+    character_id: 57, // "Brume"
+    resonance: [
+      {
+        level: 2,
+        materials: {
+          601: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          601: 5,
+          405: 4,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          601: 5,
+          403: 4,
+          301: 3,
+        },
+      },
+      {
+        level: 5,
+        materials: {
+          602: 5,
+          303: 3,
+          305: 4,
+        },
+      },
+      {
+        level: 6,
+        materials: {
+          1002: 30000,
+          602: 5,
+          204: 3,
+        },
+      },
+      {
+        level: 7,
+        materials: {
+          602: 6,
+          203: 5,
+        },
+      },
+      {
+        level: 8,
+        materials: {
+          602: 6,
+          206: 4,
+          310: 5,
+        },
+      },
+      {
+        level: 9,
+        materials: {
+          602: 8,
+          205: 4,
+          309: 4,
+        },
+      },
+      {
+        level: 10,
+        materials: {
+          604: 1,
+          603: 5,
+          201: 8,
+          208: 6,
+        },
+      },
+      {
+        level: 11,
+        materials: {
+          604: 1,
+          1002: 120000,
+          603: 5,
+          102: 4,
+        },
+      },
+      {
+        level: 12,
+        materials: {
+          604: 1,
+          603: 6,
+          108: 4,
+          209: 5,
+        },
+      },
+      {
+        level: 13,
+        materials: {
+          604: 1,
+          603: 6,
+          106: 5,
+          211: 6,
+        },
+      },
+      {
+        level: 14,
+        materials: {
+          604: 1,
+          603: 8,
+          2: 2,
+          110: 4,
+        },
+      },
+      {
+        level: 15,
+        materials: {
+          604: 1,
+          603: 8,
+          4: 3,
+          104: 4,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 56, // "Beryl"
+    resonance: [
+      {
+        level: 2,
+        materials: {
+          601: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          601: 5,
+          402: 5,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          601: 5,
+          405: 4,
+          301: 3,
+        },
+      },
+      {
+        level: 5,
+        materials: {
+          602: 5,
+          304: 3,
+          306: 6,
+        },
+      },
+      {
+        level: 6,
+        materials: {
+          1002: 30000,
+          602: 5,
+          204: 3,
+        },
+      },
+      {
+        level: 7,
+        materials: {
+          602: 6,
+          206: 5,
+        },
+      },
+      {
+        level: 8,
+        materials: {
+          602: 6,
+          203: 4,
+          303: 4,
+        },
+      },
+      {
+        level: 9,
+        materials: {
+          602: 8,
+          201: 5,
+          305: 8,
+        },
+      },
+      {
+        level: 10,
+        materials: {
+          605: 1,
+          603: 5,
+          211: 6,
+          208: 6,
+        },
+      },
+      {
+        level: 11,
+        materials: {
+          605: 1,
+          1002: 120000,
+          603: 5,
+          102: 4,
+        },
+      },
+      {
+        level: 12,
+        materials: {
+          605: 1,
+          603: 6,
+          101: 4,
+          205: 5,
+        },
+      },
+      {
+        level: 13,
+        materials: {
+          605: 1,
+          603: 6,
+          106: 5,
+          210: 5,
+        },
+      },
+      {
+        level: 14,
+        materials: {
+          605: 1,
+          603: 8,
+          1: 2,
+          111: 4,
+        },
+      },
+      {
+        level: 15,
+        materials: {
+          605: 1,
+          603: 8,
+          5: 3,
+          103: 4,
+        },
+      },
+    ],
+  },
 ];
