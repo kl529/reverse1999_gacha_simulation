@@ -1,18 +1,18 @@
 import type { NextConfig } from "next";
 
 // 번들 분석기 (개발 시에만 사용)
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
 });
 
 const nextConfig: NextConfig = {
-  // 정적 최적화 설정
-  output: 'standalone', // 정적 파일 최적화
+  // Cloudtype standalone 배포 설정
+  output: "standalone",
 
   // 이미지 최적화 설정 (메모리 절약을 위해 비활성화)
   images: {
     unoptimized: true, // Cloudtype 메모리 부족 방지
-    formats: ['image/webp'],
+    formats: ["image/webp"],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
@@ -22,53 +22,53 @@ const nextConfig: NextConfig = {
 
   // 실험적 기능 - 정적 생성 최적화
   experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    optimizePackageImports: ["lucide-react", "@radix-ui/react-icons"],
   },
 
   // Cloudflare CDN 최적화를 위한 캐시 헤더 설정
   async headers() {
     return [
       {
-        source: '/infos/:path*',
+        source: "/infos/:path*",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },
       {
-        source: '/:all*(svg|jpg|jpeg|png|webp|gif|ico)',
+        source: "/:all*(svg|jpg|jpeg|png|webp|gif|ico)",
         headers: [
           {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },
       {
-        source: '/:path*',
+        source: "/:path*",
         headers: [
           {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on'
+            key: "X-DNS-Prefetch-Control",
+            value: "on",
           },
           {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
+            key: "X-Frame-Options",
+            value: "SAMEORIGIN",
           },
           {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
+            key: "X-Content-Type-Options",
+            value: "nosniff",
           },
           {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin'
-          }
-        ]
-      }
-    ]
-  }
+            key: "Referrer-Policy",
+            value: "origin-when-cross-origin",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 const withPWA = require("next-pwa")({
@@ -82,9 +82,9 @@ const withPWA = require("next-pwa")({
   runtimeCaching: [
     {
       urlPattern: /\.(?:png|jpg|jpeg|webp|svg|gif|ico)$/i,
-      handler: 'CacheFirst',
+      handler: "CacheFirst",
       options: {
-        cacheName: 'image-cache',
+        cacheName: "image-cache",
         expiration: {
           maxEntries: 500,
           maxAgeSeconds: 60 * 60 * 24 * 365, // 1년
@@ -93,9 +93,9 @@ const withPWA = require("next-pwa")({
     },
     {
       urlPattern: /^https?.*/,
-      handler: 'NetworkFirst',
+      handler: "NetworkFirst",
       options: {
-        cacheName: 'offlineCache',
+        cacheName: "offlineCache",
         expiration: {
           maxEntries: 200,
           maxAgeSeconds: 24 * 60 * 60, // 24시간
@@ -106,9 +106,11 @@ const withPWA = require("next-pwa")({
   ],
 });
 
-module.exports = withBundleAnalyzer(withPWA({
-  ...nextConfig,
-  reactStrictMode: true,
-}));
+module.exports = withBundleAnalyzer(
+  withPWA({
+    ...nextConfig,
+    reactStrictMode: true,
+  })
+);
 
 export default nextConfig;

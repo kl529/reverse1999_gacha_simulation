@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "next build && npm run copy-standalone",
+    "copy-standalone": "cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/",
+    "start": "node server.js",
+    "start:default": "next start",
     "postbuild": "next-sitemap",
     "analyze": "ANALYZE=true npm run build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
