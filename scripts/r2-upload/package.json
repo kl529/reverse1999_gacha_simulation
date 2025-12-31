@@ -1,0 +1,14 @@
+{
+  "name": "r2-upload",
+  "version": "1.0.0",
+  "description": "Upload images to Cloudflare R2",
+  "type": "module",
+  "scripts": {
+    "upload": "node upload.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.709.0",
+    "dotenv": "^16.4.7",
+    "mime-types": "^2.1.35"
+  }
+}
