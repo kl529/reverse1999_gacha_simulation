@@ -43,4 +43,14 @@ yarn-error.log*
 next-env.d.ts
 
 .serena
-/openspecscripts/r2-upload/node_modules/
+/openspec
+
+# r2-upload
+scripts/r2-upload/node_modules/
+scripts/r2-upload/.wrangler/
+scripts/r2-upload/.env
+
+# AI assistants
+.amazonq/
+.claude/
+.opencode/

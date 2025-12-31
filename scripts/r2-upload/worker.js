@@ -14,7 +14,7 @@
  */
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const key = url.pathname.slice(1); // Remove leading '/'
 
@@ -50,6 +50,16 @@ export default {
       });
     }
 
+    // Cloudflare Cache API 사용 (엣지 캐싱)
+    const cache = caches.default;
+    let response = await cache.match(request);
+
+    if (response) {
+      // 캐시 히트 - 즉시 반환
+      return response;
+    }
+
+    // 캐시 미스 - R2에서 가져오기
     try {
       // R2에서 객체 가져오기
       const object = await env.BUCKET.get(key);
@@ -78,9 +88,12 @@ export default {
         headers.set("Cache-Control", "public, max-age=3600");
       }
 
-      return new Response(object.body, {
-        headers,
-      });
+      response = new Response(object.body, { headers });
+
+      // Cloudflare 엣지에 캐시 저장 (비동기)
+      ctx.waitUntil(cache.put(request, response.clone()));
+
+      return response;
     } catch (error) {
       return new Response(`Error: ${error.message}`, {
         status: 500,

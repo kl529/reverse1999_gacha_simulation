@@ -15,6 +15,14 @@ const nextConfig: NextConfig = {
     formats: ["image/webp"],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // Cloudflare R2 CDN 도메인 허용
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "reverse1999-r2-public.lyva.workers.dev",
+        pathname: "/**",
+      },
+    ],
   },
 
   // 압축 설정
