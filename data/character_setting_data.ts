@@ -1696,8 +1696,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
-    resonance: [],
-    resonance_patterns: [],
+    resonance: [
+      {
+        code: "ADQANAI8IDwwKkD0NDtQOEJCVUAkKgQpFURU",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Elucidation"],
   },
   {
     character_id: 56, // "베릴"
