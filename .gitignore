@@ -60,3 +60,9 @@ scripts/r2-upload/.env
 __pycache__/
 *.pyc
 *.pyo
+
+# CDN에 업로드된 이미지 (R2에서 제공)
+public/infos/character_skin/
+public/infos/banner_img/
+public/infos/home/
+public/characters/
