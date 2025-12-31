@@ -15,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ChevronDown, X } from "lucide-react";
 import { useSearchParams, useRouter } from "next/navigation";
+import { getCharacterUrl } from "@/lib/cdn";
 
 type RoleType = "damage" | "support" | "balance" | "defense";
 
@@ -62,9 +63,7 @@ export default function CharacterList() {
   const [selectedType, setSelectedType] = useState<RoleType | null>(
     (searchParams.get("type") as RoleType) || null
   );
-  const [selectedAttr, setSelectedAttr] = useState<string>(
-    searchParams.get("attr") || "all"
-  );
+  const [selectedAttr, setSelectedAttr] = useState<string>(searchParams.get("attr") || "all");
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
   const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
 
@@ -120,7 +119,7 @@ export default function CharacterList() {
               <div className="flex cursor-pointer flex-col items-center rounded border border-gray-400 p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800">
                 <div className="relative h-16 w-16">
                   <Image
-                    src={`/characters/${ch.rarity}stars_small/${ch.engName}.webp`}
+                    src={getCharacterUrl(`${ch.rarity}stars`, `${ch.engName}.webp`, true)}
                     alt={ch.name}
                     width={64}
                     height={64}
@@ -205,7 +204,7 @@ export default function CharacterList() {
               <DropdownMenuItem
                 key={type.label}
                 onClick={() => setSelectedType(type.type)}
-                className="flex items-center gap-2 cursor-pointer"
+                className="flex cursor-pointer items-center gap-2"
               >
                 {type.iconImg && (
                   <Image
@@ -244,7 +243,7 @@ export default function CharacterList() {
               <DropdownMenuItem
                 key={attr.value}
                 onClick={() => setSelectedAttr(attr.value)}
-                className="flex items-center gap-2 cursor-pointer"
+                className="flex cursor-pointer items-center gap-2"
               >
                 {attr.icon && (
                   <Image

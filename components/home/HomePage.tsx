@@ -15,6 +15,7 @@ import { PLAYGROUND_ITEMS, LIBRARY_ITEMS, GUIDE_ITEMS } from "@/lib/constants/me
 import { checkNewCouponsQuietly } from "@/lib/utils/checkNewCoupons";
 import { useModal } from "@/components/etc/ModalProvider";
 import { analytics } from "@/lib/posthog";
+import { getHomeUrl } from "@/lib/cdn";
 
 // Dynamic imports로 코드 스플리팅
 const ConfirmModal = dynamic(() => import("@/components/modals/ConfirmModal"));
@@ -22,7 +23,7 @@ const UpdateModal = dynamic(() => import("@/components/modals/UpdateModal"));
 const CardInfoModal = dynamic(() => import("@/components/modals/CardInfoModal"));
 const ColourfulText = dynamic(() => import("@/components/ui/ColourfulText"));
 
-const bgImages = Array.from({ length: 35 }, (_, i) => `/infos/home/poster${i + 1}.webp`);
+const bgImages = Array.from({ length: 35 }, (_, i) => getHomeUrl(`poster${i + 1}.webp`));
 
 export default function HomePage() {
   const [bgImage, setBgImage] = useState<string | null>(null);

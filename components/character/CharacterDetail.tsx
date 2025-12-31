@@ -27,6 +27,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { euphoriaList } from "@/data/euphoria";
 import { getDisplayVersion } from "@/data/version";
+import { getCharacterUrl, getCdnUrl } from "@/lib/cdn";
 
 export default function CharacterDetail({ character }: { character: Character }) {
   const guide = characterGuideList.find((g) => g.character_id === character.id);
@@ -314,7 +315,9 @@ export default function CharacterDetail({ character }: { character: Character })
                   {guide.guide_images.map((image, idx) => (
                     <div key={idx} className="relative mx-auto h-auto w-full">
                       <Image
-                        src={`/characters/guide/${character.engName.replace(/-/g, "_")}_guide_${image}.webp`}
+                        src={getCdnUrl(
+                          `characters/guide/${character.engName.replace(/-/g, "_")}_guide_${image}.webp`
+                        )}
                         alt={`가이드 이미지 ${idx + 1}`}
                         width={1200}
                         height={1600}
@@ -458,7 +461,10 @@ export default function CharacterDetail({ character }: { character: Character })
                               >
                                 <div className="relative">
                                   <Image
-                                    src={`/characters/${displayedChar?.rarity || teamChar?.rarity}stars/${displayedChar?.engName || teamChar?.engName}.webp`}
+                                    src={getCharacterUrl(
+                                      `${displayedChar?.rarity || teamChar?.rarity}stars`,
+                                      `${displayedChar?.engName || teamChar?.engName}.webp`
+                                    )}
                                     alt={displayedChar?.name || teamChar?.name || ""}
                                     width={72}
                                     height={72}
@@ -527,7 +533,11 @@ export default function CharacterDetail({ character }: { character: Character })
                                           >
                                             <div className="flex items-center gap-2">
                                               <Image
-                                                src={`/characters/${altChar.rarity}stars_small/${altChar.engName}.webp`}
+                                                src={getCharacterUrl(
+                                                  `${altChar.rarity}stars`,
+                                                  `${altChar.engName}.webp`,
+                                                  true
+                                                )}
                                                 alt={altChar.name}
                                                 width={24}
                                                 height={24}

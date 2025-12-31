@@ -10,6 +10,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { getDisplayVersion, versionList } from "@/data/version";
+import { getBannerUrl } from "@/lib/cdn";
 
 function getCharNameById(id: number | Character | undefined): string {
   if (typeof id === "object" && id !== null && "name" in id) {
@@ -142,7 +143,7 @@ export default function FutureInsightPage() {
                       >
                         <Link href={`/character_setting/${banner.pickup6}`}>
                           <Image
-                            src={`/infos/banner_img/${banner.id}.webp`}
+                            src={getBannerUrl(`${banner.id}.webp`)}
                             alt={banner.name}
                             className="mb-2 w-full rounded-md border border-zinc-300 dark:border-zinc-600"
                             width={1200}

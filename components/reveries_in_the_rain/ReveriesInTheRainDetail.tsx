@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
+import { getCharacterUrl } from "@/lib/cdn";
 
 interface ReveriesInTheRainDetailProps {
   floorId: string;
@@ -255,7 +256,10 @@ export default function ReveriesInTheRainDetail({ floorId }: ReveriesInTheRainDe
                             >
                               <div className="relative w-[60px] md:w-[84px]">
                                 <Image
-                                  src={`/characters/${character?.rarity}stars/${character?.engName}.webp`}
+                                  src={getCharacterUrl(
+                                    `${character?.rarity}stars`,
+                                    `${character?.engName}.webp`
+                                  )}
                                   alt={character?.name ?? "character"}
                                   width={84}
                                   height={84}

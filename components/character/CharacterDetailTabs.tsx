@@ -13,6 +13,7 @@ import { euphoriaList } from "@/data/euphoria";
 import { getDisplayVersion } from "@/data/version";
 import { Separator } from "@/components/ui/separator";
 import { analytics } from "@/lib/posthog";
+import { getCharacterUrl } from "@/lib/cdn";
 
 export default function CharacterDetailTabs({ character }: { character: Character }) {
   const [activeTab, setActiveTab] = useState<string>("setting");
@@ -36,7 +37,7 @@ export default function CharacterDetailTabs({ character }: { character: Characte
           {/* 캐릭터 초상화 */}
           <div className="relative h-[150px] w-[150px] overflow-hidden rounded border dark:border-gray-700">
             <Image
-              src={`/characters/${character.rarity}stars/${character.engName}.webp`}
+              src={getCharacterUrl(`${character.rarity}stars`, `${character.engName}.webp`)}
               alt={character.name}
               width={150}
               height={150}
@@ -129,7 +130,7 @@ export default function CharacterDetailTabs({ character }: { character: Characte
                   <div className="flex flex-col items-center rounded border border-transparent p-1 transition hover:border-blue-500 hover:bg-blue-50 dark:hover:border-blue-400 dark:hover:bg-blue-950">
                     <div className="relative h-16 w-16">
                       <Image
-                        src={`/characters/${ch.rarity}stars_small/${ch.engName}.webp`}
+                        src={getCharacterUrl(`${ch.rarity}stars`, `${ch.engName}.webp`, true)}
                         alt={ch.name}
                         fill
                         sizes="64px"

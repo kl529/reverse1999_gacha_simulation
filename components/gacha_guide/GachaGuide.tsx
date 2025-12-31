@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { version, isIncludedInGachaPool } from "@/data/version";
 import { charactersByRarity } from "@/data/characters";
+import { getBannerUrl, getCharacterUrl } from "@/lib/cdn";
 import {
   Select,
   SelectContent,
@@ -70,7 +71,7 @@ export default function GachaGuide() {
                   1. 단독 픽업
                 </p>
                 <Image
-                  src="/infos/banner_img/hissabeth_pick_up.webp"
+                  src={getBannerUrl("hissabeth_pick_up.webp")}
                   alt="단독 픽업"
                   width={1000}
                   height={1000}
@@ -91,7 +92,7 @@ export default function GachaGuide() {
                   2. 이중 픽업
                 </p>
                 <Image
-                  src="/infos/banner_img/doublepick_flutter_page_barcarola.webp"
+                  src={getBannerUrl("doublepick_flutter_page_barcarola.webp")}
                   alt="이중 픽업"
                   width={1000}
                   height={1000}
@@ -115,7 +116,7 @@ export default function GachaGuide() {
                   3. 한정 픽업
                 </p>
                 <Image
-                  src="/infos/banner_img/lucy_pick_up.webp"
+                  src={getBannerUrl("lucy_pick_up.webp")}
                   alt="한정 픽업"
                   width={1000}
                   height={1000}
@@ -152,7 +153,8 @@ export default function GachaGuide() {
                   {charactersByRarity[6]
                     .filter(
                       (char) =>
-                        !char.exclude_gacha && isIncludedInGachaPool(char.version, char.immediate_standard)
+                        !char.exclude_gacha &&
+                        isIncludedInGachaPool(char.version, char.immediate_standard)
                     )
                     .map((char) => (
                       <Link
@@ -162,7 +164,7 @@ export default function GachaGuide() {
                       >
                         <div className="flex items-center gap-2">
                           <Image
-                            src={`/characters/6stars_small/${char.engName}.webp`}
+                            src={getCharacterUrl("6stars", `${char.engName}.webp`, true)}
                             alt={char.name}
                             width={40}
                             height={40}

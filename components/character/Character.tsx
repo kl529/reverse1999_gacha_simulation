@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { euphoriaList } from "@/data/euphoria";
+import { getCharacterUrl } from "@/lib/cdn";
 
 const attrMap = [
   { label: "전체", value: "all" },
@@ -55,7 +56,7 @@ export default function Character() {
               <div className="flex cursor-pointer flex-col items-center rounded border border-gray-400 p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800">
                 <div className="relative h-16 w-16">
                   <Image
-                    src={`/characters/${ch.rarity}stars_small/${ch.engName}.webp`}
+                    src={getCharacterUrl(`${ch.rarity}stars`, `${ch.engName}.webp`, true)}
                     alt={ch.name}
                     width={64}
                     height={64}

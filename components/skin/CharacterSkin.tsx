@@ -17,6 +17,7 @@ import {
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { Command, CommandInput, CommandList, CommandItem } from "@/components/ui/command";
 import { Checkbox } from "@/components/ui/checkbox";
+import { getSkinListUrl } from "@/lib/cdn";
 
 export default function SkinGalleryPage() {
   const router = useRouter();
@@ -220,7 +221,7 @@ export default function SkinGalleryPage() {
                     <div className="cursor-pointer overflow-hidden rounded border border-gray-200 transition dark:border-gray-700">
                       <div className="relative">
                         <Image
-                          src={`/infos/character_skin/list/${skin.engName}.webp`}
+                          src={getSkinListUrl(`${skin.engName}.webp`)}
                           alt={skin.name}
                           width={300}
                           height={400}

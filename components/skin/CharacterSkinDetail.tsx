@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getDisplayVersion } from "@/data/version";
 import { ArrowLeft, X } from "lucide-react";
+import { getSkinIllustUrl, getCdnUrl } from "@/lib/cdn";
 
 function SkinDetailContent({ skin }: { skin: CharacterSkin }) {
   const searchParams = useSearchParams();
@@ -66,11 +67,11 @@ function SkinDetailContent({ skin }: { skin: CharacterSkin }) {
         {/* 일러스트 */}
         <div
           className="mx-auto w-full max-w-3xl cursor-pointer transition-transform hover:scale-[1.02]"
-          onClick={() => setSelectedImage(`/infos/character_skin/illust/${skin.engName}.webp`)}
+          onClick={() => setSelectedImage(getSkinIllustUrl(`${skin.engName}.webp`))}
         >
           <AspectRatio ratio={9 / 7}>
             <Image
-              src={`/infos/character_skin/illust/${skin.engName}.webp`}
+              src={getSkinIllustUrl(`${skin.engName}.webp`)}
               alt={`${skin.name} 일러스트`}
               fill
               className="rounded-lg object-contain"
@@ -86,12 +87,12 @@ function SkinDetailContent({ skin }: { skin: CharacterSkin }) {
               key={type}
               className="w-[300px] cursor-pointer transition-transform hover:scale-[1.02]"
               onClick={() =>
-                setSelectedImage(`/infos/character_skin/${type}/${skin.engName}.webp`)
+                setSelectedImage(getCdnUrl(`infos/character_skin/${type}/${skin.engName}.webp`))
               }
             >
               <AspectRatio ratio={3 / 5}>
                 <Image
-                  src={`/infos/character_skin/${type}/${skin.engName}.webp`}
+                  src={getCdnUrl(`infos/character_skin/${type}/${skin.engName}.webp`)}
                   alt={`${skin.name} ${type}`}
                   fill
                   className="rounded-lg object-contain"
