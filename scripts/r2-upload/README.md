@@ -78,10 +78,25 @@ npm run upload
 
 업로드 후 버킷을 퍼블릭으로 설정:
 
+**⚠️ 중요**: R2 버킷에 "Public access" 옵션이 보이지 않는다면 **Cloudflare Workers**를 사용해야 합니다.
+
+#### 옵션 A: R2.dev 서브도메인 (있는 경우)
+
 1. Cloudflare 대시보드 > **R2** > 버킷 클릭
 2. **Settings** 탭
-3. **Public access** 섹션에서 **Allow Access** 클릭
-4. 도메인 확인 (예: `https://reverse1999-assets.r2.dev`)
+3. **Public access** 또는 **R2.dev subdomain** 섹션 찾기
+4. **Allow Access** 클릭
+5. 도메인 확인 (예: `https://reverse1999-assets.r2.dev`)
+
+#### 옵션 B: Cloudflare Workers 사용 (Public Access 없는 경우)
+
+자세한 방법은 `WORKER_SETUP.md` 참고:
+
+1. Workers 생성 및 코드 배포
+2. R2 버킷 바인딩 설정
+3. Worker URL 사용: `https://reverse1999-r2-public.YOUR-SUBDOMAIN.workers.dev`
+
+**→ 자세한 가이드: [WORKER_SETUP.md](./WORKER_SETUP.md)**
 
 ### 4. 환경 변수 업데이트
 

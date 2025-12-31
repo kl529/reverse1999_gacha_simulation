@@ -43,4 +43,4 @@ yarn-error.log*
 next-env.d.ts
 
 .serena
-/openspec
+/openspecscripts/r2-upload/node_modules/

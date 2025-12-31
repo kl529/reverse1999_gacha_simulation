@@ -1,0 +1,16 @@
+# Cloudflare Workers 설정
+# R2 버킷을 퍼블릭하게 만드는 Worker
+
+name = "reverse1999-r2-public"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# R2 버킷 바인딩
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "reverse1999-assets"
+
+# 라우트 설정 (선택사항)
+# routes = [
+#   { pattern = "cdn.reverse1999-simulator.com/*", zone_name = "reverse1999-simulator.com" }
+# ]
