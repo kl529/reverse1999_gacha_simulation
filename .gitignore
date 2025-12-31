@@ -44,6 +44,7 @@ next-env.d.ts
 
 .serena
 /openspec
+/scripts/
 
 # r2-upload
 scripts/r2-upload/node_modules/
@@ -54,3 +55,8 @@ scripts/r2-upload/.env
 .amazonq/
 .claude/
 .opencode/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
