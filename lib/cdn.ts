@@ -56,14 +56,15 @@ export function getBannerUrl(filename: string): string {
 }
 
 /**
- * 캐릭터 이미지 URL
+ * 캐릭터 이미지 URL (로컬 제공)
  * @param rarity - 레어도 (2stars, 3stars, 4stars, 5stars, 6stars)
  * @param filename - 파일명
  * @param isSmall - 작은 이미지 여부 (선택)
  */
 export function getCharacterUrl(rarity: string, filename: string, isSmall?: boolean): string {
   const rarityPath = isSmall ? `${rarity}_small` : rarity;
-  return getCdnUrl(`characters/${rarityPath}/${filename}`);
+  // characters 폴더는 항상 로컬에서 제공 (Worker 무료 사용량 절약)
+  return `/characters/${rarityPath}/${filename}`;
 }
 
 /**
