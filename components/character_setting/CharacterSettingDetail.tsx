@@ -19,6 +19,7 @@ import { getDisplayVersion } from "@/data/version";
 import { characterSkin } from "@/data/character_skin";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { getSkinIllustUrl } from "@/lib/cdn";
 
 export default function CharacterSettingDetail({ character }: { character: Character }) {
   const setting = character_setting_data.find((c) => c.character_id === character.id);
@@ -204,14 +205,12 @@ export default function CharacterSettingDetail({ character }: { character: Chara
         </div>
 
         {characterSkins.length > 0 && (
-          <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800 space-y-4">
+          <div className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
             <h2 className="text-center text-xl font-bold">스킨 정보</h2>
             <div
               className={cn(
                 "grid gap-8",
-                characterSkins.length === 1
-                  ? "grid-cols-1"
-                  : "grid-cols-1 lg:grid-cols-2"
+                characterSkins.length === 1 ? "grid-cols-1" : "grid-cols-1 lg:grid-cols-2"
               )}
             >
               {characterSkins.map((skin) => (
@@ -220,9 +219,9 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                   href={`/skin/${skin.id}`}
                   className="flex flex-col items-center gap-3"
                 >
-                  <div className="group relative w-full max-w-md aspect-[3/4] cursor-pointer overflow-hidden rounded-lg transition-all hover:shadow-xl">
+                  <div className="group relative aspect-[3/4] w-full max-w-md cursor-pointer overflow-hidden rounded-lg transition-all hover:shadow-xl">
                     <Image
-                      src={`/infos/character_skin/illust/${skin.engName}.webp`}
+                      src={getSkinIllustUrl(`${skin.engName}.webp`)}
                       alt={skin.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -232,16 +231,16 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-100" />
                     {/* 텍스트 정보 */}
                     <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-                      <h3 className="text-xl font-bold mb-3">{skin.name}</h3>
+                      <h3 className="mb-3 text-xl font-bold">{skin.name}</h3>
                       <div className="flex flex-wrap gap-2">
-                        <span className="rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-sm">
+                        <span className="rounded-full bg-white/20 px-3 py-1 text-sm backdrop-blur-sm">
                           {skin.rarity}
                         </span>
-                        <span className="rounded-full bg-white/20 backdrop-blur-sm px-3 py-1 text-sm">
+                        <span className="rounded-full bg-white/20 px-3 py-1 text-sm backdrop-blur-sm">
                           {skin.source}
                         </span>
                         {skin.version && (
-                          <span className="rounded-full bg-blue-500/80 backdrop-blur-sm px-3 py-1 text-sm">
+                          <span className="rounded-full bg-blue-500/80 px-3 py-1 text-sm backdrop-blur-sm">
                             v{skin.version}
                           </span>
                         )}
