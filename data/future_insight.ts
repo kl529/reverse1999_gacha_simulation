@@ -188,7 +188,7 @@ export const futureInsightData: FutureInsightItem[] = [
     title: "기괴한 밤",
     period: {
       start: "2025-12-11",
-      end: "2026-01-22",
+      end: "2026-01-20",
       week: 6,
     },
     album_shop: {
@@ -209,7 +209,7 @@ export const futureInsightData: FutureInsightItem[] = [
     version: "3.2",
     title: "흐르는 축제",
     period: {
-      start: "2026-01-22",
+      start: "2026-01-20",
       end: "2026-03-05",
       week: 6,
     },

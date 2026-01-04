@@ -289,7 +289,7 @@ export default function RecommendTeamPage() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-6 pb-8 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 pb-8 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {filteredTeams.map((team) => (
           <Card key={team.name} className="p-4">
             <CardContent className="flex flex-col items-start gap-4 p-0 sm:flex-row sm:items-center">

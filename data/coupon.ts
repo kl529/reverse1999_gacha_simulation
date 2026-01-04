@@ -100,8 +100,8 @@ export const coupons: Coupon[] = [
     id: "14",
     code: "여명을기다리는차장",
     description: "3.1 쿠폰",
-    expiresAt: "2026-01-22",
-    pushSent: false,
+    expiresAt: "2026-01-20",
+    pushSent: true,
   },
   // 무제한 쿠폰 (영구 사용 가능)
   {

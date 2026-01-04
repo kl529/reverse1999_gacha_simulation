@@ -8,6 +8,7 @@ export type Banner = {
   pickup5?: (number | Character)[]; // 일반 배너용 5성
   twoPickup6?: (number | Character)[]; // 2중 픽업 배너에서만 사용
   version?: string;
+  endDate?: string; // 배너 종료일 (YYYY-MM-DD 형식)
 };
 
 export const banners: Banner[] = [
@@ -17,6 +18,7 @@ export const banners: Banner[] = [
     pickup6: 58,
     pickup5: [104, 113],
     version: "3.3",
+    endDate: "2026-03-26",
   },
   {
     id: "brume_pick_up",
@@ -24,6 +26,7 @@ export const banners: Banner[] = [
     pickup6: 57,
     pickup5: [107, 127],
     version: "3.2",
+    endDate: "2026-03-05",
   },
   {
     id: "beryl_pick_up",
@@ -31,6 +34,7 @@ export const banners: Banner[] = [
     pickup6: 56,
     pickup5: [115, 126],
     version: "3.2",
+    endDate: "2026-02-12",
   },
   {
     id: "doublepick_aleph_kiperina",
@@ -44,6 +48,7 @@ export const banners: Banner[] = [
     pickup6: 55,
     pickup5: [111, 104],
     version: "3.1",
+    endDate: "2026-01-20",
   },
   {
     id: "rubuska_pick_up",

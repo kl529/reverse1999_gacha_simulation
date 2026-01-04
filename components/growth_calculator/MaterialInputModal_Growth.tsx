@@ -36,7 +36,7 @@ export default function MaterialInputModal_Growth({
 
   const handleInputChange = (materialId: number, value: string) => {
     const numValue = parseInt(value) || 0;
-    if (numValue < 0 || numValue > 999999) return;
+    if (numValue < 0) return;
 
     setMaterials((prev) => ({
       ...prev,
@@ -131,7 +131,7 @@ export default function MaterialInputModal_Growth({
         </DialogHeader>
 
         <div className="py-1">
-          <div className="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-11 xl:grid-cols-12 gap-x-1 gap-y-2">
+          <div className="grid grid-cols-5 gap-x-1 gap-y-2 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-11 xl:grid-cols-12">
             {sortedMaterials.map((material) => {
               const count = materials[material.id] || 0;
               return (
@@ -162,7 +162,6 @@ export default function MaterialInputModal_Growth({
                   <Input
                     type="number"
                     min="0"
-                    max="999999"
                     value={count}
                     onChange={(e) => handleInputChange(material.id, e.target.value)}
                     className="h-7 w-14 bg-white px-0 text-center text-xs [appearance:textfield] dark:bg-gray-800 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"

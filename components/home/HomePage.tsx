@@ -6,8 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import Carousel from "@/components/etc/Carousel";
 import HomePageSkeleton from "@/components/home/HomePageSkeleton";
+import HomeCouponList from "@/components/home/HomeCouponList";
+import HomeCurrentPickup from "@/components/home/HomeCurrentPickup";
 import CardBox from "@/components/home/CardBox";
 import HomeFooter from "@/components/home/HomeFooter";
 import { CardItem, isModalCardItem } from "@/lib/types/menuTypes";
@@ -98,9 +99,10 @@ export default function HomePage() {
             />
           </div>
 
-          {/* 캐러셀 - 모든 화면 크기에서 하단에 표시 */}
-          <div className="mt-6 w-full max-w-7xl px-6 md:px-12 lg:px-4">
-            <Carousel />
+          {/* 쿠폰 & 현재 픽업 정보 */}
+          <div className="mt-6 grid w-full max-w-7xl grid-cols-1 gap-4 px-6 md:grid-cols-2 md:px-12 lg:px-4">
+            <HomeCouponList />
+            <HomeCurrentPickup />
           </div>
         </main>
 

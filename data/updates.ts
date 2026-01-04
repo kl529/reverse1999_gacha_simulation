@@ -93,4 +93,5 @@ export const updateLogs = [
   { date: "2025-12-11", content: "3.1 버젼 데이터 업데이트" },
   { date: "2025-12-17", content: "육성 계산기 기능 추가 &  2통찰 이미지 추가" },
   { date: "2025-12-22", content: "3.3 버젼 데이터 업데이트" },
+  { date: "2026-01-04", content: "메인화면 UI 개선" },
 ];
