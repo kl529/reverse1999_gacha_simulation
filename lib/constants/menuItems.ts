@@ -17,6 +17,11 @@ export const PLAYGROUND_ITEMS: CardItem[] = [
     label: "빙고",
     href: "/bingo",
   },
+  {
+    icon: "/infos/menu/favorite_character_menu.webp",
+    label: "최애\n캐릭터",
+    href: "/favorite_character",
+  },
 ];
 
 // Menu items for "도서관" (Library) section - 캐릭터 육성 & 실제 게임 플레이 관련
@@ -164,6 +169,11 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
         href: "/character_quiz",
       },
       { iconImg: "/infos/menu/bingo_menu.webp", label: "빙고", href: "/bingo" },
+      {
+        iconImg: "/infos/menu/favorite_character_menu.webp",
+        label: "최애 캐릭터",
+        href: "/favorite_character",
+      },
     ],
   },
   {

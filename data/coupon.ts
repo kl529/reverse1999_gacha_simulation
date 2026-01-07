@@ -103,6 +103,13 @@ export const coupons: Coupon[] = [
     expiresAt: "2026-01-20",
     pushSent: true,
   },
+  {
+    id: "15",
+    code: "영혼베릴점술사0110인도자",
+    description: "3.1 쿠폰",
+    expiresAt: "2026-01-19",
+    pushSent: false,
+  },
   // 무제한 쿠폰 (영구 사용 가능)
   {
     id: "1",

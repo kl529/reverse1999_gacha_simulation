@@ -1808,7 +1808,7 @@ export const insightMaterial: InsightMaterial[] = [
         level: 1,
         materials: {
           1002: 18000,
-          504: 6,
+          501: 6,
           403: 6,
           306: 6,
         },
@@ -1817,7 +1817,7 @@ export const insightMaterial: InsightMaterial[] = [
         level: 2,
         materials: {
           1002: 40000,
-          505: 10,
+          502: 10,
           309: 5,
           206: 5,
         },
@@ -1826,7 +1826,7 @@ export const insightMaterial: InsightMaterial[] = [
         level: 3,
         materials: {
           1002: 200000,
-          506: 16,
+          503: 16,
           104: 5,
           2: 3,
         },
@@ -1840,8 +1840,8 @@ export const insightMaterial: InsightMaterial[] = [
         level: 1,
         materials: {
           1002: 18000,
-          513: 3,
           510: 3,
+          507: 3,
           402: 6,
           303: 5,
         },
@@ -1850,8 +1850,8 @@ export const insightMaterial: InsightMaterial[] = [
         level: 2,
         materials: {
           1002: 40000,
-          514: 5,
           511: 5,
+          508: 5,
           304: 6,
           203: 6,
         },
@@ -1860,8 +1860,8 @@ export const insightMaterial: InsightMaterial[] = [
         level: 3,
         materials: {
           1002: 200000,
-          515: 8,
           512: 8,
+          509: 8,
           110: 6,
           3: 3,
         },

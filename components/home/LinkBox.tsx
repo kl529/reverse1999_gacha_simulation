@@ -19,7 +19,7 @@ export default function LinkBox({ icon, label, href, onClick }: LinkBoxProps) {
   };
 
   const content = (
-    <div className="flex flex-col items-center p-2 transition-transform hover:scale-105">
+    <div className="flex h-full flex-col items-center justify-start p-2 transition-transform hover:scale-105">
       <Image
         src={icon}
         alt={label}
@@ -28,7 +28,7 @@ export default function LinkBox({ icon, label, href, onClick }: LinkBoxProps) {
         loading="lazy"
         className="h-12 w-12 object-contain"
       />
-      <p className="mt-1 whitespace-nowrap text-center text-xs text-white dark:text-gray-100 sm:text-sm">
+      <p className="mt-1 min-h-[2.5rem] whitespace-nowrap text-center text-xs text-white dark:text-gray-100 sm:text-sm">
         {label.split("\n").map((line, i) => (
           <span key={i}>
             {i > 0 && <br />}
@@ -39,8 +39,7 @@ export default function LinkBox({ icon, label, href, onClick }: LinkBoxProps) {
     </div>
   );
 
-  if (!href || href === "#")
-    return <button onClick={handleClick}>{content}</button>;
+  if (!href || href === "#") return <button onClick={handleClick}>{content}</button>;
   if (isExternal)
     return (
       <Link href={href} target="_blank" rel="noopener noreferrer" onClick={handleClick}>

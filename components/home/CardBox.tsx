@@ -14,7 +14,9 @@ export default function CardBox({ title, subTitle, items, onItemClick }: CardBox
       ? "grid-cols-2"
       : items.length === 3
         ? "grid-cols-3"
-        : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
+        : items.length === 4
+          ? "grid-cols-2 sm:grid-cols-4"
+          : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5";
 
   return (
     <div className="flex w-full flex-col items-center rounded-lg bg-gray-900/60 px-4 py-5 sm:px-6 lg:px-0">

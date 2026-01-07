@@ -289,11 +289,14 @@ export default function RecommendTeamPage() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-6 pb-8 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+      <div
+        className="grid gap-4 pb-8"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))" }}
+      >
         {filteredTeams.map((team) => (
           <Card key={team.name} className="p-4">
-            <CardContent className="flex flex-col items-start gap-4 p-0 sm:flex-row sm:items-center">
-              <div className="flex gap-2 rounded-sm border p-0">
+            <CardContent className="flex flex-col gap-4 p-0">
+              <div className="flex justify-center gap-2 rounded-sm border p-2">
                 {team.characters.map((ch, idx) => {
                   const overrideKey = `${team.name}-${idx}`;
                   const selectedId = overrideMap[overrideKey] || ch.id;
@@ -400,9 +403,9 @@ export default function RecommendTeamPage() {
                   );
                 })}
               </div>
-              <div className="flex-1">
-                <h2 className="text-lg font-semibold">{team.name}</h2>
-                <div className="mb-2 mt-1 flex flex-wrap gap-1">
+              <div>
+                <h2 className="text-center text-lg font-semibold">{team.name}</h2>
+                <div className="mb-2 mt-1 flex flex-wrap justify-center gap-1">
                   {team.concepts.map((c, idx) => (
                     <Badge key={idx} className="bg-purple-600 text-white">
                       {c}
