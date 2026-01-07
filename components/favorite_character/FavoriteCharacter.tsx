@@ -19,8 +19,8 @@ const INSPIRATIONS = [
   { id: "plant", name: "나무", darkBg: "#276638", lightBg: "#3d8a52" },
   { id: "star", name: "천체", darkBg: "#29405B", lightBg: "#3d5a7a" },
   { id: "mineral", name: "암석", darkBg: "#5E4524", lightBg: "#7a5c34" },
-  { id: "intellect", name: "지혜", darkBg: "#86783D", lightBg: "#a89856" },
-  { id: "spirit", name: "정신", darkBg: "#6C3B71", lightBg: "#8a5490" },
+  { id: "intellect", name: "지능", darkBg: "#86783D", lightBg: "#a89856" },
+  { id: "spirit", name: "영혼", darkBg: "#6C3B71", lightBg: "#8a5490" },
 ] as const;
 
 // 모든 캐릭터를 id 순서로 정렬
@@ -102,10 +102,18 @@ export default function FavoriteCharacter() {
       const isDarkMode = document.documentElement.classList.contains("dark");
       const backgroundColor = isDarkMode ? "#1f2937" : "#ffffff";
 
+      // 고정 너비로 캡처하여 모바일/데스크탑에서 동일한 비율 유지
+      const captureWidth = 672; // max-w-2xl과 동일
+      const currentWidth = resultRef.current.offsetWidth;
+      const currentHeight = resultRef.current.offsetHeight;
+      const captureHeight = Math.round((captureWidth / currentWidth) * currentHeight);
+
       const dataUrl = await toPng(resultRef.current, {
         cacheBust: true,
         pixelRatio: 2,
         backgroundColor,
+        width: captureWidth,
+        height: captureHeight,
       });
 
       const link = document.createElement("a");
@@ -301,7 +309,7 @@ export default function FavoriteCharacter() {
             return (
               <div
                 key={inspiration.id}
-                className="flex flex-col items-center overflow-hidden rounded-lg border-2 border-gray-300 dark:border-gray-600"
+                className="flex w-16 flex-col items-center overflow-hidden rounded-lg border-2 border-gray-300 dark:border-gray-600"
                 style={{
                   backgroundColor: isDarkMode ? inspiration.darkBg : inspiration.lightBg,
                 }}
@@ -343,7 +351,7 @@ export default function FavoriteCharacter() {
                 </div>
 
                 {/* 캐릭터 이름 */}
-                <span className="mb-1 w-14 truncate text-center text-[9px] font-medium text-white drop-shadow-sm">
+                <span className="mb-1 line-clamp-2 w-14 text-center text-[9px] font-medium leading-tight text-white drop-shadow-sm">
                   {character?.name || "-"}
                 </span>
               </div>
