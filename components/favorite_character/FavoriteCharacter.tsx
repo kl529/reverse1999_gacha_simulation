@@ -102,15 +102,16 @@ export default function FavoriteCharacter() {
       const isDarkMode = document.documentElement.classList.contains("dark");
       const backgroundColor = isDarkMode ? "#1f2937" : "#ffffff";
 
-      // 고정 너비로 캡처하여 모바일/데스크탑에서 동일한 비율 유지
-      const captureWidth = 672; // max-w-2xl과 동일
+      // 모바일에서는 실제 요소 너비, 데스크탑에서는 최대 672px로 캡처
+      const currentWidth = resultRef.current.offsetWidth;
+      const maxWidth = 672; // max-w-2xl과 동일
+      const captureWidth = Math.min(currentWidth, maxWidth);
 
       const dataUrl = await toPng(resultRef.current, {
         cacheBust: true,
         pixelRatio: 2,
         backgroundColor,
         width: captureWidth,
-        // height를 지정하지 않으면 실제 컨텐츠 높이에 맞게 자동 계산됨
         style: {
           width: `${captureWidth}px`,
         },
