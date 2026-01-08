@@ -104,16 +104,16 @@ export default function FavoriteCharacter() {
 
       // 고정 너비로 캡처하여 모바일/데스크탑에서 동일한 비율 유지
       const captureWidth = 672; // max-w-2xl과 동일
-      const currentWidth = resultRef.current.offsetWidth;
-      const currentHeight = resultRef.current.offsetHeight;
-      const captureHeight = Math.round((captureWidth / currentWidth) * currentHeight);
 
       const dataUrl = await toPng(resultRef.current, {
         cacheBust: true,
         pixelRatio: 2,
         backgroundColor,
         width: captureWidth,
-        height: captureHeight,
+        // height를 지정하지 않으면 실제 컨텐츠 높이에 맞게 자동 계산됨
+        style: {
+          width: `${captureWidth}px`,
+        },
       });
 
       const link = document.createElement("a");
