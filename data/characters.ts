@@ -526,7 +526,7 @@ export const charactersByRarity: Record<number, Character[]> = {
     },
     {
       id: 57,
-      name: "브륌",
+      name: "브룸",
       rarity: 6,
       inspiration: "beast",
       engName: "brume",
@@ -535,7 +535,7 @@ export const charactersByRarity: Record<number, Character[]> = {
     },
     {
       id: 58,
-      name: "미샤",
+      name: "마샤",
       rarity: 6,
       inspiration: "beast",
       engName: "marsha",

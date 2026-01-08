@@ -1728,7 +1728,7 @@ export const character_setting_data: CharacterSettingData[] = [
     resonance_patterns: [],
   },
   {
-    character_id: 57, // "브륌"
+    character_id: 57, // "브룸"
     psycubes: [
       // {
       //   psycube_id: 40,

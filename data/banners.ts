@@ -22,7 +22,7 @@ export const banners: Banner[] = [
   },
   {
     id: "brume_pick_up",
-    name: "[3.2] 브륌 픽업",
+    name: "[3.2] 브룸 픽업",
     pickup6: 57,
     pickup5: [107, 127],
     version: "3.2",

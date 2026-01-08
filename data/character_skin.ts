@@ -1868,7 +1868,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 1056,
     character_id: 57,
-    name: "브륌 2통찰",
+    name: "브룸 2통찰",
     engName: "brume_insight_2",
     rarity: "Insight",
     source: "2통찰 달성",
@@ -2178,7 +2178,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 1087,
     character_id: 58,
-    name: "미샤 2통찰",
+    name: "마샤 2통찰",
     engName: "marsha_insight_2",
     rarity: "Insight",
     source: "2통찰 달성",

@@ -1935,7 +1935,7 @@ export const characterGuideList: CharacterGuide[] = [
     guide_images: [],
   },
   {
-    character_id: 57, // 브륌
+    character_id: 57, // 브룸
     portrait_info: {
       headers: ["형상", "코르부스 서폿 (팀 기준)", "메인딜 (팀 기준)"],
       rows: [
@@ -1962,14 +1962,14 @@ export const characterGuideList: CharacterGuide[] = [
       ],
       summary: "1형상 > 5형상 > 2형상 > 4형상 > 3형상 (팀 기준)",
       source: "icehood",
-      note: "1형상이 추천되고, 브륌 메인딜러로 쓰는 것이 추천됨. 효율 오차가 있을 수 있고, 개인 효율보단 팀효율 위주로 정리함",
+      note: "1형상이 추천되고, 브룸 메인딜러로 쓰는 것이 추천됨. 효율 오차가 있을 수 있고, 개인 효율보단 팀효율 위주로 정리함",
     },
     youtube_links: ["https://www.youtube.com/watch?v=dSoUJ8-RLAw"],
     keywords: ["딜러", "전력", "정신피해", "서폿"],
     guide_images: [],
   },
   {
-    character_id: 58, // 미샤
+    character_id: 58, // 마샤
     portrait_info: {
       headers: ["형상", "팀 전체"],
       rows: [
