@@ -105,7 +105,7 @@ export const coupons: Coupon[] = [
   },
   {
     id: "15",
-    code: "영혼베릴점술사0110",
+    code: "베릴점술사0110",
     description: "3.1 쿠폰",
     expiresAt: "2026-01-19",
     pushSent: true,
