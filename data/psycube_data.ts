@@ -1491,7 +1491,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 85,
-    name: "천만 번의 영함",
+    name: "천만번의 효험",
     engName: "the_thousandfold_fate",
     priority: 99,
     rarity: 6,
@@ -1527,7 +1527,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 87,
-    name: "무의식적 악몽",
+    name: "무의식 몽마",
     engName: "shadows_in_the_subconscious",
     priority: 99,
     rarity: 6,

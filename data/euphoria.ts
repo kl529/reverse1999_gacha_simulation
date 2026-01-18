@@ -597,7 +597,7 @@ export const euphoriaList: Euphoria[] = [
     id: 32,
     character_id: 35, // 안조 날라
     priority: 1,
-    name: "떠오르는 옛 꿈의 소리",
+    name: "찬란했던 시절의 여운",
     note: "계약 강화",
     number: 1,
     version: "3.2",
@@ -614,7 +614,7 @@ export const euphoriaList: Euphoria[] = [
     id: 33,
     character_id: 24, // 이졸데
     priority: 1,
-    name: "춤추듯이 날아와 잠든 영혼",
+    name: "영혼이 날아 잠든다",
     note: "잔광 서폿",
     number: 1,
     version: "3.2",
@@ -631,7 +631,7 @@ export const euphoriaList: Euphoria[] = [
     id: 34,
     character_id: 16, // 갈라보나
     priority: 4,
-    name: "우주를 아우르는 눈빛",
+    name: "우주를 품은 눈동자",
     note: "추공 딜러",
     number: 1,
     version: "3.2",

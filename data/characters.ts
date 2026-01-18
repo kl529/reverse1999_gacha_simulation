@@ -522,7 +522,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       inspiration: "intellect",
       engName: "beryl",
       version: "3.2",
-      resonanceType: "defense",
+      resonanceType: "damage",
     },
     {
       id: 57,
@@ -541,6 +541,15 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "marsha",
       version: "3.3",
       resonanceType: "balance",
+    },
+    {
+      id: 59,
+      name: "이고르",
+      rarity: 6,
+      inspiration: "beast",
+      engName: "igor",
+      version: "3.3",
+      resonanceType: "damage",
     },
   ],
   5: [
@@ -808,6 +817,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "buddy-fairchild",
       version: "2.8",
       resonanceType: "balance",
+      exclude_gacha: true,
     },
   ],
   4: [

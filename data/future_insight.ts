@@ -227,7 +227,7 @@ export const futureInsightData: FutureInsightItem[] = [
       star5: [],
     },
     euphoria_pick_up: [21, 16, 24, 26, 34, 25],
-    note: "39,000원 6성 선택권 판매 (상시 캐릭만 가능 ~2.8)",
+    note: "미보유 6성 랜덤 지급 (~2.8)",
   },
   {
     version: "3.3",
@@ -241,7 +241,7 @@ export const futureInsightData: FutureInsightItem[] = [
       rare6: 25,
       rare5: 109,
     },
-    banners: ["marsha_pick_up"],
+    banners: ["marsha_pick_up", "igor_pick_up"],
     euphoria: {
       star6: [
         { characterId: 7, euphoriaId: 35 },

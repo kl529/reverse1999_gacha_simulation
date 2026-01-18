@@ -2784,7 +2784,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
         },
       },
       {
-        pattern: "Stupefaction",
+        pattern: "Mercy",
         materials: {
           2: 1,
           101: 2,
@@ -2793,7 +2793,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
         },
       },
       {
-        pattern: "Aspirational",
+        pattern: "Equanimity",
         materials: {
           4: 1,
           109: 2,
@@ -2802,7 +2802,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
         },
       },
       {
-        pattern: "Inspirational",
+        pattern: "Equibalance",
         materials: {
           4: 1,
           106: 2,
@@ -2816,7 +2816,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
     character_id: 56, // "Beryl"
     pattern: [
       {
-        pattern: "Pattern5",
+        pattern: "Elucidation",
         materials: {
           2: 1,
           106: 2,
@@ -2825,7 +2825,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
         },
       },
       {
-        pattern: "Pattern4",
+        pattern: "Genuinity",
         materials: {
           4: 1,
           102: 2,
@@ -2834,7 +2834,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
         },
       },
       {
-        pattern: "Pattern14",
+        pattern: "Stupefaction",
         materials: {
           5: 1,
           109: 2,
@@ -2843,7 +2843,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
         },
       },
       {
-        pattern: "Pattern2",
+        pattern: "Aspirational",
         materials: {
           5: 1,
           106: 2,
@@ -2852,7 +2852,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
         },
       },
       {
-        pattern: "Pattern6",
+        pattern: "Hyperphrenia",
         materials: {
           3: 1,
           107: 2,

@@ -1724,28 +1724,93 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A",
       },
     ],
-    resonance: [],
-    resonance_patterns: [],
+    resonance: [
+      {
+        code: "APQkOAU4RStENFI0UCgxQAQrAz8CPRBDAEYh",
+        description: "범용",
+      },
+      {
+        code: "APQkKQUrRDhFOgQ8YDxQNDBFQkUyRSJBAUMCKwA=",
+        description: "범용 (13공명 이상)",
+      },
+    ],
+    resonance_patterns: ["Genuinity", "Hyperphrenia"],
   },
   {
     character_id: 57, // "브룸"
     psycubes: [
-      // {
-      //   psycube_id: 40,
-      //   description: "S",
-      // },
-      // {
-      //   psycube_id: 42,
-      //   description: "S (장기전)",
-      // },
-      // {
-      //   psycube_id: 52,
-      //   description: "A+",
-      // },
-      // {
-      //   psycube_id: 84,
-      //   description: "A",
-      // },
+      {
+        psycube_id: 40,
+        description: "S",
+      },
+      {
+        psycube_id: 42,
+        description: "S-",
+      },
+      {
+        psycube_id: 61,
+        description: "A",
+      },
+      {
+        psycube_id: 73,
+        description: "A",
+      },
+    ],
+    resonance: [
+      {
+        code: "ADRENBUoVCoEQAFCAkQA8CQ8YDxQOCI5IEEwSEI",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Elucidation", "Equibalance"],
+  },
+  {
+    character_id: 58, // "마샤"
+    psycubes: [
+      {
+        psycube_id: 89,
+        description: "S (여휘)",
+      },
+      {
+        psycube_id: 15,
+        description: "S",
+      },
+      {
+        psycube_id: 32,
+        description: "S",
+      },
+      {
+        psycube_id: 73,
+        description: "A",
+      },
+    ],
+    resonance: [
+      {
+        code: "APAkKgQ0FTREKFQ8EDwAOSA4IkEwQVBDUURTTEI=",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
+  },
+  {
+    character_id: 59, // "이고르"
+    psycubes: [
+      {
+        psycube_id: 91,
+        description: "S",
+      },
+      {
+        psycube_id: 36,
+        description: "S-",
+      },
+      {
+        psycube_id: 40,
+        description: "S",
+      },
+      {
+        psycube_id: 49,
+        description: "A-",
+      },
     ],
     resonance: [],
     resonance_patterns: [],

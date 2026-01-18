@@ -115,7 +115,21 @@ export const coupons: Coupon[] = [
     code: "택시운전기사브룸0110",
     description: "3.1 쿠폰",
     expiresAt: "2026-01-19",
-    pushSent: false,
+    pushSent: true,
+  },
+  {
+    id: "17",
+    code: "운명의친구",
+    description: "3.2 쿠폰",
+    expiresAt: "2026-03-05",
+    pushSent: true,
+  },
+  {
+    id: "18",
+    code: "빗속에서들려온선율",
+    description: "3.2 쿠폰",
+    expiresAt: "2026-01-20",
+    pushSent: true,
   },
   // 무제한 쿠폰 (영구 사용 가능)
   {

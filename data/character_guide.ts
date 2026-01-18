@@ -837,7 +837,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "米嘉·风焰",
       note: "2형상은 예열이 1턴에서 2턴 빨라지는 효과가 있으므로 단기전 실전에서 효율이 있음.",
     },
-    youtube_links: [],
+    youtube_links: ["https://www.youtube.com/watch?v=0xMXAnCkBa8"],
     keywords: ["서포터", "연소", "현실피해"],
     guide_images: [],
   },
@@ -1211,7 +1211,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "icehood (표는 이전 형상대비 상승량 수치임)",
       note: "애정 등이 아니라면 사실상 명함으로 사용해도 무리가 아닌 명함 완성형 캐릭터. 형상 효율이 그닥 높지는 않으며, 효율이 가장 높은 형상은 영혼 지능은 2,5형상이 효율이 좋고, 천체 암석은 1형상, 5형상이 좋음. 그리고 야수 나무는 2형상, 5형상이 좋음.",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=IZvMbLu3Apc"],
+    youtube_links: ["https://www.youtube.com/watch?v=QiEOcuBcJd0"],
     keywords: ["딜러", "추가공격", "술식위주", "정신피해", "한정"],
     guide_images: [],
   },
@@ -1930,37 +1930,37 @@ export const characterGuideList: CharacterGuide[] = [
       source: "欧米嘉·风焰",
       note: "2/5형상이 꽤나 효율이 높고, 1형상도 추후 나올 서폿을 받으면더욱 효율이 좋아질 수 있음. icehood의 분석과는 수치가 약간 다름",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=4uIOv59Epss"],
+    youtube_links: ["https://www.youtube.com/watch?v=j_RtHFlQhFQ"],
     keywords: ["딜러", "잔광", "정신피해", "한정"],
     guide_images: [],
   },
   {
     character_id: 57, // 브룸
     portrait_info: {
-      headers: ["형상", "코르부스 서폿 (팀 기준)", "메인딜 (팀 기준)"],
+      headers: ["형상", "팀기준"],
       rows: [
         {
           name: "1형상",
-          efficiencies: ["17%", "18%"],
+          efficiencies: ["26%"],
         },
         {
           name: "2형상",
-          efficiencies: ["10%", "7%"],
+          efficiencies: ["6%"],
         },
         {
           name: "3형상",
-          efficiencies: ["4%", "9%"],
+          efficiencies: ["8%"],
         },
         {
           name: "4형상",
-          efficiencies: ["6%", "12%"],
+          efficiencies: ["11%"],
         },
         {
           name: "5형상",
-          efficiencies: ["10%", "7%"],
+          efficiencies: ["6%"],
         },
       ],
-      summary: "1형상 > 5형상 > 2형상 > 4형상 > 3형상 (팀 기준)",
+      summary: "1형상 > 4형상 > 3형상 > 2형상 > 4형상 (팀 기준)",
       source: "icehood",
       note: "1형상이 추천되고, 브룸 메인딜러로 쓰는 것이 추천됨. 효율 오차가 있을 수 있고, 개인 효율보단 팀효율 위주로 정리함",
     },
