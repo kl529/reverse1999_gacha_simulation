@@ -96,4 +96,5 @@ export const updateLogs = [
   { date: "2026-01-04", content: "메인화면 UI 개선" },
   { date: "2026-01-07", content: "UI 업데이트 & 최애캐릭터 선택 페이지 추가" },
   { date: "2026-01-18", content: "번역 데이터 추가 & 이고르 추가" },
+  { date: "2026-01-24", content: "종합 퀴즈 최초 추가" },
 ];

@@ -4,14 +4,32 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { QuizSetInfo } from "@/lib/types/quizTypes";
 
-// 퀴즈 시도 횟수 제한
-const QUIZ_ATTEMPTS_KEY = "quiz_attempts";
-const MAX_QUIZ_ATTEMPTS = 5;
+// 퀴즈 시도 횟수 제한 (매일 리셋)
+const QUIZ_ATTEMPTS_KEY = "quiz_attempts_daily";
+const MAX_QUIZ_ATTEMPTS = 3;
+
+function getTodayString(): string {
+  const today = new Date();
+  return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+}
 
 function getQuizAttempts(quizSetId: string): number {
   if (typeof window === "undefined") return 0;
-  const attempts = localStorage.getItem(`${QUIZ_ATTEMPTS_KEY}_${quizSetId}`);
-  return attempts ? parseInt(attempts, 10) : 0;
+  const key = `${QUIZ_ATTEMPTS_KEY}_${quizSetId}`;
+  const stored = localStorage.getItem(key);
+  if (!stored) return 0;
+
+  try {
+    const data = JSON.parse(stored);
+    // 날짜가 다르면 리셋
+    if (data.date !== getTodayString()) {
+      localStorage.removeItem(key);
+      return 0;
+    }
+    return data.count || 0;
+  } catch {
+    return 0;
+  }
 }
 
 function getRemainingAttempts(quizSetId: string): number {
