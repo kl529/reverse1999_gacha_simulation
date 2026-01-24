@@ -36,10 +36,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Infrastructure (테스트 인프라)
 
-- [ ] **INFRA-01**: 깨진 gacha.test.tsx 수정 (handleGacha export)
-- [ ] **INFRA-02**: Playwright 설정 및 초기 구성
-- [ ] **INFRA-03**: 테스트 fixtures 디렉토리 구조 설정
-- [ ] **INFRA-04**: CI 테스트 스크립트 설정 (npm run test:ci)
+- [x] **INFRA-01**: 깨진 gacha.test.tsx 수정 (handleGacha export)
+- [x] **INFRA-02**: Playwright 설정 및 초기 구성
+- [x] **INFRA-03**: 테스트 fixtures 디렉토리 구조 설정
+- [x] **INFRA-04**: CI 테스트 스크립트 설정 (npm run test:ci)
 
 ## v2 Requirements
 
@@ -67,10 +67,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INFRA-01 | Phase 1 | Pending |
-| INFRA-02 | Phase 1 | Pending |
-| INFRA-03 | Phase 1 | Pending |
-| INFRA-04 | Phase 1 | Pending |
+| INFRA-01 | Phase 1 | Complete |
+| INFRA-02 | Phase 1 | Complete |
+| INFRA-03 | Phase 1 | Complete |
+| INFRA-04 | Phase 1 | Complete |
 | UNIT-01 | Phase 2 | Pending |
 | UNIT-02 | Phase 2 | Pending |
 | UNIT-03 | Phase 2 | Pending |
@@ -97,4 +97,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-24*
-*Last updated: 2026-01-24 after initial definition*
+*Last updated: 2026-01-24 — Phase 1 requirements complete*

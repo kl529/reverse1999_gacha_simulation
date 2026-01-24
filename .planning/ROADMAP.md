@@ -10,7 +10,7 @@
 - Integer phases (1, 2, 3, 4): Planned milestone work
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
-- [ ] **Phase 1: Infrastructure** - 테스트 인프라 정비 및 기반 설정
+- [x] **Phase 1: Infrastructure** - 테스트 인프라 정비 및 기반 설정
 - [ ] **Phase 2: Unit Tests** - 비즈니스 로직 유닛 테스트 작성
 - [ ] **Phase 3: Component Tests** - React 컴포넌트 테스트 작성
 - [ ] **Phase 4: E2E Tests** - 사용자 플로우 E2E 테스트 작성
@@ -29,7 +29,7 @@
   4. CI 스크립트가 모든 테스트를 순차적으로 실행한다
 
 Plans:
-- [ ] 01-01-PLAN.md — 테스트 인프라 설정 (가챠 로직 추출, Playwright, fixtures, CI)
+- [x] 01-01-PLAN.md — 테스트 인프라 설정 (가챠 로직 추출, Playwright, fixtures, CI)
 
 ### Phase 2: Unit Tests
 **Goal**: 핵심 비즈니스 로직이 단위 테스트로 검증된다
@@ -84,11 +84,11 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Infrastructure | 0/1 | Planned | - |
+| 1. Infrastructure | 1/1 | Complete | 2026-01-24 |
 | 2. Unit Tests | 0/2 | Not started | - |
 | 3. Component Tests | 0/2 | Not started | - |
 | 4. E2E Tests | 0/1 | Not started | - |
 
 ---
 *Roadmap created: 2026-01-24*
-*Last updated: 2026-01-24*
+*Last updated: 2026-01-24 — Phase 1 complete*
