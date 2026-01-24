@@ -38,6 +38,7 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
       "/damage_calculation",
       "/growth_calculator",
       "/favorite_character",
+      "/quiz",
     ];
 
     const allowedPathPrefixes = [
@@ -47,6 +48,7 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
       "/psycube_guide",
       "/character",
       "/reveries_in_the_rain",
+      "/quiz",
     ];
 
     const isAllowedPath =

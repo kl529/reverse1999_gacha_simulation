@@ -131,6 +131,20 @@ export const coupons: Coupon[] = [
     expiresAt: "2026-01-20",
     pushSent: true,
   },
+  {
+    id: "19",
+    code: "운명의친구",
+    description: "3.2 쿠폰",
+    expiresAt: "2026-03-05",
+    pushSent: true,
+  },
+  {
+    id: "20",
+    code: "리버스2026순례버전오픈!",
+    description: "3.2 쿠폰",
+    expiresAt: "2026-03-05",
+    pushSent: true,
+  },
   // 무제한 쿠폰 (영구 사용 가능)
   {
     id: "1",

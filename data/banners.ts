@@ -42,7 +42,7 @@ export const banners: Banner[] = [
     pickup6: 56,
     pickup5: [115, 126],
     version: "3.2",
-    endDate: "2026-02-12",
+    endDate: "2026-03-05",
   },
   {
     id: "doublepick_aleph_kiperina",
