@@ -10,29 +10,29 @@ See: .planning/PROJECT.md (updated 2026-01-24)
 ## Current Position
 
 Phase: 2 of 4 (Unit Tests)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-01-24 - Completed 02-01-PLAN.md (Gacha Unit Tests)
+Last activity: 2026-01-24 - Completed 02-02-PLAN.md (Utility Functions Unit Tests)
 
-Progress: [##########----------] 33%
+Progress: [############--------] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 9 min
-- Total execution time: 0.3 hours
+- Total plans completed: 3
+- Average duration: 7 min
+- Total execution time: 0.37 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-infrastructure | 1 | 15min | 15min |
-| 02-unit-tests | 1 | 3min | 3min |
+| 02-unit-tests | 2 | 7min | 3.5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (15min), 02-01 (3min)
-- Trend: improving
+- Last 5 plans: 01-01 (15min), 02-01 (3min), 02-02 (4min)
+- Trend: improving (unit test plans faster due to established patterns)
 
 *Updated after each plan completion*
 
@@ -50,6 +50,7 @@ Recent decisions affecting current work:
 - Firebase, localStorage 모킹 전략 (외부 의존성 격리)
 - 한국어 테스트 설명 유지 (프로젝트 컨벤션 일관성)
 - 통계적 테스트에 1000회 반복 + 5% 허용 오차 사용
+- Character filter logic extracted to lib/utils/characterFilter.ts for testability
 
 ### Pending Todos
 
@@ -63,5 +64,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-01-24
-Stopped at: Completed 02-01-PLAN.md
+Stopped at: Completed 02-02-PLAN.md
 Resume file: None
