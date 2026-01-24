@@ -39,6 +39,7 @@ export async function getRankings(limitCount: number = 20): Promise<RankingEntry
       collection(db, QUIZ_RANKINGS),
       orderBy("percentage", "desc"),
       orderBy("timeInSeconds", "asc"),
+      orderBy("createdAt", "asc"),
       limit(limitCount)
     );
 
@@ -94,6 +95,7 @@ export async function getRankingsByQuizSet(
       where("quizSetId", "==", quizSetId),
       orderBy("percentage", "desc"),
       orderBy("timeInSeconds", "asc"),
+      orderBy("createdAt", "asc"),
       limit(limitCount)
     );
 
