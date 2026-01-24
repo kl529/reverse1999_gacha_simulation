@@ -27,7 +27,44 @@ import QuizHeader from "./QuizHeader";
 import { Button } from "@/components/ui/button";
 import { Toaster, toast } from "react-hot-toast";
 import Image from "next/image";
+import { analytics } from "@/lib/posthog";
 
+declare global {
+  interface Window {
+    gtag?: (
+      command: "event",
+      eventName: string,
+      eventParams?: {
+        event_category?: string;
+        event_label?: string;
+        value?: number;
+        [key: string]: unknown;
+      }
+    ) => void;
+  }
+}
+
+// 퀴즈 시도 횟수 제한
+const QUIZ_ATTEMPTS_KEY = "quiz_attempts";
+const MAX_QUIZ_ATTEMPTS = 5;
+
+function getQuizAttempts(quizSetId: string): number {
+  if (typeof window === "undefined") return 0;
+  const attempts = localStorage.getItem(`${QUIZ_ATTEMPTS_KEY}_${quizSetId}`);
+  return attempts ? parseInt(attempts, 10) : 0;
+}
+
+function incrementQuizAttempts(quizSetId: string): number {
+  if (typeof window === "undefined") return 0;
+  const current = getQuizAttempts(quizSetId);
+  const newCount = current + 1;
+  localStorage.setItem(`${QUIZ_ATTEMPTS_KEY}_${quizSetId}`, newCount.toString());
+  return newCount;
+}
+
+function getRemainingAttempts(quizSetId: string): number {
+  return Math.max(0, MAX_QUIZ_ATTEMPTS - getQuizAttempts(quizSetId));
+}
 
 interface QuizProps {
   initialQuizSetId?: QuizSetId;
@@ -54,6 +91,14 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
   const [elapsedTime, setElapsedTime] = useState(0);
   const [questionTimeLeft, setQuestionTimeLeft] = useState(10);
   const questionTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // 남은 시도 횟수
+  const [remainingAttempts, setRemainingAttempts] = useState<number>(MAX_QUIZ_ATTEMPTS);
+
+  // 초기 남은 횟수 로드
+  useEffect(() => {
+    setRemainingAttempts(getRemainingAttempts(selectedQuizSet));
+  }, [selectedQuizSet]);
 
 
   // 전체 타이머 업데이트
@@ -128,6 +173,27 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
 
   // 경고 확인 후 시험 시작
   const handleConfirmWarning = useCallback(() => {
+    // 시도 횟수 체크
+    const currentRemaining = getRemainingAttempts(selectedQuizSet);
+    if (currentRemaining <= 0) {
+      toast.error("오늘의 시도 횟수를 모두 사용했습니다!");
+      return;
+    }
+
+    // 시도 횟수 증가
+    incrementQuizAttempts(selectedQuizSet);
+    setRemainingAttempts(currentRemaining - 1);
+
+    const quizSetInfo = getQuizSetInfo(selectedQuizSet);
+
+    // Analytics 트래킹
+    analytics.generalQuiz.started(selectedQuizSet, quizSetInfo?.name || selectedQuizSet);
+    window.gtag?.("event", "general_quiz_started", {
+      event_category: "GeneralQuiz",
+      quiz_set_id: selectedQuizSet,
+      quiz_set_name: quizSetInfo?.name || selectedQuizSet,
+    });
+
     const selectedQuestions = getRandomQuestionsByQuizSet(selectedQuizSet);
 
     // 5지선다 문제의 선택지 랜덤 섞기
@@ -274,6 +340,18 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
 
     setResult(quizResult);
     setPhase("result");
+
+    // Analytics 트래킹
+    const timeInSeconds = Math.floor(totalTime / 1000);
+    analytics.generalQuiz.completed(selectedQuizSet, correctCount, questions.length, timeInSeconds);
+    window.gtag?.("event", "general_quiz_completed", {
+      event_category: "GeneralQuiz",
+      quiz_set_id: selectedQuizSet,
+      score: correctCount,
+      total_questions: questions.length,
+      accuracy: Math.round((correctCount / questions.length) * 100),
+      time_in_seconds: timeInSeconds,
+    });
 
     if (forcedByStrikes) {
       const themeTexts = getThemeTexts(selectedQuizSet);
@@ -506,6 +584,21 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
               </div>
             </div>
 
+            {/* 남은 시도 횟수 */}
+            <div className={`w-full rounded-lg p-3 text-center ${
+              remainingAttempts > 0
+                ? "bg-green-100 dark:bg-green-900/30"
+                : "bg-red-100 dark:bg-red-900/30"
+            }`}>
+              <span className={`text-sm font-medium ${
+                remainingAttempts > 0
+                  ? "text-green-700 dark:text-green-400"
+                  : "text-red-700 dark:text-red-400"
+              }`}>
+                🎫 남은 시도 횟수: <span className="font-bold">{remainingAttempts}</span> / {MAX_QUIZ_ATTEMPTS}
+              </span>
+            </div>
+
             {/* 버튼 */}
             <div className="flex w-full gap-4">
               <Button
@@ -517,13 +610,16 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
               </Button>
               <Button
                 onClick={handleConfirmWarning}
+                disabled={remainingAttempts <= 0}
                 className={`flex-1 text-white shadow-lg ${
-                  isMelaniaTheme
-                    ? "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 hover:shadow-purple-500/25"
-                    : "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 hover:shadow-blue-500/25"
+                  remainingAttempts <= 0
+                    ? "cursor-not-allowed bg-gray-400 opacity-50"
+                    : isMelaniaTheme
+                      ? "bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 hover:shadow-purple-500/25"
+                      : "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 hover:shadow-blue-500/25"
                 }`}
               >
-                {themeTexts.confirmButton}
+                {remainingAttempts <= 0 ? "시도 횟수 소진" : themeTexts.confirmButton}
               </Button>
             </div>
           </motion.div>

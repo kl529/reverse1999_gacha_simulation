@@ -7,6 +7,22 @@ import { getQuizSetInfo } from "@/data/quiz_questions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "react-hot-toast";
+import { analytics } from "@/lib/posthog";
+
+declare global {
+  interface Window {
+    gtag?: (
+      command: "event",
+      eventName: string,
+      eventParams?: {
+        event_category?: string;
+        event_label?: string;
+        value?: number;
+        [key: string]: unknown;
+      }
+    ) => void;
+  }
+}
 
 interface RankingBoardProps {
   result: QuizResult;
@@ -124,6 +140,17 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
       setViewMode("rankings");
       markResultAsRegistered(resultId);
       toast.success("랭킹이 등록되었습니다!");
+
+      // Analytics 트래킹
+      analytics.generalQuiz.rankingRegistered(result.quizSetId, result.correctCount, result.totalQuestions, timeInSeconds);
+      window.gtag?.("event", "general_quiz_ranking_registered", {
+        event_category: "GeneralQuiz",
+        quiz_set_id: result.quizSetId,
+        score: result.correctCount,
+        total_questions: result.totalQuestions,
+        accuracy: percentage,
+        time_in_seconds: timeInSeconds,
+      });
 
       // 랭킹 새로고침
       await loadRankings();

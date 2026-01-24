@@ -139,6 +139,34 @@ export const analytics = {
     },
   },
 
+  // 종합 퀴즈
+  generalQuiz: {
+    started: (quizSetId: string, quizSetName: string) => {
+      posthog.capture('general_quiz_started', {
+        quiz_set_id: quizSetId,
+        quiz_set_name: quizSetName,
+      });
+    },
+    completed: (quizSetId: string, score: number, totalQuestions: number, timeInSeconds: number) => {
+      posthog.capture('general_quiz_completed', {
+        quiz_set_id: quizSetId,
+        score,
+        total_questions: totalQuestions,
+        accuracy: Math.round((score / totalQuestions) * 100),
+        time_in_seconds: timeInSeconds,
+      });
+    },
+    rankingRegistered: (quizSetId: string, score: number, totalQuestions: number, timeInSeconds: number) => {
+      posthog.capture('general_quiz_ranking_registered', {
+        quiz_set_id: quizSetId,
+        score,
+        total_questions: totalQuestions,
+        accuracy: Math.round((score / totalQuestions) * 100),
+        time_in_seconds: timeInSeconds,
+      });
+    },
+  },
+
   // 문제 발견
   errors: {
     errorOccurred: (
