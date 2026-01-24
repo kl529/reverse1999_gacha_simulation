@@ -35,7 +35,7 @@ Plans:
 **Goal**: 핵심 비즈니스 로직이 단위 테스트로 검증된다
 **Depends on**: Phase 1
 **Requirements**: UNIT-01, UNIT-02, UNIT-03, UNIT-04, UNIT-05, UNIT-06, UNIT-07, UNIT-08
-**Plans**: TBD
+**Plans**: 2 plans
 **Success Criteria** (what must be TRUE):
   1. gachaReducer의 모든 액션(GACHA_PULL, RESET_ALL, UPDATE_PICKUP_INFO)이 테스트로 검증된다
   2. 가챠 확률 계산이 6성/5성 확률 및 천장 시스템을 정확히 구현함이 검증된다
@@ -44,8 +44,8 @@ Plans:
   5. `npm run test:unit` 실행 시 모든 유닛 테스트가 통과한다
 
 Plans:
-- [ ] 02-01: 가챠 관련 유닛 테스트 (gachaReducer, 확률 계산)
-- [ ] 02-02: 유틸리티 및 기타 유닛 테스트 (storage, cdn, quiz, farming, filter, version)
+- [ ] 02-01-PLAN.md — 가챠 관련 유닛 테스트 (gachaReducer, 확률 계산)
+- [ ] 02-02-PLAN.md — 유틸리티 및 기타 유닛 테스트 (storage, cdn, quiz, farming, filter, version)
 
 ### Phase 3: Component Tests
 **Goal**: 주요 React 컴포넌트가 렌더링 및 상호작용 테스트로 검증된다
@@ -85,10 +85,10 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Infrastructure | 1/1 | Complete | 2026-01-24 |
-| 2. Unit Tests | 0/2 | Not started | - |
+| 2. Unit Tests | 0/2 | Ready | - |
 | 3. Component Tests | 0/2 | Not started | - |
 | 4. E2E Tests | 0/1 | Not started | - |
 
 ---
 *Roadmap created: 2026-01-24*
-*Last updated: 2026-01-24 — Phase 1 complete*
+*Last updated: 2026-01-24 — Phase 2 planned*
