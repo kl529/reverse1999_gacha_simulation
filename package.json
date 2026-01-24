@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "test": "jest",
     "dev": "next dev",
     "build": "next build && npm run copy-standalone",
     "copy-standalone": "cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/",
