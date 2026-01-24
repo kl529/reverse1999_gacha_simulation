@@ -39,9 +39,9 @@ export async function generateMetadata({ params }: QuizPageProps): Promise<Metad
       siteName: "버틴의 여행가방",
       images: [
         {
-          url: `/infos/link_img/quiz_link_img.webp`,
-          width: 1200,
-          height: 630,
+          url: `/infos/link_img/general_quiz_link_img.webp`,
+          width: 1280,
+          height: 720,
           alt: `${quizSet.name} 미리보기 이미지`,
         },
       ],
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: QuizPageProps): Promise<Metad
       card: "summary_large_image",
       title,
       description,
-      images: [`/infos/link_img/quiz_link_img.webp`],
+      images: [`/infos/link_img/general_quiz_link_img.webp`],
     },
   };
 }

@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     siteName: "버틴의 여행가방",
     images: [
       {
-        url: `/infos/link_img/quiz_link_img.webp`,
-        width: 1200,
-        height: 630,
+        url: `/infos/link_img/general_quiz_link_img.webp`,
+        width: 1280,
+        height: 720,
         alt: "리버스 1999 종합 퀴즈 미리보기 이미지",
       },
     ],
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "종합 퀴즈 | 리버스 1999 시뮬레이터",
     description:
       "리버스 1999 종합 퀴즈! 다양한 테마의 퀴즈로 게임 지식을 테스트해보세요.",
-    images: [`/infos/link_img/quiz_link_img.webp`],
+    images: [`/infos/link_img/general_quiz_link_img.webp`],
   },
 };
 
