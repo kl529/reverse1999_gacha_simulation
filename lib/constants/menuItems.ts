@@ -13,6 +13,11 @@ export const PLAYGROUND_ITEMS: CardItem[] = [
     href: "/character_quiz",
   },
   {
+    icon: "/infos/menu/quiz_menu.webp",
+    label: "종합 퀴즈",
+    href: "/quiz",
+  },
+  {
     icon: "/infos/menu/bingo_menu.webp",
     label: "빙고",
     href: "/bingo",
@@ -167,6 +172,11 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
         iconImg: "/infos/menu/character_quiz_menu.webp",
         label: "캐릭터 퀴즈",
         href: "/character_quiz",
+      },
+      {
+        iconImg: "/infos/menu/quiz_menu.webp",
+        label: "종합 퀴즈",
+        href: "/quiz",
       },
       { iconImg: "/infos/menu/bingo_menu.webp", label: "빙고", href: "/bingo" },
       {
