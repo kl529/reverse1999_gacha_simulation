@@ -9,29 +9,30 @@ See: .planning/PROJECT.md (updated 2026-01-24)
 
 ## Current Position
 
-Phase: 1 of 4 (Infrastructure) - COMPLETE
-Plan: 1 of 1 in current phase
-Status: Phase complete, ready for Phase 2
-Last activity: 2026-01-24 - Completed 01-01-PLAN.md (Test Infrastructure)
+Phase: 2 of 4 (Unit Tests)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-01-24 - Completed 02-01-PLAN.md (Gacha Unit Tests)
 
-Progress: [##########] 25%
+Progress: [##########----------] 33%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 15 min
-- Total execution time: 0.25 hours
+- Total plans completed: 2
+- Average duration: 9 min
+- Total execution time: 0.3 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-infrastructure | 1 | 15min | 15min |
+| 02-unit-tests | 1 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (15min)
-- Trend: -
+- Last 5 plans: 01-01 (15min), 02-01 (3min)
+- Trend: improving
 
 *Updated after each plan completion*
 
@@ -47,6 +48,8 @@ Recent decisions affecting current work:
 - Pure function extraction: 가챠 로직을 lib/gacha/gachaLogic.ts로 추출
 - Playwright 전용 포트 3099 사용 (충돌 방지)
 - Firebase, localStorage 모킹 전략 (외부 의존성 격리)
+- 한국어 테스트 설명 유지 (프로젝트 컨벤션 일관성)
+- 통계적 테스트에 1000회 반복 + 5% 허용 오차 사용
 
 ### Pending Todos
 
@@ -60,5 +63,5 @@ None.
 ## Session Continuity
 
 Last session: 2026-01-24
-Stopped at: Completed 01-01-PLAN.md
+Stopped at: Completed 02-01-PLAN.md
 Resume file: None
