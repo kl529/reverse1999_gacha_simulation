@@ -64,3 +64,5 @@ __pycache__/
 # CDN에 업로드된 이미지 (R2에서 제공)
 public/infos/character_skin/
 public/infos/home/
+playwright-report/
+test-results/
