@@ -15,7 +15,7 @@ const melaniaThemeTexts: QuizThemeTexts = {
   // 경고 화면
   warningTitle: "WARNING",
   warningCharacterName: "멜라니아",
-  warningCharacterImage: "/characters/6stars/Melania.webp",
+  warningCharacterImage: "/characters/6stars/melania.webp",
   warningMessage: "이 금고의 보안은 상당히 까다로워.",
   cancelButton: "철수",
   confirmButton: "잠입 개시",
