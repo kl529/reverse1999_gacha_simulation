@@ -51,7 +51,7 @@ Plans:
 **Goal**: 주요 React 컴포넌트가 렌더링 및 상호작용 테스트로 검증된다
 **Depends on**: Phase 2
 **Requirements**: COMP-01, COMP-02, COMP-03, COMP-04, COMP-05, COMP-06
-**Plans**: TBD
+**Plans**: 2 plans
 **Success Criteria** (what must be TRUE):
   1. GachaGame 컴포넌트가 배너 선택, 뽑기 버튼 클릭에 올바르게 반응함이 검증된다
   2. Quiz 컴포넌트가 문제 표시, 답변 선택, 결과 표시를 정확히 처리함이 검증된다
@@ -59,8 +59,8 @@ Plans:
   4. Modal 컴포넌트들이 열기/닫기/확인 동작을 올바르게 처리함이 검증된다
 
 Plans:
-- [ ] 03-01: 핵심 컴포넌트 테스트 (GachaGame, Quiz)
-- [ ] 03-02: 보조 컴포넌트 테스트 (CharacterDetail, Ranking, Growth, Modal)
+- [ ] 03-01-PLAN.md — 핵심 컴포넌트 테스트 (GachaGame, Quiz)
+- [ ] 03-02-PLAN.md — 보조 컴포넌트 테스트 (CharacterDetail, RankingBoard, GrowthCalculator, Modal)
 
 ### Phase 4: E2E Tests
 **Goal**: 주요 사용자 플로우가 Playwright E2E 테스트로 검증된다
@@ -91,4 +91,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 
 ---
 *Roadmap created: 2026-01-24*
-*Last updated: 2026-01-24 — Phase 2 complete*
+*Last updated: 2026-01-25 — Phase 3 planned*
