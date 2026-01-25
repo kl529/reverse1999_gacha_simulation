@@ -20,19 +20,19 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Component Tests (React 컴포넌트)
 
-- [ ] **COMP-01**: GachaGame 컴포넌트 렌더링 및 상호작용 테스트
-- [ ] **COMP-02**: Quiz 컴포넌트 렌더링 및 답변 처리 테스트
-- [ ] **COMP-03**: CharacterDetail 컴포넌트 테스트
-- [ ] **COMP-04**: RankingBoard 컴포넌트 테스트
-- [ ] **COMP-05**: GrowthCalculator 컴포넌트 테스트
-- [ ] **COMP-06**: Modal 컴포넌트들 테스트 (ConfirmModal, ModalProvider)
+- [x] **COMP-01**: GachaGame 컴포넌트 렌더링 및 상호작용 테스트
+- [x] **COMP-02**: Quiz 컴포넌트 렌더링 및 답변 처리 테스트
+- [x] **COMP-03**: CharacterDetail 컴포넌트 테스트
+- [x] **COMP-04**: RankingBoard 컴포넌트 테스트
+- [x] **COMP-05**: GrowthCalculator 컴포넌트 테스트
+- [x] **COMP-06**: Modal 컴포넌트들 테스트 (ConfirmModal, ModalProvider)
 
 ### E2E Tests (사용자 플로우)
 
-- [ ] **E2E-01**: 가챠 시뮬레이션 전체 플로우 테스트 (배너 선택 → 뽑기 → 결과 확인)
-- [ ] **E2E-02**: 퀴즈 완료 플로우 테스트 (퀴즈 시작 → 답변 → 결과 → 랭킹)
-- [ ] **E2E-03**: 캐릭터 조회 플로우 테스트 (목록 → 상세 → 스킨)
-- [ ] **E2E-04**: 네비게이션 및 테마 전환 테스트
+- [x] **E2E-01**: 가챠 시뮬레이션 전체 플로우 테스트 (배너 선택 → 뽑기 → 결과 확인)
+- [x] **E2E-02**: 퀴즈 완료 플로우 테스트 (퀴즈 시작 → 답변 → 결과 → 랭킹)
+- [x] **E2E-03**: 캐릭터 조회 플로우 테스트 (목록 → 상세 → 스킨)
+- [x] **E2E-04**: 네비게이션 및 테마 전환 테스트
 
 ### Infrastructure (테스트 인프라)
 
@@ -79,16 +79,16 @@ Which phases cover which requirements. Updated during roadmap creation.
 | UNIT-06 | Phase 2 | Complete |
 | UNIT-07 | Phase 2 | Complete |
 | UNIT-08 | Phase 2 | Complete |
-| COMP-01 | Phase 3 | Pending |
-| COMP-02 | Phase 3 | Pending |
-| COMP-03 | Phase 3 | Pending |
-| COMP-04 | Phase 3 | Pending |
-| COMP-05 | Phase 3 | Pending |
-| COMP-06 | Phase 3 | Pending |
-| E2E-01 | Phase 4 | Pending |
-| E2E-02 | Phase 4 | Pending |
-| E2E-03 | Phase 4 | Pending |
-| E2E-04 | Phase 4 | Pending |
+| COMP-01 | Phase 3 | Complete |
+| COMP-02 | Phase 3 | Complete |
+| COMP-03 | Phase 3 | Complete |
+| COMP-04 | Phase 3 | Complete |
+| COMP-05 | Phase 3 | Complete |
+| COMP-06 | Phase 3 | Complete |
+| E2E-01 | Phase 4 | Complete |
+| E2E-02 | Phase 4 | Complete |
+| E2E-03 | Phase 4 | Complete |
+| E2E-04 | Phase 4 | Complete |
 
 **Coverage:**
 - v1 requirements: 22 total
@@ -97,4 +97,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-24*
-*Last updated: 2026-01-24 — Phase 2 requirements complete*
+*Last updated: 2026-01-25 — All v1 requirements complete*

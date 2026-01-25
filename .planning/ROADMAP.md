@@ -13,7 +13,7 @@
 - [x] **Phase 1: Infrastructure** - 테스트 인프라 정비 및 기반 설정
 - [x] **Phase 2: Unit Tests** - 비즈니스 로직 유닛 테스트 작성
 - [x] **Phase 3: Component Tests** - React 컴포넌트 테스트 작성
-- [ ] **Phase 4: E2E Tests** - 사용자 플로우 E2E 테스트 작성
+- [x] **Phase 4: E2E Tests** - 사용자 플로우 E2E 테스트 작성
 
 ## Phase Details
 
@@ -75,8 +75,8 @@ Plans:
   5. `npm run test:e2e` 실행 시 모든 E2E 테스트가 통과한다
 
 Plans:
-- [ ] 04-01-PLAN.md — 핵심 게임플레이 E2E 테스트 (가챠 시뮬레이션, 퀴즈)
-- [ ] 04-02-PLAN.md — 브라우징/유틸리티 E2E 테스트 (캐릭터 조회, 네비게이션, 테마)
+- [x] 04-01-PLAN.md — 핵심 게임플레이 E2E 테스트 (가챠 시뮬레이션, 퀴즈)
+- [x] 04-02-PLAN.md — 브라우징/유틸리티 E2E 테스트 (캐릭터 조회, 네비게이션, 테마)
 
 ## Progress
 
@@ -88,8 +88,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | 1. Infrastructure | 1/1 | Complete | 2026-01-24 |
 | 2. Unit Tests | 2/2 | Complete | 2026-01-24 |
 | 3. Component Tests | 2/2 | Complete | 2026-01-25 |
-| 4. E2E Tests | 0/2 | Not started | - |
+| 4. E2E Tests | 2/2 | Complete | 2026-01-25 |
 
 ---
 *Roadmap created: 2026-01-24*
-*Last updated: 2026-01-25 — Phase 4 plans created*
+*Last updated: 2026-01-25 — Phase 4 complete, Milestone complete*
