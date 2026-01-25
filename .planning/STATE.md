@@ -54,6 +54,8 @@ Recent decisions affecting current work:
 - Character filter logic extracted to lib/utils/characterFilter.ts for testability
 - CharacterDetail에서 getAllByText 사용으로 중복 텍스트 처리
 - GrowthCalculatorPage에서 계산 로직 모킹으로 렌더링 테스트 격리
+- Radix UI Switch uses role='switch' not 'checkbox'
+- jest.useFakeTimers() for Quiz timer testing
 
 ### Pending Todos
 
