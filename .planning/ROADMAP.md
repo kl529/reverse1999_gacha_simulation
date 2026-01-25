@@ -66,7 +66,7 @@ Plans:
 **Goal**: 주요 사용자 플로우가 Playwright E2E 테스트로 검증된다
 **Depends on**: Phase 3
 **Requirements**: E2E-01, E2E-02, E2E-03, E2E-04
-**Plans**: TBD
+**Plans**: 2 plans
 **Success Criteria** (what must be TRUE):
   1. 가챠 시뮬레이션 전체 플로우(배너 선택 -> 뽑기 -> 결과 확인)가 브라우저에서 동작함이 검증된다
   2. 퀴즈 플로우(시작 -> 답변 -> 결과 -> 랭킹)가 end-to-end로 동작함이 검증된다
@@ -75,7 +75,8 @@ Plans:
   5. `npm run test:e2e` 실행 시 모든 E2E 테스트가 통과한다
 
 Plans:
-- [ ] 04-01: E2E 테스트 작성 (가챠, 퀴즈, 캐릭터, 네비게이션)
+- [ ] 04-01-PLAN.md — 핵심 게임플레이 E2E 테스트 (가챠 시뮬레이션, 퀴즈)
+- [ ] 04-02-PLAN.md — 브라우징/유틸리티 E2E 테스트 (캐릭터 조회, 네비게이션, 테마)
 
 ## Progress
 
@@ -87,8 +88,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | 1. Infrastructure | 1/1 | Complete | 2026-01-24 |
 | 2. Unit Tests | 2/2 | Complete | 2026-01-24 |
 | 3. Component Tests | 2/2 | Complete | 2026-01-25 |
-| 4. E2E Tests | 0/1 | Not started | - |
+| 4. E2E Tests | 0/2 | Not started | - |
 
 ---
 *Roadmap created: 2026-01-24*
-*Last updated: 2026-01-25 — Phase 3 complete*
+*Last updated: 2026-01-25 — Phase 4 plans created*
