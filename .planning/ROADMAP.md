@@ -12,7 +12,7 @@
 
 - [x] **Phase 1: Infrastructure** - 테스트 인프라 정비 및 기반 설정
 - [x] **Phase 2: Unit Tests** - 비즈니스 로직 유닛 테스트 작성
-- [ ] **Phase 3: Component Tests** - React 컴포넌트 테스트 작성
+- [x] **Phase 3: Component Tests** - React 컴포넌트 테스트 작성
 - [ ] **Phase 4: E2E Tests** - 사용자 플로우 E2E 테스트 작성
 
 ## Phase Details
@@ -59,8 +59,8 @@ Plans:
   4. Modal 컴포넌트들이 열기/닫기/확인 동작을 올바르게 처리함이 검증된다
 
 Plans:
-- [ ] 03-01-PLAN.md — 핵심 컴포넌트 테스트 (GachaGame, Quiz)
-- [ ] 03-02-PLAN.md — 보조 컴포넌트 테스트 (CharacterDetail, RankingBoard, GrowthCalculator, Modal)
+- [x] 03-01-PLAN.md — 핵심 컴포넌트 테스트 (GachaGame, Quiz)
+- [x] 03-02-PLAN.md — 보조 컴포넌트 테스트 (CharacterDetail, RankingBoard, GrowthCalculator, Modal)
 
 ### Phase 4: E2E Tests
 **Goal**: 주요 사용자 플로우가 Playwright E2E 테스트로 검증된다
@@ -86,9 +86,9 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 |-------|----------------|--------|-----------|
 | 1. Infrastructure | 1/1 | Complete | 2026-01-24 |
 | 2. Unit Tests | 2/2 | Complete | 2026-01-24 |
-| 3. Component Tests | 0/2 | Not started | - |
+| 3. Component Tests | 2/2 | Complete | 2026-01-25 |
 | 4. E2E Tests | 0/1 | Not started | - |
 
 ---
 *Roadmap created: 2026-01-24*
-*Last updated: 2026-01-25 — Phase 3 planned*
+*Last updated: 2026-01-25 — Phase 3 complete*
