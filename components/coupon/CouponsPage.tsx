@@ -1,33 +1,73 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { coupons, Coupon } from "@/data/coupon";
 import { Copy, Check, Calendar, CheckCircle2, Circle, Bell } from "lucide-react";
 import toast from "react-hot-toast";
 
 const USED_COUPONS_KEY = "reverse1999_used_coupons";
 
+/**
+ * 새 쿠폰 확인 및 푸시 알림 트리거
+ * 백그라운드에서 조용히 실행되며, 새 쿠폰이 있으면 구독자에게 푸시 전송
+ */
+async function checkAndSendNewCouponNotifications(): Promise<void> {
+  try {
+    const response = await fetch("/api/check-new-coupons", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data.sentCount > 0) {
+        console.log(`✅ ${data.sentCount}개의 새 쿠폰 알림이 전송되었습니다.`);
+      }
+    }
+  } catch (error) {
+    // 조용히 실패 (사용자 경험에 영향 없음)
+    console.error("쿠폰 알림 체크 실패:", error);
+  }
+}
+
 export default function CouponsPage() {
   const [usedCoupons, setUsedCoupons] = useState<string[]>([]);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [showNotificationButton, setShowNotificationButton] = useState(false);
 
+  // 새 쿠폰 알림 체크 (컴포넌트 마운트 시 1회)
+  const triggerNewCouponCheck = useCallback(() => {
+    // 프로덕션 환경에서만 실행 (개발 환경에서는 API가 거부함)
+    if (typeof window !== "undefined") {
+      // 약간의 지연 후 실행 (페이지 로딩 우선)
+      setTimeout(() => {
+        checkAndSendNewCouponNotifications();
+      }, 2000);
+    }
+  }, []);
+
   // 로컬 스토리지에서 사용한 쿠폰 목록 불러오기
   useEffect(() => {
-    const stored = localStorage.getItem(USED_COUPONS_KEY);
-    if (stored) {
-      try {
+    try {
+      const stored = localStorage.getItem(USED_COUPONS_KEY);
+      if (stored) {
         setUsedCoupons(JSON.parse(stored));
-      } catch (error) {
-        console.error("Failed to parse used coupons:", error);
       }
+    } catch (error) {
+      console.error("Failed to parse used coupons:", error);
     }
 
-    // 알림 설정 버튼 표시 여부 확인
-    const fcmToken = localStorage.getItem("fcm_token");
-    const dismissed = localStorage.getItem("notification_dismissed");
-    if (!fcmToken && dismissed === "true") {
-      setShowNotificationButton(true);
+    try {
+      // 알림 설정 버튼 표시 여부 확인
+      const fcmToken = localStorage.getItem("fcm_token");
+      const dismissed = localStorage.getItem("notification_dismissed");
+      if (!fcmToken && dismissed === "true") {
+        setShowNotificationButton(true);
+      }
+    } catch {
+      // localStorage 접근 실패 시 무시
     }
 
     // Service Worker 메시지 리스너 (푸시 알림에서 복사 버튼 클릭 시)
@@ -47,10 +87,13 @@ export default function CouponsPage() {
 
     navigator.serviceWorker?.addEventListener("message", handleServiceWorkerMessage);
 
+    // 새 쿠폰 알림 체크 트리거
+    triggerNewCouponCheck();
+
     return () => {
       navigator.serviceWorker?.removeEventListener("message", handleServiceWorkerMessage);
     };
-  }, []);
+  }, [triggerNewCouponCheck]);
 
   // 쿠폰 복사 기능
   const handleCopy = async (code: string) => {
