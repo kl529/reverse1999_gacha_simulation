@@ -9,14 +9,14 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Unit Tests (비즈니스 로직)
 
-- [ ] **UNIT-01**: gachaReducer 상태 관리 로직 테스트 (GACHA_PULL, RESET_ALL, UPDATE_PICKUP_INFO 액션)
-- [ ] **UNIT-02**: 가챠 확률 계산 로직 테스트 (6성 확률, 5성 확률, 천장 시스템)
-- [ ] **UNIT-03**: 퀴즈 점수 계산 및 타입 가드 테스트 (isMultipleChoiceQuestion 등)
-- [ ] **UNIT-04**: storage.ts 유틸리티 테스트 (get, set, remove, clear)
-- [ ] **UNIT-05**: farmingHelper.ts 재료 계산 로직 테스트
-- [ ] **UNIT-06**: CDN URL 생성 함수 테스트 (cdn.ts)
-- [ ] **UNIT-07**: 캐릭터 필터링/검색 로직 테스트
-- [ ] **UNIT-08**: 버전 비교 로직 테스트 (버전 문자열 파싱)
+- [x] **UNIT-01**: gachaReducer 상태 관리 로직 테스트 (GACHA_PULL, RESET_ALL, UPDATE_PICKUP_INFO 액션)
+- [x] **UNIT-02**: 가챠 확률 계산 로직 테스트 (6성 확률, 5성 확률, 천장 시스템)
+- [x] **UNIT-03**: 퀴즈 점수 계산 및 타입 가드 테스트 (isMultipleChoiceQuestion 등)
+- [x] **UNIT-04**: storage.ts 유틸리티 테스트 (get, set, remove, clear)
+- [x] **UNIT-05**: farmingHelper.ts 재료 계산 로직 테스트
+- [x] **UNIT-06**: CDN URL 생성 함수 테스트 (cdn.ts)
+- [x] **UNIT-07**: 캐릭터 필터링/검색 로직 테스트
+- [x] **UNIT-08**: 버전 비교 로직 테스트 (버전 문자열 파싱)
 
 ### Component Tests (React 컴포넌트)
 
@@ -71,14 +71,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFRA-02 | Phase 1 | Complete |
 | INFRA-03 | Phase 1 | Complete |
 | INFRA-04 | Phase 1 | Complete |
-| UNIT-01 | Phase 2 | Pending |
-| UNIT-02 | Phase 2 | Pending |
-| UNIT-03 | Phase 2 | Pending |
-| UNIT-04 | Phase 2 | Pending |
-| UNIT-05 | Phase 2 | Pending |
-| UNIT-06 | Phase 2 | Pending |
-| UNIT-07 | Phase 2 | Pending |
-| UNIT-08 | Phase 2 | Pending |
+| UNIT-01 | Phase 2 | Complete |
+| UNIT-02 | Phase 2 | Complete |
+| UNIT-03 | Phase 2 | Complete |
+| UNIT-04 | Phase 2 | Complete |
+| UNIT-05 | Phase 2 | Complete |
+| UNIT-06 | Phase 2 | Complete |
+| UNIT-07 | Phase 2 | Complete |
+| UNIT-08 | Phase 2 | Complete |
 | COMP-01 | Phase 3 | Pending |
 | COMP-02 | Phase 3 | Pending |
 | COMP-03 | Phase 3 | Pending |
@@ -97,4 +97,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-24*
-*Last updated: 2026-01-24 — Phase 1 requirements complete*
+*Last updated: 2026-01-24 — Phase 2 requirements complete*

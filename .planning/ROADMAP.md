@@ -11,7 +11,7 @@
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
 - [x] **Phase 1: Infrastructure** - 테스트 인프라 정비 및 기반 설정
-- [ ] **Phase 2: Unit Tests** - 비즈니스 로직 유닛 테스트 작성
+- [x] **Phase 2: Unit Tests** - 비즈니스 로직 유닛 테스트 작성
 - [ ] **Phase 3: Component Tests** - React 컴포넌트 테스트 작성
 - [ ] **Phase 4: E2E Tests** - 사용자 플로우 E2E 테스트 작성
 
@@ -44,8 +44,8 @@ Plans:
   5. `npm run test:unit` 실행 시 모든 유닛 테스트가 통과한다
 
 Plans:
-- [ ] 02-01-PLAN.md — 가챠 관련 유닛 테스트 (gachaReducer, 확률 계산)
-- [ ] 02-02-PLAN.md — 유틸리티 및 기타 유닛 테스트 (storage, cdn, quiz, farming, filter, version)
+- [x] 02-01-PLAN.md — 가챠 관련 유닛 테스트 (gachaReducer, 확률 계산)
+- [x] 02-02-PLAN.md — 유틸리티 및 기타 유닛 테스트 (storage, cdn, quiz, farming, filter, version)
 
 ### Phase 3: Component Tests
 **Goal**: 주요 React 컴포넌트가 렌더링 및 상호작용 테스트로 검증된다
@@ -85,10 +85,10 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Infrastructure | 1/1 | Complete | 2026-01-24 |
-| 2. Unit Tests | 0/2 | Ready | - |
+| 2. Unit Tests | 2/2 | Complete | 2026-01-24 |
 | 3. Component Tests | 0/2 | Not started | - |
 | 4. E2E Tests | 0/1 | Not started | - |
 
 ---
 *Roadmap created: 2026-01-24*
-*Last updated: 2026-01-24 — Phase 2 planned*
+*Last updated: 2026-01-24 — Phase 2 complete*
