@@ -1,3 +1,6 @@
+// 폴리필 - 가장 먼저 import (Safari 호환성)
+import "@/lib/polyfills";
+
 import "@/app/globals.css";
 import CustomCursor from "@/components/etc/CustomCursor";
 import SecurityWrapper from "@/components/etc/SecurityWrapper";

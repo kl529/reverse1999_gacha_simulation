@@ -6,14 +6,44 @@ const vapidKey = process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY;
 // 브라우저 환경에서만 messaging 초기화
 let messaging: ReturnType<typeof getMessaging> | null = null;
 
-if (typeof window !== "undefined") {
-  messaging = getMessaging(app);
+/**
+ * Safari/iOS에서 Push API 지원 여부 확인
+ * iOS Safari 16.4+ 에서만 Web Push 지원
+ */
+function isPushSupported(): boolean {
+  if (typeof window === "undefined") return false;
+
+  // Service Worker 미지원
+  if (!("serviceWorker" in navigator)) return false;
+
+  // PushManager 미지원 (Safari Private 모드 등)
+  if (!("PushManager" in window)) return false;
+
+  // Notification API 미지원
+  if (!("Notification" in window)) return false;
+
+  return true;
+}
+
+if (typeof window !== "undefined" && isPushSupported()) {
+  try {
+    messaging = getMessaging(app);
+  } catch (error) {
+    console.warn("Firebase Messaging 초기화 실패 (이 브라우저에서 지원되지 않을 수 있음):", error);
+    messaging = null;
+  }
 }
 
 /**
  * 푸시 알림 권한 요청 및 토큰 발급
  */
 export async function requestNotificationPermission(): Promise<string | null> {
+  // Push API 지원 확인
+  if (!isPushSupported()) {
+    console.warn("이 브라우저에서는 푸시 알림이 지원되지 않습니다. (Safari Private 모드 또는 구형 브라우저)");
+    return null;
+  }
+
   if (!messaging) {
     console.warn("Messaging is not supported in this environment");
     return null;

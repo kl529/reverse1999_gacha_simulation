@@ -26,6 +26,7 @@ describe("storage", () => {
 
     // Clear console mocks
     jest.spyOn(console, "error").mockImplementation(() => {});
+    jest.spyOn(console, "warn").mockImplementation(() => {});
   });
 
   afterEach(() => {
@@ -168,6 +169,12 @@ describe("storage", () => {
     });
   });
 
+  describe("storage.isAvailable", () => {
+    it("returns true when localStorage is available", () => {
+      expect(storage.isAvailable()).toBe(true);
+    });
+  });
+
   describe("STORAGE_KEYS", () => {
     it("contains expected storage keys", () => {
       expect(STORAGE_KEYS.HAS_SEEN_HELP_MODAL).toBe("hasSeenHelpModal");
@@ -176,6 +183,90 @@ describe("storage", () => {
       expect(STORAGE_KEYS.NEWBIE_GUIDE_PROGRESS).toBe("newbieGuideProgress");
       expect(STORAGE_KEYS.QUIZ_PROGRESS).toBe("quizProgress");
       expect(STORAGE_KEYS.GACHA_HISTORY).toBe("gachaHistory");
+    });
+  });
+});
+
+describe("Safari Private Mode compatibility", () => {
+  let localStorageMock: { [key: string]: string };
+
+  beforeEach(() => {
+    localStorageMock = {};
+    jest.spyOn(console, "error").mockImplementation(() => {});
+    jest.spyOn(console, "warn").mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  describe("when localStorage throws QuotaExceededError", () => {
+    beforeEach(() => {
+      // Simulate Safari Private Mode - localStorage exists but throws on write
+      jest.spyOn(Storage.prototype, "getItem").mockImplementation((key) => {
+        return localStorageMock[key] ?? null;
+      });
+
+      jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+        const error = new Error("QuotaExceededError");
+        error.name = "QuotaExceededError";
+        throw error;
+      });
+
+      jest.spyOn(Storage.prototype, "removeItem").mockImplementation((key) => {
+        delete localStorageMock[key];
+      });
+
+      jest.spyOn(Storage.prototype, "clear").mockImplementation(() => {
+        localStorageMock = {};
+      });
+    });
+
+    it("set should not throw and fall back to memory storage", () => {
+      expect(() => storage.set(STORAGE_KEYS.HAS_SEEN_HELP_MODAL, true)).not.toThrow();
+    });
+
+    it("operations should continue working with memory fallback", () => {
+      // This will fail to write to localStorage but should use memory fallback
+      storage.set(STORAGE_KEYS.HAS_SEEN_HELP_MODAL, true);
+
+      // Subsequent operations should not crash
+      expect(() => storage.get(STORAGE_KEYS.HAS_SEEN_HELP_MODAL)).not.toThrow();
+      expect(() => storage.has(STORAGE_KEYS.HAS_SEEN_HELP_MODAL)).not.toThrow();
+      expect(() => storage.remove(STORAGE_KEYS.HAS_SEEN_HELP_MODAL)).not.toThrow();
+    });
+  });
+
+  describe("when localStorage is completely unavailable", () => {
+    beforeEach(() => {
+      // Simulate environment where localStorage throws on any access
+      jest.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
+        throw new Error("Access denied");
+      });
+
+      jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+        throw new Error("Access denied");
+      });
+
+      jest.spyOn(Storage.prototype, "removeItem").mockImplementation(() => {
+        throw new Error("Access denied");
+      });
+
+      jest.spyOn(Storage.prototype, "clear").mockImplementation(() => {
+        throw new Error("Access denied");
+      });
+    });
+
+    it("all operations should handle errors gracefully", () => {
+      expect(() => storage.get(STORAGE_KEYS.HAS_SEEN_HELP_MODAL)).not.toThrow();
+      expect(() => storage.set(STORAGE_KEYS.HAS_SEEN_HELP_MODAL, true)).not.toThrow();
+      expect(() => storage.remove(STORAGE_KEYS.HAS_SEEN_HELP_MODAL)).not.toThrow();
+      expect(() => storage.clear()).not.toThrow();
+      expect(() => storage.has(STORAGE_KEYS.HAS_SEEN_HELP_MODAL)).not.toThrow();
+    });
+
+    it("get should return null when localStorage is unavailable", () => {
+      expect(storage.get(STORAGE_KEYS.HAS_SEEN_HELP_MODAL)).toBeNull();
     });
   });
 });

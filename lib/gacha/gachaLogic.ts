@@ -60,7 +60,7 @@ export const doSinglePull = (
   banner: EnrichedBanner,
   state: GachaPullState
 ): SinglePullResult => {
-  let localPity = state.pityCount;
+  const localPity = state.pityCount;
   let localPickup = state.pickupGuarantee;
 
   // 70뽑 초과 -> 즉시 6성 + 픽업 50%
@@ -171,8 +171,8 @@ export const doSinglePullDoublePick = (
   banner: EnrichedBanner,
   state: GachaPullState
 ): SinglePullResult => {
-  let localPity = state.pityCount;
-  let localPickup = state.pickupGuarantee;
+  const localPity = state.pityCount;
+  const localPickup = state.pickupGuarantee;
 
   const getDoublePickSix = (): { char: Character; isPickup: boolean } => {
     if (!banner.twoPickup6 || banner.twoPickup6.length < 2) {

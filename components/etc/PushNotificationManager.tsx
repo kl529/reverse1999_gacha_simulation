@@ -21,21 +21,33 @@ export default function PushNotificationManager() {
 
   useEffect(() => {
     // 브라우저가 알림을 지원하는지 확인
-    if (typeof window !== "undefined" && "Notification" in window && "serviceWorker" in navigator) {
+    // Safari Private 모드에서는 PushManager가 없을 수 있음
+    if (
+      typeof window !== "undefined" &&
+      "Notification" in window &&
+      "serviceWorker" in navigator &&
+      "PushManager" in window
+    ) {
       setIsSupported(true);
       setPermission(Notification.permission);
 
-      // 로컬 스토리지에 토큰이 이미 있는지 확인
-      const savedToken = localStorage.getItem("fcm_token");
-      if (savedToken) {
-        setHasToken(true);
-        console.log("✅ 저장된 FCM 토큰 발견");
-      }
+      // 로컬 스토리지 접근 시도 (Safari Private 모드 대응)
+      try {
+        // 로컬 스토리지에 토큰이 이미 있는지 확인
+        const savedToken = localStorage.getItem("fcm_token");
+        if (savedToken) {
+          setHasToken(true);
+          console.log("✅ 저장된 FCM 토큰 발견");
+        }
 
-      // 사용자가 이전에 "나중에" 버튼을 눌렀는지 확인
-      const dismissed = localStorage.getItem("notification_dismissed");
-      if (dismissed === "true") {
-        setIsDismissed(true);
+        // 사용자가 이전에 "나중에" 버튼을 눌렀는지 확인
+        const dismissed = localStorage.getItem("notification_dismissed");
+        if (dismissed === "true") {
+          setIsDismissed(true);
+        }
+      } catch {
+        // Safari Private 모드에서는 localStorage 접근 실패할 수 있음
+        console.warn("localStorage 접근 실패 (Private 브라우징 모드일 수 있음)");
       }
     }
   }, []);
@@ -74,8 +86,12 @@ export default function PushNotificationManager() {
         console.log("✅ FCM 토큰 발급 성공");
         setToken(fcmToken);
 
-        // 로컬 스토리지에 토큰 저장
-        localStorage.setItem("fcm_token", fcmToken);
+        // 로컬 스토리지에 토큰 저장 (Private 모드 대응)
+        try {
+          localStorage.setItem("fcm_token", fcmToken);
+        } catch {
+          console.warn("FCM 토큰 저장 실패 (Private 브라우징 모드)");
+        }
 
         // 상태 업데이트
         setPermission("granted");
@@ -149,7 +165,11 @@ export default function PushNotificationManager() {
             <button
               onClick={() => {
                 setIsDismissed(true);
-                localStorage.setItem("notification_dismissed", "true");
+                try {
+                  localStorage.setItem("notification_dismissed", "true");
+                } catch {
+                  // Private 모드에서는 저장 실패할 수 있음
+                }
               }}
               className="rounded-md px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-muted"
             >
