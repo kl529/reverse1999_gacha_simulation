@@ -2,63 +2,40 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-01-24)
+See: .planning/PROJECT.md (updated 2026-01-25)
 
 **Core value:** 핵심 비즈니스 로직(가챠 확률, 퀴즈 점수, 육성 계산)이 정확하게 동작함을 자동화된 테스트로 보장한다
-**Current focus:** Milestone Complete
+**Current focus:** v1 Milestone Complete — Planning next milestone
 
 ## Current Position
 
-Phase: 4 of 4 (E2E Tests) - COMPLETE
-Plan: 2 of 2 in current phase
-Status: MILESTONE COMPLETE
-Last activity: 2026-01-25 - Completed Phase 4 (E2E Tests)
+Phase: v1 Complete
+Plan: N/A
+Status: Milestone Complete
+Last activity: 2026-01-25 — v1 테스트 커버리지 확장 milestone complete
 
 Progress: [########################################] 100%
 
-## Performance Metrics
+## v1 Milestone Summary
 
-**Velocity:**
-- Total plans completed: 7
-- Average duration: 8 min
-- Total execution time: 0.95 hours
+**Shipped:** 2026-01-25
 
-**By Phase:**
+| Test Type | Tests | Status |
+|-----------|-------|--------|
+| Unit Tests | 137 | PASS |
+| Component Tests | 75 | PASS |
+| E2E Tests | 41 | PASS |
+| **Total Tests** | **253** | **PASS** |
 
-| Phase | Plans | Total | Avg/Plan |
-|-------|-------|-------|----------|
-| 01-infrastructure | 1 | 15min | 15min |
-| 02-unit-tests | 2 | 7min | 3.5min |
-| 03-component-tests | 2 | 9min | 4.5min |
-| 04-e2e-tests | 2 | 25min | 12.5min |
-
-**Recent Trend:**
-- Last 5 plans: 02-01 (3min), 02-02 (4min), 03-01 (4min), 03-02 (5min), 04-01 (14min)
-- Trend: E2E tests take longer due to server startup/stabilization
-
-*Updated after each plan completion*
+**Files:** 94 created/modified
+**Test LOC:** 4,567 lines TypeScript
 
 ## Accumulated Context
 
 ### Decisions
 
-Decisions are logged in PROJECT.md Key Decisions table.
-Recent decisions affecting current work:
-
-- 기존 Jest 설정 유지 (마이그레이션 비용 절감)
-- E2E에 Playwright 사용 (Next.js 공식 권장)
-- Pure function extraction: 가챠 로직을 lib/gacha/gachaLogic.ts로 추출
-- Playwright 전용 포트 3099 사용 (충돌 방지)
-- Firebase, localStorage 모킹 전략 (외부 의존성 격리)
-- 한국어 테스트 설명 유지 (프로젝트 컨벤션 일관성)
-- 통계적 테스트에 1000회 반복 + 5% 허용 오차 사용
-- Character filter logic extracted to lib/utils/characterFilter.ts for testability
-- CharacterDetail에서 getAllByText 사용으로 중복 텍스트 처리
-- GrowthCalculatorPage에서 계산 로직 모킹으로 렌더링 테스트 격리
-- Radix UI Switch uses role='switch' not 'checkbox'
-- jest.useFakeTimers() for Quiz timer testing
-- Desktop viewport (1280x800) for E2E tests to avoid mobile/desktop grid conflicts
-- Extended timeouts for quiz E2E tests due to animations and state changes
+Decisions logged in PROJECT.md Key Decisions table.
+All decisions from v1 marked as ✓ Good.
 
 ### Pending Todos
 
@@ -66,8 +43,9 @@ None. Milestone complete.
 
 ### Blockers/Concerns
 
-- GachaGame 컴포넌트가 673줄 모놀리식 구조로 테스트 어려움 (로직 추출로 부분 해결)
-- E2E tests may have flaky failures when run together due to dev server memory pressure (run individually for reliability)
+None blocking. Minor tech debt tracked in MILESTONE-AUDIT.md:
+- lib/gacha/gachaLogic.ts extracted but GachaGame.tsx uses inline logic
+- lib/utils/characterFilter.ts extracted but Character.tsx uses inline logic
 
 ## Session Continuity
 
@@ -75,15 +53,5 @@ Last session: 2026-01-25
 Stopped at: Milestone Complete
 Resume file: None
 
-## Final Testing Summary
-
-| Test Type | Tests | Status |
-|-----------|-------|--------|
-| Unit Tests | 212 | PASS |
-| Component Tests | 75 | PASS |
-| E2E Tests - Smoke | 2 | PASS |
-| E2E Tests - Gacha | 8 | PASS |
-| E2E Tests - Quiz | 10 | PASS |
-| E2E Tests - Character | 9 | PASS |
-| E2E Tests - Navigation | 12 | PASS |
-| **Total Tests** | **328** | **PASS** |
+---
+*Updated: 2026-01-25 after v1 milestone completion*
