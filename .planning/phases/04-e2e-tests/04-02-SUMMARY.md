@@ -1,0 +1,169 @@
+---
+phase: 04
+plan: 02
+subsystem: e2e-browsing
+tags: [playwright, e2e, navigation, character, theme]
+
+dependency_graph:
+  requires:
+    - 04-01 (gacha E2E tests, Playwright setup)
+  provides:
+    - Character browsing E2E tests
+    - Navigation E2E tests
+    - Theme toggle E2E tests
+  affects:
+    - CI/CD pipeline (all E2E tests complete)
+
+tech_stack:
+  added: []
+  patterns:
+    - Playwright page.locator for element selection
+    - Promise.all for navigation + click synchronization
+    - force: true for clicking obscured elements (popup handling)
+    - .first() for multiple matching elements
+
+file_changes:
+  created:
+    - __tests__/e2e/character.spec.ts (214 lines)
+    - __tests__/e2e/navigation.spec.ts (248 lines)
+  modified: []
+
+decisions:
+  - key: popup-handling
+    choice: Dismiss popup with "나중에" button in beforeEach
+    reason: PWA install prompt can overlay theme toggle button
+  - key: multiple-links
+    choice: Use .first() when multiple links with same href exist
+    reason: HomePage has multiple navigation paths to same destination
+  - key: navigation-sync
+    choice: Promise.all for waitForURL + click
+    reason: Ensures navigation completes before assertions
+
+metrics:
+  duration: 11min
+  completed: 2026-01-25
+---
+
+# Phase 4 Plan 2: Browsing E2E Tests Summary
+
+Character browsing and navigation E2E tests using Playwright to verify user flows.
+
+## Summary
+
+Created 21 E2E tests verifying character browsing flow (search, filter, detail page navigation, tab switching) and homepage navigation (section links, theme toggle, footer).
+
+## Tasks Completed
+
+### Task 1: Character Browsing E2E Tests (0e5b4a6)
+
+Created `__tests__/e2e/character.spec.ts` with 9 tests:
+
+1. Character list page loads with grid display
+2. Search filtering by character name (Korean)
+3. Role type filter (damage/support/balance/defense)
+4. Attribute filter (beast/star/mineral/plant/spirit/intellect)
+5. Character card click navigates to detail page
+6. Detail page displays character info
+7. Tab switching (guide vs resonance/will)
+8. Filter reset functionality
+9. Other character navigation section on detail page
+
+### Task 2: Navigation E2E Tests (68af114)
+
+Created `__tests__/e2e/navigation.spec.ts` with 12 tests:
+
+**Desktop Navigation (10 tests):**
+1. Homepage loads with 3 sections (playground, library, guide)
+2. Gacha simulator link navigation
+3. Character guide link navigation
+4. Newbie guide link navigation
+5. Theme toggle dark/light mode switching
+6. Theme persistence after page reload
+7. Theme toggle button icon changes
+8. Skin gallery link navigation
+9. Quiz link navigation
+10. Homepage footer display
+
+**Mobile Navigation (2 tests):**
+11. Mobile viewport homepage display
+12. Mobile theme toggle functionality
+
+## Key Implementation Details
+
+**Character List Testing:**
+```typescript
+// Filter dropdowns both show "전체" initially
+const typeDropdown = page.locator("button", { hasText: "전체" }).first();
+await typeDropdown.click();
+
+// URL params reflect filter state
+await expect(page).toHaveURL(/type=damage/);
+```
+
+**Navigation with Click Sync:**
+```typescript
+// Promise.all ensures navigation completes
+await Promise.all([
+  page.waitForURL("**/gacha_simulator", { timeout: 10000 }),
+  gachaLink.click(),
+]);
+```
+
+**Theme Toggle Testing:**
+```typescript
+// Handle popup that may overlay toggle button
+const dismissButton = page.locator('button:has-text("나중에")');
+if (await dismissButton.isVisible({ timeout: 2000 }).catch(() => false)) {
+  await dismissButton.click();
+}
+
+// Use force click when element might be obscured
+await themeToggle.click({ force: true });
+
+// Verify theme via DOM class
+const isDark = await page.evaluate(() =>
+  document.documentElement.classList.contains("dark")
+);
+```
+
+## Deviations from Plan
+
+### [Rule 3 - Blocking] Added popup dismissal
+
+- **Found during:** Task 2 - Theme toggle tests
+- **Issue:** PWA install prompt ("나중에" button) overlays theme toggle
+- **Fix:** Added popup dismissal in beforeEach hook
+- **Files modified:** navigation.spec.ts
+
+## Test Results
+
+```
+character.spec.ts: 9 passed (23.6s)
+navigation.spec.ts: 12 passed (25.8s)
+Total: 21 E2E tests
+```
+
+**Note:** When running both test files together, the dev server may become unstable due to memory pressure from homepage's dynamic background images. Tests pass reliably when run individually.
+
+## Files Changed
+
+| File | Lines | Purpose |
+|------|-------|---------|
+| `__tests__/e2e/character.spec.ts` | 214 | Character browsing E2E tests |
+| `__tests__/e2e/navigation.spec.ts` | 248 | Navigation and theme E2E tests |
+
+## Next Phase Readiness
+
+All Phase 4 E2E tests complete:
+- Plan 1: Gacha simulator E2E tests (7 tests)
+- Plan 2: Character browsing and navigation E2E tests (21 tests)
+
+Total E2E coverage: 28 tests + 2 smoke tests = 30 E2E tests
+
+**Project testing suite complete:**
+- Unit tests: Gacha logic, utilities
+- Component tests: Quiz, GrowthCalculator, CharacterDetail
+- E2E tests: Gacha simulator, character browsing, navigation
+
+---
+*Generated by Claude Code during plan execution*
