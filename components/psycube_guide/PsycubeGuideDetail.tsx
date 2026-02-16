@@ -13,6 +13,23 @@ interface Props {
   item: Psycube;
 }
 
+function renderDescription(text: string) {
+  const parts = text.split(/(\[[^\]]+\])/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("[") && part.endsWith("]")) {
+      return (
+        <span
+          key={i}
+          className="inline rounded bg-purple-100 px-1 py-0.5 text-sm font-semibold text-purple-800 dark:bg-purple-900/40 dark:text-purple-300"
+        >
+          {part}
+        </span>
+      );
+    }
+    return <span key={i}>{part}</span>;
+  });
+}
+
 export default function PsycubeGuideSetting({ item }: Props) {
   useEffect(() => {
     // 컨텐츠 인기도: 가이드 조회 추적
@@ -89,8 +106,8 @@ export default function PsycubeGuideSetting({ item }: Props) {
               {item.option && (
                 <div className="space-y-2">
                   <div className="text-sm font-medium">옵션</div>
-                  <div className="rounded bg-gray-100 p-2 text-sm dark:bg-gray-800">
-                    {item.option}
+                  <div className="rounded bg-gray-100 p-3 text-sm leading-relaxed dark:bg-gray-800">
+                    {renderDescription(item.option)}
                   </div>
                 </div>
               )}

@@ -85,7 +85,7 @@ export default function ReveriesInTheRain() {
                 <ul className="list-inside list-disc space-y-2">
                   <li>메인 컨텐츠이며, 잠수하는 설정으로, 깊어질수록 난이도가 올라감</li>
                   <li>층별로 기믹을 이해하고, 파훼하는 것이 중요하고, 공략은 아래 컨텐츠를 참고</li>
-                  <li>100m ~ 350m는 3개의 덱이 필요 + 400m 부터는 4개의 덱이 필요</li>
+                  <li>100m ~ 350m는 3개의 덱이 필요 + 400m 부터는 4개의 덱이 필요 + 500m 부터는 4개의 덱이 필요</li>
                 </ul>
               </div>
             </div>
@@ -107,15 +107,35 @@ export default function ReveriesInTheRain() {
             {index > 0 && <Separator className="my-8" />}
             <h3 className="mb-4 text-xl font-semibold">{type}</h3>
             <div className="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-6">
-              {floors.map((floor) => (
-                <Link href={`/reveries_in_the_rain/${floor.id}`} key={floor.id}>
-                  <Card className="transition-colors duration-200 hover:bg-accent">
-                    <div className="flex h-24 items-center justify-center rounded-lg border border-gray-300">
-                      <h3 className="text-lg font-medium">{floor.id}</h3>
-                    </div>
-                  </Card>
-                </Link>
-              ))}
+              {floors.map((floor) => {
+                const floorNum = parseInt(floor.id.replace(/[^0-9]/g, ""));
+                const isComingSoon = floorNum > 400;
+
+                if (isComingSoon) {
+                  return (
+                    <Card
+                      key={floor.id}
+                      className="cursor-not-allowed opacity-60"
+                      onClick={() => alert("준비중입니다.")}
+                    >
+                      <div className="flex h-24 flex-col items-center justify-center rounded-lg border border-gray-300">
+                        <h3 className="text-lg font-medium">{floor.id}</h3>
+                        <span className="text-xs text-muted-foreground">준비중</span>
+                      </div>
+                    </Card>
+                  );
+                }
+
+                return (
+                  <Link href={`/reveries_in_the_rain/${floor.id}`} key={floor.id}>
+                    <Card className="transition-colors duration-200 hover:bg-accent">
+                      <div className="flex h-24 items-center justify-center rounded-lg border border-gray-300">
+                        <h3 className="text-lg font-medium">{floor.id}</h3>
+                      </div>
+                    </Card>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         ))}

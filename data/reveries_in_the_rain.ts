@@ -3824,46 +3824,718 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
       },
     ],
   },
-  // "410m": {
-  //   id: "410m",
-  //   floor_type: "무광층",
-  //   description: "고급 난이도의 구역으로, 정교한 전략과 팀 구성이 요구됩니다.",
-  //   wholeEffect: [
-  //     "상성 피해 계수 10% 증가. 비상성 공격을 받을 시 최종 피해 면역 5% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
-  //   ],
-  //   enemyEffect: ["현실 방어 및 정신 방어 +10%"],
-  //   enemies: [
-  //     {
-  //       id: "enemy_200m_1",
-  //       name: "심연의 지배자",
-  //       inspiration: "수",
-  //       skills: [
-  //         {
-  //           name: "심연의 물결",
-  //           description: "전체 대상에게 150% 피해를 입히고 2턴간 행동 속도를 감소시킵니다.",
-  //         },
-  //       ],
-  //       stats: {
-  //         hp: 30000,
-  //         atk: 2000,
-  //         def: 800,
-  //         res: 800,
-  //       },
-  //     },
-  //   ],
-  //   strategy: {
-  //     overview: "속도 감소 대응과 높은 생존력이 필요한 구역입니다.",
-  //     details: [
-  //       "속도 감소 해제 능력을 가진 캐릭터가 필수적입니다.",
-  //       "지속적인 힐링이 가능한 캐릭터를 포함시키세요.",
-  //     ],
-  //   },
-  //   recommendedTeams: [
-  //     {
-  //       name: "생존 특화팀",
-  //       characters: ["A-나이트", "메이플", "릴리야"],
-  //       description: "높은 생존력과 디버프 해제가 가능한 팀 구성입니다.",
-  //     },
-  //   ],
-  // },
+  "410m": {
+    id: "410m",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_410m_1",
+        name: "울지 못하는 새",
+        inspiration: "beast",
+        type: "boss",
+      },
+      {
+        id: "enemy_410m_2",
+        name: "오골계 호위병",
+        inspiration: "beast",
+      },
+      {
+        id: "enemy_410m_3",
+        name: "오골계 호위병",
+        inspiration: "beast",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [],
+    },
+    recommendedTeams: [],
+  },
+  "420m": {
+    id: "420m",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_420m_1",
+        name: "말하지 못하는 흉내꾼",
+        inspiration: "beast",
+        type: "boss",
+      },
+      {
+        id: "enemy_420m_2",
+        name: "오골계 호위병",
+        inspiration: "beast",
+      },
+      {
+        id: "enemy_420m_3",
+        name: "오골계 호위병",
+        inspiration: "beast",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [],
+    },
+    recommendedTeams: [],
+  },
+  "430m": {
+    id: "430m",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_430m_1",
+        name: "광기 어린 '승객'",
+        inspiration: "spirit",
+        type: "boss",
+      },
+      {
+        id: "enemy_430m_2",
+        name: "신중한 순찰병",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_430m_3",
+        name: "민첩한 순찰병",
+        inspiration: "spirit",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [],
+    },
+    recommendedTeams: [],
+  },
+  "440m": {
+    id: "440m",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_440m_1",
+        name: "국경 수비군·매복자",
+        inspiration: "mineral",
+      },
+      {
+        id: "enemy_440m_2",
+        name: "국경 수비군·보병",
+        inspiration: "mineral",
+      },
+      {
+        id: "enemy_440m_3",
+        name: "고통의 감염종",
+        inspiration: "mineral",
+        type: "boss",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [],
+    },
+    recommendedTeams: [],
+  },
+  "450m-1": {
+    id: "450m-1",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_450m_1_1",
+        name: "스스로 가둔 추방자",
+        inspiration: "star",
+        type: "boss",
+      },
+      {
+        id: "enemy_450m_1_2",
+        name: "붙잡힌 자",
+        inspiration: "star",
+      },
+      {
+        id: "enemy_450m_1_3",
+        name: "붙잡힌 자",
+        inspiration: "star",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "붙잡힌 자가 존재하면 보스의 받는 피해가 초대폭 감소",
+        "붙잡힌 자가 없으면 보스가 '통제를 잃은 추방자'로 전환되며, 방어 감소 대신 공격 대폭 증가",
+        "붙잡힌 자가 2명이면 보스가 '스스로 가둔 추방자'로 전환",
+        "붙잡힌 자는 치명적 공격을 받으면 사망하지 않고 '스스로 가둔 심장'으로 전환, HP 100% 회복 시 다시 '붙잡힌 자'로 복귀",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "450m-2": {
+    id: "450m-2",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_450m_2_1",
+        name: "에너지 구상체",
+        inspiration: "star",
+        type: "boss",
+      },
+      {
+        id: "enemy_450m_2_2",
+        name: "에너지 구상체",
+        inspiration: "star",
+      },
+      {
+        id: "enemy_450m_2_3",
+        name: "에너지 구상체",
+        inspiration: "star",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "에너지 구상체가 생존 시 에너지 분석가의 받는 피해 50% 감소",
+        "각 에너지 구상체가 턴 시작 시 분석가에게 서로 다른 색상의 에너지를 부여",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "450m-3": {
+    id: "450m-3",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_450m_3_1",
+        name: "흡혈의 울음소리·피로스",
+        inspiration: "mineral",
+        type: "boss",
+      },
+      {
+        id: "enemy_450m_3_2",
+        name: "아득한 감염종",
+        inspiration: "mineral",
+      },
+      {
+        id: "enemy_450m_3_3",
+        name: "고통의 감염종",
+        inspiration: "mineral",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [],
+    },
+    recommendedTeams: [],
+  },
+  "450m-4": {
+    id: "450m-4",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_450m_4_1",
+        name: "생각의 매듭·본능",
+        inspiration: "beast",
+        type: "boss",
+      },
+      {
+        id: "enemy_450m_4_2",
+        name: "과거의 그림자",
+        inspiration: "beast",
+      },
+      {
+        id: "enemy_450m_4_3",
+        name: "아른거리는 위기",
+        inspiration: "beast",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [],
+    },
+    recommendedTeams: [],
+  },
+  "460m": {
+    id: "460m",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_460m_1",
+        name: "울지 못하는 새",
+        inspiration: "beast",
+        type: "boss",
+      },
+      {
+        id: "enemy_460m_2",
+        name: "오골계 호위병",
+        inspiration: "beast",
+      },
+      {
+        id: "enemy_460m_3",
+        name: "오골계 호위병",
+        inspiration: "beast",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "울지 못하는 새가 부여하는 [오염]은 해제 불가",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "470m": {
+    id: "470m",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_470m_1",
+        name: "말하지 못하는 흉내꾼",
+        inspiration: "beast",
+        type: "boss",
+      },
+      {
+        id: "enemy_470m_2",
+        name: "울지 못하는 새",
+        inspiration: "beast",
+      },
+      {
+        id: "enemy_470m_3",
+        name: "오골계 호위병",
+        inspiration: "beast",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [],
+    },
+    recommendedTeams: [],
+  },
+  "480m": {
+    id: "480m",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_480m_1",
+        name: "광기 어린 '승객'",
+        inspiration: "spirit",
+        type: "boss",
+      },
+      {
+        id: "enemy_480m_2",
+        name: "신중한 순찰병",
+        inspiration: "spirit",
+      },
+      {
+        id: "enemy_480m_3",
+        name: "민첩한 순찰병",
+        inspiration: "spirit",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [],
+    },
+    recommendedTeams: [],
+  },
+  "490m": {
+    id: "490m",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_490m_1",
+        name: "국경 수비군·매복자",
+        inspiration: "mineral",
+      },
+      {
+        id: "enemy_490m_2",
+        name: "국경 수비군·보병",
+        inspiration: "mineral",
+      },
+      {
+        id: "enemy_490m_3",
+        name: "아득한 감염종",
+        inspiration: "mineral",
+        type: "boss",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [],
+    },
+    recommendedTeams: [],
+  },
+  "500m-1": {
+    id: "500m-1",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_500m_1_1",
+        name: "스스로 가둔 추방자",
+        inspiration: "star",
+        type: "boss",
+      },
+      {
+        id: "enemy_500m_1_2",
+        name: "붙잡힌 자",
+        inspiration: "star",
+      },
+      {
+        id: "enemy_500m_1_3",
+        name: "붙잡힌 자",
+        inspiration: "star",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "붙잡힌 자가 존재하면 보스의 받는 피해가 초대폭 감소",
+        "붙잡힌 자가 없으면 보스가 '통제를 잃은 추방자'로 전환되며, 방어 감소 대신 공격 대폭 증가",
+        "붙잡힌 자가 2명이면 보스가 '스스로 가둔 추방자'로 전환",
+        "붙잡힌 자는 치명적 공격을 받으면 사망하지 않고 '스스로 가둔 심장'으로 전환, HP 100% 회복 시 다시 '붙잡힌 자'로 복귀",
+        "450m-1 대비 강화된 버전",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "500m-2": {
+    id: "500m-2",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_500m_2_1",
+        name: "에너지 구상체",
+        inspiration: "star",
+        type: "boss",
+      },
+      {
+        id: "enemy_500m_2_2",
+        name: "에너지 구상체",
+        inspiration: "star",
+      },
+      {
+        id: "enemy_500m_2_3",
+        name: "에너지 구상체",
+        inspiration: "star",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "에너지 구상체가 생존 시 에너지 분석가의 받는 피해 50% 감소",
+        "450m-2 대비 강화된 버전",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "500m-3": {
+    id: "500m-3",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_500m_3_1",
+        name: "흡혈의 울음소리·피로스",
+        inspiration: "mineral",
+        type: "boss",
+      },
+      {
+        id: "enemy_500m_3_2",
+        name: "아득한 감염종",
+        inspiration: "mineral",
+      },
+      {
+        id: "enemy_500m_3_3",
+        name: "고통의 감염종",
+        inspiration: "mineral",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "450m-3 대비 강화된 버전",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "500m-4": {
+    id: "500m-4",
+    floor_type: "무광층",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가. 15턴을 넘길 시 몬스터가 광폭 상태 진입",
+    ],
+    enemyEffect: [],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_500m_4_1",
+        name: "생각의 매듭·열광",
+        inspiration: "beast",
+        type: "boss",
+      },
+      {
+        id: "enemy_500m_4_2",
+        name: "과거의 그림자",
+        inspiration: "beast",
+      },
+      {
+        id: "enemy_500m_4_3",
+        name: "아른거리는 위기",
+        inspiration: "beast",
+      },
+    ],
+    strategy: {
+      overview: "",
+      details: [
+        "450m-4 대비 강화된 버전",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  // === 끝없는 소용돌이(무한) - 500m 이후 ===
+  // 최대 6개 파티 출전, 순서대로 보스와 전투
+  // 생각의 원형(청사진) 출전 불가, 보호 효과 사라짐
+  // 보스에게 피해를 주면 잠수 깊이 증가, 깊이 상승 시 보스 형태 전환(영감/스킬 변경)
+  // 보스는 스트레스를 축적하며, 임계치 도달 시 강력한 효과 발동
+  "600m": {
+    id: "600m",
+    floor_type: "끝없는 소용돌이",
+    description:
+      "끝없는 소용돌이 속의 의식 조각이 서로 맞물리고 겹쳐, 보스의 감정의 매듭에 도전하게 됩니다.",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가",
+      "생각의 원형 출전 불가, 보호 효과 사라짐",
+      "최대 6개 파티 순서대로 출전",
+    ],
+    enemyEffect: [
+      "보스에게 피해를 주면 잠수 깊이가 증가",
+      "잠수 깊이 상승 시 보스가 형태 전환 (영감 및 주문 변경: 야수→나무→천체→암석→영혼 순서)",
+      "보스가 스트레스를 축적하며, 30 이상 시 주문 차단 / 70 이상 시 행동 횟수 -1 / 100 이상 시 전체 800% 정신 피해 최종 술식 시전",
+    ],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_600m_1",
+        name: "생각의 매듭·본능",
+        inspiration: "beast",
+        type: "boss",
+      },
+    ],
+    strategy: {
+      overview: "끝없는 소용돌이 - 생각의 매듭과의 지구전",
+      details: [
+        "최대 6개 파티로 보스에게 순서대로 도전",
+        "보스에게 피해를 줄수록 잠수 깊이가 증가하며, 깊이 상승 시 보스가 형태를 전환 (영감: 야수→나무→천체→암석→영혼)",
+        "보스는 스트레스를 축적: 30 이상 시 주문 차단, 70 이상 시 행동 횟수 -1, 100 이상 시 전체 800% 정신 피해 최종 술식 + [과잉 환각] 부여",
+        "생각의 원형(청사진) 출전 불가, 보호 효과 사라짐",
+        "턴마다 첫 번째로 최종 술식을 시전하는 캐릭터의 피해 감면 감소",
+        "턴 종료 시 주문을 직접 사용하지 않은 아군 캐릭터 1명당 보스 열정 +1",
+        "턴 시작/종료 시 보스 열정이 최대치에 도달하면 즉시 최종 술식 시전",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "700m": {
+    id: "700m",
+    floor_type: "끝없는 소용돌이",
+    description:
+      "끝없는 소용돌이 속의 의식 조각이 서로 맞물리고 겹쳐, 보스의 감정의 매듭에 도전하게 됩니다.",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가",
+      "생각의 원형 출전 불가, 보호 효과 사라짐",
+      "최대 6개 파티 순서대로 출전",
+    ],
+    enemyEffect: [
+      "보스에게 피해를 주면 잠수 깊이가 증가",
+      "잠수 깊이 상승 시 보스가 형태 전환 (영감 및 주문 변경: 야수→나무→천체→암석→영혼 순서)",
+      "보스가 스트레스를 축적하며, 30 이상 시 주문 차단 / 70 이상 시 행동 횟수 -1 / 100 이상 시 전체 800% 정신 피해 최종 술식 시전",
+    ],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_700m_1",
+        name: "생각의 매듭·열광",
+        inspiration: "beast",
+        type: "boss",
+      },
+    ],
+    strategy: {
+      overview: "끝없는 소용돌이 - 생각의 매듭·열광",
+      details: [
+        "600m과 동일한 기본 규칙 적용",
+        "보스 형태 전환 시 영감 및 주문 변경 (야수→나무→천체→암석→영혼 순서)",
+        "600m 대비 보스 스탯 강화",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "800m": {
+    id: "800m",
+    floor_type: "끝없는 소용돌이",
+    description:
+      "끝없는 소용돌이 속의 의식 조각이 서로 맞물리고 겹쳐, 보스의 감정의 매듭에 도전하게 됩니다.",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가",
+      "생각의 원형 출전 불가, 보호 효과 사라짐",
+      "최대 6개 파티 순서대로 출전",
+    ],
+    enemyEffect: [
+      "보스에게 피해를 주면 잠수 깊이가 증가",
+      "잠수 깊이 상승 시 보스가 형태 전환 (영감 및 주문 변경: 야수→나무→천체→암석→영혼 순서)",
+      "보스가 스트레스를 축적하며, 30 이상 시 주문 차단 / 70 이상 시 행동 횟수 -1 / 100 이상 시 전체 800% 정신 피해 최종 술식 시전",
+    ],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_800m_1",
+        name: "생각의 매듭·희열",
+        inspiration: "beast",
+        type: "boss",
+      },
+    ],
+    strategy: {
+      overview: "끝없는 소용돌이 - 생각의 매듭·희열",
+      details: [
+        "600m과 동일한 기본 규칙 적용",
+        "보스 형태 전환 시 영감 및 주문 변경 (야수→나무→천체→암석→영혼 순서)",
+        "700m 대비 보스 스탯 강화",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "900m": {
+    id: "900m",
+    floor_type: "끝없는 소용돌이",
+    description:
+      "끝없는 소용돌이 속의 의식 조각이 서로 맞물리고 겹쳐, 보스의 감정의 매듭에 도전하게 됩니다.",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가",
+      "생각의 원형 출전 불가, 보호 효과 사라짐",
+      "최대 6개 파티 순서대로 출전",
+    ],
+    enemyEffect: [
+      "보스에게 피해를 주면 잠수 깊이가 증가",
+      "잠수 깊이 상승 시 보스가 형태 전환 (영감 및 주문 변경: 야수→나무→천체→암석→영혼 순서)",
+      "보스가 스트레스를 축적하며, 30 이상 시 주문 차단 / 70 이상 시 행동 횟수 -1 / 100 이상 시 전체 800% 정신 피해 최종 술식 시전",
+    ],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_900m_1",
+        name: "생각의 매듭·통찰",
+        inspiration: "beast",
+        type: "boss",
+      },
+    ],
+    strategy: {
+      overview: "끝없는 소용돌이 - 생각의 매듭·통찰",
+      details: [
+        "600m과 동일한 기본 규칙 적용",
+        "보스 형태 전환 시 영감 및 주문 변경 (야수→나무→천체→암석→영혼 순서)",
+        "800m 대비 보스 스탯 강화",
+      ],
+    },
+    recommendedTeams: [],
+  },
+  "1000m": {
+    id: "1000m",
+    floor_type: "끝없는 소용돌이",
+    description:
+      "끝없는 소용돌이 속의 의식 조각이 서로 맞물리고 겹쳐, 보스의 감정의 매듭에 도전하게 됩니다.",
+    wholeEffect: [
+      "상성 피해 계수 50% 증가. 비상성 공격을 받을 시 최종 피해 면역 25% 증가",
+      "생각의 원형 출전 불가, 보호 효과 사라짐",
+      "최대 6개 파티 순서대로 출전",
+    ],
+    enemyEffect: [
+      "보스에게 피해를 주면 잠수 깊이가 증가",
+      "잠수 깊이 상승 시 보스가 형태 전환 (영감 및 주문 변경: 야수→나무→천체→암석→영혼 순서)",
+      "보스가 스트레스를 축적하며, 30 이상 시 주문 차단 / 70 이상 시 행동 횟수 -1 / 100 이상 시 전체 800% 정신 피해 최종 술식 시전",
+    ],
+    teamEffect: [],
+    enemies: [
+      {
+        id: "enemy_1000m_1",
+        name: "생각의 매듭·환각",
+        inspiration: "beast",
+        type: "boss",
+      },
+    ],
+    strategy: {
+      overview: "끝없는 소용돌이 - 생각의 매듭·환각 (최종)",
+      details: [
+        "600m과 동일한 기본 규칙 적용",
+        "보스 형태 전환 시 영감 및 주문 변경 (야수→나무→천체→암석→영혼 순서)",
+        "최종 단계 - 가장 높은 보스 스탯",
+      ],
+    },
+    recommendedTeams: [],
+  },
 };

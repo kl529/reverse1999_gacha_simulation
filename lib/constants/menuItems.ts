@@ -77,11 +77,6 @@ export const LIBRARY_ITEMS: CardItem[] = [
     href: "/shop_efficiency",
   },
   // {
-  //   icon: "/infos/menu/content_guide_menu.webp",
-  //   label: "컨텐츠\n가이드\n(준비중)",
-  //   href: "#",
-  // },
-  // {
   //   icon: "/infos/menu/growth_calculator_menu.webp",
   //   label: "육성\n계산기\n(준비중)",
   //   href: "#",
@@ -139,6 +134,11 @@ export const GUIDE_ITEMS: CardItem[] = [
     icon: "/infos/menu/coupon_menu.webp",
     label: "쿠폰 목록",
     href: "/coupon",
+  },
+  {
+    icon: "/infos/menu/content_guide_menu.webp",
+    label: "상시 컨텐츠",
+    href: "/content_guide",
   },
 ];
 
@@ -231,12 +231,6 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
         href: "/shop_efficiency",
       },
       // {
-      //   iconImg: "/infos/menu/content_guide_menu.webp",
-      //   label: "컨텐츠 가이드",
-      //   href: "#",
-      //   disabled: true,
-      // },
-      // {
       //   iconImg: "/infos/menu/growth_calculator_menu.webp",
       //   label: "육성 계산기",
       //   href: "#",
@@ -292,6 +286,11 @@ export const HAMBURGER_MENU_CATEGORIES: HamburgerMenuCategory[] = [
         iconImg: "/infos/menu/coupon_menu.webp",
         label: "쿠폰 목록",
         href: "/coupon",
+      },
+      {
+        iconImg: "/infos/menu/content_guide_menu.webp",
+        label: "상시 컨텐츠",
+        href: "/content_guide",
       },
     ],
   },

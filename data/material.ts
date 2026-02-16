@@ -56,6 +56,15 @@ export const materialList: Material[] = [
     showInInput: true,
     sortOrder: 2,
   },
+  {
+    id: 6,
+    name: "배회하는 공포의 집",
+    category: "growth_material",
+    engName: "Roaming Terror Hut",
+    rarity: 6,
+    showInInput: true,
+    sortOrder: 6,
+  },
   // 5성 재료
   {
     id: 101,
@@ -155,6 +164,15 @@ export const materialList: Material[] = [
     rarity: 5,
     showInInput: true,
     sortOrder: 6,
+  },
+  {
+    id: 112,
+    name: "뿌리상자 토끼",
+    category: "growth_material",
+    engName: "Rootbox Rabbit",
+    rarity: 5,
+    showInInput: true,
+    sortOrder: 12,
   },
   // 4성 재료
   {
@@ -267,6 +285,15 @@ export const materialList: Material[] = [
     sortOrder: 6,
     farmingStage: "9-15 하드",
   },
+  {
+    id: 212,
+    name: "진심 부활절 달걀",
+    category: "growth_material",
+    engName: "Heartfelt Easter Egg",
+    rarity: 4,
+    showInInput: true,
+    sortOrder: 12,
+  },
   // 3성 재료
   {
     id: 301,
@@ -367,6 +394,15 @@ export const materialList: Material[] = [
     showInInput: true,
     sortOrder: 5,
     farmingStage: "10-4 하드",
+  },
+  {
+    id: 311,
+    name: "날카로운 바늘",
+    category: "growth_material",
+    engName: "Sharp Needle",
+    rarity: 3,
+    showInInput: true,
+    sortOrder: 11,
   },
   // 2성 재료
   {

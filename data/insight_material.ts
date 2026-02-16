@@ -679,7 +679,7 @@ export const insightMaterial: InsightMaterial[] = [
         materials: {
           1002: 200000,
           509: 16,
-          106: 6,
+          111: 6,
           1: 3,
         },
       },
@@ -874,7 +874,7 @@ export const insightMaterial: InsightMaterial[] = [
         materials: {
           1002: 200000,
           509: 16,
-          106: 6,
+          111: 6,
           2: 3,
         },
       },
@@ -1235,7 +1235,7 @@ export const insightMaterial: InsightMaterial[] = [
         materials: {
           1002: 200000,
           509: 16,
-          106: 6,
+          111: 6,
           5: 3,
         },
       },
@@ -1396,7 +1396,7 @@ export const insightMaterial: InsightMaterial[] = [
         materials: {
           1002: 200000,
           512: 16,
-          106: 6,
+          111: 6,
           3: 3,
         },
       },
@@ -1509,7 +1509,7 @@ export const insightMaterial: InsightMaterial[] = [
         materials: {
           1002: 18000,
           507: 6,
-          405: 6,
+          405: 5,
           304: 5,
         },
       },
@@ -1629,7 +1629,7 @@ export const insightMaterial: InsightMaterial[] = [
           1002: 200000,
           512: 8,
           509: 8,
-          106: 6,
+          111: 6,
           3: 3,
         },
       },
@@ -1643,7 +1643,7 @@ export const insightMaterial: InsightMaterial[] = [
         materials: {
           1002: 18000,
           501: 6,
-          403: 5,
+          403: 6,
           305: 5,
         },
       },
@@ -1864,6 +1864,125 @@ export const insightMaterial: InsightMaterial[] = [
           509: 8,
           110: 6,
           3: 3,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 58, // "마샤" (Marsha)
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 18000,
+          501: 6,
+          404: 6,
+          305: 5,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 40000,
+          502: 10,
+          309: 5,
+          205: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          1002: 200000,
+          503: 16,
+          111: 6,
+          5: 3,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 59, // "이고르" (Igor)
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 18000,
+          501: 6,
+          401: 6,
+          308: 6,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 40000,
+          502: 10,
+          310: 6,
+          201: 6,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          1002: 200000,
+          503: 16,
+          106: 6,
+          4: 3,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 60, // "노사전" (Paper Heron)
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 18000,
+          504: 6,
+          405: 5,
+          304: 5,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 40000,
+          505: 10,
+          305: 4,
+          211: 6,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          1002: 200000,
+          506: 16,
+          109: 6,
+          1: 3,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 217, // "리드" (Reed)
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 8000,
+          504: 4,
+          405: 4,
+          304: 2,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 25000,
+          505: 8,
+          302: 4,
+          206: 2,
         },
       },
     ],

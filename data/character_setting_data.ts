@@ -200,16 +200,16 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 7, // "안안 리"
     psycubes: [
       {
+        psycube_id: 88,
+        description: "S (나무계시)",
+      },
+      {
         psycube_id: 32,
         description: "S (풀)",
       },
       {
         psycube_id: 70,
         description: "A+ (나무팟)",
-      },
-      {
-        psycube_id: 41,
-        description: "A (딜보조)",
       },
       {
         psycube_id: 38,
@@ -717,10 +717,10 @@ export const character_setting_data: CharacterSettingData[] = [
     psycubes: [
       {
         psycube_id: 87,
-        description: "S (광상, 보조)",
+        description: "S (광상, 여휘)",
       },
       {
-        psycube_id: 29,
+        psycube_id: 15,
         description: "S (딜증)",
       },
       {
@@ -728,8 +728,8 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A+",
       },
       {
-        psycube_id: 32,
-        description: "A",
+        psycube_id: 29,
+        description: "A+",
       },
     ],
     resonance: [
@@ -928,20 +928,20 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 31, // "머큐리아"
     psycubes: [
       {
-        psycube_id: 41,
-        description: "S (딜보조)",
+        psycube_id: 50,
+        description: "S (데미지)",
       },
       {
-        psycube_id: 34,
+        psycube_id: 41,
         description: "S (딜 보조)",
       },
       {
         psycube_id: 38,
-        description: "S (딜 증가 보조)",
+        description: "S (딜 보조)",
       },
       {
-        psycube_id: 39,
-        description: "A (빠른 술식)",
+        psycube_id: 32,
+        description: "A (데미지)",
       },
     ],
     resonance: [
@@ -1092,16 +1092,16 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (풀)",
       },
       {
+        psycube_id: 73,
+        description: "S",
+      },
+      {
         psycube_id: 42,
         description: "A (장기전)",
       },
       {
         psycube_id: 52,
         description: "A (단기전)",
-      },
-      {
-        psycube_id: 13,
-        description: "A- (디버퍼 필요)",
       },
     ],
     resonance: [
@@ -2682,5 +2682,327 @@ export const character_setting_data: CharacterSettingData[] = [
       },
     ],
     resonance_patterns: ["Elucidation"],
+  },
+  // ── 4성 캐릭터 ──
+  {
+    character_id: 201, // "닉 보텀" — defense
+    psycubes: [],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0WtIw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
+  },
+  {
+    character_id: 202, // "이글" — damage
+    psycubes: [],
+    resonance: [
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUEpCQ",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Hyperphrenia"],
+  },
+  {
+    character_id: 203, // "겨울" — support
+    psycubes: [],
+    resonance: [
+      {
+        code: "AKgkMRQqBDtEOjM8YzwgJAEmADRRNDFEQExgTDA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Delirament"],
+  },
+  {
+    character_id: 204, // "바니바니" — balance
+    psycubes: [],
+    resonance: [
+      {
+        code: "AEAASBE0AiQELRSgJC1EJlRFYEFSJEFBQCghKiA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
+  },
+  {
+    character_id: 205, // "파비아" — support
+    psycubes: [],
+    resonance: [
+      {
+        code: "AKgkJQQmVCwFLUQ5AToAKBE8MC1AQVBCUkVC",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Delirament"],
+  },
+  {
+    character_id: 206, // "올리버 포그" — balance
+    psycubes: [],
+    resonance: [
+      {
+        code: "ACZQoCQmVCQELxQtRDlAOEI8ADwQNCI0IA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
+  },
+  {
+    character_id: 207, // "빨간 망토" — balance
+    psycubes: [],
+    resonance: [
+      {
+        code: "ACZQoCQmVCQELxQtRDlAOEI8ADwQNCI0IA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
+  },
+  {
+    character_id: 208, // "APPLe" — support
+    psycubes: [],
+    resonance: [
+      {
+        code: "AKgkMRQqBDtEOjM8YzwgJAEmADRRNDFEQExgTDA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Delirament"],
+  },
+  {
+    character_id: 209, // "크리스탈로" — defense
+    psycubes: [],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0WtIw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
+  },
+  {
+    character_id: 210, // "레이비스" — support
+    psycubes: [],
+    resonance: [
+      {
+        code: "ADQRJQA5AjsTNAWoJC1ELUItQCZQPDA8Yw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Delirament"],
+  },
+  {
+    character_id: 211, // "무아상" — balance
+    psycubes: [],
+    resonance: [
+      {
+        code: "AKAkQUVBFUIBOgM6MyZUJAQ8YD0gNEE0IUgATBBMAQ",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
+  },
+  {
+    character_id: 212, // "메스머 주니어" — balance
+    psycubes: [],
+    resonance: [
+      {
+        code: "AKAkJwUlRDRVNAQ8YDxQOzA4IjERJRBFAUwDTAA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
+  },
+  {
+    character_id: 213, // "에릭" — balance
+    psycubes: [],
+    resonance: [
+      {
+        code: "AKAkJwUlRDRVNAQ8YDxQOzA4IjERJRBFAUwDTAA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
+  },
+  {
+    character_id: 214, // "폴터가이스트" — defense
+    psycubes: [],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0WtIw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
+  },
+  {
+    character_id: 215, // "화이트 럼" — support
+    psycubes: [],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0WtIw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
+  },
+  {
+    character_id: 216, // "TTT" — balance
+    psycubes: [],
+    resonance: [
+      {
+        code: "AKAkJwUlRDRVNAQ8YDxQOzA4IjERJRBFAUwDTAA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: [],
+  },
+  // ── 3성 캐릭터 ──
+  {
+    character_id: 301, // "광대" — defense
+    psycubes: [],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0WtIw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
+  },
+  {
+    character_id: 302, // "라 수르스" — support
+    psycubes: [],
+    resonance: [
+      {
+        code: "AKgkMRQqBDtEOjM8YzwgJAEmADRRNDFEQExgTDA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Delirament"],
+  },
+  {
+    character_id: 303, // "에일리언 T" — defense
+    psycubes: [],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0WtIw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
+  },
+  {
+    character_id: 304, // "레일라니" — balance
+    psycubes: [],
+    resonance: [
+      {
+        code: "ACZQoCQmVCQELxQtRDlAOEI8ADwQNCI0IA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
+  },
+  {
+    character_id: 305, // "존 티토" — balance
+    psycubes: [],
+    resonance: [
+      {
+        code: "ACZQoCQmVCQELxQtRDlAOEI8ADwQNCI0IA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
+  },
+  {
+    character_id: 306, // "리사&루이스" — defense
+    psycubes: [],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0WtIw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
+  },
+  {
+    character_id: 307, // "베티" — balance
+    psycubes: [],
+    resonance: [
+      {
+        code: "AKAkQUVBFUIBOgM6MyZUJAQ8YD0gNEE0IUgATBBMAQ",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
+  },
+  {
+    character_id: 308, // "다그닥 달리" — defense
+    psycubes: [],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0WtIw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
+  },
+  {
+    character_id: 309, // "어니언" — damage
+    psycubes: [],
+    resonance: [
+      {
+        code: "AKQkOEU4BTxiPDA0QzQRJQQlACkCKkAxUA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Hyperphrenia"],
+  },
+  {
+    character_id: 310, // "스푸트니크" — defense
+    psycubes: [],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0WtIw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
+  },
+  {
+    character_id: 311, // "파이오니어" — defense
+    psycubes: [],
+    resonance: [
+      {
+        code: "AKwlMTMxIjEgPBM8AzRVNFM6ADhBK0BMQUgSTAJIAQ",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
+  },
+  // ── 2성 캐릭터 ──
+  {
+    character_id: 401, // "미스 라디오" — defense
+    psycubes: [],
+    resonance: [
+      {
+        code: "ADQEPwY8ADkROhAxMCZQMUEwNDRTJ0WtIw",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equanimity"],
+  },
+  {
+    character_id: 402, // "문" — balance
+    psycubes: [],
+    resonance: [
+      {
+        code: "AKAkQUVBFUIBOgM6MyZUJAQ8YD0gNEE0IUgATBBMAQ",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Equibalance"],
   },
 ];

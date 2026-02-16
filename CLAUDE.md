@@ -1,22 +1,3 @@
-<!-- OPENSPEC:START -->
-# OpenSpec Instructions
-
-These instructions are for AI assistants working in this project.
-
-Always open `@/openspec/AGENTS.md` when the request:
-- Mentions planning or proposals (words like proposal, spec, change, plan)
-- Introduces new capabilities, breaking changes, architecture shifts, or big performance/security work
-- Sounds ambiguous and you need the authoritative spec before coding
-
-Use `@/openspec/AGENTS.md` to learn:
-- How to create and apply change proposals
-- Spec format and conventions
-- Project structure and guidelines
-
-Keep this managed block so 'openspec update' can refresh the instructions.
-
-<!-- OPENSPEC:END -->
-
 # CLAUDE.md - 프로젝트 가이드
 
 ## 🎯 프로젝트 개요
@@ -108,6 +89,7 @@ project/
 ⚠️ **데이터 관리**
 - 게임 업데이트에 따른 캐릭터 데이터 동기화
 - 이미지 경로 및 메타데이터 일관성 유지
+- **재료 데이터 참조**: 재료(인사이트, 공명, 증폭 등) 관련 데이터 작업 시 항상 [kornblume의 arcanists.json](https://github.com/windbow27/kornblume/blob/main/public/data/arcanists.json)을 참고할 것. 이 파일에 캐릭터별 인사이트/공명/증폭 재료 정보가 정리되어 있음.
 
 ### 자주 사용하는 패턴들
 - **모달 시스템**: ModalProvider를 통한 중앙화된 모달 관리

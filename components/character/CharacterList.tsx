@@ -106,6 +106,8 @@ export default function CharacterList() {
     return euphoriaList.some((euphoria) => euphoria.character_id === characterId);
   };
 
+  const hasSmallImage = (rarity: number) => rarity >= 5;
+
   const renderCharGroup = (rarity: number, label: string, colorClass: string) => {
     const group = filteredChars.filter((ch) => ch.rarity === rarity);
     if (group.length === 0) return null;
@@ -117,13 +119,13 @@ export default function CharacterList() {
           {group.map((ch) => (
             <Link key={`${ch.id}-${ch.version}`} href={`/character/${ch.id}`}>
               <div className="flex cursor-pointer flex-col items-center rounded border border-gray-400 p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800">
-                <div className="relative h-16 w-16">
+                <div className="relative h-16 w-16 overflow-hidden">
                   <Image
-                    src={getCharacterUrl(`${ch.rarity}stars`, `${ch.engName}.webp`, true)}
+                    src={getCharacterUrl(`${ch.rarity}stars`, `${ch.engName}.webp`, hasSmallImage(ch.rarity))}
                     alt={ch.name}
                     width={64}
                     height={64}
-                    className="h-full w-full rounded object-contain"
+                    className={`h-full w-full rounded ${hasSmallImage(ch.rarity) ? "object-contain" : "object-cover object-top"}`}
                   />
                   {ch.version && (
                     <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
@@ -265,6 +267,9 @@ export default function CharacterList() {
       <div className="w-full space-y-6 px-4">
         {renderCharGroup(6, "🌟 6성", "text-purple-600 dark:text-purple-400")}
         {renderCharGroup(5, "⭐ 5성", "text-yellow-600 dark:text-yellow-300")}
+        {renderCharGroup(4, "4성", "text-blue-600 dark:text-blue-300")}
+        {renderCharGroup(3, "3성", "text-green-600 dark:text-green-300")}
+        {renderCharGroup(2, "2성", "text-gray-600 dark:text-gray-300")}
       </div>
     </div>
   );

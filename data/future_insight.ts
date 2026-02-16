@@ -251,4 +251,28 @@ export const futureInsightData: FutureInsightItem[] = [
     },
     euphoria_pick_up: [7, 31, 23, 12, 24, 16],
   },
+  {
+    version: "3.4",
+    title: "영원한 봄",
+    period: {
+      start: "2026-04-16",
+      end: "2026-05-28",
+      week: 6,
+    },
+    album_shop: {
+      rare6: 27,
+      rare5: 120,
+    },
+    banners: ["paper_heron_pick_up", "cheng_heguang_pick_up"],
+    euphoria: {
+      star6: [
+        { characterId: 14, euphoriaId: 37 },
+        { characterId: 41, euphoriaId: 38 },
+        { characterId: 19, euphoriaId: 39 },
+        { characterId: 37, euphoriaId: 40 },
+      ],
+      star5: [],
+    },
+    euphoria_pick_up: [14, 19, 37, 11, 5, 7, 3],
+  },
 ];

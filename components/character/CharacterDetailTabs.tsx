@@ -115,26 +115,36 @@ export default function CharacterDetailTabs({ character }: { character: Characte
 
       {/* 다른 캐릭터 네비게이션 - 공용 영역 */}
       <div className="mx-auto max-w-4xl space-y-6 px-4 py-8">
-        {[6, 5].map((rarity) => (
+        {[6, 5, 4, 3, 2].map((rarity) => {
+          const chars = getSortedCharList(rarity);
+          if (chars.length === 0) return null;
+          const labels: Record<number, string> = {
+            6: "🌟 6성",
+            5: "⭐ 5성",
+            4: "4성",
+            3: "3성",
+            2: "2성",
+          };
+          return (
           <div
             key={rarity}
             className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
           >
             <h3 className="text-center text-[15px] font-semibold text-gray-800 dark:text-gray-200">
-              {rarity === 6 ? "🌟 6성" : "⭐ 5성"}
+              {labels[rarity]}
             </h3>
             <Separator className="my-2" />
             <div className="grid grid-cols-[repeat(auto-fit,minmax(88px,1fr))] gap-3">
               {getSortedCharList(rarity).map((ch) => (
                 <Link key={ch.id} href={`/character/${ch.id}`}>
                   <div className="flex flex-col items-center rounded border border-transparent p-1 transition hover:border-blue-500 hover:bg-blue-50 dark:hover:border-blue-400 dark:hover:bg-blue-950">
-                    <div className="relative h-16 w-16">
+                    <div className="relative h-16 w-16 overflow-hidden">
                       <Image
-                        src={getCharacterUrl(`${ch.rarity}stars`, `${ch.engName}.webp`, true)}
+                        src={getCharacterUrl(`${ch.rarity}stars`, `${ch.engName}.webp`, ch.rarity >= 5)}
                         alt={ch.name}
                         fill
                         sizes="64px"
-                        className="rounded object-contain"
+                        className={`rounded ${ch.rarity >= 5 ? "object-contain" : "object-cover object-top"}`}
                         priority
                       />
                       {ch.version && (
@@ -156,7 +166,8 @@ export default function CharacterDetailTabs({ character }: { character: Characte
               ))}
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

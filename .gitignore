@@ -43,7 +43,6 @@ yarn-error.log*
 next-env.d.ts
 
 .serena
-/openspec
 /scripts/
 
 # r2-upload
@@ -54,7 +53,6 @@ scripts/r2-upload/.env
 # AI assistants
 .amazonq/
 .claude/
-.opencode/
 
 # Python
 __pycache__/
@@ -63,6 +61,13 @@ __pycache__/
 
 # CDN에 업로드된 이미지 (R2에서 제공)
 public/infos/character_skin/
+public/infos/banner_img/
 public/infos/home/
 playwright-report/
 test-results/
+
+# 게임 데이터 추출 파일 (로컬 전용)
+data/language/
+
+# 내부 참조 문서 (로컬 전용)
+/docs/

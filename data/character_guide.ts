@@ -2002,4 +2002,72 @@ export const characterGuideList: CharacterGuide[] = [
     keywords: ["쉴더", "여휘", "정신피해", "서폿"],
     guide_images: [],
   },
+  {
+    character_id: 60, // 노사전
+    portrait_info: {
+      headers: ["형상", "팀 전체"],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["19%"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["37%"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["13%"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["12%"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["34%"],
+        },
+      ],
+      summary: "2형상 > 5형상 > 1형상 > 3형상 > 4형상 (팀 전체)",
+      source: "icehood",
+      note: "",
+    },
+    youtube_links: [],
+    keywords: [],
+    guide_images: [],
+  },
+  {
+    character_id: 61, // 정화광
+    portrait_info: {
+      headers: ["형상", "팀 전체"],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["16%"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["8%"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["1%"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["1%"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["3%"],
+        },
+      ],
+      summary: "1형상 > 2형상 > 5형상 > 3형상 = 4형상 (팀 전체)",
+      source: "icehood",
+      note: "",
+    },
+    youtube_links: [],
+    keywords: [],
+    guide_images: [],
+  },
 ];

@@ -49,6 +49,7 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
       "/character",
       "/reveries_in_the_rain",
       "/quiz",
+      "/content_guide",
     ];
 
     const isAllowedPath =

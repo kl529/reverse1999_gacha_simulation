@@ -63,13 +63,13 @@ export default function CharacterSetting() {
           {group.map((ch) => (
             <Link key={`${ch.id}-${ch.version}`} href={`/character_setting/${ch.id}`}>
               <div className="flex cursor-pointer flex-col items-center rounded border border-gray-400 p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800">
-                <div className="relative h-16 w-16">
+                <div className="relative h-16 w-16 overflow-hidden">
                   <Image
-                    src={`/characters/${ch.rarity}stars_small/${ch.engName}.webp`}
+                    src={`/characters/${ch.rarity >= 5 ? `${ch.rarity}stars_small` : `${ch.rarity}stars`}/${ch.engName}.webp`}
                     alt={ch.name}
                     width={64}
                     height={64}
-                    className="h-full w-full rounded object-contain"
+                    className={`h-full w-full rounded ${ch.rarity >= 5 ? "object-contain" : "object-cover object-top"}`}
                   />
                   {ch.version && (
                     <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
@@ -126,6 +126,9 @@ export default function CharacterSetting() {
       <div className="w-full space-y-6 px-4">
         {renderCharGroup(6, "🌟 6성", "text-purple-600 dark:text-purple-400")}
         {renderCharGroup(5, "⭐ 5성", "text-yellow-600 dark:text-yellow-300")}
+        {renderCharGroup(4, "4성", "text-blue-600 dark:text-blue-300")}
+        {renderCharGroup(3, "3성", "text-green-600 dark:text-green-300")}
+        {renderCharGroup(2, "2성", "text-gray-600 dark:text-gray-300")}
       </div>
     </div>
   );

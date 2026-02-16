@@ -295,9 +295,9 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 8,
         materials: {
-          602: 6,
-          206: 4,
+          206: 3,
           302: 5,
+          602: 6,
         },
       },
       {
@@ -771,9 +771,9 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 8,
         materials: {
-          602: 6,
-          206: 4,
+          206: 3,
           302: 5,
+          602: 6,
         },
       },
       {
@@ -1366,9 +1366,9 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 8,
         materials: {
-          602: 6,
-          206: 4,
+          206: 3,
           302: 5,
+          602: 6,
         },
       },
       {
@@ -1977,10 +1977,10 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 10,
         materials: {
-          604: 1,
-          603: 6,
-          206: 6,
           205: 6,
+          206: 6,
+          603: 5,
+          604: 1,
         },
       },
       {
@@ -2096,10 +2096,10 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 10,
         materials: {
-          605: 1,
-          603: 6,
-          206: 6,
           201: 8,
+          206: 6,
+          603: 5,
+          605: 1,
         },
       },
       {
@@ -2334,10 +2334,10 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 10,
         materials: {
-          606: 1,
-          603: 6,
           201: 8,
           203: 8,
+          603: 5,
+          606: 1,
         },
       },
       {
@@ -2445,18 +2445,18 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 9,
         materials: {
-          602: 8,
-          211: 4,
+          211: 6,
           305: 8,
+          602: 8,
         },
       },
       {
         level: 10,
         materials: {
-          605: 1,
+          203: 6,
+          210: 5,
           603: 5,
-          203: 5,
-          210: 6,
+          605: 1,
         },
       },
       {
@@ -2572,10 +2572,10 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 10,
         materials: {
-          604: 1,
+          205: 6,
+          210: 5,
           603: 5,
-          205: 5,
-          210: 6,
+          604: 1,
         },
       },
       {
@@ -2683,9 +2683,9 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 9,
         materials: {
-          602: 8,
-          203: 5,
+          203: 7,
           309: 6,
+          602: 8,
         },
       },
       {
@@ -3286,10 +3286,10 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 10,
         materials: {
-          604: 1,
-          603: 6,
-          206: 6,
           201: 8,
+          206: 6,
+          603: 5,
+          604: 1,
         },
       },
       {
@@ -3551,10 +3551,10 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 13,
         materials: {
-          607: 1,
-          603: 6,
-          103: 4,
+          103: 5,
           210: 5,
+          603: 6,
+          607: 1,
         },
       },
       {
@@ -5500,9 +5500,9 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 4,
         materials: {
-          601: 5,
-          403: 6,
           301: 3,
+          403: 4,
+          601: 5,
         },
       },
       {
@@ -5643,8 +5643,8 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 7,
         materials: {
+          201: 5,
           602: 6,
-          103: 5,
         },
       },
       {
@@ -5731,110 +5731,109 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 3,
         materials: {
-          601: 5,
           401: 6,
-          301: 3,
+          601: 5,
         },
       },
       {
         level: 4,
         materials: {
-          601: 5,
+          301: 3,
           403: 4,
-          305: 4,
+          601: 5,
         },
       },
       {
         level: 5,
         materials: {
+          303: 3,
+          305: 4,
           602: 5,
-          306: 4,
-          308: 4,
         },
       },
       {
         level: 6,
         materials: {
-          1002: 30000,
+          204: 3,
           602: 5,
-          207: 3,
+          1002: 30000,
         },
       },
       {
         level: 7,
         materials: {
+          210: 5,
           602: 6,
-          205: 4,
         },
       },
       {
         level: 8,
         materials: {
+          206: 4,
+          310: 5,
           602: 6,
-          202: 4,
-          305: 5,
         },
       },
       {
         level: 9,
         materials: {
+          203: 5,
+          304: 8,
           602: 8,
-          201: 5,
-          302: 6,
         },
       },
       {
         level: 10,
         materials: {
-          604: 1,
+          201: 8,
+          205: 6,
           603: 5,
-          206: 6,
-          205: 8,
+          605: 1,
         },
       },
       {
         level: 11,
         materials: {
-          604: 1,
-          1002: 120000,
-          603: 5,
           102: 4,
+          603: 5,
+          605: 1,
+          1002: 120000,
         },
       },
       {
         level: 12,
         materials: {
-          604: 1,
+          104: 4,
+          209: 5,
           603: 6,
-          103: 4,
-          202: 5,
+          605: 1,
         },
       },
       {
         level: 13,
         materials: {
-          604: 1,
+          101: 5,
+          211: 6,
           603: 6,
-          106: 5,
-          205: 6,
+          605: 1,
         },
       },
       {
         level: 14,
         materials: {
-          604: 1,
-          603: 8,
-          2: 2,
+          3: 2,
           106: 4,
+          603: 8,
+          605: 1,
         },
       },
       {
         level: 15,
         materials: {
-          604: 1,
+          2: 3,
+          103: 4,
           603: 8,
-          3: 3,
-          101: 4,
+          605: 1,
         },
       },
     ],
@@ -5897,9 +5896,9 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 9,
         materials: {
+          206: 6,
+          309: 4,
           602: 8,
-          206: 4,
-          309: 6,
         },
       },
       {
@@ -5975,7 +5974,11 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       },
       {
         level: 5,
-        materials: { 602: 5, 310: 4, 303: 4 },
+        materials: {
+          303: 3,
+          310: 4,
+          602: 5,
+        },
       },
       {
         level: 6,
@@ -5995,7 +5998,12 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       },
       {
         level: 10,
-        materials: { 604: 1, 603: 5, 205: 6, 106: 6 },
+        materials: {
+          205: 6,
+          206: 6,
+          603: 5,
+          604: 1,
+        },
       },
       {
         level: 11,
@@ -6052,7 +6060,11 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       },
       {
         level: 9,
-        materials: { 602: 8, 210: 4, 306: 6 },
+        materials: {
+          210: 5,
+          306: 6,
+          602: 8,
+        },
       },
       {
         level: 10,
@@ -6068,7 +6080,12 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       },
       {
         level: 13,
-        materials: { 604: 1, 603: 6, 104: 5, 106: 5 },
+        materials: {
+          104: 5,
+          206: 5,
+          603: 6,
+          604: 1,
+        },
       },
       {
         level: 14,
@@ -6326,10 +6343,10 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 10,
         materials: {
-          605: 1,
-          603: 5,
-          10: 6,
           209: 6,
+          210: 6,
+          603: 5,
+          605: 1,
         },
       },
       {
@@ -6391,8 +6408,8 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 3,
         materials: {
+          404: 4,
           601: 5,
-          405: 4,
         },
       },
       {
@@ -6517,9 +6534,9 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       {
         level: 4,
         materials: {
-          601: 5,
-          405: 4,
           301: 3,
+          404: 4,
+          601: 5,
         },
       },
       {
@@ -6613,6 +6630,437 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
           603: 8,
           5: 3,
           103: 4,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 58, // "마샤" (Marsha)
+    resonance: [
+      {
+        level: 2,
+        materials: {
+          601: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          601: 5,
+          403: 4,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          601: 5,
+          405: 4,
+          301: 3,
+        },
+      },
+      {
+        level: 5,
+        materials: {
+          602: 5,
+          307: 3,
+          310: 4,
+        },
+      },
+      {
+        level: 6,
+        materials: {
+          1002: 30000,
+          602: 5,
+          204: 3,
+        },
+      },
+      {
+        level: 7,
+        materials: {
+          602: 6,
+          201: 5,
+        },
+      },
+      {
+        level: 8,
+        materials: {
+          602: 6,
+          210: 4,
+          306: 6,
+        },
+      },
+      {
+        level: 9,
+        materials: {
+          602: 8,
+          205: 4,
+          305: 8,
+        },
+      },
+      {
+        level: 10,
+        materials: {
+          604: 1,
+          603: 5,
+          211: 6,
+          209: 6,
+        },
+      },
+      {
+        level: 11,
+        materials: {
+          604: 1,
+          1002: 120000,
+          603: 5,
+          102: 4,
+        },
+      },
+      {
+        level: 12,
+        materials: {
+          604: 1,
+          603: 6,
+          110: 4,
+          206: 5,
+        },
+      },
+      {
+        level: 13,
+        materials: {
+          604: 1,
+          603: 6,
+          104: 5,
+          203: 8,
+        },
+      },
+      {
+        level: 14,
+        materials: {
+          604: 1,
+          603: 8,
+          5: 2,
+          103: 4,
+        },
+      },
+      {
+        level: 15,
+        materials: {
+          604: 1,
+          603: 8,
+          3: 3,
+          108: 4,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 59, // "이고르" (Igor)
+    resonance: [
+      {
+        level: 2,
+        materials: {
+          601: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          601: 5,
+          401: 6,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          601: 5,
+          404: 4,
+          301: 3,
+        },
+      },
+      {
+        level: 5,
+        materials: {
+          602: 5,
+          305: 4,
+          307: 3,
+        },
+      },
+      {
+        level: 6,
+        materials: {
+          1002: 30000,
+          602: 5,
+          207: 3,
+        },
+      },
+      {
+        level: 7,
+        materials: {
+          602: 6,
+          211: 5,
+        },
+      },
+      {
+        level: 8,
+        materials: {
+          602: 6,
+          210: 4,
+          308: 4,
+        },
+      },
+      {
+        level: 9,
+        materials: {
+          602: 8,
+          208: 4,
+          303: 5,
+        },
+      },
+      {
+        level: 10,
+        materials: {
+          605: 1,
+          603: 5,
+          201: 8,
+          203: 8,
+        },
+      },
+      {
+        level: 11,
+        materials: {
+          605: 1,
+          1002: 120000,
+          603: 5,
+          107: 4,
+        },
+      },
+      {
+        level: 12,
+        materials: {
+          605: 1,
+          603: 6,
+          108: 4,
+          206: 5,
+        },
+      },
+      {
+        level: 13,
+        materials: {
+          605: 1,
+          603: 6,
+          104: 5,
+          209: 5,
+        },
+      },
+      {
+        level: 14,
+        materials: {
+          605: 1,
+          603: 8,
+          2: 2,
+          101: 4,
+        },
+      },
+      {
+        level: 15,
+        materials: {
+          605: 1,
+          603: 8,
+          1: 3,
+          103: 4,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 60, // "노사전" (Paper Heron)
+    resonance: [
+      {
+        level: 2,
+        materials: {
+          601: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          601: 5,
+          402: 5,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          601: 5,
+          404: 4,
+          301: 3,
+        },
+      },
+      {
+        level: 5,
+        materials: {
+          602: 5,
+          306: 4,
+          309: 3,
+        },
+      },
+      {
+        level: 6,
+        materials: {
+          1002: 30000,
+          602: 5,
+          204: 3,
+        },
+      },
+      {
+        level: 7,
+        materials: {
+          602: 6,
+          205: 4,
+        },
+      },
+      {
+        level: 8,
+        materials: {
+          602: 6,
+          201: 5,
+          308: 4,
+        },
+      },
+      {
+        level: 9,
+        materials: {
+          602: 8,
+          211: 6,
+          303: 5,
+        },
+      },
+      {
+        level: 10,
+        materials: {
+          606: 1,
+          603: 5,
+          208: 6,
+          206: 6,
+        },
+      },
+      {
+        level: 11,
+        materials: {
+          606: 1,
+          1002: 120000,
+          603: 5,
+          102: 4,
+        },
+      },
+      {
+        level: 12,
+        materials: {
+          606: 1,
+          603: 6,
+          109: 4,
+          203: 5,
+        },
+      },
+      {
+        level: 13,
+        materials: {
+          606: 1,
+          603: 6,
+          104: 5,
+          210: 5,
+        },
+      },
+      {
+        level: 14,
+        materials: {
+          606: 1,
+          603: 8,
+          4: 2,
+          106: 4,
+        },
+      },
+      {
+        level: 15,
+        materials: {
+          606: 1,
+          603: 8,
+          2: 3,
+          103: 4,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 217, // "리드" (Reed)
+    resonance: [
+      {
+        level: 2,
+        materials: {
+          601: 3,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          601: 3,
+          403: 2,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          601: 3,
+          401: 3,
+          301: 1,
+        },
+      },
+      {
+        level: 5,
+        materials: {
+          602: 3,
+          303: 1,
+          309: 1,
+        },
+      },
+      {
+        level: 6,
+        materials: {
+          1002: 20000,
+          602: 3,
+          207: 1,
+        },
+      },
+      {
+        level: 7,
+        materials: {
+          602: 4,
+          201: 3,
+        },
+      },
+      {
+        level: 8,
+        materials: {
+          602: 4,
+          202: 2,
+          303: 2,
+        },
+      },
+      {
+        level: 9,
+        materials: {
+          602: 5,
+          206: 4,
+          306: 4,
+        },
+      },
+      {
+        level: 10,
+        materials: {
+          606: 1,
+          603: 3,
+          210: 4,
+          205: 4,
         },
       },
     ],

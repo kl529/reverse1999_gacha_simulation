@@ -4,13 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function CashGuide() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 text-gray-900 dark:text-gray-100">
       <h1 className="mb-4 mt-8 text-center text-3xl font-bold">현질 가이드 💸</h1>
       <p className="mb-6 text-center text-sm text-muted-foreground">
-        2025.10.05 기준으로 작성되었습니다. <br /> 무조건적인 정답이 아닐수 있으니, 참고만 하시길
+        2026.02.10 기준으로 작성되었습니다. <br /> 무조건적인 정답이 아닐수 있으니, 참고만 하시길
         바랍니다.
       </p>
 
@@ -37,7 +38,8 @@ export default function CashGuide() {
           첫번째는 스토어(구글플레이 / 애플 앱스토어), 두번째는 홈페이지(HAOPLAY)입니다.
         </p>
         <p className="text-red-500 underline">
-          이번에 소개해드릴 방식이자, 좀 더 효율적인 방식은 2번째(HAOPLAY 결제)입니다.
+          최근에는 HAOPLAY 결제와 스토어 결제 둘다 효율이 비슷해져서, 큰 차이가 없습니다. <br />
+          그래도 관련 내용을 정리해보려고 합니다.
         </p>
         <p className="mb-4 leading-relaxed">
           ※ 이 방법은 한국 서버기준으로 작성됐습니다. 글로벌 서버 & 중국서버는 안될 수 도 있으니
@@ -47,7 +49,9 @@ export default function CashGuide() {
       </Card>
 
       <Card className="mb-4 p-4">
-        <h2 className="mb-2 text-2xl font-semibold">1. 리버스 1999 홈페이지 충전 할인</h2>
+        <h2 className="mb-2 text-2xl font-semibold">
+          1. 리버스 1999 홈페이지 충전 할인 (무조건 10%){" "}
+        </h2>
         <p className="mb-4 leading-relaxed">
           정확히는 HAOPLAY 충전입니다. 매달 초 10% 할인 혜택을 1회 제공합니다.
           <br />
@@ -78,33 +82,7 @@ export default function CashGuide() {
           사이트에 들어갔을때, 할인 기간이라면 위 사진처럼 나오고,{" "}
           <b className="text-red-500">10% 할인</b>을 받을 수 있습니다.
           <br />
-          여기서 우리는 추가 할인을 받으려면,{" "}
-          <b className="text-red-500">{`충전 방식에서 'Culture Land'`}</b>를 선택하면 됩니다.
-          (Eggmoney는 충전 혜택이 사라짐)
-        </p>
-      </Card>
-
-      <Card className="mb-4 p-4">
-        <h2 className="mb-2 text-2xl font-semibold">2. 컬쳐랜드(문화상품권) 할인</h2>
-        <Image
-          src="/infos/cash_guide/cash_guide3.webp"
-          alt="에그머니 구매"
-          width={800}
-          height={400}
-          className="mb-2 rounded"
-        />
-        <p className="mb-2 text-center text-sm text-muted-foreground">컬쳐랜드 판매 사이트들</p>
-        <p className="mb-4 leading-relaxed">
-          컬쳐랜드 할인 받는 방법은 간단합니다. <br />
-          구글이나 네이버에, <b className="text-red-500">{`'문화상품권 할인'`}</b>을 검색해서 나오는
-          사이트들에서 할인받아 구매하면 됩니다.
-          <br />
-          주로 평소에는 <b className="text-red-500">6 ~ 9% 정도 할인</b>하고, 가끔 지마켓이나
-          11번가에서 <b className="text-red-500">10%할인</b>이 나오니 참고하세요.
-          <br />
-          문화상품권은 불법적인 것은 전혀 아니며 상품권이라고 생각하시면 됩니다.
-          <br />
-          계좌이체 및 결제를 진행해서 핀번호를 받는 형식으로 진행됩니다.
+          (Eggmoney, Culture Land는 충전 혜택이 사라짐)
         </p>
         <Image
           src="/infos/cash_guide/cash_guide4.webp"
@@ -114,39 +92,75 @@ export default function CashGuide() {
           className="mb-2 rounded"
         />
         <p className="mb-2 text-center text-sm text-muted-foreground">
-          위와 같이, 패키지 구매시에, 잔액으로 결제 해야 충전 하신 금액이 사용됩니다.
+          충전을 하면, 패키지 구매시에, 잔액으로 결제 해야 충전 하신 금액이 사용됩니다.
+        </p>
+        <p className="mb-4 leading-relaxed">
+          단점도 존재합니다. <br />
+          <b className="text-red-500">
+            HAOPLAY 홈페이지에 충전을 해둔 금액은 환불이 되지 않습니다.{" "}
+          </b>
+          <br />
+          그래서 딱맞게 과금을 하는게 아니면 조금씩 남더군요.
         </p>
       </Card>
 
       <Card className="mb-4 p-4">
-        <h2 className="mb-2 text-2xl font-semibold">💸 할인금액 계산</h2>
+        <h2 className="mb-2 text-2xl font-semibold">2. 스토어 기프트카드 할인 (6 ~ ??%)</h2>
         <p className="mb-4 leading-relaxed">
-          - 119,000원 충전을 HAOPLAY 10% 할인 = 107,100원 문화상품권 결제 <br />- 107,100원을
-          문화상품권 9% 할인 = 약 97,461원 지출
+          가끔 구글 스토어에는 기프트 카드 할인 판매를 합니다. <br />
+          지x켓, 네x버 등에서{" "}
+          <b className="text-red-500">{`'구글 기프트 카드 할인이 비정기적으로 진행'`} 합니다.</b>
+          <br />
+          일정도 언제할지 모르고, 할인율도 매번 다르니 참고해주세요.
+          <br />
+          가끔 <b className="text-red-500">6 ~ 9% 정도 할인</b>하고, 특별할때는{" "}
+          <b className="text-red-500">10% 이상 할인</b>이 나오니 참고하세요.
+          <br />
+          타이밍만 잘잡아서 구매하면, 스토어 자체 적립까지 해서 10%를 넘는 효율을 보여주기도 합니다.
+          ( 다른 게임도 하시는 분들은 이 방법 추천 )
         </p>
-        <p>
-          119,000원 어치 게임머니를 97,461원으로 구매 =
-          <b className="text-red-500"> 약 22,000원 할인!</b>
-        </p>
-        <p className="mb-4 font-bold leading-relaxed">
-          가격별로 할인율은 조금씩 다르지만, 약 15% 이상의 할인율을 매달 챙길 수 있습니다. ⭐️⭐️
+        <Image
+          src="/infos/cash_guide/cash_guide7.webp"
+          alt="구글 플레이 스토어 결제 화면"
+          width={800}
+          height={400}
+          className="mb-2 rounded"
+        />
+        <p className="mb-2 text-center text-sm text-muted-foreground">
+          스토어에서 패키지를 구매하면, 기프트 카드 잔액으로 결제됩니다.
         </p>
       </Card>
 
       <Card className="mb-4 p-4">
-        <h2 className="mb-2 text-2xl font-semibold">👾 이 방법의 단점</h2>
-        <p className="mb-4 leading-relaxed">
-          장점은 꽤나 높은 할인율로 현질 할 수 있다는 것이지만, 단점도 존재합니다. <br />
-          아래 단점을 꼭 인지하고, 본인의 상황에 맞게 현질해주세요.
-        </p>
-        <ul className="mb-4 list-disc pl-5">
-          <li>
-            우리가 문화상품권 107,100원을 충전하고 싶으면, 5만원 2개에 1만원 1개까지 3개의 상품권을
-            결제해야하고, 딱 맞아 떨어지지 않는다는 단점이 있습니다. (물론 남은 잔액은 다음번에
-            사용가능)
-          </li>
-          <li>HAOPLAY 홈페이지에 충전을 해둔 금액은 환불이 되지 않습니다.</li>
-        </ul>
+        <h2 className="mb-2 text-2xl font-semibold">💸 비교</h2>
+        <p className="mb-4 leading-relaxed">장단점을 간단히 정리해보자면</p>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="border-b border-gray-300 dark:border-gray-600">
+                <th className="px-3 py-2 text-left font-semibold"></th>
+                <th className="px-3 py-2 text-left font-semibold text-green-600 dark:text-green-400">
+                  장점
+                </th>
+                <th className="px-3 py-2 text-left font-semibold text-red-500">단점</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-gray-200 dark:border-gray-700">
+                <td className="px-3 py-2 font-semibold">하오플레이 결제</td>
+                <td className="px-3 py-2">매달 정기적으로 확정 할인이 가능</td>
+                <td className="px-3 py-2">남은 금액 처리가 애매함</td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 font-semibold">스토어 결제</td>
+                <td className="px-3 py-2">
+                  시기만 맞는다면, 10% 이상의 할인율 + 다른 게임에도 쓸 수 있음
+                </td>
+                <td className="px-3 py-2">비정기적임</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </Card>
 
       <Card className="mb-4 p-4">
@@ -186,6 +200,16 @@ export default function CashGuide() {
         <p className="mb-2 text-center text-sm text-muted-foreground">
           3000원, 6000원 패키지는 위와 같은 구성입니다. (이름은 다를 수 있음.)
         </p>
+      </Card>
+
+      <Card className="mb-4 p-4">
+        <h2 className="mb-2 text-2xl font-semibold">🔗 현질 패키지 보러가기</h2>
+        <p className="mb-4 text-sm text-muted-foreground">
+          어떤 패키지가 있는지 바로 확인해보세요.
+        </p>
+        <Button asChild className="w-full">
+          <Link href="/cash_package_shop">💰 현질 패키지 상점 바로가기</Link>
+        </Button>
       </Card>
 
       <Card className="mb-4 p-4">

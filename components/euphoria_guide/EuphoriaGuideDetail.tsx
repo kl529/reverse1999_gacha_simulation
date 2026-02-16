@@ -41,6 +41,23 @@ function getEuphoriaMaterialByCharacterId(characterId: number) {
   return euphoriaMaterialList.find((material) => material.character_id === characterId);
 }
 
+function renderDescription(text: string) {
+  const parts = text.split(/(\[[^\]]+\])/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("[") && part.endsWith("]")) {
+      return (
+        <span
+          key={i}
+          className="inline rounded bg-purple-100 px-1 py-0.5 text-sm font-semibold text-purple-800 dark:bg-purple-900/40 dark:text-purple-300"
+        >
+          {part}
+        </span>
+      );
+    }
+    return <span key={i}>{part}</span>;
+  });
+}
+
 export default function EuphoriaGuideDetail({ item, character }: Props) {
   const romanNumerals = ["I", "II", "III", "IV"];
 
@@ -126,14 +143,27 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
             <CardTitle>💉 효과</CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className="list-none space-y-3 text-black dark:text-gray-300">
-              {[item.desc1, item.desc2, item.desc3, item.desc4].filter(Boolean).map((desc, idx) => (
-                <li key={idx} className="whitespace-pre-line">
-                  <span className="mr-2 font-bold">{romanNumerals[idx]}.</span>
-                  {desc}
-                </li>
-              ))}
-            </ul>
+            <div className="space-y-4">
+              {[item.desc1, item.desc2, item.desc3, item.desc4]
+                .filter(Boolean)
+                .map((desc, idx, arr) => (
+                  <div key={idx}>
+                    <div className="flex gap-3">
+                      <div className="flex-shrink-0 pt-0.5">
+                        <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-purple-600 text-xs font-bold text-white">
+                          {romanNumerals[idx]}
+                        </span>
+                      </div>
+                      <div className="flex-1 whitespace-pre-line text-sm leading-relaxed text-black dark:text-gray-300">
+                        {renderDescription(desc!)}
+                      </div>
+                    </div>
+                    {idx < arr.length - 1 && (
+                      <div className="mt-4 border-b border-gray-200 dark:border-gray-700" />
+                    )}
+                  </div>
+                ))}
+            </div>
           </CardContent>
         </Card>
 

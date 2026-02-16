@@ -163,46 +163,48 @@ export default function CharacterSettingDetail({ character }: { character: Chara
           </div>
         )}
 
-        <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-          <h2 className="mb-2 text-center text-xl font-bold">의지 추천</h2>
-          <p className="mb-4 text-center text-xs text-gray-500 dark:text-gray-400">
-            의지는 추천순이며, 순위도 100% 정답이 아닐 수도 있습니다.
-          </p>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {psycubeItems.map((item, idx) => (
-              <Card
-                key={idx}
-                className="cursor-pointer text-center transition-shadow hover:shadow-lg"
-                onClick={() => router.push(`/psycube_guide/${item.id}`)}
-              >
-                <CardContent className="space-y-1 p-2">
-                  <div className="relative mx-auto h-[100px] w-[100px]">
-                    <Image
-                      src={item.src}
-                      alt={item.label}
-                      className="rounded border object-cover dark:border-gray-700"
-                      width={100}
-                      height={100}
-                    />
-                    <div className="absolute left-1 top-1 rounded-sm bg-red-600 px-1 text-[10px] text-white">
-                      {idx} 순위
+        {psycubeItems.length > 0 && (
+          <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+            <h2 className="mb-2 text-center text-xl font-bold">의지 추천</h2>
+            <p className="mb-4 text-center text-xs text-gray-500 dark:text-gray-400">
+              의지는 추천순이며, 순위도 100% 정답이 아닐 수도 있습니다.
+            </p>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {psycubeItems.map((item, idx) => (
+                <Card
+                  key={idx}
+                  className="cursor-pointer text-center transition-shadow hover:shadow-lg"
+                  onClick={() => router.push(`/psycube_guide/${item.id}`)}
+                >
+                  <CardContent className="space-y-1 p-2">
+                    <div className="relative mx-auto h-[100px] w-[100px]">
+                      <Image
+                        src={item.src}
+                        alt={item.label}
+                        className="rounded border object-cover dark:border-gray-700"
+                        width={100}
+                        height={100}
+                      />
+                      <div className="absolute left-1 top-1 rounded-sm bg-red-600 px-1 text-[10px] text-white">
+                        {idx} 순위
+                      </div>
+                      <div className="absolute bottom-1 left-1 rounded-sm bg-purple-600 px-1 text-[10px] text-white">
+                        {item.type}
+                      </div>
+                      <div className="absolute bottom-1 right-1 rounded-sm bg-blue-600 px-1 text-[10px] text-white">
+                        {item.version && getDisplayVersion(item.version)}
+                      </div>
                     </div>
-                    <div className="absolute bottom-1 left-1 rounded-sm bg-purple-600 px-1 text-[10px] text-white">
-                      {item.type}
-                    </div>
-                    <div className="absolute bottom-1 right-1 rounded-sm bg-blue-600 px-1 text-[10px] text-white">
-                      {item.version && getDisplayVersion(item.version)}
-                    </div>
-                  </div>
-                  <div className="text-sm font-semibold">{item.label}</div>
-                  <p className="px-1 text-xs text-gray-600 dark:text-gray-300">
-                    {item.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
+                    <div className="text-sm font-semibold">{item.label}</div>
+                    <p className="px-1 text-xs text-gray-600 dark:text-gray-300">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {characterSkins.length > 0 && (
           <div className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">

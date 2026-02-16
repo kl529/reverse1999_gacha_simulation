@@ -125,7 +125,7 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
         pattern: "Overindulgence",
         materials: {
           5: 1,
-          105: 2,
+          109: 2,
           204: 3,
           1002: 120000,
         },
@@ -2858,6 +2858,196 @@ export const resonancePatternMaterial: ResonancePatternMaterial[] = [
           107: 2,
           209: 3,
           1002: 120000,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 58, // "마샤" (Marsha)
+    pattern: [
+      {
+        pattern: "Elucidation",
+        materials: {
+          2: 1,
+          109: 2,
+          201: 4,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Genuinity",
+        materials: {
+          2: 1,
+          106: 2,
+          206: 4,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Hyper",
+        materials: {
+          5: 1,
+          104: 2,
+          205: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Inspire",
+        materials: {
+          5: 1,
+          104: 2,
+          203: 5,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Delirament",
+        materials: {
+          3: 1,
+          110: 2,
+          207: 3,
+          1002: 120000,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 59, // "이고르" (Igor)
+    pattern: [
+      {
+        pattern: "Elucidation",
+        materials: {
+          4: 1,
+          104: 2,
+          206: 4,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Genuinity",
+        materials: {
+          4: 1,
+          110: 2,
+          206: 4,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Hyper",
+        materials: {
+          4: 1,
+          109: 2,
+          203: 5,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Inspire",
+        materials: {
+          4: 1,
+          107: 2,
+          204: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Delirament",
+        materials: {
+          4: 1,
+          104: 2,
+          211: 3,
+          1002: 120000,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 60, // "노사전" (Paper Heron)
+    pattern: [
+      {
+        pattern: "Elucidation",
+        materials: {
+          3: 1,
+          109: 2,
+          206: 4,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Genuinity",
+        materials: {
+          5: 1,
+          106: 2,
+          205: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Hyper",
+        materials: {
+          1: 1,
+          104: 2,
+          208: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Inspire",
+        materials: {
+          3: 1,
+          103: 2,
+          207: 3,
+          1002: 120000,
+        },
+      },
+      {
+        pattern: "Delirament",
+        materials: {
+          2: 1,
+          111: 2,
+          209: 3,
+          1002: 120000,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 217, // "리드" (Reed)
+    pattern: [
+      {
+        pattern: "Elucidation",
+        materials: {
+          207: 3,
+          1002: 50000,
+        },
+      },
+      {
+        pattern: "Genuinity",
+        materials: {
+          205: 3,
+          1002: 50000,
+        },
+      },
+      {
+        pattern: "Hyper",
+        materials: {
+          208: 3,
+          1002: 50000,
+        },
+      },
+      {
+        pattern: "Inspire",
+        materials: {
+          208: 3,
+          1002: 50000,
+        },
+      },
+      {
+        pattern: "Delirament",
+        materials: {
+          205: 3,
+          1002: 50000,
         },
       },
     ],

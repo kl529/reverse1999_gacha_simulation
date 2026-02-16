@@ -551,6 +551,25 @@ export const charactersByRarity: Record<number, Character[]> = {
       version: "3.3",
       resonanceType: "damage",
     },
+    {
+      id: 60,
+      name: "노사전",
+      rarity: 6,
+      inspiration: "plant",
+      engName: "paper-heron",
+      version: "3.4",
+      exclude_gacha: true,
+      resonanceType: "damage",
+    },
+    {
+      id: 61,
+      name: "정화광",
+      rarity: 6,
+      inspiration: "star",
+      engName: "cheng-heguang",
+      version: "3.4",
+      resonanceType: "support",
+    },
   ],
   5: [
     {
@@ -966,6 +985,15 @@ export const charactersByRarity: Record<number, Character[]> = {
       version: "1.0",
       resonanceType: "balance",
     },
+    {
+      id: 217,
+      name: "리드",
+      rarity: 4,
+      inspiration: "plant",
+      engName: "reed",
+      version: "3.4",
+      resonanceType: "support",
+    },
   ],
   3: [
     {
@@ -975,7 +1003,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       inspiration: "star",
       engName: "the-fool",
       version: "1.0",
-      resonanceType: "supdefenseport",
+      resonanceType: "defense",
     },
     {
       id: 302,

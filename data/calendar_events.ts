@@ -668,4 +668,11 @@ export const calendarEvents: CalendarEvent[] = [
     character_id: 57,
   },
   // 카산드라랑 알렉 없음(Unknown임)
+
+  {
+    date: "07-03",
+    type: "birthday",
+    character_id: 61,
+  },
+  // 노사전(60), 리드(217) 생일 미확인
 ];

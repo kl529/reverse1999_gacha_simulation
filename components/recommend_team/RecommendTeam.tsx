@@ -4,6 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { recommendTeams } from "@/data/recommend_team";
 import { charactersByRarity } from "@/data/characters";
 import { Card, CardContent } from "@/components/ui/card";
@@ -25,6 +26,7 @@ import {
 import { getDisplayVersion, isNewerVersion } from "@/data/version";
 import { euphoriaList } from "@/data/euphoria";
 import { RecommendTeam } from "@/data/recommend_team";
+import { psycube_list } from "@/data/psycube_data";
 import { storage, STORAGE_KEYS } from "@/lib/storage";
 
 const filteredCharacters = Object.values(charactersByRarity)
@@ -63,6 +65,7 @@ const Toast = ({
 };
 
 export default function RecommendTeamPage() {
+  const router = useRouter();
   const [showCharacterFilter, setShowCharacterFilter] = useState(false);
   const [showConceptFilter, setShowConceptFilter] = useState(false);
   const [selectedCharacterId, setSelectedCharacterId] = useState<number | null>(null);
@@ -204,7 +207,7 @@ export default function RecommendTeamPage() {
               className={`px-3 py-1 text-sm transition ${
                 serverFilter === "cn"
                   ? "bg-blue-500 text-white"
-                  : "bg-white text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                  : "bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-300"
               }`}
             >
               중섭
@@ -214,7 +217,7 @@ export default function RecommendTeamPage() {
               className={`px-3 py-1 text-sm transition ${
                 serverFilter === "kr"
                   ? "bg-blue-500 text-white"
-                  : "bg-white text-gray-700 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+                  : "bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-300"
               }`}
             >
               한섭
@@ -240,7 +243,7 @@ export default function RecommendTeamPage() {
                 onClick={() =>
                   handleCharacterFilterChange(selectedCharacterId === ch.id ? null : ch.id)
                 }
-                className={`flex flex-col items-center rounded border p-1 transition hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                className={`flex flex-col items-center rounded border p-1 transition ${
                   selectedCharacterId === ch.id
                     ? "border-blue-500 bg-blue-100 dark:bg-blue-900"
                     : "border-gray-400"
@@ -307,6 +310,10 @@ export default function RecommendTeamPage() {
                     selectedId === ch.id ? null : ch.alternatives?.find((a) => a.id === selectedId);
                   const isEuphoria = selectedAlt ? selectedAlt.euphoria : ch.euphoria;
                   const role = selectedAlt?.role || ch.role;
+                  const psycubeId = selectedAlt?.psycubeId ?? ch.psycubeId;
+                  const psycube = psycubeId
+                    ? psycube_list.find((p) => p.id === psycubeId)
+                    : undefined;
 
                   return (
                     <div key={overrideKey} className="flex w-[72px] flex-col items-center">
@@ -355,6 +362,27 @@ export default function RecommendTeamPage() {
                               {role}
                             </div>
                           )}
+                          {/* TODO: 의지 UI 임시 숨김 - 추후 복원 예정
+                          {psycube && (
+                            <div
+                              title={psycube.name}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                router.push(`/psycube_guide/${psycube.id}`);
+                              }}
+                              className="absolute bottom-[38px] left-1/2 z-20 h-[48px] w-[48px] -translate-x-1/2 cursor-pointer overflow-hidden rounded-full bg-black/60 p-[3px] transition hover:scale-110 hover:bg-black/75"
+                            >
+                              <Image
+                                src={`/infos/psycube_img/${psycube.engName}.webp`}
+                                alt={psycube.name}
+                                width={42}
+                                height={42}
+                                className="h-full w-full rounded-full object-cover"
+                              />
+                            </div>
+                          )}
+                          */}
                         </div>
                       </Link>
                       <span className="mt-1 w-full truncate text-center text-xs">

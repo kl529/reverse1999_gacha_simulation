@@ -30,7 +30,8 @@ export const versionList = [
   "3.1",
   "3.2",
   "3.3",
-];
+  "3.4",
+];;
 
 // 현재 게임 버전
 export const version: string = "3.2";
