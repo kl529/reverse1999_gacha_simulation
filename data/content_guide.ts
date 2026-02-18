@@ -115,11 +115,11 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     description:
       "상시 로그라이크 컨텐츠. 로렐라이는 이 컨텐츠에서만 획득 가능하며, 증표를 모아 황금항에서 성장 재화와 의지를 교환합니다.",
     contentType: "외부연기",
-    // youtubeVideos: [
-    //   { id: "T1VvAPmzwv8", title: "황혼의 소리 모든 것 총정리" },
-    //   { id: "H2IU4HjcROI", title: "황혼의 소리 초고속 파밍 방법" },
-    //   { id: "REi7VLTIoOM", title: "황혼의 소리 촉매별 20단계 총정리" },
-    // ],
+    youtubeVideos: [
+      { id: "T1VvAPmzwv8", title: "황혼의 소리 모든 것 총정리 (월상의 시 확장팩 기준, 참고용)" },
+      // { id: "H2IU4HjcROI", title: "황혼의 소리 초고속 파밍 방법" },
+      // { id: "REi7VLTIoOM", title: "황혼의 소리 촉매별 20단계 총정리" },
+    ],
     hiddenEndings: [
       {
         name: "첫 번째 히든 엔딩 - 황혼의 노래",
@@ -458,13 +458,13 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     // ],
   },
 
-  // v2.2
+  // v2.4
   deep_space_wave: {
     id: "deep_space_wave",
     name: "심우주파",
     category: "episode",
-    versionAdded: "2.2",
-    unlockCondition: "2.2 이벤트",
+    versionAdded: "2.4",
+    unlockCondition: "2.4 이벤트",
     description: "울리히 캐릭터 스토리. 퀴즈/퍼즐 미니게임.",
     contentType: "캐릭터 스토리",
     // youtubeVideos: [
@@ -476,8 +476,8 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     id: "between_river_sea",
     name: "강과 바다 사이",
     category: "episode",
-    versionAdded: "2.2",
-    unlockCondition: "2.2 이벤트",
+    versionAdded: "2.4",
+    unlockCondition: "2.4 이벤트",
     description: "바르카롤라 캐릭터 스토리.",
     contentType: "캐릭터 스토리",
     // youtubeVideos: [{ id: "9j8rqSVb1wY", title: "강과 바다 사이 (바르카롤라) 캐릭터 스토리" }],
@@ -486,8 +486,8 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     id: "nukutaio_paradise",
     name: "누쿠타이오의 낙원 짓기!",
     category: "episode",
-    versionAdded: "2.2",
-    unlockCondition: "2.2 이벤트",
+    versionAdded: "2.4",
+    unlockCondition: "2.4 이벤트",
     description: "파투투 캐릭터 스토리. 낙원 건설 미니게임.",
     contentType: "캐릭터 스토리",
     // youtubeVideos: [{ id: "Xi9b9t_871U", title: "누쿠타이오의 낙원짓기 공략" }],

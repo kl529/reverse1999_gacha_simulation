@@ -12,6 +12,7 @@ import { Switch } from "@/components/ui/switch";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { BannerSixStarListModal } from "@/components/modals/BannerSixStarListModal";
 import Link from "next/link";
+import { getBannerUrl } from "@/lib/cdn";
 
 interface GachaStatsProps {
   rarityStats: { [key: number]: number };
@@ -104,7 +105,7 @@ export default function MainGachaStats({
         </div>
         <Image
           key={selectedBanner.id}
-          src={`/infos/banner_img/${selectedBanner.id}.webp`}
+          src={getBannerUrl(`${selectedBanner.id}.webp`)}
           alt="배너 이미지"
           width={400}
           height={200}

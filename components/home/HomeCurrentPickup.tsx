@@ -7,6 +7,7 @@ import { banners, Banner } from "@/data/banners";
 import { charactersByRarity } from "@/data/characters";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { getBannerUrl } from "@/lib/cdn";
 
 // 오늘 이후이면서 종료일이 가장 가까운 배너들만 가져오기 (같은 종료일이면 모두 포함)
 function getActivePickupBanners(): Banner[] {
@@ -53,9 +54,6 @@ function getCharacterById(id: number) {
 }
 
 // 배너 이미지 경로 생성 (로컬)
-function getBannerImagePath(filename: string): string {
-  return `/infos/banner_img/${filename}`;
-}
 
 // 단일 배너 카드 컴포넌트
 function BannerCard({ banner }: { banner: Banner }) {
@@ -75,7 +73,7 @@ function BannerCard({ banner }: { banner: Banner }) {
   const mainCharacter = isDoublePick ? doublePickCharacters?.[0] : pickup6Character;
 
   // 배너 이미지 경로 (id + .webp)
-  const backgroundImageSrc = getBannerImagePath(`${banner.id}.webp`);
+  const backgroundImageSrc = getBannerUrl(`${banner.id}.webp`);
 
   return (
     <div className="relative flex h-full min-h-[200px] w-full flex-shrink-0 flex-col sm:min-h-[220px]">

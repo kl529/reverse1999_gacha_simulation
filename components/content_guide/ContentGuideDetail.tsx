@@ -48,6 +48,10 @@ const COLOR_MAP: Record<string, { badge: string; text: string }> = {
 function VideoList({ videos }: { videos: YoutubeVideo[] }) {
   return (
     <div className="space-y-5 sm:space-y-6">
+      <p className="rounded-md bg-yellow-50 p-2.5 text-xs text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300 sm:text-sm">
+        영상은 제작 당시 버전 기준의 공략이며, 현재 버전과 다를 수 있습니다.
+        정답이 아닌 참고용으로 활용해 주세요.
+      </p>
       {videos.map((video) => (
         <div key={video.id}>
           <h3 className="mb-1.5 text-sm font-medium sm:mb-2 sm:text-base">
@@ -256,6 +260,10 @@ export default function ContentGuideDetail({
             {hasHiddenEnding && (
               <CollapsibleSection title="히든 엔딩 공략" defaultOpen={false}>
                 <div className="space-y-6">
+                  <p className="rounded-md bg-yellow-50 p-2.5 text-xs text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300 sm:text-sm">
+                    영상은 제작 당시 버전 기준의 공략이며, 현재 버전과 다를 수 있습니다.
+                    정답이 아닌 참고용으로 활용해 주세요.
+                  </p>
                   {content.hiddenEndings!.map((ending, index) => (
                     <div key={index}>
                       <h3 className="text-sm font-semibold sm:text-base">
