@@ -20,6 +20,7 @@ import ErrorBoundary from "@/components/etc/ErrorBoundary";
 import { NetworkStatusToast } from "@/components/etc/NetworkStatusToast";
 import PushNotificationManager from "@/components/etc/PushNotificationManager";
 import { PostHogProvider } from "@/components/etc/PostHogProvider";
+import LanguageSwitcher from "@/components/etc/LanguageSwitcher";
 
 export default async function LocaleLayout({
   children,
@@ -72,6 +73,7 @@ export default async function LocaleLayout({
           <PostHogProvider>
             <ThemeProvider>
               <ThemeToggle />
+              <LanguageSwitcher />
               <ErrorBoundary>
                 <ModalProvider>
                   <SecurityWrapper>

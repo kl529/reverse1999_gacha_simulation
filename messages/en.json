@@ -14,5 +14,83 @@
       "title": "Vertin's Suitcase",
       "description": "Find all information about Reverse 1999 at a glance."
     }
+  },
+  "nav": {
+    "home": "Go to Home",
+    "homeShort": "Home",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainMenu": "Main menu",
+    "collapse": "Collapse",
+    "expand": "Expand",
+    "categories": {
+      "playground": "Playground",
+      "library": "Library",
+      "guide": "Guide"
+    },
+    "items": {
+      "gachaSimulator": "Gacha Simulator",
+      "gachaSimulatorShort": "Gacha\nSimulator",
+      "characterQuiz": "Character Quiz",
+      "characterQuizShort": "Character\nQuiz",
+      "quiz": "General Quiz",
+      "bingo": "Bingo",
+      "favoriteCharacter": "Favorite Character",
+      "favoriteCharacterShort": "Favorite\nCharacter",
+      "characterGuide": "Character Guide",
+      "recommendTeam": "Team Builder",
+      "growthCalculator": "Growth Calculator",
+      "reveriesInTheRain": "Reveries in the Rain",
+      "blueprintSetting": "Blueprints",
+      "euphoriaGuide": "Euphoria List",
+      "psycubeGuide": "Psycube Guide",
+      "pathQuiz": "Path Quiz",
+      "shopEfficiency": "Shop Efficiency",
+      "materialFarming": "Material Farming",
+      "skinGallery": "Skin Gallery",
+      "futureInsight": "Future Insight",
+      "cashPackageShop": "Cash Packages",
+      "calendar": "Calendar",
+      "cashGuide": "Spending Guide",
+      "gachaGuide": "Gacha Guide",
+      "newbieGuide": "Newbie Guide",
+      "couponList": "Coupon List",
+      "contentGuide": "Permanent Content"
+    }
+  },
+  "theme": {
+    "switchToLight": "Switch to Light Mode",
+    "switchToDark": "Switch to Dark Mode"
+  },
+  "language": {
+    "switchTo": "한국어로 전환",
+    "current": "EN"
+  },
+  "pwa": {
+    "installPrompt": "Install as an app?",
+    "install": "Install",
+    "later": "Later"
+  },
+  "network": {
+    "offline": "⚠️ Please check your internet connection",
+    "online": "✅ Internet connection restored"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "An error occurred while loading the page.",
+    "devDetail": "Error details (dev mode):",
+    "retry": "Try Again",
+    "goHome": "Go to Home",
+    "refresh": "Refresh Page"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "code": "404",
+    "description": "The page you requested does not exist or has been moved.",
+    "goHome": "Go to Home",
+    "frequentPages": "Popular pages:"
+  },
+  "modal": {
+    "materialFarming": "Material Farming Guide"
   }
 }

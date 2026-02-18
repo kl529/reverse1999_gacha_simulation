@@ -14,5 +14,83 @@
       "title": "버틴의 여행가방",
       "description": "리버스 1999의 모든 정보를 한눈에 찾아보세요."
     }
+  },
+  "nav": {
+    "home": "홈으로 이동",
+    "homeShort": "홈으로",
+    "openMenu": "메뉴 열기",
+    "closeMenu": "메뉴 닫기",
+    "mainMenu": "메인 메뉴",
+    "collapse": "접기",
+    "expand": "펼치기",
+    "categories": {
+      "playground": "놀이터",
+      "library": "도서관",
+      "guide": "가이드"
+    },
+    "items": {
+      "gachaSimulator": "가챠 시뮬레이터",
+      "gachaSimulatorShort": "가챠\n시뮬레이터",
+      "characterQuiz": "캐릭터 퀴즈",
+      "characterQuizShort": "캐릭터\n퀴즈",
+      "quiz": "종합 퀴즈",
+      "bingo": "빙고",
+      "favoriteCharacter": "최애 캐릭터",
+      "favoriteCharacterShort": "최애\n캐릭터",
+      "characterGuide": "캐릭터 가이드",
+      "recommendTeam": "추천 조합",
+      "growthCalculator": "육성 계산기",
+      "reveriesInTheRain": "빗속의 공상",
+      "blueprintSetting": "청사진 모음",
+      "euphoriaGuide": "광상 목록",
+      "psycubeGuide": "의지 육성",
+      "pathQuiz": "오솔길 정답",
+      "shopEfficiency": "상점 효율",
+      "materialFarming": "재료 파밍",
+      "skinGallery": "스킨 갤러리",
+      "futureInsight": "미래시 정리",
+      "cashPackageShop": "현질 패키지",
+      "calendar": "캘린더",
+      "cashGuide": "현질 가이드",
+      "gachaGuide": "가챠 가이드",
+      "newbieGuide": "뉴비 가이드",
+      "couponList": "쿠폰 목록",
+      "contentGuide": "상시 컨텐츠"
+    }
+  },
+  "theme": {
+    "switchToLight": "라이트 모드로 전환",
+    "switchToDark": "다크 모드로 전환"
+  },
+  "language": {
+    "switchTo": "English로 전환",
+    "current": "KO"
+  },
+  "pwa": {
+    "installPrompt": "앱으로 설치하시겠습니까?",
+    "install": "설치",
+    "later": "나중에"
+  },
+  "network": {
+    "offline": "⚠️ 인터넷 연결을 확인해주세요",
+    "online": "✅ 인터넷이 다시 연결되었습니다"
+  },
+  "error": {
+    "title": "문제가 발생했습니다",
+    "description": "페이지를 불러오는 중 오류가 발생했습니다.",
+    "devDetail": "에러 상세 (개발 모드):",
+    "retry": "다시 시도",
+    "goHome": "홈으로 돌아가기",
+    "refresh": "페이지 새로고침"
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "code": "404",
+    "description": "요청하신 페이지가 존재하지 않거나 이동되었습니다.",
+    "goHome": "홈으로 돌아가기",
+    "frequentPages": "자주 찾는 페이지:"
+  },
+  "modal": {
+    "materialFarming": "재료 파밍표"
   }
 }

@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect } from "react";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 /**
  * Next.js App Router 에러 페이지
@@ -14,6 +15,8 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const t = useTranslations("error");
+
   useEffect(() => {
     // 에러 로깅 (프로덕션에서는 외부 서비스로 전송 가능)
     console.error("Error page caught an error:", error);
@@ -25,17 +28,17 @@ export default function Error({
         <div className="mb-6 text-center">
           <div className="mb-4 text-6xl">⚠️</div>
           <h1 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
-            문제가 발생했습니다
+            {t("title")}
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            페이지를 불러오는 중 오류가 발생했습니다.
+            {t("description")}
           </p>
         </div>
 
         {process.env.NODE_ENV === "development" && (
           <div className="mb-6 rounded-md bg-red-50 p-4 dark:bg-red-900/20">
             <h3 className="mb-2 font-semibold text-red-800 dark:text-red-400">
-              에러 상세 (개발 모드):
+              {t("devDetail")}
             </h3>
             <pre className="overflow-x-auto text-xs text-red-700 dark:text-red-300">
               {error.message || error.toString()}
@@ -53,19 +56,19 @@ export default function Error({
             onClick={reset}
             className="rounded-md bg-blue-600 px-4 py-2 font-medium text-white transition hover:bg-blue-700"
           >
-            다시 시도
+            {t("retry")}
           </button>
           <Link
             href="/"
             className="rounded-md bg-gray-200 px-4 py-2 text-center font-medium text-gray-900 transition hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
           >
-            홈으로 돌아가기
+            {t("goHome")}
           </Link>
           <button
             onClick={() => window.location.reload()}
             className="rounded-md border border-gray-300 px-4 py-2 font-medium text-gray-700 transition hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
           >
-            페이지 새로고침
+            {t("refresh")}
           </button>
         </div>
       </div>
