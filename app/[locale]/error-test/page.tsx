@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ErrorTestPage() {
   const [shouldError, setShouldError] = useState(false);
@@ -39,12 +40,12 @@ export default function ErrorTestPage() {
 
       <div className="max-w-md rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800">
         <h2 className="mb-4 text-xl font-semibold">404 페이지 테스트</h2>
-        <a
+        <Link
           href="/nonexistent-page"
           className="block w-full rounded bg-blue-600 px-4 py-3 text-center font-medium text-white transition hover:bg-blue-700"
         >
           존재하지 않는 페이지로 이동
-        </a>
+        </Link>
       </div>
     </div>
   );
