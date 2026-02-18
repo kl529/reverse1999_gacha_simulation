@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect, useRef, useReducer } from "react";
+import { useTranslations } from "next-intl";
 import { gachaReducer, initialGachaState, SixStarHistoryEntry as ReducerSixStarHistoryEntry } from "@/lib/reducers/gachaReducer";
 import Image from "next/image";
 import { charactersByRarity, Character } from "@/data/characters";
@@ -32,7 +33,7 @@ const findCharacterById = (id: number): Character => {
     const match = charactersByRarity[Number(rarity)].find((c) => c.id === id);
     if (match) return match;
   }
-  throw new Error(`캐릭터 ID ${id}를 찾을 수 없습니다.`);
+  throw new Error(`Character ID ${id} not found.`);
 };
 
 const enrichBanner = (banner: Banner): EnrichedBanner => {
@@ -69,6 +70,8 @@ const enrichBanner = (banner: Banner): EnrichedBanner => {
 };
 
 export default function GachaGame() {
+  const t = useTranslations("gacha");
+  const tCommon = useTranslations("common");
   const [selectedBanner, setSelectedBanner] = useState<EnrichedBanner>(
     enrichBanner(
       banners.find(
@@ -184,7 +187,7 @@ export default function GachaGame() {
   // 4) 6성 기록
   const recordSixStar = (char: Character, pullIndex: number) => {
     dispatch({ type: "ADD_SIX_STAR_HISTORY", payload: { char, pullNumber: state.totalPulls + pullIndex + 1 } });
-    toast.success(`🎉 ${state.totalPulls + pullIndex + 1}번째 토끼로 🏆${char.name}🏆 획득!`);
+    toast.success(t("pullNotification", { pullNumber: state.totalPulls + pullIndex + 1, name: char.name }));
   };
 
   /**
@@ -518,8 +521,8 @@ export default function GachaGame() {
   };
 
   function getShapeString(duplicateCount: number) {
-    if (duplicateCount === 0) return "명함";
-    return `${Math.min(duplicateCount, 5)}형`; // 중복=1 -> "1형", 중복=5이상 -> "5형"
+    if (duplicateCount === 0) return t("nameCard");
+    return t("shape", { count: Math.min(duplicateCount, 5) });
   }
 
   function getShapeRankPercent(N: number, shape: string): number | null {
@@ -594,7 +597,7 @@ export default function GachaGame() {
       >
         {/* 🎯 헤더 (항상 고정) */}
         <h1 className="sticky top-0 z-20 mb-4 p-3 text-center text-2xl font-bold text-black dark:text-gray-100 lg:text-3xl">
-          가챠 시뮬레이터
+          {t("title")}
         </h1>
 
         {/* 🎯 뽑기 버튼 & 결과 (스크롤 가능 영역) */}
@@ -629,7 +632,7 @@ export default function GachaGame() {
               className="h-[30px] rounded-lg bg-red-500 px-1 text-xs text-white transition-transform hover:scale-105 active:scale-95 lg:h-[40px] lg:px-6 lg:text-sm"
               onClick={resetAll}
             >
-              리셋
+              {tCommon("reset")}
             </button>
           </div>
 
