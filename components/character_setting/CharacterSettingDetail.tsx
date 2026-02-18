@@ -1,5 +1,3 @@
-// 전체 코드
-
 "use client";
 
 import Image from "next/image";
@@ -20,8 +18,10 @@ import { characterSkin } from "@/data/character_skin";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { getSkinIllustUrl } from "@/lib/cdn";
+import { useTranslations } from "next-intl";
 
 export default function CharacterSettingDetail({ character }: { character: Character }) {
+  const t = useTranslations("characterSetting");
   const setting = character_setting_data.find((c) => c.character_id === character.id);
   const router = useRouter();
 
@@ -49,24 +49,24 @@ export default function CharacterSettingDetail({ character }: { character: Chara
         {setting?.resonance && setting.resonance.length > 0 && (
           <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
             <div className="mb-2 flex items-center justify-center gap-2">
-              <h2 className="text-xl font-bold">공명 추천</h2>
+              <h2 className="text-xl font-bold">{t("resonanceRecommend")}</h2>
               <Button
                 variant="outline"
                 size="sm"
                 className="h-6 bg-green-600 px-2 text-xs text-white hover:bg-green-400"
                 onClick={() => setShowDialog(true)}
               >
-                설명서
+                {t("resonanceGuide")}
               </Button>
             </div>
             <p className="mb-4 text-center text-xs text-gray-500 dark:text-gray-400">
-              공명 정보는 100% 정답이 아니며, 플레이 스타일에 따라 다를 수 있습니다.
+              {t("resonanceNote")}
             </p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {setting.resonance.map((r, idx) => {
                 const handleCopy = () => {
                   navigator.clipboard.writeText(r.code);
-                  toast.success("복사 완료!");
+                  toast.success(t("copyDone"));
                 };
 
                 return (
@@ -74,7 +74,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                     <CardContent className="p-4">
                       {idx === 0 && (
                         <Badge className="absolute right-2 top-2 bg-green-600 text-white">
-                          추천
+                          {t("recommended")}
                         </Badge>
                       )}
                       <Image
@@ -113,16 +113,16 @@ export default function CharacterSettingDetail({ character }: { character: Chara
             <Dialog open={showDialog} onOpenChange={setShowDialog}>
               <DialogContent className="max-h-[90vh] max-w-md overflow-y-auto sm:max-w-3xl">
                 <DialogHeader>
-                  <DialogTitle>공명 코드 사용 방법</DialogTitle>
+                  <DialogTitle>{t("resonanceCodeGuide")}</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-3 text-sm leading-relaxed text-gray-700 dark:text-gray-200">
-                  <p>공명 코드를 사용하면, 더 빠르게 공명을 세팅할 수 있습니다.</p>
+                  <p>{t("resonanceCodeDesc")}</p>
                   <div className="flex flex-col items-center gap-4">
                     {[1, 2, 3, 4].map((i) => (
                       <Image
                         key={i}
                         src={`/infos/resonance_img/guide${i}.webp`}
-                        alt={`예시 ${i}`}
+                        alt={t("exampleAlt", { num: i })}
                         width={300}
                         height={200}
                         className="w-full rounded border dark:border-gray-600"
@@ -138,7 +138,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
 
         {setting?.resonance_patterns && setting.resonance_patterns.length > 0 && (
           <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-            <h2 className="mb-4 text-center text-xl font-bold">공명 변조</h2>
+            <h2 className="mb-4 text-center text-xl font-bold">{t("resonancePattern")}</h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {setting.resonance_patterns.map((pattern, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center">
@@ -151,7 +151,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                       className="rounded border dark:border-gray-700"
                     />
                     <div className="absolute bottom-1 right-1 rounded-sm bg-red-600 px-1 text-[10px] text-white">
-                      {idx + 1}순위
+                      {t("rank", { num: idx + 1 })}
                     </div>
                   </div>
                   <span className="mt-2 text-base font-semibold text-gray-700 dark:text-gray-300">
@@ -165,9 +165,9 @@ export default function CharacterSettingDetail({ character }: { character: Chara
 
         {psycubeItems.length > 0 && (
           <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-            <h2 className="mb-2 text-center text-xl font-bold">의지 추천</h2>
+            <h2 className="mb-2 text-center text-xl font-bold">{t("psycubeRecommend")}</h2>
             <p className="mb-4 text-center text-xs text-gray-500 dark:text-gray-400">
-              의지는 추천순이며, 순위도 100% 정답이 아닐 수도 있습니다.
+              {t("psycubeNote")}
             </p>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {psycubeItems.map((item, idx) => (
@@ -186,7 +186,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
                         height={100}
                       />
                       <div className="absolute left-1 top-1 rounded-sm bg-red-600 px-1 text-[10px] text-white">
-                        {idx} 순위
+                        {t("psycubeRank", { num: idx })}
                       </div>
                       <div className="absolute bottom-1 left-1 rounded-sm bg-purple-600 px-1 text-[10px] text-white">
                         {item.type}
@@ -208,7 +208,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
 
         {characterSkins.length > 0 && (
           <div className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-            <h2 className="text-center text-xl font-bold">스킨 정보</h2>
+            <h2 className="text-center text-xl font-bold">{t("skinInfo")}</h2>
             <div
               className={cn(
                 "grid gap-8",
@@ -254,7 +254,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
               ))}
             </div>
             <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-              이미지 클릭 시 스킨 상세 페이지로 이동
+              {t("clickForSkinDetail")}
             </p>
           </div>
         )}

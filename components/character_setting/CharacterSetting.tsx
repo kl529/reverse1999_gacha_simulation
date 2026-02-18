@@ -6,33 +6,35 @@ import Image from "next/image";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
 type RoleType = "damage" | "support" | "balance" | "defense";
 
-const TYPES: { type: RoleType; label: string; iconImg: string }[] = [
+const ROLE_KEYS: { type: RoleType; labelKey: string; iconImg: string }[] = [
   {
     type: "damage",
-    label: "공격",
+    labelKey: "damage",
     iconImg: "/infos/resonance_img/damage.webp",
   },
   {
     type: "support",
-    label: "보조",
+    labelKey: "support",
     iconImg: "/infos/resonance_img/support.webp",
   },
   {
     type: "balance",
-    label: "밸런스",
+    labelKey: "balance",
     iconImg: "/infos/resonance_img/balance.webp",
   },
   {
     type: "defense",
-    label: "방어",
+    labelKey: "defense",
     iconImg: "/infos/resonance_img/defense.webp",
   },
 ];
 
 export default function CharacterSetting() {
+  const t = useTranslations("characterSetting");
   const [selectedType, setSelectedType] = useState<RoleType | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
@@ -52,13 +54,13 @@ export default function CharacterSetting() {
     return matchesType && matchesSearch;
   });
 
-  const renderCharGroup = (rarity: number, label: string, colorClass: string) => {
+  const renderCharGroup = (rarity: number, labelKey: string, colorClass: string) => {
     const group = filteredChars.filter((ch) => ch.rarity === rarity);
     if (group.length === 0) return null;
 
     return (
       <div className="space-y-2">
-        <h2 className={`text-xl font-bold ${colorClass} pb-2`}>{label}</h2>
+        <h2 className={`text-xl font-bold ${colorClass} pb-2`}>{t(labelKey)}</h2>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(92px,1fr))] gap-1">
           {group.map((ch) => (
             <Link key={`${ch.id}-${ch.version}`} href={`/character_setting/${ch.id}`}>
@@ -73,7 +75,7 @@ export default function CharacterSetting() {
                   />
                   {ch.version && (
                     <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
-                      {ch.version === "2.75" ? "콜라보" : ch.version}
+                      {ch.version === "2.75" ? t("collab") : ch.version}
                     </div>
                   )}
                 </div>
@@ -91,20 +93,20 @@ export default function CharacterSetting() {
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-white p-4 dark:bg-gray-900 dark:text-gray-200">
       <h1 className="sticky top-0 z-20 mb-4 mt-8 p-3 text-center text-2xl font-bold text-black dark:text-gray-100 lg:text-3xl">
-        공명 & 의지 찾기
+        {t("title")}
       </h1>
 
       <div className="mb-4 flex w-full max-w-md justify-center">
         <Input
           type="text"
-          placeholder="캐릭터 이름 검색"
+          placeholder={t("searchPlaceholder")}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
       <div className="mb-4 flex flex-wrap justify-center gap-2">
-        {TYPES.map((type) => (
+        {ROLE_KEYS.map((type) => (
           <Button
             key={type.type}
             variant={selectedType === type.type ? "default" : "outline"}
@@ -113,22 +115,22 @@ export default function CharacterSetting() {
           >
             <Image
               src={type.iconImg}
-              alt={type.label}
+              alt={t(type.labelKey)}
               width={20}
               height={20}
               className="h-5 w-5 object-contain"
             />
-            {type.label}
+            {t(type.labelKey)}
           </Button>
         ))}
       </div>
 
       <div className="w-full space-y-6 px-4">
-        {renderCharGroup(6, "🌟 6성", "text-purple-600 dark:text-purple-400")}
-        {renderCharGroup(5, "⭐ 5성", "text-yellow-600 dark:text-yellow-300")}
-        {renderCharGroup(4, "4성", "text-blue-600 dark:text-blue-300")}
-        {renderCharGroup(3, "3성", "text-green-600 dark:text-green-300")}
-        {renderCharGroup(2, "2성", "text-gray-600 dark:text-gray-300")}
+        {renderCharGroup(6, "star6", "text-purple-600 dark:text-purple-400")}
+        {renderCharGroup(5, "star5", "text-yellow-600 dark:text-yellow-300")}
+        {renderCharGroup(4, "star4", "text-blue-600 dark:text-blue-300")}
+        {renderCharGroup(3, "star3", "text-green-600 dark:text-green-300")}
+        {renderCharGroup(2, "star2", "text-gray-600 dark:text-gray-300")}
       </div>
     </div>
   );

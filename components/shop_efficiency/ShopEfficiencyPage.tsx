@@ -7,7 +7,10 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
+
 export default function ShopEfficiencyPage() {
+  const t = useTranslations("shopEfficiency");
   const [activeShop, setActiveShop] = useState<string>(shops[0].id);
   const [sortBy, setSortBy] = useState<"efficiency" | "cost">("efficiency");
 
@@ -44,28 +47,22 @@ export default function ShopEfficiencyPage() {
   const currentShop = shops.find((shop) => shop.id === activeShop);
   const sortedItems = currentShop?.items.slice().sort((a, b) => {
     if (sortBy === "efficiency") {
-      // 1. 추천 항목(isRequired) 우선 정렬
       if (a.isRequired && !b.isRequired) return -1;
       if (!a.isRequired && b.isRequired) return 1;
-
-      // 2. 같은 그룹 내에서 효율순 정렬
-      // null 효율은 가장 높은 우선순위로 처리 (제일 먼저 나옴)
       if (a.efficiency === null && b.efficiency === null) return 0;
       if (a.efficiency === null) return -1;
       if (b.efficiency === null) return 1;
       return b.efficiency - a.efficiency;
     }
-    // 가격 높은 순으로 정렬 (내림차순)
     return b.cost - a.cost;
   });
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-8">
       <div className="mb-8 text-center">
-        <h1 className="mb-4 text-3xl font-bold">상점 효율 정리</h1>
+        <h1 className="mb-4 text-3xl font-bold">{t("title")}</h1>
         <p className="text-muted-foreground">
-          각 상점별 재화와 구매 효율을 확인하고 비교해보세요. <br /> 추천도는 무조건적인 정답이
-          아니며, 출시 상황이나 패치에 따라 변동될 수 있습니다.
+          {t("subtitle")} <br /> {t("subtitleNote")}
         </p>
       </div>
 
@@ -116,7 +113,7 @@ export default function ShopEfficiencyPage() {
                       {currentShop.description}
                     </p>
                     <div className="mt-1 flex items-center gap-2 sm:mt-2">
-                      <span className="text-xs font-medium sm:text-sm">사용 재화:</span>
+                      <span className="text-xs font-medium sm:text-sm">{t("currency")}</span>
                       <div className="flex items-center gap-1">
                         <div className="relative h-4 w-4 sm:h-5 sm:w-5">
                           <Image
@@ -133,7 +130,7 @@ export default function ShopEfficiencyPage() {
                     </div>
                     {currentShop.refreshTime && (
                       <Badge variant="outline" className="mt-1 text-xs">
-                        갱신: {currentShop.refreshTime}
+                        {t("refreshPrefix")}{currentShop.refreshTime}
                       </Badge>
                     )}
                   </div>
@@ -145,7 +142,7 @@ export default function ShopEfficiencyPage() {
                     onClick={() => setSortBy("efficiency")}
                     className="text-xs sm:text-sm"
                   >
-                    효율순
+                    {t("sortEfficiency")}
                   </Button>
                   <Button
                     variant={sortBy === "cost" ? "default" : "outline"}
@@ -153,7 +150,7 @@ export default function ShopEfficiencyPage() {
                     onClick={() => setSortBy("cost")}
                     className="text-xs sm:text-sm"
                   >
-                    가격순
+                    {t("sortCost")}
                   </Button>
                 </div>
               </div>
@@ -182,7 +179,7 @@ export default function ShopEfficiencyPage() {
                   <div className="relative h-12 w-12 flex-shrink-0 sm:h-16 sm:w-16">
                     <Image
                       src={`/infos/materials/${item.materialId}.webp`}
-                      alt={material?.name || "재료"}
+                      alt={material?.name || t("materialDefault")}
                       fill
                       className="object-contain"
                     />
@@ -203,7 +200,7 @@ export default function ShopEfficiencyPage() {
 
                 <div className="space-y-2 sm:space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium sm:text-sm">가격:</span>
+                    <span className="text-xs font-medium sm:text-sm">{t("price")}</span>
                     <div className="flex items-center gap-1">
                       <span className="text-sm font-semibold sm:text-base">{item.cost}</span>
                       <div className="relative h-4 w-4 sm:h-5 sm:w-5">
@@ -216,14 +213,14 @@ export default function ShopEfficiencyPage() {
                       </div>
                       {item.isRefresh && (
                         <Badge className="ml-1 h-5 bg-green-500 px-1 py-0 text-xs text-white">
-                          갱신
+                          {t("refresh")}
                         </Badge>
                       )}
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium sm:text-sm">효율:</span>
+                    <span className="text-xs font-medium sm:text-sm">{t("efficiency")}</span>
                     <div className="flex items-center gap-1">
                       <span
                         className={`text-base font-bold sm:text-lg ${
@@ -232,17 +229,17 @@ export default function ShopEfficiencyPage() {
                             : "font-medium text-gray-400"
                         }`}
                       >
-                        {item.efficiency !== null ? `${item.efficiency.toFixed(2)}x` : "측정불가"}
+                        {item.efficiency !== null ? `${item.efficiency.toFixed(2)}x` : t("unmeasurable")}
                       </span>
                       {item.isRequired && (
-                        <Badge className="h-5 bg-red-500 px-1 py-0 text-xs text-white">추천</Badge>
+                        <Badge className="h-5 bg-red-500 px-1 py-0 text-xs text-white">{t("recommended")}</Badge>
                       )}
                       {item.isEstimate && (
                         <Badge
                           variant="secondary"
                           className="h-5 bg-blue-100 px-1 py-0 text-xs text-blue-700 dark:bg-blue-900 dark:text-blue-300"
                         >
-                          추정
+                          {t("estimated")}
                         </Badge>
                       )}
                     </div>
@@ -262,7 +259,7 @@ export default function ShopEfficiencyPage() {
 
       {(!sortedItems || sortedItems.length === 0) && (
         <div className="py-12 text-center">
-          <p className="text-muted-foreground">이 상점에는 아직 상품이 없습니다.</p>
+          <p className="text-muted-foreground">{t("noItems")}</p>
         </div>
       )}
     </div>
