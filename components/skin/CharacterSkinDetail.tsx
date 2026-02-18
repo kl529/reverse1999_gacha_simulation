@@ -1,7 +1,8 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CharacterSkin } from "@/data/character_skin";
@@ -14,6 +15,7 @@ import { ArrowLeft, X } from "lucide-react";
 import { getSkinIllustUrl, getCdnUrl } from "@/lib/cdn";
 
 function SkinDetailContent({ skin }: { skin: CharacterSkin }) {
+  const t = useTranslations("skin");
   const searchParams = useSearchParams();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const character = Object.values(charactersByRarity)
@@ -31,35 +33,35 @@ function SkinDetailContent({ skin }: { skin: CharacterSkin }) {
           <Link href={fromUrl}>
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="h-4 w-4" />
-              목록으로
+              {t("backToList")}
             </Button>
           </Link>
         </div>
 
         {/* 제목 */}
         <h1 className="text-center text-2xl font-bold sm:text-3xl">
-          {skin.name} - {character?.name || "알 수 없음"}
+          {skin.name} - {character?.name || t("unknown")}
         </h1>
 
         {/* 태그들 */}
         <div className="flex flex-wrap justify-center gap-2">
           <Badge variant="secondary" className="bg-orange-200 dark:bg-orange-700">
-            버전: {getDisplayVersion(skin.version)}
+            {t("versionLabel", { version: getDisplayVersion(skin.version) })}
           </Badge>
           <Badge variant="secondary" className="bg-sky-200 dark:bg-sky-700">
-            희귀도: {skin.rarity}
+            {t("rarityLabel", { rarity: skin.rarity })}
           </Badge>
           <Badge variant="secondary" className="bg-green-200 dark:bg-green-700">
-            획득처: {skin.source}
+            {t("sourceLabel", { source: skin.source })}
           </Badge>
           {skin.price && (
             <Badge variant="secondary" className="bg-purple-200 dark:bg-purple-700">
-              가격: {skin.price}
+              {t("priceLabel", { price: skin.price })}
             </Badge>
           )}
           {skin.tarot_number && (
             <Badge variant="secondary" className="bg-yellow-200 dark:bg-yellow-700">
-              타로 번호: {skin.tarot_number}
+              {t("tarotLabel", { number: skin.tarot_number })}
             </Badge>
           )}
         </div>
@@ -72,7 +74,7 @@ function SkinDetailContent({ skin }: { skin: CharacterSkin }) {
           <AspectRatio ratio={9 / 7}>
             <Image
               src={getSkinIllustUrl(`${skin.engName}.webp`)}
-              alt={`${skin.name} 일러스트`}
+              alt={t("illustAlt", { name: skin.name })}
               fill
               className="rounded-lg object-contain"
               unoptimized
@@ -109,7 +111,7 @@ function SkinDetailContent({ skin }: { skin: CharacterSkin }) {
             <AspectRatio ratio={9 / 16}>
               <iframe
                 src={skin.shorts_url}
-                title={`${skin.name} 스킨 쇼츠`}
+                title={t("shortsTitle", { name: skin.name })}
                 className="h-full w-full rounded-lg"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -134,7 +136,7 @@ function SkinDetailContent({ skin }: { skin: CharacterSkin }) {
           <div className="relative max-h-[90vh] max-w-[90vw]" onClick={(e) => e.stopPropagation()}>
             <Image
               src={selectedImage}
-              alt="확대된 스킨 이미지"
+              alt={t("enlargedImageAlt")}
               width={1200}
               height={1600}
               className="h-auto max-h-[90vh] w-auto max-w-full object-contain"
@@ -148,8 +150,9 @@ function SkinDetailContent({ skin }: { skin: CharacterSkin }) {
 }
 
 export default function SkinDetail({ skin }: { skin: CharacterSkin }) {
+  const t = useTranslations("skin");
   return (
-    <Suspense fallback={<div>로딩 중...</div>}>
+    <Suspense fallback={<div>{t("loading")}</div>}>
       <SkinDetailContent skin={skin} />
     </Suspense>
   );

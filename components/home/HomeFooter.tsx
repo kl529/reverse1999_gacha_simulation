@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 
 export interface HomeFooterProps {
   onPolicyClick: () => void;
@@ -18,21 +19,22 @@ export default function HomeFooter({
   onUpdateClick,
 }: HomeFooterProps) {
   const { theme } = useTheme();
+  const t = useTranslations("footer");
 
   return (
     <footer className="mt-5 flex flex-col items-center gap-2 bg-black/30 p-0 text-sm">
       <div className="flex min-h-[2rem] items-center gap-4 text-gray-200">
         <a href="mailto:jiwon803@gmail.com" className="hover:text-blue-400 hover:underline">
-          문의
+          {t("contact")}
         </a>
         <button onClick={onPolicyClick} className="hover:text-blue-400 hover:underline">
-          Policy
+          {t("policy")}
         </button>
         <button onClick={onSourceClick} className="hover:text-blue-400 hover:underline">
-          출처
+          {t("source")}
         </button>
         <button onClick={onContributorsClick} className="hover:text-blue-400 hover:underline">
-          기여자
+          {t("contributors")}
         </button>
         <Link
           href="https://buymeacoffee.com/vertin_suitcase"
@@ -40,10 +42,10 @@ export default function HomeFooter({
           rel="noopener noreferrer"
           className="hover:text-blue-400 hover:underline"
         >
-          커피 사주기 ☕️
+          {t("buyCoffee")}
         </Link>
         <button onClick={onUpdateClick} className="hover:text-blue-400 hover:underline">
-          업데이트
+          {t("update")}
         </button>
         <Link
           href="https://github.com/kl529/reverse1999_gacha_simulation"

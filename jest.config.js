@@ -15,7 +15,18 @@ const customJestConfig = {
     "<rootDir>/.next/",
     "<rootDir>/__tests__/fixtures/",
     "<rootDir>/__tests__/e2e/",
+    "<rootDir>/__tests__/utils/",
+    "<rootDir>/__tests__/mocks/",
   ],
 };
 
-module.exports = createJestConfig(customJestConfig);
+module.exports = async () => {
+  const jestConfig = await createJestConfig(customJestConfig)();
+  return {
+    ...jestConfig,
+    transformIgnorePatterns: [
+      "/node_modules/(?!(next-intl|use-intl|intl-messageformat|@formatjs)/)",
+      "^.+\\.module\\.(css|sass|scss)$",
+    ],
+  };
+};

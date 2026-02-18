@@ -2,56 +2,50 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-01-25)
+See: .planning/PROJECT.md (updated 2026-02-18)
 
-**Core value:** 핵심 비즈니스 로직(가챠 확률, 퀴즈 점수, 육성 계산)이 정확하게 동작함을 자동화된 테스트로 보장한다
-**Current focus:** v1 Milestone Complete — Planning next milestone
+**Core value:** 영어 사용자가 사이트의 모든 기능을 영어로 완전하게 이용할 수 있어야 한다.
+**Current focus:** Phase 1 — i18n 인프라 구축
 
-## Current Position
+## Progress
 
-Phase: v1 Complete
-Plan: N/A
-Status: Milestone Complete
-Last activity: 2026-01-25 — v1 테스트 커버리지 확장 milestone complete
+| Phase | Name | Status | Plans | Progress |
+|-------|------|--------|-------|----------|
+| 1 | i18n 인프라 구축 | ○ | 0/0 | 0% |
+| 2 | 공통 UI 및 언어 전환 | ○ | 0/0 | 0% |
+| 3 | 홈페이지 및 SEO 메타데이터 | ○ | 0/0 | 0% |
+| 4 | 가챠 시뮬레이터 번역 | ○ | 0/0 | 0% |
+| 5 | 캐릭터 정보 및 게임 데이터 | ○ | 0/0 | 0% |
+| 6 | 나머지 페이지 번역 | ○ | 0/0 | 0% |
+| 7 | 가이드 콘텐츠 번역 | ○ | 0/0 | 0% |
+| 8 | 링크 마이그레이션 및 통합 | ○ | 0/0 | 0% |
+| 9 | 테스트 완성 및 최종 검증 | ○ | 0/0 | 0% |
 
-Progress: [########################################] 100%
+Overall: ░░░░░░░░░░ 0%
 
-## v1 Milestone Summary
+## Current Phase
 
-**Shipped:** 2026-01-25
-
-| Test Type | Tests | Status |
-|-----------|-------|--------|
-| Unit Tests | 137 | PASS |
-| Component Tests | 75 | PASS |
-| E2E Tests | 41 | PASS |
-| **Total Tests** | **253** | **PASS** |
-
-**Files:** 94 created/modified
-**Test LOC:** 4,567 lines TypeScript
+Phase 1: i18n 인프라 구축
+Status: Not started
+Requirements: INFRA-01 ~ INFRA-10 (10개)
 
 ## Accumulated Context
 
 ### Decisions
-
 Decisions logged in PROJECT.md Key Decisions table.
-All decisions from v1 marked as ✓ Good.
 
 ### Pending Todos
-
-None. Milestone complete.
+None.
 
 ### Blockers/Concerns
-
-None blocking. Minor tech debt tracked in MILESTONE-AUDIT.md:
-- lib/gacha/gachaLogic.ts extracted but GachaGame.tsx uses inline logic
-- lib/utils/characterFilter.ts extracted but Character.tsx uses inline logic
+- Opus 모델 권한 미허용 — 에이전트는 sonnet으로 실행
+- 기존 테스트(253개)가 i18n 도입 후 깨질 수 있음 — Phase 1에서 테스트 인프라 선제 준비
 
 ## Session Continuity
 
-Last session: 2026-01-25
-Stopped at: Milestone Complete
+Last session: 2026-02-18
+Stopped at: Project initialized, ready for Phase 1 planning
 Resume file: None
 
 ---
-*Updated: 2026-01-25 after v1 milestone completion*
+*Updated: 2026-02-18 after project initialization*

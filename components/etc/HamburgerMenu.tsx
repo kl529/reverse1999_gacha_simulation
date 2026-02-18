@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { useModal } from "@/components/etc/ModalProvider";
 import { HAMBURGER_MENU_CATEGORIES } from "@/lib/constants/menuItems";
 import { analytics } from "@/lib/posthog";
@@ -18,6 +18,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
   const { openModal } = useModal();
   const pathname = usePathname();
+  const t = useTranslations("nav");
 
   // 현재 경로가 속한 카테고리 찾기
   const findActiveCategoryTitle = () => {
@@ -73,12 +74,26 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
+  const getCategoryLabel = (category: (typeof HAMBURGER_MENU_CATEGORIES)[number]) => {
+    if (category.titleKey) {
+      return t(`categories.${category.titleKey}`);
+    }
+    return category.title;
+  };
+
+  const getItemLabel = (item: (typeof HAMBURGER_MENU_CATEGORIES)[number]["items"][number]) => {
+    if (item.labelKey) {
+      return t(`items.${item.labelKey}`);
+    }
+    return item.label;
+  };
+
   return (
     <div ref={menuRef} className="fixed left-4 top-4 z-50 flex gap-2">
       <Link
         href="/"
-        aria-label="홈으로 이동"
-        title="홈으로"
+        aria-label={t("home")}
+        title={t("homeShort")}
         onClick={() => setIsOpen(false)}
         className="grid h-10 w-10 place-items-center rounded-md border bg-white text-black transition-transform active:scale-95 dark:bg-black dark:text-white"
       >
@@ -94,7 +109,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
             analytics.userBehavior.menuOpened();
           }
         }}
-        aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
+        aria-label={isOpen ? t("closeMenu") : t("openMenu")}
         aria-expanded={isOpen}
         aria-controls="hamburger-menu"
         className="grid h-10 w-10 place-items-center rounded-md border bg-white text-black transition-transform active:scale-95 dark:bg-black dark:text-white"
@@ -106,12 +121,13 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
         <nav
           id="hamburger-menu"
           role="navigation"
-          aria-label="메인 메뉴"
+          aria-label={t("mainMenu")}
           className="absolute left-0 top-full mt-2 w-48 rounded-md border bg-white text-black shadow-lg duration-200 animate-in fade-in zoom-in-95 slide-in-from-top-2 dark:bg-gray-900 dark:text-white sm:w-64"
         >
           <ul className="py-2">
             {HAMBURGER_MENU_CATEGORIES.map((category, categoryIndex) => {
               const isExpanded = expandedCategories.includes(category.title);
+              const categoryLabel = getCategoryLabel(category);
 
               return (
                 <li key={categoryIndex}>
@@ -119,10 +135,10 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                   <button
                     onClick={() => toggleCategory(category.title)}
                     aria-expanded={isExpanded}
-                    aria-label={`${category.title} ${isExpanded ? "접기" : "펼치기"}`}
+                    aria-label={`${categoryLabel} ${isExpanded ? t("collapse") : t("expand")}`}
                     className="flex w-full items-center justify-between px-3 py-2 text-left font-semibold hover:bg-gray-100 dark:hover:bg-gray-800"
                   >
-                    <span className="text-sm">{category.title}</span>
+                    <span className="text-sm">{categoryLabel}</span>
                     <svg
                       className={`h-4 w-4 transition-transform ${isExpanded ? "rotate-180" : ""}`}
                       fill="none"
@@ -143,6 +159,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                   {isExpanded && (
                     <ul className="bg-gray-50 dark:bg-gray-950">
                       {category.items.map((item, itemIndex) => {
+                        const itemLabel = getItemLabel(item);
                         const handleClick = () => {
                           setIsOpen(false);
                           if (item.modalType) {
@@ -170,7 +187,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                                   ) : (
                                     <span className="text-base sm:text-lg">{item.icon}</span>
                                   )}
-                                  <span>{item.label}</span>
+                                  <span>{itemLabel}</span>
                                 </div>
                               </li>
                             );
@@ -196,7 +213,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                                 ) : (
                                   <span className="text-base sm:text-lg">{item.icon}</span>
                                 )}
-                                <span>{item.label}</span>
+                                <span>{itemLabel}</span>
                               </Link>
                             </li>
                           );
@@ -219,7 +236,7 @@ export default function HamburgerMenu({ onModalOpen }: HamburgerMenuProps) {
                               ) : (
                                 <span className="text-base sm:text-lg">{item.icon}</span>
                               )}
-                              <span>{item.label}</span>
+                              <span>{itemLabel}</span>
                             </button>
                           </li>
                         );

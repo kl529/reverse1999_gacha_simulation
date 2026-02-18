@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { materialList } from "@/data/material";
 import { UserMaterials } from "@/lib/types/growthCalculatorTypes";
+import { useTranslations } from "next-intl";
 
 interface MaterialInputModal_GrowthProps {
   open: boolean;
@@ -27,9 +28,9 @@ export default function MaterialInputModal_Growth({
   initialMaterials,
   onSave,
 }: MaterialInputModal_GrowthProps) {
+  const t = useTranslations("growthCalc");
   const [materials, setMaterials] = useState<UserMaterials>(initialMaterials);
 
-  // initialMaterials가 변경되면 동기화
   useEffect(() => {
     setMaterials(initialMaterials);
   }, [initialMaterials]);
@@ -45,7 +46,6 @@ export default function MaterialInputModal_Growth({
   };
 
   const handleSave = () => {
-    // 0인 재료는 제거하여 저장
     const cleanedMaterials: UserMaterials = {};
     Object.entries(materials).forEach(([id, count]) => {
       if (count > 0) {
@@ -62,27 +62,23 @@ export default function MaterialInputModal_Growth({
     onOpenChange(false);
   };
 
-  // showInInput flag가 있는 재료만 필터링하여 정렬
   const sortedMaterials = materialList
     .filter((material) => material.showInInput)
     .sort((a, b) => {
-      // 카테고리 그룹 정의
       const getCategoryGroup = (category: string) => {
         if (category === "resonance_material") return 2;
         if (category === "euphoria_material") return 3;
         if (category === "base_item") return 4;
-        return 1; // insight_material, growth_material
+        return 1;
       };
 
       const groupA = getCategoryGroup(a.category);
       const groupB = getCategoryGroup(b.category);
 
-      // 그룹이 다르면 그룹 순서대로
       if (groupA !== groupB) {
         return groupA - groupB;
       }
 
-      // 그룹 1 (insight, growth): 희귀도 우선, 같은 희귀도면 카테고리 순서
       if (groupA === 1) {
         if (a.rarity !== b.rarity) {
           return b.rarity - a.rarity;
@@ -100,23 +96,19 @@ export default function MaterialInputModal_Growth({
           return catOrderA - catOrderB;
         }
 
-        // 같은 카테고리 내에서 sortOrder가 있으면 그것을 우선 사용
         if (a.sortOrder !== undefined && b.sortOrder !== undefined) {
           return a.sortOrder - b.sortOrder;
         }
         if (a.sortOrder !== undefined) return -1;
         if (b.sortOrder !== undefined) return 1;
 
-        // sortOrder가 없으면 id 순서대로
         return a.id - b.id;
       }
 
-      // 그룹 2, 3 (resonance, euphoria): 희귀도만으로 정렬
       if (groupA === 2 || groupA === 3) {
         return b.rarity - a.rarity;
       }
 
-      // 그룹 4 (base_item): id 순서대로
       return a.id - b.id;
     });
 
@@ -124,9 +116,9 @@ export default function MaterialInputModal_Growth({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[90vh] w-[92vw] max-w-4xl overflow-y-auto p-3 sm:w-full sm:p-4">
         <DialogHeader className="mb-2">
-          <DialogTitle className="text-xl sm:text-2xl">보유 재료 입력</DialogTitle>
+          <DialogTitle className="text-xl sm:text-2xl">{t("materialInputTitle")}</DialogTitle>
           <DialogDescription className="text-xs sm:text-sm">
-            보유하고 있는 재료의 수량을 입력하세요. 0은 자동으로 제거됩니다.
+            {t("materialInputDesc")}
           </DialogDescription>
         </DialogHeader>
 
@@ -139,7 +131,6 @@ export default function MaterialInputModal_Growth({
                   key={material.id}
                   className="group relative flex flex-col items-center gap-0.5 px-0 py-0.5"
                 >
-                  {/* 호버 툴팁 */}
                   <div className="absolute -top-8 left-1/2 z-50 hidden -translate-x-1/2 whitespace-nowrap rounded bg-black px-2 py-1 text-xs text-white group-hover:block">
                     {material.name}
                   </div>
@@ -151,10 +142,9 @@ export default function MaterialInputModal_Growth({
                       fill
                       className="object-contain p-1"
                     />
-                    {/* 성급 효과 오버레이 - 투명도 조정 */}
                     <Image
                       src={`/infos/effects/${material.rarity}stars.webp`}
-                      alt={`${material.rarity}성`}
+                      alt={`${material.rarity}${t("star")}`}
                       fill
                       className="pointer-events-none z-10 object-cover opacity-60"
                     />
@@ -175,10 +165,10 @@ export default function MaterialInputModal_Growth({
 
         <div className="mt-2 flex justify-end gap-2 border-t pt-2">
           <Button variant="outline" onClick={handleCancel} size="sm">
-            취소
+            {t("cancel")}
           </Button>
           <Button onClick={handleSave} size="sm">
-            저장
+            {t("save")}
           </Button>
         </div>
       </DialogContent>

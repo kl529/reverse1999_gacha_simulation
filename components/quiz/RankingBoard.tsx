@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "react-hot-toast";
 import { analytics } from "@/lib/posthog";
+import { useTranslations } from "next-intl";
 
 declare global {
   interface Window {
@@ -67,6 +68,7 @@ function markResultAsRegistered(resultId: string): void {
 }
 
 export default function RankingBoard({ result, onClose }: RankingBoardProps) {
+  const t = useTranslations("quiz");
   const [viewMode, setViewMode] = useState<ViewMode>("rankings");
   const [nickname, setNickname] = useState("");
   const [rankings, setRankings] = useState<RankingEntry[]>([]);
@@ -97,7 +99,7 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
       setRankings(data);
     } catch (error) {
       console.error("Failed to load rankings:", error);
-      toast.error("랭킹을 불러오는데 실패했습니다.");
+      toast.error(t("loadRankingFailed"));
     } finally {
       setIsLoading(false);
     }
@@ -110,12 +112,12 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
   // 랭킹 등록
   const handleSubmitRanking = async () => {
     if (!nickname.trim()) {
-      toast.error("닉네임을 입력해주세요!");
+      toast.error(t("enterNicknameError"));
       return;
     }
 
     if (nickname.length > 20) {
-      toast.error("닉네임은 20자 이내로 입력해주세요!");
+      toast.error(t("nicknameTooLong"));
       return;
     }
 
@@ -139,7 +141,7 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
       setHasSubmitted(true);
       setViewMode("rankings");
       markResultAsRegistered(resultId);
-      toast.success("랭킹이 등록되었습니다!");
+      toast.success(t("rankingRegistered"));
 
       // Analytics 트래킹
       analytics.generalQuiz.rankingRegistered(result.quizSetId, result.correctCount, result.totalQuestions, timeInSeconds);
@@ -156,7 +158,7 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
       await loadRankings();
     } catch (error) {
       console.error("Failed to submit ranking:", error);
-      toast.error("랭킹 등록에 실패했습니다.");
+      toast.error(t("rankingFailed"));
     } finally {
       setIsSubmitting(false);
     }
@@ -186,7 +188,7 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
       }
     }
     // 10위 이내면 정확한 순위, 아니면 "10위 이상"
-    return rank <= 10 ? `${rank}위` : "10위권 밖";
+    return rank <= 10 ? t("rankPosition", { rank }) : t("rankOutside");
   };
 
   return (
@@ -208,7 +210,7 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
                 ? "text-purple-700 dark:text-purple-200"
                 : "text-blue-700 dark:text-blue-200"
             }`}>
-              🏆 {quizSetInfo?.name || "퀴즈"} 랭킹
+              {t("quizRanking", { name: quizSetInfo?.name || t("defaultQuizName") })}
             </h2>
             <button
               onClick={onClose}
@@ -226,7 +228,7 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
             : "border-blue-200 bg-blue-100/50 dark:border-blue-500/30 dark:bg-gray-800/50"
         }`}>
           <div className="flex items-center justify-between">
-            <span className="text-gray-600 dark:text-gray-400">내 기록</span>
+            <span className="text-gray-600 dark:text-gray-400">{t("myRecord")}</span>
             <span className={`text-lg font-bold ${
               isMelaniaTheme
                 ? "text-purple-700 dark:text-purple-300"
@@ -241,7 +243,7 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
           </div>
           {!hasSubmitted && rankings.length > 0 && (
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              예상 순위: <span className="font-bold">{getMyEstimatedRank()}</span>
+              {t("estimatedRank")} <span className="font-bold">{getMyEstimatedRank()}</span>
             </p>
           )}
         </div>
@@ -252,12 +254,12 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
             {/* 랭킹 목록 */}
             <div className="max-h-[55vh] overflow-y-auto px-4 py-3">
               {isLoading ? (
-                <div className="py-8 text-center text-gray-500">로딩 중...</div>
+                <div className="py-8 text-center text-gray-500">{t("loading")}</div>
               ) : rankings.length === 0 ? (
                 <div className="py-8 text-center text-gray-500 dark:text-gray-400">
-                  아직 등록된 기록이 없습니다.
+                  {t("noRecords")}
                   <br />
-                  첫 번째로 기록을 등록해보세요!
+                  {t("beFirst")}
                 </div>
               ) : (
                 <div className="space-y-2">
@@ -304,7 +306,7 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
                                   ? "text-purple-500 dark:text-purple-400"
                                   : "text-blue-500 dark:text-blue-400"
                               }`}>
-                                (나)
+                                {t("me")}
                               </span>
                             )}
                           </p>
@@ -342,7 +344,7 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
                       : "bg-blue-600 hover:bg-blue-700"
                   }`}
                 >
-                  🏆 내 기록 등록하기
+                  {t("registerMyRecord")}
                 </Button>
               </div>
             )}
@@ -353,13 +355,13 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
         {viewMode === "register" && (
           <div className="px-4 py-6">
             <h3 className="mb-4 text-center text-lg font-semibold text-gray-900 dark:text-white">
-              닉네임을 입력하세요
+              {t("enterNickname")}
             </h3>
             <div className="space-y-4">
               <Input
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
-                placeholder="닉네임 (최대 20자)"
+                placeholder={t("nicknameMaxLength")}
                 maxLength={20}
                 disabled={isSubmitting}
                 className="border-gray-300 bg-white text-gray-900 placeholder:text-gray-400 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder:text-gray-500"
@@ -376,7 +378,7 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
                   className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
                   disabled={isSubmitting}
                 >
-                  취소
+                  {t("cancel")}
                 </Button>
                 <Button
                   onClick={handleSubmitRanking}
@@ -387,7 +389,7 @@ export default function RankingBoard({ result, onClose }: RankingBoardProps) {
                       : "bg-blue-600 hover:bg-blue-700"
                   }`}
                 >
-                  {isSubmitting ? "등록 중..." : "등록하기"}
+                  {isSubmitting ? t("registering") : t("register")}
                 </Button>
               </div>
             </div>

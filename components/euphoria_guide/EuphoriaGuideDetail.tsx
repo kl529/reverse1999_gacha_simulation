@@ -6,7 +6,7 @@ import Image from "next/image";
 import { charactersByRarity } from "@/data/characters";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { recommendTeams } from "@/data/recommend_team";
 import { useMemo, useState, useEffect } from "react";
 import { analytics } from "@/lib/posthog";
@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { euphoriaMaterialList } from "@/data/euphoria_material";
 import { materialList } from "@/data/material";
+import { useTranslations } from "next-intl";
 
 interface Props {
   item: Euphoria;
@@ -59,10 +60,10 @@ function renderDescription(text: string) {
 }
 
 export default function EuphoriaGuideDetail({ item, character }: Props) {
+  const t = useTranslations("euphoriaGuide");
   const romanNumerals = ["I", "II", "III", "IV"];
 
   useEffect(() => {
-    // 컨텐츠 인기도: 광상 가이드 조회 추적
     analytics.content.guideViewed("광상", character.name);
   }, [character.name]);
 
@@ -112,7 +113,7 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
             <AspectRatio ratio={1}>
               <Image
                 src={`/infos/euphoria/${character.engName.replace(/-/g, "_")}_${item.number}.webp`}
-                alt={`${character.name} 광상`}
+                alt={t("euphoriaAlt", { name: character.name })}
                 width={100}
                 height={100}
                 className="h-full w-full object-contain"
@@ -120,7 +121,7 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
               />
             </AspectRatio>
             <div className="absolute bottom-1 right-1 z-10 rounded bg-gray-200 px-1 py-0.5 text-[10px] text-gray-800 shadow dark:bg-gray-700 dark:text-gray-100">
-              v{item.version === "2.75" ? "콜라보" : item.version}
+              v{item.version === "2.75" ? t("collab") : item.version}
             </div>
           </Card>
         </div>
@@ -128,19 +129,19 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
         <div className="mb-6 text-center text-sm text-black dark:text-gray-200">
           <p className="whitespace-pre-line">{item.note}</p>
           <p className="mt-1 whitespace-pre-line">
-            출시 : v{item.version === "2.75" ? "콜라보" : item.version}
+            {t("release", { version: item.version === "2.75" ? t("collab") : item.version })}
           </p>
           <Link
             href={`/character_setting/${character.id}`}
             className="mt-2 inline-block text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
           >
-            {character.name} 세팅 보기 →
+            {t("viewSetting", { name: character.name })}
           </Link>
         </div>
 
         <Card className="mb-6">
           <CardHeader>
-            <CardTitle>💉 효과</CardTitle>
+            <CardTitle>{t("effects")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -171,13 +172,13 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
           (euphoriaMaterial.euphoria.length > 0 || euphoriaMaterial.upgrade.length > 0) && (
             <Card className="mb-6">
               <CardHeader>
-                <CardTitle>🔧 재료 정보</CardTitle>
+                <CardTitle>{t("materials")}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 {euphoriaMaterial.euphoria.length > 0 && (
                   <div>
                     <h3 className="mb-3 text-lg font-semibold text-black dark:text-white">
-                      광상 해금
+                      {t("euphoriaUnlock")}
                     </h3>
                     <div className="space-y-3">
                       {euphoriaMaterial.euphoria
@@ -207,7 +208,7 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
                                         {material.name}
                                       </span>
                                       <span className="text-xs text-gray-600 dark:text-gray-400">
-                                        {quantity}개
+                                        {t("count", { qty: quantity })}
                                       </span>
                                     </div>
                                   </div>
@@ -223,13 +224,13 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
                 {euphoriaMaterial.upgrade.length > 0 && (
                   <div>
                     <h3 className="mb-3 text-lg font-semibold text-black dark:text-white">
-                      광상 업그레이드
+                      {t("euphoriaUpgrade")}
                     </h3>
                     <div className="space-y-3">
                       {euphoriaMaterial.upgrade.map((upgrade, idx) => (
                         <div key={idx} className="rounded-lg border p-3 dark:border-gray-700">
                           <h4 className="mb-2 font-medium text-black dark:text-white">
-                            레벨 {upgrade.level}
+                            {t("level", { level: upgrade.level })}
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {Object.entries(upgrade.materials).map(([materialId, quantity]) => {
@@ -254,7 +255,7 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
                                       {material.name}
                                     </span>
                                     <span className="text-xs text-gray-600 dark:text-gray-400">
-                                      {quantity}개
+                                      {t("count", { qty: quantity })}
                                     </span>
                                   </div>
                                 </div>
@@ -273,7 +274,7 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
         {item.recommendParty && Object.keys(item.recommendParty).length > 0 && (
           <Card className="mb-6">
             <CardHeader>
-              <CardTitle>🍳 추천 파티</CardTitle>
+              <CardTitle>{t("recommendParty")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               {Object.entries(item.recommendParty).map(([key, comment], idx) => {
@@ -317,11 +318,11 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
             <div className="mb-4 flex justify-end">
               <Link href="/recommend_team">
                 <Button variant="outline" size="sm">
-                  전체 추천조합 보기
+                  {t("viewAllTeams")}
                 </Button>
               </Link>
             </div>
-            <h2 className="mb-4 text-center text-xl font-bold">이 캐릭터가 포함된 추천 조합</h2>
+            <h2 className="mb-4 text-center text-xl font-bold">{t("teamsWithChar")}</h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {recommendedTeams.map((team) => (
                 <div key={team.name} className="rounded-lg border p-4 dark:border-gray-700">
@@ -364,7 +365,7 @@ export default function EuphoriaGuideDetail({ item, character }: Props) {
                           {alternatives.length > 0 && (
                             <DropdownMenu>
                               <DropdownMenuTrigger className="text-xs text-blue-600 underline">
-                                대체 캐릭터
+                                {t("altCharacter")}
                               </DropdownMenuTrigger>
                               <DropdownMenuContent align="center">
                                 {[{ id: ch.id }, ...alternatives].map((alt) => {

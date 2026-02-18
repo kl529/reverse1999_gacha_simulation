@@ -20,8 +20,10 @@ import {
 import { aggregateMaterials, calculateDeficit } from "@/lib/utils/growthCalculatorCalculations";
 import { charactersByRarity } from "@/data/characters";
 import { v4 as uuidv4 } from "uuid";
+import { useTranslations } from "next-intl";
 
 export default function GrowthCalculatorPage() {
+  const t = useTranslations("growthCalc");
   const [userMaterials, setUserMaterials] = useState<UserMaterials>({});
   const [characterPlans, setCharacterPlans] = useState<CharacterPlan[]>([]);
   const [materialModalOpen, setMaterialModalOpen] = useState(false);
@@ -36,7 +38,6 @@ export default function GrowthCalculatorPage() {
   const [singleMaterialModalOpen, setSingleMaterialModalOpen] = useState(false);
   const [selectedMaterialId, setSelectedMaterialId] = useState<number | null>(null);
 
-  // 초기 데이터 로드
   useEffect(() => {
     const materials = loadUserMaterials();
     const plans = loadCharacterPlans();
@@ -44,7 +45,6 @@ export default function GrowthCalculatorPage() {
     setCharacterPlans(plans);
   }, []);
 
-  // localStorage 자동 저장
   useEffect(() => {
     saveUserMaterials(userMaterials);
   }, [userMaterials]);
@@ -65,12 +65,10 @@ export default function GrowthCalculatorPage() {
     return types;
   }, [allCharacters]);
 
-  // 생성일시별로 정렬된 계획
   const sortedPlans = useMemo(() => {
     return [...characterPlans].sort((a, b) => a.createdAt - b.createdAt);
   }, [characterPlans]);
 
-  // 재료 요구사항 계산
   const materialRequirements = useMemo(() => {
     const aggregated = aggregateMaterials(characterPlans, characterResonanceTypes);
     const result = calculateDeficit(userMaterials, aggregated);
@@ -94,7 +92,6 @@ export default function GrowthCalculatorPage() {
   };
 
   const handleCharactersSelected = (characterIds: number[]) => {
-    // 모든 선택된 캐릭터를 pending 리스트에 추가
     if (characterIds.length > 0) {
       setPendingCharacterIds(characterIds);
       setSelectedCharacterIdForGrowth(characterIds[0]);
@@ -107,7 +104,6 @@ export default function GrowthCalculatorPage() {
     direction: "prev" | "next",
     currentPlanData?: Omit<CharacterPlan, "id" | "createdAt" | "updatedAt">
   ) => {
-    // 현재 계획을 임시 저장
     if (currentPlanData) {
       setTempPlans((prev) => new Map(prev).set(currentPlanData.characterId, currentPlanData));
     }
@@ -126,7 +122,6 @@ export default function GrowthCalculatorPage() {
     const now = Date.now();
 
     if (editingPlan) {
-      // 기존 계획 수정
       setCharacterPlans((prev) =>
         prev.map((p) =>
           p.id === editingPlan.id
@@ -137,11 +132,9 @@ export default function GrowthCalculatorPage() {
       setEditingPlan(undefined);
       setGrowthModalOpen(false);
     } else {
-      // 현재 계획 임시 저장
       const newTempPlans = new Map(tempPlans);
       newTempPlans.set(planData.characterId, planData);
 
-      // 모든 임시 계획을 실제 계획으로 저장
       const newPlans: CharacterPlan[] = [];
       pendingCharacterIds.forEach((charId) => {
         const tempPlan = newTempPlans.get(charId);
@@ -169,7 +162,7 @@ export default function GrowthCalculatorPage() {
   };
 
   const handleDeletePlan = (planId: string) => {
-    if (confirm("이 육성 계획을 삭제하시겠습니까?")) {
+    if (confirm(t("confirmDelete"))) {
       setCharacterPlans((prev) => prev.filter((p) => p.id !== planId));
     }
   };
@@ -186,19 +179,17 @@ export default function GrowthCalculatorPage() {
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-8">
-      {/* 헤더 */}
       <div className="mb-6 px-2 text-center sm:mb-8">
-        <h1 className="mb-2 text-2xl font-bold sm:text-3xl">육성 계산기</h1>
+        <h1 className="mb-2 text-2xl font-bold sm:text-3xl">{t("title")}</h1>
         <p className="text-sm text-gray-600 dark:text-gray-400 sm:text-base">
-          보유 재료를 입력하고 여러 캐릭터의 육성 계획을 세워 필요한 재료를 확인하세요.
+          {t("subtitle")}
         </p>
       </div>
 
-      {/* 액션 버튼 */}
       <div className="mb-6 flex flex-col justify-center gap-2 px-2 sm:flex-row sm:gap-3">
         <Button onClick={() => setMaterialModalOpen(true)} className="w-full sm:w-auto">
           <Package className="mr-2 h-4 w-4" />
-          재료 입력
+          {t("materialInput")}
         </Button>
         <Button
           onClick={() => setSelectionModalOpen(true)}
@@ -206,26 +197,24 @@ export default function GrowthCalculatorPage() {
           className="w-full sm:w-auto"
         >
           <UserPlus className="mr-2 h-4 w-4" />
-          캐릭터 추가
+          {t("addCharacter")}
         </Button>
       </div>
 
-      {/* 안내 메시지 (계획이 없을 때) */}
       {characterPlans.length === 0 && (
         <div className="mb-6 rounded-lg border-2 border-dashed border-gray-300 p-8 text-center dark:border-gray-700">
           <AlertCircle className="mx-auto mb-3 h-12 w-12 text-gray-400" />
-          <h3 className="mb-2 text-lg font-semibold">육성 계획이 없습니다</h3>
+          <h3 className="mb-2 text-lg font-semibold">{t("noPlan")}</h3>
           <p className="mb-4 text-gray-600 dark:text-gray-400">
-            &ldquo;캐릭터 추가&rdquo; 버튼을 클릭하여 육성 계획을 시작하세요.
+            {t("noPlanDesc")}
           </p>
         </div>
       )}
 
-      {/* 캐릭터 계획 목록 */}
       {characterPlans.length > 0 && (
         <div className="mb-8">
           <h2 className="mb-4 text-center text-xl font-bold sm:text-2xl">
-            육성 목록 ({characterPlans.length}명)
+            {t("growthList", { count: characterPlans.length })}
           </h2>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
             {sortedPlans.map((plan) => {
@@ -247,7 +236,6 @@ export default function GrowthCalculatorPage() {
         </div>
       )}
 
-      {/* 파밍 가이드 */}
       {characterPlans.length > 0 && (
         <div className="mb-8 px-2">
           <FarmingGuide_Growth
@@ -258,9 +246,8 @@ export default function GrowthCalculatorPage() {
         </div>
       )}
 
-      {/* 재료 요약 */}
       <div className="mb-8 px-2">
-        <h2 className="mb-4 text-center text-xl font-bold sm:text-2xl">재료 요약</h2>
+        <h2 className="mb-4 text-center text-xl font-bold sm:text-2xl">{t("materialSummary")}</h2>
         <MaterialSummary_Growth
           requirements={materialRequirements}
           userMaterials={userMaterials}
@@ -268,7 +255,6 @@ export default function GrowthCalculatorPage() {
         />
       </div>
 
-      {/* 모달들 */}
       <MaterialInputModal_Growth
         open={materialModalOpen}
         onOpenChange={setMaterialModalOpen}
@@ -301,7 +287,6 @@ export default function GrowthCalculatorPage() {
         />
       )}
 
-      {/* 단일 재료 수정 모달 */}
       <SingleMaterialEditModal_Growth
         open={singleMaterialModalOpen}
         onOpenChange={setSingleMaterialModalOpen}

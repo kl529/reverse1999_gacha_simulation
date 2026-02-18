@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { bingoData, BingoDifficulty } from "@/data/bingo_text";
 import { toast, Toaster } from "react-hot-toast";
 import { analytics } from "@/lib/posthog";
+import { useTranslations } from "next-intl";
 
 // 빙고판 크기별 전체 빙고 줄 개수 (가로 + 세로 + 대각선 2)
 const getTotalBingoLines = (size: number) => size + size + 2;
@@ -43,6 +44,7 @@ function getBingoLines(board: boolean[][], size: number) {
 }
 
 export default function Bingo() {
+  const t = useTranslations("bingo");
   const [difficulty, setDifficulty] = useState<BingoDifficulty>("veteran");
   const currentBingoData = bingoData[difficulty];
   const bingoSize = currentBingoData.size;
@@ -68,7 +70,7 @@ export default function Bingo() {
   // 셀 클릭 핸들러
   const handleCellClick = (row: number, col: number) => {
     if (result) {
-      toast("리셋을 해야 다시 체크할 수 있습니다.", {
+      toast(t("resetRequired"), {
         duration: 1500,
         position: "bottom-center",
       });
@@ -101,7 +103,7 @@ export default function Bingo() {
     // 빙고 리셋 추적
     analytics.bingo.gameReset();
 
-    toast.success("리셋되었습니다.", {
+    toast.success(t("resetDone"), {
       duration: 1500,
       position: "bottom-center",
     });
@@ -146,8 +148,8 @@ export default function Bingo() {
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-screen-lg flex-col items-center bg-gray-100 px-2 py-8 dark:bg-gray-900">
       <Toaster position="top-center" toastOptions={{ duration: 1500 }} />
-      <h1 className="mb-2 mt-8 text-center text-3xl font-bold">리버스 1999 빙고</h1>
-      <p className="mb-4 text-center text-gray-500 dark:text-gray-300">재미로만 즐겨주세요!</p>
+      <h1 className="mb-2 mt-8 text-center text-3xl font-bold">{t("title")}</h1>
+      <p className="mb-4 text-center text-gray-500 dark:text-gray-300">{t("subtitle")}</p>
 
       {/* 난이도 탭 */}
       <div className="mb-4 flex gap-2 rounded-lg bg-white p-1 shadow-sm dark:bg-gray-800">
@@ -159,7 +161,7 @@ export default function Bingo() {
               : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
           }`}
         >
-          고인물
+          {t("veteran")}
         </button>
         <button
           onClick={() => handleDifficultyChange("whale")}
@@ -169,7 +171,7 @@ export default function Bingo() {
               : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
           }`}
         >
-          돈통
+          {t("whale")}
         </button>
         {/* <button
           onClick={() => handleDifficultyChange("lightSpender")}
@@ -188,31 +190,31 @@ export default function Bingo() {
           className="rounded bg-gray-200 px-4 py-2 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
           onClick={handleReset}
         >
-          리셋
+          {t("reset")}
         </button>
         <button
           className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700"
           onClick={handleComplete}
           disabled={!!result}
         >
-          완성
+          {t("complete")}
         </button>
       </div>
       {result && (
         <div className="w-full max-w-md rounded bg-white p-3 text-center text-sm shadow dark:bg-gray-800 dark:text-gray-100">
           <p>
             <span className="font-bold text-blue-600 dark:text-blue-400">
-              빙고 줄 : {result.bingoCount}
+              {t("bingoLines", { count: result.bingoCount })}
             </span>{" "}
             / {getTotalBingoLines(bingoSize)}
             &nbsp;&nbsp;|&nbsp;&nbsp;
             <span className="font-bold text-green-600 dark:text-green-400">
-              체크 : {result.checkedCount}
+              {t("checked", { count: result.checkedCount })}
             </span>{" "}
             / {bingoSize * bingoSize}
             <span className="ml-2 font-bold text-black dark:text-gray-100">
               {" "}
-              난이도 : {currentBingoData.title}{" "}
+              {t("difficulty", { title: currentBingoData.title })}{" "}
             </span>
           </p>
         </div>

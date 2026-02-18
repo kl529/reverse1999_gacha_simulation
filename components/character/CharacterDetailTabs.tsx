@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Character } from "@/data/characters";
 import CharacterDetail from "@/components/character/CharacterDetail";
 import CharacterSettingDetail from "@/components/character_setting/CharacterSettingDetail";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Info } from "lucide-react";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { euphoriaList } from "@/data/euphoria";
 import { getDisplayVersion } from "@/data/version";
@@ -16,6 +17,7 @@ import { analytics } from "@/lib/posthog";
 import { getCharacterUrl } from "@/lib/cdn";
 
 export default function CharacterDetailTabs({ character }: { character: Character }) {
+  const t = useTranslations("character");
   const [activeTab, setActiveTab] = useState<string>("setting");
   const is6Star = character.rarity === 6;
 
@@ -56,7 +58,7 @@ export default function CharacterDetailTabs({ character }: { character: Characte
             </div>
             {euphoriaList.some((e) => e.character_id === character.id) && (
               <div className="absolute bottom-1 left-1 z-10 rounded-sm bg-rose-600 px-1 py-[1px] text-[10px] text-white shadow">
-                광상
+                {t("euphoria")}
               </div>
             )}
           </div>
@@ -74,7 +76,7 @@ export default function CharacterDetailTabs({ character }: { character: Characte
                   : "bg-white text-gray-600 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800"
               } ${!is6Star ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
             >
-              캐릭터 가이드
+              {t("guide")}
             </button>
             <button
               onClick={() => setActiveTab("setting")}
@@ -84,7 +86,7 @@ export default function CharacterDetailTabs({ character }: { character: Characte
                   : "bg-white text-gray-600 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800"
               } cursor-pointer`}
             >
-              공명 & 의지
+              {t("resonanceSetting")}
             </button>
           </div>
         </div>
@@ -101,8 +103,7 @@ export default function CharacterDetailTabs({ character }: { character: Characte
                 <Alert>
                   <Info className="h-4 w-4" />
                   <AlertDescription>
-                    6성 캐릭터만 가이드를 제공하고 있습니다. 5성 캐릭터는 공명 & 의지 탭을
-                    확인해주세요.
+                    {t("guideOnly6Star")}
                   </AlertDescription>
                 </Alert>
               </div>
@@ -119,11 +120,11 @@ export default function CharacterDetailTabs({ character }: { character: Characte
           const chars = getSortedCharList(rarity);
           if (chars.length === 0) return null;
           const labels: Record<number, string> = {
-            6: "🌟 6성",
-            5: "⭐ 5성",
-            4: "4성",
-            3: "3성",
-            2: "2성",
+            6: t("rarity6"),
+            5: t("rarity5"),
+            4: t("rarity4"),
+            3: t("rarity3"),
+            2: t("rarity2"),
           };
           return (
           <div
@@ -154,7 +155,7 @@ export default function CharacterDetailTabs({ character }: { character: Characte
                       )}
                       {euphoriaList.some((e) => e.character_id === ch.id) && (
                         <div className="absolute bottom-0 left-0 rounded-sm bg-rose-600 px-1 py-[1px] text-[10px] text-white shadow">
-                          광상
+                          {t("euphoria")}
                         </div>
                       )}
                     </div>

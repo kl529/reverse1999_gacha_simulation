@@ -2,15 +2,16 @@
 
 import { useState, useEffect } from "react";
 import { Check } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { newbieGuideSteps } from "@/data/newbie_guide";
 import { storage, STORAGE_KEYS } from "@/lib/storage";
 
 export default function NewbieGuide() {
+  const t = useTranslations("newbieGuide");
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [collapsedSteps, setCollapsedSteps] = useState<number[]>([]);
 
-  // localStorage에서 완료된 단계 불러오기
   useEffect(() => {
     const saved = storage.get<number[]>(STORAGE_KEYS.NEWBIE_GUIDE_PROGRESS);
     if (saved) {
@@ -18,7 +19,6 @@ export default function NewbieGuide() {
     }
   }, []);
 
-  // 완료된 단계 저장
   const toggleStep = (stepId: number) => {
     const newCompleted = completedSteps.includes(stepId)
       ? completedSteps.filter((id) => id !== stepId)
@@ -39,18 +39,17 @@ export default function NewbieGuide() {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <h1 className="top-0 z-20 mb-4 mt-8 p-3 text-center text-2xl font-bold text-black dark:text-gray-100 lg:text-3xl">
-        뉴비 가이드
+        {t("title")}
       </h1>
 
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-        {/* 진행률 표시 */}
         <div className="mb-8 rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
           <div className="mb-2 flex items-center justify-between">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-              진행률: {progress}%
+              {t("progress", { percent: progress })}
             </h2>
             <span className="text-sm text-gray-600 dark:text-gray-400">
-              {completedSteps.length} / {newbieGuideSteps.length} 완료
+              {t("completed", { done: completedSteps.length, total: newbieGuideSteps.length })}
             </span>
           </div>
           <div className="h-3 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
@@ -61,15 +60,12 @@ export default function NewbieGuide() {
           </div>
         </div>
 
-        {/* 안내 메시지 */}
         <div className="mb-6 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4 dark:bg-blue-900/20">
           <p className="text-sm text-gray-700 dark:text-gray-300">
-            💡 아래 가이드는 추천 순서일뿐 정답이 아닙니다. 본인만의 게임을 하며 즐기면서 게임을
-            하시길 바랍니다. (2.8v 기준으로 작성되었으며, 내용이 바뀔 수도 있습니다.)
+            {t("tip")}
           </p>
         </div>
 
-        {/* 로드맵 */}
         <div className="space-y-4">
           {newbieGuideSteps.map((step, index) => {
             const isCompleted = completedSteps.includes(step.id);
@@ -78,7 +74,6 @@ export default function NewbieGuide() {
 
             return (
               <div key={step.id} className="relative">
-                {/* 연결선 */}
                 {!isLastStep && (
                   <div
                     className={`absolute left-6 top-16 h-full w-0.5 ${
@@ -87,18 +82,15 @@ export default function NewbieGuide() {
                   />
                 )}
 
-                {/* 단계 카드 */}
                 <div
                   className={`relative rounded-lg border-2 bg-white shadow-md transition-all dark:bg-gray-800 ${
                     isCompleted ? "border-green-500" : "border-gray-200 dark:border-gray-700"
                   }`}
                 >
-                  {/* 헤더 */}
                   <div
                     className="flex cursor-pointer items-start gap-4 p-4"
                     onClick={() => toggleCollapse(step.id)}
                   >
-                    {/* 체크박스 */}
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -119,7 +111,6 @@ export default function NewbieGuide() {
                       )}
                     </button>
 
-                    {/* 제목과 설명 */}
                     <div className="flex-1">
                       <h3
                         className={`text-lg font-semibold ${
@@ -135,7 +126,6 @@ export default function NewbieGuide() {
                       </p>
                     </div>
 
-                    {/* 펼치기/닫기 아이콘 */}
                     <div className="flex-shrink-0">
                       <svg
                         className={`h-6 w-6 text-gray-400 transition-transform ${
@@ -155,15 +145,13 @@ export default function NewbieGuide() {
                     </div>
                   </div>
 
-                  {/* 상세 정보 (기본 열림, 클릭하면 닫힘) */}
                   {!isCollapsed && (step.tips || step.goals) && (
                     <div className="border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-900/50">
                       <div className="grid w-full gap-4 md:grid-cols-2">
-                        {/* 팁 영역 */}
                         {step.tips && step.tips.length > 0 && (
                           <div>
                             <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
-                              💡 팁
+                              {t("tipsLabel")}
                             </h4>
                             <ul className="space-y-1">
                               {step.tips.map((tip, idx) => (
@@ -175,11 +163,10 @@ export default function NewbieGuide() {
                           </div>
                         )}
 
-                        {/* 목표 영역 */}
                         {step.goals && step.goals.length > 0 && (
                           <div>
                             <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
-                              🎯 목표
+                              {t("goalsLabel")}
                             </h4>
                             <ul className="space-y-1">
                               {step.goals.map((goal, idx) => (
@@ -199,46 +186,44 @@ export default function NewbieGuide() {
           })}
         </div>
 
-        {/* 완료 메시지 */}
         {completedSteps.length === newbieGuideSteps.length && (
           <div className="mt-8 rounded-lg bg-gradient-to-r from-green-400 to-blue-500 p-6 text-center text-white shadow-lg">
-            <h3 className="mb-2 text-2xl font-bold">🎉 축하합니다!</h3>
-            <p className="text-lg">모든 뉴비 가이드를 완료했습니다!</p>
-            <p className="mt-2 text-sm">이제 본격적으로 게임을 즐겨보세요!</p>
+            <h3 className="mb-2 text-2xl font-bold">{t("congratsTitle")}</h3>
+            <p className="text-lg">{t("congratsMsg")}</p>
+            <p className="mt-2 text-sm">{t("congratsSub")}</p>
           </div>
         )}
 
-        {/* 추가 도움말 */}
         <div className="mt-8 rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
           <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
-            📚 추가 리소스
+            {t("additionalResources")}
           </h3>
           <div className="grid gap-3 sm:grid-cols-2">
             <Link
               href="/character"
               className="rounded-lg border border-gray-200 p-3 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-700"
             >
-              <span className="font-medium text-gray-900 dark:text-white">캐릭터 가이드 →</span>
+              <span className="font-medium text-gray-900 dark:text-white">{t("characterGuide")}</span>
             </Link>
             <Link
               href="/character_setting"
               className="rounded-lg border border-gray-200 p-3 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-700"
             >
               <span className="font-medium text-gray-900 dark:text-white">
-                의지 & 공명 가이드 →
+                {t("resonanceGuide")}
               </span>
             </Link>
             <Link
               href="/psycube_guide"
               className="rounded-lg border border-gray-200 p-3 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-700"
             >
-              <span className="font-medium text-gray-900 dark:text-white">의지 육성 →</span>
+              <span className="font-medium text-gray-900 dark:text-white">{t("psycubeGuide")}</span>
             </Link>
             <Link
               href="/euphoria_guide"
               className="rounded-lg border border-gray-200 p-3 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-700"
             >
-              <span className="font-medium text-gray-900 dark:text-white">광상 가이드 →</span>
+              <span className="font-medium text-gray-900 dark:text-white">{t("euphoriaGuideLink")}</span>
             </Link>
           </div>
         </div>
