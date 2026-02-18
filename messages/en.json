@@ -26,114 +26,114 @@
       "imageAlt": "Vertin's Suitcase preview image"
     },
     "gacha": {
-      "title": "Reverse 1999 Gacha Simulator",
-      "description": "Try unlimited gacha pulls for Reverse 1999.",
+      "title": "Reverse: 1999 Gacha Simulator",
+      "description": "Pull unlimited gacha in Reverse: 1999!",
       "ogDescription": "Try unlimited gacha pulls for Reverse 1999!",
       "imageAlt": "Reverse 1999 Gacha Simulator preview image"
     },
     "character": {
-      "title": "Reverse 1999 Character Guide",
-      "description": "Check all character info and recommended settings for Reverse 1999.",
+      "title": "Reverse: 1999 Character Guide",
+      "description": "Learn about all characters, Resonance & Psychube builds.",
       "detailTitle": "Reverse 1999 {name} Guide",
       "detailDescription": "Recommended psycube, resonance, and team composition for {name}"
     },
     "characterQuiz": {
-      "title": "Reverse 1999 Character Quiz",
-      "description": "Guess the character name from their portrait."
+      "title": "Reverse: 1999 Character Quiz",
+      "description": "Guess all character names in Reverse: 1999!"
     },
     "quiz": {
-      "title": "Reverse 1999 General Quiz",
-      "description": "Test your knowledge about Reverse 1999."
+      "title": "General Quiz | Reverse: 1999 Simulator",
+      "description": "Test your game knowledge with various themed quizzes!"
     },
     "bingo": {
-      "title": "Reverse 1999 Bingo",
-      "description": "Play the Reverse 1999 bingo game."
+      "title": "Reverse: 1999 Bingo",
+      "description": "Play Reverse: 1999 Bingo!"
     },
     "favoriteCharacter": {
-      "title": "Reverse 1999 Favorite Character",
-      "description": "Pick your favorite Reverse 1999 character."
+      "title": "Reverse: 1999 Favorite Character",
+      "description": "Pick your favorite characters by afflatus and share!"
     },
     "recommendTeam": {
-      "title": "Reverse 1999 Team Builder",
-      "description": "Check recommended team compositions for Reverse 1999."
+      "title": "Reverse: 1999 Recommended Teams",
+      "description": "Check all recommended team compositions!"
     },
     "growthCalculator": {
-      "title": "Reverse 1999 Growth Calculator",
-      "description": "Calculate materials needed for character growth in Reverse 1999."
+      "title": "Reverse: 1999 Growth Calculator",
+      "description": "Enter your materials and plan character growth to check required resources."
     },
     "reveriesInTheRain": {
-      "title": "Reverse 1999 Reveries in the Rain",
-      "description": "Reveries in the Rain walkthrough for Reverse 1999.",
+      "title": "Reverse: 1999 Reveries in the Rain",
+      "description": "Reveries in the Rain clearing guide for Reverse: 1999.",
       "detailTitle": "Reverse 1999 Reveries in the Rain Stage {id}",
       "detailDescription": "Walkthrough for Reveries in the Rain stage {id}"
     },
     "blueprintSetting": {
-      "title": "Reverse 1999 Blueprints",
-      "description": "Check blueprint information for Reverse 1999."
+      "title": "Reverse: 1999 Blueprint Collection",
+      "description": "View all Reveries in the Rain blueprints at a glance!"
     },
     "euphoriaGuide": {
-      "title": "Reverse 1999 Euphoria List",
-      "description": "Check the euphoria list and info for Reverse 1999.",
+      "title": "Reverse: 1999 Euphoria List",
+      "description": "Check all character Euphorias and recommended rankings!",
       "detailTitle": "Reverse 1999 {name} Euphoria List",
       "detailDescription": "Detailed euphoria information for {name}"
     },
     "psycubeGuide": {
-      "title": "Reverse 1999 Psycube Guide",
-      "description": "Check psycube growth information for Reverse 1999.",
+      "title": "Reverse: 1999 Psychube Guide",
+      "description": "Check all Psychube recommended rankings!",
       "detailTitle": "Reverse 1999 {name} Psycube Guide",
       "detailDescription": "Detailed psycube guide for {name}"
     },
     "pathQuiz": {
-      "title": "Reverse 1999 Path Quiz Answers",
-      "description": "Path quiz answer guide for Reverse 1999."
+      "title": "Reverse: 1999 Path Quiz Answers",
+      "description": "Check the Path Quiz answers for Reverse: 1999."
     },
     "shopEfficiency": {
-      "title": "Reverse 1999 Shop Efficiency",
-      "description": "Compare shop item efficiency in Reverse 1999."
+      "title": "Reverse: 1999 Shop Efficiency",
+      "description": "Shop efficiency guide for Reverse: 1999."
     },
     "skin": {
-      "title": "Reverse 1999 Skin Gallery",
-      "description": "Browse all skins in Reverse 1999.",
+      "title": "Reverse: 1999 Skins",
+      "description": "Browse all character skins in Reverse: 1999!",
       "detailTitle": "Reverse 1999 {name} Skins",
       "detailDescription": "Skin gallery for {name}"
     },
     "futureInsight": {
-      "title": "Reverse 1999 Future Insight",
-      "description": "Check upcoming updates for Reverse 1999."
+      "title": "Reverse: 1999 Future Insight",
+      "description": "Check Future Insight for Reverse: 1999."
     },
     "cashPackageShop": {
-      "title": "Reverse 1999 Cash Packages",
-      "description": "Cash package comparison and guide for Reverse 1999."
+      "title": "Reverse: 1999 Cash Package Shop",
+      "description": "Check all cash package information for Reverse: 1999."
     },
     "calendar": {
-      "title": "Reverse 1999 Calendar",
-      "description": "Check event and update schedules for Reverse 1999."
+      "title": "Reverse: 1999 Calendar",
+      "description": "Check monthly events and pick-up schedules at a glance."
     },
     "cashGuide": {
-      "title": "Reverse 1999 Spending Guide",
-      "description": "Spending efficiency guide for Reverse 1999."
+      "title": "Reverse: 1999 Spending Guide",
+      "description": "The most efficient spending strategies for Reverse: 1999."
     },
     "gachaGuide": {
-      "title": "Reverse 1999 Gacha Guide",
-      "description": "Gacha system analysis and expected value for Reverse 1999."
+      "title": "Reverse: 1999 Gacha Guide",
+      "description": "Check all gacha information for Reverse: 1999."
     },
     "newbieGuide": {
-      "title": "Reverse 1999 Newbie Guide",
-      "description": "Beginner's guide for Reverse 1999."
+      "title": "Reverse: 1999 Beginner's Guide",
+      "description": "A step-by-step game guide for Reverse: 1999 beginners."
     },
     "coupon": {
-      "title": "Reverse 1999 Coupon List",
-      "description": "Available coupon codes for Reverse 1999."
+      "title": "Reverse: 1999 Coupon List",
+      "description": "Check all available coupon codes for Reverse: 1999."
     },
     "contentGuide": {
-      "title": "Reverse 1999 Permanent Content",
-      "description": "Permanent content guide for Reverse 1999.",
+      "title": "Reverse: 1999 Permanent Content Guide",
+      "description": "Check permanent content at a glance. Third Door, Roguelike, and video guide.",
       "detailTitle": "Reverse 1999 {name} Guide",
       "detailDescription": "Detailed guide for {name}"
     },
     "damageCalculation": {
-      "title": "Reverse 1999 Damage Calculator",
-      "description": "Damage calculation tool for Reverse 1999."
+      "title": "Reverse: 1999 Damage Calculator",
+      "description": "Calculate damage accurately in Reverse: 1999."
     },
     "characterSetting": {
       "title": "Reverse 1999 Character Setting",

@@ -1,5 +1,20 @@
+import type { Metadata } from "next";
+import { generatePageMetadata } from "@/lib/metadata";
 import { Suspense } from "react";
 import CharacterList from "@/components/character/CharacterList";
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return generatePageMetadata(locale, "character", {
+    path: "/character",
+    imageUrl: "/infos/link_img/character_link_img.webp",
+  });
+}
 
 export default function CharacterPage() {
   return (
@@ -11,33 +26,3 @@ export default function CharacterPage() {
   );
 }
 
-export const metadata = {
-  metadataBase: new URL("https://www.reverse1999-simulator.com"),
-  title: "리버스 1999 캐릭터 가이드",
-  description: "리버스 1999 모든 캐릭터의 사용법, 공명 & 의지 세팅을 알아보세요.",
-  icons: {
-    icon: "/pwa_icon.webp", // PWA 아이콘
-  },
-  manifest: "/manifest.json", // PWA manifest 파일
-  openGraph: {
-    title: "리버스 1999 캐릭터 가이드",
-    description: "리버스 1999 모든 캐릭터의 사용법, 공명 & 의지 세팅을 알아보세요.",
-    url: "https://www.reverse1999-simulator.com/character",
-    siteName: "버틴의 여행가방",
-    images: [
-      {
-        url: `/infos/link_img/character_link_img.webp`,
-        width: 1200,
-        height: 630,
-        alt: "리버스 1999 캐릭터 가이드 미리보기 이미지",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "리버스 1999 캐릭터 가이드",
-    description: "리버스 1999 모든 캐릭터의 사용법, 공명 & 의지 세팅을 알아보세요.",
-    images: [`/infos/link_img/character_link_img.webp`],
-  },
-};

@@ -33,107 +33,107 @@
     },
     "character": {
       "title": "리버스 1999 캐릭터 가이드",
-      "description": "리버스 1999의 모든 캐릭터 정보와 추천 세팅을 확인하세요.",
+      "description": "리버스 1999 모든 캐릭터의 사용법, 공명 & 의지 세팅을 알아보세요.",
       "detailTitle": "리버스 1999 {name} 가이드",
       "detailDescription": "리버스 1999 {name}의 추천 의지, 공명, 파티 조합 정보"
     },
     "characterQuiz": {
       "title": "리버스 1999 캐릭터 퀴즈",
-      "description": "캐릭터의 초상화만 보고 이름을 맞춰보세요."
+      "description": "리버스 1999의 모든 캐릭터 이름을 맞춰보세요!"
     },
     "quiz": {
-      "title": "리버스 1999 종합 퀴즈",
-      "description": "리버스 1999에 관한 다양한 퀴즈를 풀어보세요."
+      "title": "종합 퀴즈 | 리버스 1999 시뮬레이터",
+      "description": "리버스 1999 종합 퀴즈! 다양한 테마의 퀴즈로 게임 지식을 테스트해보세요."
     },
     "bingo": {
       "title": "리버스 1999 빙고",
-      "description": "리버스 1999 빙고 게임을 즐겨보세요."
+      "description": "리버스 1999의 빙고를 플레이해보세요!"
     },
     "favoriteCharacter": {
       "title": "리버스 1999 최애 캐릭터",
-      "description": "리버스 1999의 최애 캐릭터를 골라보세요."
+      "description": "리버스 1999에서 당신의 속성별 최애 캐릭터를 선택하고 공유해보세요!"
     },
     "recommendTeam": {
-      "title": "리버스 1999 추천 조합",
-      "description": "리버스 1999의 추천 파티 조합을 확인하세요."
+      "title": "리버스 1999 추천 조합 정리",
+      "description": "리버스 1999 모든 추천 조합를 확인해보세요."
     },
     "growthCalculator": {
       "title": "리버스 1999 육성 계산기",
-      "description": "리버스 1999 캐릭터 육성에 필요한 재료를 계산하세요."
+      "description": "보유 재료를 입력하고 여러 캐릭터의 육성 계획을 세워 필요한 재료를 확인하세요."
     },
     "reveriesInTheRain": {
       "title": "리버스 1999 빗속의 공상",
-      "description": "리버스 1999 빗속의 공상 공략 정보입니다.",
+      "description": "리버스 1999 빗속의 공상 클리어 가이드",
       "detailTitle": "리버스 1999 빗속의 공상 {id} 공략",
       "detailDescription": "리버스 1999 빗속의 공상 {id}단계 공략 정보"
     },
     "blueprintSetting": {
       "title": "리버스 1999 청사진 모음",
-      "description": "리버스 1999의 청사진 정보를 확인하세요."
+      "description": "리버스 1999의 모든 빗속의 공상 청사진을 한눈에 보세요!"
     },
     "euphoriaGuide": {
       "title": "리버스 1999 광상 목록",
-      "description": "리버스 1999의 광상 목록과 정보를 확인하세요.",
+      "description": "리버스 1999 모든 캐릭터의 광상과 추천 순위를 확인하세요!",
       "detailTitle": "리버스 1999 {name} 광상 목록",
       "detailDescription": "리버스 1999 {name}의 광상 세부 정보"
     },
     "psycubeGuide": {
-      "title": "리버스 1999 의지 육성",
-      "description": "리버스 1999의 의지 육성 정보를 확인하세요.",
+      "title": "리버스 1999 의지 육성 가이드",
+      "description": "리버스 1999 모든 의지 육성 추천 순위를 확인하세요!",
       "detailTitle": "리버스 1999 {name} 의지 육성 상세 정보",
       "detailDescription": "리버스 1999 {name}의 의지 육성 상세 가이드"
     },
     "pathQuiz": {
       "title": "리버스 1999 오솔길 정답",
-      "description": "리버스 1999 오솔길 퀴즈 정답 정리"
+      "description": "리버스 1999 오솔길 정답을 확인해보세요."
     },
     "shopEfficiency": {
-      "title": "리버스 1999 상점 효율",
-      "description": "리버스 1999 상점 아이템 효율을 비교하세요."
+      "title": "리버스 1999 상점 효율 정리",
+      "description": "리버스 1999 상점 효율 정리"
     },
     "skin": {
-      "title": "리버스 1999 스킨 갤러리",
-      "description": "리버스 1999의 모든 스킨을 확인하세요.",
+      "title": "리버스 1999 스킨",
+      "description": "리버스 1999 모든 캐릭터의 스킨을 찾아보세요!",
       "detailTitle": "리버스 1999 {name} 스킨",
       "detailDescription": "리버스 1999 {name}의 스킨 갤러리"
     },
     "futureInsight": {
-      "title": "리버스 1999 미래시 정리",
-      "description": "리버스 1999의 미래 업데이트 정보를 확인하세요."
+      "title": "리버스 1999 미래시",
+      "description": "리버스 1999 미래시를 확인해보세요."
     },
     "cashPackageShop": {
-      "title": "리버스 1999 현질 패키지",
-      "description": "리버스 1999 현질 패키지 비교 및 가이드"
+      "title": "리버스 1999 현질 패키지 정리",
+      "description": "리버스 1999 현질 패키지 정보를 모두 확인해보세요."
     },
     "calendar": {
       "title": "리버스 1999 캘린더",
-      "description": "리버스 1999의 이벤트 및 업데이트 일정을 확인하세요."
+      "description": "리버스 1999의 월별 이벤트 및 픽업 일정을 한눈에 확인하세요."
     },
     "cashGuide": {
       "title": "리버스 1999 현질 가이드",
-      "description": "리버스 1999 현질 효율 가이드"
+      "description": "리버스 1999의 가장 효율적인 과금 전략 정리"
     },
     "gachaGuide": {
       "title": "리버스 1999 가챠 가이드",
-      "description": "리버스 1999 가챠 시스템과 기댓값 분석"
+      "description": "리버스 1999 여러 가챠 정보를 모두 확인해보세요."
     },
     "newbieGuide": {
       "title": "리버스 1999 뉴비 가이드",
-      "description": "리버스 1999 초보자를 위한 가이드"
+      "description": "리버스 1999 뉴비를 위한 단계별 게임 가이드입니다."
     },
     "coupon": {
       "title": "리버스 1999 쿠폰 목록",
-      "description": "리버스 1999 사용 가능한 쿠폰 정보"
+      "description": "리버스 1999의 사용 가능한 모든 쿠폰 코드를 확인하세요"
     },
     "contentGuide": {
-      "title": "리버스 1999 상시 컨텐츠",
-      "description": "리버스 1999 상시 컨텐츠 가이드",
+      "title": "리버스 1999 상시 컨텐츠 가이드",
+      "description": "리버스 1999의 상시 컨텐츠를 한눈에 확인하세요. 세 번째 문, 로그라이크, 영상 공략 가이드.",
       "detailTitle": "리버스 1999 {name} 가이드",
       "detailDescription": "리버스 1999 {name} 상세 가이드"
     },
     "damageCalculation": {
       "title": "리버스 1999 데미지 계산기",
-      "description": "리버스 1999 데미지 계산 도구"
+      "description": "리버스 1999의 데미지를 정확하게 계산해보세요."
     },
     "characterSetting": {
       "title": "리버스 1999 캐릭터 세팅",

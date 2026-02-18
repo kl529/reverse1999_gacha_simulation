@@ -1,41 +1,20 @@
 import type { Metadata } from "next";
+import { generatePageMetadata } from "@/lib/metadata";
 import { QUIZ_SETS } from "@/data/quiz_questions";
 import QuizHeader from "@/components/quiz/QuizHeader";
 import QuizSetCard from "@/components/quiz/QuizSetCard";
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://www.reverse1999-simulator.com"),
-  title: "종합 퀴즈 | 리버스 1999 시뮬레이터",
-  description:
-    "리버스 1999 종합 퀴즈! 다양한 테마의 퀴즈로 게임 지식을 테스트해보세요.",
-  icons: {
-    icon: "/pwa_icon.webp",
-  },
-  manifest: "/manifest.json",
-  openGraph: {
-    title: "종합 퀴즈 | 리버스 1999 시뮬레이터",
-    description:
-      "리버스 1999 종합 퀴즈! 다양한 테마의 퀴즈로 게임 지식을 테스트해보세요.",
-    url: "https://www.reverse1999-simulator.com/quiz",
-    siteName: "버틴의 여행가방",
-    images: [
-      {
-        url: `/infos/link_img/general_quiz_link_img.webp`,
-        width: 1280,
-        height: 720,
-        alt: "리버스 1999 종합 퀴즈 미리보기 이미지",
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "종합 퀴즈 | 리버스 1999 시뮬레이터",
-    description:
-      "리버스 1999 종합 퀴즈! 다양한 테마의 퀴즈로 게임 지식을 테스트해보세요.",
-    images: [`/infos/link_img/general_quiz_link_img.webp`],
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return generatePageMetadata(locale, "quiz", {
+    path: "/quiz",
+    imageUrl: "/infos/link_img/general_quiz_link_img.webp",
+  });
+}
 
 export default function QuizSelectPage() {
   return (
