@@ -12,15 +12,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 // 6개 속성 정의 (다크모드 색상 / 라이트모드 색상)
 const INSPIRATIONS = [
-  { id: "beast", name: "야수", darkBg: "#813838", lightBg: "#a85454" },
-  { id: "plant", name: "나무", darkBg: "#276638", lightBg: "#3d8a52" },
-  { id: "star", name: "천체", darkBg: "#29405B", lightBg: "#3d5a7a" },
-  { id: "mineral", name: "암석", darkBg: "#5E4524", lightBg: "#7a5c34" },
-  { id: "intellect", name: "지능", darkBg: "#86783D", lightBg: "#a89856" },
-  { id: "spirit", name: "영혼", darkBg: "#6C3B71", lightBg: "#8a5490" },
+  { id: "beast", nameKey: "beast", darkBg: "#813838", lightBg: "#a85454" },
+  { id: "plant", nameKey: "plant", darkBg: "#276638", lightBg: "#3d8a52" },
+  { id: "star", nameKey: "star", darkBg: "#29405B", lightBg: "#3d5a7a" },
+  { id: "mineral", nameKey: "mineral", darkBg: "#5E4524", lightBg: "#7a5c34" },
+  { id: "intellect", nameKey: "intellect", darkBg: "#86783D", lightBg: "#a89856" },
+  { id: "spirit", nameKey: "spirit", darkBg: "#6C3B71", lightBg: "#8a5490" },
 ] as const;
 
 // 모든 캐릭터를 id 순서로 정렬
@@ -34,6 +35,7 @@ const getCharactersByInspiration = (inspiration: string): Character[] => {
 };
 
 export default function FavoriteCharacter() {
+  const t = useTranslations("favoriteCharacter");
   // 각 속성별 선택된 캐릭터 ID 저장
   const [selectedCharacters, setSelectedCharacters] = useState<Record<string, number | null>>({
     beast: null,
@@ -92,7 +94,7 @@ export default function FavoriteCharacter() {
     // 최소 1개 이상 선택했는지 확인
     const hasSelection = Object.values(selectedCharacters).some((id) => id !== null);
     if (!hasSelection) {
-      toast.error("최소 1개 이상의 캐릭터를 선택해주세요!");
+      toast.error(t("minOneRequired"));
       return;
     }
 
@@ -122,10 +124,10 @@ export default function FavoriteCharacter() {
       link.href = dataUrl;
       link.click();
 
-      toast.success("이미지가 다운로드되었습니다!");
+      toast.success(t("downloadSuccess"));
     } catch (error) {
       console.error("이미지 생성 실패:", error);
-      toast.error("이미지 다운로드에 실패했습니다.");
+      toast.error(t("downloadError"));
     } finally {
       setIsDownloading(false);
     }
@@ -141,7 +143,7 @@ export default function FavoriteCharacter() {
       intellect: null,
       spirit: null,
     });
-    toast.success("초기화되었습니다!");
+    toast.success(t("resetDone"));
   };
 
   return (
@@ -149,23 +151,23 @@ export default function FavoriteCharacter() {
       <Toaster position="top-center" toastOptions={{ duration: 1500 }} />
 
       <h1 className="mb-2 mt-8 text-center text-3xl font-bold text-gray-900 dark:text-white">
-        나의 최애 캐릭터
+        {t("title")}
       </h1>
       <p className="mb-4 text-center text-gray-500 dark:text-gray-300">
-        속성별로 최애 캐릭터를 선택하고 공유해보세요!
+        {t("subtitle")}
       </p>
 
       {/* 닉네임 입력 */}
       <div className="mb-4 flex items-center gap-2">
         <label htmlFor="nickname" className="text-sm text-gray-700 dark:text-gray-300">
-          닉네임
+          {t("nickname")}
         </label>
         <input
           id="nickname"
           type="text"
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
-          placeholder="닉네임을 입력하세요"
+          placeholder={t("nicknamePlaceholder")}
           maxLength={20}
           className="rounded border border-gray-300 bg-white px-3 py-1.5 text-sm dark:border-gray-600 dark:bg-gray-800 dark:text-white"
         />
@@ -177,14 +179,14 @@ export default function FavoriteCharacter() {
           onClick={handleReset}
           className="rounded bg-gray-200 px-4 py-2 font-medium hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
         >
-          초기화
+          {t("reset")}
         </button>
         <button
           onClick={handleDownload}
           disabled={isDownloading}
           className="rounded bg-blue-500 px-4 py-2 font-medium text-white hover:bg-blue-600 disabled:opacity-50 dark:bg-blue-600 dark:hover:bg-blue-700"
         >
-          {isDownloading ? "생성 중..." : "이미지 저장"}
+          {isDownloading ? t("saving") : t("saveImage")}
         </button>
       </div>
 
@@ -206,11 +208,11 @@ export default function FavoriteCharacter() {
               <div className="flex w-full items-center justify-center gap-2 bg-white py-1 text-sm font-medium text-black dark:bg-gray-200">
                 <Image
                   src={`/infos/inspiration/${inspiration.id}.webp`}
-                  alt={inspiration.name}
+                  alt={t(inspiration.nameKey)}
                   width={16}
                   height={16}
                 />
-                {inspiration.name}
+                {t(inspiration.nameKey)}
               </div>
 
               {/* 커스텀 드롭다운 */}
@@ -229,7 +231,7 @@ export default function FavoriteCharacter() {
                         <span className="truncate text-[10px]">{selectedChar.name}</span>
                       </div>
                     ) : (
-                      <span className="text-[10px] text-gray-400">선택</span>
+                      <span className="text-[10px] text-gray-400">{t("select")}</span>
                     )}
                     <ChevronDown className="h-3 w-3 shrink-0 opacity-50" />
                   </DropdownMenuTrigger>
@@ -238,7 +240,7 @@ export default function FavoriteCharacter() {
                       onSelect={() => handleSelectCharacter(inspiration.id, null)}
                       className="cursor-pointer"
                     >
-                      <span className="text-gray-400">선택 해제</span>
+                      <span className="text-gray-400">{t("deselect")}</span>
                     </DropdownMenuItem>
                     {characters.map((char) => (
                       <DropdownMenuItem
@@ -274,14 +276,14 @@ export default function FavoriteCharacter() {
                     <div className="absolute left-1 top-1">
                       <Image
                         src={`/infos/inspiration/${inspiration.id}.webp`}
-                        alt={inspiration.name}
+                        alt={t(inspiration.nameKey)}
                         width={16}
                         height={16}
                       />
                     </div>
                   </>
                 ) : (
-                  <span className="text-xs text-gray-400">미선택</span>
+                  <span className="text-xs text-gray-400">{t("notSelected")}</span>
                 )}
               </div>
             </div>
@@ -295,7 +297,7 @@ export default function FavoriteCharacter() {
         className="w-full max-w-2xl rounded-lg border-2 border-gray-300 bg-white p-6 shadow-lg dark:border-gray-600 dark:bg-gray-800"
       >
         <h2 className="mb-4 text-center text-xl font-bold text-gray-900 dark:text-white">
-          나의 최애 캐릭터
+          {t("title")}
         </h2>
         {nickname && (
           <p className="-mt-2 mb-4 text-center text-sm text-gray-600 dark:text-gray-300">
@@ -319,11 +321,11 @@ export default function FavoriteCharacter() {
                 <div className="flex w-full items-center justify-center gap-1 bg-white/90 py-0.5 text-[10px] font-medium text-black dark:bg-gray-200/90">
                   <Image
                     src={`/infos/inspiration/${inspiration.id}.webp`}
-                    alt={inspiration.name}
+                    alt={t(inspiration.nameKey)}
                     width={12}
                     height={12}
                   />
-                  {inspiration.name}
+                  {t(inspiration.nameKey)}
                 </div>
 
                 {/* 캐릭터 이미지 */}
@@ -338,7 +340,7 @@ export default function FavoriteCharacter() {
                       />
                       <Image
                         src={`/infos/effects/${character.rarity}stars.webp`}
-                        alt={`${character.rarity}성`}
+                        alt={`${character.rarity}${t("starSuffix")}`}
                         width={56}
                         height={10}
                         className="absolute bottom-0 left-0 z-10"
@@ -365,7 +367,7 @@ export default function FavoriteCharacter() {
           <div className="flex items-center justify-between text-xs">
             <p className="text-gray-500 dark:text-gray-400">{today}</p>
             <div className="text-right">
-              <p className="text-gray-500 dark:text-gray-400">버틴의 여행가방</p>
+              <p className="text-gray-500 dark:text-gray-400">{t("siteName")}</p>
               <p className="text-blue-600 dark:text-blue-400">reverse1999-simulator.com</p>
             </div>
           </div>

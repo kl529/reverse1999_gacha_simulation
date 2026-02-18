@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Info } from "lucide-react";
 import BuffManager from "./BuffManager";
 import DamageFormulaModal from "./DamageFormulaModal";
+import { useTranslations } from "next-intl";
 
 // 버프 타입 정의
 export interface Buff {
@@ -57,6 +58,7 @@ export interface Stats {
 }
 
 export default function DamageCalculator() {
+  const t = useTranslations("damageCalc");
   // 공격자 스탯
   const [attackerStats, setAttackerStats] = useState<Stats>({
     attack: 1000,
@@ -249,7 +251,7 @@ export default function DamageCalculator() {
     <div className="container mx-auto max-w-7xl p-4 pb-20">
       {/* 페이지 제목 */}
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-3xl font-bold">데미지 계산기</h1>
+        <h1 className="text-3xl font-bold">{t("title")}</h1>
         <Button
           variant="outline"
           size="sm"
@@ -257,14 +259,14 @@ export default function DamageCalculator() {
           className="gap-2"
         >
           <Info className="h-4 w-4" />
-          계산 공식 보기
+          {t("viewFormula")}
         </Button>
       </div>
 
       {/* Sticky 최종 데미지 표시 */}
       <div className="sticky top-0 z-50 mb-6">
         <div className="rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 p-6 text-center text-white shadow-lg">
-          <h3 className="mb-2 text-lg font-semibold">최종 데미지</h3>
+          <h3 className="mb-2 text-lg font-semibold">{t("finalDamage")}</h3>
           <p className="text-5xl font-bold">{damageResult.final.toLocaleString()}</p>
         </div>
       </div>
@@ -272,15 +274,15 @@ export default function DamageCalculator() {
       {/* 계산 과정 표시 */}
       <Card className="mb-6">
         <CardHeader>
-          <CardTitle className="text-center text-xl font-bold">계산 과정</CardTitle>
+          <CardTitle className="text-center text-xl font-bold">{t("calculationProcess")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-3 text-sm">
             {/* 최종 공격력 */}
             <div className="rounded-lg bg-secondary/50 p-3">
-              <div className="mb-1 font-medium">1. 최종 공격력</div>
+              <div className="mb-1 font-medium">{t("step1FinalAttack")}</div>
               <div className="font-mono text-xs text-muted-foreground">
-                = 공격력 + floor(공격력 × 공격%) + floor(고정 공격력)
+                {t("step1Formula")}
               </div>
               <div className="mt-1 font-mono text-xs font-bold">
                 = {Math.round(damageResult.steps.finalAttack).toLocaleString()}
@@ -290,10 +292,10 @@ export default function DamageCalculator() {
             {/* 최종 방어력 */}
             <div className="rounded-lg bg-secondary/50 p-3">
               <div className="mb-1 font-medium">
-                2. 최종 방어력 ({attackType === "reality" ? "현실" : "정신"})
+                {t("step2FinalDefense")} ({attackType === "reality" ? t("step2Reality") : t("step2Mental")})
               </div>
               <div className="font-mono text-xs text-muted-foreground">
-                = ceil(방어력 × (1 - 방어감소%)) × (1 - 방어무시%)
+                {t("step2Formula")}
               </div>
               <div className="mt-1 font-mono text-xs">
                 = ceil({Math.round(damageResult.steps.defense).toLocaleString()} × (1 -{" "}
@@ -308,10 +310,10 @@ export default function DamageCalculator() {
             {/* A항: 기본 데미지 */}
             <div className="rounded-lg border-l-4 border-blue-500 bg-blue-500/10 p-3">
               <div className="mb-1 font-medium text-blue-700 dark:text-blue-300">
-                A항: 기본 데미지
+                {t("termATitle")}
               </div>
               <div className="font-mono text-xs text-muted-foreground">
-                A = max(최종공격력 - 최종방어력, 최종공격력 × 10%)
+                {t("termAFormula")}
               </div>
               <div className="mt-1 font-mono text-xs">
                 <span className="text-blue-600 dark:text-blue-400">A1</span> ={" "}
@@ -327,7 +329,7 @@ export default function DamageCalculator() {
               <div className="mt-1 font-mono text-xs font-bold text-blue-700 dark:text-blue-300">
                 A = max(A1, A0) = {Math.round(damageResult.steps.A).toLocaleString()}
                 {damageResult.steps.isMinDamage && (
-                  <span className="ml-2 text-yellow-600 dark:text-yellow-400">(최소 데미지)</span>
+                  <span className="ml-2 text-yellow-600 dark:text-yellow-400">({t("minDamage")})</span>
                 )}
               </div>
             </div>
@@ -335,10 +337,10 @@ export default function DamageCalculator() {
             {/* B항: 피해 배율 */}
             <div className="rounded-lg border-l-4 border-purple-500 bg-purple-500/10 p-3">
               <div className="mb-1 font-medium text-purple-700 dark:text-purple-300">
-                B항: 피해 배율
+                {t("termBTitle")}
               </div>
               <div className="font-mono text-xs text-muted-foreground">
-                B = max(1 + 피해보너스 + 주는피해 + 적받는피해 - 피해감면, 30%)
+                {t("termBFormula")}
               </div>
               <div className="mt-1 font-mono text-xs">
                 = max(1 + <span className="text-purple-600 dark:text-purple-400">{(damageResult.steps.damageBonus * 100).toFixed(1)}%</span> +{" "}
@@ -354,15 +356,15 @@ export default function DamageCalculator() {
             {/* C항: 치명타 피해 */}
             <div className="rounded-lg border-l-4 border-red-500 bg-red-500/10 p-3">
               <div className="mb-1 font-medium text-red-700 dark:text-red-300">
-                C항: 치명타 피해
+                {t("termCTitle")}
               </div>
               {useCritical ? (
                 <>
                   <div className="font-mono text-xs text-muted-foreground">
-                    C = max(130% + 치명타변환 + 치명타피해% - 치명타방어 + 치명타방어감소, 110%)
+                    {t("termCFormula")}
                   </div>
                   <div className="mt-1 font-mono text-xs">
-                    <span className="text-red-600 dark:text-red-400">치명타 변환</span> = floor({attackerStats.critRate} / 2000 × 10000) / 10000 ={" "}
+                    <span className="text-red-600 dark:text-red-400">{t("critConversion")}</span> = floor({attackerStats.critRate} / 2000 × 10000) / 10000 ={" "}
                     <span className="text-red-600 dark:text-red-400">{damageResult.steps.critFromRate.toFixed(4)}</span>
                   </div>
                   <div className="font-mono text-xs">
@@ -378,7 +380,7 @@ export default function DamageCalculator() {
               ) : (
                 <>
                   <div className="font-mono text-xs text-muted-foreground">
-                    C = 100% (치명타 미적용)
+                    {t("critNotApplied")}
                   </div>
                   <div className="mt-1 font-mono text-xs font-bold text-red-700 dark:text-red-300">
                     C = 100%
@@ -390,10 +392,10 @@ export default function DamageCalculator() {
             {/* D항: 위력 계수 */}
             <div className="rounded-lg border-l-4 border-green-500 bg-green-500/10 p-3">
               <div className="mb-1 font-medium text-green-700 dark:text-green-300">
-                D항: 위력 계수
+                {t("termDTitle")}
               </div>
               <div className="font-mono text-xs text-muted-foreground">
-                D = 1 + {powerType === "incantation" ? "주문" : "술식"}위력 - 위력감소
+                {powerType === "incantation" ? t("termDFormulaIncantation") : t("termDFormulaRitual")}
               </div>
               <div className="mt-1 font-mono text-xs">
                 = 1 + <span className="text-green-600 dark:text-green-400">{(damageResult.steps.powerIncrease * 100).toFixed(1)}%</span> -{" "}
@@ -407,15 +409,15 @@ export default function DamageCalculator() {
             {/* E항: 스킬 계수 */}
             <div className="rounded-lg border-l-4 border-orange-500 bg-orange-500/10 p-3">
               <div className="mb-1 font-medium text-orange-700 dark:text-orange-300">
-                E항: 스킬 계수
+                {t("termETitle")}
               </div>
               <div className="font-mono text-xs text-muted-foreground">
-                E = 기본계수 + 추가피해계수 + 추공계수
+                {t("termEFormula")}
               </div>
               <div className="mt-1 font-mono text-xs">
                 = <span className="text-orange-600 dark:text-orange-400">{(damageResult.steps.baseCoeff * 100).toFixed(0)}%</span> +{" "}
                 <span className="text-orange-600 dark:text-orange-400">{(damageResult.steps.additionalCoeff * 100).toFixed(0)}%</span>
-                {damageResult.steps.isMinDamage && <span className="text-yellow-600 dark:text-yellow-400"> (무시됨)</span>} +{" "}
+                {damageResult.steps.isMinDamage && <span className="text-yellow-600 dark:text-yellow-400"> ({t("ignored")})</span>} +{" "}
                 <span className="text-orange-600 dark:text-orange-400">{(damageResult.steps.extraAttackCoeff * 100).toFixed(0)}%</span>
               </div>
               <div className="mt-1 font-mono text-xs font-bold text-orange-700 dark:text-orange-300">
@@ -426,10 +428,10 @@ export default function DamageCalculator() {
             {/* F항: 상성 계수 */}
             <div className="rounded-lg border-l-4 border-yellow-500 bg-yellow-500/10 p-3">
               <div className="mb-1 font-medium text-yellow-700 dark:text-yellow-300">
-                F항: 상성 계수
+                {t("termFTitle")}
               </div>
               <div className="font-mono text-xs text-muted-foreground">
-                F = {useElementAdvantage ? "1.3 (상성 유리)" : "1.0 (상성 무관)"}
+                F = {useElementAdvantage ? t("termFAdvantage") : t("termFNeutral")}
               </div>
               <div className="mt-1 font-mono text-xs font-bold text-yellow-700 dark:text-yellow-300">
                 F = {damageResult.steps.F.toFixed(1)}
@@ -438,7 +440,7 @@ export default function DamageCalculator() {
 
             {/* 최종 계산 */}
             <div className="rounded-lg border-2 border-blue-500 bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-4">
-              <div className="mb-2 text-lg font-medium">최종 데미지 계산</div>
+              <div className="mb-2 text-lg font-medium">{t("finalCalcTitle")}</div>
               <div className="font-mono text-xs text-muted-foreground">
                 = floor(A × B × C × D × E × F)
               </div>
@@ -461,17 +463,17 @@ export default function DamageCalculator() {
 
       <Card className="mb-6">
         <CardHeader>
-          <CardTitle className="text-center text-2xl font-bold">스탯 입력</CardTitle>
+          <CardTitle className="text-center text-2xl font-bold">{t("statInput")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {/* 공격자 섹션 */}
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400">공격자</h3>
+              <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400">{t("attacker")}</h3>
 
               <div className="space-y-3">
                 <div>
-                  <Label htmlFor="attacker-attack">공격력</Label>
+                  <Label htmlFor="attacker-attack">{t("attack")}</Label>
                   <Input
                     id="attacker-attack"
                     type="number"
@@ -483,7 +485,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="attacker-defense-ignore">방어 무시율 (%)</Label>
+                  <Label htmlFor="attacker-defense-ignore">{t("defenseIgnoreRate")}</Label>
                   <Input
                     id="attacker-defense-ignore"
                     type="number"
@@ -495,7 +497,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="attacker-defense-reduction">방어력 감소율 (%)</Label>
+                  <Label htmlFor="attacker-defense-reduction">{t("defenseReductionRate")}</Label>
                   <Input
                     id="attacker-defense-reduction"
                     type="number"
@@ -510,7 +512,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="attacker-damage-bonus">피해 보너스 (%)</Label>
+                  <Label htmlFor="attacker-damage-bonus">{t("damageBonus")}</Label>
                   <Input
                     id="attacker-damage-bonus"
                     type="number"
@@ -522,7 +524,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="attacker-damage-dealt">주는 피해 증가량 (%)</Label>
+                  <Label htmlFor="attacker-damage-dealt">{t("damageDealtIncrease")}</Label>
                   <Input
                     id="attacker-damage-dealt"
                     type="number"
@@ -534,7 +536,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="attacker-enemy-damage-taken">적 받는 피해 증가 (%)</Label>
+                  <Label htmlFor="attacker-enemy-damage-taken">{t("enemyDamageTakenIncrease")}</Label>
                   <Input
                     id="attacker-enemy-damage-taken"
                     type="number"
@@ -549,7 +551,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="attacker-incantation">주문 위력 증가량 (%)</Label>
+                  <Label htmlFor="attacker-incantation">{t("incantationPowerIncrease")}</Label>
                   <Input
                     id="attacker-incantation"
                     type="number"
@@ -564,7 +566,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="attacker-ritual">술식 위력 증가량 (%)</Label>
+                  <Label htmlFor="attacker-ritual">{t("ritualPowerIncrease")}</Label>
                   <Input
                     id="attacker-ritual"
                     type="number"
@@ -576,7 +578,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="attacker-base-coeff">기본 계수 (%)</Label>
+                  <Label htmlFor="attacker-base-coeff">{t("baseCoefficient")}</Label>
                   <Input
                     id="attacker-base-coeff"
                     type="number"
@@ -591,7 +593,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="attacker-additional-coeff">추가 피해 계수 (%)</Label>
+                  <Label htmlFor="attacker-additional-coeff">{t("additionalDamageCoeff")}</Label>
                   <Input
                     id="attacker-additional-coeff"
                     type="number"
@@ -606,7 +608,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="attacker-extra-attack-coeff">추공 계수 (%)</Label>
+                  <Label htmlFor="attacker-extra-attack-coeff">{t("extraAttackCoeff")}</Label>
                   <Input
                     id="attacker-extra-attack-coeff"
                     type="number"
@@ -621,7 +623,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="attacker-crit-rate">치명타 기술</Label>
+                  <Label htmlFor="attacker-crit-rate">{t("critTech")}</Label>
                   <Input
                     id="attacker-crit-rate"
                     type="number"
@@ -633,7 +635,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="attacker-crit-damage">치명타 피해 증가 (%)</Label>
+                  <Label htmlFor="attacker-crit-damage">{t("critDamageIncrease")}</Label>
                   <Input
                     id="attacker-crit-damage"
                     type="number"
@@ -649,7 +651,7 @@ export default function DamageCalculator() {
 
                 <div>
                   <Label htmlFor="attacker-enemy-crit-defense-reduction">
-                    적 치명타 방어 감소 (%)
+                    {t("enemyCritDefReduction")}
                   </Label>
                   <Input
                     id="attacker-enemy-crit-defense-reduction"
@@ -668,11 +670,11 @@ export default function DamageCalculator() {
 
             {/* 방어자 섹션 */}
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-red-600 dark:text-red-400">방어자</h3>
+              <h3 className="text-xl font-semibold text-red-600 dark:text-red-400">{t("defender")}</h3>
 
               <div className="space-y-3">
                 <div>
-                  <Label htmlFor="defender-reality-defense">현실 방어력</Label>
+                  <Label htmlFor="defender-reality-defense">{t("realityDefense")}</Label>
                   <Input
                     id="defender-reality-defense"
                     type="number"
@@ -684,7 +686,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="defender-mental-defense">정신 방어력</Label>
+                  <Label htmlFor="defender-mental-defense">{t("mentalDefense")}</Label>
                   <Input
                     id="defender-mental-defense"
                     type="number"
@@ -696,7 +698,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="defender-damage-reduction">피해 감면 (%)</Label>
+                  <Label htmlFor="defender-damage-reduction">{t("damageReduction")}</Label>
                   <Input
                     id="defender-damage-reduction"
                     type="number"
@@ -711,7 +713,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="defender-power-reduction">위력 감소 (%)</Label>
+                  <Label htmlFor="defender-power-reduction">{t("powerReduction")}</Label>
                   <Input
                     id="defender-power-reduction"
                     type="number"
@@ -723,7 +725,7 @@ export default function DamageCalculator() {
                 </div>
 
                 <div>
-                  <Label htmlFor="defender-crit-defense">치명타 방어력 (%)</Label>
+                  <Label htmlFor="defender-crit-defense">{t("critDefense")}</Label>
                   <Input
                     id="defender-crit-defense"
                     type="number"
@@ -741,13 +743,13 @@ export default function DamageCalculator() {
           <Separator className="my-6" />
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <BuffManager
-              title="공격자 버프"
+              title={t("attackerBuffs")}
               buffs={attackerBuffs}
               onBuffsChange={setAttackerBuffs}
               type="attacker"
             />
             <BuffManager
-              title="방어자 버프"
+              title={t("defenderBuffs")}
               buffs={defenderBuffs}
               onBuffsChange={setDefenderBuffs}
               type="defender"
@@ -757,11 +759,11 @@ export default function DamageCalculator() {
           {/* 옵션 섹션 */}
           <Separator className="my-6" />
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold">계산 옵션</h3>
+            <h3 className="text-xl font-semibold">{t("calcOptions")}</h3>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
               <div className="flex items-center justify-between rounded-lg border p-4">
                 <Label htmlFor="attack-type">
-                  {attackType === "reality" ? "현실 공격" : "정신 공격"}
+                  {attackType === "reality" ? t("realityAttack") : t("mentalAttack")}
                 </Label>
                 <Switch
                   id="attack-type"
@@ -772,7 +774,7 @@ export default function DamageCalculator() {
 
               <div className="flex items-center justify-between rounded-lg border p-4">
                 <Label htmlFor="power-type">
-                  {powerType === "incantation" ? "주문 위력" : "술식 위력"}
+                  {powerType === "incantation" ? t("incantationPower") : t("ritualPower")}
                 </Label>
                 <Switch
                   id="power-type"
@@ -782,7 +784,7 @@ export default function DamageCalculator() {
               </div>
 
               <div className="flex items-center justify-between rounded-lg border p-4">
-                <Label htmlFor="use-element-advantage">상성 적용 (1.3배)</Label>
+                <Label htmlFor="use-element-advantage">{t("elementAdvantage")}</Label>
                 <Switch
                   id="use-element-advantage"
                   checked={useElementAdvantage}
@@ -791,7 +793,7 @@ export default function DamageCalculator() {
               </div>
 
               <div className="flex items-center justify-between rounded-lg border p-4">
-                <Label htmlFor="use-critical">치명타 적용</Label>
+                <Label htmlFor="use-critical">{t("applyCrit")}</Label>
                 <Switch id="use-critical" checked={useCritical} onCheckedChange={setUseCritical} />
               </div>
             </div>

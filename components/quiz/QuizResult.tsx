@@ -17,6 +17,7 @@ import Image from "next/image";
 import RankingBoard from "./RankingBoard";
 import { useTheme } from "next-themes";
 import { Input } from "@/components/ui/input";
+import { useTranslations } from "next-intl";
 
 interface QuizResultProps {
   result: QuizResult;
@@ -29,6 +30,7 @@ export default function QuizResultComponent({
   questions,
   onRestart,
 }: QuizResultProps) {
+  const t = useTranslations("quiz");
   const resultRef = useRef<HTMLDivElement>(null);
   const { resolvedTheme } = useTheme();
   const [isDownloading, setIsDownloading] = useState(false);
@@ -63,78 +65,76 @@ export default function QuizResultComponent({
   // 등급 계산 - 테마별 결과
   const getQuizResult = () => {
     if (isMelaniaTheme) {
-      // 멜라니아 금고털기 테마
       if (percentage >= 90)
         return {
-          title: "완벽한 털이",
+          title: t("resultPerfect"),
           icon: "💎",
           color: "text-yellow-600 dark:text-yellow-400",
           bgColor: "bg-yellow-100 dark:bg-yellow-900/30",
           borderColor: "border-yellow-400 dark:border-yellow-500/50",
-          message: "멜라니아: \"완벽해. 흔적 하나 남기지 않았어.\"",
+          message: t("resultPerfectMsg"),
         };
       if (percentage >= 70)
         return {
-          title: "성공적인 잠입",
+          title: t("resultGood"),
           icon: "🏆",
           color: "text-green-600 dark:text-green-400",
           bgColor: "bg-green-100 dark:bg-green-900/30",
           borderColor: "border-green-400 dark:border-green-500/50",
-          message: "멜라니아: \"나쁘지 않아. 대부분 가져왔어.\"",
+          message: t("resultGoodMsg"),
         };
       if (percentage >= 50)
         return {
-          title: "아슬아슬한 탈출",
+          title: t("resultAverage"),
           icon: "🎭",
           color: "text-purple-600 dark:text-purple-400",
           bgColor: "bg-purple-100 dark:bg-purple-900/30",
           borderColor: "border-purple-400 dark:border-purple-500/50",
-          message: "멜라니아: \"겨우 빠져나왔네. 다음엔 더 조심해야겠어.\"",
+          message: t("resultAverageMsg"),
         };
       return {
-        title: "발각됨",
+        title: t("resultFail"),
         icon: "🚨",
         color: "text-red-600 dark:text-red-400",
         bgColor: "bg-red-100 dark:bg-red-900/30",
         borderColor: "border-red-400 dark:border-red-500/50",
-        message: "멜라니아: \"...철수야. 다음 기회를 노리자.\"",
+        message: t("resultFailMsg"),
       };
     } else {
-      // 일반 퀴즈 테마
       if (percentage >= 90)
         return {
-          title: "완벽!",
+          title: t("resultPerfectGeneral"),
           icon: "🌟",
           color: "text-yellow-600 dark:text-yellow-400",
           bgColor: "bg-yellow-100 dark:bg-yellow-900/30",
           borderColor: "border-yellow-400 dark:border-yellow-500/50",
-          message: "훌륭합니다! 거의 완벽한 점수예요!",
+          message: t("resultPerfectGeneralMsg"),
         };
       if (percentage >= 70)
         return {
-          title: "우수",
+          title: t("resultGoodGeneral"),
           icon: "👏",
           color: "text-green-600 dark:text-green-400",
           bgColor: "bg-green-100 dark:bg-green-900/30",
           borderColor: "border-green-400 dark:border-green-500/50",
-          message: "잘하셨어요! 조금만 더 공부하면 완벽해요!",
+          message: t("resultGoodGeneralMsg"),
         };
       if (percentage >= 50)
         return {
-          title: "보통",
+          title: t("resultAverageGeneral"),
           icon: "📚",
           color: "text-blue-600 dark:text-blue-400",
           bgColor: "bg-blue-100 dark:bg-blue-900/30",
           borderColor: "border-blue-400 dark:border-blue-500/50",
-          message: "괜찮아요! 더 연습하면 좋아질 거예요!",
+          message: t("resultAverageGeneralMsg"),
         };
       return {
-        title: "아쉬움",
+        title: t("resultFailGeneral"),
         icon: "💪",
         color: "text-red-600 dark:text-red-400",
         bgColor: "bg-red-100 dark:bg-red-900/30",
         borderColor: "border-red-400 dark:border-red-500/50",
-        message: "다음에는 더 잘할 수 있을 거예요!",
+        message: t("resultFailGeneralMsg"),
       };
     }
   };
@@ -177,10 +177,10 @@ export default function QuizResultComponent({
       link.href = dataUrl;
       link.click();
 
-      toast.success("결과 이미지가 저장되었습니다!");
+      toast.success(t("imageSaved"));
     } catch (error) {
-      console.error("이미지 생성 실패:", error);
-      toast.error("이미지 다운로드에 실패했습니다.");
+      console.error("Image generation failed:", error);
+      toast.error(t("imageError"));
     } finally {
       setIsDownloading(false);
     }
@@ -203,7 +203,7 @@ export default function QuizResultComponent({
   // 퀴즈 세트 이름 가져오기
   const getQuizSetName = () => {
     const quizSet = QUIZ_SETS.find((v) => v.id === result.quizSetId);
-    return quizSet ? `${quizSet.icon} ${quizSet.name}` : "금고";
+    return quizSet ? `${quizSet.icon} ${quizSet.name}` : t("vault");
   };
 
   return (
@@ -211,12 +211,12 @@ export default function QuizResultComponent({
       {/* 닉네임 입력 */}
       <div className="w-full max-w-md">
         <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-          닉네임 (선택사항)
+          {t("nicknameLabelOptional")}
         </label>
         <Input
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
-          placeholder="닉네임을 입력하세요"
+          placeholder={t("nicknamePlaceholder")}
           maxLength={20}
           className="w-full"
         />
@@ -269,9 +269,9 @@ export default function QuizResultComponent({
         {/* 시간 */}
         <div className="mb-4 text-center">
           <p className="text-gray-600 dark:text-gray-400">
-            소요 시간:{" "}
+            {t("elapsedTime")}{" "}
             <span className="font-bold text-purple-600 dark:text-purple-400">
-              {minutes}분 {seconds}초
+              {t("minutesSeconds", { minutes, seconds })}
             </span>
           </p>
         </div>
@@ -288,7 +288,7 @@ export default function QuizResultComponent({
           <div className="flex items-center justify-between text-xs">
             <p className="text-gray-500">{formattedDate}</p>
             <div className="text-right">
-              <p className="text-gray-500">버틴의 여행가방</p>
+              <p className="text-gray-500">{t("siteName")}</p>
               <p className="text-purple-600 dark:text-purple-400">reverse1999-simulator.com</p>
             </div>
           </div>
@@ -302,13 +302,13 @@ export default function QuizResultComponent({
           disabled={isDownloading}
           className="bg-purple-600 text-white hover:bg-purple-700"
         >
-          {isDownloading ? "저장 중..." : "📷 결과 저장"}
+          {isDownloading ? t("saving") : t("saveResult")}
         </Button>
         <Button
           onClick={() => setShowRankingModal(true)}
           className="bg-yellow-500 text-white hover:bg-yellow-600"
         >
-          🏆 랭킹 등록
+          {t("registerRanking")}
         </Button>
         <Button
           onClick={onRestart}
@@ -327,7 +327,7 @@ export default function QuizResultComponent({
             className="flex w-full items-center justify-between rounded-lg bg-red-100 px-4 py-3 text-red-700 dark:bg-red-900/30 dark:text-red-300"
           >
             <span className="font-semibold">
-              {isMelaniaTheme ? "🚨 실패한 잠금장치" : "❌ 오답 노트"} ({wrongQuestions.length}개)
+              {isMelaniaTheme ? t("failedLocks") : t("wrongNotes")} {t("wrongCount", { count: wrongQuestions.length })}
             </span>
             <span>{showWrongAnswers ? "▲" : "▼"}</span>
           </button>
@@ -364,7 +364,7 @@ export default function QuizResultComponent({
                                     ? question.image || ""
                                     : ""
                             }
-                            alt="문제 이미지"
+                            alt={t("questionImage")}
                             width={400}
                             height={400}
                             className="h-auto w-full object-contain"
@@ -375,10 +375,10 @@ export default function QuizResultComponent({
 
                     <div className="ml-8 text-sm">
                       <p className="text-red-600 dark:text-red-400">
-                        입력한 답: {answer.userAnswer === null ? "(시간 초과)" : String(answer.userAnswer)}
+                        {t("yourAnswer", { answer: answer.userAnswer === null ? t("timeExpired") : String(answer.userAnswer) })}
                       </p>
                       <p className="text-green-600 dark:text-green-400">
-                        정답: {getCorrectAnswerText(question)}
+                        {t("correctAnswerIs", { answer: getCorrectAnswerText(question) })}
                       </p>
                       {question.explanation && (
                         <p className="mt-1 text-gray-600 dark:text-gray-400">

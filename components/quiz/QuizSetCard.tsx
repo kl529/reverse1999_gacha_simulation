@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { QuizSetInfo } from "@/lib/types/quizTypes";
+import { useTranslations } from "next-intl";
 
 // 퀴즈 시도 횟수 제한 (매일 리셋)
 const QUIZ_ATTEMPTS_KEY = "quiz_attempts_daily";
@@ -41,6 +42,7 @@ interface QuizSetCardProps {
 }
 
 export default function QuizSetCard({ quizSet }: QuizSetCardProps) {
+  const t = useTranslations("quiz");
   const [remainingAttempts, setRemainingAttempts] = useState<number>(MAX_QUIZ_ATTEMPTS);
 
   useEffect(() => {
@@ -105,17 +107,17 @@ export default function QuizSetCard({ quizSet }: QuizSetCardProps) {
 
       <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold">
         <span className="rounded-full bg-purple-100 px-2.5 py-1 text-purple-700 ring-1 ring-purple-300 dark:bg-purple-900/40 dark:text-purple-300 dark:ring-purple-500/30">
-          🔒 {quizSet.questionCount}개 문제
+          {t("questionCount", { count: quizSet.questionCount })}
         </span>
         <span className="rounded-full bg-red-100 px-2.5 py-1 text-red-700 ring-1 ring-red-300 dark:bg-red-900/40 dark:text-red-300 dark:ring-red-500/30">
-          ⏱️ {quizSet.timePerQuestion}초 제한
+          {t("timeLimit", { seconds: quizSet.timePerQuestion })}
         </span>
         <span className={`rounded-full px-2.5 py-1 ring-1 ${
           isExhausted
             ? "bg-gray-100 text-gray-500 ring-gray-300 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-600"
             : "bg-green-100 text-green-700 ring-green-300 dark:bg-green-900/40 dark:text-green-300 dark:ring-green-500/30"
         }`}>
-          🎫 {remainingAttempts}/{MAX_QUIZ_ATTEMPTS}회 남음
+          {t("attemptsRemaining", { remaining: remainingAttempts, max: MAX_QUIZ_ATTEMPTS })}
         </span>
       </div>
     </Link>

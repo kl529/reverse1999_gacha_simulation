@@ -3,6 +3,7 @@
 import { MultipleChoiceQuestion } from "@/lib/types/quizTypes";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface MultipleChoiceProps {
   question: MultipleChoiceQuestion;
@@ -19,6 +20,7 @@ export default function MultipleChoice({
   showResult = false,
   disabled = false,
 }: MultipleChoiceProps) {
+  const t = useTranslations("quiz");
   return (
     <div className="flex flex-col gap-4">
       {/* 문제 이미지 (있는 경우) */}
@@ -27,7 +29,7 @@ export default function MultipleChoice({
           <div className="relative w-full max-w-xs overflow-hidden rounded-lg border-2 border-gray-300 dark:border-gray-600">
             <Image
               src={question.image}
-              alt="문제 이미지"
+              alt={t("questionImage")}
               width={400}
               height={400}
               className="h-auto w-full object-contain"
@@ -82,7 +84,7 @@ export default function MultipleChoice({
               <span className="text-gray-900 dark:text-white">{option}</span>
               {showResult && isCorrect && (
                 <span className="ml-2 text-green-600 dark:text-green-400">
-                  (정답)
+                  {t("correct")}
                 </span>
               )}
             </button>
