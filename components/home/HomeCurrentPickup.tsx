@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useRef, useCallback, useEffect } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { banners, Banner } from "@/data/banners";
 import { charactersByRarity } from "@/data/characters";
 import { Card } from "@/components/ui/card";
@@ -53,10 +54,8 @@ function getCharacterById(id: number) {
   return null;
 }
 
-// 배너 이미지 경로 생성 (로컬)
-
 // 단일 배너 카드 컴포넌트
-function BannerCard({ banner }: { banner: Banner }) {
+function BannerCard({ banner, t }: { banner: Banner; t: ReturnType<typeof useTranslations> }) {
   const daysRemaining = getDaysRemaining(banner.endDate!);
 
   // 픽업 캐릭터 정보 가져오기
@@ -89,7 +88,7 @@ function BannerCard({ banner }: { banner: Banner }) {
         <div className="mb-auto flex items-start justify-between">
           <h3 className="text-base font-bold text-white sm:text-lg">
             {banner.name}
-            <span className="ml-2 text-xs font-normal text-green-400 sm:text-sm">진행중</span>
+            <span className="ml-2 text-xs font-normal text-green-400 sm:text-sm">{t("active")}</span>
           </h3>
 
           {/* D-day 칩 + 종료일 */}
@@ -119,7 +118,7 @@ function BannerCard({ banner }: { banner: Banner }) {
             size="sm"
             className="h-8 bg-white/90 text-xs text-black hover:bg-white sm:h-9 sm:text-sm"
           >
-            <Link href="/gacha_simulator">🎰 뽑기 시뮬</Link>
+            <Link href="/gacha_simulator">{t("gachaSim")}</Link>
           </Button>
           {mainCharacter && (
             <Button
@@ -127,7 +126,7 @@ function BannerCard({ banner }: { banner: Banner }) {
               size="sm"
               className="h-8 bg-yellow-500 text-xs text-black hover:bg-yellow-400 sm:h-9 sm:text-sm"
             >
-              <Link href={`/character/${mainCharacter.id}`}>📖 캐릭터 가이드</Link>
+              <Link href={`/character/${mainCharacter.id}`}>{t("characterGuide")}</Link>
             </Button>
           )}
         </div>
@@ -141,6 +140,7 @@ export default function HomeCurrentPickup() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+  const t = useTranslations("pickup");
 
   const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev === activeBanners.length - 1 ? 0 : prev + 1));
@@ -184,7 +184,7 @@ export default function HomeCurrentPickup() {
   if (activeBanners.length === 0) {
     return (
       <Card className="flex h-full flex-col items-center justify-center bg-gray-900/80 p-3 sm:p-4">
-        <p className="text-sm text-gray-400 sm:text-base">현재 진행 중인 픽업이 없습니다</p>
+        <p className="text-sm text-gray-400 sm:text-base">{t("noActive")}</p>
       </Card>
     );
   }
@@ -193,7 +193,7 @@ export default function HomeCurrentPickup() {
   if (activeBanners.length === 1) {
     return (
       <Card className="relative flex h-full min-h-[200px] flex-col overflow-hidden sm:min-h-[220px]">
-        <BannerCard banner={activeBanners[0]} />
+        <BannerCard banner={activeBanners[0]} t={t} />
       </Card>
     );
   }
@@ -213,7 +213,7 @@ export default function HomeCurrentPickup() {
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {activeBanners.map((banner) => (
-            <BannerCard key={banner.id} banner={banner} />
+            <BannerCard key={banner.id} banner={banner} t={t} />
           ))}
         </div>
 
@@ -221,14 +221,14 @@ export default function HomeCurrentPickup() {
         <button
           onClick={handlePrev}
           className="absolute left-1 top-1/2 z-20 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 sm:left-2 sm:h-8 sm:w-8"
-          aria-label="이전 배너"
+          aria-label={t("prevBanner")}
         >
           ◀
         </button>
         <button
           onClick={handleNext}
           className="absolute right-1 top-1/2 z-20 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/70 sm:right-2 sm:h-8 sm:w-8"
-          aria-label="다음 배너"
+          aria-label={t("nextBanner")}
         >
           ▶
         </button>
@@ -242,7 +242,7 @@ export default function HomeCurrentPickup() {
               className={`h-2 w-2 rounded-full transition-colors ${
                 index === currentIndex ? "bg-white" : "bg-white/40"
               }`}
-              aria-label={`배너 ${index + 1}로 이동`}
+              aria-label={t("goToBanner", { index: index + 1 })}
             />
           ))}
         </div>

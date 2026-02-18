@@ -7,12 +7,137 @@
     "close": "닫기",
     "back": "뒤로",
     "search": "검색",
-    "noResults": "결과 없음"
+    "noResults": "결과 없음",
+    "all": "전체",
+    "count": "{count}회",
+    "none": "없음",
+    "viewAll": "전체보기 →",
+    "moreItems": "+{count}개 더 있음",
+    "developer": "개발자",
+    "star": "{rarity}성",
+    "collab": "콜라보"
   },
   "metadata": {
+    "siteName": "버틴의 여행가방",
     "home": {
       "title": "버틴의 여행가방",
-      "description": "리버스 1999의 모든 정보를 한눈에 찾아보세요."
+      "description": "리버스 1999의 모든 정보를 한눈에 찾아보세요.",
+      "ogDescription": "리버스 1999의 모든 정보를 한눈에 찾아보세요!!",
+      "imageAlt": "버틴의 여행가방 미리보기 이미지"
+    },
+    "gacha": {
+      "title": "리버스 1999 가챠 시뮬레이터",
+      "description": "리버스 1999 가챠를 무제한으로 뽑아보세요.",
+      "ogDescription": "리버스 1999 가챠를 무제한으로 뽑아보세요!!",
+      "imageAlt": "리버스 1999 가챠 시뮬레이터 미리보기 이미지"
+    },
+    "character": {
+      "title": "리버스 1999 캐릭터 가이드",
+      "description": "리버스 1999의 모든 캐릭터 정보와 추천 세팅을 확인하세요.",
+      "detailTitle": "리버스 1999 {name} 가이드",
+      "detailDescription": "리버스 1999 {name}의 추천 의지, 공명, 파티 조합 정보"
+    },
+    "characterQuiz": {
+      "title": "리버스 1999 캐릭터 퀴즈",
+      "description": "캐릭터의 초상화만 보고 이름을 맞춰보세요."
+    },
+    "quiz": {
+      "title": "리버스 1999 종합 퀴즈",
+      "description": "리버스 1999에 관한 다양한 퀴즈를 풀어보세요."
+    },
+    "bingo": {
+      "title": "리버스 1999 빙고",
+      "description": "리버스 1999 빙고 게임을 즐겨보세요."
+    },
+    "favoriteCharacter": {
+      "title": "리버스 1999 최애 캐릭터",
+      "description": "리버스 1999의 최애 캐릭터를 골라보세요."
+    },
+    "recommendTeam": {
+      "title": "리버스 1999 추천 조합",
+      "description": "리버스 1999의 추천 파티 조합을 확인하세요."
+    },
+    "growthCalculator": {
+      "title": "리버스 1999 육성 계산기",
+      "description": "리버스 1999 캐릭터 육성에 필요한 재료를 계산하세요."
+    },
+    "reveriesInTheRain": {
+      "title": "리버스 1999 빗속의 공상",
+      "description": "리버스 1999 빗속의 공상 공략 정보입니다.",
+      "detailTitle": "리버스 1999 빗속의 공상 {id} 공략",
+      "detailDescription": "리버스 1999 빗속의 공상 {id}단계 공략 정보"
+    },
+    "blueprintSetting": {
+      "title": "리버스 1999 청사진 모음",
+      "description": "리버스 1999의 청사진 정보를 확인하세요."
+    },
+    "euphoriaGuide": {
+      "title": "리버스 1999 광상 목록",
+      "description": "리버스 1999의 광상 목록과 정보를 확인하세요.",
+      "detailTitle": "리버스 1999 {name} 광상 목록",
+      "detailDescription": "리버스 1999 {name}의 광상 세부 정보"
+    },
+    "psycubeGuide": {
+      "title": "리버스 1999 의지 육성",
+      "description": "리버스 1999의 의지 육성 정보를 확인하세요.",
+      "detailTitle": "리버스 1999 {name} 의지 육성 상세 정보",
+      "detailDescription": "리버스 1999 {name}의 의지 육성 상세 가이드"
+    },
+    "pathQuiz": {
+      "title": "리버스 1999 오솔길 정답",
+      "description": "리버스 1999 오솔길 퀴즈 정답 정리"
+    },
+    "shopEfficiency": {
+      "title": "리버스 1999 상점 효율",
+      "description": "리버스 1999 상점 아이템 효율을 비교하세요."
+    },
+    "skin": {
+      "title": "리버스 1999 스킨 갤러리",
+      "description": "리버스 1999의 모든 스킨을 확인하세요.",
+      "detailTitle": "리버스 1999 {name} 스킨",
+      "detailDescription": "리버스 1999 {name}의 스킨 갤러리"
+    },
+    "futureInsight": {
+      "title": "리버스 1999 미래시 정리",
+      "description": "리버스 1999의 미래 업데이트 정보를 확인하세요."
+    },
+    "cashPackageShop": {
+      "title": "리버스 1999 현질 패키지",
+      "description": "리버스 1999 현질 패키지 비교 및 가이드"
+    },
+    "calendar": {
+      "title": "리버스 1999 캘린더",
+      "description": "리버스 1999의 이벤트 및 업데이트 일정을 확인하세요."
+    },
+    "cashGuide": {
+      "title": "리버스 1999 현질 가이드",
+      "description": "리버스 1999 현질 효율 가이드"
+    },
+    "gachaGuide": {
+      "title": "리버스 1999 가챠 가이드",
+      "description": "리버스 1999 가챠 시스템과 기댓값 분석"
+    },
+    "newbieGuide": {
+      "title": "리버스 1999 뉴비 가이드",
+      "description": "리버스 1999 초보자를 위한 가이드"
+    },
+    "coupon": {
+      "title": "리버스 1999 쿠폰 목록",
+      "description": "리버스 1999 사용 가능한 쿠폰 정보"
+    },
+    "contentGuide": {
+      "title": "리버스 1999 상시 컨텐츠",
+      "description": "리버스 1999 상시 컨텐츠 가이드",
+      "detailTitle": "리버스 1999 {name} 가이드",
+      "detailDescription": "리버스 1999 {name} 상세 가이드"
+    },
+    "damageCalculation": {
+      "title": "리버스 1999 데미지 계산기",
+      "description": "리버스 1999 데미지 계산 도구"
+    },
+    "characterSetting": {
+      "title": "리버스 1999 캐릭터 세팅",
+      "description": "리버스 1999 캐릭터 공명/의지 세팅 가이드"
     }
   },
   "nav": {
@@ -55,7 +180,8 @@
       "gachaGuide": "가챠 가이드",
       "newbieGuide": "뉴비 가이드",
       "couponList": "쿠폰 목록",
-      "contentGuide": "상시 컨텐츠"
+      "contentGuide": "상시 컨텐츠",
+      "damageCalculation": "데미지 계산기"
     }
   },
   "theme": {
@@ -92,5 +218,128 @@
   },
   "modal": {
     "materialFarming": "재료 파밍표"
+  },
+  "home": {
+    "title": "버틴의 여행가방 🧳",
+    "subtitle": "당신이 폭풍우를 이겨낼 수 있도록..",
+    "playgroundSubtitle": "Just for Fun",
+    "librarySubtitle": "게임 플레이를 위한 필수 정보",
+    "guideSubtitle": "유용한 참고 자료 모음",
+    "policy": {
+      "title": "개인정보 처리방침",
+      "content1": "본 사이트는 사용자의 개인정보를 수집하지 않습니다. 이름, 이메일, 연락처 등 어떠한 개인정보도 저장하지 않으며, 로그인 없이 자유롭게 이용 가능합니다.",
+      "content2": "일부 설정 정보(예: 퀴즈 진행 현황)는 사용자의 브라우저 로컬 스토리지(Local Storage)에 저장됩니다. 이 사이트는 Google Analytics를 사용하여 방문자 트래픽을 익명으로 수집하고 있으며, 광고 ID 등 개인을 식별할 수 있는 정보는 수집되지 않습니다. 외부 링크(예: Google Sites, Github Pages)는 각각의 개인정보 처리방침을 따릅니다. 본 사이트는 외부 사이트의 데이터 수집에 대해 책임지지 않습니다.",
+      "content3": "기타 문의 사항은 jiwon803@gmail.com 으로 연락해 주세요."
+    },
+    "source": {
+      "title": "출처",
+      "futureInsight": "미래시 정보 및 많은 캐릭터 검수 (내이름은김융털)",
+      "dataSource": "다양한 데이터 출처",
+      "detailInfo": "다른 상세 정보",
+      "krInfoSummary": "한국 정보 정리",
+      "euphoriaInfo": "광상 정보",
+      "taptapAnalysis": "taptap 분석글(小丸犊几)",
+      "bilibiliVideo": "동영상 정보(bilibili)",
+      "bilibiliWiki": "캐릭터 정보 및 여러 정보 (bilibili wiki)",
+      "tierList": "티어리스트 및 추천 조합 등 여러 정보 (Reverse: 1999 Tier List)",
+      "ngaInfo": "중섭정보 (nga)",
+      "resonanceInfo": "공명 정보 (An Incredibly Scuffed Page of Recommended Character Resonance Layouts and their Corresponding Codes)",
+      "loadingImage": "로딩 이미지",
+      "cursor": "마우스 커서",
+      "infographic": "인포그래픽 출처 (reddit)",
+      "dropRate": "스테이지별 드롭률 출처(【WPS Docs】 必要的记录)"
+    },
+    "contributors": {
+      "title": "도움을 주신 분들",
+      "content": "- 개발자: Lyva\n- 데이터 정리: 잠쿨"
+    },
+    "notice": {
+      "title": "📢 공지사항",
+      "content": "현재 서비스 점검 중으로 인해 일부 기능 이용에 불편이 있을 수 있습니다.\n\n접속이 원활하지 않거나 페이지 로딩이 느린 경우, 잠시 후 다시 시도해 주세요.\n\n빠른 시일 내에 정상화될 예정이니 양해 부탁드립니다. 항상 서비스 이용에 감사드립니다."
+    },
+    "updateLog": "업데이트 내역"
+  },
+  "footer": {
+    "contact": "문의",
+    "policy": "Policy",
+    "source": "출처",
+    "contributors": "기여자",
+    "buyCoffee": "커피 사주기 ☕️",
+    "update": "업데이트"
+  },
+  "coupon": {
+    "availableCoupons": "🎫 사용가능한 쿠폰"
+  },
+  "pickup": {
+    "active": "진행중",
+    "noActive": "현재 진행 중인 픽업이 없습니다",
+    "gachaSim": "🎰 뽑기 시뮬",
+    "characterGuide": "📖 캐릭터 가이드",
+    "prevBanner": "이전 배너",
+    "nextBanner": "다음 배너",
+    "goToBanner": "배너 {index}로 이동"
+  },
+  "gacha": {
+    "title": "가챠 시뮬레이터",
+    "pullStats": "🔍 뽑기 통계",
+    "totalPulls": "🗂️ 총 뽑기 횟수:",
+    "percentile": "🍀 백분위:",
+    "percentileTop": "상위",
+    "pityCount": "☂️ 천장 카운트:",
+    "sixStarRate": "🧲 6성 확률:",
+    "pickupStatus": "🏅 픽업 여부:",
+    "pickupConfirmed": "픽업 확정 ⭕️",
+    "pickupNotConfirmed": "픽업 확정 ❌",
+    "bannerSection": "🌪️ 배너",
+    "doublePick": "2중 픽업",
+    "regularPick": "일반 픽업",
+    "selectBanner": "배너를 선택하세요",
+    "sixStarList": "획득 6성 목록",
+    "developerLabel": "🖥️ 개발자 :",
+    "gachaGuideLink": "🔥 가챠 가이드 & 기댓값 보러가기 🔥",
+    "obtained6Star": "💡 획득한 6성",
+    "pickupLabel": "픽업:",
+    "nonPickupLabel": "픽뚫:",
+    "pickup": "픽업!",
+    "nonPickup": "픽뚫",
+    "nameCard": "명함",
+    "shape": "{count}형",
+    "pullNotification": "🎉 {pullNumber}번째 토끼로 🏆{name}🏆 획득!",
+    "characterNotFound": "캐릭터 ID {id}를 찾을 수 없습니다.",
+    "bannerSixStarTitle": "획득 가능 6성 목록",
+    "bannerSixStarDescription": "현재 배너에서 등장 가능한 6성 캐릭터 목록입니다.",
+    "pickupIndicator": "(픽업!)"
+  },
+  "character": {
+    "title": "캐릭터 가이드",
+    "searchPlaceholder": "캐릭터 이름 검색",
+    "resetFilters": "초기화",
+    "resonanceType": "공명 타입",
+    "attribute": "속성",
+    "resonanceTypes": {
+      "damage": "공격",
+      "support": "보조",
+      "balance": "밸런스",
+      "defense": "방어"
+    },
+    "inspirations": {
+      "beast": "야수",
+      "star": "천체",
+      "mineral": "암석",
+      "plant": "나무",
+      "spirit": "영혼",
+      "intelligence": "지능"
+    },
+    "tabs": {
+      "guide": "캐릭터 가이드",
+      "resonanceWill": "공명 & 의지"
+    },
+    "euphoria": "광상",
+    "onlySixStarGuide": "6성 캐릭터만 가이드를 제공하고 있습니다. 5성 캐릭터는 공명 & 의지 탭을 확인해주세요."
+  },
+  "structuredData": {
+    "siteName": "버틴의 여행가방",
+    "siteDescription": "리버스 1999 게임의 모든 정보를 한눈에 - 가챠 시뮬레이터, 캐릭터 정보, 추천 조합 등",
+    "gameDescription": "새로운 구시대, 아방가르드 RPG"
   }
 }

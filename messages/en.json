@@ -7,12 +7,137 @@
     "close": "Close",
     "back": "Back",
     "search": "Search",
-    "noResults": "No results"
+    "noResults": "No results",
+    "all": "All",
+    "count": "{count}x",
+    "none": "None",
+    "viewAll": "View All →",
+    "moreItems": "+{count} more",
+    "developer": "Developer",
+    "star": "{rarity}★",
+    "collab": "Collab"
   },
   "metadata": {
+    "siteName": "Vertin's Suitcase",
     "home": {
       "title": "Vertin's Suitcase",
-      "description": "Find all information about Reverse 1999 at a glance."
+      "description": "Find all information about Reverse 1999 at a glance.",
+      "ogDescription": "Find all information about Reverse 1999 at a glance!",
+      "imageAlt": "Vertin's Suitcase preview image"
+    },
+    "gacha": {
+      "title": "Reverse 1999 Gacha Simulator",
+      "description": "Try unlimited gacha pulls for Reverse 1999.",
+      "ogDescription": "Try unlimited gacha pulls for Reverse 1999!",
+      "imageAlt": "Reverse 1999 Gacha Simulator preview image"
+    },
+    "character": {
+      "title": "Reverse 1999 Character Guide",
+      "description": "Check all character info and recommended settings for Reverse 1999.",
+      "detailTitle": "Reverse 1999 {name} Guide",
+      "detailDescription": "Recommended psycube, resonance, and team composition for {name}"
+    },
+    "characterQuiz": {
+      "title": "Reverse 1999 Character Quiz",
+      "description": "Guess the character name from their portrait."
+    },
+    "quiz": {
+      "title": "Reverse 1999 General Quiz",
+      "description": "Test your knowledge about Reverse 1999."
+    },
+    "bingo": {
+      "title": "Reverse 1999 Bingo",
+      "description": "Play the Reverse 1999 bingo game."
+    },
+    "favoriteCharacter": {
+      "title": "Reverse 1999 Favorite Character",
+      "description": "Pick your favorite Reverse 1999 character."
+    },
+    "recommendTeam": {
+      "title": "Reverse 1999 Team Builder",
+      "description": "Check recommended team compositions for Reverse 1999."
+    },
+    "growthCalculator": {
+      "title": "Reverse 1999 Growth Calculator",
+      "description": "Calculate materials needed for character growth in Reverse 1999."
+    },
+    "reveriesInTheRain": {
+      "title": "Reverse 1999 Reveries in the Rain",
+      "description": "Reveries in the Rain walkthrough for Reverse 1999.",
+      "detailTitle": "Reverse 1999 Reveries in the Rain Stage {id}",
+      "detailDescription": "Walkthrough for Reveries in the Rain stage {id}"
+    },
+    "blueprintSetting": {
+      "title": "Reverse 1999 Blueprints",
+      "description": "Check blueprint information for Reverse 1999."
+    },
+    "euphoriaGuide": {
+      "title": "Reverse 1999 Euphoria List",
+      "description": "Check the euphoria list and info for Reverse 1999.",
+      "detailTitle": "Reverse 1999 {name} Euphoria List",
+      "detailDescription": "Detailed euphoria information for {name}"
+    },
+    "psycubeGuide": {
+      "title": "Reverse 1999 Psycube Guide",
+      "description": "Check psycube growth information for Reverse 1999.",
+      "detailTitle": "Reverse 1999 {name} Psycube Guide",
+      "detailDescription": "Detailed psycube guide for {name}"
+    },
+    "pathQuiz": {
+      "title": "Reverse 1999 Path Quiz Answers",
+      "description": "Path quiz answer guide for Reverse 1999."
+    },
+    "shopEfficiency": {
+      "title": "Reverse 1999 Shop Efficiency",
+      "description": "Compare shop item efficiency in Reverse 1999."
+    },
+    "skin": {
+      "title": "Reverse 1999 Skin Gallery",
+      "description": "Browse all skins in Reverse 1999.",
+      "detailTitle": "Reverse 1999 {name} Skins",
+      "detailDescription": "Skin gallery for {name}"
+    },
+    "futureInsight": {
+      "title": "Reverse 1999 Future Insight",
+      "description": "Check upcoming updates for Reverse 1999."
+    },
+    "cashPackageShop": {
+      "title": "Reverse 1999 Cash Packages",
+      "description": "Cash package comparison and guide for Reverse 1999."
+    },
+    "calendar": {
+      "title": "Reverse 1999 Calendar",
+      "description": "Check event and update schedules for Reverse 1999."
+    },
+    "cashGuide": {
+      "title": "Reverse 1999 Spending Guide",
+      "description": "Spending efficiency guide for Reverse 1999."
+    },
+    "gachaGuide": {
+      "title": "Reverse 1999 Gacha Guide",
+      "description": "Gacha system analysis and expected value for Reverse 1999."
+    },
+    "newbieGuide": {
+      "title": "Reverse 1999 Newbie Guide",
+      "description": "Beginner's guide for Reverse 1999."
+    },
+    "coupon": {
+      "title": "Reverse 1999 Coupon List",
+      "description": "Available coupon codes for Reverse 1999."
+    },
+    "contentGuide": {
+      "title": "Reverse 1999 Permanent Content",
+      "description": "Permanent content guide for Reverse 1999.",
+      "detailTitle": "Reverse 1999 {name} Guide",
+      "detailDescription": "Detailed guide for {name}"
+    },
+    "damageCalculation": {
+      "title": "Reverse 1999 Damage Calculator",
+      "description": "Damage calculation tool for Reverse 1999."
+    },
+    "characterSetting": {
+      "title": "Reverse 1999 Character Setting",
+      "description": "Character resonance/psycube setting guide for Reverse 1999."
     }
   },
   "nav": {
@@ -55,7 +180,8 @@
       "gachaGuide": "Gacha Guide",
       "newbieGuide": "Newbie Guide",
       "couponList": "Coupon List",
-      "contentGuide": "Permanent Content"
+      "contentGuide": "Permanent Content",
+      "damageCalculation": "Damage Calculator"
     }
   },
   "theme": {
@@ -92,5 +218,128 @@
   },
   "modal": {
     "materialFarming": "Material Farming Guide"
+  },
+  "home": {
+    "title": "Vertin's Suitcase 🧳",
+    "subtitle": "To help you weather the storm..",
+    "playgroundSubtitle": "Just for Fun",
+    "librarySubtitle": "Essential Info for Gameplay",
+    "guideSubtitle": "Useful Reference Collection",
+    "policy": {
+      "title": "Privacy Policy",
+      "content1": "This site does not collect any personal information. No names, emails, or contact details are stored, and you can use the site freely without logging in.",
+      "content2": "Some settings (e.g., quiz progress) are stored in your browser's local storage. This site uses Google Analytics to anonymously collect visitor traffic. No personally identifiable information such as advertising IDs is collected. External links (e.g., Google Sites, GitHub Pages) follow their own privacy policies. This site is not responsible for data collection by external sites.",
+      "content3": "For inquiries, please contact jiwon803@gmail.com."
+    },
+    "source": {
+      "title": "Sources",
+      "futureInsight": "Future Insight info & character reviews (내이름은김융털)",
+      "dataSource": "Various data sources",
+      "detailInfo": "Other detailed info",
+      "krInfoSummary": "Korean info compilation",
+      "euphoriaInfo": "Euphoria info",
+      "taptapAnalysis": "TapTap analysis (小丸犊几)",
+      "bilibiliVideo": "Video info (bilibili)",
+      "bilibiliWiki": "Character & various info (bilibili wiki)",
+      "tierList": "Tier list & team recommendations (Reverse: 1999 Tier List)",
+      "ngaInfo": "CN server info (NGA)",
+      "resonanceInfo": "Resonance info (An Incredibly Scuffed Page of Recommended Character Resonance Layouts and their Corresponding Codes)",
+      "loadingImage": "Loading image",
+      "cursor": "Mouse cursor",
+      "infographic": "Infographic source (reddit)",
+      "dropRate": "Stage drop rate source (【WPS Docs】 必要的记录)"
+    },
+    "contributors": {
+      "title": "Contributors",
+      "content": "- Developer: Lyva\n- Data: 잠쿨"
+    },
+    "notice": {
+      "title": "📢 Notice",
+      "content": "Some features may be temporarily unavailable due to server maintenance.\n\nIf you experience connection issues or slow loading, please try again later.\n\nWe appreciate your patience and thank you for using our service."
+    },
+    "updateLog": "Update Log"
+  },
+  "footer": {
+    "contact": "Contact",
+    "policy": "Policy",
+    "source": "Sources",
+    "contributors": "Contributors",
+    "buyCoffee": "Buy me a coffee ☕️",
+    "update": "Updates"
+  },
+  "coupon": {
+    "availableCoupons": "🎫 Available Coupons"
+  },
+  "pickup": {
+    "active": "Active",
+    "noActive": "No active pickup banners",
+    "gachaSim": "🎰 Gacha Sim",
+    "characterGuide": "📖 Character Guide",
+    "prevBanner": "Previous banner",
+    "nextBanner": "Next banner",
+    "goToBanner": "Go to banner {index}"
+  },
+  "gacha": {
+    "title": "Gacha Simulator",
+    "pullStats": "🔍 Pull Stats",
+    "totalPulls": "🗂️ Total Pulls:",
+    "percentile": "🍀 Percentile:",
+    "percentileTop": "Top",
+    "pityCount": "☂️ Pity Count:",
+    "sixStarRate": "🧲 6★ Rate:",
+    "pickupStatus": "🏅 Pickup Status:",
+    "pickupConfirmed": "Pickup Guaranteed ⭕️",
+    "pickupNotConfirmed": "Pickup Not Guaranteed ❌",
+    "bannerSection": "🌪️ Banner",
+    "doublePick": "Double Pickup",
+    "regularPick": "Regular Pickup",
+    "selectBanner": "Select a banner",
+    "sixStarList": "6★ History",
+    "developerLabel": "🖥️ Developer:",
+    "gachaGuideLink": "🔥 Gacha Guide & Expected Values 🔥",
+    "obtained6Star": "💡 Obtained 6★",
+    "pickupLabel": "Pickup:",
+    "nonPickupLabel": "Off-banner:",
+    "pickup": "Pickup!",
+    "nonPickup": "Off-banner",
+    "nameCard": "Card",
+    "shape": "P{count}",
+    "pullNotification": "🎉 Got 🏆{name}🏆 on pull #{pullNumber}!",
+    "characterNotFound": "Character ID {id} not found.",
+    "bannerSixStarTitle": "Available 6★ Characters",
+    "bannerSixStarDescription": "List of 6★ characters available in the current banner.",
+    "pickupIndicator": "(Pickup!)"
+  },
+  "character": {
+    "title": "Character Guide",
+    "searchPlaceholder": "Search character name",
+    "resetFilters": "Reset",
+    "resonanceType": "Resonance Type",
+    "attribute": "Attribute",
+    "resonanceTypes": {
+      "damage": "Damage",
+      "support": "Support",
+      "balance": "Balance",
+      "defense": "Defense"
+    },
+    "inspirations": {
+      "beast": "Beast",
+      "star": "Star",
+      "mineral": "Mineral",
+      "plant": "Plant",
+      "spirit": "Spirit",
+      "intelligence": "Intelligence"
+    },
+    "tabs": {
+      "guide": "Character Guide",
+      "resonanceWill": "Resonance & Psycube"
+    },
+    "euphoria": "Euphoria",
+    "onlySixStarGuide": "Guides are only available for 6★ characters. For 5★ characters, please check the Resonance & Psycube tab."
+  },
+  "structuredData": {
+    "siteName": "Vertin's Suitcase",
+    "siteDescription": "All Reverse 1999 info at a glance - Gacha simulator, character info, team recommendations, and more",
+    "gameDescription": "A new old era, avant-garde RPG"
   }
 }
