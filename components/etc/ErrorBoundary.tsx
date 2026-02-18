@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Component, ErrorInfo, ReactNode, createContext } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { analytics } from "@/lib/posthog";
 
 // ErrorBoundary 활성화 상태를 공유하는 Context

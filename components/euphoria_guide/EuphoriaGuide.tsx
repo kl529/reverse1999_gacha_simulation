@@ -3,7 +3,7 @@
 import { euphoriaList } from "@/data/euphoria";
 import { charactersByRarity } from "@/data/characters";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { version } from "@/data/version";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";

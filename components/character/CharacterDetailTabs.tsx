@@ -8,7 +8,7 @@ import CharacterSettingDetail from "@/components/character_setting/CharacterSett
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Info } from "lucide-react";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { euphoriaList } from "@/data/euphoria";
 import { getDisplayVersion } from "@/data/version";

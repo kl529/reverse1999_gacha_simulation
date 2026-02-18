@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { GUIDE_CHARACTERS } from "@/data/setting_character";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Input } from "@/components/ui/input";
 import { euphoriaList } from "@/data/euphoria";
 import { getCharacterUrl } from "@/lib/cdn";

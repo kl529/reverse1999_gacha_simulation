@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CharacterSkin } from "@/data/character_skin";

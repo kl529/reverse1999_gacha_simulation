@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import HamburgerMenu from "@/components/etc/HamburgerMenu";
 
 export default function HamburgerConditional({

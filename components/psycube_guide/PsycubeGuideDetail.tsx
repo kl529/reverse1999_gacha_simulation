@@ -6,7 +6,7 @@ import { character_setting_data } from "@/data/character_setting_data";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { analytics } from "@/lib/posthog";
 import { useTranslations } from "next-intl";
 

@@ -14,7 +14,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { BannerSixStarListModal } from "@/components/modals/BannerSixStarListModal";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { getBannerUrl } from "@/lib/cdn";
 
 interface GachaStatsProps {

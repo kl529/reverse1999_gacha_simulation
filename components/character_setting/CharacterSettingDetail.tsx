@@ -12,10 +12,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { toast, Toaster } from "react-hot-toast";
 import { useState, useMemo } from "react";
 import { RESONANCE_PATTERN } from "@/data/resonance_pattern";
-import { useRouter } from "next/navigation";
 import { getDisplayVersion } from "@/data/version";
 import { characterSkin } from "@/data/character_skin";
-import Link from "next/link";
+import { Link, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { getSkinIllustUrl } from "@/lib/cdn";
 import { useTranslations } from "next-intl";

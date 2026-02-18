@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { contentGuideData, CONTENT_CATEGORIES, ContentGuideItem } from "@/data/content_guide";

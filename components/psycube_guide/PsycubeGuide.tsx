@@ -2,7 +2,7 @@
 
 import { psycube_list } from "@/data/psycube_data";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { version } from "@/data/version";
 import { Separator } from "@/components/ui/separator";
 import { useTranslations } from "next-intl";

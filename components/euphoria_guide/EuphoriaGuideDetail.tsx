@@ -6,7 +6,7 @@ import Image from "next/image";
 import { charactersByRarity } from "@/data/characters";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { recommendTeams } from "@/data/recommend_team";
 import { useMemo, useState, useEffect } from "react";
 import { analytics } from "@/lib/posthog";

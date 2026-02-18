@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Check } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { newbieGuideSteps } from "@/data/newbie_guide";
 import { storage, STORAGE_KEYS } from "@/lib/storage";

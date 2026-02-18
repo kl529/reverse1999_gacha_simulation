@@ -5,8 +5,8 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { characterSkin } from "@/data/character_skin";
 import { charactersByRarity } from "@/data/characters";
-import Link from "next/link";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { Link, useRouter, usePathname } from "@/i18n/navigation";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Select,

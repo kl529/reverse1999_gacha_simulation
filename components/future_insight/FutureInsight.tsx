@@ -9,7 +9,7 @@ import { version } from "@/data/version";
 import Image from "next/image";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { getDisplayVersion, versionList } from "@/data/version";
 import { getBannerUrl } from "@/lib/cdn";
 

@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import { reveriesInTheRain } from "@/data/reveries_in_the_rain";
 import { charactersByRarity } from "@/data/characters";
 import { psycube_list } from "@/data/psycube_data";
-import Link from "next/link";
+import { Link, useRouter } from "@/i18n/navigation";
 import { BOSSES } from "@/data/blueprint";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, List } from "lucide-react";
@@ -17,7 +17,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useRouter } from "next/navigation";
 import { getCharacterUrl } from "@/lib/cdn";
 
 interface ReveriesInTheRainDetailProps {

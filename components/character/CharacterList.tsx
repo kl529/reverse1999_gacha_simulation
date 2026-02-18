@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { SETTING_CHARACTERS } from "@/data/setting_character";
 import Image from "next/image";
-import Link from "next/link";
+import { Link, useRouter } from "@/i18n/navigation";
 import { Input } from "@/components/ui/input";
 import { euphoriaList } from "@/data/euphoria";
 import {
@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, X } from "lucide-react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { getCharacterUrl } from "@/lib/cdn";
 
 type RoleType = "damage" | "support" | "balance" | "defense";

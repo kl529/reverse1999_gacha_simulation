@@ -2,9 +2,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link, useRouter } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { recommendTeams } from "@/data/recommend_team";
 import { charactersByRarity } from "@/data/characters";
 import { Card, CardContent } from "@/components/ui/card";

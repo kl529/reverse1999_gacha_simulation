@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/select";
 import { percentRankTable } from "@/data/percent_rank_table";
 import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 export default function GachaGuide() {

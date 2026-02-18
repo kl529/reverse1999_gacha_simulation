@@ -15,7 +15,7 @@ import { characterGuideList } from "@/data/character_guide";
 import { recommendTeams } from "@/data/recommend_team";
 import type { RecommendTeamCharacter } from "@/data/recommend_team";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { GUIDE_CHARACTERS } from "@/data/setting_character";
 import {
   DropdownMenu,
