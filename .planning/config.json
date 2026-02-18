@@ -1,12 +1,12 @@
 {
   "mode": "yolo",
-  "depth": "quick",
+  "depth": "comprehensive",
   "parallelization": true,
   "commit_docs": true,
   "model_profile": "quality",
   "workflow": {
-    "research": false,
-    "plan_check": false,
+    "research": true,
+    "plan_check": true,
     "verifier": true
   }
 }
