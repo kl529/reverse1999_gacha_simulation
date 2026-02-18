@@ -308,7 +308,15 @@
     "characterNotFound": "캐릭터 ID {id}를 찾을 수 없습니다.",
     "bannerSixStarTitle": "획득 가능 6성 목록",
     "bannerSixStarDescription": "현재 배너에서 등장 가능한 6성 캐릭터 목록입니다.",
-    "pickupIndicator": "(픽업!)"
+    "pickupIndicator": "(픽업!)",
+    "rarityCount": "{rarity}성: {count}개",
+    "pullCount": "{count}회",
+    "none": "없음",
+    "bannerImageAlt": "배너 이미지",
+    "singlePull": "1회 뽑기",
+    "tenPull": "10회 뽑기",
+    "rarityEffect": "{rarity}성급 효과",
+    "pullSuffix": "회"
   },
   "character": {
     "title": "캐릭터 가이드",

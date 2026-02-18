@@ -308,7 +308,15 @@
     "characterNotFound": "Character ID {id} not found.",
     "bannerSixStarTitle": "Available 6★ Characters",
     "bannerSixStarDescription": "List of 6★ characters available in the current banner.",
-    "pickupIndicator": "(Pickup!)"
+    "pickupIndicator": "(Pickup!)",
+    "rarityCount": "{rarity}★: {count}",
+    "pullCount": "{count} pulls",
+    "none": "None",
+    "bannerImageAlt": "Banner image",
+    "singlePull": "Single Pull",
+    "tenPull": "10 Pulls",
+    "rarityEffect": "{rarity}★ effect",
+    "pullSuffix": " times"
   },
   "character": {
     "title": "Character Guide",

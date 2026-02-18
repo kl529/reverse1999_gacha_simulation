@@ -610,7 +610,7 @@ export default function GachaGame() {
             >
               <Image
                 src="/infos/button/single_pull.webp"
-                alt="1회 뽑기"
+                alt={t("singlePull")}
                 width={180}
                 height={60}
                 className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
@@ -622,7 +622,7 @@ export default function GachaGame() {
             >
               <Image
                 src="/infos/button/ten_pull.webp"
-                alt="10회 뽑기"
+                alt={t("tenPull")}
                 width={180}
                 height={60}
                 className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
