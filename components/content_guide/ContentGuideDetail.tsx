@@ -29,6 +29,7 @@ import {
   CONTENT_CATEGORIES,
   YoutubeVideo,
 } from "@/data/content_guide";
+import { useTranslations } from "next-intl";
 
 const COLOR_MAP: Record<string, { badge: string; text: string }> = {
   purple: {
@@ -45,12 +46,11 @@ const COLOR_MAP: Record<string, { badge: string; text: string }> = {
   },
 };
 
-function VideoList({ videos }: { videos: YoutubeVideo[] }) {
+function VideoList({ videos, t }: { videos: YoutubeVideo[]; t: ReturnType<typeof useTranslations> }) {
   return (
     <div className="space-y-5 sm:space-y-6">
       <p className="rounded-md bg-yellow-50 p-2.5 text-xs text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300 sm:text-sm">
-        영상은 제작 당시 버전 기준의 공략이며, 현재 버전과 다를 수 있습니다.
-        정답이 아닌 참고용으로 활용해 주세요.
+        {t("videoDisclaimer")}
       </p>
       {videos.map((video) => (
         <div key={video.id}>
@@ -121,10 +121,11 @@ export default function ContentGuideDetail({
   contentId,
 }: ContentGuideDetailProps) {
   const router = useRouter();
+  const t = useTranslations("contentGuide");
   const content = contentGuideData[contentId];
 
   if (!content) {
-    return <div>컨텐츠 정보를 찾을 수 없습니다.</div>;
+    return <div>{t("contentNotFound")}</div>;
   }
 
   const allItems = Object.values(contentGuideData);
@@ -158,7 +159,6 @@ export default function ContentGuideDetail({
 
   return (
     <div className="mt-6 flex min-h-screen w-full flex-col items-center bg-white p-3 dark:bg-gray-900 dark:text-gray-200 sm:mt-10 sm:p-4">
-      {/* 헤더 섹션 */}
       <div className="mb-5 w-full max-w-4xl sm:mb-8">
         <div className="flex flex-col gap-3 sm:gap-4">
           <h1 className="text-center text-xl font-bold text-black dark:text-gray-100 sm:text-2xl lg:text-3xl">
@@ -168,7 +168,7 @@ export default function ContentGuideDetail({
           <div className="grid grid-cols-1 gap-2">
             <Select value={contentId} onValueChange={handleContentChange}>
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="컨텐츠 선택" />
+                <SelectValue placeholder={t("contentSelect")} />
               </SelectTrigger>
               <SelectContent>
                 {allItems.map((item) => (
@@ -194,7 +194,7 @@ export default function ContentGuideDetail({
                 disabled={!prevItem}
               >
                 <ChevronLeft className="mr-1 h-4 w-4 sm:mr-2" />
-                <span className="text-xs sm:text-sm">이전</span>
+                <span className="text-xs sm:text-sm">{t("prev")}</span>
               </Button>
               <Link href="/content_guide">
                 <Button
@@ -203,7 +203,7 @@ export default function ContentGuideDetail({
                   className="sm:size-default w-full"
                 >
                   <List className="mr-1 h-4 w-4 sm:mr-2" />
-                  <span className="text-xs sm:text-sm">목록</span>
+                  <span className="text-xs sm:text-sm">{t("list")}</span>
                 </Button>
               </Link>
               <Button
@@ -215,7 +215,7 @@ export default function ContentGuideDetail({
                 }
                 disabled={!nextItem}
               >
-                <span className="text-xs sm:text-sm">다음</span>
+                <span className="text-xs sm:text-sm">{t("next")}</span>
                 <ChevronRight className="ml-1 h-4 w-4 sm:ml-2" />
               </Button>
             </div>
@@ -224,7 +224,6 @@ export default function ContentGuideDetail({
       </div>
 
       <div className="w-full max-w-4xl space-y-5 sm:space-y-8">
-        {/* 컨텐츠 설명 */}
         <Card className="border border-gray-300 p-4 sm:p-6">
           <div className="mb-3 flex flex-wrap items-center gap-1.5 sm:mb-4 sm:gap-2">
             <span>{categoryInfo?.icon}</span>
@@ -246,23 +245,19 @@ export default function ContentGuideDetail({
           <p className="text-sm sm:text-base">{content.description}</p>
         </Card>
 
-        {/* 확장/히든엔딩이 있는 컨텐츠: Collapsible 섹션들 */}
         {(hasSubContent || hasHiddenEnding) ? (
           <>
-            {/* 종합 공략 */}
             {content.youtubeVideos && content.youtubeVideos.length > 0 && (
-              <CollapsibleSection title="종합 공략" defaultOpen={true}>
-                <VideoList videos={content.youtubeVideos} />
+              <CollapsibleSection title={t("overallGuide")} defaultOpen={true}>
+                <VideoList videos={content.youtubeVideos} t={t} />
               </CollapsibleSection>
             )}
 
-            {/* 히든 엔딩 공략 */}
             {hasHiddenEnding && (
-              <CollapsibleSection title="히든 엔딩 공략" defaultOpen={false}>
+              <CollapsibleSection title={t("hiddenEndingGuide")} defaultOpen={false}>
                 <div className="space-y-6">
                   <p className="rounded-md bg-yellow-50 p-2.5 text-xs text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300 sm:text-sm">
-                    영상은 제작 당시 버전 기준의 공략이며, 현재 버전과 다를 수 있습니다.
-                    정답이 아닌 참고용으로 활용해 주세요.
+                    {t("videoDisclaimer")}
                   </p>
                   {content.hiddenEndings!.map((ending, index) => (
                     <div key={index}>
@@ -291,7 +286,7 @@ export default function ContentGuideDetail({
                         </div>
                       ) : (
                         <p className="mt-1 text-xs italic text-muted-foreground">
-                          영상 준비중
+                          {t("videoPreparing")}
                         </p>
                       )}
                       {index < content.hiddenEndings!.length - 1 && (
@@ -303,7 +298,6 @@ export default function ContentGuideDetail({
               </CollapsibleSection>
             )}
 
-            {/* 확장팩별 공략 */}
             {hasSubContent &&
               content.subContent!.map((sub, index) => (
                 <CollapsibleSection
@@ -315,25 +309,24 @@ export default function ContentGuideDetail({
                   <p className="mb-3 text-sm sm:text-base">{sub.description}</p>
                   {sub.mechanic && (
                     <p className="mb-3 text-xs text-muted-foreground sm:text-sm">
-                      고유 시스템: {sub.mechanic}
+                      {t("uniqueSystem", { mechanic: sub.mechanic })}
                     </p>
                   )}
                   {sub.youtubeVideos && sub.youtubeVideos.length > 0 && (
                     <div className="mt-3 border-t border-gray-200 pt-4 dark:border-gray-700">
-                      <VideoList videos={sub.youtubeVideos} />
+                      <VideoList videos={sub.youtubeVideos} t={t} />
                     </div>
                   )}
                 </CollapsibleSection>
               ))}
           </>
         ) : (
-          /* 일반 컨텐츠: 기존 공략 영상 카드 */
           content.youtubeVideos && content.youtubeVideos.length > 0 && (
             <Card className="border border-gray-300 p-4 sm:p-6">
               <h2 className="mb-3 text-lg font-bold sm:mb-4 sm:text-2xl">
-                공략 영상
+                {t("guideVideos")}
               </h2>
-              <VideoList videos={content.youtubeVideos} />
+              <VideoList videos={content.youtubeVideos} t={t} />
             </Card>
           )
         )}

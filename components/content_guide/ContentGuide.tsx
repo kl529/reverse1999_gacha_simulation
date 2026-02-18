@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { contentGuideData, CONTENT_CATEGORIES, ContentGuideItem } from "@/data/content_guide";
+import { useTranslations } from "next-intl";
 
 const COLOR_MAP: Record<string, { badge: string; text: string }> = {
   purple: {
@@ -25,7 +26,7 @@ const COLOR_MAP: Record<string, { badge: string; text: string }> = {
   },
 };
 
-function EpisodeList({ items }: { items: ContentGuideItem[] }) {
+function EpisodeList({ items, t }: { items: ContentGuideItem[]; t: ReturnType<typeof useTranslations> }) {
   const [toast, setToast] = useState(false);
 
   const handleClick = useCallback(() => {
@@ -46,19 +47,17 @@ function EpisodeList({ items }: { items: ContentGuideItem[] }) {
 
   return (
     <div className="relative">
-      {/* 준비중 토스트 */}
       {toast && (
         <div className="absolute -top-10 left-1/2 z-10 -translate-x-1/2 rounded-lg bg-gray-800 px-4 py-2 text-sm text-white shadow-lg dark:bg-gray-200 dark:text-gray-900">
-          준비중입니다
+          {t("preparingMsg")}
         </div>
       )}
       <Card className="overflow-hidden border border-gray-300">
-        {/* 데스크톱: 테이블 */}
         <table className="hidden w-full sm:table">
           <thead>
             <tr className="border-b border-gray-200 bg-muted/50 dark:border-gray-700">
-              <th className="px-4 py-2.5 text-left text-sm font-semibold">버전</th>
-              <th className="px-4 py-2.5 text-left text-sm font-semibold">일화</th>
+              <th className="px-4 py-2.5 text-left text-sm font-semibold">{t("version")}</th>
+              <th className="px-4 py-2.5 text-left text-sm font-semibold">{t("episode")}</th>
             </tr>
           </thead>
           <tbody>
@@ -92,7 +91,6 @@ function EpisodeList({ items }: { items: ContentGuideItem[] }) {
           </tbody>
         </table>
 
-        {/* 모바일: 리스트 */}
         <div className="divide-y divide-gray-100 dark:divide-gray-800 sm:hidden">
           {versions.map(([version, versionItems]) => (
             <div key={version}>
@@ -119,6 +117,8 @@ function EpisodeList({ items }: { items: ContentGuideItem[] }) {
 }
 
 export default function ContentGuide() {
+  const t = useTranslations("contentGuide");
+
   const groupedContent = CONTENT_CATEGORIES.map((category) => ({
     ...category,
     items: Object.values(contentGuideData).filter((item) => item.category === category.id),
@@ -127,10 +127,10 @@ export default function ContentGuide() {
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-white p-3 dark:bg-gray-900 dark:text-gray-200 sm:p-4">
       <h1 className="mb-1 mt-6 p-2 text-center text-xl font-bold text-black dark:text-gray-100 sm:mb-2 sm:mt-8 sm:p-3 sm:text-2xl lg:text-3xl">
-        상시 컨텐츠 가이드
+        {t("title")}
       </h1>
       <p className="mb-5 text-center text-sm text-muted-foreground sm:mb-7 sm:text-base">
-        상시로 플레이할 수 있는 컨텐츠 공략 모음
+        {t("subtitle")}
       </p>
 
       <section className="w-full max-w-4xl">
@@ -149,12 +149,12 @@ export default function ContentGuide() {
                 </span>
                 {group.id === "episode" && (
                   <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-500 dark:bg-gray-800 dark:text-gray-400">
-                    준비중
+                    {t("preparing")}
                   </span>
                 )}
               </div>
               {group.id === "episode" ? (
-                <EpisodeList items={group.items} />
+                <EpisodeList items={group.items} t={t} />
               ) : (
                 <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {group.items.map((item, itemIndex) => (
@@ -173,7 +173,7 @@ export default function ContentGuide() {
                             </span>
                             {item.subContent && item.subContent.length > 0 && (
                               <span className="rounded-full bg-muted px-2 py-0.5 text-xs">
-                                확장팩 {item.subContent.length}개
+                                {t("expansion", { count: item.subContent.length })}
                               </span>
                             )}
                           </div>

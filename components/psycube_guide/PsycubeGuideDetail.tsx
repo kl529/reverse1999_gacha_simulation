@@ -8,6 +8,7 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { analytics } from "@/lib/posthog";
+import { useTranslations } from "next-intl";
 
 interface Props {
   item: Psycube;
@@ -31,12 +32,12 @@ function renderDescription(text: string) {
 }
 
 export default function PsycubeGuideSetting({ item }: Props) {
+  const t = useTranslations("psycubeGuide");
+
   useEffect(() => {
-    // 컨텐츠 인기도: 가이드 조회 추적
     analytics.content.guideViewed("사이큐브", item.name);
   }, [item.name]);
 
-  // 해당 의지를 사용하는 캐릭터 찾기
   const usingCharacters = character_setting_data
     .filter((char) => char.psycubes.some((p) => p.psycube_id === item.id))
     .map((char) => {
@@ -46,7 +47,7 @@ export default function PsycubeGuideSetting({ item }: Props) {
         characterInfo,
       };
     })
-    .filter((char) => char.characterInfo); // characterInfo가 있는 경우만 필터링
+    .filter((char) => char.characterInfo);
 
   return (
     <div className="min-h-screen w-full bg-white text-black dark:bg-gray-900 dark:text-white">
@@ -58,18 +59,18 @@ export default function PsycubeGuideSetting({ item }: Props) {
               {item.type}
             </span>
             <span className="rounded-full bg-yellow-100 px-3 py-1 text-sm text-yellow-800 dark:bg-yellow-900 dark:text-yellow-100">
-              {item.rarity}성
+              {t("star", { n: item.rarity })}
             </span>
             <span className="rounded-full bg-purple-100 px-3 py-1 text-sm text-purple-800 dark:bg-purple-900 dark:text-purple-100">
-              v{item.version === "2.75" ? "콜라보" : item.version}
+              v{item.version === "2.75" ? t("collab") : item.version}
             </span>
             {item.priority && (
               <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-800 dark:bg-green-900 dark:text-green-100">
                 {item.priority === 99
-                  ? "데이터 부족"
+                  ? t("dataLack")
                   : item.priority === 6
-                    ? "5성 증폭 추천"
-                    : `${item.priority}순위`}
+                    ? t("star5Recommend")
+                    : t("rank", { n: item.priority })}
               </span>
             )}
           </div>
@@ -91,7 +92,7 @@ export default function PsycubeGuideSetting({ item }: Props) {
             <div className="space-y-4">
               {item.stats && (
                 <div className="space-y-2">
-                  <div className="text-sm font-medium">스탯</div>
+                  <div className="text-sm font-medium">{t("stats")}</div>
                   <div className="grid grid-cols-2 gap-2">
                     {Object.entries(item.stats).map(([key, value]) => (
                       <div key={key} className="rounded bg-gray-100 p-2 text-sm dark:bg-gray-800">
@@ -105,7 +106,7 @@ export default function PsycubeGuideSetting({ item }: Props) {
 
               {item.option && (
                 <div className="space-y-2">
-                  <div className="text-sm font-medium">옵션</div>
+                  <div className="text-sm font-medium">{t("option")}</div>
                   <div className="rounded bg-gray-100 p-3 text-sm leading-relaxed dark:bg-gray-800">
                     {renderDescription(item.option)}
                   </div>
@@ -115,10 +116,9 @@ export default function PsycubeGuideSetting({ item }: Props) {
           </CardContent>
         </Card>
 
-        {/* 사용 캐릭터 목록 */}
         {usingCharacters.length > 0 && (
           <div className="flex flex-col gap-4 rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800">
-            <h3 className="text-lg font-semibold">사용 캐릭터 (바로가기)</h3>
+            <h3 className="text-lg font-semibold">{t("usingCharacters")}</h3>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {usingCharacters.map((char) => (
                 <Link

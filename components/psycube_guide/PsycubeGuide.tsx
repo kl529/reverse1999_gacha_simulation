@@ -5,15 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { version } from "@/data/version";
 import { Separator } from "@/components/ui/separator";
+import { useTranslations } from "next-intl";
 
-const priorityDescriptions: { [key: number]: string } = {
-  1: "메인딜러의 의지이거나, 증폭 효율이 매우 좋음.",
-  2: "범용적으로 사용되거나, 증폭 효율이 나쁘지 않음.",
-  3: "특정 캐릭터만 사용하거나, 증폭효율이 애매함.",
-  4: "대부분 상황에서 안하는 것을 추천",
-  5: "증폭 비추천",
-  6: "5성 증폭 추천",
-  99: "데이터가 부족하고, 평가가 적음.",
+const PRIORITY_KEYS: { [key: number]: string } = {
+  1: "priority1",
+  2: "priority2",
+  3: "priority3",
+  4: "priority4",
+  5: "priority5",
+  6: "priority6",
+  99: "priority99",
 };
 
 const groupedByPriority = psycube_list
@@ -27,24 +28,24 @@ const groupedByPriority = psycube_list
     return acc;
   }, {});
 
-// priority가 없는 데이터만 따로 추출
 const noPriorityList = psycube_list.filter((item) => !item.priority);
 
 export default function PsycubeGuide() {
+  const t = useTranslations("psycubeGuide");
+
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-white p-4 dark:bg-gray-900 dark:text-gray-200">
       <h1 className="mb-4 mt-8 p-3 text-center text-2xl font-bold text-black dark:text-gray-100 lg:text-3xl">
-        의지 육성 가이드
+        {t("title")}
       </h1>
       <p className="mb-3 text-center text-sm text-gray-500 dark:text-gray-400">
-        의지 증폭 추천도는 무조건적인 정답이 아니며, 버전에 따라 변동될 수 있습니다. <br />
-        순위내의, 의지 증폭 순서는 추천도 순이 아니라 임의로 지정한 것입니다. 추천도와 전혀 관련
-        없습니다. <br />
-        {version} 이후의 정보는 모두 번역본이며, 오역이 있을 수 있습니다.
+        {t("disclaimer")} <br />
+        {t("orderNote")} <br />
+        {t("translationNote", { version })}
         <br />
         <span className="text-red-500">
-          반송파 여행가방은 &quot;호기심쟁이&quot; or 아무거나 해도 무방합니다. <br />
-          무조건 증폭하는게 아닌, 본인 캐릭터 풀에 맞게 의지를 육성하시는걸 추천합니다.
+          {t("suitcaseNote")} <br />
+          {t("personalNote")}
         </span>
       </p>
 
@@ -53,14 +54,14 @@ export default function PsycubeGuide() {
           <div key={priority} className="space-y-2">
             <h2 className="text-xl font-bold text-yellow-600 dark:text-yellow-400">
               {priority === "99"
-                ? "데이터 부족"
+                ? t("dataLack")
                 : priority === "6"
-                  ? "🐧 5성 증폭 추천"
-                  : `⭐ ${priority}순위`}
+                  ? t("star5Recommend")
+                  : t("rank", { n: priority })}
             </h2>
-            {priorityDescriptions[Number(priority)] && (
+            {PRIORITY_KEYS[Number(priority)] && (
               <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
-                {priorityDescriptions[Number(priority)]}
+                {t(PRIORITY_KEYS[Number(priority)])}
               </p>
             )}
             <Separator className="mb-4" />
@@ -84,7 +85,7 @@ export default function PsycubeGuide() {
                         {item.type}
                       </div>
                       <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
-                        v{item.version === "2.75" ? "콜라보" : item.version}
+                        v{item.version === "2.75" ? t("collab") : item.version}
                       </div>
                     </div>
                     <div className="w-full truncate text-center text-sm font-bold text-black dark:text-gray-100">
@@ -99,7 +100,7 @@ export default function PsycubeGuide() {
         {noPriorityList.length > 0 && (
           <div className="mt-8 space-y-2">
             <h2 className="text-xl font-bold text-gray-600 dark:text-gray-400">
-              5성 의지 목록 (추천 X)
+              {t("noPriorityList")}
             </h2>
             <Separator className="mb-4" />
             <div className="grid grid-cols-[repeat(auto-fit,minmax(92px,1fr))] gap-1">
@@ -122,7 +123,7 @@ export default function PsycubeGuide() {
                         {item.type}
                       </div>
                       <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
-                        v{item.version === "2.75" ? "콜라보" : item.version}
+                        v{item.version === "2.75" ? t("collab") : item.version}
                       </div>
                     </div>
                     <div className="w-full truncate text-center text-sm font-bold text-black dark:text-gray-100">
