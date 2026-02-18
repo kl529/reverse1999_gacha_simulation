@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { GUIDE_CHARACTERS } from "@/data/setting_character";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,17 +9,18 @@ import { Input } from "@/components/ui/input";
 import { euphoriaList } from "@/data/euphoria";
 import { getCharacterUrl } from "@/lib/cdn";
 
-const attrMap = [
-  { label: "전체", value: "all" },
-  { label: "야수", value: "beast" },
-  { label: "천체", value: "star" },
-  { label: "암석", value: "mineral" },
-  { label: "나무", value: "plant" },
-  { label: "영혼", value: "spirit" },
-  { label: "지능", value: "intellect" },
+const attrKeys = [
+  { labelKey: "all", value: "all" },
+  { labelKey: "beast", value: "beast" },
+  { labelKey: "star", value: "star" },
+  { labelKey: "mineral", value: "mineral" },
+  { labelKey: "plant", value: "plant" },
+  { labelKey: "spirit", value: "spirit" },
+  { labelKey: "intellect", value: "intellect" },
 ];
 
 export default function Character() {
+  const t = useTranslations("character");
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
   const [selectedAttr, setSelectedAttr] = useState<string>("all");
@@ -43,13 +45,13 @@ export default function Character() {
     return euphoriaList.some((euphoria) => euphoria.character_id === characterId);
   };
 
-  const renderCharGroup = (rarity: number, label: string, colorClass: string) => {
+  const renderCharGroup = (rarity: number, labelKey: string, colorClass: string) => {
     const group = filteredChars.filter((ch) => ch.rarity === rarity);
     if (group.length === 0) return null;
 
     return (
       <div className="space-y-2">
-        <h2 className={`text-xl font-bold ${colorClass} pb-2`}>{label}</h2>
+        <h2 className={`text-xl font-bold ${colorClass} pb-2`}>{t(labelKey)}</h2>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(92px,1fr))] gap-1">
           {group.map((ch) => (
             <Link key={`${ch.id}-${ch.version}`} href={`/character/${ch.id}`}>
@@ -64,12 +66,12 @@ export default function Character() {
                   />
                   {ch.version && (
                     <div className="absolute bottom-0 right-0 rounded-sm bg-blue-600 px-1 py-[1px] text-[10px] text-white shadow">
-                      {ch.version === "2.75" ? "콜라보" : ch.version}
+                      {ch.version === "2.75" ? t("collab") : ch.version}
                     </div>
                   )}
                   {hasEuphoria(ch.id) && (
                     <div className="absolute bottom-0 left-0 rounded-sm bg-rose-600 px-1 py-[1px] text-[10px] text-white shadow">
-                      광상
+                      {t("euphoria")}
                     </div>
                   )}
                 </div>
@@ -87,33 +89,33 @@ export default function Character() {
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-white p-4 dark:bg-gray-900 dark:text-gray-200">
       <h1 className="sticky top-0 z-20 mb-4 mt-8 p-3 text-center text-2xl font-bold text-black dark:text-gray-100 lg:text-3xl">
-        캐릭터 가이드
+        {t("guide")}
       </h1>
 
       <div className="mb-4 flex w-full max-w-md justify-center">
         <Input
           type="text"
-          placeholder="캐릭터 이름 검색"
+          placeholder={t("searchPlaceholder")}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
 
       <div className="mb-4 flex justify-center gap-2">
-        {attrMap.map((attr) => (
+        {attrKeys.map((attr) => (
           <button
             key={attr.value}
             className={`rounded px-3 py-1 text-black ${selectedAttr === attr.value ? "bg-blue-500 text-white" : "bg-gray-200"}`}
             onClick={() => setSelectedAttr(attr.value)}
           >
-            {attr.label}
+            {t(attr.labelKey)}
           </button>
         ))}
       </div>
 
       <div className="w-full space-y-6 px-4">
-        {renderCharGroup(6, "🌟 6성", "text-purple-600 dark:text-purple-400")}
-        {renderCharGroup(5, "⭐ 5성", "text-yellow-600 dark:text-yellow-300")}
+        {renderCharGroup(6, "rarity6", "text-purple-600 dark:text-purple-400")}
+        {renderCharGroup(5, "rarity5", "text-yellow-600 dark:text-yellow-300")}
       </div>
     </div>
   );

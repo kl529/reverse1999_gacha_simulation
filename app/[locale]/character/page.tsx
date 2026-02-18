@@ -19,7 +19,7 @@ export async function generateMetadata({
 export default function CharacterPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
-      <Suspense fallback={<div>로딩 중...</div>}>
+      <Suspense fallback={<div className="text-center p-8">Loading...</div>}>
         <CharacterList />
       </Suspense>
     </div>

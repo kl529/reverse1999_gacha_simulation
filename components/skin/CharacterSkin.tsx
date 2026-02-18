@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { characterSkin } from "@/data/character_skin";
 import { charactersByRarity } from "@/data/characters";
@@ -20,6 +21,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { getSkinListUrl } from "@/lib/cdn";
 
 export default function SkinGalleryPage() {
+  const t = useTranslations("skin");
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -30,9 +32,9 @@ export default function SkinGalleryPage() {
   const sourceList = Array.from(new Set(characterSkin.map((s) => s.source)));
 
   // URL에서 필터 상태 초기화
-  const [rarityFilter, setRarityFilter] = useState<string>(searchParams.get("rarity") || "전체");
-  const [versionFilter, setVersionFilter] = useState<string>(searchParams.get("version") || "전체");
-  const [sourceFilter, setSourceFilter] = useState<string>(searchParams.get("source") || "전체");
+  const [rarityFilter, setRarityFilter] = useState<string>(searchParams.get("rarity") || "all");
+  const [versionFilter, setVersionFilter] = useState<string>(searchParams.get("version") || "all");
+  const [sourceFilter, setSourceFilter] = useState<string>(searchParams.get("source") || "all");
   const [selectedCharacters, setSelectedCharacters] = useState<string[]>(
     searchParams.get("characters")?.split(",").filter(Boolean) || []
   );
@@ -48,16 +50,16 @@ export default function SkinGalleryPage() {
 
   const skinCountByCharacter: Record<string, number> = {};
   characterSkin.forEach((skin) => {
-    const name = characterNameMap[skin.character_id] || "알 수 없음";
+    const name = characterNameMap[skin.character_id] || t("unknown");
     skinCountByCharacter[name] = (skinCountByCharacter[name] || 0) + 1;
   });
 
   // 필터 변경 시 URL 업데이트
   useEffect(() => {
     const params = new URLSearchParams();
-    if (rarityFilter !== "전체") params.set("rarity", rarityFilter);
-    if (versionFilter !== "전체") params.set("version", versionFilter);
-    if (sourceFilter !== "전체") params.set("source", sourceFilter);
+    if (rarityFilter !== "all") params.set("rarity", rarityFilter);
+    if (versionFilter !== "all") params.set("version", versionFilter);
+    if (sourceFilter !== "all") params.set("source", sourceFilter);
     if (selectedCharacters.length > 0) params.set("characters", selectedCharacters.join(","));
 
     const queryString = params.toString();
@@ -71,9 +73,9 @@ export default function SkinGalleryPage() {
   };
 
   const resetFilters = () => {
-    setRarityFilter("전체");
-    setVersionFilter("전체");
-    setSourceFilter("전체");
+    setRarityFilter("all");
+    setVersionFilter("all");
+    setSourceFilter("all");
     setSelectedCharacters([]);
     setSearchTerm("");
   };
@@ -89,9 +91,9 @@ export default function SkinGalleryPage() {
   }, []);
 
   const filteredSkins = characterSkin.filter((skin) => {
-    const matchRarity = rarityFilter === "전체" || skin.rarity === rarityFilter;
-    const matchVersion = versionFilter === "전체" || skin.version === versionFilter;
-    const matchSource = sourceFilter === "전체" || skin.source === sourceFilter;
+    const matchRarity = rarityFilter === "all" || skin.rarity === rarityFilter;
+    const matchVersion = versionFilter === "all" || skin.version === versionFilter;
+    const matchSource = sourceFilter === "all" || skin.source === sourceFilter;
     const matchCharacter =
       selectedCharacters.length === 0 ||
       selectedCharacters.includes(characterNameMap[skin.character_id]);
@@ -102,16 +104,16 @@ export default function SkinGalleryPage() {
     <div className="flex h-full w-full flex-col overflow-hidden p-4">
       <div className="flex-none">
         <h1 className="mb-6 mt-8 text-center text-2xl font-bold text-black dark:text-white lg:text-3xl">
-          스킨 갤러리
+          {t("gallery")}
         </h1>
 
         <div className="mb-6 flex flex-wrap justify-center gap-4">
           <Select value={rarityFilter} onValueChange={setRarityFilter}>
             <SelectTrigger className="w-24">
-              <SelectValue placeholder="희귀도" />
+              <SelectValue placeholder={t("rarity")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="전체">전체</SelectItem>
+              <SelectItem value="all">{t("all")}</SelectItem>
               {rarityList.map((r) => (
                 <SelectItem key={r} value={r}>
                   {r}
@@ -122,13 +124,13 @@ export default function SkinGalleryPage() {
 
           <Select value={versionFilter} onValueChange={setVersionFilter}>
             <SelectTrigger className="w-24">
-              <SelectValue placeholder="버전" />
+              <SelectValue placeholder={t("version")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="전체">전체</SelectItem>
+              <SelectItem value="all">{t("all")}</SelectItem>
               {versionList.map((v) => (
                 <SelectItem key={v} value={v}>
-                  {v === "2.75" ? "콜라보" : v}
+                  {v === "2.75" ? t("collab") : v}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -136,10 +138,10 @@ export default function SkinGalleryPage() {
 
           <Select value={sourceFilter} onValueChange={setSourceFilter}>
             <SelectTrigger className="w-24">
-              <SelectValue placeholder="획득처" />
+              <SelectValue placeholder={t("source")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="전체">전체</SelectItem>
+              <SelectItem value="all">{t("all")}</SelectItem>
               {sourceList.map((s) => (
                 <SelectItem key={s} value={s}>
                   {s}
@@ -150,13 +152,13 @@ export default function SkinGalleryPage() {
           <Popover open={dropdownOpen} onOpenChange={setDropdownOpen}>
             <PopoverTrigger asChild>
               <button className="h-9 w-40 rounded border border-black px-3 py-2 text-left text-sm text-black dark:border-gray-700 dark:bg-gray-800 dark:text-white">
-                {selectedCharacters.length > 0 ? selectedCharacters.join(", ") : "캐릭터 필터"}
+                {selectedCharacters.length > 0 ? selectedCharacters.join(", ") : t("characterFilter")}
               </button>
             </PopoverTrigger>
             <PopoverContent className="w-46 p-0" ref={dropdownRef}>
               <Command>
                 <CommandInput
-                  placeholder="캐릭터 검색..."
+                  placeholder={t("characterSearch")}
                   value={searchTerm}
                   onValueChange={setSearchTerm}
                 />
@@ -174,7 +176,7 @@ export default function SkinGalleryPage() {
                           <span>{name}</span>
                         </div>
                         <span className="text-xs text-gray-500">
-                          {skinCountByCharacter[name] || 0}개
+                          {t("skinCount", { count: skinCountByCharacter[name] || 0 })}
                         </span>
                       </CommandItem>
                     ))}
@@ -183,7 +185,7 @@ export default function SkinGalleryPage() {
             </PopoverContent>
           </Popover>
           <Button variant="destructive" onClick={resetFilters}>
-            초기화
+            {t("resetFilter")}
           </Button>
         </div>
       </div>
@@ -191,26 +193,24 @@ export default function SkinGalleryPage() {
       <div className="flex-1 overflow-y-auto">
         {filteredSkins.length === 0 ? (
           <div className="py-10 text-center text-sm text-gray-500 dark:text-gray-400">
-            해당 조건에 맞는 스킨이 없습니다.
+            {t("noResults")}
           </div>
         ) : (
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 sm:gap-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 2xl:grid-cols-12">
             {filteredSkins
               .sort((a, b) => {
-                // 버전을 숫자로 변환하여 비교 (높은 버전이 먼저)
                 const versionA = parseFloat(a.version);
                 const versionB = parseFloat(b.version);
                 if (versionA !== versionB) {
                   return versionB - versionA;
                 }
-                // 같은 버전이면 id 역순
                 return b.id - a.id;
               })
               .map((skin) => {
                 const params = new URLSearchParams();
-                if (rarityFilter !== "전체") params.set("rarity", rarityFilter);
-                if (versionFilter !== "전체") params.set("version", versionFilter);
-                if (sourceFilter !== "전체") params.set("source", sourceFilter);
+                if (rarityFilter !== "all") params.set("rarity", rarityFilter);
+                if (versionFilter !== "all") params.set("version", versionFilter);
+                if (sourceFilter !== "all") params.set("source", sourceFilter);
                 if (selectedCharacters.length > 0)
                   params.set("characters", selectedCharacters.join(","));
                 const queryString = params.toString();
@@ -228,11 +228,11 @@ export default function SkinGalleryPage() {
                           className="h-auto w-full object-cover"
                         />
                         <span className="absolute bottom-2 right-2 rounded bg-orange-300 px-2 py-0.5 text-xs text-white dark:bg-orange-700">
-                          {skin.version === "2.75" ? "콜라보" : skin.version}
+                          {skin.version === "2.75" ? t("collab") : skin.version}
                         </span>
                         {skin.tarot_number && (
                           <span className="absolute bottom-2 left-2 rounded bg-purple-500 px-2 py-0.5 text-xs text-white">
-                            타로 {skin.tarot_number}번
+                            {t("tarot", { number: skin.tarot_number })}
                           </span>
                         )}
                       </div>
