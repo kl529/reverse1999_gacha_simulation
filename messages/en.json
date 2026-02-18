@@ -1,0 +1,18 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "reset": "Reset",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "close": "Close",
+    "back": "Back",
+    "search": "Search",
+    "noResults": "No results"
+  },
+  "metadata": {
+    "home": {
+      "title": "Vertin's Suitcase",
+      "description": "Find all information about Reverse 1999 at a glance."
+    }
+  }
+}
