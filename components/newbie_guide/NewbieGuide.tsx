@@ -3,12 +3,15 @@
 import { useState, useEffect } from "react";
 import { Check } from "lucide-react";
 import Link from "next/link";
-import { newbieGuideSteps } from "@/data/newbie_guide";
+import Image from "next/image";
+import { newbieGuideSteps, newbieFAQ } from "@/data/newbie_guide";
 import { storage, STORAGE_KEYS } from "@/lib/storage";
 
 export default function NewbieGuide() {
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [collapsedSteps, setCollapsedSteps] = useState<number[]>([]);
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const [faqCollapsed, setFaqCollapsed] = useState(false);
 
   // localStorage에서 완료된 단계 불러오기
   useEffect(() => {
@@ -65,8 +68,110 @@ export default function NewbieGuide() {
         <div className="mb-6 rounded-lg border-l-4 border-blue-500 bg-blue-50 p-4 dark:bg-blue-900/20">
           <p className="text-sm text-gray-700 dark:text-gray-300">
             💡 아래 가이드는 추천 순서일뿐 정답이 아닙니다. 본인만의 게임을 하며 즐기면서 게임을
-            하시길 바랍니다. (2.8v 기준으로 작성되었으며, 내용이 바뀔 수도 있습니다.)
+            하시길 바랍니다. (3.2v 기준으로 작성되었으며, 내용이 바뀔 수도 있습니다.)
           </p>
+        </div>
+
+        {/* 자주 묻는 질문 */}
+        <div className="mb-8 rounded-lg bg-white shadow-md dark:bg-gray-800">
+          <button
+            onClick={() => setFaqCollapsed(!faqCollapsed)}
+            className="flex w-full items-center justify-between p-6 text-left"
+          >
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              ❓ 자주 묻는 질문
+            </h3>
+            <svg
+              className={`h-5 w-5 flex-shrink-0 text-gray-400 transition-transform ${
+                faqCollapsed ? "" : "rotate-180"
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+          {!faqCollapsed && <div className="space-y-2 px-6 pb-6">
+            {(() => {
+              const categories = [...new Set(newbieFAQ.map((faq) => faq.category))];
+              return categories.map((category) => (
+                <div key={category}>
+                  <h4 className="mb-2 mt-4 text-sm font-semibold text-blue-600 dark:text-blue-400">
+                    {category}
+                  </h4>
+                  {newbieFAQ
+                    .filter((faq) => faq.category === category)
+                    .map((faq) => (
+                      <div
+                        key={faq.id}
+                        className="mb-1 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700"
+                      >
+                        <button
+                          onClick={() => setOpenFAQ(openFAQ === faq.id ? null : faq.id)}
+                          className="flex w-full items-center justify-between p-3 text-left transition-colors hover:bg-gray-50 dark:hover:bg-gray-700"
+                        >
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">
+                            Q. {faq.question}
+                          </span>
+                          <svg
+                            className={`h-4 w-4 flex-shrink-0 text-gray-400 transition-transform ${
+                              openFAQ === faq.id ? "rotate-180" : ""
+                            }`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+                        {openFAQ === faq.id && (
+                          <div className="border-t border-gray-200 bg-gray-50 px-3 py-3 dark:border-gray-700 dark:bg-gray-900/50">
+                            <p className="text-sm text-gray-700 dark:text-gray-300">
+                              {faq.answer}
+                            </p>
+                            {faq.links && faq.links.length > 0 && (
+                              <div className="mt-2 flex flex-wrap gap-2">
+                                {faq.links.map((link, idx) => (
+                                  <Link
+                                    key={idx}
+                                    href={link.href}
+                                    className="inline-block rounded-md bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700 transition-colors hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:hover:bg-blue-900/50"
+                                  >
+                                    {link.text}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                            {faq.image && (
+                              <div className="mt-3">
+                                <Image
+                                  src={faq.image}
+                                  alt="참고 이미지"
+                                  width={400}
+                                  height={300}
+                                  className="rounded-md"
+                                />
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                </div>
+              ));
+            })()}
+          </div>}
         </div>
 
         {/* 로드맵 */}
