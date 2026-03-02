@@ -27,6 +27,7 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (
       typeof window !== 'undefined' &&
+      process.env.NODE_ENV !== 'development' &&
       process.env.NEXT_PUBLIC_POSTHOG_KEY &&
       process.env.NEXT_PUBLIC_POSTHOG_HOST
     ) {
@@ -34,11 +35,6 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
         api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
         capture_pageview: false, // 수동으로 pageview를 추적
         capture_pageleave: true,
-        loaded: (posthog) => {
-          if (process.env.NODE_ENV === 'development') {
-            posthog.debug(); // 개발 환경에서 디버그 모드 활성화
-          }
-        },
       });
     }
   }, []);

@@ -1256,7 +1256,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 109,
     character_id: 52, // 센티널
-    name: "거울 전당 선언 (미래시)",
+    name: "거울회랑의 선언 (미래시)",
     engName: "by_reflections_witnessed",
     rarity: "Advanced",
     source: "판매",
@@ -1267,7 +1267,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 110,
     character_id: 51, // 몰디르
-    name: "뤼브롱의 만가 (미래시)",
+    name: "석조성의 만가 (미래시)",
     engName: "idyll_of_the_luberon",
     rarity: "Advanced",
     source: "판매",
@@ -1289,7 +1289,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 112,
     character_id: 8, // 메디슨 포켓
-    name: "영생은 아주 짧은 것 (미래시)",
+    name: "영생은 덧없다 (미래시)",
     engName: "forever_is_too_short",
     rarity: "Garment",
     source: "주크박스",
@@ -1300,7 +1300,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 113,
     character_id: 204, // 바니바니
-    name: "웨이트리스의 하루 (미래시)",
+    name: "시종의 하루 (미래시)",
     engName: "service_fit_for_royalty",
     rarity: "Garment",
     source: "컨텐츠",

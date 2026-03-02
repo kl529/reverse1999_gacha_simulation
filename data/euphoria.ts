@@ -645,7 +645,7 @@ export const euphoriaList: Euphoria[] = [
     id: 35,
     character_id: 7, // 안안리
     priority: 2,
-    name: "3천 볼트 긴급 호출",
+    name: "3000볼트 초고속 소환",
     note: "계시 서폿",
     number: 2,
     version: "3.3",
@@ -662,7 +662,7 @@ export const euphoriaList: Euphoria[] = [
     id: 36,
     character_id: 31, // 머큐리아
     priority: 3,
-    name: "우주의 황홀한 기색",
+    name: "우주의 황홀한 빛",
     note: "범용 서폿 / 서브딜러",
     number: 1,
     version: "3.3",

@@ -888,4 +888,11 @@ export const materialList: Material[] = [
     engName: "fleeting_memory",
     rarity: 2,
   },
+  {
+    id: 5001,
+    name: "대용량 방황의 소리",
+    category: "album_material",
+    engName: "album_of_the_lost",
+    rarity: 6,
+  },
 ];

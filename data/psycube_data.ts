@@ -1562,7 +1562,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 89,
-    name: "불꽃과 같은 마음",
+    name: "화염 같은 내 심장이여",
     engName: "singleness_of_heart",
     priority: 99,
     rarity: 6,
