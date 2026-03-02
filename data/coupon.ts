@@ -138,6 +138,27 @@ export const coupons: Coupon[] = [
     expiresAt: "2026-03-05",
     pushSent: true,
   },
+  {
+    id: "21",
+    code: "보석사냥꾼",
+    description: "3.2 쿠폰",
+    expiresAt: "2026-03-05",
+    pushSent: true,
+  },
+  {
+    id: "22",
+    code: "핏빛색전투의노래",
+    description: "3.2 쿠폰",
+    expiresAt: "2026-04-16",
+    pushSent: true,
+  },
+  {
+    id: "23",
+    code: "백의의기사",
+    description: "3.2 쿠폰",
+    expiresAt: "2026-04-16",
+    pushSent: true,
+  },
   // 무제한 쿠폰 (영구 사용 가능)
   {
     id: "1",
