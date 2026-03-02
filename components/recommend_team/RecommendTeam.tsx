@@ -362,7 +362,6 @@ export default function RecommendTeamPage() {
                               {role}
                             </div>
                           )}
-                          {/* TODO: 의지 UI 임시 숨김 - 추후 복원 예정
                           {psycube && (
                             <div
                               title={psycube.name}
@@ -382,7 +381,6 @@ export default function RecommendTeamPage() {
                               />
                             </div>
                           )}
-                          */}
                         </div>
                       </Link>
                       <span className="mt-1 w-full truncate text-center text-xs">
