@@ -310,7 +310,7 @@ export default function RecommendTeamPage() {
                     selectedId === ch.id ? null : ch.alternatives?.find((a) => a.id === selectedId);
                   const isEuphoria = selectedAlt ? selectedAlt.euphoria : ch.euphoria;
                   const role = selectedAlt?.role || ch.role;
-                  const psycubeId = selectedAlt?.psycubeId ?? ch.psycubeId;
+                  const psycubeId = selectedAlt ? selectedAlt.psycubeId : ch.psycubeId;
                   const psycube = psycubeId
                     ? psycube_list.find((p) => p.id === psycubeId)
                     : undefined;
