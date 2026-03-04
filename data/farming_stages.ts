@@ -602,6 +602,29 @@ export const farmingStages: StageData[] = [
     ],
   },
 
+  // ===== Chapter 12 Hard =====
+  {
+    id: 9085,
+    name: "12-3H",
+    category: "Hard",
+    cost: 25,
+    totalAttempts: 31366,
+    drops: [
+      { materialId: 212, count: 14521 }, // Heartfelt Easter Egg
+      { materialId: 311, count: 12968 }, // Sharp Needle
+      { materialId: 402, count: 39768 }, // Silver Ore
+      { materialId: 307, count: 732 }, // Luminite Ore
+      { materialId: 308, count: 1077 }, // Fox Tail
+      { materialId: 309, count: 745 }, // Perpetual Cog
+      { materialId: 310, count: 966 }, // Cicada Wings
+      { materialId: 306, count: 769 }, // Spell of Fortune
+      { materialId: 305, count: 6782 }, // Rough Silver Ingot
+      { materialId: 304, count: 731 }, // Esoteric Bones
+      { materialId: 302, count: 739 }, // Milled Magnesia
+      { materialId: 303, count: 700 }, // Liquefied Terror
+    ],
+  },
+
   // ===== 먼지/동전 Resource 스테이지 =====
   {
     id: 115,

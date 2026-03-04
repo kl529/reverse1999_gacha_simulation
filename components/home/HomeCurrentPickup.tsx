@@ -11,18 +11,21 @@ import { getBannerUrl } from "@/lib/cdn";
 
 // 오늘 이후이면서 종료일이 가장 가까운 배너들만 가져오기 (같은 종료일이면 모두 포함)
 function getActivePickupBanners(): Banner[] {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  const kstToday = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Seoul" }));
+  kstToday.setHours(0, 0, 0, 0);
 
   const activeBanners = banners
     .filter((banner) => {
       if (!banner.endDate) return false;
-      const endDate = new Date(banner.endDate);
-      return endDate >= today;
+      const [y, m, d] = banner.endDate.split("-").map(Number);
+      const endDate = new Date(y, m - 1, d);
+      return endDate > kstToday;
     })
     .sort((a, b) => {
-      const dateA = new Date(a.endDate!);
-      const dateB = new Date(b.endDate!);
+      const [ay, am, ad] = a.endDate!.split("-").map(Number);
+      const [by, bm, bd] = b.endDate!.split("-").map(Number);
+      const dateA = new Date(ay, am - 1, ad);
+      const dateB = new Date(by, bm - 1, bd);
       return dateA.getTime() - dateB.getTime();
     });
 
@@ -37,10 +40,11 @@ function getActivePickupBanners(): Banner[] {
 
 // 남은 일수 계산
 function getDaysRemaining(endDate: string): number {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const end = new Date(endDate);
-  const diffTime = end.getTime() - today.getTime();
+  const kstNow = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Seoul" }));
+  kstNow.setHours(0, 0, 0, 0);
+  const [year, month, day] = endDate.split("-").map(Number);
+  const end = new Date(year, month - 1, day);
+  const diffTime = end.getTime() - kstNow.getTime();
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 }
 

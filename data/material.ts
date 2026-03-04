@@ -293,6 +293,7 @@ export const materialList: Material[] = [
     rarity: 4,
     showInInput: true,
     sortOrder: 12,
+    farmingStage: "12-3 하드",
   },
   // 3성 재료
   {
@@ -403,6 +404,7 @@ export const materialList: Material[] = [
     rarity: 3,
     showInInput: true,
     sortOrder: 11,
+    farmingStage: "12-3 하드",
   },
   // 2성 재료
   {

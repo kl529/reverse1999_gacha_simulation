@@ -98,7 +98,7 @@ export const recommendTeams: RecommendTeam[] = [
       { id: 31, isMain: true, euphoria: true, role: "딜러", psycubeId: 41 },
       { id: 1, euphoria: true, role: "서폿", psycubeId: 70 },
       { id: 26, euphoria: true, isMain: true, role: "힐러", psycubeId: 15 },
-      { id: 34, isMain: true, euphoria: true, role: "서폿", psycubeId: 52 },
+      { id: 34, isMain: true, euphoria: true, role: "서폿", psycubeId: 90 },
     ],
   },
   {
@@ -584,7 +584,7 @@ export const recommendTeams: RecommendTeam[] = [
       { id: 25, isMain: true, euphoria: true, role: "딜러", psycubeId: 7 },
       {
         id: 1,
-        psycubeId: 27,
+        psycubeId: 70,
         role: "서폿",
         euphoria: true,
         alternatives: [
@@ -603,7 +603,7 @@ export const recommendTeams: RecommendTeam[] = [
       },
       {
         id: 34,
-        psycubeId: 70,
+        psycubeId: 90,
         role: "서폿",
         euphoria: true,
         alternatives: [{ id: 36, role: "서폿" }],

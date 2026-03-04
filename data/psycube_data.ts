@@ -1104,7 +1104,7 @@ export const psycube_list: Psycube[] = [
   {
     id: 63,
     name: "무관심",
-    engName: "the_loner",
+    engName: "the_unknown_artist",
     rarity: 5,
     version: "2.1",
     type: "일화",
@@ -1580,11 +1580,11 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 90,
-    name: "이별로 가득한 세상",
+    name: "수많은 이별",
     engName: "parting's_quiet_lament",
     priority: 99,
     rarity: 5,
-    version: "3.2",
+    version: "3.3",
     type: "일화",
     stats: {
       공격: "340",
@@ -1598,7 +1598,7 @@ export const psycube_list: Psycube[] = [
   },
   {
     id: 91,
-    name: "아케론에 닿으며",
+    name: "아케론을 건너",
     engName: "across_the_acheron",
     priority: 99,
     rarity: 6,
