@@ -70,11 +70,11 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     unlockCondition: "메인 스토리 5장 3화 클리어",
     description: "세 번째 문의 첫 번째 퍼즐. 초기화 가능",
     contentType: "퍼즐",
-    // youtubeVideos: [
-    //   { id: "LXPK8HgkS7w", title: "알레프켐의 유언 1스테이지 공략" },
-    //   { id: "CxwyhIcq6OI", title: "알레프켐의 유언 2스테이지 공략" },
-    //   { id: "nWK8zXglCMk", title: "알레프켐의 유언 3스테이지 공략" },
-    // ],
+    youtubeVideos: [
+      { id: "LXPK8HgkS7w", title: "알레프켐의 유언 1스테이지 공략" },
+      { id: "CxwyhIcq6OI", title: "알레프켐의 유언 2스테이지 공략" },
+      { id: "nWK8zXglCMk", title: "알레프켐의 유언 3스테이지 공략" },
+    ],
   },
   cogwheel_history: {
     id: "cogwheel_history",
@@ -84,11 +84,11 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     unlockCondition: "메인 스토리 5장 3화 클리어 + 알레프켐의 유언 클리어",
     description: "세 번째 문의 두 번째 퍼즐. 초기화 가능",
     contentType: "퍼즐",
-    // youtubeVideos: [
-    //   { id: "yttcMhkm1uU", title: "톱니바퀴 역사 1스테이지 공략" },
-    //   { id: "T97Y__KnhPQ", title: "톱니바퀴 역사 2스테이지 공략" },
-    //   { id: "73dSNbRXJAs", title: "톱니바퀴 역사 3스테이지 공략" },
-    // ],
+    youtubeVideos: [
+      { id: "yttcMhkm1uU", title: "톱니바퀴 역사 1스테이지 공략" },
+      { id: "T97Y__KnhPQ", title: "톱니바퀴 역사 2스테이지 공략" },
+      { id: "73dSNbRXJAs", title: "톱니바퀴 역사 3스테이지 공략" },
+    ],
   },
   beneath_the_dust: {
     id: "beneath_the_dust",
@@ -98,11 +98,11 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     unlockCondition: "메인 스토리 5장 3화 클리어 + 톱니바퀴 역사 클리어",
     description: "세 번째 문의 세 번째 퍼즐. 초기화 가능",
     contentType: "퍼즐",
-    // youtubeVideos: [
-    //   { id: "2K9oNQ6adKM", title: "먼지 아래 1스테이지 공략" },
-    //   { id: "ZzQ6nwVaiuw", title: "먼지 아래 2스테이지 공략" },
-    //   { id: "hJiwNcQELNY", title: "먼지 아래 3스테이지 공략" },
-    // ],
+    youtubeVideos: [
+      { id: "2K9oNQ6adKM", title: "먼지 아래 1스테이지 공략" },
+      { id: "ZzQ6nwVaiuw", title: "먼지 아래 2스테이지 공략" },
+      { id: "hJiwNcQELNY", title: "먼지 아래 3스테이지 공략" },
+    ],
   },
 
   // ===== 외부 연기 =====
@@ -117,8 +117,8 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     contentType: "외부연기",
     youtubeVideos: [
       { id: "T1VvAPmzwv8", title: "황혼의 소리 모든 것 총정리 (월상의 시 확장팩 기준, 참고용)" },
-      // { id: "H2IU4HjcROI", title: "황혼의 소리 초고속 파밍 방법" },
-      // { id: "REi7VLTIoOM", title: "황혼의 소리 촉매별 20단계 총정리" },
+      { id: "H2IU4HjcROI", title: "황혼의 소리 초고속 파밍 방법" },
+      { id: "REi7VLTIoOM", title: "황혼의 소리 촉매별 20단계 총정리" },
     ],
     hiddenEndings: [
       {
@@ -151,23 +151,23 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
         versionAdded: "2.1",
         description: "첫 번째 확장팩. 스트레스 기믹이 추가되어 난이도가 상승합니다.",
         mechanic: "스트레스 시스템",
-        // youtubeVideos: [
-        //   { id: "clrk2h7UleU", title: "확장팩 기본 가이드" },
-        //   { id: "D0VKKHYqNrg", title: "허상 포옹하기 보스 공략" },
-        // ],
+        youtubeVideos: [
+          { id: "clrk2h7UleU", title: "확장팩 기본 가이드" },
+          { id: "D0VKKHYqNrg", title: "허상 포옹하기 보스 공략" },
+        ],
       },
       {
         name: "거울 푸가",
         versionAdded: "2.4",
         description: "두 번째 확장팩. 캐릭터 전용 아이템인 '음상 피조물'이 추가됩니다.",
         mechanic: "음상 피조물 (캐릭터 전용 아이템)",
-        // youtubeVideos: [{ id: "JPwqNdcNqE8", title: "확장팩 공략 / 음상피조물 리뷰" }],
+        youtubeVideos: [{ id: "JPwqNdcNqE8", title: "확장팩 공략 / 음상피조물 리뷰" }],
       },
       {
         name: "물거품 쉼표",
         versionAdded: "2.6",
         description: "세 번째 확장팩. 새로운 엔딩 '환희의 공간'이 추가됩니다.",
-        // youtubeVideos: [{ id: "j9j85490_00", title: "물거품쉼표 확장팩 공략" }],
+        youtubeVideos: [{ id: "j9j85490_00", title: "물거품쉼표 확장팩 공략" }],
       },
     ],
   },
@@ -180,7 +180,7 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     unlockCondition: "메인 스토리 3장 16화 클리어",
     description: "두 번째 상시 로그라이크 컨텐츠. 황혼의 소리와는 별개의 독립된 로그라이크입니다.",
     contentType: "2차 로그라이크",
-    // youtubeVideos: [{ id: "WrRL58_cjyY", title: "침묵 증후군(3.2 로그라이크) 가이드" }],
+    youtubeVideos: [{ id: "WrRL58_cjyY", title: "침묵 증후군(3.2 로그라이크) 가이드" }],
   },
 
   // ===== 영상 (버전별 미니게임) =====
@@ -335,7 +335,7 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     unlockCondition: "1.6 이벤트",
     description: "갈천 캐릭터 스토리.",
     contentType: "캐릭터 스토리",
-    // youtubeVideos: [{ id: "4YO7ilLCeTY", title: "바람을 타고 스토리 모음" }],
+    youtubeVideos: [{ id: "4YO7ilLCeTY", title: "바람을 타고 스토리 모음" }],
   },
 
   // v1.7
@@ -347,7 +347,7 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     unlockCondition: "1.7 이벤트",
     description: "이졸데 캐릭터 스토리.",
     contentType: "캐릭터 스토리",
-    // youtubeVideos: [{ id: "GDoYtGW0dss", title: "이졸데 개인 스토리 '작은 방' 해설" }],
+    youtubeVideos: [{ id: "GDoYtGW0dss", title: "이졸데 개인 스토리 '작은 방' 해설" }],
   },
   lighthouse_story: {
     id: "lighthouse_story",
@@ -379,7 +379,7 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     unlockCondition: "1.8 이벤트",
     description: "윈드송 캐릭터 스토리.",
     contentType: "캐릭터 스토리",
-    // youtubeVideos: [{ id: "6zpAehNXgmA", title: "은색 매듭 IV 공략" }],
+    youtubeVideos: [{ id: "6zpAehNXgmA", title: "은색 매듭 IV 공략" }],
   },
 
   // v1.9
@@ -451,11 +451,9 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     unlockCondition: "2.1 이벤트",
     description: "아르고스 캐릭터 스토리. 추리/단서 퍼즐 미니게임.",
     contentType: "캐릭터 스토리",
-    // youtubeVideos: [
-    //   { id: "u52Rbd0Skok", title: "붉은 벽 공략" },
-    //   { id: "TgHKkRPRVss", title: "붉은 벽 퍼즐 정답" },
-    //   { id: "mgdW0AM5F4A", title: "제시카도 가능한 붉은 벽 이벤트 공략" },
-    // ],
+    youtubeVideos: [
+      { id: "TgHKkRPRVss", title: "붉은 벽 퍼즐 정답" },
+    ],
   },
 
   // v2.4
@@ -467,10 +465,9 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     unlockCondition: "2.4 이벤트",
     description: "울리히 캐릭터 스토리. 퀴즈/퍼즐 미니게임.",
     contentType: "캐릭터 스토리",
-    // youtubeVideos: [
-    //   { id: "xYfIN3Ck5Dc", title: "심우주파 공략" },
-    //   { id: "-jxrm-6m5pw", title: "울리히 심우주파 퀴즈 정답" },
-    // ],
+    youtubeVideos: [
+      { id: "-jxrm-6m5pw", title: "울리히 심우주파 퀴즈 정답" },
+    ],
   },
   between_river_sea: {
     id: "between_river_sea",
@@ -490,6 +487,6 @@ export const contentGuideData: { [key: string]: ContentGuideItem } = {
     unlockCondition: "2.4 이벤트",
     description: "파투투 캐릭터 스토리. 낙원 건설 미니게임.",
     contentType: "캐릭터 스토리",
-    // youtubeVideos: [{ id: "Xi9b9t_871U", title: "누쿠타이오의 낙원짓기 공략" }],
+    youtubeVideos: [{ id: "Xi9b9t_871U", title: "누쿠타이오의 낙원짓기 공략" }],
   },
 };
