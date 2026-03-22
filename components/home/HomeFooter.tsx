@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { useTheme } from "next-themes";
 
 export interface HomeFooterProps {
   onPolicyClick: () => void;
@@ -17,7 +15,6 @@ export default function HomeFooter({
   onContributorsClick,
   onUpdateClick,
 }: HomeFooterProps) {
-  const { theme } = useTheme();
 
   return (
     <footer className="mt-5 flex flex-col items-center gap-2 bg-black/30 p-0 text-sm">
@@ -45,24 +42,6 @@ export default function HomeFooter({
         <button onClick={onUpdateClick} className="hover:text-blue-400 hover:underline">
           업데이트
         </button>
-        <Link
-          href="https://github.com/kl529/reverse1999_gacha_simulation"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            src={
-              theme === "dark"
-                ? "/infos/button/github_light.webp"
-                : "/infos/button/github_dark.webp"
-            }
-            alt="GitHub"
-            width={20}
-            height={20}
-            loading="lazy"
-            className="rounded-full"
-          />
-        </Link>
       </div>
     </footer>
   );

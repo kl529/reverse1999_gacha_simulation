@@ -345,6 +345,18 @@ export default function NewbieGuide() {
             >
               <span className="font-medium text-gray-900 dark:text-white">광상 가이드 →</span>
             </Link>
+            <Link
+              href="/shop_efficiency"
+              className="rounded-lg border border-gray-200 p-3 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-700"
+            >
+              <span className="font-medium text-gray-900 dark:text-white">상점 효율 가이드 →</span>
+            </Link>
+            <Link
+              href="/permanent_content"
+              className="rounded-lg border border-gray-200 p-3 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-700"
+            >
+              <span className="font-medium text-gray-900 dark:text-white">상시 콘텐츠 가이드 →</span>
+            </Link>
           </div>
         </div>
       </div>

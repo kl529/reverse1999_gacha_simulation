@@ -1999,7 +1999,7 @@ export const characterGuideList: CharacterGuide[] = [
       note: "일반적인 효율을 보이며, 서폿으로써는 나쁘지 않은 형상들",
     },
     youtube_links: ["https://www.youtube.com/watch?v=R-Ia4Z_spFI"],
-    keywords: ["쉴더", "여휘", "정신피해", "서폿"],
+    keywords: ["쉴더", "여광", "정신피해", "서폿"],
     guide_images: [],
   },
   {

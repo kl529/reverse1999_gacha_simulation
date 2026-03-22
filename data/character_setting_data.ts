@@ -180,12 +180,12 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S",
       },
       {
-        psycube_id: 13,
-        description: "A+ (상태이상 필요)",
+        psycube_id: 96,
+        description: "S (/w 로렌츠 나비)",
       },
       {
-        psycube_id: 9,
-        description: "A (비상성)",
+        psycube_id: 13,
+        description: "A+ (디버퍼 필요)",
       },
     ],
     resonance: [
@@ -204,16 +204,16 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (나무계시)",
       },
       {
+        psycube_id: 90,
+        description: "S (나무계시)",
+      },
+      {
         psycube_id: 32,
-        description: "S (풀)",
+        description: "S-",
       },
       {
         psycube_id: 70,
         description: "A+ (나무팟)",
-      },
-      {
-        psycube_id: 38,
-        description: "A (딜 보조)",
       },
     ],
     resonance: [
@@ -692,16 +692,16 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S (광상)",
       },
       {
-        psycube_id: 36,
-        description: "S- (광상)",
+        psycube_id: 61,
+        description: "S (술식 보조)",
       },
       {
-        psycube_id: 39,
-        description: "A+ (광상)",
+        psycube_id: 94,
+        description: "S (술식 보조)",
       },
       {
-        psycube_id: 68,
-        description: "A (광상)",
+        psycube_id: 90,
+        description: "S- (술식 보조)",
       },
     ],
     resonance: [
@@ -716,16 +716,16 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 24, // "이졸데"
     psycubes: [
       {
-        psycube_id: 87,
-        description: "S (광상, 여휘)",
+        psycube_id: 95,
+        description: "S (여광)",
       },
       {
-        psycube_id: 15,
-        description: "S (딜증)",
+        psycube_id: 87,
+        description: "S (광상, 여광)",
       },
       {
         psycube_id: 40,
-        description: "A+",
+        description: "S (데미지)",
       },
       {
         psycube_id: 29,
@@ -1025,19 +1025,19 @@ export const character_setting_data: CharacterSettingData[] = [
     psycubes: [
       {
         psycube_id: 52,
-        description: "S (풀)",
+        description: "S",
       },
       {
-        psycube_id: 13,
-        description: "A+ (마커스) (풀)",
+        psycube_id: 90,
+        description: "S (승급 보조)",
+      },
+      {
+        psycube_id: 40,
+        description: "A+",
       },
       {
         psycube_id: 42,
         description: "A+ (장기전) (풀)",
-      },
-      {
-        psycube_id: 33,
-        description: "A (풀)",
       },
     ],
     resonance: [
@@ -1768,13 +1768,14 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 58, // "마샤"
     psycubes: [
       {
-        psycube_id: 89,
-        description: "S (여휘)",
+        psycube_id: 87,
+        description: "S (여광)",
       },
       {
-        psycube_id: 15,
-        description: "S",
+        psycube_id: 89,
+        description: "S (여광)",
       },
+
       {
         psycube_id: 32,
         description: "S",
@@ -1800,16 +1801,85 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "S",
       },
       {
-        psycube_id: 36,
-        description: "S-",
-      },
-      {
         psycube_id: 40,
         description: "S",
       },
       {
+        psycube_id: 36,
+        description: "S-",
+      },
+      {
         psycube_id: 49,
         description: "A-",
+      },
+    ],
+    resonance: [],
+    resonance_patterns: [],
+  },
+  {
+    character_id: 60, // "노사전"
+    psycubes: [
+      {
+        psycube_id: 92,
+        description: "S",
+      },
+      {
+        psycube_id: 32,
+        description: "A+",
+      },
+      {
+        psycube_id: 36,
+        description: "A-",
+      },
+      {
+        psycube_id: 49,
+        description: "B",
+      },
+    ],
+    resonance: [],
+    resonance_patterns: [],
+  },
+  {
+    character_id: 61, // "정화광"
+    psycubes: [
+      {
+        psycube_id: 87,
+        description: "S (/w 마샤)",
+      },
+      {
+        psycube_id: 88,
+        description: "S",
+      },
+      {
+        psycube_id: 15,
+        description: "S",
+      },
+      {
+        psycube_id: 43,
+        description: "A (메인 딜러)",
+      },
+    ],
+    resonance: [],
+    resonance_patterns: [],
+  },
+  {
+    character_id: 62, // "로렌츠 나비"
+    psycubes: [
+      {
+        psycube_id: 95,
+        description: "S (공용)",
+      },
+      {
+        psycube_id: 89,
+        description: "S (여광)",
+      },
+      {
+        psycube_id: 15,
+        description: "A",
+      },
+      {
+        psycube_id: 34,
+        description: "B",
       },
     ],
     resonance: [],
