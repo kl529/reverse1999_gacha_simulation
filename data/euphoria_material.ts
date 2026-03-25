@@ -712,11 +712,6 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
     ],
   },
   {
-    character_id: 14, // "Tooth Fairy",
-    euphoria: [],
-    upgrade: [],
-  },
-  {
     character_id: 15, // "Changeling",
     euphoria: [
       {
@@ -887,14 +882,46 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
     upgrade: [],
   },
   {
-    character_id: 19, // "6",
+    character_id: 20, // "스파토데아" (Spathodea)
     euphoria: [],
-    upgrade: [],
-  },
-  {
-    character_id: 20, // "Spathodea",
-    euphoria: [],
-    upgrade: [],
+    upgrade: [
+      {
+        level: 1,
+        materials: {
+          702: 20,
+          703: 275,
+          1: 1,
+          110: 1,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          702: 30,
+          703: 371,
+          2: 1,
+          109: 2,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          702: 35,
+          703: 470,
+          3: 2,
+          104: 2,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          702: 40,
+          703: 1195,
+          5: 2,
+          105: 2,
+        },
+      },
+    ],
   },
   {
     character_id: 21, // "Ezra Theodore",
@@ -1295,9 +1322,56 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
     upgrade: [],
   },
   {
-    character_id: 33, // "Tuesday",
-    euphoria: [],
-    upgrade: [],
+    character_id: 33, // "튜즈데이" (Tuesday)
+    euphoria: [
+      {
+        level: 1,
+        materials: {
+          701: 12,
+          702: 40,
+          703: 200,
+          1: 3,
+        },
+      },
+    ],
+    upgrade: [
+      {
+        level: 1,
+        materials: {
+          702: 20,
+          703: 275,
+          4: 1,
+          102: 1,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          702: 30,
+          703: 371,
+          6: 1,
+          111: 2,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          702: 35,
+          703: 470,
+          1: 2,
+          110: 2,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          702: 40,
+          703: 1195,
+          2: 2,
+          107: 2,
+        },
+      },
+    ],
   },
   {
     character_id: 34, // "Argus",
@@ -1409,11 +1483,6 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
     upgrade: [],
   },
   {
-    character_id: 37, // "Willow",
-    euphoria: [],
-    upgrade: [],
-  },
-  {
     character_id: 38, // "Flutterpage",
     euphoria: [],
     upgrade: [],
@@ -1425,11 +1494,6 @@ export const euphoriaMaterialList: EuphoriaMaterial[] = [
   },
   {
     character_id: 40, // "Fatutu",
-    euphoria: [],
-    upgrade: [],
-  },
-  {
-    character_id: 41, // "Liang Yue",
     euphoria: [],
     upgrade: [],
   },

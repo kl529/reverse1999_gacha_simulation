@@ -1965,6 +1965,96 @@ export const insightMaterial: InsightMaterial[] = [
     ],
   },
   {
+    character_id: 61, // "정화광" (Cheng Heguang)
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 18000,
+          507: 6,
+          404: 6,
+          307: 5,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 40000,
+          508: 10,
+          303: 5,
+          206: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          1002: 200000,
+          509: 16,
+          112: 6,
+          3: 3,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 62, // "로렌츠나비" (Lorentz Butterfly)
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 18000,
+          510: 3,
+          507: 3,
+          403: 6,
+          311: 5,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 40000,
+          511: 5,
+          508: 5,
+          308: 5,
+          206: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          1002: 200000,
+          512: 8,
+          509: 8,
+          104: 5,
+          3: 3,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 218, // "호수의 여인" (Lady by the Lake)
+    insight: [
+      {
+        level: 1,
+        materials: {
+          1002: 8000,
+          504: 4,
+          404: 3,
+          305: 2,
+        },
+      },
+      {
+        level: 2,
+        materials: {
+          1002: 25000,
+          505: 8,
+          304: 2,
+          203: 2,
+        },
+      },
+    ],
+  },
+  {
     character_id: 217, // "리드" (Reed)
     insight: [
       {

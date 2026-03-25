@@ -6992,6 +6992,318 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
     ],
   },
   {
+    character_id: 61, // "정화광" (Cheng Heguang)
+    resonance: [
+      {
+        level: 2,
+        materials: {
+          601: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          601: 5,
+          405: 4,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          601: 5,
+          403: 4,
+          301: 3,
+        },
+      },
+      {
+        level: 5,
+        materials: {
+          602: 5,
+          311: 3,
+          305: 4,
+        },
+      },
+      {
+        level: 6,
+        materials: {
+          1002: 30000,
+          602: 5,
+          207: 3,
+        },
+      },
+      {
+        level: 7,
+        materials: {
+          602: 6,
+          209: 5,
+        },
+      },
+      {
+        level: 8,
+        materials: {
+          602: 6,
+          210: 4,
+          310: 5,
+        },
+      },
+      {
+        level: 9,
+        materials: {
+          602: 8,
+          206: 6,
+          307: 6,
+        },
+      },
+      {
+        level: 10,
+        materials: {
+          604: 1,
+          603: 5,
+          211: 6,
+          205: 6,
+        },
+      },
+      {
+        level: 11,
+        materials: {
+          604: 1,
+          1002: 120000,
+          603: 5,
+          107: 4,
+        },
+      },
+      {
+        level: 12,
+        materials: {
+          604: 1,
+          603: 6,
+          103: 4,
+          212: 5,
+        },
+      },
+      {
+        level: 13,
+        materials: {
+          604: 1,
+          603: 6,
+          111: 5,
+          208: 6,
+        },
+      },
+      {
+        level: 14,
+        materials: {
+          604: 1,
+          603: 8,
+          6: 2,
+          106: 4,
+        },
+      },
+      {
+        level: 15,
+        materials: {
+          604: 1,
+          603: 8,
+          3: 3,
+          104: 4,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 62, // "로렌츠나비" (Lorentz Butterfly)
+    resonance: [
+      {
+        level: 2,
+        materials: {
+          601: 5,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          601: 5,
+          404: 4,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          601: 5,
+          401: 6,
+          301: 3,
+        },
+      },
+      {
+        level: 5,
+        materials: {
+          602: 5,
+          304: 3,
+          307: 3,
+        },
+      },
+      {
+        level: 6,
+        materials: {
+          1002: 30000,
+          602: 5,
+          207: 3,
+        },
+      },
+      {
+        level: 7,
+        materials: {
+          602: 6,
+          209: 5,
+        },
+      },
+      {
+        level: 8,
+        materials: {
+          602: 6,
+          205: 4,
+          309: 4,
+        },
+      },
+      {
+        level: 9,
+        materials: {
+          602: 8,
+          206: 6,
+          310: 6,
+        },
+      },
+      {
+        level: 10,
+        materials: {
+          605: 1,
+          603: 5,
+          212: 8,
+          201: 8,
+        },
+      },
+      {
+        level: 11,
+        materials: {
+          605: 1,
+          1002: 120000,
+          603: 5,
+          107: 4,
+        },
+      },
+      {
+        level: 12,
+        materials: {
+          605: 1,
+          603: 6,
+          108: 4,
+          211: 5,
+        },
+      },
+      {
+        level: 13,
+        materials: {
+          605: 1,
+          603: 6,
+          106: 5,
+          210: 5,
+        },
+      },
+      {
+        level: 14,
+        materials: {
+          605: 1,
+          603: 8,
+          1: 2,
+          109: 4,
+        },
+      },
+      {
+        level: 15,
+        materials: {
+          605: 1,
+          603: 8,
+          6: 3,
+          104: 4,
+        },
+      },
+    ],
+  },
+  {
+    character_id: 218, // "호수의 여인" (Lady by the Lake)
+    resonance: [
+      {
+        level: 2,
+        materials: {
+          601: 3,
+        },
+      },
+      {
+        level: 3,
+        materials: {
+          601: 3,
+          402: 3,
+        },
+      },
+      {
+        level: 4,
+        materials: {
+          601: 3,
+          401: 3,
+          301: 1,
+        },
+      },
+      {
+        level: 5,
+        materials: {
+          602: 3,
+          304: 1,
+          310: 1,
+        },
+      },
+      {
+        level: 6,
+        materials: {
+          1002: 20000,
+          602: 3,
+          207: 1,
+        },
+      },
+      {
+        level: 7,
+        materials: {
+          602: 4,
+          205: 2,
+        },
+      },
+      {
+        level: 8,
+        materials: {
+          602: 4,
+          202: 2,
+          306: 4,
+        },
+      },
+      {
+        level: 9,
+        materials: {
+          602: 5,
+          210: 3,
+          305: 4,
+        },
+      },
+      {
+        level: 10,
+        materials: {
+          606: 1,
+          603: 3,
+          201: 4,
+          203: 6,
+        },
+      },
+    ],
+  },
+  {
     character_id: 217, // "리드" (Reed)
     resonance: [
       {
