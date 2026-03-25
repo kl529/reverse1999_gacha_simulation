@@ -3835,24 +3835,30 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
     enemies: [
       {
         id: "enemy_410m_1",
-        name: "울지 못하는 새",
-        inspiration: "beast",
+        name: "위험한 절도범",
+        inspiration: "intellect",
         type: "boss",
       },
       {
         id: "enemy_410m_2",
-        name: "오골계 호위병",
-        inspiration: "beast",
+        name: "간수",
+        inspiration: "intellect",
       },
       {
         id: "enemy_410m_3",
-        name: "오골계 호위병",
-        inspiration: "beast",
+        name: "간수",
+        inspiration: "intellect",
       },
     ],
     strategy: {
       overview: "",
-      details: [],
+      details: [
+        "단일 공격으로 HP 10% 이상의 딜을 줄수가 없어서, 타수가 많은 조합이 유리함",
+        "사츠키(보스)는 피격시마다 열정 +2 이고, 열정이 모두 차면 바로 술식을 사용하는데, 술식에 맞으면 기절이 걸린다.",
+        "기절이나 경직을 걸기때문에, 정화 캐릭터가 있으면 매우 유리함.",
+        "사츠키(보스)는 심란, 봉인, 기절, 석화 내성이 없으니까 해당 상태를 걸 수 있는 캐릭터들을 들고가면 매우 쉬움",
+        "콘블룸, TTT, 보이저 등을 활용하고, 보스부터 때려서 잡으면 된다.",
+      ],
     },
     recommendedTeams: [],
   },
@@ -3867,24 +3873,19 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
     enemies: [
       {
         id: "enemy_420m_1",
-        name: "말하지 못하는 흉내꾼",
-        inspiration: "beast",
+        name: "감옥의 시인",
+        inspiration: "star",
         type: "boss",
-      },
-      {
-        id: "enemy_420m_2",
-        name: "오골계 호위병",
-        inspiration: "beast",
-      },
-      {
-        id: "enemy_420m_3",
-        name: "오골계 호위병",
-        inspiration: "beast",
       },
     ],
     strategy: {
       overview: "",
-      details: [],
+      details: [
+        "보스 기믹상 최대한 1단계 주문으로 안때리고, 2~3단계 주문만 사용해야 쉽게 클리어 가능",
+        "1단계 주문을 쓰거나, 보스가 많이 때려서 히스테리 스택이 쌓이면 보스가 1스킬을 추가로 사용함",
+        "1스킬에는 귀찮은 동결 옵션이 달려있으니, 석화나 기절을 활용하는 방법도 있음",
+        "힘들면 최대한 쎈 덱파워로 밀어도 전혀 무관한 스테이지",
+      ],
     },
     recommendedTeams: [],
   },
@@ -4116,9 +4117,7 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
     ],
     strategy: {
       overview: "",
-      details: [
-        "울지 못하는 새가 부여하는 [오염]은 해제 불가",
-      ],
+      details: ["울지 못하는 새가 부여하는 [오염]은 해제 불가"],
     },
     recommendedTeams: [],
   },
@@ -4319,9 +4318,7 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
     ],
     strategy: {
       overview: "",
-      details: [
-        "450m-3 대비 강화된 버전",
-      ],
+      details: ["450m-3 대비 강화된 버전"],
     },
     recommendedTeams: [],
   },
@@ -4353,9 +4350,7 @@ export const reveriesInTheRain: { [key: string]: FloorData } = {
     ],
     strategy: {
       overview: "",
-      details: [
-        "450m-4 대비 강화된 버전",
-      ],
+      details: ["450m-4 대비 강화된 버전"],
     },
     recommendedTeams: [],
   },

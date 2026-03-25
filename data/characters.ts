@@ -570,6 +570,15 @@ export const charactersByRarity: Record<number, Character[]> = {
       version: "3.4",
       resonanceType: "support",
     },
+    {
+      id: 62,
+      name: "로렌츠나비",
+      rarity: 6,
+      inspiration: "intellect",
+      engName: "lorentz-butterfly",
+      version: "3.5",
+      resonanceType: "balance",
+    },
   ],
   5: [
     {
@@ -993,6 +1002,15 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "reed",
       version: "3.4",
       resonanceType: "support",
+    },
+    {
+      id: 218,
+      name: "호수의 여인",
+      rarity: 4,
+      inspiration: "plant",
+      engName: "lady-by-the-lake",
+      version: "3.5",
+      resonanceType: "balance",
     },
   ],
   3: [

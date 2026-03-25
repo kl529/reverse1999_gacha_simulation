@@ -1813,8 +1813,17 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A-",
       },
     ],
-    resonance: [],
-    resonance_patterns: [],
+    resonance: [
+      {
+        code: "APQkOAU4RStENFI0UCgxQAQrAz8CPRBDAEYh",
+        description: "범용",
+      },
+      {
+        code: "ACUALAFAMEIxKlAoUUQzQhJIAzgFOEUrRCUE9CQ",
+        description: "치명타 (플러터 페이지와 함께)",
+      },
+    ],
+    resonance_patterns: ["Elucidation"],
   },
   {
     character_id: 60, // "노사전"
