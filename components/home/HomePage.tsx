@@ -39,7 +39,6 @@ export default function HomePage() {
   const { openModal } = useModal();
   const t = useTranslations("home");
   const tNav = useTranslations("nav");
-  const tItems = useTranslations("nav.items");
 
   const handleItemClick = (item: CardItem) => {
     if (item.modalType) {
