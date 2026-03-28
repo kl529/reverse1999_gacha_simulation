@@ -108,8 +108,8 @@ export default function ReveriesInTheRain() {
             <h3 className="mb-4 text-xl font-semibold">{type}</h3>
             <div className="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-6">
               {floors.map((floor) => {
-                const floorNum = parseInt(floor.id.replace(/[^0-9]/g, ""));
-                const isComingSoon = floorNum > 400;
+                const floorNum = parseInt(floor.id.match(/\d+/)?.[0] || "0");
+                const isComingSoon = floorNum > 500;
 
                 if (isComingSoon) {
                   return (
