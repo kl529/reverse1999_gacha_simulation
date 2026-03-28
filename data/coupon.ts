@@ -156,7 +156,7 @@ export const coupons: Coupon[] = [
     id: "23",
     code: "백의의기사",
     description: "3.2 쿠폰",
-    expiresAt: "2026-04-16",
+    expiresAt: "2026-03-26",
     pushSent: true,
   },
   {

@@ -147,8 +147,8 @@ export const recommendTeams: RecommendTeam[] = [
     ],
     concepts: ["최종 술식", "야수"],
     characters: [
-      { id: 36, isMain: true, role: "서폿", psycubeId: 61 },
       { id: 59, isMain: true, role: "딜러", psycubeId: 91 },
+      { id: 36, isMain: true, role: "서폿", psycubeId: 61 },
       {
         id: 51,
         psycubeId: 73,
