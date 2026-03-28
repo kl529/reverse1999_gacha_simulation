@@ -1,4 +1,7 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
 
 // 번들 분석기 (개발 시에만 사용)
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
@@ -115,10 +118,10 @@ const withPWA = require("next-pwa")({
 });
 
 module.exports = withBundleAnalyzer(
-  withPWA({
-    ...nextConfig,
-    reactStrictMode: true,
-  })
+  withPWA(
+    withNextIntl({
+      ...nextConfig,
+      reactStrictMode: true,
+    })
+  )
 );
-
-export default nextConfig;

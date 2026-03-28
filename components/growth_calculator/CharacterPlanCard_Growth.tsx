@@ -8,6 +8,7 @@ import Image from "next/image";
 import { CharacterPlan } from "@/lib/types/growthCalculatorTypes";
 import { Character } from "@/data/characters";
 import { Pencil, Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface CharacterPlanCard_GrowthProps {
   plan: CharacterPlan;
@@ -24,6 +25,8 @@ export default function CharacterPlanCard_Growth({
   onDelete,
   onToggleActive,
 }: CharacterPlanCard_GrowthProps) {
+  const t = useTranslations("growthCalc");
+
   const getRarityColor = (rarity: number): string => {
     const colors: Record<number, string> = {
       6: "border-amber-400 dark:border-amber-500",
@@ -42,19 +45,16 @@ export default function CharacterPlanCard_Growth({
       } ${getRarityColor(character.rarity)} border-2`}
     >
       <CardContent className="space-y-1.5 p-2">
-        {/* 캐릭터 정보 */}
         <div className="flex flex-col items-center gap-1.5">
-          {/* 활성화 토글 */}
           <div className="flex items-center gap-1.5">
-            <span className="text-xs text-gray-600 dark:text-gray-400">활성</span>
+            <span className="text-xs text-gray-600 dark:text-gray-400">{t("active")}</span>
             <Switch checked={plan.isActive} onCheckedChange={onToggleActive} />
           </div>
 
-          {/* 캐릭터 이미지 + 성급 이미지 오버레이 (정사각형) */}
           <a
             href={`/character/${character.id}`}
             className="relative h-20 w-20 cursor-pointer overflow-hidden rounded-md transition-all hover:ring-2 hover:ring-primary"
-            title={`${character.name} 가이드 보기`}
+            title={`${character.name} ${t("viewGuide")}`}
           >
             <Image
               src={`/characters/${character.rarity}stars/${character.engName}.webp`}
@@ -64,21 +64,19 @@ export default function CharacterPlanCard_Growth({
             />
             <Image
               src={`/infos/effects/${character.rarity}stars.webp`}
-              alt={`${character.rarity}성`}
+              alt={`${character.rarity}${t("star")}`}
               fill
               className="pointer-events-none z-10 object-cover object-top"
             />
           </a>
 
-          {/* 캐릭터 이름 */}
           <div className="w-full text-center">
             <h4 className="truncate text-sm font-semibold">{character.name}</h4>
           </div>
         </div>
 
-        {/* 하단: 액션 버튼 */}
         <div className="flex justify-center gap-1.5">
-          <Button variant="outline" size="icon" onClick={onEdit} className="h-7 w-7" title="수정">
+          <Button variant="outline" size="icon" onClick={onEdit} className="h-7 w-7" title={t("edit")}>
             <Pencil className="h-3.5 w-3.5" />
           </Button>
           <Button
@@ -86,7 +84,7 @@ export default function CharacterPlanCard_Growth({
             size="icon"
             onClick={onDelete}
             className="h-7 w-7"
-            title="삭제"
+            title={t("delete")}
           >
             <Trash2 className="h-3.5 w-3.5" />
           </Button>

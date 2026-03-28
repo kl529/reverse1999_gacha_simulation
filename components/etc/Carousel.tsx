@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { carouselItems } from "@/data/carouselItems";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";

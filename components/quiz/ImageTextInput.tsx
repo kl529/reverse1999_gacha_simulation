@@ -5,6 +5,7 @@ import { ImageTextInputQuestion } from "@/lib/types/quizTypes";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
 interface ImageTextInputProps {
   question: ImageTextInputQuestion;
@@ -25,6 +26,7 @@ export default function ImageTextInput({
   isCorrect = false,
   disabled = false,
 }: ImageTextInputProps) {
+  const t = useTranslations("quiz");
   const [inputValue, setInputValue] = useState(userAnswer);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,7 +51,7 @@ export default function ImageTextInput({
       <div className="relative w-full max-w-xs overflow-hidden rounded-lg border-2 border-gray-300 dark:border-gray-600">
         <Image
           src={question.image}
-          alt="문제 이미지"
+          alt={t("questionImage")}
           width={400}
           height={400}
           className="h-auto w-full object-contain"
@@ -62,7 +64,7 @@ export default function ImageTextInput({
           value={inputValue}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          placeholder="캐릭터 이름을 입력하세요"
+          placeholder={t("characterNamePlaceholder")}
           disabled={disabled}
           className={
             showResult
@@ -78,7 +80,7 @@ export default function ImageTextInput({
             disabled={disabled || !inputValue.trim()}
             className="bg-blue-500 text-white hover:bg-blue-600"
           >
-            제출
+            {t("submit")}
           </Button>
         )}
       </div>
@@ -88,15 +90,15 @@ export default function ImageTextInput({
         <div className="text-center">
           {isCorrect ? (
             <p className="font-bold text-green-600 dark:text-green-400">
-              정답입니다!
+              {t("correctAnswer")}
             </p>
           ) : (
             <div>
               <p className="font-bold text-red-600 dark:text-red-400">
-                오답입니다
+                {t("wrongAnswer")}
               </p>
               <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                정답: {question.correctAnswers[0]}
+                {t("correctAnswerLabel", { answer: question.correctAnswers[0] })}
               </p>
             </div>
           )}

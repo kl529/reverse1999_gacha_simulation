@@ -2,6 +2,7 @@
 
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { Character } from "@/data/characters";
 import { useEffect, useMemo, useState } from "react";
@@ -14,7 +15,7 @@ import { characterGuideList } from "@/data/character_guide";
 import { recommendTeams } from "@/data/recommend_team";
 import type { RecommendTeamCharacter } from "@/data/recommend_team";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { GUIDE_CHARACTERS } from "@/data/setting_character";
 import {
   DropdownMenu,
@@ -30,6 +31,7 @@ import { getDisplayVersion } from "@/data/version";
 import { getCharacterUrl, getCdnUrl } from "@/lib/cdn";
 
 export default function CharacterDetail({ character }: { character: Character }) {
+  const t = useTranslations("character");
   const guide = characterGuideList.find((g) => g.character_id === character.id);
   const allCharacters = [...GUIDE_CHARACTERS].reverse();
   const [selectedCharacters, setSelectedCharacters] = useState<
@@ -93,21 +95,20 @@ export default function CharacterDetail({ character }: { character: Character })
         {guide && (
           <div className="space-y-6">
             <Alert variant="destructive" className="dark:bg-gray-600 dark:text-gray-100">
-              <AlertTitle>⚠️ 주의</AlertTitle>
+              <AlertTitle>{t("alertTitle")}</AlertTitle>
               <AlertDescription>
-                모든 정보는 정답이 아니며, 참고만 해주세요. 또한 버전에 따라 상황이 달라질 수
-                있습니다. 자료를 제공해주신 분들 모두 감사드립니다. 🙇‍♂️
+                {t("alertDescription")}
                 <br />
-                좋은 자료나 정리를{" "}
+                {t("alertSubmitPrefix")}{" "}
                 <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLSemyl74xUyRW4ucW_2eJDnDx1jRf-tJOT6hlQFhrJjehqKVlg/viewform?usp=header"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-medium text-blue-600 underline hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
                 >
-                  구글폼
+                  {t("alertSubmitLink")}
                 </a>
-                를 통해 알려주시면 추가하겠습니다. 많은 분들께 도움이 될 수 있습니다.
+                {t("alertSubmitSuffix")}
               </AlertDescription>
             </Alert>
 
@@ -122,7 +123,7 @@ export default function CharacterDetail({ character }: { character: Character })
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  형상 효율 정리
+                  {t("portraitEfficiency")}
                 </Button>
               )}
               {guide.youtube_links && guide.youtube_links.length > 0 && (
@@ -133,7 +134,7 @@ export default function CharacterDetail({ character }: { character: Character })
                     document.getElementById("guide-videos")?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  가이드 영상
+                  {t("guideVideos")}
                 </Button>
               )}
               {guide.guide_images && guide.guide_images.length > 0 && (
@@ -144,7 +145,7 @@ export default function CharacterDetail({ character }: { character: Character })
                     document.getElementById("guide-images")?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  가이드 이미지
+                  {t("guideImages")}
                 </Button>
               )}
               {hasGrowthData && (
@@ -157,7 +158,7 @@ export default function CharacterDetail({ character }: { character: Character })
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  육성재화 계산기
+                  {t("growthCalculator")}
                 </Button>
               )}
               {recommendedTeams.length > 0 && (
@@ -170,14 +171,14 @@ export default function CharacterDetail({ character }: { character: Character })
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
                 >
-                  사용 조합 목록
+                  {t("teamComps")}
                 </Button>
               )}
             </div>
 
             {guide.keywords && guide.keywords.length > 0 && (
               <div className="mb-8 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-                <h2 className="mb-4 text-center text-xl font-bold">간단 소개</h2>
+                <h2 className="mb-4 text-center text-xl font-bold">{t("briefIntro")}</h2>
                 <div className="flex flex-wrap justify-center gap-2">
                   {guide.keywords.map((keyword, index) => (
                     <Badge
@@ -197,10 +198,9 @@ export default function CharacterDetail({ character }: { character: Character })
                 id="resonance-info"
                 className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
               >
-                <h2 className="text-center text-xl font-bold">형상 효율 정리</h2>
+                <h2 className="text-center text-xl font-bold">{t("portraitEfficiency")}</h2>
                 <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-                  안조 날라 이전의 형상 효율표는 명함 대비 상승량 수치임. 안조 날라 부터는 이전
-                  형상대비 상승량 수치임. 분석러마다 효율이 다를 수 있으니 참고만 하시길
+                  {t("portraitEfficiencyNote")}
                 </p>
                 <div className="overflow-x-auto">
                   <table className="w-full rounded-lg border dark:border-gray-700">
@@ -257,12 +257,12 @@ export default function CharacterDetail({ character }: { character: Character })
                   {guide.portrait_info?.summary && (
                     <div className="mt-4 rounded-lg border p-4 dark:border-gray-700">
                       <p className="whitespace-pre-wrap text-sm leading-relaxed text-black dark:text-white">
-                        <span className="text-red-500">형상 효율 정리 : </span>
+                        <span className="text-red-500">{t("portraitSummaryLabel")}</span>
                         {guide.portrait_info.summary}
                       </p>
                       {guide.portrait_info.source && (
                         <p className="whitespace-pre-wrap text-sm leading-relaxed text-black dark:text-white">
-                          <span className="text-red-500">출처 : </span>
+                          <span className="text-red-500">{t("sourceLabel")}</span>
                           {guide.portrait_info.source}
                         </p>
                       )}
@@ -285,7 +285,7 @@ export default function CharacterDetail({ character }: { character: Character })
                 id="guide-videos"
                 className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
               >
-                <h2 className="mb-4 text-center text-xl font-bold">가이드 영상</h2>
+                <h2 className="mb-4 text-center text-xl font-bold">{t("guideVideos")}</h2>
                 <div className="grid gap-4">
                   {guide.youtube_links.map((link, idx) => {
                     const videoId = link.split("v=")[1]?.split("&")[0];
@@ -293,7 +293,7 @@ export default function CharacterDetail({ character }: { character: Character })
                       <div key={idx} className="aspect-video w-full">
                         <iframe
                           src={`https://www.youtube.com/embed/${videoId}`}
-                          title={`가이드 영상 ${idx + 1}`}
+                          title={t("guideVideoTitle", { index: idx + 1 })}
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           allowFullScreen
                           className="h-full w-full rounded-lg"
@@ -310,7 +310,7 @@ export default function CharacterDetail({ character }: { character: Character })
                 id="guide-images"
                 className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
               >
-                <h2 className="mb-4 text-center text-xl font-bold">가이드 이미지</h2>
+                <h2 className="mb-4 text-center text-xl font-bold">{t("guideImages")}</h2>
                 <div className="grid gap-4">
                   {guide.guide_images.map((image, idx) => (
                     <div key={idx} className="relative mx-auto h-auto w-full">
@@ -318,7 +318,7 @@ export default function CharacterDetail({ character }: { character: Character })
                         src={getCdnUrl(
                           `characters/guide/${character.engName.replace(/-/g, "_")}_guide_${image}.webp`
                         )}
-                        alt={`가이드 이미지 ${idx + 1}`}
+                        alt={t("guideImageAlt", { index: idx + 1 })}
                         width={1200}
                         height={1600}
                         className="h-auto w-full rounded-lg"
@@ -339,7 +339,7 @@ export default function CharacterDetail({ character }: { character: Character })
 
         {euphoriaList.some((e) => e.character_id === character.id) && (
           <div className="space-y-4 rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-            <h2 className="text-center text-xl font-bold">광상 정보</h2>
+            <h2 className="text-center text-xl font-bold">{t("euphoriaInfo")}</h2>
             <div
               className={cn(
                 "grid gap-6",
@@ -362,7 +362,7 @@ export default function CharacterDetail({ character }: { character: Character })
                     <Link href={`/euphoria_guide/${euphoria.id}`}>
                       <Image
                         src={`/infos/euphoria/${character.engName.toLowerCase().replace(/-/g, "_")}_${index + 1}.webp`}
-                        alt={`${character.name} 광상 이미지`}
+                        alt={t("euphoriaImageAlt", { name: character.name })}
                         width={400}
                         height={225}
                         className="rounded-lg transition-opacity hover:opacity-80"
@@ -370,7 +370,7 @@ export default function CharacterDetail({ character }: { character: Character })
                     </Link>
                     <span className="text-lg font-medium">{euphoria.name}</span>
                     <span className="text-sm text-gray-600 dark:text-gray-400">
-                      이미지 클릭시 광상 정보 페이지로 이동
+                      {t("euphoriaClickHint")}
                     </span>
                   </div>
                 ))}
@@ -385,10 +385,10 @@ export default function CharacterDetail({ character }: { character: Character })
               className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800"
             >
               <div className="mb-6 flex flex-col items-center gap-4">
-                <h2 className="text-center text-xl font-bold">사용 조합 목록</h2>
+                <h2 className="text-center text-xl font-bold">{t("teamComps")}</h2>
                 <Link href="/recommend_team">
                   <Button variant="outline" size="sm">
-                    전체 추천 조합 보기
+                    {t("viewAllTeams")}
                   </Button>
                 </Link>
               </div>
@@ -489,12 +489,12 @@ export default function CharacterDetail({ character }: { character: Character })
                                   </div>
                                   {displayEuphoria && (
                                     <div className="absolute bottom-6 right-1 z-10 rounded-sm bg-purple-600 px-1 py-[1px] text-[10px] text-white">
-                                      광상
+                                      {t("euphoria")}
                                     </div>
                                   )}
                                   {ch.isMain && (
                                     <div className="absolute left-1 top-1 z-10 rounded-sm bg-red-600 px-1 py-[1px] text-[10px] text-white">
-                                      메인
+                                      {t("main")}
                                     </div>
                                   )}
                                   {displayRole && (
@@ -510,7 +510,7 @@ export default function CharacterDetail({ character }: { character: Character })
                                   isCurrentCharacterAlternative) && (
                                   <DropdownMenu>
                                     <DropdownMenuTrigger className="text-xs text-blue-600 underline">
-                                      대체 캐릭터
+                                      {t("alternativeChar")}
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent align="center">
                                       {dropdownOptions.map((alt) => {

@@ -6,8 +6,10 @@
 
 import React from "react";
 import { render, screen, fireEvent, act } from "@testing-library/react";
+import { NextIntlClientProvider } from "next-intl";
 import ConfirmModal from "@/components/modals/ConfirmModal";
 import { ModalProvider, useModal } from "@/components/etc/ModalProvider";
+import koMessages from "@/messages/ko.json";
 
 // Mock next/image for CardInfoModal
 jest.mock("next/image", () => ({
@@ -128,9 +130,11 @@ describe("ModalProvider 컴포넌트", () => {
   describe("기본 렌더링", () => {
     it("children이 렌더링되어야 한다", () => {
       render(
-        <ModalProvider>
-          <div data-testid="child-content">Child Content</div>
-        </ModalProvider>
+        <NextIntlClientProvider locale="ko" messages={koMessages}>
+          <ModalProvider>
+            <div data-testid="child-content">Child Content</div>
+          </ModalProvider>
+        </NextIntlClientProvider>
       );
 
       expect(screen.getByTestId("child-content")).toBeInTheDocument();
@@ -152,9 +156,11 @@ describe("ModalProvider 컴포넌트", () => {
 
     it("openModal 호출 시 activeModal 상태가 변경되어야 한다", () => {
       render(
-        <ModalProvider>
-          <TestComponent />
-        </ModalProvider>
+        <NextIntlClientProvider locale="ko" messages={koMessages}>
+          <ModalProvider>
+            <TestComponent />
+          </ModalProvider>
+        </NextIntlClientProvider>
       );
 
       expect(screen.getByTestId("active-modal")).toHaveTextContent("none");
@@ -166,9 +172,11 @@ describe("ModalProvider 컴포넌트", () => {
 
     it("closeModal 호출 시 activeModal이 null이 되어야 한다", () => {
       render(
-        <ModalProvider>
-          <TestComponent />
-        </ModalProvider>
+        <NextIntlClientProvider locale="ko" messages={koMessages}>
+          <ModalProvider>
+            <TestComponent />
+          </ModalProvider>
+        </NextIntlClientProvider>
       );
 
       // Open modal
@@ -182,9 +190,11 @@ describe("ModalProvider 컴포넌트", () => {
 
     it('openModal("material") 호출 시 CardInfoModal이 렌더링되어야 한다', () => {
       render(
-        <ModalProvider>
-          <TestComponent />
-        </ModalProvider>
+        <NextIntlClientProvider locale="ko" messages={koMessages}>
+          <ModalProvider>
+            <TestComponent />
+          </ModalProvider>
+        </NextIntlClientProvider>
       );
 
       fireEvent.click(screen.getByText("Open Material"));
@@ -207,7 +217,7 @@ describe("ModalProvider 컴포넌트", () => {
 
       expect(() => {
         render(<TestComponentWithoutProvider />);
-      }).toThrow("useModal은 ModalProvider 안에서만 사용해야 합니다.");
+      }).toThrow("useModal must be used within a ModalProvider.");
 
       console.error = originalError;
     });

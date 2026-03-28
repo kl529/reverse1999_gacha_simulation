@@ -1,95 +1,90 @@
-# Reverse 1999 Gacha Simulator - 테스트 커버리지 확장
+# Reverse 1999 가이드 - i18n 다국어 지원
 
 ## What This Is
 
-리버스 1999 가챠 시뮬레이터의 포괄적인 테스트 스위트. 253개의 테스트(유닛 137 + 컴포넌트 75 + E2E 41)를 통해 비즈니스 로직의 신뢰성을 보장하고 회귀 버그를 방지한다.
+리버스 1999 게임 정보 웹앱(버틴의 여행가방)에 영어 지원을 추가하는 프로젝트. next-intl 기반으로 `/ko/*`, `/en/*` URL 경로 분리를 통해 한국어와 영어 두 언어를 지원하며, 기존 게임 용어 사전 파일을 활용하여 캐릭터명 등 게임 데이터의 다국어 표시를 구현한다.
 
 ## Core Value
 
-**핵심 비즈니스 로직(가챠 확률, 퀴즈 점수, 육성 계산)이 정확하게 동작함을 자동화된 테스트로 보장한다.**
-
-## Current State (v1 Shipped)
-
-**테스트 현황:**
-- 유닛 테스트: 137개 (gachaReducer, 확률 계산, 퀴즈 타입, storage, cdn, version, farming, filter)
-- 컴포넌트 테스트: 75개 (GachaGame, Quiz, CharacterDetail, RankingBoard, GrowthCalculator, Modal)
-- E2E 테스트: 41개 (가챠 플로우, 퀴즈 플로우, 캐릭터 조회, 네비게이션, 테마)
-- CI 파이프라인: `npm run test:ci`로 전체 테스트 실행
-
-**기술 스택:**
-- Jest 29.7.0 + @testing-library/react 16.2.0 (유닛/컴포넌트)
-- Playwright 1.49.1 (E2E)
-- TypeScript 5
+**영어 사용자가 사이트의 모든 기능(가챠 시뮬레이터, 캐릭터 정보, 가이드 등)을 영어로 완전하게 이용할 수 있어야 한다.**
 
 ## Requirements
 
 ### Validated
 
-v1 테스트 커버리지 확장에서 검증된 기능:
+기존 코드베이스에서 검증된 기능:
 
-- ✓ gachaReducer 상태 관리 (7 액션 타입) — v1
-- ✓ 가챠 확률 계산 (6성/5성, 천장, 픽업 보장) — v1
-- ✓ 퀴즈 타입 가드 및 점수 계산 — v1
-- ✓ storage.ts 유틸리티 (get, set, remove, clear) — v1
-- ✓ farmingHelper.ts 재료 계산 — v1
-- ✓ CDN URL 생성 함수 — v1
-- ✓ 캐릭터 필터링/검색 로직 — v1
-- ✓ 버전 비교 로직 — v1
-- ✓ GachaGame 컴포넌트 상호작용 — v1
-- ✓ Quiz 컴포넌트 플로우 — v1
-- ✓ CharacterDetail 컴포넌트 — v1
-- ✓ RankingBoard 컴포넌트 — v1
-- ✓ GrowthCalculator 컴포넌트 — v1
-- ✓ Modal 컴포넌트들 — v1
-- ✓ 가챠 시뮬레이션 E2E 플로우 — v1
-- ✓ 퀴즈 완료 E2E 플로우 — v1
-- ✓ 캐릭터 조회 E2E 플로우 — v1
-- ✓ 네비게이션 및 테마 전환 — v1
+- ✓ 가챠 시뮬레이션 (확률 계산, 천장 시스템, 배너 선택) — existing
+- ✓ 캐릭터 정보 조회 및 필터링 — existing
+- ✓ 각종 가이드 (뉴비, 가챠, 현질, 컨텐츠) — existing
+- ✓ 유틸리티 (빙고, 퀴즈, 캘린더, 육성 계산기) — existing
+- ✓ PWA 지원 (오프라인, 앱 설치) — existing
+- ✓ 반응형 디자인 (모바일/데스크톱) — existing
+- ✓ 다크/라이트 테마 — existing
+- ✓ SEO 메타데이터 (한국어) — existing
+- ✓ 테스트 인프라 (Jest + Playwright, 253개 테스트) — existing
 
 ### Active
 
-(다음 마일스톤에서 정의)
+- [ ] next-intl 기반 i18n 인프라 구축
+- [ ] /ko, /en URL 경로 분리 라우팅
+- [ ] 미들웨어 기반 locale 감지 및 리다이렉트
+- [ ] 공통 UI 텍스트 번역 (버튼, 로딩, 에러 등)
+- [ ] 메뉴/네비게이션 라벨 번역
+- [ ] 언어 전환 UI (헤더 우측, 테마 토글 옆)
+- [ ] 전체 페이지 SEO 메타데이터 다국어 지원
+- [ ] 가챠 시뮬레이터 UI 영어 번역
+- [ ] 캐릭터 정보 페이지 영어 번역
+- [ ] 게임 용어(캐릭터명, 아이템명 등) 기존 사전 파일 활용한 다국어 표시
+- [ ] 가이드 페이지들 UI 텍스트 영어 번역
+- [ ] 유틸리티 페이지들(빙고, 퀴즈, 캘린더 등) 영어 번역
+- [ ] PWA manifest 다국어 대응
+- [ ] i18n 관련 테스트 코드 추가 (유닛 + E2E)
+- [ ] 기존 URL 호환성 (301 리다이렉트)
 
 ### Out of Scope
 
-- Firebase Admin SDK 서버 사이드 테스트 — 실제 Firebase 연동 필요, 모킹으로 대체
-- 실제 푸시 알림 발송 테스트 — 모킹으로 대체
-- 성능/부하 테스트 — 별도 프로젝트로 분리
-- 시각적 회귀 테스트 (스크린샷 비교) — 추후 고려
-- Mobile-specific E2E — 웹 브라우저 테스트에 집중
+- 한국어/영어 이외 언어 추가 — v1에서는 2개 언어에 집중
+- 가이드 콘텐츠 전문 번역 (긴 본문) — UI 텍스트와 게임 용어에 먼저 집중
+- 서브도메인 방식 (en.reverse1999-simulator.com) — 경로 분리 방식으로 결정
+- 사용자가 직접 번역 기여하는 시스템 — 별도 프로젝트
 
 ## Context
 
-**v1 완료 후 상태:**
-- 4,567줄 테스트 코드 (TypeScript)
-- 94개 파일 생성/수정
-- 테스트 인프라 완전 구축 (Jest + Playwright)
-- CI 스크립트 통합 완료
+**기존 코드베이스:**
+- Next.js 15.5.4 + React 19 + App Router
+- 39개 페이지, 106개 컴포넌트에 한국어 하드코딩
+- `data/language/`에 한영 사전 파일 존재 (각 ~10만줄, language_XXXXXXXX 키 기반) — 현재 미사용
+- `data/characters.ts`에 캐릭터 `name`(한국어) + `engName`(영어 slug) 필드 존재
+- `lib/constants/menuItems.ts`에 메뉴 라벨 하드코딩
+- `layout.tsx`에 `lang="ko"` 하드코딩
+- 미들웨어 없음
+- 기존 테스트: Jest 253개 (유닛 137 + 컴포넌트 75 + E2E 41)
 
-**아키텍처 노트:**
-- 가챠 로직이 lib/gacha/gachaLogic.ts로 추출됨 (테스트 가능한 순수 함수)
-- 캐릭터 필터 로직이 lib/utils/characterFilter.ts로 추출됨
-- 테스트 픽스처가 __tests__/fixtures/에 중앙화됨
+**기술적 참고:**
+- next-intl은 App Router 네이티브 지원, 서버/클라이언트 컴포넌트 모두 번역 가능
+- `[locale]` 동적 세그먼트로 기존 `app/` 페이지를 감싸는 구조
+- 기존 사전 파일의 키가 `language_10000001` 형식이라 직접 i18n 메시지로 쓰기엔 부적합 → 게임 용어 조회용 헬퍼로 활용
+- 계획 문서: `docs/i18n-plan.md` 참고
 
 ## Constraints
 
-- **Framework**: Jest 29.7.0 + @testing-library/react 16.2.0
-- **E2E**: Playwright 1.49.1 (전용 포트 3099)
-- **Pattern**: AAA (Arrange-Act-Assert) 패턴 사용
-- **Language**: 테스트 설명은 한국어로 작성
+- **Tech Stack**: next-intl (App Router 전용 i18n 라이브러리)
+- **URL 구조**: `/ko/*`, `/en/*` 경로 분리 (localePrefix: "always")
+- **기본 언어**: 한국어 (ko)
+- **기존 테스트**: Jest + Playwright 기존 테스트가 깨지지 않아야 함
+- **배포**: Cloudtype 자동 배포 호환
+- **브랜치**: feature/i18n-support (worktree: reverse1999_gacha_simulation_i18n)
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| 기존 Jest 설정 유지 | 이미 설정된 인프라 활용, 마이그레이션 비용 절감 | ✓ Good |
-| E2E에 Playwright 사용 | Next.js 공식 권장, 모던 브라우저 자동화 | ✓ Good |
-| Pure function extraction | 테스트 가능성을 위해 가챠 로직을 순수 함수로 추출 | ✓ Good |
-| Playwright 전용 포트 3099 | 다른 개발 서버와의 충돌 방지 | ✓ Good |
-| 모킹 전략: Firebase, localStorage | 외부 의존성 격리하여 단위 테스트 순수성 확보 | ✓ Good |
-| Desktop viewport-first E2E | 모바일/데스크톱 그리드 충돌 방지 | ✓ Good |
-| Radix UI role='switch' | ARIA 표준 준수 | ✓ Good |
-| 한국어 테스트 설명 | 프로젝트 컨벤션 일관성 | ✓ Good |
+| next-intl 선택 | App Router 네이티브 지원, 서버 컴포넌트 번역, 미들웨어 라우팅 내장 | — Pending |
+| /ko, /en 경로 분리 | SEO 유리, 검색엔진 독립 인덱싱, next-intl 미들웨어 자동 처리 | — Pending |
+| 기존 language dict 활용 | 10만줄+ 한영 사전 재활용, 게임 용어 번역 비용 절감 | — Pending |
+| 단계적 적용 | 인프라 → UI → 페이지 → 데이터 순으로 안정적 적용 | — Pending |
+| 언어 전환 UI 헤더 배치 | 테마 토글 옆에 KO/EN 버튼, 항상 접근 가능 | — Pending |
 
 ---
-*Last updated: 2026-01-25 after v1 milestone*
+*Last updated: 2026-02-18 after initialization*
