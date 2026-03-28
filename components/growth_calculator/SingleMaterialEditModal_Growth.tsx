@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { materialList } from "@/data/material";
 import { getCraftingRecipe } from "@/data/material_crafting";
+import { useTranslations } from "next-intl";
 
 interface SingleMaterialEditModalProps {
   open: boolean;
@@ -30,9 +31,9 @@ export default function SingleMaterialEditModal_Growth({
   currentQuantity,
   onSave,
 }: SingleMaterialEditModalProps) {
+  const t = useTranslations("growthCalc");
   const [quantity, setQuantity] = useState(currentQuantity);
 
-  // materialId나 currentQuantity가 변경되면 quantity 업데이트
   useEffect(() => {
     setQuantity(currentQuantity);
   }, [currentQuantity, materialId]);
@@ -68,11 +69,10 @@ export default function SingleMaterialEditModal_Growth({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>재료 수량 수정</DialogTitle>
+          <DialogTitle>{t("materialQtyEdit")}</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4 py-4">
-          {/* 재료 정보 */}
           <div className="flex items-center gap-3 rounded-lg bg-muted/50 p-3">
             <div className={`rounded-md p-2 ${getRarityGradient(material.rarity)}`}>
               <Image
@@ -89,9 +89,8 @@ export default function SingleMaterialEditModal_Growth({
             </div>
           </div>
 
-          {/* 수량 입력 */}
           <div className="space-y-2">
-            <Label htmlFor="quantity">보유 수량</Label>
+            <Label htmlFor="quantity">{t("ownedQty")}</Label>
             <div className="flex items-center gap-2">
               <Input
                 id="quantity"
@@ -104,9 +103,8 @@ export default function SingleMaterialEditModal_Growth({
             </div>
           </div>
 
-          {/* 빠른 증감 버튼 */}
           <div className="space-y-2">
-            <Label>빠른 조정</Label>
+            <Label>{t("quickAdjust")}</Label>
             <div className="grid grid-cols-4 gap-2">
               <Button
                 type="button"
@@ -136,15 +134,14 @@ export default function SingleMaterialEditModal_Growth({
                 +100
               </Button>
               <Button type="button" variant="outline" size="sm" onClick={() => setQuantity(0)}>
-                초기화
+                {t("reset")}
               </Button>
             </div>
           </div>
 
-          {/* 조합법 */}
           {recipe && (
             <div className="space-y-2 rounded-lg border bg-muted/30 p-3">
-              <Label className="text-sm font-semibold">🔨 조합법</Label>
+              <Label className="text-sm font-semibold">🔨 {t("craftingRecipe")}</Label>
               <div className="space-y-2">
                 {recipe.materials.map((subMatId, index) => {
                   const subMaterial = materialList.find((m) => m.id === subMatId);
@@ -176,7 +173,7 @@ export default function SingleMaterialEditModal_Growth({
                 })}
               </div>
               <div className="mt-2 text-xs text-muted-foreground">
-                💡 위 재료들을 모아서 1개를 조합할 수 있습니다
+                💡 {t("craftingTip")}
               </div>
             </div>
           )}
@@ -184,10 +181,10 @@ export default function SingleMaterialEditModal_Growth({
 
         <DialogFooter>
           <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-            취소
+            {t("cancel")}
           </Button>
           <Button type="button" onClick={handleSave}>
-            저장
+            {t("save")}
           </Button>
         </DialogFooter>
       </DialogContent>

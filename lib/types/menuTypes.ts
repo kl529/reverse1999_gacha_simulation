@@ -4,6 +4,7 @@
 export interface BaseCardItem {
   icon: string;
   label: string;
+  labelKey?: string;
   href?: string;
   modalType?: "material";
 }
@@ -29,6 +30,7 @@ export type HamburgerMenuItem = {
   icon?: string;
   iconImg?: string;
   label?: string;
+  labelKey?: string;
   href?: string;
   divider?: boolean;
   modalType?: "material";
@@ -37,5 +39,6 @@ export type HamburgerMenuItem = {
 
 export type HamburgerMenuCategory = {
   title: string;
+  titleKey?: string;
   items: HamburgerMenuItem[];
 };

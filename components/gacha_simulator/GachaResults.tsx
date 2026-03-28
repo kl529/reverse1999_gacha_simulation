@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Character } from "@/data/characters";
@@ -12,6 +15,7 @@ interface Props {
  *   • 모바일(< sm): 5×2, 카드·아이콘·텍스트 축소
  */
 export default function GachaResults({ results }: Props) {
+  const t = useTranslations("gacha");
   // 10칸 확보 (단일 뽑기면 첫 칸만 채움)
   const displayResults =
     results.length === 1
@@ -84,7 +88,7 @@ export default function GachaResults({ results }: Props) {
           (isMobile ? (
             <Image
               src={`/infos/effects/${char.rarity}stars.webp`}
-              alt={`성급 효과 ${char.rarity}`}
+              alt={t("rarityEffect", { rarity: char.rarity })}
               fill
               className="pointer-events-none absolute inset-0 z-10 h-full"
               priority
@@ -92,7 +96,7 @@ export default function GachaResults({ results }: Props) {
           ) : (
             <Image
               src={`/infos/effects/${char.rarity}stars.webp`}
-              alt={`성급 효과 ${char.rarity}`}
+              alt={t("rarityEffect", { rarity: char.rarity })}
               width={200}
               height={303}
               className="pointer-events-none absolute inset-0 z-10 h-full"

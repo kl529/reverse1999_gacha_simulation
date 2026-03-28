@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { cashPackages, type CashPackage } from "@/data/cash_packages";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,7 +10,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ShoppingCart, ChevronDown, ChevronRight } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 
 const formatQuantity = (quantity: number) => {
@@ -20,9 +21,9 @@ const formatQuantity = (quantity: number) => {
 };
 
 export default function CashPackageShop() {
+  const t = useTranslations("cashPackage");
   const [cart, setCart] = useState<{ package: CashPackage; quantity: number }[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  // 각 섹션별 정렬 상태 추가
   const [sortStates, setSortStates] = useState<Record<string, { key: string; ascending: boolean }>>(
     {
       refill: { key: "", ascending: true },
@@ -33,7 +34,6 @@ export default function CashPackageShop() {
     }
   );
 
-  // 섹션별 열림/닫힘 상태 추가
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     refill: true,
     oneTime: false,
@@ -41,7 +41,6 @@ export default function CashPackageShop() {
     raindrop: false,
   });
 
-  // 정렬 함수
   const sortPackages = (packages: CashPackage[], sortKey: string, ascending: boolean) => {
     return [...packages].sort((a, b) => {
       let compareValue = 0;
@@ -62,7 +61,6 @@ export default function CashPackageShop() {
     });
   };
 
-  // 정렬 상태 업데이트 함수
   const updateSort = (section: string, newSortKey: string) => {
     setSortStates((prev) => {
       const currentState = prev[section];
@@ -74,7 +72,6 @@ export default function CashPackageShop() {
     });
   };
 
-  // 섹션 열림/닫힘 상태 업데이트 함수
   const updateSectionOpen = (sectionKey: string, isOpen: boolean) => {
     setOpenSections((prev) => ({
       ...prev,
@@ -124,7 +121,6 @@ export default function CashPackageShop() {
 
   const groupedPackages = getGroupedPackages();
 
-  // PackageSection 컴포넌트 수정
   const PackageSection = ({
     title,
     packages,
@@ -160,7 +156,7 @@ export default function CashPackageShop() {
               onClick={() => updateSort(sectionKey, "efficiency")}
               className={`text-xs ${sortState.key === "efficiency" ? "border-blue-500" : ""}`}
             >
-              효율순 {sortState.key === "efficiency" && (sortState.ascending ? "↑" : "↓")}
+              {t("efficiencySort")} {sortState.key === "efficiency" && (sortState.ascending ? "↑" : "↓")}
             </Button>
             <Button
               type="button"
@@ -169,7 +165,7 @@ export default function CashPackageShop() {
               onClick={() => updateSort(sectionKey, "price")}
               className={`text-xs ${sortState.key === "price" ? "border-blue-500" : ""}`}
             >
-              가격순 {sortState.key === "price" && (sortState.ascending ? "↑" : "↓")}
+              {t("priceSort")} {sortState.key === "price" && (sortState.ascending ? "↑" : "↓")}
             </Button>
             <Button
               type="button"
@@ -178,7 +174,7 @@ export default function CashPackageShop() {
               onClick={() => updateSort(sectionKey, "unilog")}
               className={`text-xs ${sortState.key === "unilog" ? "border-blue-500" : ""}`}
             >
-              뽑기순 {sortState.key === "unilog" && (sortState.ascending ? "↑" : "↓")}
+              {t("pullSort")} {sortState.key === "unilog" && (sortState.ascending ? "↑" : "↓")}
             </Button>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -190,7 +186,7 @@ export default function CashPackageShop() {
                     <p className="text-sm text-gray-600 dark:text-gray-400">{pkg.description}</p>
                   </div>
                   <div className="text-right">
-                    <p className="font-semibold">{pkg.price.toLocaleString()}원</p>
+                    <p className="font-semibold">{pkg.price.toLocaleString()}{t("won")}</p>
                     <p
                       className={`text-sm ${
                         pkg.efficiency >= 90
@@ -200,9 +196,9 @@ export default function CashPackageShop() {
                             : "text-red-500"
                       }`}
                     >
-                      효율: {pkg.efficiency}%
+                      {t("efficiency", { value: pkg.efficiency })}
                     </p>
-                    <p className="text-sm text-blue-500">뽑기: {pkg.unilog}회</p>
+                    <p className="text-sm text-blue-500">{t("pulls", { value: pkg.unilog })}</p>
                   </div>
                 </div>
                 <div className="mt-2 flex-1">
@@ -238,7 +234,7 @@ export default function CashPackageShop() {
                   className="mt-3 w-full"
                   variant="outline"
                 >
-                  장바구니 담기
+                  {t("addToCart")}
                 </Button>
               </Card>
             ))}
@@ -252,7 +248,7 @@ export default function CashPackageShop() {
     <div className="flex h-full flex-col">
       <ScrollArea className="flex-1">
         {cart.length === 0 ? (
-          <p className="text-center text-gray-500">장바구니가 비어있습니다</p>
+          <p className="text-center text-gray-500">{t("cartEmpty")}</p>
         ) : (
           <div className="space-y-4">
             {cart.map((item) => (
@@ -261,7 +257,7 @@ export default function CashPackageShop() {
                   <div>
                     <h3 className="font-semibold">{item.package.name}</h3>
                     <p className="text-sm text-black dark:text-white">
-                      {item.package.price.toLocaleString()}원
+                      {item.package.price.toLocaleString()}{t("won")}
                     </p>
                   </div>
                   <div className="flex items-center space-x-2">
@@ -296,12 +292,12 @@ export default function CashPackageShop() {
       </ScrollArea>
       <div className="mt-4 border-t pt-4">
         <div className="flex justify-between">
-          <span className="font-semibold">총 금액:</span>
-          <span className="font-semibold">{getTotalPrice().toLocaleString()}원</span>
+          <span className="font-semibold">{t("totalPrice")}</span>
+          <span className="font-semibold">{getTotalPrice().toLocaleString()}{t("won")}</span>
         </div>
         {cart.length > 0 && (
           <div className="mt-4 space-y-2">
-            <h3 className="font-semibold">총 구성품:</h3>
+            <h3 className="font-semibold">{t("totalItems")}</h3>
             <div className="flex flex-wrap gap-2">
               {Object.entries(
                 cart.reduce(
@@ -346,20 +342,18 @@ export default function CashPackageShop() {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-      {/* 상단 고정 헤더 */}
       <div className="sticky top-0 z-10 bg-gray-100 p-4 dark:bg-gray-900 lg:static">
         <div className="mx-auto flex max-w-7xl items-center justify-center">
           <h1 className="mt-8 text-center text-xl font-bold text-black dark:text-white lg:text-2xl">
-            현질 패키지 정리
+            {t("title")}
           </h1>
         </div>
       </div>
 
-      {/* 모바일 장바구니 버튼 */}
       <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 lg:hidden">
         <div className="rounded-lg bg-black/10 px-3 py-2 backdrop-blur-sm dark:bg-white/10">
           <span className="font-semibold text-black dark:text-white">
-            {getTotalPrice().toLocaleString()}원
+            {getTotalPrice().toLocaleString()}{t("won")}
           </span>
         </div>
         <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
@@ -382,7 +376,7 @@ export default function CashPackageShop() {
             </Button>
           </SheetTrigger>
           <SheetContent side="bottom" className="h-[80vh] w-full lg:hidden">
-            <SheetTitle>장바구니</SheetTitle>
+            <SheetTitle>{t("cart")}</SheetTitle>
             <div className="flex h-full flex-col pb-20">
               <CartContent />
             </div>
@@ -391,83 +385,76 @@ export default function CashPackageShop() {
       </div>
 
       <div className="mx-auto max-w-7xl p-4">
-        {/* 설명 섹션 */}
         <Collapsible
           defaultOpen={true}
           className="mb-6 rounded-lg border border-black p-4 dark:border-white"
         >
           <CollapsibleTrigger className="flex w-full items-center justify-between">
-            <h2 className="text-lg font-semibold text-black dark:text-white">패키지 선택 가이드</h2>
+            <h2 className="text-lg font-semibold text-black dark:text-white">{t("guideTitle")}</h2>
             <ChevronDown className="h-5 w-5 transform transition-transform" />
           </CollapsibleTrigger>
           <CollapsibleContent className="mt-4">
             <div className="space-y-6 text-sm text-gray-700 dark:text-gray-300">
               <div className="mt-4 rounded-lg bg-gray-100 p-3 dark:bg-gray-800">
                 <h3 className="mb-2 font-semibold text-red-500 dark:text-red-400">
-                  ※ 모든 패키지의 효율은 가격 대비 모노로그만 계산되었습니다
+                  {t("guideEfficiency")}
                 </h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400">
-                  * 현재 판매하지 않는 패키지도 포함되어 있습니다.
+                  {t("guideNotCurrent")}
                 </p>
                 <p className="text-xs text-gray-500 dark:text-gray-400">
-                  * 🔥 어떤 방식으로 현질을 하면 좋을지 공략 ＞{" "}
+                  {t("guideCashLink")}{" "}
                   <Link href="/cash_guide" className="text-blue-500 dark:text-blue-400">
-                    링크
+                    {t("link")}
                   </Link>
                 </p>
               </div>
               <div>
                 <h3 className="mb-2 font-semibold text-black dark:text-white">
-                  추천 패키지 선택 가이드 ⭐️
+                  {t("recommendGuide")}
                 </h3>
                 <p className="mb-2 text-red-500 dark:text-red-400">
-                  월정액(포효의 달) &gt; 패스(주크박스) &gt; 1회성 패키지 &gt; 버전 패키지 중
-                  10,000원 이하 패키지 2개 &gt; 골든 클래식 &gt; 월간 모집 세일 &gt; 고효율 초회
-                  할인 빗방울 &gt; 그외 패키지 &gt; 깡빗방울
+                  {t("recommendOrder")}
                 </p>
                 <p className="mb-2 text-green-500 dark:text-green-400">
-                  - 효율 좋은 기준, 월간 모집세일까지 사면, 버전당 6성 2명은 무난히 획득 가능 🎰
+                  {t("recommendNote1")}
                   <br />
-                  - 패스는 뽑기보다, 주는 성장 재화가 넘사벽이라서 추천 + 1회성 패키지는 각자 사정에
-                  맞춰서 선택 🔑
-                  <br />- 순수의 빗방울로 살 수 있는 레벨별 물자 패키지는, 무조건 구매하는 것을 추천
-                  (초회 or 월정액으로 얻어서 구매해도 무방) 💡
+                  {t("recommendNote2")}
+                  <br />
+                  {t("recommendNote3")}
                 </p>
               </div>
               <div>
                 <h3 className="mb-2 font-semibold text-black dark:text-white">
-                  ※ 재료 뷔페 음료 선택 가이드
+                  {t("buffetGuide")}
                 </h3>
                 <p className="mb-2 text-blue-600 dark:text-blue-400">
-                  추천 : (🚦 순간의 소란이 가장 추천됨 ) (재료 풍작 파티보다 효율이 좋음)
+                  {t("buffetRecommend")}
                 </p>
                 <p className="mb-1">
-                  순간의 소란 &gt; 마이크로 편광 &gt; 미세 입자 &gt; 톱니동전 &gt; 고급 비밀 궤짝
-                  &gt; 황무지 블록 케이스
+                  {t("buffetOrder")}
                 </p>
               </div>
               <div>
                 <h3 className="mb-2 font-semibold text-black dark:text-white">
-                  ※ 재료 풍작 파티 선택 가이드
+                  {t("partyGuide")}
                 </h3>
                 <p className="mb-2 text-blue-600 dark:text-blue-400">
-                  추천:(🚦 아득한 울림이 추천됨 + 도철 / 공명의 상자 중 필요한 것 선택 )
+                  {t("partyRecommend")}
                 </p>
                 <p className="mb-1">
-                  아득한 울림 &gt; 특급 비밀 궤짝 &gt; 미세 입자 &gt; 톱니동전 &gt; 고주파 편광 &gt;
-                  황무지 블록 케이스
+                  {t("partyOrder")}
                 </p>
               </div>
             </div>
           </CollapsibleContent>
         </Collapsible>
 
-        {/* 스킨 갤러리 링크 */}
         <Link href="/skin" className="mb-6 block">
           <div className="flex items-center justify-between rounded-lg border border-black p-4 transition-colors hover:bg-gray-50 dark:border-white dark:hover:bg-gray-800">
             <div className="flex items-center gap-2">
               <h2 className="text-lg font-semibold text-black dark:text-white">
-                스킨 갤러리 보러가기 🎨
+                {t("skinGallery")}
               </h2>
               <Badge variant="outline" className="ml-2 border-black dark:border-white">
                 NEW
@@ -478,44 +465,42 @@ export default function CashPackageShop() {
         </Link>
 
         <div className="mt-4 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {/* 패키지 섹션 */}
           <div className="lg:col-span-2">
             <PackageSection
-              title="리필 패키지"
+              title={t("refill")}
               packages={groupedPackages.refill}
               sectionKey="refill"
               defaultOpen={true}
             />
             <PackageSection
-              title="1회성 패키지"
+              title={t("oneTime")}
               packages={groupedPackages.oneTime}
               sectionKey="oneTime"
               defaultOpen={false}
             />
             <PackageSection
-              title="버전 패키지"
+              title={t("versionPkg")}
               packages={groupedPackages.version}
               sectionKey="version"
               defaultOpen={false}
             />
             <PackageSection
-              title="빗방울 패키지"
+              title={t("raindrop")}
               packages={groupedPackages.raindrop}
               sectionKey="raindrop"
               defaultOpen={false}
             />
             <PackageSection
-              title="스킨 패키지"
+              title={t("skinPkg")}
               packages={groupedPackages.skin}
               sectionKey="skin"
               defaultOpen={false}
             />
           </div>
 
-          {/* 데스크톱 장바구니 섹션 */}
           <div className="hidden lg:col-span-1 lg:block">
             <Card className="sticky top-4 p-4">
-              <h2 className="mb-4 text-xl font-semibold text-black dark:text-white">장바구니</h2>
+              <h2 className="mb-4 text-xl font-semibold text-black dark:text-white">{t("cart")}</h2>
               <CartContent />
             </Card>
           </div>

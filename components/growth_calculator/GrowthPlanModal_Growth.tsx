@@ -18,6 +18,7 @@ import { RESONANCE_PATTERN } from "@/data/resonance_pattern";
 import { resonancePatternMaterial } from "@/data/resonance_pattern_material";
 import { euphoriaMaterialList } from "@/data/euphoria_material";
 import { euphoriaList } from "@/data/euphoria";
+import { useTranslations } from "next-intl";
 
 interface GrowthPlanModal_GrowthProps {
   open: boolean;
@@ -50,16 +51,13 @@ export default function GrowthPlanModal_Growth({
   onNavigate,
   tempPlan,
 }: GrowthPlanModal_GrowthProps) {
+  const t = useTranslations("growthCalc");
   const [isActive, setIsActive] = useState(true);
-
-  // Current state
   const [currentInsight, setCurrentInsight] = useState(0);
   const [currentLevel, setCurrentLevel] = useState(1);
   const [currentResonance, setCurrentResonance] = useState(1);
   const [currentEuphoriaLevels, setCurrentEuphoriaLevels] = useState<number[]>([]);
   const [currentZoneLevel, setCurrentZoneLevel] = useState(0);
-
-  // Target state
   const [targetInsight, setTargetInsight] = useState(0);
   const [targetLevel, setTargetLevel] = useState(1);
   const [targetResonance, setTargetResonance] = useState(1);
@@ -85,12 +83,10 @@ export default function GrowthPlanModal_Growth({
     return Object.keys(patterns);
   }, [character]);
 
-  // 해당 캐릭터의 광상 정보 가져오기
   const characterEuphorias = useMemo(() => {
     return euphoriaList.filter(e => e.character_id === characterId);
   }, [characterId]);
 
-  // 해당 캐릭터의 광상 재료 정보 확인
   const hasEuphoriaMaterial = useMemo(() => {
     return euphoriaMaterialList.some(e => e.character_id === characterId);
   }, [characterId]);
@@ -101,7 +97,6 @@ export default function GrowthPlanModal_Growth({
     return patterns[pattern] || "";
   };
 
-  // Load existing plan or tempPlan
   useEffect(() => {
     if (existingPlan) {
       setIsActive(existingPlan.isActive);
@@ -130,7 +125,6 @@ export default function GrowthPlanModal_Growth({
       setTargetZoneLevel(tempPlan.target.zoneLevel);
       setTargetResonancePatterns(tempPlan.target.resonancePatterns);
     } else {
-      // Reset for new plan
       setIsActive(true);
       setCurrentInsight(0);
       setCurrentLevel(1);
@@ -146,25 +140,14 @@ export default function GrowthPlanModal_Growth({
     }
   }, [existingPlan, tempPlan, open, characterId]);
 
-  // Validation effect
   useEffect(() => {
-    if (targetInsight < currentInsight) {
-      setTargetInsight(currentInsight);
-    }
+    if (targetInsight < currentInsight) setTargetInsight(currentInsight);
     const maxCurrentLevel = MAX_LEVEL_BY_INSIGHT[currentInsight];
-    if (currentLevel > maxCurrentLevel) {
-      setCurrentLevel(maxCurrentLevel);
-    }
+    if (currentLevel > maxCurrentLevel) setCurrentLevel(maxCurrentLevel);
     const maxTargetLevel = MAX_LEVEL_BY_INSIGHT[targetInsight];
-    if (targetLevel > maxTargetLevel) {
-      setTargetLevel(maxTargetLevel);
-    }
-    if (currentInsight === targetInsight && targetLevel < currentLevel) {
-      setTargetLevel(currentLevel);
-    }
-    if (targetResonance < currentResonance) {
-      setTargetResonance(currentResonance);
-    }
+    if (targetLevel > maxTargetLevel) setTargetLevel(maxTargetLevel);
+    if (currentInsight === targetInsight && targetLevel < currentLevel) setTargetLevel(currentLevel);
+    if (targetResonance < currentResonance) setTargetResonance(currentResonance);
   }, [currentInsight, currentLevel, targetInsight, targetLevel, currentResonance, targetResonance]);
 
   const toggleEuphoriaLevel = (level: number, isCurrent: boolean) => {
@@ -181,12 +164,8 @@ export default function GrowthPlanModal_Growth({
 
   const toggleResonancePattern = (patternId: number) => {
     setTargetResonancePatterns((prev) => {
-      if (prev.includes(patternId)) {
-        return prev.filter((id) => id !== patternId);
-      }
-      if (prev.length >= 5) {
-        return prev;
-      }
+      if (prev.includes(patternId)) return prev.filter((id) => id !== patternId);
+      if (prev.length >= 5) return prev;
       return [...prev, patternId];
     });
   };
@@ -199,7 +178,6 @@ export default function GrowthPlanModal_Growth({
       euphoriaLevels: currentEuphoriaLevels,
       zoneLevel: currentZoneLevel,
     };
-
     const target: GrowthState & { resonancePatterns: number[] } = {
       insight: targetInsight,
       level: targetLevel,
@@ -208,30 +186,16 @@ export default function GrowthPlanModal_Growth({
       zoneLevel: targetZoneLevel,
       resonancePatterns: targetResonancePatterns,
     };
-
-    return {
-      characterId,
-      isActive,
-      current,
-      target,
-    };
+    return { characterId, isActive, current, target };
   };
 
-  const handleSave = () => {
-    onSave(getCurrentPlanData());
-  };
+  const handleSave = () => onSave(getCurrentPlanData());
 
   const handleNavigate = (direction: 'prev' | 'next') => {
-    if (onNavigate) {
-      onNavigate(direction, getCurrentPlanData());
-    }
+    if (onNavigate) onNavigate(direction, getCurrentPlanData());
   };
 
-  const renderInsightButtons = (
-    selected: number,
-    setter: (v: number) => void,
-    isTarget: boolean = false
-  ) => (
+  const renderInsightButtons = (selected: number, setter: (v: number) => void, isTarget: boolean = false) => (
     <div className="flex gap-2">
       {INSIGHT_IMAGES.map((src, index) => {
         const isDisabled = isTarget && index < currentInsight;
@@ -245,7 +209,7 @@ export default function GrowthPlanModal_Growth({
           >
             <Image
               src={src}
-              alt={`통찰 ${index}`}
+              alt={t("insightAlt", { level: index })}
               width={40}
               height={40}
               className={`rounded ${selected === index ? "border-green-700" : "border-transparent"}`}
@@ -256,11 +220,7 @@ export default function GrowthPlanModal_Growth({
     </div>
   );
 
-  const renderResonanceButtons = (
-    selected: number,
-    setter: (v: number) => void,
-    isTarget: boolean = false
-  ) => (
+  const renderResonanceButtons = (selected: number, setter: (v: number) => void, isTarget: boolean = false) => (
     <div className="flex flex-wrap gap-1">
       {Array.from({ length: 15 }, (_, i) => i + 1).map((num) => {
         const isDisabled = isTarget && num < currentResonance;
@@ -296,18 +256,12 @@ export default function GrowthPlanModal_Growth({
     </div>
   );
 
-  const renderLevelButtons = (
-    selected: number,
-    setter: (v: number) => void,
-    max: number,
-    isTarget: boolean = false
-  ) => (
+  const renderLevelButtons = (selected: number, setter: (v: number) => void, max: number, isTarget: boolean = false) => (
     <div className="flex flex-wrap gap-1">
       {[1, 10, 20, 30, 40, 50, 60]
         .filter((v) => v <= max)
         .map((num) => {
-          const isDisabled =
-            isTarget && currentInsight === targetInsight && num < currentLevel;
+          const isDisabled = isTarget && currentInsight === targetInsight && num < currentLevel;
           return (
             <Button
               key={num}
@@ -340,16 +294,15 @@ export default function GrowthPlanModal_Growth({
                   className="object-cover object-top"
                 />
               </div>
-              <span className="truncate">{character.name} 육성 계획</span>
+              <span className="truncate">{character.name} {t("growthPlan")}</span>
             </DialogTitle>
-            {/* 활성화 */}
             <div className="flex items-center gap-2">
               <Checkbox checked={isActive} onCheckedChange={(checked) => setIsActive(!!checked)} />
-              <label className="text-sm font-medium">활성화</label>
+              <label className="text-sm font-medium">{t("activate")}</label>
             </div>
           </div>
           <DialogDescription className="text-xs sm:text-sm">
-            현재 상태와 목표 상태를 설정하세요. 필요한 재료가 자동으로 계산됩니다.
+            {t("growthPlanDesc")}
             {currentIndex !== undefined && totalCount !== undefined && totalCount > 1 && (
               <span className="ml-2 font-semibold text-primary">
                 ({currentIndex + 1}/{totalCount})
@@ -359,79 +312,58 @@ export default function GrowthPlanModal_Growth({
         </DialogHeader>
 
         <div className="space-y-6 py-4">
-
-          {/* 현재 상태 */}
           <div className="space-y-4 p-4 border rounded-lg bg-muted/30">
-            <h3 className="text-lg font-bold">현재 상태</h3>
-
+            <h3 className="text-lg font-bold">{t("currentState")}</h3>
             <div>
-              <label className="text-sm font-medium mb-2 block">통찰 레벨</label>
+              <label className="text-sm font-medium mb-2 block">{t("insightLevel")}</label>
               {renderInsightButtons(currentInsight, setCurrentInsight)}
             </div>
-
             <div>
               <label className="text-sm font-medium mb-2 block">
-                캐릭터 레벨 (최대: {MAX_LEVEL_BY_INSIGHT[currentInsight]})
+                {t("charLevel", { max: MAX_LEVEL_BY_INSIGHT[currentInsight] })}
               </label>
               {renderLevelButtons(currentLevel, setCurrentLevel, MAX_LEVEL_BY_INSIGHT[currentInsight])}
               <div className="space-y-1 mt-2 max-w-md">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">현재 레벨:</span>
+                  <span className="text-sm text-muted-foreground">{t("currentLevel")}</span>
                   <span className="text-sm font-semibold">{currentLevel}</span>
                 </div>
-                <Slider
-                  value={[currentLevel]}
-                  onValueChange={([v]) => setCurrentLevel(v)}
-                  min={1}
-                  max={MAX_LEVEL_BY_INSIGHT[currentInsight]}
-                  step={1}
-                />
+                <Slider value={[currentLevel]} onValueChange={([v]) => setCurrentLevel(v)} min={1} max={MAX_LEVEL_BY_INSIGHT[currentInsight]} step={1} />
               </div>
             </div>
-
             <div>
-              <label className="text-sm font-medium mb-2 block">공명 레벨</label>
+              <label className="text-sm font-medium mb-2 block">{t("resonanceLevel")}</label>
               {renderResonanceButtons(currentResonance, setCurrentResonance)}
             </div>
           </div>
 
-          {/* 목표 상태 */}
           <div className="space-y-4 p-4 border rounded-lg bg-primary/5">
-            <h3 className="text-lg font-bold">목표 상태</h3>
-
+            <h3 className="text-lg font-bold">{t("targetState")}</h3>
             <div>
-              <label className="text-sm font-medium mb-2 block">통찰 레벨</label>
+              <label className="text-sm font-medium mb-2 block">{t("insightLevel")}</label>
               {renderInsightButtons(targetInsight, setTargetInsight, true)}
             </div>
-
             <div>
               <label className="text-sm font-medium mb-2 block">
-                캐릭터 레벨 (최대: {MAX_LEVEL_BY_INSIGHT[targetInsight]})
+                {t("charLevel", { max: MAX_LEVEL_BY_INSIGHT[targetInsight] })}
               </label>
               {renderLevelButtons(targetLevel, setTargetLevel, MAX_LEVEL_BY_INSIGHT[targetInsight], true)}
               <div className="space-y-1 mt-2 max-w-md">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">목표 레벨:</span>
+                  <span className="text-sm text-muted-foreground">{t("targetLevel")}</span>
                   <span className="text-sm font-semibold">{targetLevel}</span>
                 </div>
-                <Slider
-                  value={[targetLevel]}
-                  onValueChange={([v]) => setTargetLevel(v)}
-                  min={currentInsight === targetInsight ? currentLevel : 1}
-                  max={MAX_LEVEL_BY_INSIGHT[targetInsight]}
-                  step={1}
-                />
+                <Slider value={[targetLevel]} onValueChange={([v]) => setTargetLevel(v)} min={currentInsight === targetInsight ? currentLevel : 1} max={MAX_LEVEL_BY_INSIGHT[targetInsight]} step={1} />
               </div>
             </div>
-
             <div>
-              <label className="text-sm font-medium mb-2 block">공명 레벨</label>
+              <label className="text-sm font-medium mb-2 block">{t("resonanceLevel")}</label>
               {renderResonanceButtons(targetResonance, setTargetResonance, true)}
             </div>
 
             {hasEuphoriaMaterial && characterEuphorias.length > 0 && (
               <div>
-                <label className="text-sm font-medium mb-2 block">광상 선택</label>
+                <label className="text-sm font-medium mb-2 block">{t("euphoriaSelect")}</label>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {characterEuphorias.map((euphoria) => (
                     <Button
@@ -441,13 +373,13 @@ export default function GrowthPlanModal_Growth({
                       onClick={() => toggleEuphoriaLevel(euphoria.number, false)}
                       className="h-auto px-3 py-2"
                     >
-                      {euphoria.number}차 광상
+                      {t("euphoriaNum", { num: euphoria.number })}
                     </Button>
                   ))}
                 </div>
                 {targetEuphoriaLevels.length > 0 && (
                   <div>
-                    <label className="text-sm font-medium mb-2 block">광상 레벨 (0~4)</label>
+                    <label className="text-sm font-medium mb-2 block">{t("euphoriaLevel")}</label>
                     {renderEuphoriaLevelButtons(targetZoneLevel, setTargetZoneLevel)}
                   </div>
                 )}
@@ -456,7 +388,7 @@ export default function GrowthPlanModal_Growth({
 
             <div>
               <label className="text-sm font-medium mb-2 block">
-                공명 변조 (최대 5개, 현재: {targetResonancePatterns.length}개)
+                {t("resonancePattern", { count: targetResonancePatterns.length })}
               </label>
               <div className="flex flex-wrap gap-1">
                 {availablePatterns.map((patternName, index) => {
@@ -493,33 +425,31 @@ export default function GrowthPlanModal_Growth({
           </div>
         </div>
 
-        {/* 액션 버튼 */}
         <div className="flex justify-between gap-3 pt-4 border-t">
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            취소
+            {t("cancel")}
           </Button>
 
           <div className="flex gap-2">
-            {/* 여러 캐릭터를 추가할 때만 네비게이션 버튼 표시 */}
             {totalCount !== undefined && totalCount > 1 && currentIndex !== undefined ? (
               <>
                 {currentIndex > 0 && (
                   <Button variant="outline" onClick={() => handleNavigate('prev')}>
-                    이전
+                    {t("prev")}
                   </Button>
                 )}
                 {currentIndex < totalCount - 1 ? (
                   <Button onClick={() => handleNavigate('next')}>
-                    다음
+                    {t("next")}
                   </Button>
                 ) : (
                   <Button onClick={handleSave}>
-                    저장
+                    {t("save")}
                   </Button>
                 )}
               </>
             ) : (
-              <Button onClick={handleSave}>저장</Button>
+              <Button onClick={handleSave}>{t("save")}</Button>
             )}
           </div>
         </div>

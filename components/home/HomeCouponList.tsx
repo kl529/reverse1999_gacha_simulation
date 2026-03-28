@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { coupons } from "@/data/coupon";
 import { Card } from "@/components/ui/card";
 
@@ -20,6 +21,8 @@ function getActiveCoupons() {
 
 export default function HomeCouponList() {
   const activeCoupons = getActiveCoupons();
+  const t = useTranslations("coupon");
+  const tCommon = useTranslations("common");
 
   if (activeCoupons.length === 0) {
     return null;
@@ -32,12 +35,12 @@ export default function HomeCouponList() {
   return (
     <Card className="flex h-full flex-col bg-gray-900/80 p-3 sm:p-4">
       <div className="mb-2 flex items-center justify-between sm:mb-3">
-        <h3 className="text-base font-bold text-white sm:text-lg">🎫 사용가능한 쿠폰</h3>
+        <h3 className="text-base font-bold text-white sm:text-lg">{t("availableCoupons")}</h3>
         <Link
           href="/coupon"
           className="text-xs text-blue-400 hover:text-blue-300 hover:underline sm:text-sm"
         >
-          전체보기 →
+          {tCommon("viewAll")}
         </Link>
       </div>
 
@@ -63,7 +66,7 @@ export default function HomeCouponList() {
 
         {hasMore && (
           <div className="mt-1 text-center text-[10px] text-gray-500 sm:text-xs">
-            +{activeCoupons.length - 3}개 더 있음
+            {tCommon("moreItems", { count: activeCoupons.length - 3 })}
           </div>
         )}
       </div>

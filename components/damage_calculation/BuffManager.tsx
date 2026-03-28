@@ -14,6 +14,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Trash2, Plus } from "lucide-react";
 import { Buff, Stats } from "./DamageCalculator";
+import { useTranslations } from "next-intl";
 
 interface BuffManagerProps {
   title: string;
@@ -24,73 +25,74 @@ interface BuffManagerProps {
 
 type BuffTypeValue = keyof Stats;
 
-const BUFF_TYPES: { value: BuffTypeValue; label: string }[] = [
-  { value: "attack", label: "공격력" },
-  { value: "attackPercent", label: "공격력%" },
-  { value: "attackFlat", label: "공격력 고정수치" },
-  { value: "realityDefense", label: "현실 방어력" },
-  { value: "mentalDefense", label: "정신 방어력" },
-  { value: "defenseIgnore", label: "방어 무시율" },
-  { value: "defenseReduction", label: "방어력 감소율" },
-  { value: "damageBonus", label: "피해 보너스" },
-  { value: "damageReduction", label: "피해 감면" },
-  { value: "damageDealt", label: "주는 피해 증가량" },
-  { value: "enemyDamageTaken", label: "적 받는 피해 증가" },
-  { value: "incantationPower", label: "주문 위력" },
-  { value: "ritualPower", label: "술식 위력" },
-  { value: "powerReduction", label: "위력 감소" },
-  { value: "baseCoefficient", label: "기본 계수" },
-  { value: "additionalCoefficient", label: "추가 피해 계수" },
-  { value: "extraAttackCoefficient", label: "추공 계수" },
-  { value: "critRate", label: "치명타 기술" },
-  { value: "critDamagePercent", label: "치명타 피해%" },
-  { value: "critDefense", label: "치명타 방어력" },
-  { value: "enemyCritDefenseReduction", label: "적 치명타 방어 감소" },
+const BUFF_TYPE_KEYS: { value: BuffTypeValue; labelKey: string }[] = [
+  { value: "attack", labelKey: "buffAttack" },
+  { value: "attackPercent", labelKey: "buffAttackPercent" },
+  { value: "attackFlat", labelKey: "buffAttackFlat" },
+  { value: "realityDefense", labelKey: "buffRealityDefense" },
+  { value: "mentalDefense", labelKey: "buffMentalDefense" },
+  { value: "defenseIgnore", labelKey: "buffDefenseIgnore" },
+  { value: "defenseReduction", labelKey: "buffDefenseReduction" },
+  { value: "damageBonus", labelKey: "buffDamageBonus" },
+  { value: "damageReduction", labelKey: "buffDamageReduction" },
+  { value: "damageDealt", labelKey: "buffDamageDealt" },
+  { value: "enemyDamageTaken", labelKey: "buffEnemyDamageTaken" },
+  { value: "incantationPower", labelKey: "buffIncantationPower" },
+  { value: "ritualPower", labelKey: "buffRitualPower" },
+  { value: "powerReduction", labelKey: "buffPowerReduction" },
+  { value: "baseCoefficient", labelKey: "buffBaseCoeff" },
+  { value: "additionalCoefficient", labelKey: "buffAdditionalCoeff" },
+  { value: "extraAttackCoefficient", labelKey: "buffExtraAttackCoeff" },
+  { value: "critRate", labelKey: "buffCritRate" },
+  { value: "critDamagePercent", labelKey: "buffCritDamagePercent" },
+  { value: "critDefense", labelKey: "buffCritDefense" },
+  { value: "enemyCritDefenseReduction", labelKey: "buffEnemyCritDefReduction" },
 ];
 
 // 공격자용 프리셋 버프
 const ATTACKER_PRESET_BUFFS: {
-  name: string;
+  nameKey: string;
   type: BuffTypeValue;
   value: number;
   isPercent: boolean;
 }[] = [
-  { name: "공격력 +10%", type: "attack", value: 10, isPercent: true },
-  { name: "공격력 +20%", type: "attack", value: 20, isPercent: true },
-  { name: "방어 무시 +15%", type: "defenseIgnore", value: 15, isPercent: false },
-  { name: "방어 무시 +25%", type: "defenseIgnore", value: 25, isPercent: false },
-  { name: "피해 보너스 +15%", type: "damageBonus", value: 15, isPercent: false },
-  { name: "피해 보너스 +30%", type: "damageBonus", value: 30, isPercent: false },
-  { name: "주는 피해 +20%", type: "damageDealt", value: 20, isPercent: false },
-  { name: "주는 피해 +35%", type: "damageDealt", value: 35, isPercent: false },
-  { name: "적 받는 피해 +20%", type: "enemyDamageTaken", value: 20, isPercent: false },
-  { name: "적 받는 피해 +35%", type: "enemyDamageTaken", value: 35, isPercent: false },
-  { name: "치명타 피해% +30%", type: "critDamagePercent", value: 30, isPercent: false },
-  { name: "치명타 피해% +50%", type: "critDamagePercent", value: 50, isPercent: false },
-  { name: "적 치명타 방어 -20%", type: "enemyCritDefenseReduction", value: 20, isPercent: false },
-  { name: "적 치명타 방어 -40%", type: "enemyCritDefenseReduction", value: 40, isPercent: false },
-  { name: "주문 위력 +25%", type: "incantationPower", value: 25, isPercent: false },
-  { name: "술식 위력 +25%", type: "ritualPower", value: 25, isPercent: false },
+  { nameKey: "presetAtkPercent10", type: "attack", value: 10, isPercent: true },
+  { nameKey: "presetAtkPercent20", type: "attack", value: 20, isPercent: true },
+  { nameKey: "presetDefIgnore15", type: "defenseIgnore", value: 15, isPercent: false },
+  { nameKey: "presetDefIgnore25", type: "defenseIgnore", value: 25, isPercent: false },
+  { nameKey: "presetDmgBonus15", type: "damageBonus", value: 15, isPercent: false },
+  { nameKey: "presetDmgBonus30", type: "damageBonus", value: 30, isPercent: false },
+  { nameKey: "presetDmgDealt20", type: "damageDealt", value: 20, isPercent: false },
+  { nameKey: "presetDmgDealt35", type: "damageDealt", value: 35, isPercent: false },
+  { nameKey: "presetEnemyDmgTaken20", type: "enemyDamageTaken", value: 20, isPercent: false },
+  { nameKey: "presetEnemyDmgTaken35", type: "enemyDamageTaken", value: 35, isPercent: false },
+  { nameKey: "presetCritDmg30", type: "critDamagePercent", value: 30, isPercent: false },
+  { nameKey: "presetCritDmg50", type: "critDamagePercent", value: 50, isPercent: false },
+  { nameKey: "presetEnemyCritDef20", type: "enemyCritDefenseReduction", value: 20, isPercent: false },
+  { nameKey: "presetEnemyCritDef40", type: "enemyCritDefenseReduction", value: 40, isPercent: false },
+  { nameKey: "presetIncantation25", type: "incantationPower", value: 25, isPercent: false },
+  { nameKey: "presetRitual25", type: "ritualPower", value: 25, isPercent: false },
 ];
 
 // 방어자용 프리셋 디버프
 const DEFENDER_PRESET_BUFFS: {
-  name: string;
+  nameKey: string;
   type: BuffTypeValue;
   value: number;
   isPercent: boolean;
 }[] = [
-  { name: "현실 방어력 +10%", type: "realityDefense", value: 10, isPercent: true },
-  { name: "현실 방어력 +20%", type: "realityDefense", value: 20, isPercent: true },
-  { name: "정신 방어력 +10%", type: "mentalDefense", value: 10, isPercent: true },
-  { name: "정신 방어력 +20%", type: "mentalDefense", value: 20, isPercent: true },
-  { name: "피해 감면 +15%", type: "damageReduction", value: 15, isPercent: false },
-  { name: "피해 감면 +30%", type: "damageReduction", value: 30, isPercent: false },
-  { name: "치명타 방어력 +20%", type: "critDefense", value: 20, isPercent: false },
-  { name: "치명타 방어력 +40%", type: "critDefense", value: 40, isPercent: false },
+  { nameKey: "presetRealDef10", type: "realityDefense", value: 10, isPercent: true },
+  { nameKey: "presetRealDef20", type: "realityDefense", value: 20, isPercent: true },
+  { nameKey: "presetMentalDef10", type: "mentalDefense", value: 10, isPercent: true },
+  { nameKey: "presetMentalDef20", type: "mentalDefense", value: 20, isPercent: true },
+  { nameKey: "presetDmgReduction15", type: "damageReduction", value: 15, isPercent: false },
+  { nameKey: "presetDmgReduction30", type: "damageReduction", value: 30, isPercent: false },
+  { nameKey: "presetCritDef20", type: "critDefense", value: 20, isPercent: false },
+  { nameKey: "presetCritDef40", type: "critDefense", value: 40, isPercent: false },
 ];
 
 export default function BuffManager({ title, buffs, onBuffsChange, type }: BuffManagerProps) {
+  const t = useTranslations("damageCalc");
   const [newBuffName, setNewBuffName] = useState("");
   const [newBuffType, setNewBuffType] = useState<BuffTypeValue>("attack");
   const [newBuffValue, setNewBuffValue] = useState(10);
@@ -120,7 +122,7 @@ export default function BuffManager({ title, buffs, onBuffsChange, type }: BuffM
   const addPresetBuff = (preset: (typeof PRESET_BUFFS)[0]) => {
     const newBuff: Buff = {
       id: Date.now().toString(),
-      name: preset.name,
+      name: t(preset.nameKey),
       type: preset.type,
       value: preset.value,
       isPercent: preset.isPercent,
@@ -139,7 +141,7 @@ export default function BuffManager({ title, buffs, onBuffsChange, type }: BuffM
 
       {/* 프리셋 버프 버튼들 */}
       <div className="space-y-2">
-        <Label className="text-sm text-muted-foreground">빠른 추가</Label>
+        <Label className="text-sm text-muted-foreground">{t("quickAdd")}</Label>
         <div className="grid grid-cols-2 gap-2">
           {PRESET_BUFFS.map((preset, index) => (
             <Button
@@ -149,7 +151,7 @@ export default function BuffManager({ title, buffs, onBuffsChange, type }: BuffM
               onClick={() => addPresetBuff(preset)}
               className="h-auto whitespace-normal py-2 text-xs"
             >
-              {preset.name}
+              {t(preset.nameKey)}
             </Button>
           ))}
         </div>
@@ -164,31 +166,31 @@ export default function BuffManager({ title, buffs, onBuffsChange, type }: BuffM
           className="w-full"
         >
           <Plus className="mr-2 h-4 w-4" />
-          {showCustomForm ? "커스텀 버프 숨기기" : "커스텀 버프 추가"}
+          {showCustomForm ? t("hideCustomBuff") : t("addCustomBuff")}
         </Button>
 
         {showCustomForm && (
           <div className="space-y-3 rounded-lg border p-4">
             <div>
-              <Label htmlFor={`buff-name-${title}`}>버프 이름</Label>
+              <Label htmlFor={`buff-name-${title}`}>{t("buffName")}</Label>
               <Input
                 id={`buff-name-${title}`}
                 value={newBuffName}
                 onChange={(e) => setNewBuffName(e.target.value)}
-                placeholder="예: 공격력 버프"
+                placeholder={t("buffNamePlaceholder")}
               />
             </div>
 
             <div>
-              <Label htmlFor={`buff-type-${title}`}>버프 타입</Label>
+              <Label htmlFor={`buff-type-${title}`}>{t("buffType")}</Label>
               <Select value={newBuffType} onValueChange={(value) => setNewBuffType(value as BuffTypeValue)}>
                 <SelectTrigger id={`buff-type-${title}`}>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {BUFF_TYPES.map((type) => (
+                  {BUFF_TYPE_KEYS.map((type) => (
                     <SelectItem key={type.value} value={type.value}>
-                      {type.label}
+                      {t(type.labelKey)}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -196,7 +198,7 @@ export default function BuffManager({ title, buffs, onBuffsChange, type }: BuffM
             </div>
 
             <div>
-              <Label htmlFor={`buff-value-${title}`}>증가량</Label>
+              <Label htmlFor={`buff-value-${title}`}>{t("increaseAmount")}</Label>
               <Input
                 id={`buff-value-${title}`}
                 type="number"
@@ -206,7 +208,7 @@ export default function BuffManager({ title, buffs, onBuffsChange, type }: BuffM
             </div>
 
             <div className="flex items-center justify-between">
-              <Label htmlFor={`buff-percent-${title}`}>퍼센트 적용</Label>
+              <Label htmlFor={`buff-percent-${title}`}>{t("percentApply")}</Label>
               <Switch
                 id={`buff-percent-${title}`}
                 checked={newBuffIsPercent}
@@ -215,7 +217,7 @@ export default function BuffManager({ title, buffs, onBuffsChange, type }: BuffM
             </div>
 
             <Button onClick={addBuff} className="w-full">
-              추가
+              {t("add")}
             </Button>
           </div>
         )}
@@ -224,7 +226,7 @@ export default function BuffManager({ title, buffs, onBuffsChange, type }: BuffM
       {/* 적용된 버프 목록 */}
       {buffs.length > 0 && (
         <div className="space-y-2">
-          <Label className="text-sm text-muted-foreground">적용된 버프</Label>
+          <Label className="text-sm text-muted-foreground">{t("appliedBuffs")}</Label>
           <div className="grid grid-cols-2 gap-2">
             {buffs.map((buff) => (
               <div
@@ -256,7 +258,7 @@ export default function BuffManager({ title, buffs, onBuffsChange, type }: BuffM
             onClick={() => onBuffsChange([])}
             className="w-full"
           >
-            모두 제거
+            {t("removeAll")}
           </Button>
         </div>
       )}

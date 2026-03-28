@@ -9,12 +9,16 @@ import { EventInput, DatesSetArg, EventClickArg } from "@fullcalendar/core";
 import { CalendarEvent } from "@/data/calendar_events";
 import { getCharacterById } from "@/data/characters";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 interface Props {
   events: CalendarEvent[];
 }
 
 const CustomCalendar: React.FC<Props> = ({ events }) => {
+  const t = useTranslations("calendar");
+  const locale = useLocale();
   const calendarRef = useRef<FullCalendar>(null);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedEvent, setSelectedEvent] = useState<null | EventInput>(null);
@@ -27,36 +31,32 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // 이벤트 변환
   const calendarEventInputs: EventInput[] = useMemo(
     () =>
       events.map((ev) => {
         if (ev.type === "birthday") {
-          // 생일 이벤트의 경우
           const [month, day] = ev.date.split("-").map(Number);
           const currentYear = new Date().getFullYear();
 
-          // character_id로 캐릭터 이름 가져오기
           const characterName = ev.character_id
-            ? getCharacterById(ev.character_id)?.name || ev.title || "알 수 없음"
-            : ev.title || "알 수 없음";
+            ? getCharacterById(ev.character_id)?.name || ev.title || "Unknown"
+            : ev.title || "Unknown";
 
           return {
-            title: `🎂 ${characterName}`,
-            start: `${currentYear}-${ev.date}`, // 현재 년도로 시작
+            title: t("birthday", { name: characterName }),
+            start: `${currentYear}-${ev.date}`,
             backgroundColor: "#43a047",
             borderColor: "#43a047",
             textColor: "#fff",
             display: "block",
             rrule: {
               freq: "yearly",
-              dtstart: `${currentYear}-${ev.date}`, // 현재 년도부터 시작
+              dtstart: `${currentYear}-${ev.date}`,
               bymonth: month,
               bymonthday: day,
             },
           };
         } else if (ev.type === "version") {
-          // 버전 이벤트의 경우 - 모바일과 데스크톱에서 다르게 표시
           const versionTitle = ev.title || "";
           return {
             title: `v${versionTitle.match(/\d+\.\d+/)?.[0] || versionTitle}`,
@@ -73,7 +73,6 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
             },
           };
         } else {
-          // 일반 이벤트의 경우 (기존 로직)
           const endDate = ev.end ? new Date(ev.end) : null;
           if (endDate) {
             endDate.setDate(endDate.getDate() + 1);
@@ -94,19 +93,16 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
           };
         }
       }),
-    [events, isMobile]
+    [events, isMobile, t]
   );
 
-  // FullCalendar의 날짜 변경 시 호출
   const handleDatesSet = (arg: DatesSetArg) => {
-    // 현재 보여지는 달력의 중간 날짜를 사용
     const viewStart = new Date(arg.start);
     const viewEnd = new Date(arg.end);
     const middleDate = new Date((viewStart.getTime() + viewEnd.getTime()) / 2);
     setCurrentDate(middleDate);
   };
 
-  // 월 이동 함수
   const handlePrev = () => {
     const calendarApi = calendarRef.current?.getApi();
     calendarApi?.prev();
@@ -120,7 +116,6 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
     calendarApi?.today();
   };
 
-  // 년월 포맷
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1;
 
@@ -154,7 +149,6 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
     return String(val);
   }
 
-  // 날짜 셀 렌더링 수정
   const renderDayCell = (info: {
     dayNumberText: string;
     date: Date;
@@ -163,7 +157,6 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
     if (isMobile) {
       return <div>{info.dayNumberText}</div>;
     }
-    // 해당 날짜의 버전 이벤트 찾기
     const versionEvents = info.view.calendar.getEvents().filter((event: EventInput) => {
       if (!event.start || event.display !== "background") return false;
       const eventStart = event.start instanceof Date ? event.start : new Date(String(event.start));
@@ -204,7 +197,6 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
     );
   };
 
-  // 이벤트 클릭 시 새 탭 이동
   const handleEventClick = (info: EventClickArg) => {
     info.jsEvent.preventDefault();
     setSelectedEvent({
@@ -217,10 +209,8 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
     });
   };
 
-  // 이벤트 렌더링 커스터마이즈
   const eventContent = (eventInfo: { event: EventInput & { display?: string; title: string } }) => {
     if (eventInfo.event.display === "chip") {
-      // 버전 이벤트의 경우 chip 스타일로 렌더링
       const versionNumber = eventInfo.event.title.match(/\d+\.\d+/)?.[0];
       return (
         <div className="version-chip-container">
@@ -228,16 +218,14 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
         </div>
       );
     }
-    // 다른 이벤트는 기본 렌더링 사용
     return <div className="fc-event-main-inner">{eventInfo.event.title}</div>;
   };
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-white p-4 dark:bg-gray-900 dark:text-gray-200">
       <h1 className="top-0 z-20 mt-8 p-3 text-center text-2xl font-bold text-black dark:text-gray-100 lg:text-3xl">
-        리버스 캘린더
+        {t("title")}
       </h1>
-      {/* 상단 컨트롤 바 */}
       <div
         style={{
           position: "relative",
@@ -250,15 +238,13 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
           alignItems: "center",
         }}
       >
-        {/* 오늘 버튼 */}
         <button
           onClick={handleToday}
           style={isMobile ? { ...buttonStyle, ...mobileButtonStyle } : buttonStyle}
         >
-          오늘
+          {t("today")}
         </button>
 
-        {/* 중앙 년월 컨트롤 */}
         <div style={{ display: "flex", alignItems: "center", gap: "8px", margin: "0 auto" }}>
           <button onClick={handlePrev} style={buttonStyle}>
             &lt;
@@ -273,24 +259,22 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
               whiteSpace: "nowrap",
             }}
           >
-            {year}년 {month}월
+            {t("yearMonth", { year, month })}
           </div>
           <button onClick={handleNext} style={buttonStyle}>
             &gt;
           </button>
         </div>
 
-        {/* 오늘 버튼의 공간을 맞추기 위한 더미 div */}
         <div style={{ width: isMobile ? 40 : 30, visibility: "hidden" }} />
       </div>
 
-      {/* 캘린더 */}
       <div className="calendar-wrapper" style={{ width: "100%", maxWidth: 900 }}>
         <FullCalendar
           ref={calendarRef}
           plugins={[dayGridPlugin, interactionPlugin, rrulePlugin]}
           initialView="dayGridMonth"
-          locale="ko"
+          locale={locale}
           events={calendarEventInputs}
           dayCellContent={renderDayCell}
           eventContent={eventContent}
@@ -400,7 +384,6 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
             <div style={{ fontWeight: "bold", fontSize: "1.2rem", marginBottom: 8 }}>
               {selectedEvent.title}
             </div>
-            {/* 이미지 (있으면) */}
             {selectedEvent.img && (
               <Image
                 src={selectedEvent.img}
@@ -419,11 +402,9 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
                   ? formatDate(selectedEvent.start)
                   : ""}
             </div>
-            {/* 설명 (있으면) */}
             {selectedEvent.description && (
               <div style={{ marginBottom: 12 }}>{selectedEvent.description}</div>
             )}
-            {/* 이동 버튼 */}
             {selectedEvent.url ? (
               <button
                 style={{
@@ -441,7 +422,7 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
                   setSelectedEvent(null);
                 }}
               >
-                가챠 시뮬레이터로 이동
+                {t("goToGacha")}
               </button>
             ) : (
               <button
@@ -458,10 +439,9 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
                 }}
                 disabled
               >
-                이동할 링크가 없습니다
+                {t("noLink")}
               </button>
             )}
-            {/* 닫기 버튼 */}
             <button
               style={{
                 position: "absolute",
@@ -474,7 +454,7 @@ const CustomCalendar: React.FC<Props> = ({ events }) => {
               }}
               className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
               onClick={() => setSelectedEvent(null)}
-              aria-label="닫기"
+              aria-label={t("close")}
             >
               ×
             </button>
