@@ -161,12 +161,6 @@ export const coupons: Coupon[] = [
   },
   {
     id: "24",
-    code: "핏빛색전투의노래",
-    description: "3.2 쿠폰",
-    expiresAt: "2026-04-16",
-  },
-  {
-    id: "25",
     code: "철혈의장군",
     description: "3.2 쿠폰",
     expiresAt: "2026-04-16",
