@@ -156,6 +156,11 @@ export default function FutureInsightPage() {
                           </span>
                           <p className="font-semibold">{banner.name}</p>
                         </div>
+                        {(banner.startDate || banner.endDate) && (
+                          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                            {banner.startDate ?? "?"} ~ {banner.endDate ?? "?"}
+                          </p>
+                        )}
                         <p>
                           <strong>6성:</strong> {pickup6 || "-"}
                         </p>

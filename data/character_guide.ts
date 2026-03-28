@@ -2005,7 +2005,7 @@ export const characterGuideList: CharacterGuide[] = [
   {
     character_id: 59, // 이고르
     youtube_links: ["https://www.youtube.com/watch?v=iUPKXGoYiRk"],
-    keywords: ["딜러", "술식", "정신피해"],
+    keywords: ["딜러", "술식", "현실피해"],
     guide_images: [],
   },
   {

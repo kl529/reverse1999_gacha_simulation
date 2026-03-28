@@ -8,24 +8,27 @@ export type Banner = {
   pickup5?: (number | Character)[]; // 일반 배너용 5성
   twoPickup6?: (number | Character)[]; // 2중 픽업 배너에서만 사용
   version?: string;
+  startDate?: string; // 배너 시작일 (YYYY-MM-DD 형식)
   endDate?: string; // 배너 종료일 (YYYY-MM-DD 형식)
 };
 
 export const banners: Banner[] = [
-  {
-    id: "paper_heron_pick_up",
-    name: "[3.4] 노사전 픽업",
-    pickup6: 60,
-    pickup5: [119, 112],
-    version: "3.4",
-    endDate: "2026-05-28",
-  },
   {
     id: "cheng_heguang_pick_up",
     name: "[3.4] 정화광 픽업",
     pickup6: 61,
     pickup5: [115, 105],
     version: "3.4",
+    startDate: "2026-05-07",
+    endDate: "2026-05-28",
+  },
+  {
+    id: "paper_heron_pick_up",
+    name: "[3.4] 노사전 픽업",
+    pickup6: 60,
+    pickup5: [119, 112],
+    version: "3.4",
+    startDate: "2026-04-16",
     endDate: "2026-05-28",
   },
   {
@@ -34,6 +37,7 @@ export const banners: Banner[] = [
     pickup6: 59,
     pickup5: [105, 116],
     version: "3.3",
+    startDate: "2026-03-26",
     endDate: "2026-04-16",
   },
   {
@@ -42,6 +46,7 @@ export const banners: Banner[] = [
     pickup6: 58,
     pickup5: [104, 113],
     version: "3.3",
+    startDate: "2026-03-05",
     endDate: "2026-03-26",
   },
   {
