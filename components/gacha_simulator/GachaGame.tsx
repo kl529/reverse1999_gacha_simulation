@@ -289,6 +289,7 @@ export default function GachaGame() {
    * - 반복이 끝난 후, React 상태에 최종 반영
    */
   const handleGacha = (times: number) => {
+    const isAprilFools = state.totalPulls < 401 && state.totalPulls + times >= 401;
     let localPity = state.pityCount;
     let localPickup = state.pickupGuarantee;
 
@@ -350,6 +351,25 @@ export default function GachaGame() {
         newStats,
       },
     });
+
+    // 401번째 뽑기 이스터에그
+    if (isAprilFools) {
+      setTimeout(() => {
+        toast(
+          (t) => (
+            <div
+              onClick={() => toast.dismiss(t.id)}
+              className="cursor-pointer space-y-1"
+            >
+              <p className="font-semibold">401번째... 뭔가 이상한 느낌이 든다.</p>
+              <p className="text-sm">거울하면 떠오르는 마도학자의 첫번째 글자는?</p>
+              <p className="text-xs opacity-60">탭하면 닫힙니다</p>
+            </div>
+          ),
+          { duration: 8000 }
+        );
+      }, 400);
+    }
   };
 
   /**

@@ -39,6 +39,7 @@ export default function SecurityWrapper({ children }: { children: React.ReactNod
       "/growth_calculator",
       "/favorite_character",
       "/quiz",
+      "/april",
     ];
 
     const allowedPathPrefixes = [

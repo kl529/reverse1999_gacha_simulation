@@ -25,6 +25,7 @@ const CardInfoModal = dynamic(() => import("@/components/modals/CardInfoModal"))
 const ColourfulText = dynamic(() => import("@/components/ui/ColourfulText"));
 
 const bgImages = Array.from({ length: 35 }, (_, i) => getHomeUrl(`poster${i + 1}.webp`));
+const APRIL_BG = "/infos/menu/april.webp";
 
 export default function HomePage() {
   const [bgImage, setBgImage] = useState<string | null>(null);
@@ -47,8 +48,7 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    const random = Math.floor(Math.random() * bgImages.length);
-    setBgImage(bgImages[random]);
+    setBgImage(APRIL_BG);
 
     // 새 쿠폰 체크 (조용하게, 서버에서 간격 제어)
     checkNewCouponsQuietly();
@@ -77,9 +77,9 @@ export default function HomePage() {
       <div className="relative z-20 flex min-h-screen flex-col">
         <main className="flex flex-grow flex-col items-center justify-center">
           <h2 className="mb-4 mt-20 text-4xl font-bold text-black dark:text-white lg:mt-0">
-            버틴의 여행가방 🧳
+            아르카나의 여행가방 <Link href="/april" className="hover:opacity-70 transition-opacity">🧳</Link>
           </h2>
-          <p className="mb-8 text-black dark:text-white">당신이 폭풍우를 이겨낼 수 있도록..</p>
+          <p className="mb-8 text-black dark:text-white">재건의 손으로 어서오세요</p>
 
           <div className="grid w-full max-w-7xl grid-cols-1 gap-7 px-6 md:px-12 lg:grid-cols-3 lg:px-4">
             <CardBox title="놀이터" subTitle="Just for Fun" items={PLAYGROUND_ITEMS} />

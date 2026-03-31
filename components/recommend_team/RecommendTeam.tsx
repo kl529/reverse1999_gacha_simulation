@@ -194,6 +194,20 @@ export default function RecommendTeamPage() {
     return matchCharacter && matchConcept;
   });
 
+  const renderDescription = (text: string) => {
+    const parts = text.split(/(\[\[.*?\]\])/g);
+    return parts.map((part, i) => {
+      if (part.startsWith("[[") && part.endsWith("]]")) {
+        return (
+          <strong key={i} className="font-bold text-blue-500">
+            {part.slice(2, -2)}
+          </strong>
+        );
+      }
+      return part;
+    });
+  };
+
   return (
     <div className="min-h-screen w-full px-4 sm:px-6 lg:px-8">
       <h1 className="my-8 text-center text-3xl font-bold">추천 조합 모음</h1>
@@ -440,8 +454,17 @@ export default function RecommendTeamPage() {
                 </div>
                 <ul className="list-disc pl-4 text-sm text-gray-700 dark:text-gray-300">
                   {team.description.map((line, idx) => (
-                    <li key={idx}>{line}</li>
+                    <li key={idx}>{renderDescription(line)}</li>
                   ))}
+                  {team.name === "히사베스 술식덱" && (
+                    <li
+                      className="select-text text-white dark:text-gray-800"
+                      style={{ userSelect: "text" }}
+                      aria-hidden="true"
+                    >
+                      2.4버젼 전반기 신캐 이름의 마지막 글자
+                    </li>
+                  )}
                 </ul>
               </div>
             </CardContent>

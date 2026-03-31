@@ -185,7 +185,7 @@ export const charactersByRarity: Record<number, Character[]> = {
     },
     {
       id: 20,
-      name: "스파토데아",
+      name: "스파게티",
       rarity: 6,
       inspiration: "beast",
       engName: "spathodea",
@@ -304,7 +304,7 @@ export const charactersByRarity: Record<number, Character[]> = {
     },
     {
       id: 33,
-      name: "튜즈데이",
+      name: "웬즈데이",
       rarity: 6,
       inspiration: "spirit",
       engName: "tuesday",
@@ -359,7 +359,7 @@ export const charactersByRarity: Record<number, Character[]> = {
     },
     {
       id: 39,
-      name: "바르카롤라",
+      name: "바롤로로롤",
       rarity: 6,
       inspiration: "star",
       engName: "barcarola",
