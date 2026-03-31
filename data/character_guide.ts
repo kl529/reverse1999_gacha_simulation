@@ -1931,7 +1931,7 @@ export const characterGuideList: CharacterGuide[] = [
       note: "2/5형상이 꽤나 효율이 높고, 1형상도 추후 나올 서폿을 받으면더욱 효율이 좋아질 수 있음. icehood의 분석과는 수치가 약간 다름",
     },
     youtube_links: ["https://www.youtube.com/watch?v=j_RtHFlQhFQ"],
-    keywords: ["딜러", "잔광", "정신피해", "한정"],
+    keywords: ["딜러", "여휘", "정신피해", "한정"],
     guide_images: [],
   },
   {
@@ -2039,7 +2039,7 @@ export const characterGuideList: CharacterGuide[] = [
       note: "",
     },
     youtube_links: ["https://www.youtube.com/watch?v=P4T0Rqf-arw"],
-    keywords: [],
+    keywords: ["딜러", "나무계시", "현실피해", "한정"],
     guide_images: [],
   },
   {
@@ -2073,7 +2073,7 @@ export const characterGuideList: CharacterGuide[] = [
       note: "",
     },
     youtube_links: ["https://www.youtube.com/watch?v=ckEk8H7F0Sg"],
-    keywords: [],
+    keywords: ["서폿", "추가공격", "현실피해"],
     guide_images: [],
   },
 ];
