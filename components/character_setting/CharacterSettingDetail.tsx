@@ -42,6 +42,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
   }, [character.id]);
 
   const [showDialog, setShowDialog] = useState(false);
+  const [showAprilModal, setShowAprilModal] = useState(false);
 
   return (
     <div className="min-h-screen w-full bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
@@ -165,7 +166,24 @@ export default function CharacterSettingDetail({ character }: { character: Chara
 
         {psycubeItems.length > 0 && (
           <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
-            <h2 className="mb-2 text-center text-xl font-bold">의지 추천</h2>
+            <div className="mb-2 flex items-center justify-center gap-2">
+              <h2 className="text-center text-xl font-bold">의지 추천</h2>
+              {character.id === 20 && (
+                <button
+                  onClick={() => setShowAprilModal(true)}
+                  className="opacity-40 transition-opacity hover:opacity-100"
+                  title="?"
+                >
+                  <Image
+                    src="/infos/euphoria/melania_1.webp"
+                    alt="?"
+                    width={32}
+                    height={32}
+                    className="rounded"
+                  />
+                </button>
+              )}
+            </div>
             <p className="mb-4 text-center text-xs text-gray-500 dark:text-gray-400">
               의지는 추천순이며, 순위도 100% 정답이 아닐 수도 있습니다.
             </p>
@@ -261,6 +279,26 @@ export default function CharacterSettingDetail({ character }: { character: Chara
       </div>
 
       <Toaster position="bottom-center" toastOptions={{ duration: 2000 }} />
+
+      {/* 만우절 이스터에그 모달 */}
+      {character.id === 20 && (
+        <Dialog open={showAprilModal} onOpenChange={setShowAprilModal}>
+          <DialogContent className="w-[95vw] max-w-sm">
+            <DialogHeader>
+              <DialogTitle>🔍</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-4 text-sm">
+              <p className="text-gray-700 dark:text-gray-300">
+                용케 여기까지 왔군. 하지만 암호를 풀기는 힘들거다
+              </p>
+              <p className="rounded bg-gray-100 p-3 font-mono text-base tracking-widest dark:bg-gray-800">
+                77 104 111 32 97 109 32 73 63
+              </p>
+              <p className="text-xs text-gray-400">해당 마도학자의 첫글자.</p>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 }

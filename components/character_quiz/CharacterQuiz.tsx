@@ -42,6 +42,8 @@ export default function CharacterQuiz() {
   const [showResetModal, setShowResetModal] = useState(false); // 초기화 확인 모달
   const [showHelpModal, setShowHelpModal] = useState(false); // 도움말 모달
   const [showFinalModal, setShowFinalModal] = useState(false); // 마지막 결과 모달
+  const [showGlassesModal, setShowGlassesModal] = useState(false); // 안경 이스터에그 모달
+  const [glassesTime, setGlassesTime] = useState("");
 
   const [giveUpMatched, setGiveUpMatched] = useState<number>(0);
   const [showFilters, setShowFilters] = useState(false);
@@ -169,6 +171,25 @@ export default function CharacterQuiz() {
       return charNameNormalized === inputNoSpaceLower;
     });
 
+    if (trimmed === "안경") {
+      const now = new Date();
+      setGlassesTime(
+        now.toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit", second: "2-digit" })
+      );
+      setShowGlassesModal(true);
+      toast(
+        (t) => (
+          <span className="cursor-pointer" onClick={() => toast.dismiss(t.id)}>
+            재미있었나요? 내년엔 더 재미있는 컨텐츠로 돌아오겠습니다. 더 재미있는 컨텐츠를 위해
+            피드백이나 어땠는지 결과와 함께 공유해주세요 :)
+          </span>
+        ),
+        { duration: 6000 }
+      );
+      setInputValue("");
+      return;
+    }
+
     if (
       inputNoSpaceLower === "내아내" ||
       inputNoSpaceLower === "아내" ||
@@ -272,6 +293,8 @@ export default function CharacterQuiz() {
     setShowHelpModal(false);
     setShowFinalModal(false);
   };
+
+  const closeGlassesModal = () => setShowGlassesModal(false);
 
   // **모두 맞춤** 감지 -> clearTime 설정 + 축하 모달
   useEffect(() => {
@@ -662,6 +685,36 @@ export default function CharacterQuiz() {
             <p className="text-center font-bold">시간 측정 없음</p>
           )}
         </div>
+      </ConfirmModal>
+
+      {/* (4) 안경 이스터에그 모달 */}
+      <ConfirmModal
+        isOpen={showGlassesModal}
+        onClose={closeGlassesModal}
+        modalClassName="
+          animate__animated animate__bounceIn
+          bg-white dark:bg-gray-800
+          text-black dark:text-white
+          w-[95vw] max-w-md p-6
+          rounded-lg shadow-lg text-center
+        "
+      >
+        <div className="mb-4 text-5xl">🎉</div>
+        <h2 className="mb-3 text-xl font-bold text-green-600 dark:text-green-400">축하해요!</h2>
+        <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">클리어 시간 : {glassesTime}</p>
+        <p className="text-base leading-relaxed">
+          고마워 소네트 덕분에 다시 버틴의 여행가방을 되찾을 수 있었어
+        </p>
+        <p className="mt-3 text-sm text-gray-600 dark:text-gray-300">
+          이 좋은 소식을 다른 사람들에게도 전해줘
+        </p>
+        <p className="mt-4 text-xs text-gray-400 dark:text-gray-500">- 버틴의 여행가방 개발자 -</p>
+        <button
+          onClick={closeGlassesModal}
+          className="mt-5 rounded bg-green-500 px-6 py-2 text-white hover:bg-green-600"
+        >
+          확인
+        </button>
       </ConfirmModal>
 
       {showHardModeModal && (
