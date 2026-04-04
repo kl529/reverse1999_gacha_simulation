@@ -14,6 +14,24 @@ export type Banner = {
 
 export const banners: Banner[] = [
   {
+    id: "ramona_pick_up",
+    name: "[3.5] 라모나 픽업",
+    pickup6: 63,
+    pickup5: [126, 117],
+    version: "3.5",
+    startDate: "2026-06-18",
+    endDate: "2026-07-09",
+  },
+  {
+    id: "lorentz_butterfly_pick_up",
+    name: "[3.5] 로렌츠나비 픽업",
+    pickup6: 62,
+    pickup5: [103, 123],
+    version: "3.5",
+    startDate: "2026-05-28",
+    endDate: "2026-07-09",
+  },
+  {
     id: "cheng_heguang_pick_up",
     name: "[3.4] 정화광 픽업",
     pickup6: 61,

@@ -2077,4 +2077,12 @@ export const insightMaterial: InsightMaterial[] = [
       },
     ],
   },
+  {
+    character_id: 63, // "Ramona"
+    insight: [
+      { level: 1, materials: { 1002: 18000, 504: 6, 402: 6, 303: 5 } },
+      { level: 2, materials: { 1002: 40000, 505: 10, 304: 6, 212: 6 } },
+      { level: 3, materials: { 1002: 200000, 506: 16, 109: 6, 5: 3 } },
+    ],
+  },
 ];

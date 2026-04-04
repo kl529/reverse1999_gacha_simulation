@@ -7377,4 +7377,23 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
       },
     ],
   },
+  {
+    character_id: 63, // "Ramona"
+    resonance: [
+      { level: 2, materials: { 601: 5 } },
+      { level: 3, materials: { 601: 5, 403: 4 } },
+      { level: 4, materials: { 601: 5, 405: 4, 301: 3 } },
+      { level: 5, materials: { 602: 5, 308: 3, 310: 4 } },
+      { level: 6, materials: { 1002: 30000, 602: 5, 207: 3 } },
+      { level: 7, materials: { 602: 6, 212: 4 } },
+      { level: 8, materials: { 602: 6, 206: 4, 309: 4 } },
+      { level: 9, materials: { 602: 8, 211: 6, 307: 6 } },
+      { level: 10, materials: { 605: 1, 603: 5, 205: 6, 201: 8 } },
+      { level: 11, materials: { 605: 1, 1002: 120000, 603: 5, 107: 4 } },
+      { level: 12, materials: { 605: 1, 603: 6, 108: 4, 210: 5 } },
+      { level: 13, materials: { 605: 1, 603: 6, 104: 5, 209: 5 } },
+      { level: 14, materials: { 605: 1, 603: 8, 3: 2, 112: 4 } },
+      { level: 15, materials: { 605: 1, 603: 8, 5: 3, 110: 4 } },
+    ],
+  },
 ];

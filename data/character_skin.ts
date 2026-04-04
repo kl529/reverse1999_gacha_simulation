@@ -1381,6 +1381,48 @@ export const characterSkin: CharacterSkin[] = [
     version: "3.4",
     tarot_number: "9",
   },
+  {
+    id: 121,
+    character_id: 55, // 코르부스
+    name: "눈물을 태워 (미래시)",
+    engName: "burning_away_tears",
+    rarity: "Advanced",
+    source: "판매",
+    resell: "X",
+    version: "3.5",
+    price: "14,000₩ / 1,080빗방울",
+  },
+  {
+    id: 122,
+    character_id: 46, // 키페리나
+    name: "유리 속 유토피아 (미래시)",
+    engName: "a_utopia_in_painted_glass",
+    rarity: "Advanced",
+    source: "판매",
+    resell: "X",
+    version: "3.5",
+    price: "14,000₩ / 1,080빗방울",
+  },
+  {
+    id: 123,
+    character_id: 201, // 닉 보텀
+    name: "바텀의 꿈 (미래시)",
+    engName: "bottom_s_dream",
+    rarity: "Garment",
+    source: "무료",
+    resell: "X",
+    version: "3.5",
+  },
+  {
+    id: 124,
+    character_id: 33, // 웬즈데이
+    name: "차가운 요람 (미래시)",
+    engName: "cold_cradle",
+    rarity: "Garment",
+    source: "주크박스",
+    resell: "X",
+    version: "3.5",
+  },
   // 2통찰 스킨
   {
     id: 1000,
