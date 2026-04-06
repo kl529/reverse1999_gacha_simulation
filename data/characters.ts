@@ -1005,7 +1005,7 @@ export const charactersByRarity: Record<number, Character[]> = {
     },
     {
       id: 217,
-      name: "리드",
+      name: "노초결",
       rarity: 4,
       inspiration: "plant",
       engName: "reed",

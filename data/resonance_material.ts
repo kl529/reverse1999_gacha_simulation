@@ -7304,7 +7304,7 @@ export const resonanceMaterialList: ResonanceMaterial[] = [
     ],
   },
   {
-    character_id: 217, // "리드" (Reed)
+    character_id: 217, // "노초결" (Reed)
     resonance: [
       {
         level: 2,

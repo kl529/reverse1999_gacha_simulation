@@ -2055,7 +2055,7 @@ export const insightMaterial: InsightMaterial[] = [
     ],
   },
   {
-    character_id: 217, // "리드" (Reed)
+    character_id: 217, // "노초결" (Reed)
     insight: [
       {
         level: 1,

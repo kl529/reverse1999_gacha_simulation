@@ -29,7 +29,7 @@ export const banners: Banner[] = [
     pickup5: [103, 123],
     version: "3.5",
     startDate: "2026-05-28",
-    endDate: "2026-07-09",
+    endDate: "2026-06-18",
   },
   {
     id: "cheng_heguang_pick_up",

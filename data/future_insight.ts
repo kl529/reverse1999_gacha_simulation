@@ -253,7 +253,7 @@ export const futureInsightData: FutureInsightItem[] = [
   },
   {
     version: "3.4",
-    title: "영원한 봄",
+    title: "불로춘",
     period: {
       start: "2026-04-16",
       end: "2026-05-28",
@@ -273,6 +273,29 @@ export const futureInsightData: FutureInsightItem[] = [
       ],
       star5: [],
     },
-    euphoria_pick_up: [14, 19, 37, 11, 5, 7, 3],
+    euphoria_pick_up: [14, 19, 37, 11, 5, 7, 3, 4],
+    note: "무료 100뽑 배너(도삭비경), 의상구매할인",
+  },
+  {
+    version: "3.5",
+    title: "터콰이즈 뱀 클럽",
+    period: {
+      start: "2026-05-28",
+      end: "2026-07-02",
+      week: 5,
+    },
+    album_shop: {
+      rare6: 26,
+      rare5: 121,
+    },
+    banners: ["lorentz_butterfly_pick_up", "ramona_pick_up"],
+    euphoria: {
+      star6: [
+        { characterId: 33, euphoriaId: 41 },
+        { characterId: 20, euphoriaId: 42 },
+      ],
+      star5: [],
+    },
+    euphoria_pick_up: [4, 24, 20, 33, 14, 37],
   },
 ];

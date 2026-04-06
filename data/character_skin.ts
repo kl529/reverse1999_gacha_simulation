@@ -1256,7 +1256,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 109,
     character_id: 52, // 센티널
-    name: "거울회랑의 선언 (미래시)",
+    name: "거울회랑의 선언",
     engName: "by_reflections_witnessed",
     rarity: "Advanced",
     source: "판매",
@@ -1267,7 +1267,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 110,
     character_id: 51, // 몰디르
-    name: "석조성의 만가 (미래시)",
+    name: "석조성의 만가",
     engName: "idyll_of_the_luberon",
     rarity: "Advanced",
     source: "판매",
@@ -1289,18 +1289,18 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 112,
     character_id: 8, // 메디슨 포켓
-    name: "영생은 덧없다 (미래시)",
+    name: "영생은 덧없다",
     engName: "forever_is_too_short",
     rarity: "Garment",
     source: "주크박스",
     resell: "X",
     version: "3.3",
-    tarot_number: "16",
+    tarot_number: "12",
   },
   {
     id: 113,
     character_id: 204, // 바니바니
-    name: "시종의 하루 (미래시)",
+    name: "시종의 하루",
     engName: "service_fit_for_royalty",
     rarity: "Garment",
     source: "컨텐츠",
@@ -1310,7 +1310,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 114,
     character_id: 41, // 양월
-    name: "밝게 빛나는 눈 (미래시)",
+    name: "조설명",
     engName: "the_moons_reflection",
     rarity: "Unique",
     source: "판매",
@@ -1321,7 +1321,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 115,
     character_id: 14, // 투스 페어리
-    name: "화려한 옷의 노래 (미래시)",
+    name: "채의곡",
     engName: "the_woven_legend",
     rarity: "Unique",
     source: "판매",
@@ -1332,7 +1332,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 116,
     character_id: 54, // 루부스카
-    name: "그림자를 따르는 노래 (미래시)",
+    name: "답영가",
     engName: "song_of_the_shadow_dancer",
     rarity: "Advanced",
     source: "판매",
@@ -1343,7 +1343,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 117,
     character_id: 42, // 누아르
-    name: "속세를 계산하며 (미래시)",
+    name: "속세의 일",
     engName: "the_trapped_trapmaster",
     rarity: "Garment",
     source: "무료",
@@ -1353,7 +1353,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 118,
     character_id: 210, // 호러피디아
-    name: "미치광이 도인 (미래시)",
+    name: "미친도사",
     engName: "a_daoists_madness",
     rarity: "Garment",
     source: "무료",
@@ -1363,20 +1363,20 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 119,
     character_id: 37, // 윌로우
-    name: "맟춤형 봄 의상 (미래시)",
+    name: "봄날의 옷",
     engName: "reborn_and_restored",
     rarity: "Garment",
-    source: "판매",
+    source: "주크박스",
     resell: "X",
     version: "3.4",
   },
   {
     id: 120,
     character_id: 19, // 6
-    name: "고독의 찬송가 (미래시)",
+    name: "고독한 찬송가",
     engName: "a_hymn_to_seclusion",
     rarity: "Garment",
-    source: "주크박스",
+    source: "판매",
     resell: "X",
     version: "3.4",
     tarot_number: "9",
@@ -1384,7 +1384,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 121,
     character_id: 55, // 코르부스
-    name: "눈물을 태워 (미래시)",
+    name: "슬픔을 불태우며 (미래시)",
     engName: "burning_away_tears",
     rarity: "Advanced",
     source: "판매",
@@ -1406,7 +1406,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 123,
     character_id: 201, // 닉 보텀
-    name: "바텀의 꿈 (미래시)",
+    name: "보텀의 꿈 (미래시)",
     engName: "bottom_s_dream",
     rarity: "Garment",
     source: "무료",
@@ -2327,7 +2327,7 @@ export const characterSkin: CharacterSkin[] = [
   {
     id: 1090,
     character_id: 217,
-    name: "리드 2통찰",
+    name: "노초결 2통찰",
     engName: "reed_insight_2",
     rarity: "Insight",
     source: "2통찰 달성",

@@ -674,5 +674,5 @@ export const calendarEvents: CalendarEvent[] = [
     type: "birthday",
     character_id: 61,
   },
-  // 노사전(60), 리드(217) 생일 미확인
+  // 노사전(60), 노초결(217) 생일 미확인
 ];

@@ -1075,7 +1075,7 @@ export const characterGuideList: CharacterGuide[] = [
       source: "icehood",
       note: "가장 효율이 높은 형상은 5형상이며, 풀형상 효율이 정말 높음. 단순 계산으론 90.3%이지만 머큐리아의 서포트 기여도, 형상별 시너지로 인해 123.8%가 되었으며 실전 개선 체감은 그 이상이라는 말도 있음. 형상 효율 또한 전체적으로 높음.",
     },
-    youtube_links: ["https://www.youtube.com/watch?v=hRtZrJV5Wpk"],
+    youtube_links: ["https://www.youtube.com/watch?v=EUIQqKJc4oM"],
     keywords: ["서포터", "진급", "정신피해"],
     guide_images: [],
   },
@@ -2004,7 +2004,7 @@ export const characterGuideList: CharacterGuide[] = [
   },
   {
     character_id: 59, // 이고르
-    youtube_links: ["https://www.youtube.com/watch?v=iUPKXGoYiRk"],
+    youtube_links: ["https://www.youtube.com/watch?v=-WPTL_4B5G4"],
     keywords: ["딜러", "술식", "현실피해"],
     guide_images: [],
   },
@@ -2074,6 +2074,18 @@ export const characterGuideList: CharacterGuide[] = [
     },
     youtube_links: ["https://www.youtube.com/watch?v=ckEk8H7F0Sg"],
     keywords: ["서폿", "추가공격", "현실피해"],
+    guide_images: [],
+  },
+  {
+    character_id: 62, // 로렌츠나비
+    youtube_links: ["https://www.youtube.com/watch?v=spP8E0oM8fQ"],
+    keywords: ["여광", "서폿", "정신피애"],
+    guide_images: [],
+  },
+  {
+    character_id: 63, // 라모나
+    youtube_links: ["https://www.youtube.com/watch?v=g6pFgH0VvJ0"],
+    keywords: ["중독", "딜러", "정신피해"],
     guide_images: [],
   },
 ];
