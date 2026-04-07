@@ -559,7 +559,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       engName: "paper-heron",
       version: "3.4",
       exclude_gacha: true,
-      resonanceType: "damage",
+      resonanceType: "support",
     },
     {
       id: 61,
@@ -568,7 +568,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       inspiration: "star",
       engName: "cheng-heguang",
       version: "3.4",
-      resonanceType: "support",
+      resonanceType: "balance",
     },
     {
       id: 62,
@@ -577,7 +577,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       inspiration: "intellect",
       engName: "lorentz-butterfly",
       version: "3.5",
-      resonanceType: "balance",
+      resonanceType: "damage",
     },
     {
       id: 63,
@@ -586,7 +586,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       inspiration: "plant",
       engName: "ramona",
       version: "3.5",
-      resonanceType: "support",
+      resonanceType: "damage",
     },
   ],
   5: [

@@ -2078,8 +2078,36 @@ export const characterGuideList: CharacterGuide[] = [
   },
   {
     character_id: 62, // 로렌츠나비
+    portrait_info: {
+      headers: ["형상", "팀 전체"],
+      rows: [
+        {
+          name: "1형상",
+          efficiencies: ["18%"],
+        },
+        {
+          name: "2형상",
+          efficiencies: ["15.2%"],
+        },
+        {
+          name: "3형상",
+          efficiencies: ["5.7%"],
+        },
+        {
+          name: "4형상",
+          efficiencies: ["6.1%"],
+        },
+        {
+          name: "5형상",
+          efficiencies: ["10.5%"],
+        },
+      ],
+      summary: "1형상 > 2형상 > 5형상 > 4형상 > 3형상 (팀 전체)",
+      source: "icehood",
+      note: "",
+    },
     youtube_links: ["https://www.youtube.com/watch?v=spP8E0oM8fQ"],
-    keywords: ["여광", "서폿", "정신피애"],
+    keywords: ["여광", "서폿", "정신피해"],
     guide_images: [],
   },
   {

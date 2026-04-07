@@ -44,7 +44,7 @@ export default function CharacterSettingDetail({ character }: { character: Chara
   const [showDialog, setShowDialog] = useState(false);
 
   return (
-    <div className="min-h-screen w-full bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
+    <div className="w-full bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
       <div className="mx-auto max-w-4xl space-y-8 px-4 pb-0">
         {setting?.resonance && setting.resonance.length > 0 && (
           <div className="rounded-lg border-2 border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">

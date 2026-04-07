@@ -11,6 +11,13 @@
  * 5. Settings > Variables > R2 Bucket Bindings 추가
  *    - Variable name: BUCKET
  *    - R2 bucket: reverse1999-assets
+ *
+ * 캐시 퍼지 방법:
+ * - 단일 파일: GET /{path}?purge=1
+ *   예) curl "https://reverse1999-r2-public.lyva.workers.dev/infos/character_skin/mini/foo.webp?purge=1"
+ * - 여러 파일: POST /_purge  (body: JSON 배열)
+ *   예) curl -X POST .../  -H "Content-Type: application/json" -d '["infos/character_skin/mini/foo.webp"]'
+ * - 퍼지 후 Worker 재배포 불필요
  */
 
 export default {
@@ -21,7 +28,7 @@ export default {
     // CORS 헤더
     const corsHeaders = {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, HEAD, OPTIONS",
+      "Access-Control-Allow-Methods": "GET, HEAD, POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
     };
 
@@ -29,6 +36,23 @@ export default {
     if (request.method === "OPTIONS") {
       return new Response(null, {
         headers: corsHeaders,
+      });
+    }
+
+    // POST /_purge - 여러 파일 캐시 퍼지
+    // body: ["infos/character_skin/mini/foo.webp", ...]
+    if (request.method === "POST" && key === "_purge") {
+      const paths = await request.json();
+      const cache = caches.default;
+      const results = await Promise.all(
+        paths.map(async (path) => {
+          const purgeUrl = new URL(`/${path}`, url.origin).href;
+          const deleted = await cache.delete(new Request(purgeUrl));
+          return { path, deleted };
+        })
+      );
+      return new Response(JSON.stringify(results), {
+        headers: { "Content-Type": "application/json", ...corsHeaders },
       });
     }
 
@@ -52,16 +76,23 @@ export default {
 
     // Cloudflare Cache API 사용 (엣지 캐싱)
     const cache = caches.default;
+
+    // GET /{path}?purge=1 - 단일 파일 캐시 퍼지
+    if (url.searchParams.get("purge") === "1") {
+      const baseRequest = new Request(url.origin + url.pathname);
+      const deleted = await cache.delete(baseRequest);
+      return new Response(JSON.stringify({ path: key, deleted }), {
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
+
     let response = await cache.match(request);
 
     if (response) {
-      // 캐시 히트 - 즉시 반환
       return response;
     }
 
-    // 캐시 미스 - R2에서 가져오기
     try {
-      // R2에서 객체 가져오기
       const object = await env.BUCKET.get(key);
 
       if (object === null) {
@@ -81,16 +112,14 @@ export default {
         headers.set(key, value);
       });
 
-      // 이미지 캐싱 (1년)
+      // 이미지 캐싱 (1주일, immutable 제거 - 업데이트 시 재배포로 캐시 갱신 가능)
       if (object.httpMetadata?.contentType?.startsWith("image/")) {
-        headers.set("Cache-Control", "public, max-age=31536000, immutable");
+        headers.set("Cache-Control", "public, max-age=604800");
       } else {
         headers.set("Cache-Control", "public, max-age=3600");
       }
 
       response = new Response(object.body, { headers });
-
-      // Cloudflare 엣지에 캐시 저장 (비동기)
       ctx.waitUntil(cache.put(request, response.clone()));
 
       return response;

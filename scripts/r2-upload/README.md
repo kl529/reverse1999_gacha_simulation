@@ -117,6 +117,45 @@ Cloudtype 배포 설정에도 동일하게 추가하세요.
 
 총 약 **480MB**의 이미지가 업로드됩니다.
 
+## 이미지 업데이트 후 캐시 갱신
+
+R2에 파일을 재업로드해도 엣지 캐시(`caches.default`)가 남아있어 이전 이미지가 보일 수 있습니다.
+Worker 재배포만으로는 해결되지 않으며, 아래 방법으로 퍼지해야 합니다.
+
+### 단일 파일 퍼지
+
+```bash
+curl "https://reverse1999-r2-public.lyva.workers.dev/{경로}?purge=1"
+```
+
+예시:
+```bash
+curl "https://reverse1999-r2-public.lyva.workers.dev/infos/character_skin/mini/the_last_fluttering_beat.webp?purge=1"
+```
+
+### 여러 파일 한번에 퍼지
+
+```bash
+curl -X POST "https://reverse1999-r2-public.lyva.workers.dev/_purge" \
+  -H "Content-Type: application/json" \
+  -d '[
+    "infos/character_skin/mini/foo.webp",
+    "infos/character_skin/standing/foo.webp"
+  ]'
+```
+
+### 업로드 + 퍼지 한번에
+
+```bash
+# 1. R2 업로드
+wrangler r2 object put reverse1999-assets/infos/character_skin/mini/foo.webp \
+  --file=public/infos/character_skin/mini/foo.webp \
+  --content-type="image/webp"
+
+# 2. 캐시 퍼지
+curl "https://reverse1999-r2-public.lyva.workers.dev/infos/character_skin/mini/foo.webp?purge=1"
+```
+
 ## 문제 해결
 
 ### 인증 오류

@@ -1845,8 +1845,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "B",
       },
     ],
-    resonance: [],
-    resonance_patterns: [],
+    resonance: [
+      {
+        code: "APgkJAQoVDRENBQ8YDxQOCI7MEASQCBCAEcCSAA",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Hyper", "Delirament"],
   },
   {
     character_id: 61, // "정화광"
@@ -1868,8 +1873,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "A (메인 딜러)",
       },
     ],
-    resonance: [],
-    resonance_patterns: [],
+    resonance: [
+      {
+        code: "APAkKFQqBDQVNEQ8ADwQOCI5IEFCQTBAUEVhSGM=",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Genuinity"],
   },
   {
     character_id: 62, // "로렌츠 나비"
@@ -1891,8 +1901,13 @@ export const character_setting_data: CharacterSettingData[] = [
         description: "B",
       },
     ],
-    resonance: [],
-    resonance_patterns: [],
+    resonance: [
+      {
+        code: "ADQANAI8IDwwKkD0NDtQOEJCVUAkKgQpFURU",
+        description: "범용",
+      },
+    ],
+    resonance_patterns: ["Genuinity"],
   },
   {
     character_id: 101, // "소네트"

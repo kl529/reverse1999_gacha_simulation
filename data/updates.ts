@@ -105,4 +105,5 @@ export const updateLogs = [
   { date: "2026-02-18", content: "뉴비가이드 최신화" },
   { date: "2026-03-02", content: "추천 조합 추천 의지 추가" },
   { date: "2026-03-28", content: "빗속의 공상 500m까지 공략 추가" },
+  { date: "2026-04-07", content: "데이터 오타 수정 및 오류 수정" },
 ];
