@@ -522,6 +522,7 @@ export const charactersByRarity: Record<number, Character[]> = {
       inspiration: "intellect",
       engName: "beryl",
       version: "3.2",
+      exclude_gacha: true,
       resonanceType: "damage",
     },
     {
