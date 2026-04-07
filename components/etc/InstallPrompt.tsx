@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { analytics } from "@/lib/posthog";
 
 interface BeforeInstallPromptEvent extends Event {
@@ -13,6 +14,7 @@ export function InstallPrompt() {
   const [promptEvent, setPromptEvent] = useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const t = useTranslations("pwa");
 
   useEffect(() => {
     // 모바일 기기 체크
@@ -71,20 +73,20 @@ export function InstallPrompt() {
       <div className="mx-auto flex max-w-screen-xl items-center justify-between">
         <div className="flex items-center space-x-3">
           <Image src="/pwa_icon.webp" alt="pwa_icon" width={24} height={24} />
-          <p className="text-sm font-medium">앱으로 설치하시겠습니까?</p>
+          <p className="text-sm font-medium">{t("installPrompt")}</p>
         </div>
         <div className="flex items-center space-x-2">
           <button
             onClick={handleInstallClick}
             className="rounded-full bg-white px-4 py-1 text-sm font-medium text-blue-500 transition hover:bg-opacity-90"
           >
-            설치
+            {t("install")}
           </button>
           <button
             onClick={() => setShowPrompt(false)}
             className="rounded-full border border-white px-4 py-1 text-sm font-medium text-white transition hover:bg-white hover:bg-opacity-10"
           >
-            나중에
+            {t("later")}
           </button>
         </div>
       </div>

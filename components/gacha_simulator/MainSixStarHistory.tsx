@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Character } from "@/data/characters";
 import { Banner } from "@/data/banners";
 import Image from "next/image";
@@ -22,16 +23,18 @@ export default function MainSixStarHistory({
   nonPickupCount,
   historyRef,
 }: SixStarHistoryProps) {
+  const t = useTranslations("gacha");
+
   return (
     <div className="h-full w-full overflow-y-auto rounded-lg border bg-white p-4 shadow dark:border-gray-700 dark:bg-gray-800">
       <h2 className="sticky top-0 z-10 mb-2 border-b bg-white p-2 text-lg font-semibold text-black dark:bg-gray-800 dark:text-gray-100 lg:text-xl">
-        💡 획득한 6성
+        {t("obtained6Star")}
       </h2>
 
       {/* 픽업 vs 일반 6성 횟수 */}
       <div className="sticky top-[48px] z-10 mb-2 flex justify-between rounded-lg bg-gray-100 p-2 text-xs font-semibold text-gray-700 dark:border dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 lg:text-sm">
-        <p className="text-green-600 dark:text-green-400">픽업: {pickupCount}회</p>
-        <p className="text-red-500 dark:text-red-400">픽뚫: {nonPickupCount}회</p>
+        <p className="text-green-600 dark:text-green-400">{t("pickupLabel")} {pickupCount}{t("pullSuffix")}</p>
+        <p className="text-red-500 dark:text-red-400">{t("nonPickupLabel")} {nonPickupCount}{t("pullSuffix")}</p>
       </div>
 
       <div ref={historyRef} className="flex flex-grow flex-col-reverse gap-2 overflow-y-auto">
@@ -46,7 +49,7 @@ export default function MainSixStarHistory({
               selectedBanner.pickup6 &&
               entry.char.engName === selectedBanner.pickup6.engName);
           const borderColor = isPickup ? "border-green-500" : "border-red-500";
-          const labelText = isPickup ? "픽업!" : "픽뚫";
+          const labelText = isPickup ? t("pickup") : t("nonPickup");
 
           // 현재까지 등장한 같은 캐릭터 개수 확인
           const sameCharCount = sixStarHistory
@@ -54,7 +57,7 @@ export default function MainSixStarHistory({
             .filter((e) => e.char.name === entry.char.name).length;
 
           // 등장 순서에 따라 suffix 부여 (처음 나온 캐릭터는 "명함", 이후 "1형", "2형" ...)
-          const suffix = sameCharCount === 0 ? "명함" : `${Math.min(sameCharCount, 5)}형`;
+          const suffix = sameCharCount === 0 ? t("nameCard") : t("shape", { count: Math.min(sameCharCount, 5) });
 
           return (
             <div

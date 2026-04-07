@@ -5,8 +5,10 @@ import Image from "next/image";
 import { BOSSES, BossId, FILTERS, BLUEPRINTS } from "@/data/blueprint";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
 export default function BlueprintSetting() {
+  const t = useTranslations("blueprint");
   const [selectedBoss, setSelectedBoss] = useState<BossId | null>(null);
   const [selectedFilter, setSelectedFilter] = useState<string>("ALL");
 
@@ -19,7 +21,7 @@ export default function BlueprintSetting() {
   return (
     <div className="mx-auto min-h-screen max-w-5xl p-4 dark:bg-gray-900 dark:text-white">
       <h1 className="mb-6 mt-8 text-center text-2xl font-bold text-black dark:text-white lg:text-3xl">
-        청사진 모음
+        {t("title")}
       </h1>
 
       {/* 보스 선택 */}
@@ -48,7 +50,7 @@ export default function BlueprintSetting() {
               <div className="absolute right-0 top-0 h-4 w-4">
                 <Image
                   src={`/infos/inspiration/${boss.inspiration}.webp`}
-                  alt={`${boss.inspiration} 아이콘`}
+                  alt={`${boss.inspiration} ${t("iconAlt")}`}
                   width={20}
                   height={20}
                 />
@@ -86,7 +88,7 @@ export default function BlueprintSetting() {
                 <CardContent className="w-full p-0">
                   <Image
                     src={img}
-                    alt={`청사진 ${i + 1}`}
+                    alt={t("blueprintAlt", { num: i + 1 })}
                     width={700}
                     height={350}
                     className="w-full rounded-lg border border-gray-300 dark:border-gray-600"
@@ -96,7 +98,7 @@ export default function BlueprintSetting() {
             ))
           : selectedBoss && (
               <p className="mt-8 text-gray-500 dark:text-gray-400">
-                해당 조건에 맞는 청사진이 없습니다.
+                {t("noBlueprint")}
               </p>
             )}
       </div>

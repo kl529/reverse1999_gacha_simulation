@@ -3,6 +3,7 @@
 import { TrueFalseQuestion } from "@/lib/types/quizTypes";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 interface TrueFalseProps {
   question: TrueFalseQuestion;
@@ -19,6 +20,7 @@ export default function TrueFalse({
   showResult = false,
   disabled = false,
 }: TrueFalseProps) {
+  const t = useTranslations("quiz");
   const getButtonClass = (value: boolean) => {
     const isSelected = selectedAnswer === value;
     const isCorrect = question.correctAnswer === value;
@@ -57,7 +59,7 @@ export default function TrueFalse({
           <div className="relative h-48 w-48 overflow-hidden rounded-lg border-2 border-gray-300 dark:border-gray-600">
             <Image
               src={question.image}
-              alt="문제 이미지"
+              alt={t("questionImage")}
               fill
               className="object-cover"
             />
@@ -80,7 +82,7 @@ export default function TrueFalse({
           <span className="text-blue-600 dark:text-blue-400">O</span>
           {showResult && question.correctAnswer === true && (
             <span className="ml-2 text-sm text-green-600 dark:text-green-400">
-              (정답)
+              {t("correct")}
             </span>
           )}
         </button>
@@ -92,7 +94,7 @@ export default function TrueFalse({
           <span className="text-red-600 dark:text-red-400">X</span>
           {showResult && question.correctAnswer === false && (
             <span className="ml-2 text-sm text-green-600 dark:text-green-400">
-              (정답)
+              {t("correct")}
             </span>
           )}
         </button>

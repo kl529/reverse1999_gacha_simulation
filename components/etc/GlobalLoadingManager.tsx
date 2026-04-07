@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname } from "@/i18n/navigation";
 import LoadingSpinner from "@/components/etc/LoadingSpinner";
 
 export default function GlobalLoadingManager() {

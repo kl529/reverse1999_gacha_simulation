@@ -3,9 +3,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 import HomePageSkeleton from "@/components/home/HomePageSkeleton";
 import HomeCouponList from "@/components/home/HomeCouponList";
 import HomeCurrentPickup from "@/components/home/HomeCurrentPickup";
@@ -36,6 +37,8 @@ export default function HomePage() {
   const [selectedInfo, setSelectedInfo] = useState<CardItem | null>(null);
   const [showNoticeModal, setShowNoticeModal] = useState(false);
   const { openModal } = useModal();
+  const t = useTranslations("home");
+  const tNav = useTranslations("nav");
 
   const handleItemClick = (item: CardItem) => {
     if (item.modalType) {
@@ -55,15 +58,6 @@ export default function HomePage() {
 
     // 퍼널 분석: 홈페이지 방문 추적
     analytics.funnel.homeVisited();
-
-    // // 서비스 점검 공지 표시 (localStorage로 하루에 한 번만 표시)
-    // const today = new Date().toDateString();
-    // const lastShown = localStorage.getItem("noticeShownDate");
-
-    // if (lastShown !== today) {
-    //   setShowNoticeModal(true);
-    //   localStorage.setItem("noticeShownDate", today);
-    // }
   }, []);
 
   if (!bgImage) return <HomePageSkeleton />;
@@ -77,23 +71,27 @@ export default function HomePage() {
       <div className="relative z-20 flex min-h-screen flex-col">
         <main className="flex flex-grow flex-col items-center justify-center">
           <h2 className="mb-4 mt-20 text-4xl font-bold text-black dark:text-white lg:mt-0">
-            버틴의 여행가방 🧳
+            {t("title")}
           </h2>
-          <p className="mb-8 text-black dark:text-white">당신이 폭풍우를 이겨낼 수 있도록..</p>
+          <p className="mb-8 text-black dark:text-white">{t("subtitle")}</p>
 
           <div className="grid w-full max-w-7xl grid-cols-1 gap-7 px-6 md:px-12 lg:grid-cols-3 lg:px-4">
-            <CardBox title="놀이터" subTitle="Just for Fun" items={PLAYGROUND_ITEMS} />
+            <CardBox
+              title={tNav("categories.playground")}
+              subTitle={t("playgroundSubtitle")}
+              items={PLAYGROUND_ITEMS}
+            />
 
             <CardBox
-              title="도서관"
-              subTitle="게임 플레이를 위한 필수 정보"
+              title={tNav("categories.library")}
+              subTitle={t("librarySubtitle")}
               onItemClick={handleItemClick}
               items={LIBRARY_ITEMS}
             />
 
             <CardBox
-              title="가이드"
-              subTitle="유용한 참고 자료 모음"
+              title={tNav("categories.guide")}
+              subTitle={t("guideSubtitle")}
               onItemClick={handleItemClick}
               items={GUIDE_ITEMS}
             />
@@ -115,26 +113,21 @@ export default function HomePage() {
 
         {showPolicy && (
           <ConfirmModal isOpen={showPolicy} onClose={() => setShowPolicy(false)}>
-            <h2 className="mb-4 text-lg font-bold">개인정보 처리방침</h2>
+            <h2 className="mb-4 text-lg font-bold">{t("policy.title")}</h2>
             <p className="whitespace-pre-line text-sm leading-relaxed">
-              본 사이트는 사용자의 개인정보를 수집하지 않습니다. 이름, 이메일, 연락처 등 어떠한
-              개인정보도 저장하지 않으며, 로그인 없이 자유롭게 이용 가능합니다.
+              {t("policy.content1")}
             </p>
             <p className="whitespace-pre-line text-sm leading-relaxed">
-              일부 설정 정보(예: 퀴즈 진행 현황)는 사용자의 브라우저 로컬 스토리지(Local Storage)에
-              저장됩니다. 이 사이트는 Google Analytics를 사용하여 방문자 트래픽을 익명으로 수집하고
-              있으며, 광고 ID 등 개인을 식별할 수 있는 정보는 수집되지 않습니다. 외부 링크(예:
-              Google Sites, Github Pages)는 각각의 개인정보 처리방침을 따릅니다. 본 사이트는 외부
-              사이트의 데이터 수집에 대해 책임지지 않습니다.
+              {t("policy.content2")}
             </p>
             <p className="whitespace-pre-line text-sm leading-relaxed">
-              기타 문의 사항은 jiwon803@gmail.com 으로 연락해 주세요.
+              {t("policy.content3")}
             </p>
           </ConfirmModal>
         )}
         {showSource && (
           <ConfirmModal isOpen={showSource} onClose={() => setShowSource(false)}>
-            <h2 className="text-lg font-bold">출처</h2>
+            <h2 className="text-lg font-bold">{t("source.title")}</h2>
             <p className="whitespace-pre-line text-sm leading-relaxed">
               -{" "}
               <Link
@@ -143,7 +136,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                미래시 정보 및 많은 캐릭터 검수 (내이름은김융털)
+                {t("source.futureInsight")}
               </Link>
               <br />-{" "}
               <Link
@@ -152,7 +145,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                다양한 데이터 출처
+                {t("source.dataSource")}
               </Link>
               <br />-{" "}
               <Link
@@ -161,7 +154,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                다른 상세 정보
+                {t("source.detailInfo")}
               </Link>
               <br />-{" "}
               <Link
@@ -170,7 +163,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                한국 정보 정리
+                {t("source.krInfoSummary")}
               </Link>
               <br />-{" "}
               <Link
@@ -179,7 +172,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                광상 정보
+                {t("source.euphoriaInfo")}
               </Link>
               <br />-{" "}
               <Link
@@ -188,7 +181,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                taptap 분석글(小丸犊几)
+                {t("source.taptapAnalysis")}
               </Link>
               <br />-{" "}
               <Link
@@ -197,7 +190,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                동영상 정보(bilibili)
+                {t("source.bilibiliVideo")}
               </Link>
               <br />-{" "}
               <Link
@@ -206,7 +199,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                캐릭터 정보 및 여러 정보 (bilibili wiki)
+                {t("source.bilibiliWiki")}
               </Link>
               <br />-{" "}
               <Link
@@ -215,7 +208,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                티어리스트 및 추천 조합 등 여러 정보 (Reverse: 1999 Tier List)
+                {t("source.tierList")}
               </Link>
               <br />-{" "}
               <Link
@@ -224,7 +217,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                중섭정보 (nga)
+                {t("source.ngaInfo")}
               </Link>
               <br />-{" "}
               <Link
@@ -233,8 +226,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                공명 정보 (An Incredibly Scuffed Page of Recommended Character Resonance Layouts and
-                their Corresponding Codes)
+                {t("source.resonanceInfo")}
               </Link>
               <br />-{" "}
               <Link
@@ -243,7 +235,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                로딩 이미지
+                {t("source.loadingImage")}
               </Link>
               <br />-{" "}
               <Link
@@ -252,7 +244,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                마우스 커서
+                {t("source.cursor")}
               </Link>
               <br />-{" "}
               <Link
@@ -261,7 +253,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                인포그래픽 출처 (reddit)
+                {t("source.infographic")}
               </Link>
               <br />-{" "}
               <Link
@@ -270,15 +262,15 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
               >
-                스테이지별 드롭률 출처(【WPS Docs】 必要的记录)
+                {t("source.dropRate")}
               </Link>
             </p>
           </ConfirmModal>
         )}
         {showContributors && (
           <ConfirmModal isOpen={showContributors} onClose={() => setShowContributors(false)}>
-            <h2 className="text-lg font-bold">도움을 주신 분들</h2>
-            <ColourfulText text={`- 개발자: Lyva\n- 데이터 정리: 잠쿨`} />
+            <h2 className="text-lg font-bold">{t("contributors.title")}</h2>
+            <ColourfulText text={t("contributors.content")} />
           </ConfirmModal>
         )}
         {infoModalOpen && selectedInfo && isModalCardItem(selectedInfo) && (
@@ -294,15 +286,9 @@ export default function HomePage() {
         <UpdateModal isOpen={isUpdateModalOpen} onClose={() => setUpdateModalOpen(false)} />
         {showNoticeModal && (
           <ConfirmModal isOpen={showNoticeModal} onClose={() => setShowNoticeModal(false)}>
-            <h2 className="mb-4 text-lg font-bold text-black dark:text-white">📢 공지사항</h2>
+            <h2 className="mb-4 text-lg font-bold text-black dark:text-white">{t("notice.title")}</h2>
             <p className="whitespace-pre-line text-sm leading-relaxed text-black dark:text-white">
-              현재 서비스 점검 중으로 인해 일부 기능 이용에 불편이 있을 수 있습니다.
-              <br />
-              <br />
-              접속이 원활하지 않거나 페이지 로딩이 느린 경우, 잠시 후 다시 시도해 주세요.
-              <br />
-              <br />
-              빠른 시일 내에 정상화될 예정이니 양해 부탁드립니다. 항상 서비스 이용에 감사드립니다.
+              {t("notice.content")}
             </p>
           </ConfirmModal>
         )}

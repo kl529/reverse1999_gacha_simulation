@@ -28,6 +28,7 @@ import { Button } from "@/components/ui/button";
 import { Toaster, toast } from "react-hot-toast";
 import Image from "next/image";
 import { analytics } from "@/lib/posthog";
+import { useTranslations } from "next-intl";
 
 declare global {
   interface Window {
@@ -93,6 +94,7 @@ interface QuizProps {
 }
 
 export default function Quiz({ initialQuizSetId }: QuizProps) {
+  const t = useTranslations("quiz");
   // 퀴즈 상태 - initialQuizSetId가 있으면 바로 warning 페이지로
   const [phase, setPhase] = useState<QuizPhase>(initialQuizSetId ? "warning" : "setup");
   const [selectedQuizSet, setSelectedQuizSet] = useState<QuizSetId>(initialQuizSetId || "quiz_set_1");
@@ -198,7 +200,7 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
     // 시도 횟수 체크
     const currentRemaining = getRemainingAttempts(selectedQuizSet);
     if (currentRemaining <= 0) {
-      toast.error("오늘의 시도 횟수를 모두 사용했습니다!");
+      toast.error(t("todayAttemptsUsed"));
       return;
     }
 
@@ -450,7 +452,7 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
         >
           <div className="text-center">
             <h2 className="text-2xl font-bold text-card-foreground">
-              다양한 컨셉의 퀴즈를 풀어보세요.
+              {t("selectQuizPrompt")}
             </h2>
           </div>
 
@@ -495,10 +497,10 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
                     {!isLocked && (
                       <>
                         <span className="rounded-full bg-purple-100 px-2.5 py-1 text-purple-700 ring-1 ring-purple-300 dark:bg-purple-900/40 dark:text-purple-300 dark:ring-purple-500/30">
-                          🔒 {quizSet.questionCount}개 문제
+                          {t("questionCount", { count: quizSet.questionCount })}
                         </span>
                         <span className="rounded-full bg-red-100 px-2.5 py-1 text-red-700 ring-1 ring-red-300 dark:bg-red-900/40 dark:text-red-300 dark:ring-red-500/30">
-                          ⏱️ {quizSet.timePerQuestion}초 제한
+                          {t("timeLimit", { seconds: quizSet.timePerQuestion })}
                         </span>
                       </>
                     )}
@@ -578,20 +580,20 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
                   isMelaniaTheme ? "bg-purple-200 text-purple-700 dark:bg-purple-500/20 dark:text-purple-400" : "bg-blue-200 text-blue-700 dark:bg-blue-500/20 dark:text-blue-400"
                 }`}>⏱️</span>
                 <span className="text-gray-700 dark:text-gray-300">
-                  {isMelaniaTheme ? "각 잠금장치" : "각 문제"} 제한 시간{" "}
+                  {isMelaniaTheme ? t("eachLock") : t("eachQuestion")} {t("timeLimitPer")}{" "}
                   <span className={`font-bold ${isMelaniaTheme ? "text-purple-700 dark:text-purple-400" : "text-blue-700 dark:text-blue-400"}`}>
-                    {quizSetInfo?.timePerQuestion || 10}초
+                    {t("seconds", { seconds: quizSetInfo?.timePerQuestion || 10 })}
                   </span>
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="flex h-6 w-6 items-center justify-center rounded-sm bg-yellow-200 text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-400">⚡</span>
-                <span className="text-gray-700 dark:text-gray-300">시간 초과 시 오답 처리</span>
+                <span className="text-gray-700 dark:text-gray-300">{t("timeoutPenalty")}</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="flex h-6 w-6 items-center justify-center rounded-sm bg-red-200 text-red-700 dark:bg-red-500/20 dark:text-red-400">❤️</span>
                 <span className="text-gray-700 dark:text-gray-300">
-                  목숨 <span className="font-bold text-red-600 dark:text-red-400">3개</span> (3회 실패 시 종료)
+                  {t("lives")} <span className="font-bold text-red-600 dark:text-red-400">{t("livesCount")}</span> {t("livesDescription")}
                 </span>
               </div>
               <div className="flex items-center gap-3">
@@ -599,9 +601,9 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
                   isMelaniaTheme ? "bg-purple-200 text-purple-700 dark:bg-purple-500/20 dark:text-purple-400" : "bg-blue-200 text-blue-700 dark:bg-blue-500/20 dark:text-blue-400"
                 }`}>📝</span>
                 <span className="text-gray-700 dark:text-gray-300">
-                  총 <span className={`font-bold ${isMelaniaTheme ? "text-purple-700 dark:text-purple-400" : "text-blue-700 dark:text-blue-400"}`}>
-                    {quizSetInfo?.questionCount || 20}개
-                  </span> 문제
+                  {t("totalQuestions")} <span className={`font-bold ${isMelaniaTheme ? "text-purple-700 dark:text-purple-400" : "text-blue-700 dark:text-blue-400"}`}>
+                    {quizSetInfo?.questionCount || 20}{t("questionsUnit")}
+                  </span> {t("questionsLabel")}
                 </span>
               </div>
             </div>
@@ -617,7 +619,7 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
                   ? "text-green-700 dark:text-green-400"
                   : "text-red-700 dark:text-red-400"
               }`}>
-                🎫 남은 시도 횟수: <span className="font-bold">{remainingAttempts}</span> / {MAX_QUIZ_ATTEMPTS}
+                {t("remainingAttempts", { remaining: remainingAttempts, max: MAX_QUIZ_ATTEMPTS })}
               </span>
             </div>
 
@@ -641,7 +643,7 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
                       : "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 hover:shadow-blue-500/25"
                 }`}
               >
-                {remainingAttempts <= 0 ? "시도 횟수 소진" : themeTexts.confirmButton}
+                {remainingAttempts <= 0 ? t("attemptsExhausted") : themeTexts.confirmButton}
               </Button>
             </div>
           </motion.div>
@@ -714,7 +716,7 @@ export default function Quiz({ initialQuizSetId }: QuizProps) {
                         : "text-green-600 dark:text-green-500"
                   }`}
                 >
-                  {questionTimeLeft}초
+                  {t("seconds", { seconds: questionTimeLeft })}
                 </span>
               </div>
               <div className="mt-2 h-3 w-full overflow-hidden rounded-full bg-gray-200 ring-1 ring-gray-300 dark:bg-gray-800 dark:ring-white/10">

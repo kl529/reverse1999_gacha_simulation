@@ -4,6 +4,7 @@ import { useState } from "react";
 import { TextInputQuestion } from "@/lib/types/quizTypes";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
 
 interface TextInputProps {
   question: TextInputQuestion;
@@ -24,6 +25,7 @@ export default function TextInput({
   isCorrect = false,
   disabled = false,
 }: TextInputProps) {
+  const t = useTranslations("quiz");
   const [inputValue, setInputValue] = useState(userAnswer);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +49,7 @@ export default function TextInput({
       {/* 힌트 (있는 경우) */}
       {question.hint && !showResult && (
         <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-          힌트: {question.hint}
+          {t("hint", { hint: question.hint })}
         </p>
       )}
 
@@ -57,7 +59,7 @@ export default function TextInput({
           value={inputValue}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          placeholder="정답을 입력하세요"
+          placeholder={t("answerPlaceholder")}
           disabled={disabled}
           className={
             showResult
@@ -73,7 +75,7 @@ export default function TextInput({
             disabled={disabled || !inputValue.trim()}
             className="bg-blue-500 text-white hover:bg-blue-600"
           >
-            제출
+            {t("submit")}
           </Button>
         )}
       </div>
@@ -83,15 +85,15 @@ export default function TextInput({
         <div className="text-center">
           {isCorrect ? (
             <p className="font-bold text-green-600 dark:text-green-400">
-              정답입니다!
+              {t("correctAnswer")}
             </p>
           ) : (
             <div>
               <p className="font-bold text-red-600 dark:text-red-400">
-                오답입니다
+                {t("wrongAnswer")}
               </p>
               <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                정답: {question.correctAnswers[0]}
+                {t("correctAnswerLabel", { answer: question.correctAnswers[0] })}
               </p>
             </div>
           )}
