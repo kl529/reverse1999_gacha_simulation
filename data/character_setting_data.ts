@@ -416,20 +416,20 @@ export const character_setting_data: CharacterSettingData[] = [
     character_id: 14, // "투스 페어리"
     psycubes: [
       {
-        psycube_id: 55,
+        psycube_id: 4,
+        description: "S (광상)",
+      },
+      {
+        psycube_id: 88,
+        description: "S (광상)",
+      },
+      {
+        psycube_id: 71,
+        description: "S (광상)",
+      },
+      {
+        psycube_id: 15,
         description: "S (힐)",
-      },
-      {
-        psycube_id: 12,
-        description: "S (탱킹)",
-      },
-      {
-        psycube_id: 10,
-        description: "S (천체팟)",
-      },
-      {
-        psycube_id: 34,
-        description: "S (딜 보조)",
       },
     ],
     resonance: [
