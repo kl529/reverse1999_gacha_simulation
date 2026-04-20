@@ -36,7 +36,7 @@ export const versionList = [
 ];
 
 // 현재 게임 버전
-export const version: string = "3.3";
+export const version: string = "3.4";
 
 // 버전별 특별 정보
 export const versionInfoMap: Record<string, VersionInfo> = {
