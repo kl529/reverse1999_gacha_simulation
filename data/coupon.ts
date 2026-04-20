@@ -165,6 +165,18 @@ export const coupons: Coupon[] = [
     description: "3.2 쿠폰",
     expiresAt: "2026-04-16",
   },
+  {
+    id: "25",
+    code: "마지막백마파제자",
+    description: "3.4 쿠폰",
+    expiresAt: "2026-05-28",
+  },
+  {
+    id: "26",
+    code: "2.5주년특별버전오픈!",
+    description: "2.5주년 기념 쿠폰",
+    expiresAt: "2026-05-28",
+  },
   // 무제한 쿠폰 (영구 사용 가능)
   {
     id: "1",
