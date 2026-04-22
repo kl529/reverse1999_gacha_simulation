@@ -16,10 +16,12 @@ function getActivePickupBanners(): Banner[] {
 
   const activeBanners = banners
     .filter((banner) => {
-      if (!banner.endDate) return false;
-      const [y, m, d] = banner.endDate.split("-").map(Number);
-      const endDate = new Date(y, m - 1, d);
-      return endDate > kstToday;
+      if (!banner.endDate || !banner.startDate) return false;
+      const [sy, sm, sd] = banner.startDate.split("-").map(Number);
+      const [ey, em, ed] = banner.endDate.split("-").map(Number);
+      const startDate = new Date(sy, sm - 1, sd);
+      const endDate = new Date(ey, em - 1, ed);
+      return startDate <= kstToday && endDate > kstToday;
     })
     .sort((a, b) => {
       const [ay, am, ad] = a.endDate!.split("-").map(Number);
