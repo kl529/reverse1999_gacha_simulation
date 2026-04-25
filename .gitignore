@@ -71,3 +71,8 @@ data/language/
 
 # 내부 참조 문서 (로컬 전용)
 /docs/
+
+# PWA (next-pwa auto-generated)
+public/sw.js
+public/workbox-*.js
+public/sw.js.map
